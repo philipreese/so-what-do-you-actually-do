@@ -45,7 +45,7 @@ Abstraction is the primary tool engineers use to manage the complexity and coupl
 - *No abstraction:* early-stage systems where the correct model is still uncertain, or performance-critical/kernel-level code where a boundary would obscure the behavior an engineer needs to see directly.
 
 **Common failure modes:**
-- **The transparent wrapper:** an engineer abstracts an external dependency — say, AWS S3 — behind a `StorageService`. But the methods take S3-specific configuration objects and throw S3-specific exceptions. The wrapper adds a layer of indirection while preserving the exact coupling it was meant to remove.
+- **The transparent wrapper:** an engineer abstracts an external dependency — say, AWS S3 — behind a `StorageService`. But the methods take S3-specific configuration objects and throw S3-specific exceptions. The wrapper adds a layer of indirection while preserving the exact coupling it was meant to remove — every caller still has to know it's talking to S3, just through one extra hop.
 - **Classes that hide implementation but expose unstable domain concepts:** the fields are private, but the method names and return shapes leak the underlying schema, so a schema change still breaks every caller.
 - **APIs that encapsulate logic but leak schema assumptions:** pagination, filtering, and sorting semantics that mirror the database's internal query shape rather than the caller's actual need.
 

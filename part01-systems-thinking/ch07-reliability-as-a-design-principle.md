@@ -62,7 +62,7 @@ This chapter defines reliability as a structural property, not a runtime feature
 - *Degraded mode:* user-facing systems where partial functionality is strictly better than no functionality, and the degraded path cannot produce incorrect results.
 
 **Common failure modes:**
-- **The zombie process:** an engineer wraps a top-level execution loop in `catch (Exception e)` without re-throwing. An internal structure corrupts, throws an error, gets caught, and the process remains "alive." The load balancer sees an active heartbeat and continues routing traffic, but every request fails silently or returns garbled data.
+- **The zombie process:** an engineer wraps a top-level execution loop in `catch (Exception e)` without re-throwing. An internal structure corrupts, throws an error, gets caught, and the process remains "alive." The load balancer sees an active heartbeat and continues routing traffic, but every request fails silently or returns garbled data. The process is running, technically. That's the whole problem.
 - Kubernetes restarting crashed pods repeatedly without addressing root cause — the crash is visible, but the loop creates the illusion that recovery is happening.
 - Retry logic that masks persistent downstream failures rather than surfacing them.
 
@@ -120,7 +120,7 @@ This chapter defines reliability as a structural property, not a runtime feature
 - **Torn writes:** without WAL, if power fails exactly while a storage controller is overwriting an 8 KB page, the page becomes half-new and half-old. The block is permanently corrupted with no recovery path.
 - Table bloat if WAL is combined with MVCC and the vacuum process falls behind (see Ch 06).
 
-**Example:** When a client executes a `COMMIT` against PostgreSQL, the database does not update data files immediately. It appends the change to the WAL and performs a sequential `fsync`. If the server loses power one millisecond later, the committed data is recoverable from the log on restart. Kafka takes this further: it skips the background table updates entirely and uses the sequential log as the primary data structure, leveraging OS page caches to deliver throughput that rivals in-memory systems for sequential reads.
+**Example:** When a client executes a `COMMIT` against PostgreSQL, the database does not update data files immediately. It appends the change to the WAL and performs a sequential `fsync`. If the server loses power one millisecond later, the committed data is recoverable from the log on restart. Kafka takes this further: it skips the background table updates entirely and uses the sequential log as the primary data structure, riding OS page caches to deliver throughput that rivals in-memory systems for sequential reads.
 
 ---
 

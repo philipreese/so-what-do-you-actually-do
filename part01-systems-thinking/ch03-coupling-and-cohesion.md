@@ -101,7 +101,7 @@ Neither extreme is inherently good. The question is whether the instability of e
 - A core service gains a new efferent dependency (increasing Ce). That dependency introduces instability. Now every system depending on the core is exposed to that instability.
 - An orchestration layer accumulates afferent dependencies as teams find it convenient to call into. It is now a hub: hard to change and fragile.
 
-**Example:** The left-pad incident in the NPM ecosystem (2016). The `left-pad` package had massive afferent coupling — Babel, React, and thousands of other packages depended on it — but almost zero efferent coupling. When the author unpublished it, the entire JavaScript build ecosystem broke simultaneously. The package's High Ca / Low Ce profile meant a single decision by a single person caused a global cascade. The ecosystem had not recognized the risk of High Ca components controlled by untrusted third parties with no governance. **[Strong Recommendation: treat high-Ca components as infrastructure — they need versioning, governance, and stability guarantees regardless of their apparent simplicity]**
+**Example:** The left-pad incident in the NPM ecosystem (2016). `left-pad` was eleven lines of code that padded strings with leading characters. It had massive afferent coupling — Babel, React, and thousands of other packages depended on it — and essentially zero efferent coupling. When the author unpublished it, the entire JavaScript build ecosystem broke simultaneously, over a package most of its dependents had never heard of and would not have been able to name if asked. The package's High Ca / Low Ce profile meant a single decision by a single person caused a global cascade. The ecosystem had not recognized the risk of High Ca components controlled by untrusted third parties with no governance. **[Strong Recommendation: treat high-Ca components as infrastructure — they need versioning, governance, and stability guarantees regardless of their apparent simplicity]**
 
 ---
 
@@ -192,7 +192,7 @@ Neither extreme is inherently good. The question is whether the instability of e
 - Lower cohesion is acceptable temporarily during rapid development but should be treated as technical debt: it is a signal that the component needs to be split.
 
 **Common failure modes:**
-- **The utility module:** A file named `utils.js`, `helpers.py`, or `common.go` that accumulates unrelated functions over time. By definition low cohesion — grouped by convenience, not by logical relationship.
+- **The utility module:** A file named `utils.js`, `helpers.py`, or `common.go` that accumulates unrelated functions over time — the codebase's junk drawer, and just as hard to find anything in. By definition low cohesion — grouped by convenience, not by logical relationship.
 - **Shotgun surgery:** A single conceptual change — adding a new user role, changing a date format — requires modifying many files scattered across the codebase. This is the symptom of low cohesion: the concept is not owned by any one component.
 - **Mixed responsibilities:** A service that handles authentication, applies business logic, and writes to the database in the same class or function. Changing the authentication mechanism requires understanding the business logic. Changing the persistence layer requires understanding the authentication flow.
 

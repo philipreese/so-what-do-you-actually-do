@@ -90,7 +90,7 @@ Most bad architecture is not the result of ignorance. It is the result of using 
 - When teams begin building local solutions around the missing decision, producing inconsistent behavior system-wide
 
 **Common failure modes:**
-- **The abstract factory trap:** a team refuses to commit to a database vendor. To "defer" the decision, they build a massive generic `DatabaseAdapter` interface that theoretically supports SQL, NoSQL, and flat files. They pay heavy accidental complexity to avoid a straightforward choice — and produce a leaky abstraction that supports none of the databases efficiently.
+- **The abstract factory trap:** a team refuses to commit to a database vendor. To "defer" the decision, they build a massive generic `DatabaseAdapter` interface that theoretically supports SQL, NoSQL, and flat files — and in practice has exactly one caller and one real backend. They pay heavy accidental complexity to avoid a straightforward choice, and end up with a leaky abstraction that doesn't run any database efficiently, including the one they're actually using.
 - "We'll decide later" becoming permanent architecture — the placeholder is still in place two years later, with a decade of workarounds built around it.
 - Over-deferral as a form of avoidance — treating every decision as "not yet ready to make" to avoid accountability.
 

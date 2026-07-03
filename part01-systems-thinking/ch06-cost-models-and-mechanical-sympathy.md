@@ -118,7 +118,7 @@ Network round trip (cross-region):   ~100 ms   (100,000,000 ns)
 - **I/O thrashing:** a relational database under massive concurrent insert load on un-clustered, high-entropy primary keys (UUIDs) generates pure random I/O. The database exhausts the SSD's IOPS limit and the system stalls, queuing every subsequent request.
 - Underestimating disk-space growth from append-only retention, or treating consumer lag in a log system as a system failure rather than the expected behavior of a durable queue.
 
-**Example:** Kafka is fast precisely because it exhibits mechanical sympathy for sequential I/O. By treating its message log as a simple append-only file, it avoids random seek costs entirely, and leverages the OS page cache to serve recent reads directly from RAM — turning what would traditionally be a slow, disk-bound queue into a high-throughput, network-bound one. Kafka is fast because it aligns with disk physics, not because it avoids the disk.
+**Example:** Kafka is fast precisely because it exhibits mechanical sympathy for sequential I/O. By treating its message log as a simple append-only file, it avoids random seek costs entirely, and rides the OS page cache to serve recent reads directly from RAM — turning what would traditionally be a slow, disk-bound queue into a high-throughput, network-bound one. Kafka is fast because it aligns with disk physics, not because it avoids the disk.
 
 ---
 
@@ -141,7 +141,7 @@ Network round trip (cross-region):   ~100 ms   (100,000,000 ns)
 - *Networked:* durable transactions, financial ledgers, and anything where the data must outlive the process that produced it.
 
 **Common failure modes:**
-- **The distributed loop:** an engineer hides a networked database call behind a simple getter method. A business-logic loop calls it 1,000 times. What would have taken 100 μs locally now takes 500 ms over the network, stalling the request thread — and the cost is invisible at the call site, because the abstraction successfully hid the network boundary along with the decision.
+- **The distributed loop:** an engineer hides a networked database call behind a simple getter method. A business-logic loop calls it 1,000 times, the way it would call any other getter. What would have taken 100 μs locally now takes 500 ms over the network, stalling the request thread — and the cost is invisible at the call site, because the abstraction did its job a little too well and hid the network boundary along with the decision.
 
 **Example:** Redis derives its speed by confining its primary data structures to main memory, deliberately avoiding disk seeks and network hops on its internal read path. That mechanical sympathy guarantees sub-millisecond response times — and forces the explicit trade-off that the dataset can never exceed the RAM of the deployment.
 
@@ -162,7 +162,7 @@ Network round trip (cross-region):   ~100 ms   (100,000,000 ns)
 - *MVCC:* maximizes concurrency and CPU utilization by removing read/write contention entirely, but incurs real storage overhead — multiple row versions exist simultaneously and require a continuous, computationally expensive background cleanup process to reclaim.
 
 **When to choose each:**
-- *Pessimistic locking:* strictly serial operations where ordering is paramount and isolation must be absolute — a banking transaction debiting a single account balance.
+- *Pessimistic locking:* strictly serial operations where getting the order wrong is not an option and isolation must be absolute — a banking transaction debiting a single account balance.
 - *MVCC:* general-purpose databases and any system with high concurrency across overlapping read/write workloads — which is most production systems.
 
 **Common failure modes:**

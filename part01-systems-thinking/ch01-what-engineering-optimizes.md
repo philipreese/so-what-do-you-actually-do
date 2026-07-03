@@ -15,13 +15,13 @@
 
 ## Purpose
 
-Engineering is usually described as building systems that work. That framing is incomplete in a way that causes most real architectural mistakes.
+Engineering is usually described as building systems that work. That framing is incomplete, and the gap is where most real architectural mistakes live.
 
-A system that "works" at 100 requests per day may not work at 100,000. A system built to minimize latency may become unmaintainable in two years. A system designed by an infrastructure team for reliability may be unusable for a product team that needs to ship weekly.
+A system that "works" at 100 requests a day may not work at 100,000. A system built to minimize latency may become unmaintainable in two years. A system an infrastructure team designed for reliability may be unusable to a product team that needs to ship weekly. Every one of these systems worked — right up until it didn't.
 
 The question is not whether a system works. The question is: *what is it actually optimizing for?*
 
-This chapter establishes the primary axes along which engineering decisions are made, how those axes trade off against each other, and why making the optimization targets explicit is more important than choosing the right ones.
+This chapter lays out the primary axes engineering decisions get made along, how those axes trade off against each other, and why naming the optimization target matters more than picking the "right" one.
 
 ---
 
@@ -102,7 +102,7 @@ The MTTR trap: without strict idempotency, crash-and-restart loops corrupt state
 
 **Common failure modes:**
 - **Poison pill loop (MTTR):** A supervisor restarts a process that crashes on a malformed message in a queue. The process restarts, reads the same message, crashes again. Without dead-letter queues and backoff, this loops indefinitely and looks like normal churn in metrics.
-- **Defensive deadlock (MTBF):** A process catches an unexpected hardware fault and holds internal locks in a corrupted state rather than crashing. The process remains alive to the load balancer but serves 100% errors. This is worse than a crash.
+- **Defensive deadlock (MTBF):** A process catches an unexpected hardware fault and holds internal locks in a corrupted state rather than crashing. The load balancer thinks it's fine — health checks pass, the process is technically alive — while it quietly serves nothing but errors. That's worse than a crash: a crash at least tells someone something happened.
 
 **Example:** Erlang/OTP is the canonical MTTR system. Processes are allowed — encouraged — to crash. Supervisors detect and restart them in microseconds. The entire OTP framework is designed around the assumption that individual processes will fail, frequently. SQLite is the canonical MTBF system: its test suite achieves 100% branch coverage, and its crash handling is designed to prevent file corruption under any termination scenario. Both are correct for their domains. **[Legitimate Trade-off]**
 

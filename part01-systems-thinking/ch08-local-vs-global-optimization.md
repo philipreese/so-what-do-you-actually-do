@@ -63,7 +63,7 @@ This chapter formalizes why "making things faster" at the component level freque
 - *Subordinate:* when upstream components are generating load faster than the bottleneck can absorb, causing queue bloat or cascading failure.
 
 **Common failure modes:**
-- **Optimizing the non-bottleneck:** an engineering team rewrites a JSON parser in Rust, reducing its latency from 10 ms to 1 ms. The parser immediately feeds a legacy database query taking 500 ms. Global latency improved by 1.7%. Nine weeks of engineering effort produced no observable improvement to user experience.
+- **Optimizing the non-bottleneck:** an engineering team rewrites a JSON parser in Rust, reducing its latency from 10 ms to 1 ms. The parser immediately feeds a legacy database query taking 500 ms. Global latency improved by 1.7% — nine weeks of engineering effort spent on a number no user would ever notice.
 - **The thundering herd:** 50 stateless service instances each maintain their own database connection pool to maximize local throughput. Collectively they exhaust the database's connection limit, bringing the entire architecture down — while every individual service continues reporting healthy local metrics.
 
 **Example:** In a microservices system, adding API server replicas does nothing if the PostgreSQL connection pool is saturated. The database is the bottleneck; all upstream scaling is irrelevant until that constraint is addressed. This is also why the fix to a thundering herd is often subordination — rate limiting or backpressure — rather than scaling, because the bottleneck is a shared resource with a hard capacity ceiling.

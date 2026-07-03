@@ -87,7 +87,7 @@ This chapter names the enemy. Later chapters in Part I deal with specific strate
 **Common failure modes:**
 - **State space explosion:** A mutable system reaches a combination of state variables that was never anticipated or tested. The behavior is undefined, and reproducing the bug requires reconstructing an exact sequence of past events that was never recorded.
 - **Cache inconsistency:** Redis holding a stale value while PostgreSQL has moved on. Neither system knows it's wrong.
-- **Hidden global state:** In-memory state that starts as a local optimization gradually becomes load-bearing. Later engineers don't know it exists until they change something that depends on it.
+- **Hidden global state:** In-memory state that starts as a local optimization quietly becomes something the whole system leans on. Later engineers don't know it exists until they change something nearby and watch an unrelated feature break for reasons nobody can immediately explain.
 
 **Example:** PostgreSQL reduces state complexity by enforcing a single consistency model — ACID transactions — and making all state visible through a well-defined interface. Cassandra increases throughput by distributing state, but the trade is real: eventual consistency means accepting that different nodes may hold different values of the same record at the same moment, and every application layer that touches Cassandra must be written with that in mind.
 
@@ -202,7 +202,7 @@ Engineers rarely disagree that accidental complexity is bad. They disagree about
 Neither side is wrong. The disagreement is a function of time horizon. Framework magic accelerates day-one development by hiding boilerplate behind abstractions. Explicit, verbose code slows day-one development but ensures the system remains decipherable in year five when the original authors have left. Knowing which trade-off your team and system actually need is most of the judgment call.
 
 **The three reference points:** SQLite, Unix, and Linux represent three defensible positions in the same space:
-- *SQLite* aggressively reduces all three sources of complexity — minimal state, linear control flow, low code volume. This is the right answer when the scope is bounded and reliability is paramount.
+- *SQLite* aggressively reduces all three sources of complexity — minimal state, linear control flow, low code volume. This is the right answer when the scope is bounded and reliability matters more than anything else.
 - *Unix* distributes complexity into composable, linear tools connected through a minimal interface (the pipe). Complexity is not eliminated — it is pushed to the edges and made composable.
 - *Linux* accepts high complexity but structures it — subsystem boundaries, strict interfaces between layers, heavy governance. This is the right answer when universality and capability are the primary requirements.
 

@@ -97,7 +97,7 @@ This is not future-proofing. Future-proofing speculates about unspecified requir
 
 **Trade-offs:**
 - *Axis-based design:* reduces change cost for the variation it targets, but provides no benefit for variation it didn't anticipate — and that's an acceptable trade, because most unanticipated variation never happens.
-- *General-purpose design:* offers theoretical flexibility for anything, but the accidental complexity is paid immediately and continuously, by every engineer who has to navigate generic, parameterized code paths to do ordinary work.
+- *General-purpose design:* offers theoretical flexibility for anything, but the accidental complexity is paid immediately and continuously, by every engineer who has to pick their way through generic, parameterized code paths to do ordinary work.
 - *Minimal design:* fastest initially, defers all change cost to whenever change actually arrives — which is often cheaper than it looks, because real change rarely matches what speculative generality guessed.
 
 **When to choose each:**
@@ -106,7 +106,7 @@ This is not future-proofing. Future-proofing speculates about unspecified requir
 - *Minimal:* early-stage systems and experimental products, where the cost of guessing wrong about the axis exceeds the cost of refactoring later.
 
 **Common failure modes:**
-- **The EAV (Entity-Attribute-Value) anti-pattern:** an engineer "future-proofs" a relational schema with a generic `(entity_id, attribute_name, attribute_value)` table so the team "never has to run a migration again." This destroys indexing, query planning, and relational integrity, and the system collapses under read load that a normal schema would have handled trivially.
+- **The EAV (Entity-Attribute-Value) anti-pattern:** an engineer "future-proofs" a relational schema with a generic `(entity_id, attribute_name, attribute_value)` table so the team "never has to run a migration again." This destroys indexing, query planning, and relational integrity, and the system collapses under read load that a normal schema would have shrugged off.
 - A system built to support "multiple database backends" that only ever runs on PostgreSQL, paying for a repository-pattern indirection layer that never reduced real change cost because the second backend never arrived.
 - Missing a real axis of variation — treating something as fixed (a storage backend, an auth provider) that later genuinely needs to vary, because no one named it as a candidate axis up front.
 

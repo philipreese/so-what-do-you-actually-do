@@ -10,6 +10,17 @@
 - The 4xx/5xx boundary isn't a style preference, it's a retry contract: 4xx says the same request will never succeed unchanged, 5xx says it might. Get this classification wrong and you haven't just confused a human reading logs — you've broken automated retry logic, in a specific and entirely predictable direction.
 - One HTTP status code cannot represent a batch operation where some items succeeded and others didn't. Partial failure (Ch 07) at the wire level needs a per-item result, not an all-or-nothing verdict that pretends the operation was atomic when it plainly wasn't.
 
+## For My Wife
+
+**When software calls another piece of software and something goes wrong, there's a decision hiding inside how the failure gets reported: is it the caller's fault, or the system's fault?** The web has a built-in answer for this — a range of numeric codes where 400-level means "you asked for something wrong, sending it again won't help," and 500-level means "we're having a problem on our end, maybe try again." Getting this backwards has mechanical consequences: an automated retry system that sees a 500 (server fault) will keep resending a request that was actually rejected because a required field was missing — trying indefinitely because it was told to keep trying, charging the server thousands of requests to tell the client the same thing over and over.
+
+**The chapter's second argument is that the error message itself is part of the contract — not a bonus, not a detail.** A plain "something went wrong" buried in a response body is useless to code that needs to branch on failure type. A structured error — a stable machine-readable code (`insufficient_funds`), a human-readable explanation, and a tracking identifier that lets support trace the exact failure through the logs — is what lets a calling system handle `insufficient_funds` differently from `card_expired` instead of treating every failure as a single category of "bad." The tracking identifier (called a correlation ID) is especially underrated: it's the difference between a support ticket that goes nowhere and one that resolves in five minutes.
+
+> [!NOTE]
+> There's a known anti-pattern where a server wraps an error inside a `200 OK` response — technically "everything went fine delivering this message" while the message itself says the operation failed. This breaks monitoring tools, CDN caches, and retry logic all at once, since every layer between the client and server reads the 200 and concludes nothing is wrong.
+
+Miss this on a batch operation that sends a hundred records at once — where forty succeeded and sixty failed — and returning a single pass/fail answer means either lying about the forty successes or the sixty failures. Real batch APIs return a per-item result, and skipping that costs you a system that silently eats data with no way to recover which pieces made it through.
+
 ---
 
 ## Structured Error Responses

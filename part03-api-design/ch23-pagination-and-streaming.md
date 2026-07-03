@@ -10,6 +10,14 @@
 - Cursor-based (keyset) pagination anchors each request to a specific, indexed position instead of a relative offset, buying constant performance at any depth and total immunity to page drift — at the cost of giving up arbitrary "jump to page N" access and requiring a genuinely unique, deterministic sort key to hang the whole thing on.
 - Streaming abandons the idea of discrete pages entirely, for datasets that are open-ended, real-time, or just too large to paginate sanely at all — trading HTTP's normal request/response statelessness for continuous delivery and every bit of the operational complexity that comes with holding a connection open indefinitely.
 
+## For My Wife
+
+**Every API that can return a list of things eventually has to decide: what do you do when the list is too long to send all at once?** The obvious answer is pages — give me items 1 through 50, then 51 through 100 — and that's exactly how most systems start. The problem is that a database doesn't naturally skip ahead to item 50,000 the way you'd flip to a bookmark; it reads items 1 through 49,999 first, throws them away, and then returns what you asked for. At scale, asking for page 10,000 of an active feed can push a database cluster into serious distress — not because your query was wrong, but because of what "skip ahead" actually costs at the hardware level.
+
+**Cursor-based pagination is the answer most high-traffic APIs settle on.** Instead of "give me items 50 through 100," you say "give me the next 50 items after the one with ID xyz-789." The database can jump straight to that position through an index without scanning everything before it, the way a physical bookmark works — open to the right page immediately, no leafing. The trade-off is that "jump to page 47" becomes impossible; you can only move forward from where you last were. That's genuinely worse for some UIs, and the chapter says so honestly, but it's also the only approach that doesn't get slower the deeper into the data you go.
+
+The stakes are concrete: an API that exposes raw offset pagination to the public internet is handing anyone with an API key a button that can unintentionally saturate your database. One developer's runaway script requesting offset 1,000,000 in a tight loop isn't a security attack — it's a performance accident that can take down the product for every other customer sharing that cluster.
+
 ---
 
 ## Offset/Limit Pagination

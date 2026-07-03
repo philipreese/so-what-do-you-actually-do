@@ -10,6 +10,14 @@
 - Memory ownership is the central design problem here, because there's no shared garbage collector watching both sides of the fence. Exactly one side has to be responsible for freeing whatever crosses the boundary, and that responsibility has to be spelled out explicitly, never just assumed.
 - Exceptions, panics, and stack unwinding are language runtime features, not hardware features, and not one of them can safely cross into a different runtime. Error handling at this boundary drops all the way down to primitives: return codes, out-parameters, or a thread-local error slot — never a thrown exception reaching across a language it was never built to survive.
 
+## For My Wife
+
+**Most software-to-software connections in this book happen over a network: an HTTP request travels between processes, there's a timeout mechanism, and if something goes wrong, you get an error code back and try again.** This chapter is about a completely different kind of connection — where code written in one programming language calls directly into a library compiled in a different one. There's no network. There's no retry. There's no timeout. If the called code crashes, it takes the entire host application down with it. It is, as the chapter puts it, the least forgiving API surface in the book.
+
+**The central problem is that two different programming languages don't automatically agree on how to represent data in memory.** Not just different field names — the actual physical layout: where a struct's fields sit in memory, how much padding sits between them, which registers get used for passing arguments. If the two sides don't agree on this physical contract exactly, the callee reads garbage from its registers and the result is a silent corruption or an immediate crash. The stable solution is to route all cross-language communication through the C calling convention — a physical contract so old and universal that every language on earth supports it — rather than trying to use any language's own native format, which shifts with compiler versions and optimization flags.
+
+Memory ownership is the other problem nobody thinks about until it causes a late-night incident. In a single language, the runtime tracks which memory is in use and cleans it up automatically. Cross a language boundary and there are two runtimes, neither of which knows what the other allocated. Someone has to be explicitly responsible for freeing every object that crosses the line — and the rule for who has to be written down and enforced at the API level, not assumed. Get it wrong in either direction — either nobody frees it (memory leak) or two systems both try to free it (crash) — and neither failure announces itself clearly. The application just quietly runs out of memory, or falls over at what looks like a completely unrelated moment hours later.
+
 ---
 
 ## ABI vs. API: The Binary Contract

@@ -10,6 +10,14 @@
 - The only enforcement mechanism that actually holds up is a database-level uniqueness constraint, not an application-level check. A `SELECT`-then-`INSERT` check has a race window two concurrent retries can both slip through at once; an atomic `UNIQUE` constraint has no such window to slip through.
 - A server can't remember every key forever, and pretending otherwise just moves the problem. The retention window is a genuine trade-off — too short and a legitimately delayed retry reads as brand new; too long and transport metadata sits there bloating the domain tables it got bolted onto, permanently.
 
+## For My Wife
+
+**Networks lie.** Not maliciously — they just drop responses sometimes, especially on mobile. So a phone app that taps "Place Order" sends the request, the server processes it and charges the card, and then the response gets lost in transit. The app sees nothing, assumes failure, and tries again. If the server isn't designed to handle this, the card gets charged twice for one order. This is the problem idempotency (pronounced eye-DEM-po-ten-see) exists to solve — and it's less a clever trick than a basic fact about reality: any request that crosses a network boundary might arrive more than once, and the system has to be prepared for that.
+
+**The mechanism is a key — a unique identifier the client generates for each logical operation and includes with the request.** "I am trying to place order #abc-123-xyz." If the server has seen that identifier before and already completed the work, it hands back the original result without doing anything twice. If it's new, it does the work and remembers the identifier. The chapter is emphatic that the "have I seen this before?" check has to happen inside the database with a uniqueness constraint — not as a separate "check then act" step in application code — because two simultaneous retries can both pass an application-level check at the same time and both proceed to charge the card before either one finishes writing down that it did.
+
+The retention window is the honest limitation: servers don't keep those keys forever. Stripe keeps them for 24 hours. A retry that shows up three days later gets processed as a brand-new request. This isn't a bug — it's a documented trade-off the contract spells out explicitly. Getting it wrong in the charging-money direction means customers see duplicate transactions on their statements and a support queue full of "I was charged twice" tickets that require manual refunds to clear.
+
 ---
 
 ## Natural vs. Designed Idempotency

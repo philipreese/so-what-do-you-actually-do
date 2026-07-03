@@ -10,6 +10,14 @@
 - A token propagated downstream after the initial authentication is what lets internal services skip re-authenticating a user on every single hop — but forward it blindly, without re-verifying it at each boundary, and you've built the confused-deputy problem by hand: a trusted internal service gets tricked into spending its own elevated privilege on a caller's behalf, without ever checking whether that caller was allowed to ask for it in the first place.
 - Zero trust — verifying identity at every hop instead of trusting the network perimeter exactly once, at the edge — is the structural answer to confused deputies, not an optional hardening step you get to skip if you're busy. The alternative is a system that's only ever as secure as its single least-careful internal service.
 
+## For My Wife
+
+**There's an important difference between "who are you?" and "what are you allowed to do?" — and most security failures happen when a system treats them as the same question.** The first is authentication: checking your ID at the door. The second is authorization: checking whether you're actually allowed into this specific room, not just the building. The chapter's position is that these two checks can't live in the same place, because only the room itself knows who belongs in it — the front desk doesn't have enough information to make that call correctly.
+
+**The "confused deputy" problem is the specific failure mode this causes.** Imagine a report service that, when you ask it for a summary, goes and fetches data from the user database using its own elevated internal credentials instead of passing along your actual identity. If there's a bug in how it filters the results, it might return data belonging to someone else entirely — not because any system was hacked, but because the database was never told who the real caller was. It trusted the report service's word, the report service got confused about whose data it should show, and the wrong data went to the wrong person. There's no clever hacking in this story; it's just a structural gap that lets an insider mistake look exactly like a security breach from the outside.
+
+The practical upshot is that signed credentials (the thing that says "this specific user is making this request") need to travel intact through every hop of a call chain, not just to the front door — and every service that makes an authorization decision needs to verify that signature itself rather than trusting the previous service already checked. A token that only gets verified once, at the edge, means one compromised internal service gets the run of the whole building.
+
 ---
 
 ## Enforcement Placement: Gateway vs. Service

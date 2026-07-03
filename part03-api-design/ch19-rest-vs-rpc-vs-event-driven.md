@@ -10,6 +10,16 @@
 - The failure that actually shows up in production isn't picking the wrong one of the three — it's mixing them without noticing: verb-shaped endpoints wearing REST's clothes, resource-shaped services wearing RPC's clothes, events that are secretly commands wearing a trench coat.
 - HATEOAS is REST's textbook ideal, and almost nobody ships it, for a good reason: the coordination tax it charges rarely buys back more than disciplined, well-documented, pragmatic REST already gets you for free.
 
+## For My Wife
+
+**When two pieces of software need to talk to each other, they need to agree on the shape of the conversation — and there are basically three shapes to pick from.** The first treats the system like a file cabinet: you ask for a specific drawer by name, and you open and close and update its contents through a small set of universal handles (open, close, replace). The second treats it like a phone call to a specific person who does a specific job: you dial the `CalculateShipping` extension and they do exactly that. The third treats it like a bulletin board of news: one service posts "the order shipped" as a permanent fact, and whatever other services care about that can check the board on their own schedule.
+
+**The chapter's real warning isn't about which of those three shapes is best — it's about mixing them without noticing.** A file-cabinet system where the drawer names are secretly phone-extension numbers, or where "news posts" are really commands addressed to one specific reader, loses the benefits of all three shapes while inheriting the confusion of each one. The mess doesn't usually announce itself; it just slowly makes the system harder and harder to debug, because the mental model everyone agreed on stopped matching what's actually happening on the wire.
+
+The one firm position: HATEOAS — the textbook version of the file-cabinet approach where every response contains a self-contained map of what you can do next — is almost never worth implementing in practice. The overhead it adds (every payload bloats with navigation metadata, automated code generation breaks) rarely pays back more than a well-documented API already gives you for free. That one has an industry-wide consensus verdict: skip it.
+
+Getting the shape wrong doesn't usually produce a clean error — it produces a system that works fine in development, subtly misbehaves under load, and costs someone an unplanned weekend when a cache silently executes a deletion that was disguised as a read request.
+
 ---
 
 ## REST: Resource-Oriented Architecture

@@ -10,6 +10,14 @@
 - Hyrum's Law is the mechanism behind that trap: with enough consumers, every observable behavior — intended or not — eventually becomes something somebody's depending on. An undocumented sort order, an incidental field, a timing quirk; none of it stays safe to change once enough people are watching it happen.
 - SDKs, formal change management, and gateway infrastructure aren't marketing exercises the moment an API goes external — they're how the cost of that uncoordinated consumer base gets paid predictably, instead of landing, unplanned, on the support queue at 2 a.m.
 
+## For My Wife
+
+**A software API becomes "external" the moment you can't update both sides of it in the same breath.** Not when it gets published to the internet — when you lose the ability to find every piece of code that depends on it and update them yourself. Two teams in the same company sharing an endpoint they can't both deploy in lockstep is functionally external, even if it never touches the public internet. Once that line is crossed, the API is frozen into a permanent contract whether anyone designed it that way or not.
+
+**Hyrum's Law is the name for the trap this creates.** It states that with enough users, every observable behavior of a system — not just the documented features, but the incidental ones, the timing quirks, the accidental sort orders — eventually becomes something somebody is depending on. Google fights this deliberately by randomizing the parts of their outputs that were never promised to be stable, so that consumers are structurally forced to depend only on the explicit contract. The chapter's equivalent advice for everyone else: once an external team has discovered and leaned on your API, that endpoint is external in every sense that matters, and renaming a field or changing an undocumented sort order is now a breaking change you owe someone a sunset window for.
+
+The cost of skipping all this isn't theoretical. An API with no changelogs, no deprecation notices, and no consumer-driven tests that verify what external callers actually use will eventually delete a field that "nobody is using" — according to monitoring that was never measuring field-level usage in the first place — and find out through a support queue instead of a test suite. By that point the damage is already done, and the manual remediation is considerably more expensive than the paperwork would have been.
+
 ---
 
 ## Accidental vs. Intentional Externalization

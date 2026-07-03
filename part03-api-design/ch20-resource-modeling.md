@@ -10,6 +10,16 @@
 - Nest URIs shallowly — one level deep is the practical default, and going further costs more than it looks like. Every extra level of hierarchy encodes a traversal dependency, not just a relationship, and it's the traversal dependency that eventually breaks something.
 - Real systems have operations that refuse to map onto CRUD. The sub-resource action endpoint (`POST /orders/{id}/cancel`) is the durable answer: the resource stays the noun, and a complex state transition gets an explicit, unambiguous trigger — a generic command endpoint just turns REST back into RPC with extra steps bolted on.
 
+## For My Wife
+
+> *Model the resource the consumer needs, then build the translation layer to produce it — never the reverse.*
+
+**"Resource modeling" is the question of what a software API pretends the world looks like.** A bank has all sorts of internal data — account tables, transaction logs, fee schedules spread across a dozen database tables — but when you ask for your balance, you don't want all of that. You want one clean answer: your balance. A well-designed API presents that clean answer as its own self-contained "thing," even if assembling it requires querying fifteen tables behind the scenes. The alternative — just reflecting the internal database structure directly out to the world — means every time an engineer reorganizes how data is stored, everyone using the API breaks.
+
+**The chapter also settles a recurring architectural argument: what do you do when a real business action doesn't fit neatly into the basic "create, read, update, delete" categories?** Canceling an order is the canonical example. You could model it as a data update (`change status to "canceled"`), but that hides what's actually happening — it triggers refunds, notifies warehouses, cancels shipping. The better answer is to give it an explicit endpoint of its own (`POST /orders/123/cancel`), so the intent is unmistakable, not buried inside a field value someone has to diff against the previous state to notice changed.
+
+The chapter takes a firm position: build a translation layer between your database and your API surface, not because it's theoretically cleaner, but because the alternative quietly makes your internal refactors into your customers' problem. Skip the translation layer once and your API contract is now forever entangled with your storage schema — and storage schemas are supposed to be an implementation detail nobody outside your team ever has to think about.
+
 ---
 
 ## Domain Nouns, Not Schema Projections

@@ -29,7 +29,8 @@
   color: white;
 }
 
-/* Desktop / wide viewport: independent-scroll side-by-side columns. */
+/* Desktop / wide viewport: independent-scroll side-by-side columns.
+   Column count (2 or 3) is driven by how many secondary tracks are active. */
 .track-panes.split {
   display: flex;
   align-items: flex-start;
@@ -44,6 +45,12 @@
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid #e5e5e3;
+}
+
+/* Panes size independently of the viewport (a pane in a 3-column split can be
+   ~30vw), so internal grids respond to the pane's own width, not the window's. */
+.pane {
+  container-type: inline-size;
 }
 
 .track-panes.single .pane {
@@ -72,6 +79,31 @@
   color: #888;
 }
 
+.mascot-slot {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mascot-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  font-size: 2.25rem;
+  border-radius: 50%;
+  background: #fff3c4;
+  border: 2px dashed #e0c46a;
+}
+
+.mascot-image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* Narrow viewport: the same DOM, stacked in reading order instead of side-by-side.
    This is the same content as the desktop split view, not a separate implementation. */
 @media (max-width: 860px) {
@@ -84,4 +116,206 @@
     overflow-y: visible;
     width: 100%;
   }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Parsed chapter structure: header meta, decision blocks, disagree callouts. */
+/* These are injected as raw HTML (see src/lib/parseChapter.ts), so the      */
+/* styling lives here rather than as scoped component CSS.                   */
+/* ---------------------------------------------------------------------- */
+
+.chapter-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@container (min-width: 620px) {
+  .chapter-meta {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.meta-card {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background: #f6f6f4;
+  border: 1px solid #e5e5e3;
+}
+
+.meta-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.meta-card--takeaways {
+  background: #eef6f0;
+  border-color: #cfe8d6;
+}
+
+.meta-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.meta-card li + li {
+  margin-top: 0.35rem;
+}
+
+.vocab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.vocab-chip {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: #e6ecff;
+  color: #2c3e8c;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.vocab-chip--none {
+  background: transparent;
+  color: #9ca3af;
+  padding-left: 0;
+}
+
+.chapter-section,
+.decision-block,
+.disagree-block {
+  margin-bottom: 2rem;
+}
+
+.decision-block {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e5e3;
+  border-left: 4px solid #4b5fb8;
+  background: #fbfbfa;
+}
+
+.decision-heading {
+  margin-top: 0;
+}
+
+.decision-lede {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@container (min-width: 520px) {
+  .decision-lede {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.decision-field h4 {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4b5fb8;
+}
+
+.decision-lede .decision-field h4 {
+  margin-top: 0;
+}
+
+.decision-field--common-failure-modes {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: #fdf1e8;
+  border: 1px solid #f0d3b4;
+}
+
+.decision-field--common-failure-modes h4 {
+  color: #a15c1f;
+}
+
+.decision-field--example {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: #eef3fb;
+  border: 1px solid #cddcf2;
+}
+
+.decision-field--example h4 {
+  color: #2c5aa0;
+}
+
+.rec-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.rec-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.rec-badge--consensus {
+  background: #dff3e3;
+  color: #1e7a3a;
+}
+
+.rec-badge--strong {
+  background: #dde7fb;
+  color: #2c4fa8;
+}
+
+.rec-badge--tradeoff {
+  background: #fbe9d2;
+  color: #a15c1f;
+}
+
+.disagree-callout,
+.disagree-block {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e3d6f5;
+  border-left: 4px solid #8b5cf6;
+  background: #f8f4fd;
+}
+
+.disagree-callout {
+  margin-top: 1.25rem;
+}
+
+.disagree-callout h4,
+.disagree-block h2 {
+  margin-top: 0;
+  color: #6d28d9;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.table-scroll table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-scroll th,
+.table-scroll td {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #e5e5e3;
+  white-space: nowrap;
 }

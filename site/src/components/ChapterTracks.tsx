@@ -1,92 +1,130 @@
 import { useEffect, useState } from 'react';
 import './ChapterTracks.css';
 
-type SecondaryView = 'wife' | 'kids' | 'hidden';
+interface ViewState {
+  wife: boolean;
+  kids: boolean;
+}
 
 interface ChapterTracksProps {
   engineerHtml: string;
   wifeHtml: string;
   kidsHtml: string;
+  /** Placeholder for the chapter's mascot illustration until real art is generated. */
+  mascotEmoji?: string;
+  mascotSrc?: string;
 }
 
 const STORAGE_KEY = 'secondaryView';
-const VALID_VIEWS: SecondaryView[] = ['wife', 'kids', 'hidden'];
+const DEFAULT_VIEW: ViewState = { wife: true, kids: false };
 
-function readInitialView(): SecondaryView {
-  if (typeof window === 'undefined') return 'wife';
-
-  const fromUrl = new URLSearchParams(window.location.search).get('view');
-  if (fromUrl && VALID_VIEWS.includes(fromUrl as SecondaryView)) {
-    return fromUrl as SecondaryView;
-  }
-
-  const fromStorage = window.localStorage.getItem(STORAGE_KEY);
-  if (fromStorage && VALID_VIEWS.includes(fromStorage as SecondaryView)) {
-    return fromStorage as SecondaryView;
-  }
-
-  return 'wife';
+function parseViewParam(value: string | null): ViewState | null {
+  if (value === null) return null;
+  if (value === 'hidden') return { wife: false, kids: false };
+  const tokens = value.split(',');
+  const view = { wife: tokens.includes('wife'), kids: tokens.includes('kids') };
+  return view.wife || view.kids ? view : null;
 }
 
-export default function ChapterTracks({ engineerHtml, wifeHtml, kidsHtml }: ChapterTracksProps) {
+function serializeView(view: ViewState): string {
+  if (!view.wife && !view.kids) return 'hidden';
+  return [view.wife && 'wife', view.kids && 'kids'].filter(Boolean).join(',');
+}
+
+function readInitialView(): ViewState {
+  if (typeof window === 'undefined') return DEFAULT_VIEW;
+
+  const fromUrl = parseViewParam(new URLSearchParams(window.location.search).get('view'));
+  if (fromUrl) return fromUrl;
+
+  const fromStorage = parseViewParam(window.localStorage.getItem(STORAGE_KEY));
+  if (fromStorage) return fromStorage;
+
+  return DEFAULT_VIEW;
+}
+
+export default function ChapterTracks({
+  engineerHtml,
+  wifeHtml,
+  kidsHtml,
+  mascotEmoji = '🦫',
+  mascotSrc,
+}: ChapterTracksProps) {
   // Lazy initializer so this only runs once, on mount, reading URL + localStorage.
-  const [secondaryView, setSecondaryView] = useState<SecondaryView>(readInitialView);
+  const [view, setView] = useState<ViewState>(readInitialView);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, secondaryView);
+    const serialized = serializeView(view);
+    window.localStorage.setItem(STORAGE_KEY, serialized);
 
     const url = new URL(window.location.href);
-    if (secondaryView === 'wife') {
-      // "wife" is the default — keep shareable URLs clean unless the reader deliberately left it.
+    if (serialized === serializeView(DEFAULT_VIEW)) {
+      // Default state — keep shareable URLs clean unless the reader deliberately changed it.
       url.searchParams.delete('view');
     } else {
-      url.searchParams.set('view', secondaryView);
+      url.searchParams.set('view', serialized);
     }
     window.history.replaceState({}, '', url);
-  }, [secondaryView]);
+  }, [view]);
 
-  const secondaryHtml = secondaryView === 'kids' ? kidsHtml : wifeHtml;
-  const secondaryLabel = secondaryView === 'kids' ? 'For My Kids' : 'For My Wife';
+  const paneCount = 1 + (view.wife ? 1 : 0) + (view.kids ? 1 : 0);
+  const isEngineerOnly = paneCount === 1;
 
   return (
     <div className="chapter-tracks">
-      <div className="track-toggle" role="group" aria-label="Choose a second reading track">
+      <div className="track-toggle" role="group" aria-label="Choose which reading tracks to show">
         <button
           type="button"
-          aria-pressed={secondaryView === 'wife'}
-          className={secondaryView === 'wife' ? 'active' : ''}
-          onClick={() => setSecondaryView('wife')}
+          aria-pressed={view.wife}
+          className={view.wife ? 'active' : ''}
+          onClick={() => setView((v) => ({ ...v, wife: !v.wife }))}
         >
           For My Wife
         </button>
         <button
           type="button"
-          aria-pressed={secondaryView === 'kids'}
-          className={secondaryView === 'kids' ? 'active' : ''}
-          onClick={() => setSecondaryView('kids')}
+          aria-pressed={view.kids}
+          className={view.kids ? 'active' : ''}
+          onClick={() => setView((v) => ({ ...v, kids: !v.kids }))}
         >
           For My Kids
         </button>
         <button
           type="button"
-          aria-pressed={secondaryView === 'hidden'}
-          className={secondaryView === 'hidden' ? 'active' : ''}
-          onClick={() => setSecondaryView('hidden')}
+          aria-pressed={isEngineerOnly}
+          className={isEngineerOnly ? 'active' : ''}
+          onClick={() => setView({ wife: false, kids: false })}
         >
           Engineer Only
         </button>
       </div>
 
-      <div className={`track-panes ${secondaryView === 'hidden' ? 'single' : 'split'}`}>
+      <div className={`track-panes panes-${paneCount} ${isEngineerOnly ? 'single' : 'split'}`}>
         <div className="pane pane-engineer">
           <h2 className="pane-label">For Engineers</h2>
           <div dangerouslySetInnerHTML={{ __html: engineerHtml }} />
         </div>
 
-        {secondaryView !== 'hidden' && (
-          <div className={`pane pane-secondary pane-secondary--${secondaryView}`} key={secondaryView}>
-            <h2 className="pane-label">{secondaryLabel}</h2>
-            <div dangerouslySetInnerHTML={{ __html: secondaryHtml }} />
+        {view.wife && (
+          <div className="pane pane-secondary pane-secondary--wife">
+            <h2 className="pane-label">For My Wife</h2>
+            <div dangerouslySetInnerHTML={{ __html: wifeHtml }} />
+          </div>
+        )}
+
+        {view.kids && (
+          <div className="pane pane-secondary pane-secondary--kids">
+            <h2 className="pane-label">For My Kids</h2>
+            <div className="mascot-slot" aria-hidden={mascotSrc ? undefined : 'true'}>
+              {mascotSrc ? (
+                <img className="mascot-image" src={mascotSrc} alt="Chapter mascot" />
+              ) : (
+                <span className="mascot-placeholder" title="Mascot illustration placeholder">
+                  {mascotEmoji}
+                </span>
+              )}
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: kidsHtml }} />
           </div>
         )}
       </div>

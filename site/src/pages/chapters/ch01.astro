@@ -1,9 +1,9 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-import { marked } from 'marked';
 import ChapterLayout from '../../layouts/ChapterLayout.astro';
 import ChapterTracks from '../../components/ChapterTracks';
+import { buildEngineerHtml } from '../../lib/parseChapter';
 import { demoContent } from '../../data/demoContent';
 
 const repoRoot = path.resolve(process.cwd(), '..');
@@ -12,13 +12,10 @@ const rawMarkdown = fs.readFileSync(
   'utf-8'
 );
 
-// Drop the leading "# Chapter 1 — ..." heading; the layout already renders the title.
-const bodyMarkdown = rawMarkdown.replace(/^#[^\n]*\n/, '');
-const engineerHtml = marked.parse(bodyMarkdown) as string;
-
+const engineerHtml = buildEngineerHtml(rawMarkdown);
 const { wife, kids } = demoContent.ch01;
 ---
 
 <ChapterLayout chapterNumber="01" title="What Engineering Actually Optimizes">
-  <ChapterTracks client:load engineerHtml={engineerHtml} wifeHtml={wife} kidsHtml={kids} />
+  <ChapterTracks client:load engineerHtml={engineerHtml} wifeHtml={wife} kidsHtml={kids} mascotEmoji="🦫" />
 </ChapterLayout>

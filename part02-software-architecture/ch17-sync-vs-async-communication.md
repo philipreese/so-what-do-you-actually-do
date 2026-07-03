@@ -10,6 +10,16 @@
 - Exactly-once delivery across a real network boundary is not achievable — only at-most-once or at-least-once are. Production systems should default to at-least-once and build idempotency into every consumer, not chase the illusion of exactly-once.
 - Once a write spans more than one service, there is no database transaction to roll back. The saga pattern coordinates multi-step distributed work with explicit compensating actions instead, and it's measurably harder to reason about than a transaction — adopt it only when the workflow genuinely can't be a single service's job.
 
+## For My Wife
+
+**When one service needs something from another, it has two options: wait, or don't.** Synchronous communication is a phone call — the caller dials, waits on hold, and can't do anything else until the call is resolved. Asynchronous is a text message — it fires off, and the sender moves on immediately, with the recipient responding whenever they're able. The chapter's argument is that the choice between these is mostly about how far a failure can spread, not about how fast things run.
+
+**The failure-propagation difference is concrete.** Service A calls Service B, which calls Service C. C hits a database deadlock and takes ten seconds to respond. B's threads are all stuck waiting on C. A's threads are all stuck waiting on B. Within seconds, a localized problem in C has consumed every available resource in all three services simultaneously. Nothing else A or B are supposed to be doing is getting done. This is what the chapter calls a cascading timeout — the network call version of a traffic jam that starts with one fender bender and backs up twenty miles.
+
+**The asynchronous version of the same system publishes an event when work happens, and each interested party processes it independently.** The publisher announces "an order was placed," marks its own work complete, and returns immediately. The billing service, the inventory service, and the analytics system each pick that event up on their own schedule. If billing is down for an hour, the event waits in the broker until billing comes back — the other services are unaffected, and the user saw a success response. The tradeoff is that the system is now *eventually consistent*, meaning there's a real gap between "the event was published" and "everyone's state reflects it." For most side effects — sending a confirmation email, updating a dashboard — that gap is acceptable. For the step that charges a credit card, it sometimes isn't.
+
+The saga pattern is the answer for when a multi-step transaction has to span services and stay consistent. Unlike a database transaction, there's no automatic rollback: if step three fails, the system has to run explicit "compensating actions" for steps one and two — manually issuing a refund, manually marking an order failed. That's code someone has to write, test, and watch. If the compensating action itself fails and nobody's watching the dead-letter queue, the system gets stuck half-committed, and the only way to find out is a customer calling support.
+
 ---
 
 ## The Communication Paradigm: Synchronous vs. Asynchronous

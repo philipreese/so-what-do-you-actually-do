@@ -10,6 +10,18 @@
 - URI versioning, header-based versioning, and schema-level versioning (protobuf, Avro) all solve the same problem — running multiple contracts at once — with different trade-offs in discoverability, caching, and tooling. They are not interchangeable defaults; pick based on what has to route and cache the request.
 - Deprecating an API version safely means a time-bound, instrumented lifecycle — not documentation alone. "It says deprecated in the docs" is not an operational control.
 
+## For My Wife
+
+> *To the client, a breaking change and a server crash are indistinguishable.*
+
+**Once your software has users, any change to what it promises them is either backward compatible or it isn't — and the consequences of misclassifying are immediate and public.** The chapter's opening example is a validation rule that rejects ages over 150 as "clearly a bug fix." Some legacy automated client has been submitting `199` for years due to its own bad data. The day that validation ships, that client starts getting HTTP 400 errors instead of the 200s it's used to. A completely separate team's automated process fails at 3am because of a change that looked like a defensive cleanup to whoever made it.
+
+**Backward compatible means: everything a consumer is currently doing keeps working.** Adding new optional fields to a response is always safe. Removing a field, changing a field's type, or making a previously optional input required is always breaking, even if the change seems minor — widening an integer from 32 to 64 bits breaks any client compiled against the old type definition, even though the new type is technically a superset. The chapter makes this binary explicit because "probably fine" is how production incidents get written.
+
+When a breaking change genuinely has to ship, the answer is versioning — running the old and new contracts simultaneously so consumers can migrate on their own schedule. URI versioning (`/v1/`, `/v2/`) is the chapter's strong recommendation over the alternatives, purely for operational reasons: it routes at the load balancer without inspecting headers, it shows up in access logs, and it's debuggable by pasting a URL into a browser.
+
+Retiring the old version safely is its own discipline. Documentation alone doesn't work — a surprising fraction of consumers never read it, and "deprecated" in the changelog doesn't generate a 2am alert when traffic on `/v1/` is still running at 40% two weeks before the sunset date. The sunset pattern puts active, programmatic signals in the responses themselves: a warning header, then a `Sunset` date header, then scheduled brownouts — deliberate brief outages designed to trip the alerting of whatever client wasn't paying attention to the headers. Not cruel. Necessary.
+
 ---
 
 ## The Backward Compatibility Boundary

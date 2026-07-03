@@ -10,6 +10,16 @@
 - Progressive disclosure keeps the common path simple while making advanced capability available but not mandatory, so the 90% of consumers who need the basics aren't forced to understand the parameters the 10% need.
 - Internal and external APIs carry different stability obligations because their consumers carry different coordination costs: internal consumers can be migrated on a schedule you control; external consumers cannot be coordinated with at all.
 
+## For My Wife
+
+**An API (an "application programming interface") is a contract — the list of things one piece of software promises to provide to other software that depends on it.** The chapter's central argument is that a field added to an API is extremely cheap to add and essentially impossible to safely remove, because by the time you want to remove it, someone somewhere is relying on it. The strategy this recommends is: expose only what you're genuinely willing to maintain forever, and hide everything else.
+
+**The POSIX file API is the example that makes this concrete.** The interface your operating system exposes for reading and writing files has stayed stable for fifty years across every operating system that mattered. The reason isn't that hard drives haven't changed — they've changed enormously, from spinning disks to SSDs to distributed storage. It's that the API exposes almost nothing: open a file, read bytes, write bytes, close. Because so little is exposed, the implementation underneath has been replaced, reimplemented, and optimized countless times without breaking a single program that used the interface. The less surface area, the longer it lasts.
+
+**The practical failure this prevents:** an ORM (a tool that maps database rows to objects in code) auto-generates an API field called `deleted_at` — an internal timestamp used for soft-deleting records. Nobody intended to make that a public field. But it gets serialized into the response, some third-party client starts filtering on whether it's present, and now the soft-delete implementation is locked. You can't change how deletion works without breaking an integration that was never supposed to know deletion was implemented that way.
+
+The chapter also draws a sharp line between APIs used only inside your organization and APIs used by people outside it. For an internal API, when you need to break something, you can find every consumer, tell them, and redeploy everything together. For an external API, you have no idea who's using it or how. A bank that maintains developer APIs can't call every fintech startup to coordinate a field change — those consumers have to just keep working, unchanged, indefinitely. Getting that distinction wrong is how a "routine cleanup" becomes a simultaneous production outage at a hundred companies you've never spoken to.
+
 ---
 
 ## The Principle of Minimal Surface Area

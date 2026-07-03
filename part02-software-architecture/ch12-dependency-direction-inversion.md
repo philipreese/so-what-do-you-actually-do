@@ -10,6 +10,17 @@
 - Defining an interface is not the same as inverting a dependency. If the core programs against an interface shaped by the vendor's vocabulary, the dependency still points outward. Inversion requires the stable module to own the interface in its own vocabulary, and the infrastructure to adapt to it.
 - The practical test for whether inversion is real: can the dependency be swapped — for a different vendor, or for an in-memory test double — without touching a line of core logic? The value of that test is rarely about ever actually swapping vendors; it's about running thousands of business-rule tests in milliseconds against fakes instead of a live database.
 
+## For My Wife
+
+**In software, when one piece of code imports another, there's a direction to that relationship — and direction matters.** If the payroll engine imports the Stripe payment library directly, then every time Stripe changes their API, someone has to go edit the payroll logic. The stable, important thing (how payroll is calculated) is now coupled to the volatile, unimportant-to-payroll thing (what Stripe's API call looks like this week).
+
+**Dependency inversion turns that around.** Instead of the payroll engine importing Stripe, you write a small interface — a short list of what payroll needs from "something that can process payments," in payroll's own vocabulary — and Stripe is the thing that gets written to satisfy it. The payroll engine now depends on an idea ("a payment processor") rather than on a specific vendor. The Stripe-specific wiring lives at the edges of the system where it belongs, and the business rules at the center stay untouched when vendors change.
+
+The practical benefit the chapter emphasizes is *not* "you can swap payment processors someday," which almost never happens. It's that you can swap Stripe for a fake, in-memory stub during testing. Your payroll calculation tests don't require a live Stripe sandbox to run. They run in microseconds, they don't cost money per invocation, and they don't fail because Stripe's test environment is having a bad day. Ten thousand fast, reliable tests is the real return on investment — the vendor flexibility is a pleasant bonus.
+
+> [!NOTE]
+> The chapter draws a sharp distinction between *defining* an interface and actually *inverting* the dependency. If you write an interface but its method names, parameter types, and error codes are all copied from Stripe's SDK, Stripe still owns the vocabulary. Real inversion means the stable side names the interface in its own terms, and the infrastructure adapts to those terms — not the other way around.
+
 ---
 
 ## Direct vs. Inverted Dependencies

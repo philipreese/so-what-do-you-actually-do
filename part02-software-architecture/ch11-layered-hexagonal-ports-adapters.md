@@ -10,6 +10,18 @@
 - Hexagonal architecture inverts that: business logic sits at the center, defines the interfaces ("ports") it needs, and infrastructure implements them from the outside ("adapters"). This is information hiding (Ch 04) applied at the architectural level — the core never knows it's talking to PostgreSQL or Kafka.
 - Hexagonal isolation is not free. It buys fast, infrastructure-free unit tests and the ability to change infrastructure without touching domain logic, at the cost of interface boilerplate and a mapping layer at every boundary. The right choice depends on how much real business logic exists to protect.
 
+## For My Wife
+
+> *The business rules are the point. Everything else is plumbing.*
+
+**Once you've decided whether to split your software into separate programs (chapter 10), you still have to decide how to organize the code inside each one.** The classic answer, used in almost every web framework you've ever heard of, is to stack the code in horizontal layers: the part that handles web requests on top, the business rules in the middle, the database calls at the bottom, each layer only allowed to call the one below it. It's intuitive because it mirrors how a request actually travels — in from the browser, through the logic, out to the database.
+
+**The problem is that "below" turns out to mean "mixed into."** Database-specific details — the column names, the error codes, the quirks of whatever ORM is in use — gradually leak upward into the business logic, because the business layer depends on the data layer and the data layer doesn't care what the business layer wants to remain ignorant of. After a few years, changing the database means touching the business rules, even though those two things should have nothing to do with each other.
+
+**Hexagonal architecture flips the arrow.** The business rules sit at the center and define the interfaces they need — "I need something that can save a payment, I don't care what it is" — and the database and payment providers are written to satisfy those interfaces from the outside. The business rules never import the database driver. The database driver imports nothing from the business rules. This sounds abstract until you see the test suite: because the core logic depends on nothing real, you can run thousands of business-rule tests in milliseconds against fake implementations, no database, no network, nothing. That's the real payoff — not "we might swap databases someday," which almost never happens, but "we can verify the pricing engine is correct in thirty seconds, every time someone touches it."
+
+The honest cost is boilerplate. You need explicit translation layers between the database shape and the domain model. You need wiring code that connects the pieces together. For a service whose entire job is moving form submissions into a table, that overhead is genuinely wasteful. For a billing engine or a pricing system with hundreds of overlapping rules, it's what keeps the test suite fast and the business logic readable for the next five years.
+
 ---
 
 ## Layered (N-Tier) Architecture

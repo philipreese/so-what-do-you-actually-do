@@ -10,6 +10,16 @@
 - The shared database is the canonical architectural-coupling failure. Two services querying the same tables are tightly coupled through the schema no matter how independently they're deployed — a single column change now requires coordinating both.
 - Event-driven communication reduces temporal coupling between services, at a real cost: eventual consistency, and debugging that now has to follow an indirect, asynchronous causal chain instead of a stack trace.
 
+## For My Wife
+
+**Chapter 3 covered coupling and cohesion at the level of a single module. This chapter asks what happens when those same ideas apply to entire services talking to each other over a network — and the answer is that the same mistakes cost dramatically more.**
+
+**The central design question is where to draw the boundary between services.** The chapter's answer is the *bounded context* — the zone inside which one model of the business stays internally consistent. "User" in the billing system means someone with a credit card, a billing address, and a tax ID. "User" in the authentication system means someone with a password hash and a second factor. Treating those as the same entity, because they share a name, is exactly how you end up with one enormous `User` object dragging along fields that half the system has no use for, owned by nobody in particular, and changed constantly for reasons every other team has to absorb whether they wanted to or not.
+
+**The shared database is where this goes wrong most visibly.** When two independently deployed services both run queries against the same database tables, they're coupled through the table schema — tightly — regardless of how independent their code looks. The moment one team renames a column, every other service touching that table has to be updated and redeployed at the same moment. That's not independent deployment; that's just a distributed monolith wearing a disguise. The fix is for each service to own its data completely and expose it only through its own API, never through the tables directly.
+
+Services that genuinely need to communicate without being tightly coupled to each other's availability publish events — announcements that something happened — to a shared broker instead of calling each other directly. The publisher doesn't wait for every subscriber to react. The downside is that the system is now *eventually consistent*: a user who changes their password and immediately tries to log in might find the new password not yet recognized, because the relevant service hasn't processed the event yet. That window is usually milliseconds, but it's real, and the 2am page that comes from a business process failing because a projection fell hours behind is a very specific kind of bad night.
+
 ---
 
 ## Bounded Contexts as Architectural Cohesion

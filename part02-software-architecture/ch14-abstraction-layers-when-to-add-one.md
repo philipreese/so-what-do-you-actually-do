@@ -10,6 +10,16 @@
 - The anti-corruption layer is the clearest justified case: when an external or legacy system imposes its own vocabulary and constraints, a translation boundary keeps that vocabulary from polluting the internal domain model.
 - The pass-through layer — a layer that forwards a call unchanged, hiding no decision — is the dominant failure mode. It's what happens when "layers are good architecture" gets applied as a default instead of a response to an actual volatility boundary.
 
+## For My Wife
+
+**A layer in software is a middleman.** Instead of two pieces of code talking directly to each other, a third piece sits between them and handles the translation. The question this chapter answers is when that middleman earns its salary and when it's just slowing everyone down.
+
+**The OSI model is the example worth holding onto here.** When your browser downloads a webpage, several layers handle the delivery — one handles the order packets arrive in, one handles routing between networks, one manages the actual transmission. TCP, the transport layer, does one enormously valuable thing: it hides from the browser the chaotic, out-of-order, lossy reality of what IP packets actually do. Because that layer genuinely absorbs complexity that would otherwise fall on everyone above it, every application developer on earth gets to write "send this data" without thinking about packet reassembly. That's a layer earning its keep.
+
+**The failure mode is the layer that does nothing.** A common pattern: the web controller calls a service, the service calls a repository, and the service method's entire body is `return repository.getUser(id)`. It hides no decision. It transforms nothing. It exists because someone read that Controller → Service → Repository is good architecture and applied it as a template, not because any actual volatility needed protecting. That layer costs engineering time to maintain, makes stack traces longer, and provides nothing in return.
+
+The chapter's other justified case is the *anti-corruption layer* — a translation boundary you build specifically when integrating with a legacy system or a third-party API that was designed with completely different assumptions than your own. The warehouse system that identifies products by a 14-character code nobody would design on purpose today gets wrapped in a clean interface, and only one small adapter class ever has to speak its language. The rest of the product doesn't know it exists. When the legacy system eventually gets replaced, only that adapter has to change — not the dozen places in the codebase that would have been infected with its naming conventions otherwise.
+
 ---
 
 ## The Justification Threshold

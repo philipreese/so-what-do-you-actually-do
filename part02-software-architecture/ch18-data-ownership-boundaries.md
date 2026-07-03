@@ -10,6 +10,16 @@
 - When multiple services have a legitimate interest in the same entity, ownership goes to whichever service controls its lifecycle — creation, valid state transitions, deletion — not to whichever service uses it most.
 - Database-per-service breaks the trivial SQL join. CQRS is the mechanism for getting a fast, cross-domain read back without giving any other service write access to data it doesn't own: the owner emits events, and downstream services build their own local, eventually consistent projections.
 
+## For My Wife
+
+**In a system split into separate services, the real boundary isn't where the code lives — it's who controls the data.** This chapter's position is unequivocal: every piece of mutable data needs exactly one service that owns it, and everyone else has to ask that service through its public interface. No side doors. No other service connecting directly to its database tables.
+
+**The shared database is the canonical way this goes wrong.** An organization splits into fifteen services in the name of independence, then leaves all fifteen of them pointing at the same PostgreSQL database. One team changes a column name. Three other services break simultaneously because they were running queries against a table they were never supposed to touch. The services were deployed independently; the data was never independent at all. All the operational complexity of a distributed system, and the deployment coupling of a monolith, at the same time.
+
+**The tiebreaker for "who owns what" is lifecycle.** When multiple services all have a legitimate interest in the same entity — the auth service, the billing service, and the profile service all care about a "User" — ownership goes to whichever service controls creation, valid state transitions, and deletion. The others hold a reference (a user ID) and ask the owner's API when they need more. Letting multiple services freely mutate the same entity is how you end up with a user's email updated in one database but not another, password reset emails going to the new address while marketing emails keep going to the old one.
+
+The cost of strict data ownership is that the cheap SQL join across tables is gone. A page that used to answer with `SELECT orders.*, users.name FROM orders JOIN users` now has to either make multiple API calls in real time — which creates latency and temporal coupling — or maintain a local read-optimized projection, built from events the owner publishes. That projection will occasionally be stale. The chapter is clear-eyed about this: that's the price of the boundary, and the boundary is worth it, because the alternative is a schema that can't be changed without coordinating a dozen deployments simultaneously and hoping nobody missed the memo.
+
 ---
 
 ## State Isolation: The Database-per-Service Pattern

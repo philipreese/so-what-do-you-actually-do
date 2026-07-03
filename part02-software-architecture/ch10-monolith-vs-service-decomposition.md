@@ -10,6 +10,16 @@
 - The distributed monolith — services that are deployed independently but still coupled through synchronous chains and shared schemas — is the dominant failure mode of decomposition. It carries the operational cost of distribution with none of the autonomy benefit.
 - When extraction is justified, do it incrementally, with the strangler fig pattern, against live traffic. Big-bang rewrites of production-critical systems fail more often than they succeed.
 
+## For My Wife
+
+**Every piece of software that runs a real product started as one program.** At some point teams started splitting those programs into smaller, independent pieces — each one deployable on its own, each one talking to the others over the network. The industry eventually branded this "microservices," and for a few years it became the default aspiration: if your architecture wasn't a constellation of small services, it was assumed you hadn't grown up yet.
+
+**This chapter argues that aspiration is backwards.** A single deployable program — a *monolith*, though that word unfairly sounds like a slur — is genuinely simpler to build, test, deploy, and debug. The internal calls never cross a network, so they can't fail the way network calls can. The database can enforce consistency across the whole application in one transaction. Stack Overflow and Shopify both serve billions of requests this way on purpose. The argument isn't that monoliths are fine for small companies until you can afford better — it's that they stay the right choice until a specific, named constraint actually forces a split.
+
+**The constraint that justifies splitting is real but specific:** one piece of the application needs to scale or fail completely independently from the rest — an image-processing pipeline that needs GPU servers while the rest of the app runs on ordinary ones, or a checkout flow that needs to survive even when the recommendation engine is down. The other valid reason is organizational: a team large enough that sharing one codebase and one deployment pipeline has become the actual bottleneck on shipping. Neither of those is "we read an article."
+
+The failure mode the chapter spends most time on is what happens when you split the code into separate services but keep them sharing the same database, or keep them calling each other in long synchronous chains. You've paid every cost of a distributed system — extra operational complexity, network latency, independent deployments to coordinate — without getting any of the benefit, because the services are still coupled where it counts. Every major Netflix and eBay microservice migration went through exactly this failure first. The cure is as painful as it sounds: give each service its own database and stop letting services call each other synchronously for everything. Do that migration wrong, in one big bang instead of incrementally, and you've bet the product on a rewrite that historically fails to finish before the business runs out of patience.
+
 ---
 
 ## Start as a Monolith

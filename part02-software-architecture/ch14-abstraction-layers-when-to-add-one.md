@@ -14,64 +14,64 @@
 
 ## The Justification Threshold
 
-**What it is:** The insertion of a distinct intermediary between two components, intercepting or translating data and control flow that would otherwise pass between them directly.
+**What it is:** Slotting a distinct intermediary between two components, so data and control flow get intercepted or translated instead of passing between them directly.
 
-**Why it exists:** To stop a change in a low-level implementation from rippling outward into every upstream caller — but only when that change is actually likely, and only when, without the layer, it would actually have to touch multiple callers at once.
+**Why it exists:** To keep a change in some low-level implementation from rippling straight out into every caller above it — but only when that change is actually plausible, and only when skipping the layer would really mean touching several callers at once instead of one.
 
 **Options:**
 1. **Direct invocation** — the caller depends on the implementation directly, no intermediary
 2. **Abstracted intermediary** — an explicit interface and translation layer sits between caller and implementation
 
 **Trade-offs:**
-- *Direct invocation:* maximizes velocity and readability — stack traces are linear and the execution path is obvious — but couples the caller directly to the callee's volatility.
-- *Abstracted intermediary:* decouples the two components' lifecycles, so the implementation can be rewritten without alerting the caller, but it costs a maintained interface, mapping boilerplate, and a harder-to-follow execution path.
+- *Direct invocation:* stack traces stay linear, the execution path stays obvious, velocity stays high — and the caller is now directly coupled to whatever volatility the callee happens to have.
+- *Abstracted intermediary:* the two components' lifecycles come apart, so the implementation gets rewritten without the caller ever hearing about it — for the price of a maintained interface, mapping boilerplate, and an execution path that takes longer to follow.
 
 **When to choose each:**
 - *Direct invocation:* caller and callee are highly cohesive, change at the same rate, and live inside the same bounded context (Ch 13).
 - *Abstracted intermediary:* the underlying mechanism is genuinely volatile, and exposing it directly would force multiple upstream callers to change in lockstep whenever it shifts.
 
 **Common failure modes:**
-- **The pass-through layer:** a `UserService.getUser(id)` whose entire body is `return userRepository.getUser(id)`. It hides no decision, transforms nothing, and exists only because a Controller → Service → Repository hierarchy was applied as a template rather than a response to an actual volatility boundary.
-- **Premature abstraction:** an interface built for a concept that has never changed and shows no sign of changing, paid for in boilerplate with no offsetting benefit.
-- **Layer proliferation:** several thin layers each forwarding a call unchanged, multiplying stack depth without multiplying any actual isolation.
+- **The pass-through layer:** a `UserService.getUser(id)` whose entire body reads `return userRepository.getUser(id)`. It hides no decision, transforms nothing, and exists purely because a Controller → Service → Repository hierarchy got applied as a template instead of a response to any real volatility.
+- **Premature abstraction:** an interface built around a concept that has never once changed and shows no signs of starting, paid for in boilerplate with nothing coming back on the other side of the ledger.
+- **Layer proliferation:** several thin layers, each one forwarding a call unchanged, stacking up stack depth without buying one extra unit of actual isolation.
 
-**Example:** The OSI model is the historical case of layering paying for itself. TCP (Layer 4) provides reliable, ordered delivery, and deliberately hides the chaotic, out-of-order, packet-dropping reality of IP (Layer 3) from everything above it. Because Layer 4 actually hides that complexity, application developers never write manual retry and reassembly logic for a normal HTTP request. A pass-through service layer, by contrast, hides nothing and eliminates no complexity for the caller — it just adds a hop. **[Strong Recommendation: a layer must destroy more complexity than it adds, measured by what callers no longer need to know — not by how clean the diagram looks]**
+**Example:** The OSI model is the historical case of layering earning every bit of its keep. TCP (Layer 4) provides reliable, ordered delivery, and deliberately hides the chaotic, out-of-order, packet-dropping reality of IP (Layer 3) from everything sitting above it. Because Layer 4 genuinely hides that mess, application developers never write manual retry and reassembly logic just to handle an ordinary HTTP request. A pass-through service layer does the opposite: it hides nothing, eliminates no complexity for the caller, and adds a hop that exists purely to exist. **[Strong Recommendation: a layer must destroy more complexity than it adds, measured by what callers no longer need to know — not by how clean the diagram looks]**
 
 ---
 
 ## The Anti-Corruption Layer
 
-**What it is:** A translation boundary, from Domain-Driven Design, placed between an internal bounded context and an external system whose model, vocabulary, or constraints are incompatible with it — legacy systems and third-party APIs especially.
+**What it is:** A translation boundary, borrowed from Domain-Driven Design, sitting between an internal bounded context and an external system whose model, vocabulary, or constraints just don't match — legacy systems and third-party APIs, especially.
 
-**Why it exists:** External systems bring their own naming conventions, data shapes, and technical idiosyncrasies. Without a translation boundary, those constraints leak straight into the internal domain model, and the internal system inherits the external vendor's design choices permanently.
+**Why it exists:** Every external system arrives with its own naming conventions, data shapes, and technical quirks nobody on your team asked for. Skip the translation boundary and those constraints leak straight into your internal domain model, and now your system has permanently inherited someone else's design choices, whether it wanted them or not.
 
 **Options:**
 1. **Direct integration** — internal code consumes the external system's SDK or API shapes throughout the codebase
 2. **Anti-corruption layer** — a dedicated boundary translates the external vocabulary into the internal domain's own vocabulary before anything crosses into the core
 
 **Trade-offs:**
-- *Direct integration:* less boilerplate and faster initial delivery, but it lets vendor vocabulary — foreign exception types, vendor-specific constraints — leak directly into core logic.
-- *Anti-corruption layer:* protects the internal domain model's purity; if the vendor deprecates an API, only the ACL changes, not the business logic that depends on it — but it costs ongoing translation maintenance and the runtime overhead of mapping objects at the boundary.
+- *Direct integration:* less boilerplate, faster to ship on day one — and vendor vocabulary, foreign exception types and vendor-specific constraints included, leaks straight into your core logic without asking permission.
+- *Anti-corruption layer:* the internal domain model stays pure; if the vendor deprecates an API tomorrow, only the ACL has to change, not the business logic sitting behind it — for the price of ongoing translation upkeep and the runtime overhead of mapping objects at the boundary, forever.
 
 **When to choose each:**
 - *Direct integration:* only when the external system is fully under your own organization's control and genuinely shares the same conceptual model — i.e., it isn't actually external in any meaningful sense.
 - *Anti-corruption layer:* the default for legacy systems, third-party SaaS APIs, and any service owned by a separate organizational silo.
 
 **Common failure modes:**
-- **The leaky ACL:** a team builds a translation interface for a legacy SOAP billing system, but the interface still passes raw XML strings and throws the legacy system's own exception types. The indirection exists; the translation does not. Coupling to the legacy system is fully preserved behind a layer that only looks like protection.
+- **The leaky ACL:** a team builds a translation interface for a legacy SOAP billing system, and the interface still passes raw XML strings and throws the legacy system's own exception types straight through. The indirection is there. The translation isn't. Coupling to the legacy system survives entirely intact, behind a layer that only looks like protection from the outside.
 
-**Example:** An e-commerce platform integrates with a legacy warehouse system that identifies products by a 14-character concatenation of category codes and timestamps. Rather than let `legacy_warehouse_string` pollute the platform's `Product` entity, the ACL accepts a clean `InventoryStatus(productId: UUID)` call, generates the legacy string internally, makes the legacy call, parses the response, and returns a plain boolean. The core platform never learns the warehouse's string format exists. **[Consensus: integrating any system outside your own bounded context without a translation boundary is how external constraints become permanent internal ones]**
+**Example:** An e-commerce platform integrates with a legacy warehouse system that identifies products by a 14-character concatenation of category codes and timestamps — the kind of format nobody would design on purpose today. Rather than let `legacy_warehouse_string` anywhere near the platform's `Product` entity, the ACL accepts one clean `InventoryStatus(productId: UUID)` call, builds the legacy string internally, makes the legacy call, parses the response, and hands back a plain boolean. The core platform never even learns that string format exists. **[Consensus: integrating any system outside your own bounded context without a translation boundary is how external constraints become permanent internal ones]**
 
 ---
 
 ## Why Smart Engineers Disagree: The "Just in Case" Layer
 
-The sharpest disagreement here is about timing — specifically, whether a layer earns its cost today or is being bought as insurance against a future that may never arrive.
+The sharpest disagreement here is really about timing — whether a layer is earning its cost today, or getting bought as insurance against a future that statistically never shows up.
 
-Engineers optimizing for flexibility argue for adding layers "just in case": hide PostgreSQL behind a repository interface now, so a hypothetical future migration to MongoDB doesn't require touching business logic. They accept the indirection tax today as the price of optionality later.
+Engineers optimizing for flexibility argue for adding layers "just in case": hide PostgreSQL behind a repository interface now, so some hypothetical future migration to MongoDB never has to touch business logic. They'll pay the indirection tax today for optionality they may or may not ever cash in.
 
-Engineers optimizing for daily readability push back hard. They point out that the vendor migration this layer is meant to protect against statistically doesn't happen, and that navigating three abstract interfaces to find a plain `SELECT` statement has a real, continuous productivity cost — paid by everyone, every day, for a benefit that may never be cashed in.
+Engineers optimizing for daily readability push back hard on this, and they've got a point: the vendor migration this layer supposedly protects against basically doesn't happen, and hunting through three abstract interfaces to find one plain `SELECT` statement is a real productivity cost, paid by every engineer, every single day, against a benefit that may never arrive to justify it.
 
-The resolution is the same test that applies everywhere future-proofing (Ch 05) shows up: a layer must earn its keep now, not later. The anti-corruption layer and the OSI model both pass that test — they simplify what the caller has to know about *today*, not in some hypothetical future. A repository interface around a database with no real volatility, no real test-isolation need, and no migration actually planned fails it. The question is never "might this need to change someday" — it's "is the complexity of what's underneath already bleeding into the caller right now."
+The test that resolves this is the same one that applies everywhere future-proofing (Ch 05) shows up: a layer earns its keep now, or it doesn't earn it at all. The anti-corruption layer and the OSI model both pass — they simplify what the caller has to know *today*, not in some imagined future. A repository interface wrapped around a database with no real volatility, no real test-isolation need, and no migration anyone's actually planning fails that same test outright. The question was never "might this need to change someday." It's "is the complexity underneath already bleeding into the caller, right now, this week."
 
 *Concepts expanded in later chapters: specific macro-architecture patterns this principle is embedded in (Part II, Ch 11); API surface design at a layer's boundary (Part II, Ch 15); module and file structure within a layer (Part IV, Ch 27).*

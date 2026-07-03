@@ -14,87 +14,87 @@
 
 ## The Principle of Minimal Surface Area
 
-**What it is:** Hide all internal state and capability by default; expose only the specific fields a consumer needs to satisfy an actual, named use case.
+**What it is:** Hide everything internal by default, and expose only the specific fields a consumer needs to satisfy some actual, named use case — not one field more.
 
-**Why it exists:** An API surface is afferent coupling (Ch 03) made structural. Expose a field, and some consumer will eventually depend on it — including fields that exist only because an ORM generated them, not because anyone designed them to be public.
+**Why it exists:** An API surface is afferent coupling (Ch 03), just wearing a network costume. Expose a field and, eventually, somebody depends on it — including fields that only exist because an ORM happened to generate them, not because a single person ever decided they should be public.
 
 **Options:**
 1. **Internal state passthrough** — the API serializes and returns the internal domain model or database entity directly
 2. **Explicit boundary mapping** — the API returns a dedicated Data Transfer Object (DTO) containing a deliberately reduced subset of the internal data
 
 **Trade-offs:**
-- *Passthrough:* fast to write, no mapping boilerplate — but it destroys information hiding outright, coupling every consumer directly to the provider's internal persistence strategy.
-- *Boundary mapping:* the database can be refactored freely without touching the API contract, at the cost of a translation layer and duplicated data shapes that have to be kept in sync.
+- *Passthrough:* fast to write, zero mapping boilerplate — and it destroys information hiding on contact, coupling every consumer directly to whatever the provider's internal persistence strategy happens to be this week.
+- *Boundary mapping:* the database gets refactored freely without the API contract ever noticing, for the price of a translation layer and duplicate data shapes somebody has to keep in sync by hand.
 
 **When to choose each:**
-- *Passthrough:* tightly coupled internal scripts or prototypes where the same developer deploys both sides simultaneously.
-- *Boundary mapping:* the default for any production API with a consumer outside that developer's direct control.
+- *Passthrough:* tightly coupled internal scripts or prototypes, where the same developer is deploying both sides of the call at once.
+- *Boundary mapping:* the default for any production API with even one consumer outside that developer's direct control.
 
 **Common failure modes:**
-- **The leaky database column:** an internal `deleted_at` timestamp, added for auditing, leaks into the public response because the API uses passthrough. A third-party client starts filtering on its presence, and the soft-delete strategy is now permanently load-bearing for an external integration that was never supposed to see it.
+- **The leaky database column:** an internal `deleted_at` timestamp, added purely for auditing, leaks straight into the public response because the API does passthrough. A third-party client starts quietly filtering on whether the field is present, and now the soft-delete strategy is a permanent dependency for an external integration that was never supposed to know it existed.
 
-**Example:** The POSIX file descriptor API — `open`, `read`, `write`, `close` — is a masterclass in minimal surface area, stable for fifty years precisely because it exposes almost nothing: the consumer deals with plain byte arrays, with the entire complexity of filesystems, block storage, and hardware interrupts hidden underneath. **[Consensus: a field is exposed because a consumer needs it, never because it exists internally]**
+**Example:** The POSIX file descriptor API — `open`, `read`, `write`, `close` — is a masterclass in minimal surface area, and it's held stable for fifty years for exactly one reason: it exposes almost nothing. The consumer sees plain byte arrays. Filesystems, block storage, hardware interrupts — all of it stays buried underneath, permanently. **[Consensus: a field is exposed because a consumer needs it, never because it exists internally]**
 
 ---
 
 ## Progressive Disclosure
 
-**What it is:** A design strategy where the default request is as simple as possible, and advanced capability is available through optional parameters or expansion mechanisms rather than being present in every response.
+**What it is:** Keep the default request as simple as it can possibly be, and put advanced capability behind optional parameters or expansion mechanisms instead of stuffing it into every response whether anyone asked for it or not.
 
-**Why it exists:** Most consumers need a small fraction of an API's total capability. Forcing all of them to understand the full surface — including the parameters only power users need — produces cognitive overload and integration errors for everyone.
+**Why it exists:** Most consumers only ever touch a small slice of what an API can actually do. Force every one of them to learn the entire surface — including parameters that exist purely for the 10% of power users — and you've handed everyone cognitive overload and a fresh set of integration bugs, for no benefit to most of them.
 
 **Options:**
 1. **The god resource** — a single endpoint accepting many parameters, always returning a large, deeply nested payload with every related entity included
 2. **Progressive disclosure** — a minimal default response, with related data available via explicit expansion (`?expand=`) or distinct sub-routes
 
 **Trade-offs:**
-- *God resource:* minimizes round-trips, but wastes bandwidth on data most callers never use and makes the surface itself hard to document or reason about.
-- *Progressive disclosure:* keeps the default fast and the documentation legible, but a client that does need the expanded data either makes multiple calls or has to learn the expansion syntax.
+- *God resource:* fewer round-trips, and bandwidth spent on data almost nobody actually uses, with a surface that's genuinely hard to document or even hold in your head.
+- *Progressive disclosure:* the default stays fast and the docs stay legible — and a client that does need the expanded data either makes extra calls or has to learn a bit of expansion syntax first.
 
 **When to choose each:**
-- *God resource:* bulk/asynchronous data-extraction pipelines, where the goal is raw transfer rather than human integration.
-- *Progressive disclosure:* the default for any public REST API or SDK.
+- *God resource:* bulk or asynchronous data-extraction pipelines, where the point is raw transfer, not a human reading through an integration guide.
+- *Progressive disclosure:* the default for any public REST API or SDK, no exceptions worth naming.
 
 **Common failure modes:**
-- **Configuration bankruptcy:** an endpoint accumulates a dozen-plus optional boolean flags over years (`include_history`, `skip_validation`, `dry_run`), interacting in undocumented and non-deterministic ways, until the endpoint can no longer be safely tested.
+- **Configuration bankruptcy:** an endpoint quietly accumulates a dozen-plus optional boolean flags over the years — `include_history`, `skip_validation`, `dry_run` — all interacting in ways nobody documented and nobody can fully predict, until the endpoint can no longer be tested with any confidence at all.
 
-**Example:** Stripe's `Charge` object returns a flat, minimal response by default — its `customer` field is just a string ID. A client that needs the full customer record doesn't call a different endpoint; it appends `?expand[]=customer`, and Stripe layers in the nested object only on request. **[Strong Recommendation: make the common case the cheap case, and put everything else behind an explicit ask]**
+**Example:** Stripe's `Charge` object returns a flat, minimal response by default — its `customer` field is nothing but a string ID. A client that needs the full customer record doesn't hit a different endpoint. It just appends `?expand[]=customer`, and Stripe layers the nested object in only when asked. **[Strong Recommendation: make the common case the cheap case, and put everything else behind an explicit ask]**
 
 ---
 
 ## Internal vs. External API Boundaries
 
-**What it is:** The decision of how aggressively an API is allowed to evolve, determined by whether its consumers are coordinated internal teams or uncoordinated external parties.
+**What it is:** How aggressively an API is allowed to evolve, and that depends entirely on whether its consumers are coordinated internal teams or uncoordinated strangers on the other side of the internet.
 
-**Why it exists:** An API is a contract. A contract between two teams in the same organization can be renegotiated and redeployed together. A contract with an unknown third party cannot be renegotiated at all — it can only be extended or broken.
+**Why it exists:** An API is a contract, and contracts behave differently depending on who signed them. Two teams in the same organization can renegotiate a contract and redeploy both sides together, same afternoon if it has to happen. A contract with an unknown third party can't be renegotiated at all — it can only be extended, or it can be broken, and there's no door number three.
 
 **Options:**
 1. **Aggressive evolution** — fields are deprecated and payloads changed; consumers are expected to update in step
 2. **Strict immutability** — nothing is ever removed or behaviorally altered; every change is additive
 
 **Trade-offs:**
-- *Aggressive evolution:* the codebase stays clean with no legacy adapter layers — but it requires real-time, synchronous coordination with every downstream caller, which only works when every caller is known.
-- *Strict immutability:* integrations written years ago keep working without modification, building durable trust — but the provider absorbs all the resulting accidental complexity, accumulating legacy translation layers indefinitely.
+- *Aggressive evolution:* the codebase stays clean, no legacy adapter layers accumulating in the corner — and it demands real-time, synchronous coordination with every downstream caller, which only works because every one of those callers is actually known to you.
+- *Strict immutability:* integrations written years ago just keep working, untouched, building the kind of trust that takes years to earn — while the provider quietly absorbs every bit of the resulting accidental complexity, stacking up legacy translation layers with no end date in sight.
 
 **When to choose each:**
-- *Aggressive evolution:* internal service-to-service APIs where every caller is visible and on a coordinated deploy schedule.
-- *Strict immutability:* public SaaS APIs, mobile app backends (where you cannot force users to update), and third-party enterprise integrations.
+- *Aggressive evolution:* internal service-to-service APIs, where every caller is visible and sits on a deploy schedule you actually control.
+- *Strict immutability:* public SaaS APIs, mobile app backends where you can't force anyone to update their app, and third-party enterprise integrations you'll never get on a call with.
 
 **Common failure modes:**
-- **The unannounced deprecation:** a team treats a public API like an internal one and removes a "rarely used" field to simplify a database migration. Every third-party integration depending on that field breaks at once, with no warning and no migration path.
+- **The unannounced deprecation:** a team treats a public API like it's an internal one and drops a "rarely used" field to simplify a database migration. Every third-party integration leaning on that field breaks simultaneously, with no warning and nowhere to migrate to.
 
-**Example:** GraphQL, designed at Facebook, was built to solve an internal problem — letting a consumer select exactly the fields it needs to avoid over-fetching. Exposed as an *external* API, the same flexibility becomes a liability: the provider now has to support an effectively unbounded set of query shapes, which makes execution-plan optimization and rate limiting against unknown third parties far harder than it is for a fixed internal contract.
+**Example:** GraphQL, built at Facebook, solved an internal problem — letting a consumer ask for exactly the fields it needs instead of over-fetching everything. Expose that same flexibility as an *external* API and it turns into a liability: the provider now has to support an effectively unbounded universe of query shapes, and tuning execution plans or rate-limiting against strangers gets far harder than it ever was against a fixed internal contract.
 
 ---
 
 ## Why Smart Engineers Disagree: Consumer-Driven vs. Provider-Driven Surfaces
 
-The most polarizing question in API design is whether the consumer or the provider should dictate the shape of the data returned.
+The most polarizing question in API design is simple to state: should the consumer or the provider get to decide the shape of the data coming back?
 
-Engineers optimizing for frontend velocity argue for consumer-driven flexibility — typically GraphQL. A rigid REST surface means every new UI field requires a backend ticket and a release cycle; a flexible graph lets the frontend query whatever it needs immediately, without waiting on another team.
+Engineers optimizing for frontend velocity push for consumer-driven flexibility — usually GraphQL. A rigid REST surface means every new UI field costs a backend ticket and a release cycle. A flexible graph lets the frontend just ask for what it needs, today, without waiting on anyone else's sprint.
 
-Engineers optimizing for backend stability and performance argue for provider-driven control — typically REST or gRPC with a fixed shape. A database cannot efficiently answer arbitrary, deeply nested queries on demand; consumer-driven surfaces tend toward N+1 query disasters and unpredictable load, because the backend has given up the ability to tune execution paths for a known request shape.
+Engineers optimizing for backend stability and performance push for provider-driven control instead — usually REST or gRPC with a fixed shape. A database can't efficiently answer arbitrary, deeply nested queries on demand, and consumer-driven surfaces have a habit of sliding into N+1 query disasters and unpredictable load, because the backend gave up the one thing that let it tune execution paths: knowing the request shape in advance.
 
-This is the Theory of Constraints (Ch 08) applied to API design: if the actual bottleneck is UI iteration speed, consumer-driven flexibility is the right call. If the actual bottleneck is database load or data-access control, provider-driven rigidity is the right call. Exposing flexibility to the consumer always means absorbing the corresponding complexity somewhere in the provider — the only real decision is which side of that boundary is cheaper to pay it on.
+This is the Theory of Constraints (Ch 08), just relocated to API design. If the real bottleneck is UI iteration speed, consumer-driven flexibility is the right call. If the real bottleneck is database load or data-access control, provider-driven rigidity is the right call. Handing flexibility to the consumer always means the provider absorbs the complexity that flexibility costs somewhere — the actual decision here was never "flexible or rigid," it's which side of that boundary can afford to pay for it.
 
 *Concepts expanded in later chapters: versioning strategies for evolving an API over time (Part II, Ch 16); the REST vs. RPC vs. event-driven transport choice (Part III, Ch 19); authentication and authorization at the boundary (Part III, Ch 24).*

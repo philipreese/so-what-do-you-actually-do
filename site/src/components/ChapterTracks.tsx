@@ -99,32 +99,36 @@ export default function ChapterTracks({
         </button>
       </div>
 
-      <div className={`track-panes panes-${paneCount} ${isEngineerOnly ? 'single' : 'split'}`}>
+      <div className={`track-panes ${isEngineerOnly ? 'single' : 'split'}`}>
         <div className="pane pane-engineer">
           <h2 className="pane-label">For Engineers</h2>
           <div dangerouslySetInnerHTML={{ __html: engineerHtml }} />
         </div>
 
-        {view.wife && (
-          <div className="pane pane-secondary pane-secondary--wife">
-            <h2 className="pane-label">For My Wife</h2>
-            <div dangerouslySetInnerHTML={{ __html: wifeHtml }} />
-          </div>
-        )}
+        {!isEngineerOnly && (
+          <div className="secondary-stack">
+            {view.wife && (
+              <div className="pane pane-secondary pane-secondary--wife">
+                <h2 className="pane-label">For My Wife</h2>
+                <div dangerouslySetInnerHTML={{ __html: wifeHtml }} />
+              </div>
+            )}
 
-        {view.kids && (
-          <div className="pane pane-secondary pane-secondary--kids">
-            <h2 className="pane-label">For My Kids</h2>
-            <div className="mascot-slot" aria-hidden={mascotSrc ? undefined : 'true'}>
-              {mascotSrc ? (
-                <img className="mascot-image" src={mascotSrc} alt="Chapter mascot" />
-              ) : (
-                <span className="mascot-placeholder" title="Mascot illustration placeholder">
-                  {mascotEmoji}
-                </span>
-              )}
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: kidsHtml }} />
+            {view.kids && (
+              <div className="pane pane-secondary pane-secondary--kids">
+                <h2 className="pane-label">For My Kids</h2>
+                <div className="mascot-slot" aria-hidden={mascotSrc ? undefined : 'true'}>
+                  {mascotSrc ? (
+                    <img className="mascot-image" src={mascotSrc} alt="Chapter mascot" />
+                  ) : (
+                    <span className="mascot-placeholder" title="Mascot illustration placeholder">
+                      {mascotEmoji}
+                    </span>
+                  )}
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: kidsHtml }} />
+              </div>
+            )}
           </div>
         )}
       </div>

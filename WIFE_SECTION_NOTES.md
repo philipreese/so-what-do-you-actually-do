@@ -65,3 +65,35 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part II, Ch10–Ch18
 - Push after Part II or III per the process instructions
+
+---
+
+## Part II, Ch10–Ch18
+
+### Formatting used (for reference)
+- **Ch10**: 3 bold paragraphs + 1 plain closing paragraph (4 paragraphs, complex multi-decision chapter)
+- **Ch11**: pull-quote opener + 3 bold paragraphs + 1 plain closing paragraph (hexagonal needed the extra paragraph for honest costs)
+- **Ch12**: 2 bold paragraphs + 1 plain paragraph + `[!NOTE]` block at end (NOTE used for the interface-ownership distinction, which bites people)
+- **Ch13**: 1 bold paragraph (chapter ref) + 2 bold paragraphs + 1 plain closing paragraph (no opener quote — starts on the cross-chapter framing)
+- **Ch14**: 2 bold paragraphs + 1 plain paragraph (middleman framing kept tight, OSI example committed to)
+- **Ch15**: 3 bold paragraphs + 1 plain closing paragraph (no opener quote — field-commitment point lands better without one)
+- **Ch16**: pull-quote opener + 2 bold paragraphs + 2 plain paragraphs (versioning + sunset both needed space)
+- **Ch17**: 3 bold paragraphs + 1 plain closing paragraph (phone/text analogy, committed to one image throughout)
+- **Ch18**: 3 bold paragraphs + 1 plain closing paragraph (SQL join example in closing paragraph earns its place)
+
+### What worked
+- Phone call / text message analogy for sync vs. async (Ch17) — concrete enough to follow, doesn't overstay its welcome
+- Opening with the chapter's position directly (Ch18: "unequivocal") rather than "the chapter argues…" phrasing — more confident
+- Using a specific broken-flow example (Ch17: credit card charge, cascading timeout) instead of abstract failure description
+- `[!NOTE]` for the "defining an interface ≠ inverting a dependency" distinction in Ch12 — right register for "here's the gotcha everyone misses"
+- Pull-quote opener used in Ch11 and Ch16 — skipped for chapters where the position lands better as a direct opening paragraph
+- Ch10 opens with the industry aspiration (microservices hype) as a foil before the chapter's actual position — good contrast, not a throat-clear
+
+### What was cut / avoided
+- Did not use the "bounded context" DDD framing in the Ch13 wife section without immediately unpacking it as "zone where one model of the business stays internally consistent"
+- Avoided explaining CQRS by name in Ch18's wife section — described the mechanism instead
+- Did not stack analogies in Ch17 — committed to phone/text, not phone/text/walkie-talkie
+
+### Next session
+- Continue with Part III, Ch19–Ch27
+- Push after Part III (or after Part II + III together if III is short)

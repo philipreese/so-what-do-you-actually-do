@@ -103,3 +103,13 @@ Small Part (5 chapters, Documentation). Distinct template flavor from Parts VI-V
 **Pattern that keeps working, restated again:** ending a Why-it-exists or failure-mode paragraph on a short blunt clause — Ch64: "a fossil wearing the clothes of a live document," Ch65: "you don't edit the transcript, you file an addendum," Ch68: "a puzzle box hiding the real problem." Still the reliable move within the 1-2-jokes-per-chapter budget.
 
 **Judgment call on topic-specific closers:** unlike Parts VI-VII's generic "Why Smart Engineers Disagree" title, every Part VIII closer names its actual axis of disagreement in the heading itself (Documentation Volume, whether specs/ADRs can change, deletion vs. preservation, narrative investment, guidance vs. automation). Left every closer heading exactly as-is — these aren't flourish, they're doing the same structural labeling job as the rest of the template and were treated like any other heading.
+
+## Part IX (Ch 69–73) — done
+
+Back to the generic "Why Smart Engineers Disagree" closer title (Part VIII's topic-specific pattern didn't carry forward into Observability). Same inline `[Strong Recommendation]`/`[Consensus]` label template as Parts IV-VII, `### Decision: [Title]` headers like Part VIII, and heavy use of both markdown tables and fenced diagram/formula code blocks (Ch70's signal-comparison and question-routing tables, Ch72's trace-context ASCII diagram, Ch73's burn-rate formula block) — all left completely untouched, verified with the Part IV-established code-block-isolation diff in addition to the usual table check. All 5 chapters landed at 10-21 insertions/deletions each, 70/70 total across the Part.
+
+**No new retired-word catches this Part** — second Part in a row (after VIII) clean on the first pass, no pre-existing `load-bearing`/`navigate`/etc. hits in the original synthesis text either.
+
+**Pattern that keeps working, restated again:** ending a Why-it-exists or failure-mode paragraph on a short blunt clause — Ch69: "which functions tend to do," Ch70: "a log's cost structure wearing a metric's name tag," Ch73: "declining to take risk the objective already signed off on." Still the reliable, low-risk move for the 1-2-jokes-per-chapter budget.
+
+**Judgment call on technical density:** this Part (log cardinality, trace propagation, burn-rate math, SLI/SLO/SLA taxonomy) is as precision-heavy as Part V's testing terminology — every named formula, every specific number (43 minutes/month at 99.9%, a 14.4 burn-rate multiplier, Prometheus's label-set model), and every tool name (OpenTelemetry, Dapper, PagerDuty, kafka-lag-exporter) stayed exactly as precise after rewriting. Loosened only the connective prose around the numbers, never the numbers themselves.

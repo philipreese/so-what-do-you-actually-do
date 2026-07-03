@@ -5,15 +5,15 @@
 **New vocabulary introduced:** ubiquitous language, Hungarian notation, semantic predicate naming
 
 **Key takeaways:**
-- Naming is the cheapest form of information hiding: a good name communicates intent without any additional indirection, layers, or runtime cost.
-- Names should come from the problem domain before the implementation — matching the ubiquitous language the business already uses.
-- Hungarian notation was useful in untyped C environments; in any modern statically or gradually typed language it duplicates what the compiler already knows and lies when types change.
-- Predicate prefixes (`is`, `has`, `can`) are one of the few naming conventions that carry real disambiguating value — they distinguish a boolean from an object without encoding memory layout.
-- `camelCase` vs. `snake_case` is a style choice, not a correctness choice. It matters only for consistency, and consistency should be enforced by a linter, not debated.
+- Naming is the cheapest form of information hiding there is: a good name communicates intent for free, with no extra indirection, no extra layer, no runtime cost whatsoever.
+- Names should come from the problem domain before they come from the implementation — matching the ubiquitous language the business already speaks, not the one the codebase invented.
+- Hungarian notation earned its keep in untyped C environments; in any modern statically or gradually typed language it just duplicates what the compiler already knows, and then lies the moment a type changes.
+- Predicate prefixes (`is`, `has`, `can`) are one of the rare naming conventions that carry genuine disambiguating value — they tell a boolean apart from an object without encoding a single byte of memory layout.
+- `camelCase` vs. `snake_case` is a style choice, not a correctness choice. It only matters for consistency, and consistency belongs to a linter, not a Slack thread.
 
 ---
 
-Naming is the smallest unit of design. Before understanding an implementation, a reader encounters the identifiers — and a good name communicates enough that the implementation becomes confirmation rather than discovery. This chapter distinguishes the naming decisions that carry architectural weight from the conventions that are purely stylistic. The two are not equally important.
+Naming is the smallest unit of design there is. Before a reader ever understands an implementation, they run into the identifiers first — and a good name does enough work that reading the implementation afterward feels like confirmation, not discovery. This chapter separates the naming decisions that actually carry architectural weight from the ones that are pure style. The two get treated as equally important far more often than they deserve to be.
 
 Comments as an alternative communication mechanism are covered in [Ch 30](ch30-comments-what-to-comment-what-not-to.md). Abstraction design — when a name attached to a new function is worth the added layer — is covered in [Ch 31](ch31-when-abstractions-help-vs-when-they-obscure.md).
 
@@ -23,7 +23,7 @@ Comments as an alternative communication mechanism are covered in [Ch 30](ch30-c
 
 **What it is:** An identifier should describe what a thing *means*, not how it happens to be built.
 
-**Why it exists:** Code is read far more often than it is written. A name that mirrors the implementation forces every reader to mentally reverse-engineer the business intent. A name drawn from the domain matches the vocabulary the business already uses — the same ubiquitous language that defines a [bounded context](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md). When code and domain share vocabulary, engineers and domain experts can talk about the same thing without translation.
+**Why it exists:** Code gets read far more often than it gets written. A name that mirrors the implementation forces every single reader to reverse-engineer the business intent by hand. A name drawn from the domain instead matches the vocabulary the business already uses — the same ubiquitous language that defines a [bounded context](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md). Share vocabulary between code and domain, and engineers and domain experts get to talk about the same thing without a translator in the room.
 
 **Options:**
 
@@ -33,17 +33,17 @@ Comments as an alternative communication mechanism are covered in [Ch 30](ch30-c
 
 **Trade-offs:**
 
-[Consensus] **Domain-oriented names** are more resilient to change because the business concept outlives any particular implementation choice. Switching from a list to a hash set, from PostgreSQL to Cassandra, from an HTTP call to a message queue — none of these change what `activeUsers` means to a reader. The only cost is that the name requires understanding the domain, which is a cost the engineer was going to pay anyway.
+[Consensus] **Domain-oriented names** hold up better over time because the business concept outlives whatever implementation happens to be in fashion this quarter. Switch from a list to a hash set, from PostgreSQL to Cassandra, from an HTTP call to a message queue — none of it changes what `activeUsers` means to a reader. The only cost is that the name demands understanding the domain, which the engineer was going to have to do anyway.
 
-**Implementation-oriented names** are easy to invent and initially accurate, but they couple the reader's mental model to the current mechanism. When the mechanism changes, the name becomes a liability. Classes named `Manager`, `Handler`, `Processor`, or `Engine` impose almost no semantic constraints and reliably accumulate unrelated responsibilities because the name never pushes back.
+**Implementation-oriented names** are easy to invent and accurate on day one, but they weld the reader's mental model to whatever mechanism happens to exist right now. Change the mechanism and the name turns into a liability overnight. Classes named `Manager`, `Handler`, `Processor`, or `Engine` impose almost no semantic constraint at all, and reliably accumulate unrelated responsibilities precisely because the name never pushes back on anything.
 
-**Stale names** are the degenerate case: the implementation changed, the name didn't, and now every reader is deceived.
+**Stale names** are the degenerate case: the implementation moved on, the name stayed put, and every reader who trusts it gets quietly lied to.
 
 **When to choose each:** Use domain vocabulary for anything representing a business concept. Reserve implementation-oriented names for the narrow infrastructure layer where the technical role genuinely is the domain — a `postgresDriver` variable inside a database connection pool, where the implementation itself is the point.
 
-**Common failure modes:** An engineer names a variable `customerListArray`. Six months later, the type changes to a `HashSet` to enforce uniqueness. Because the data structure was encoded in the name, every reference must be renamed — a localized type change becomes a sprawling, risky pull request. This is the refactoring ripple: the name coupled every call site to the implementation detail it was supposed to hide.
+**Common failure modes:** An engineer names a variable `customerListArray`. Six months later the type changes to a `HashSet` to enforce uniqueness. Because the data structure got baked into the name, every single reference now needs renaming — a change that should've stayed local turns into a sprawling, risky pull request touching half the codebase. That's the refactoring ripple: the name coupled every call site to exactly the implementation detail it was supposed to be hiding.
 
-**Example:** The Extreme Programming and Clean Code traditions center on intention-revealing names. `findEligibleCustomers()` hides the search mechanism; `iterateCustomerRecords()` leaks that a linear scan is occurring. When the scan becomes an index lookup, the second name is wrong. The first name survives the change unchanged.
+**Example:** The Extreme Programming and Clean Code traditions built their whole naming philosophy around this. `findEligibleCustomers()` hides the search mechanism entirely; `iterateCustomerRecords()` gives away that a linear scan is happening underneath. The moment that scan becomes an index lookup, the second name is simply wrong. The first name doesn't even notice the change happened.
 
 ---
 
@@ -51,7 +51,7 @@ Comments as an alternative communication mechanism are covered in [Ch 30](ch30-c
 
 **What it is:** The decision of whether to prefix or suffix an identifier with metadata about its type or memory layout.
 
-**Why it exists:** Hungarian notation originated in the C-era Windows API (`lpszName` for "long pointer to a null-terminated string") when compilers provided no type visibility and editors had no autocomplete. Encoding the type directly into the name was the only way a developer could know, at a glance, what a memory address held. That constraint no longer exists in any modern language.
+**Why it exists:** Hungarian notation was born in the C-era Windows API (`lpszName` for "long pointer to a null-terminated string"), back when compilers offered zero type visibility and editors had never heard of autocomplete. Baking the type straight into the name was the only way a developer could tell, at a glance, what a given memory address actually held. That constraint hasn't existed in any modern language for decades.
 
 **Options:**
 
@@ -60,13 +60,13 @@ Comments as an alternative communication mechanism are covered in [Ch 30](ch30-c
 
 **Trade-offs:**
 
-[Consensus] In any modern statically or gradually typed language — Go, Rust, Java, C#, TypeScript, Kotlin, Swift — the compiler already tracks the type. Encoding it in the name duplicates information the toolchain provides more reliably. When the type changes, the name doesn't follow automatically: `intAge` becomes a float, `strName` becomes a rich object, `pUser` becomes a value. The name is now a lie. This is the liar variable: a convention that started as redundant and degraded into actively misleading.
+[Consensus] In any modern statically or gradually typed language — Go, Rust, Java, C#, TypeScript, Kotlin, Swift — the compiler is already tracking the type for you. Putting it in the name too just duplicates information the toolchain already surfaces more reliably. And when the type changes, the name doesn't follow along on its own: `intAge` quietly becomes a float, `strName` becomes a rich object, `pUser` becomes a plain value. The name is now flatly lying. This is the liar variable — a convention that started out merely redundant and degraded, over time, into actively misleading.
 
-Systems Hungarian is a solution to a problem that modern languages solved at the language level. Carrying it forward is cargo-culting.
+Systems Hungarian solved a problem modern languages already solved at the language level. Carrying it forward at this point is just cargo-culting.
 
-**Common failure modes:** A loosely typed codebase adopts Hungarian notation. A `intAge` field is later updated to hold a floating-point value. No one renames it because the cost is high and the wrong name isn't breaking anything yet. A new engineer reads `intAge`, infers integer arithmetic is safe, and introduces a truncation bug.
+**Common failure modes:** A loosely typed codebase adopts Hungarian notation. An `intAge` field later gets updated to hold a floating-point value. Nobody renames it, because the cost feels high and the wrong name isn't breaking anything yet — not visibly, anyway. A new engineer reads `intAge`, assumes integer arithmetic is safe, and introduces a truncation bug that takes a while to surface.
 
-**Example:** The Windows API prefixes (`lp`, `str`, `int`, `dw`) were genuinely necessary when the API was designed. C provided no way to inspect types without reading the declaration, and early editors provided no assistance. The same notation in a Rust or TypeScript codebase in the current decade provides nothing the compiler doesn't already surface — and costs accuracy every time a type changes.
+**Example:** The Windows API prefixes (`lp`, `str`, `int`, `dw`) were genuinely necessary when that API was designed. C offered no way to inspect a type without reading the declaration, and early editors offered no help at all. That same notation in a Rust or TypeScript codebase today surfaces nothing the compiler doesn't already show you — and it costs accuracy every single time a type changes underneath it.
 
 ---
 
@@ -74,7 +74,7 @@ Systems Hungarian is a solution to a problem that modern languages solved at the
 
 **What it is:** The convention of prefixing boolean variables and boolean-returning functions with `is`, `has`, `can`, or `should`.
 
-**Why it exists:** This is one of the few naming conventions that carries real disambiguating value rather than pure style. A boolean and an object can have the same domain name — `permission` could be a boolean flag or a `Permission` object. The prefix removes the ambiguity without encoding memory layout.
+**Why it exists:** This is one of the rare naming conventions that actually carries disambiguating value instead of pure style. A boolean and an object can end up sharing the same domain name — `permission` could be a boolean flag or it could be a whole `Permission` object. The prefix kills the ambiguity without encoding a single detail of memory layout.
 
 **Options:**
 
@@ -83,11 +83,11 @@ Systems Hungarian is a solution to a problem that modern languages solved at the
 
 **Trade-offs:**
 
-[Strong Recommendation] Use predicate prefixes for booleans. They do what Hungarian notation claimed to do but failed at: they communicate semantic state, not memory layout. `isActive` tells the reader this is a binary condition, not an enum or an object. The prefix is stable across refactors — the boolean meaning doesn't change even if the underlying representation does.
+[Strong Recommendation] Use predicate prefixes for booleans. They deliver on exactly what Hungarian notation promised and never actually gave you: semantic state, not memory layout. `isActive` tells the reader flat out that this is a binary condition, not an enum, not an object masquerading as one. And the prefix survives refactors — the boolean meaning stays put even when the underlying representation changes underneath it.
 
-The difference between `if (ready)` and `if (isReady)` is not stylistic. The second version tells the reader the variable is a boolean condition being tested, not an object being used as a truthy value. In languages where objects are truthy, this distinction prevents misreading.
+The difference between `if (ready)` and `if (isReady)` isn't stylistic hairsplitting. The second version tells the reader, unambiguously, that this is a boolean condition being tested — not an object being leaned on for its truthiness. In languages where objects are truthy by default, that distinction is the only thing standing between a correct read and a misread.
 
-**Common failure modes:** Boolean variables named `enabled`, `permission`, or `valid` leave readers uncertain whether they are testing a flag or checking an object for truthiness. In conditional logic, ambiguous names require context to interpret — context the reader has to stop and fetch rather than reading the line at face value.
+**Common failure modes:** Boolean variables named `enabled`, `permission`, or `valid` leave the reader guessing whether they're testing a flag or checking an object for truthiness. Buried in conditional logic, an ambiguous name demands context the reader has to go dig up, instead of just reading the line and moving on.
 
 ---
 
@@ -95,7 +95,7 @@ The difference between `if (ready)` and `if (isReady)` is not stylistic. The sec
 
 **What it is:** Identifier length should scale with how much context the surrounding code already provides.
 
-**Why it exists:** A name exists to distinguish one thing from everything else the reader might have in mind. Inside a three-line loop, almost no distinction is needed. Across an entire package, substantial context must be encoded. A 30-character name in a tight mathematical loop is visual noise that obscures the algorithm; a single-letter variable at package scope is a collision waiting to happen.
+**Why it exists:** A name's whole job is distinguishing one thing from everything else the reader might have in mind at that moment. Inside a three-line loop, almost nothing needs distinguishing. Across an entire package, a name has to carry real weight. A 30-character name jammed into a tight mathematical loop is visual noise burying the actual algorithm; a single-letter variable sitting at package scope is a collision that just hasn't happened yet.
 
 **Options:**
 
@@ -105,15 +105,15 @@ The difference between `if (ready)` and `if (isReady)` is not stylistic. The sec
 
 **Trade-offs:**
 
-[Strong Recommendation] **Scope-proportional naming** is correct. The amount of descriptive text a name needs to carry is inversely proportional to how obvious the meaning is from immediate context. `i` in a three-line loop is unambiguous. `i` as a package-level variable is a disaster.
+[Strong Recommendation] **Scope-proportional naming** is the right call. How much descriptive text a name needs to carry runs inversely to how obvious the meaning already is from context. `i` inside a three-line loop is perfectly clear. `i` as a package-level variable is a small disaster waiting to be discovered.
 
-**Uniform verbosity** clutters tight algorithmic code. A loop variable named `currentArrayIndex` forces the reader to parse a noun phrase on every iteration instead of following the arithmetic.
+**Uniform verbosity** clutters up tight algorithmic code for no benefit. A loop variable named `currentArrayIndex` forces the reader to parse a full noun phrase on every single iteration instead of just following the arithmetic.
 
-**Aggressive abbreviation** at broad scope creates the global abbreviation failure: a developer names a package-level variable `c` for `Client`. A second developer introduces a `Cache`. The short name is now ambiguous and the collision requires a rename.
+**Aggressive abbreviation** at broad scope produces the global abbreviation failure: one developer names a package-level variable `c` for `Client`. A second developer comes along and adds a `Cache`. Now the short name is ambiguous, and somebody has to go rename something that used to work fine.
 
-**Common failure modes:** A developer applies one rule everywhere. Either every local variable becomes `currentIterationIndex` and every loop reads like a legal document, or every exported function is a cryptic two-letter abbreviation. The failure in both directions is treating scope as irrelevant.
+**Common failure modes:** A developer picks one rule and applies it everywhere, no exceptions. Either every local variable becomes `currentIterationIndex` and every loop reads like it was drafted by a lawyer, or every exported function gets reduced to a cryptic two-letter abbreviation nobody can parse on sight. Both failures come from the same root mistake: treating scope as if it doesn't matter.
 
-**Example:** Idiomatic Go uses `err` for local error checking, `i` for loop counters, and `db` for a local database handle — deliberately short because the scope is tight and the context is obvious. At package scope, exported types and functions get fully descriptive names. This is a considered convention, not laziness; Go's own documentation explains the rationale. Java codebases typically favor verbosity even at local scope, which is why Java developers rely heavily on IDE autocompletion just to write a loop. Neither is wrong — they optimize for different assumptions about how much context a reader holds.
+**Example:** Idiomatic Go uses `err` for local error checks, `i` for loop counters, `db` for a local database handle — deliberately short, because the scope is tight and the context is obvious to anyone reading it. At package scope, exported types and functions get fully descriptive names instead. This is a considered convention, not laziness; Go's own documentation spells out the reasoning. Java codebases typically lean toward verbosity even at local scope, which is a large part of why Java developers lean so heavily on IDE autocompletion just to write an ordinary loop. Neither approach is wrong. They're optimizing for different assumptions about how much context a reader is already carrying around in their head.
 
 ---
 
@@ -121,7 +121,7 @@ The difference between `if (ready)` and `if (isReady)` is not stylistic. The sec
 
 **What it is:** When a block of code requires a comment to explain what it does, the first question is whether extracting it into a well-named function eliminates the need for the comment entirely.
 
-**Why it exists:** A comment describes behavior. A function name *becomes* the behavior's description at every call site. A reader calling `recalculateCreditLimit()` doesn't need a comment explaining what is about to happen; the name already told them. The comment would be redundant, and redundant documentation rots.
+**Why it exists:** A comment describes behavior from the sidelines. A function name *becomes* the behavior's description, right there at every call site. A reader calling `recalculateCreditLimit()` doesn't need a comment telling them what's about to happen — the name already said it. Adding a comment on top is redundant, and redundant documentation rots the moment nobody's watching.
 
 This connection is the starting point for a longer treatment in [Ch 30](ch30-comments-what-to-comment-what-not-to.md), which covers the full distinction between comments that explain *what* and comments that explain *why*.
 
@@ -134,14 +134,14 @@ This connection is the starting point for a longer treatment in [Ch 30](ch30-com
 // Persist result
 ```
 
-Each heading describes a logical operation that could be a named function. The comments are a signal that the naming work wasn't done — and that the comments will drift when the code changes, while a function name would have been refactored alongside it.
+Each heading describes a logical operation that should have been a named function all along. The comments are the tell that the naming work never got done — and they'll drift the instant the code changes, where a function name would've been refactored right alongside it, automatically, with no extra effort from anybody.
 
 ---
 
 ### Why Smart Engineers Disagree: Style vs. Substance
 
-The persistent engineering debates about naming are almost never about substance. `camelCase` vs. `snake_case`, `PascalCase` for types vs. interfaces — these are pure style choices. They carry no correctness value, prevent no bugs, and hide no information. The human brain adapts to any consistent formatting in a matter of days.
+The persistent engineering debates about naming are almost never actually about substance. `camelCase` vs. `snake_case`, `PascalCase` for types vs. interfaces — these are pure style calls. None of it carries correctness value, prevents a single bug, or hides any information whatsoever. The human brain adapts to any consistent formatting within a matter of days, and then never thinks about it again.
 
-The only failure mode from casing choices is *inconsistency*. A codebase that arbitrarily mixes `camelCase` and `snake_case` forces developers to memorize the convention on a per-function basis, adding cognitive load where none needs to exist. The correct response is to pick the idiomatic convention for the language, enforce it with a linter on day one, and ban further debate. The linter doesn't care which you chose; it cares that you chose one.
+The only real failure mode hiding in casing choices is *inconsistency*. A codebase that arbitrarily mixes `camelCase` and `snake_case` forces every developer to memorize the convention on a per-function basis, adding cognitive load that never needed to exist in the first place. The right response is to pick the idiomatic convention for the language, enforce it with a linter starting day one, and close the debate permanently. The linter doesn't care which one you picked. It cares that you picked one.
 
-The real disagreement among experienced engineers is about calibration: how much information should a name carry? One camp prefers long, fully explicit identifiers everywhere, arguing that explicitness reduces the chance of misreading. Another prefers concise names when surrounding context already supplies the missing information, arguing that excess length obscures structure. Both camps agree on the goal — make the surrounding code easy to read — and disagree only on how much of that work the name itself should do versus how much the reader's context window already carries.
+The real disagreement among experienced engineers is about calibration: how much information should a name actually carry? One camp prefers long, fully explicit identifiers everywhere, on the theory that explicitness cuts down the chance of misreading. Another prefers concise names whenever the surrounding context already supplies what's missing, on the theory that excess length just buries the structure underneath it. Both camps want the exact same thing — code that's easy to read — and disagree only on how much of that job belongs to the name itself versus how much the reader's own context window is already carrying for free.

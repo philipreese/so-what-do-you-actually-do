@@ -1,284 +1,284 @@
 # Gemini Image Generation Prompts (All Chapters and Appendices)
-# Style: Minimalist clean black-and-white vector line art, black outlines, pure white background, cute capybaras, square format.
+## Style: Minimalist clean black-and-white vector line art, black outlines, pure white background, cute capybaras, square format.
 
-Ch01 (The Optimization Target):
+### Ch01 (The Optimization Target):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'The Optimization Target' at the top. A cute cartoon capybara with arrows pointing several different directions from one point. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch02 (Complexity):
+### Ch02 (Complexity):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Complexity' at the top. A cute cartoon capybara next to a tangled scribble/knot. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch03 (Coupling & Cohesion):
+### Ch03 (Coupling & Cohesion):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Coupling & Cohesion' at the top. Two cute cartoon capybaras linked by a taut chain, circled by a dotted ring. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch04 (Abstraction):
+### Ch04 (Abstraction):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Abstraction' at the top. A cute cartoon capybara looking at a plain box; gears hidden behind it. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch05 (Designing For Change):
+### Ch05 (Designing For Change):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Designing For Change' at the top. A cute cartoon capybara at a fork in the road with swappable signs. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch06 (Mechanical Sympathy):
+### Ch06 (Mechanical Sympathy):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Mechanical Sympathy' at the top. A cute cartoon capybara next to a staircase of shrinking blocks (register→RAM→disk). Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch07 (Reliability):
+### Ch07 (Reliability):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Reliability' at the top. A cute cartoon capybara holding an umbrella. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch08 (Local Vs. Global):
+### Ch08 (Local Vs. Global):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Local Vs. Global' at the top. One gear spinning fast next to a big stalled gear it's connected to. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch09 (Decision Frameworks):
+### Ch09 (Decision Frameworks):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Decision Frameworks' at the top. A cute cartoon capybara at a signpost with several forked arrows. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch10 (Monolith Vs. Services):
+### Ch10 (Monolith Vs. Services):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Monolith Vs. Services' at the top. One big box vs. several small connected boxes. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch11 (Layered Architecture):
+### Ch11 (Layered Architecture):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Layered Architecture' at the top. Stacked horizontal bars with a plug on the side. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch12 (Dependency Direction):
+### Ch12 (Dependency Direction):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Dependency Direction' at the top. Arrow from a wobbly box pointing at a solid box. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch13 (Architecture Coupling):
+### Ch13 (Architecture Coupling):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Architecture Coupling' at the top. Same chain-link icon as #3, at building scale (boxes, not two cute cartoon capybaras). Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch14 (Abstraction Layers):
+### Ch14 (Abstraction Layers):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Abstraction Layers' at the top. A cute cartoon capybara sliding a translucent pane between two boxes. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch15 (Api Surface):
+### Ch15 (Api Surface):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Api Surface' at the top. A door with some windows open, some boarded up. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch16 (Versioning):
+### Ch16 (Versioning):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Versioning' at the top. Two doors marked v1 / v2 with a rope bridge between them. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch17 (Sync Vs. Async):
+### Ch17 (Sync Vs. Async):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Sync Vs. Async' at the top. A cute cartoon capybara waiting face-to-face vs. a cute cartoon capybara dropping a letter in a mailbox and walking off. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch18 (Data Ownership):
+### Ch18 (Data Ownership):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Data Ownership' at the top. A fenced-in database icon, one a cute cartoon capybara holding the only key. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch19 (Rest/Rpc/Events):
+### Ch19 (Rest/Rpc/Events):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Rest/Rpc/Events' at the top. Three tiny icons in a row: a door, a phone, a bell. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch20 (Resource Modeling):
+### Ch20 (Resource Modeling):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Resource Modeling' at the top. A labeled filing drawer. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch21 (Error Contracts):
+### Ch21 (Error Contracts):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Error Contracts' at the top. A cute cartoon capybara handed a clearly labeled card instead of a blank "?". Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch22 (Idempotency):
+### Ch22 (Idempotency):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Idempotency' at the top. A cute cartoon capybara pressing the same button twice, same result both times. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch23 (Pagination & Streaming):
+### Ch23 (Pagination & Streaming):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Pagination & Streaming' at the top. A stack of numbered pages next to a continuous hose of dots. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch24 (Authn/Authz Boundaries):
+### Ch24 (Authn/Authz Boundaries):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Authn/Authz Boundaries' at the top. A cute cartoon capybara with an ID badge at a gate, locked door behind it. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch25 (Internal Vs. External Api):
+### Ch25 (Internal Vs. External Api):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Internal Vs. External Api' at the top. A fence with a public gate on one side, a private door on the other. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch26 (Ffi):
+### Ch26 (Ffi):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Ffi' at the top. Two mismatched puzzle pieces jammed together with a connector piece. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch27 (File Structure):
+### Ch27 (File Structure):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'File Structure' at the top. Labeled stacked drawers. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch28 (Naming):
+### Ch28 (Naming):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Naming' at the top. A name tag stuck on a plain box. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch29 (Split Vs. Keep Together):
+### Ch29 (Split Vs. Keep Together):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Split Vs. Keep Together' at the top. A box, half-cut by scissors, question mark above. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch30 (Comments):
+### Ch30 (Comments):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Comments' at the top. A sticky note on one line of code, rest uncovered. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch31 (Abstraction: Help Or Obscure):
+### Ch31 (Abstraction: Help Or Obscure):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Abstraction: Help Or Obscure' at the top. A box either clearly labeled or wrapped in fog. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch32 (Error Handling Styles):
+### Ch32 (Error Handling Styles):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Error Handling Styles' at the top. Three tiny paths: a net, a falling a cute cartoon capybara, a labeled box. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch33 (Unsafe Code):
+### Ch33 (Unsafe Code):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Unsafe Code' at the top. A cute cartoon capybara stepping past a low guardrail marked with a caution sign. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch34 (Testing Pyramid):
+### Ch34 (Testing Pyramid):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Testing Pyramid' at the top. A triangle divided into three horizontal bands. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch35 (Test Layers):
+### Ch35 (Test Layers):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Test Layers' at the top. Same triangle, each band labeled. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch36 (Mock Vs. Real):
+### Ch36 (Mock Vs. Real):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Mock Vs. Real' at the top. A puppet next to a real object of the same shape. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch37 (Fixtures):
+### Ch37 (Fixtures):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Fixtures' at the top. A small labeled prop box. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch38 (Property-Based Testing):
+### Ch38 (Property-Based Testing):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Property-Based Testing' at the top. A die feeding into a checklist. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch39 (When Not To Test):
+### Ch39 (When Not To Test):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'When Not To Test' at the top. A faint checkmark, a cute cartoon capybara shrugging. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch40 (Test Naming):
+### Ch40 (Test Naming):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Test Naming' at the top. A labeled rack of test tubes. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch41 (Coverage):
+### Ch41 (Coverage):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Coverage' at the top. A target with only some rings shaded in. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch42 (Good Issues):
+### Ch42 (Good Issues):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Good Issues' at the top. A ticket card with every field filled in. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch43 (Issue Vs. Pr):
+### Ch43 (Issue Vs. Pr):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Issue Vs. Pr' at the top. A ticket next to a magnifying glass over a code block. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch44 (Milestone Planning):
+### Ch44 (Milestone Planning):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Milestone Planning' at the top. A flagged checkpoint on a road/timeline. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch45 (Adrs):
+### Ch45 (Adrs):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Adrs' at the top. A cute cartoon capybara writing in a bound notebook stamped "DECISION". Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch46 (Spec-First):
+### Ch46 (Spec-First):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Spec-First' at the top. A blueprint sitting in front of an unbuilt outline. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch47 (Code Review):
+### Ch47 (Code Review):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Code Review' at the top. Two cute cartoon capybaras, one holding a red pen over a code block. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch48 (Technical Debt):
+### Ch48 (Technical Debt):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Technical Debt' at the top. A cute cartoon capybara dragging a ball and chain. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch49 (Process Overhead):
+### Ch49 (Process Overhead):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Process Overhead' at the top. A scale weighing a gear against a stack of paper. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch50 (Branching):
+### Ch50 (Branching):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Branching' at the top. A tree diagram with several branches. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch51 (Commit Messages):
+### Ch51 (Commit Messages):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Commit Messages' at the top. A neat scroll/receipt with a clear label. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch52 (Squash Vs. Preserve):
+### Ch52 (Squash Vs. Preserve):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Squash Vs. Preserve' at the top. Several small blocks squashed into one vs. left separate. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch53 (Branch Lifecycle):
+### Ch53 (Branch Lifecycle):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Branch Lifecycle' at the top. A branch tag looping into a trash can. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch54 (Force Push):
+### Ch54 (Force Push):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Force Push' at the top. A cute cartoon capybara shoving a box hard, caution sign overhead. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch55 (Merge Vs. Rebase):
+### Ch55 (Merge Vs. Rebase):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Merge Vs. Rebase' at the top. Two lines merging into one vs. one line replaying on top of another. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch56 (Tagging & Releases):
+### Ch56 (Tagging & Releases):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Tagging & Releases' at the top. A flag pinned to a point on a timeline. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch57 (What Belongs In Ci):
+### Ch57 (What Belongs In Ci):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'What Belongs In Ci' at the top. A checklist gate, one item roped off outside it. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch58 (Fail-Fast Vs. Fail-Safe):
+### Ch58 (Fail-Fast Vs. Fail-Safe):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Fail-Fast Vs. Fail-Safe' at the top. A pipeline forking to a stop sign vs. a soft net. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch59 (Ci Caching):
+### Ch59 (Ci Caching):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Ci Caching' at the top. A robot arm grabbing a pre-made box instead of building one. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch60 (Matrix Builds):
+### Ch60 (Matrix Builds):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Matrix Builds' at the top. A grid of small identical boxes, rows and columns. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch61 (Release Automation):
+### Ch61 (Release Automation):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Release Automation' at the top. A conveyor belt moving a box onto a truck, unattended. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch62 (Environment Promotion):
+### Ch62 (Environment Promotion):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Environment Promotion' at the top. A box climbing labeled stairs: dev → staging → prod. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch63 (Toolchain & Dependencies):
+### Ch63 (Toolchain & Dependencies):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Toolchain & Dependencies' at the top. A wrench linked to a small chain of tool icons. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch64 (What To Document):
+### Ch64 (What To Document):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'What To Document' at the top. An open book beside a code window, one page intentionally blank. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch65 (Readme/Spec/Adr/Comment):
+### Ch65 (Readme/Spec/Adr/Comment):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Readme/Spec/Adr/Comment' at the top. Four small labeled documents in a row. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch66 (Docs Staying Honest):
+### Ch66 (Docs Staying Honest):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Docs Staying Honest' at the top. A book getting a fresh "last updated" stamp. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch67 (Api Docs):
+### Ch67 (Api Docs):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Api Docs' at the top. An instruction card handed from one a cute cartoon capybara to another. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch68 (Runbooks):
+### Ch68 (Runbooks):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Runbooks' at the top. A cute cartoon capybara holding a checklist while a small flame icon flickers nearby. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch69 (Logging Levels):
+### Ch69 (Logging Levels):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Logging Levels' at the top. A scroll of lines next to a volume dial. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch70 (Metrics/Logs/Traces):
+### Ch70 (Metrics/Logs/Traces):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Metrics/Logs/Traces' at the top. Three tiny icons: a bar chart, lines of text, a dotted path. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch71 (Alerting Signal Vs. Noise):
+### Ch71 (Alerting Signal Vs. Noise):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Alerting Signal Vs. Noise' at the top. One ringing bell among a row of muted bells. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch72 (Distributed Tracing):
+### Ch72 (Distributed Tracing):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Distributed Tracing' at the top. A dotted path hopping across several small boxes. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch73 (Error Budgets & Slos):
+### Ch73 (Error Budgets & Slos):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Error Budgets & Slos' at the top. A piggy bank beside a dial reading "99.9%". Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch74 (Shared State Vs. Messages):
+### Ch74 (Shared State Vs. Messages):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Shared State Vs. Messages' at the top. Two cute cartoon capybaras reaching for the same box vs. one handing a sealed envelope to the other. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch75 (Locks):
+### Ch75 (Locks):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Locks' at the top. A padlock on a shared box. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch76 (Async/Threads/Processes):
+### Ch76 (Async/Threads/Processes):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Async/Threads/Processes' at the top. A a cute cartoon capybara juggling vs. identical two cute cartoon capybaras walking in step vs. separate boxes each with its own a cute cartoon capybara. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch77 (Deadlock/Livelock/Starvation):
+### Ch77 (Deadlock/Livelock/Starvation):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Deadlock/Livelock/Starvation' at the top. Two cute cartoon capybaras each gripping one end of a table, stuck. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch78 (The Actor Model):
+### Ch78 (The Actor Model):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'The Actor Model' at the top. Small mailbox icons, each feeding one isolated a cute cartoon capybara. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch79 (Threat Modeling):
+### Ch79 (Threat Modeling):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Threat Modeling' at the top. A cute cartoon capybara sketching a diagram, magnifying glass over one weak spot. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch80 (Defense In Depth):
+### Ch80 (Defense In Depth):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Defense In Depth' at the top. Concentric rings around a center dot. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch81 (Input Validation):
+### Ch81 (Input Validation):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Input Validation' at the top. A cute cartoon capybara at a gate checking a form, rejecting a bad shape. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch82 (Authn Vs. Authz):
+### Ch82 (Authn Vs. Authz):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Authn Vs. Authz' at the top. An ID check next to a separate locked door with a keyhole. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch83 (Secrets Management):
+### Ch83 (Secrets Management):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Secrets Management' at the top. A cute cartoon capybara holding a key inside a small safe. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch84 (Supply Chain Risk):
+### Ch84 (Supply Chain Risk):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Supply Chain Risk' at the top. A chain of boxes, one showing a small crack. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch85 (When To Optimize):
+### Ch85 (When To Optimize):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'When To Optimize' at the top. A gate that only opens once a measurement chart clears it. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch86 (Profiling-First):
+### Ch86 (Profiling-First):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Profiling-First' at the top. A magnifying glass over a bar chart of a running a cute cartoon capybara. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch87 (Latency Vs. Throughput):
+### Ch87 (Latency Vs. Throughput):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Latency Vs. Throughput' at the top. One fast single lane vs. many slower parallel lanes. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch88 (Caching):
+### Ch88 (Caching):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Caching' at the top. A cute cartoon capybara grabbing a nearby labeled box instead of walking to a distant warehouse. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch89 (Data Structures & Algorithms):
+### Ch89 (Data Structures & Algorithms):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Data Structures & Algorithms' at the top. A neatly sorted row of boxes beside a scattered pile. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-Ch90 (Cost Of Abstraction):
+### Ch90 (Cost Of Abstraction):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Cost Of Abstraction' at the top. A layered stack with a small price tag on top. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-ApA (Decision Frameworks):
+### ApA (Decision Frameworks):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Decision Frameworks' at the top. A cute cartoon capybara holding a small fanned spread of labeled tool cards (a scale, a fork-in-the-road sign, a checklist), choosing one to hold up. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-ApB (Common Smells):
+### ApB (Common Smells):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Common Smells' at the top. A cute cartoon capybara holding its nose near a box with faint stink lines. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-ApC (Architecture Patterns Catalog):
+### ApC (Architecture Patterns Catalog):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Architecture Patterns Catalog' at the top. A cute cartoon capybara standing before a wall of small labeled blueprint tiles, lifting one off the wall to look at it closer. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.
 
-ApD (Full Glossary):
+### ApD (Full Glossary):
 Minimalist clean black and white line art vector diagram, square 1:1 aspect ratio, on a pure white background with black outlines. Labeled 'Full Glossary' at the top. A cute cartoon capybara at a large open book with a magnifying glass over one highlighted word, small labeled tabs sticking out along the book's edge like a dictionary's thumb index. Minimalist cartoon style, square format, white background, black line outlines, cute capybara, clean text.

@@ -1,32 +1,95 @@
 ---
-import '../styles/global.css';
+import DocsLayout from './DocsLayout.astro';
+import ReadingFooter from '../components/ReadingFooter.astro';
+
+interface HeadingItem {
+  title: string;
+  slug: string;
+}
 
 interface Props {
   chapterNumber: string;
   title: string;
+  headings?: HeadingItem[];
 }
 
-const { chapterNumber, title } = Astro.props;
+const { chapterNumber, title, headings = [] } = Astro.props;
+const currentSlug = Astro.url.pathname.split('/').pop() || '';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — So, What Do You Actually Do?</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="/">
-        <span class="brand-title">So, What Do You Actually Do?</span>
-        <span class="brand-subtitle">A Software Engineer's Handbook — With a Chapter for Everyone Else</span>
-      </a>
-    </header>
+<DocsLayout title={title}>
+  <div class="docs-content-container">
+    <div class="chapter-scroller" id="chapterScroller">
+      <article class="chapter-main">
+        <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
+        <h1>{title}</h1>
+        <slot />
+      </article>
+    </div>
+    
+    {headings && headings.length > 0 && (
+      <aside class="toc-sidebar">
+        <div class="toc-title">On this page</div>
+        <ul class="toc-list">
+          <li>
+            <a href="#" class="toc-link active">Overview</a>
+          </li>
+          {headings.map((h) => (
+            <li>
+              <a href={`#${h.slug}`} class="toc-link">{h.title}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </div>
+  
+  <ReadingFooter currentSlug={currentSlug} type="chapter" />
+</DocsLayout>
 
-    <main class="chapter-main">
-      <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
-      <h1>{title}</h1>
-      <slot />
-    </main>
-  </body>
-</html>
+<script>
+  // Intersection Observer for Right Sidebar ToC Highlight (Scroll Spy)
+  const scroller = document.getElementById('chapterScroller');
+  
+  if (scroller) {
+    const observerOptions = {
+      root: scroller,
+      rootMargin: '-10% 0px -75% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            document.querySelectorAll('.toc-link').forEach((link) => {
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections inside scroller that have an ID
+    const sections = scroller.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    // Handle scroll to top (highlight Overview link)
+    scroller.addEventListener('scroll', () => {
+      if (scroller.scrollTop < 100) {
+        document.querySelectorAll('.toc-link').forEach((link) => {
+          if (link.getAttribute('href') === '#') {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+</script>

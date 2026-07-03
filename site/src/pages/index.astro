@@ -1,29 +1,236 @@
 ---
-import '../styles/global.css';
+import DocsLayout from '../layouts/DocsLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>So, What Do You Actually Do?</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <span class="brand-title">So, What Do You Actually Do?</span>
-      <div class="brand-subtitle">A Software Engineer's Handbook — With a Chapter for Everyone Else</div>
-    </header>
-    <main class="chapter-main">
-      <h1>Scaffold — two demo chapters</h1>
-      <p>This is a proof-of-concept of the split-view / independent-scroll layout, wired
-      up against two real chapters. The Engineer column reads live from the actual
-      chapter markdown; the Wife/Kids columns are placeholder copy until the real
-      editorial passes fill every chapter in.</p>
-      <ul>
-        <li><a href="/parts/part01">Part I — Systems Thinking (Part intro page)</a></li>
-        <li><a href="/chapters/ch01">Ch 01 — What Engineering Actually Optimizes</a></li>
-        <li><a href="/chapters/ch04">Ch 04 — Abstraction and Information Hiding</a></li>
-      </ul>
-    </main>
-  </body>
-</html>
+<DocsLayout title="A Software Engineer's Handbook">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-icon">⚡</span>
+        <span class="badge-text">Interactive Edition</span>
+      </div>
+      <h1>So, What Do You Actually Do?</h1>
+      <p class="hero-lead">
+        A deep-dive handbook for senior software engineers, system architects, and technical leaders — with parallel tracks designed for your family, teammates, and stakeholders.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="/chapters/ch01" class="btn btn--primary">
+          Start Reading <span class="btn-arrow">→</span>
+        </a>
+        <a href="/sitemap" class="btn btn--secondary">
+          Table of Contents
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="grid-card card-systems">
+        <div class="card-icon">🧭</div>
+        <h3>Systems Thinking</h3>
+        <p>Master the foundational trade-offs of modern computing systems: latency, throughput, reliability, and change cost.</p>
+      </div>
+
+      <div class="grid-card card-arch">
+        <div class="card-icon">🏗️</div>
+        <h3>Architecture & Design</h3>
+        <p>Learn structural decomposition, dependency boundaries, API design, and asynchronous patterns that survive scale.</p>
+      </div>
+
+      <div class="grid-card card-process">
+        <div class="card-icon">🔄</div>
+        <h3>Process & Delivery</h3>
+        <p>Optimize issue tracking, spec-first engineering, commit pipelines, CI automation, and team communication dynamics.</p>
+      </div>
+    </div>
+  </div>
+</DocsLayout>
+
+<style>
+  .hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    position: relative;
+  }
+  
+  /* Modern neon nebula mesh backdrop glows */
+  .hero-container::before {
+    content: "";
+    position: absolute;
+    top: 5%;
+    right: -10%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--accent-low) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .hero-container::after {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    left: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent-low) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .hero-content {
+    text-align: left;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--vocab-chip-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: 850;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-color) 40%, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn--primary {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  }
+  
+  .btn--primary:hover {
+    background: var(--accent-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+  }
+  
+  .btn-arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .btn--primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+  
+  .btn--secondary {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .btn--secondary:hover {
+    background: var(--sidebar-link-hover-bg);
+    border-color: var(--text-muted);
+    transform: translateY(-2px);
+  }
+  
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  
+  .grid-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+  
+  /* Starlight Card Top Accent Border */
+  .grid-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .grid-card:hover::before {
+    opacity: 1;
+  }
+  
+  .grid-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.2), 0 4px 12px -8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card-icon {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .grid-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 750;
+  }
+  
+  .grid-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

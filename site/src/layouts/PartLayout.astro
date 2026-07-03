@@ -1,39 +1,33 @@
 ---
-import '../styles/global.css';
+import DocsLayout from './DocsLayout.astro';
+import ReadingFooter from '../components/ReadingFooter.astro';
 
 interface Props {
   partNumber: string;
   title: string;
   bannerEmoji?: string;
   bannerSrc?: string;
+  eyebrow?: string;
 }
 
-const { partNumber, title, bannerEmoji = '🗺️', bannerSrc } = Astro.props;
+const { partNumber, title, bannerEmoji = '🗺️', bannerSrc, eyebrow } = Astro.props;
+const displayEyebrow = eyebrow || `Part ${partNumber}`;
+const currentSlug = Astro.url.pathname.split('/').pop() || '';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — So, What Do You Actually Do?</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="/">
-        <span class="brand-title">So, What Do You Actually Do?</span>
-        <span class="brand-subtitle">A Software Engineer's Handbook — With a Chapter for Everyone Else</span>
-      </a>
-    </header>
-
-    <main class="part-main">
-      <div class="part-banner" title="Part banner illustration placeholder">
-        {bannerSrc ? <img src={bannerSrc} alt="" /> : <span class="part-banner-placeholder">{bannerEmoji}</span>}
-      </div>
-      <p class="chapter-eyebrow">Part {partNumber}</p>
-      <h1>{title}</h1>
-      <div class="part-body">
-        <slot />
-      </div>
-    </main>
-  </body>
-</html>
+<DocsLayout title={title}>
+  <div class="part-main">
+    <div class="part-banner" title="Part banner illustration placeholder">
+      {bannerSrc ? <img src={bannerSrc} alt="" /> : <span class="part-banner-placeholder">{bannerEmoji}</span>}
+    </div>
+    <p class="chapter-eyebrow">{displayEyebrow}</p>
+    <h1>{title}</h1>
+    <div class="part-body">
+      <slot />
+    </div>
+    
+    <div style="margin-top: 4rem;">
+      <ReadingFooter currentSlug={currentSlug} type="part" />
+    </div>
+  </div>
+</DocsLayout>

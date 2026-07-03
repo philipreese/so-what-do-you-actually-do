@@ -1,0 +1,31 @@
+---
+import fs from 'node:fs';
+import { marked } from 'marked';
+import PartLayout from '../../layouts/PartLayout.astro';
+import { getAllPartsAndChapters } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const { parts } = getAllPartsAndChapters();
+  return parts.map((part) => ({
+    params: { slug: part.slug },
+    props: { part },
+  }));
+}
+
+const { part } = Astro.props;
+const rawReadme = fs.readFileSync(part.filePath, 'utf-8');
+
+// Drop the leading "# Part I — ..." heading; the layout already renders the title.
+let bodyMarkdown = rawReadme.replace(/^#[^\n]*\n/, '');
+
+// Dynamically link all chapters in this part
+for (const ch of part.chapters) {
+  bodyMarkdown = bodyMarkdown.replace(ch.title, `[${ch.title}](/chapters/${ch.slug})`);
+}
+
+const bodyHtml = marked.parse(bodyMarkdown) as string;
+---
+
+<PartLayout partNumber={part.romanNumber} title={part.title} bannerEmoji={part.emoji}>
+  <Fragment set:html={bodyHtml} />
+</PartLayout>

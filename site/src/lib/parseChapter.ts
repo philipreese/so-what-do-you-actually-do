@@ -189,10 +189,15 @@ function renderField(label: FieldLabel, html: string | undefined): string {
     </div>`;
 }
 
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 function renderSection(section: Section): string {
+  const slug = slugify(section.heading);
   if (section.kind === 'plain') {
     return `
-      <section class="chapter-section">
+      <section class="chapter-section" id="${slug}">
         <h2>${escapeHtml(section.heading)}</h2>
         ${section.html}
       </section>`;
@@ -200,7 +205,7 @@ function renderSection(section: Section): string {
 
   if (section.kind === 'disagree') {
     return `
-      <section class="disagree-block">
+      <section class="disagree-block" id="${slug}">
         <h2>${escapeHtml(section.heading)}</h2>
         ${section.html}
       </section>`;
@@ -208,7 +213,7 @@ function renderSection(section: Section): string {
 
   const { heading, fieldsHtml, badges, disagree } = section;
   return `
-    <section class="decision-block">
+    <section class="decision-block" id="${slug}">
       <h2 class="decision-heading">${escapeHtml(heading)}</h2>
       <div class="decision-lede">
         ${renderField('What it is', fieldsHtml['What it is'])}

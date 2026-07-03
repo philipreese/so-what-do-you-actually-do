@@ -5,7 +5,7 @@ Delete after all 90 chapters are done (flag to user first).
 
 ---
 
-## Session 1 — Ch01 and Ch88 (calibration)
+## Ch01 and Ch88 (calibration)
 
 ### What worked
 - Concrete analogy that lands in one clause, then follows through rather than switching analogies mid-paragraph
@@ -36,8 +36,32 @@ Delete after all 90 chapters are done (flag to user first).
 - Paragraph count: 2–4, varies by chapter complexity — do not default to 4 every time
 - Short chapters get shorter sections; complex multi-decision chapters can run to 4 paragraphs
 - Do NOT make every chapter identical in length or structure — organic variation is the goal
-Insert immediately after the Key takeaways bullet list, before the first `---` divider.
 
 ---
 
-## Sessions to follow
+## Part I, Ch02–Ch09
+
+### Formatting used (for reference)
+- **Ch02**: 2 bold paragraphs + mid-section italic pull-quote + 1 plain closing paragraph
+- **Ch03**: pull-quote opener + 3 bold paragraphs
+- **Ch04**: 2 bold paragraphs + 1 plain paragraph + `[!NOTE]` block at end
+- **Ch05**: 2 bold paragraphs + 1 plain paragraph (shortest — chapter argument is tight)
+- **Ch06**: 2 bold paragraphs + 1 plain closing paragraph
+- **Ch07**: pull-quote opener + 3 bold paragraphs
+- **Ch08**: 2 bold paragraphs + 1 plain paragraph (Conway's Law tangent at end, no bold needed)
+- **Ch09**: pull-quote opener + 2 bold paragraphs + 1 plain closing paragraph
+
+### What worked
+- Mid-section pull-quotes (Ch02: *"Systems don't usually fail because the problem was too hard"*) — good for chapters where one sentence is the real point
+- `[!NOTE]` block works well for "here's the specific gotcha" (Ch04: wrong abstraction costs more than no abstraction)
+- Chapters with a tight single argument (Ch05, Ch08) ran shorter — 3 paragraphs, no opener quote — and felt right for their length
+- Concrete analogies that commit to one image: filing cabinet (Ch03 cohesion), highway construction zone (Ch08 bottleneck), house with movable walls (Ch05 change vs. future-proofing)
+
+### What was cut / avoided
+- Did not open every chapter with a pull-quote — roughly half have one, half open directly on bold text
+- Did not force 4 paragraphs on every chapter — several are 3
+- Avoided re-explaining prerequisite concepts (Ch07 mentions CAP theorem inline without re-teaching it)
+
+### Next session
+- Continue with Part II, Ch10–Ch18
+- Push after Part II or III per the process instructions

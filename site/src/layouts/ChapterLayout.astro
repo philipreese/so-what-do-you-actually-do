@@ -19,12 +19,16 @@ const currentSlug = Astro.url.pathname.split('/').pop() || '';
 
 <DocsLayout title={title}>
   <div class="docs-content-container">
-    <div class="chapter-scroller" id="chapterScroller">
-      <article class="chapter-main">
-        <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
-        <h1>{title}</h1>
+    <div class="chapter-container">
+      <header class="chapter-header">
+        <div class="chapter-header-left">
+          <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
+          <h1>{title}</h1>
+        </div>
+      </header>
+      <div class="chapter-content-slot">
         <slot />
-      </article>
+      </div>
     </div>
     
     {headings && headings.length > 0 && (
@@ -49,47 +53,59 @@ const currentSlug = Astro.url.pathname.split('/').pop() || '';
 
 <script>
   // Intersection Observer for Right Sidebar ToC Highlight (Scroll Spy)
-  const scroller = document.getElementById('chapterScroller');
-  
-  if (scroller) {
-    const observerOptions = {
-      root: scroller,
-      rootMargin: '-10% 0px -75% 0px',
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          if (id) {
-            document.querySelectorAll('.toc-link').forEach((link) => {
-              if (link.getAttribute('href') === `#${id}`) {
-                link.classList.add('active');
-              } else {
-                link.classList.remove('active');
-              }
-            });
-          }
-        }
-      });
-    }, observerOptions);
-
-    // Observe all sections inside scroller that have an ID
-    const sections = scroller.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
-
-    // Handle scroll to top (highlight Overview link)
-    scroller.addEventListener('scroll', () => {
-      if (scroller.scrollTop < 100) {
-        document.querySelectorAll('.toc-link').forEach((link) => {
-          if (link.getAttribute('href') === '#') {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
+  // Listen to scroll events on the .pane-engineer since it's the scrollable content pane
+  function setupScrollSpy() {
+    const scroller = document.querySelector('.pane-engineer');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    
+    if (scroller && tocLinks.length > 0) {
+      const observerOptions = {
+        root: scroller,
+        rootMargin: '-10% 0px -70% 0px',
+        threshold: 0
+      };
+ 
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            if (id) {
+              tocLinks.forEach((link) => {
+                if (link.getAttribute('href') === `#${id}`) {
+                  link.classList.add('active');
+                } else {
+                  link.classList.remove('active');
+                }
+              });
+            }
           }
         });
-      }
-    });
+      }, observerOptions);
+ 
+      // Observe all sections inside scroller that have an ID
+      const sections = scroller.querySelectorAll('section[id]');
+      sections.forEach((section) => observer.observe(section));
+ 
+      // Handle scroll to top (highlight Overview link)
+      scroller.addEventListener('scroll', () => {
+        if (scroller.scrollTop < 80) {
+          tocLinks.forEach((link) => {
+            if (link.getAttribute('href') === '#') {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }
   }
+
+  // Run on load and after dynamic pane changes
+  setupScrollSpy();
+
+  // Watch for click events on toggles to re-initialize scroll spy
+  document.getElementById('toggle-wife-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
+  document.getElementById('toggle-kids-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
+  document.getElementById('toggle-eng-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
 </script>

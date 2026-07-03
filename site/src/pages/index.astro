@@ -15,7 +15,7 @@ import DocsLayout from '../layouts/DocsLayout.astro';
       </p>
       
       <div class="hero-buttons">
-        <a href="/chapters/ch01" class="btn btn--primary">
+        <a href="/parts/part01" class="btn btn--primary">
           Start Reading <span class="btn-arrow">→</span>
         </a>
         <a href="/sitemap" class="btn btn--secondary">
@@ -25,22 +25,19 @@ import DocsLayout from '../layouts/DocsLayout.astro';
     </div>
 
     <div class="hero-grid">
-      <div class="grid-card card-systems">
-        <div class="card-icon">🧭</div>
-        <h3>Systems Thinking</h3>
-        <p>Master the foundational trade-offs of modern computing systems: latency, throughput, reliability, and change cost.</p>
+      <div class="grid-card card-engineer">
+        <h3>For Engineers</h3>
+        <p>The full, deep-dive technical handbook detailing distributed systems, code organization, concurrency, performance, and low-level architecture trade-offs.</p>
       </div>
 
-      <div class="grid-card card-arch">
-        <div class="card-icon">🏗️</div>
-        <h3>Architecture & Design</h3>
-        <p>Learn structural decomposition, dependency boundaries, API design, and asynchronous patterns that survive scale.</p>
+      <div class="grid-card card-wife">
+        <h3>For My Wife</h3>
+        <p>A warm, jargon-free translation of every chapter's core argument and real-world stakes, written for smart, curious non-engineers.</p>
       </div>
 
-      <div class="grid-card card-process">
-        <div class="card-icon">🔄</div>
-        <h3>Process & Delivery</h3>
-        <p>Optimize issue tracking, spec-first engineering, commit pipelines, CI automation, and team communication dynamics.</p>
+      <div class="grid-card card-kids">
+        <h3>For My Kids</h3>
+        <p>Approachable, simplified explanations of core computing concepts using fun, everyday analogies and friendly mascot illustrations.</p>
       </div>
     </div>
   </div>
@@ -92,9 +89,9 @@ import DocsLayout from '../layouts/DocsLayout.astro';
     gap: 0.5rem;
     padding: 0.35rem 0.85rem;
     background: var(--vocab-chip-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 99px;
-    font-size: 0.75rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 1.5rem;
@@ -104,17 +101,16 @@ import DocsLayout from '../layouts/DocsLayout.astro';
   
   .hero-content h1 {
     font-size: 4rem;
-    font-weight: 850;
+    font-weight: 500;
     line-height: 1.05;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--text-color) 40%, var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-color);
   }
   
   .hero-lead {
-    font-size: 1.25rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.35rem;
     line-height: 1.6;
     color: var(--text-muted);
     max-width: 720px;
@@ -131,26 +127,37 @@ import DocsLayout from '../layouts/DocsLayout.astro';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.9rem 2rem;
-    border-radius: 12px;
-    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
     font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .btn--primary {
     background: var(--accent-color);
     color: white;
-    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+    box-shadow: 0 4px 14px rgba(114, 135, 253, 0.2);
   }
   
+  [data-theme="dark"] .btn--primary {
+    color: #181926; /* High contrast dark text on lavender button in dark mode */
+  }
+
   .btn--primary:hover {
     background: var(--accent-hover);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+    box-shadow: 0 6px 20px rgba(114, 135, 253, 0.3);
   }
   
+  [data-theme="dark"] .btn--primary:hover {
+    color: #181926;
+  }
+
   .btn-arrow {
     margin-left: 0.5rem;
     transition: transform 0.2s ease;
@@ -163,14 +170,14 @@ import DocsLayout from '../layouts/DocsLayout.astro';
   .btn--secondary {
     background: var(--card-bg);
     color: var(--text-color);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
   
   .btn--secondary:hover {
     background: var(--sidebar-link-hover-bg);
-    border-color: var(--text-muted);
+    border-color: var(--border-focus);
     transform: translateY(-2px);
   }
   
@@ -183,48 +190,49 @@ import DocsLayout from '../layouts/DocsLayout.astro';
   .grid-card {
     position: relative;
     background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+    border: 2.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
   }
   
-  /* Starlight Card Top Accent Border */
-  .grid-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
-    opacity: 0;
-    transition: opacity 0.25s ease;
+  .card-engineer {
+    border-left: 6px solid #1e66f5; /* Catppuccin Blue */
   }
   
-  .grid-card:hover::before {
-    opacity: 1;
+  [data-theme="dark"] .card-engineer {
+    border-left-color: #8cadfa;
+  }
+
+  .card-wife {
+    border-left: 6px solid #e11d48; /* Red/Rose */
   }
   
+  [data-theme="dark"] .card-wife {
+    border-left-color: #fda4af;
+  }
+
+  .card-kids {
+    border-left: 6px solid #df8e1d; /* Yellow/Amber */
+  }
+  
+  [data-theme="dark"] .card-kids {
+    border-left-color: #eed49f;
+  }
+
   .grid-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-color);
-    box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.2), 0 4px 12px -8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .card-icon {
-    font-size: 2.25rem;
-    margin-bottom: 1.25rem;
+    transform: translateY(-3px);
+    border-color: var(--border-focus);
+    box-shadow: 0 12px 30px -10px rgba(114, 135, 253, 0.2), 0 4px 12px -8px rgba(0, 0, 0, 0.05);
   }
   
   .grid-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     margin-bottom: 0.75rem;
-    font-weight: 750;
+    font-weight: 500;
+    font-family: 'Newsreader', Georgia, serif;
   }
   
   .grid-card p {

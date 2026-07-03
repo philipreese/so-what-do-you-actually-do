@@ -44,41 +44,55 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
     })();
   </script>
 
-  <!-- Track Toggles -->
-  <div class="track-toggle" role="group" aria-label="Choose which reading tracks to show">
-    <button type="button" id="toggle-wife-btn">For My Wife</button>
-    <button type="button" id="toggle-kids-btn">For My Kids</button>
-    <button type="button" id="toggle-eng-btn">Engineer Only</button>
+  <!-- Control bar aligned above panes, float toggles to the right -->
+  <div class="tracks-control-bar">
+    <span class="tracks-label"></span>
+    <div class="track-toggle" role="group" aria-label="Toggle supplementary summaries">
+      <button type="button" id="toggle-wife-btn">For My Wife</button>
+      <button type="button" id="toggle-kids-btn">For My Kids</button>
+    </div>
   </div>
 
   <div class="track-panes">
     <!-- Engineer Pane -->
     <div class="pane pane-engineer">
-      <h2 class="pane-label">For Engineers</h2>
-      <div set:html={engineerHtml} />
+      <div class="pane-header">
+        <h2 class="pane-label">Technical Reference</h2>
+      </div>
+      <div class="pane-content">
+        <div set:html={engineerHtml} />
+      </div>
     </div>
 
     <!-- Secondary Stack (Wife & Kids) -->
     <div class="secondary-stack" id="secondaryStack">
       <!-- Wife Pane -->
       <div class="pane pane-secondary pane-secondary--wife">
-        <h2 class="pane-label">For My Wife</h2>
-        <div set:html={wifeHtml} />
+        <div class="pane-header">
+          <h2 class="pane-label">For My Wife</h2>
+        </div>
+        <div class="pane-content">
+          <div set:html={wifeHtml} />
+        </div>
       </div>
 
       <!-- Kids Pane -->
       <div class="pane pane-secondary pane-secondary--kids">
-        <h2 class="pane-label">For My Kids</h2>
-        <div class="mascot-slot">
-          {mascotSrc ? (
-            <img class="mascot-image" src={mascotSrc} alt="Chapter mascot" />
-          ) : (
-            <span class="mascot-placeholder" title="Mascot illustration placeholder">
-              {mascotEmoji}
-            </span>
-          )}
+        <div class="pane-header">
+          <h2 class="pane-label">For My Kids</h2>
         </div>
-        <div set:html={kidsHtml} />
+        <div class="pane-content">
+          <div class="mascot-slot">
+            {mascotSrc ? (
+              <img class="mascot-image" src={mascotSrc} alt="Chapter mascot" />
+            ) : (
+              <span class="mascot-placeholder" title="Mascot illustration placeholder">
+                {mascotEmoji}
+              </span>
+            )}
+          </div>
+          <div set:html={kidsHtml} />
+        </div>
       </div>
     </div>
   </div>
@@ -91,7 +105,6 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
   const wrapper = document.getElementById('tracks-wrapper');
   const toggleWifeBtn = document.getElementById('toggle-wife-btn');
   const toggleKidsBtn = document.getElementById('toggle-kids-btn');
-  const toggleEngBtn = document.getElementById('toggle-eng-btn');
 
   function getInitialView() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -128,9 +141,6 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
 
     toggleKidsBtn?.classList.toggle('active', showKids);
     toggleKidsBtn?.setAttribute('aria-pressed', String(showKids));
-
-    toggleEngBtn?.classList.toggle('active', isEngineerOnly);
-    toggleEngBtn?.setAttribute('aria-pressed', String(isEngineerOnly));
 
     // Update URL query param to reflect view state
     const url = new URL(window.location.href);
@@ -184,7 +194,6 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
 
   toggleWifeBtn?.addEventListener('click', toggleWife);
   toggleKidsBtn?.addEventListener('click', toggleKids);
-  toggleEngBtn?.addEventListener('click', () => setView('hidden'));
 
   // Run updates to set active button states
   updateDom();

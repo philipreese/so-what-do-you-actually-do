@@ -16,18 +16,21 @@ const currentSlug = Astro.url.pathname.split('/').pop() || '';
 ---
 
 <DocsLayout title={title}>
-  <div class="part-main">
-    <div class="part-banner" title="Part banner illustration placeholder">
-      {bannerSrc ? <img src={bannerSrc} alt="" /> : <span class="part-banner-placeholder">{bannerEmoji}</span>}
-    </div>
-    <p class="chapter-eyebrow">{displayEyebrow}</p>
-    <h1>{title}</h1>
-    <div class="part-body">
-      <slot />
-    </div>
+  <div class="part-container">
+    <header class="part-header">
+      <div class="part-banner" title="Part banner illustration placeholder">
+        {bannerSrc ? <img src={bannerSrc} alt="" /> : <span class="part-banner-placeholder">{bannerEmoji}</span>}
+      </div>
+      <p class="chapter-eyebrow">{displayEyebrow}</p>
+      <h1>{title}</h1>
+    </header>
     
-    <div style="margin-top: 4rem;">
-      <ReadingFooter currentSlug={currentSlug} type="part" />
+    <div class="part-content-slot">
+      <div class="part-body">
+        <slot />
+      </div>
     </div>
   </div>
+  
+  <ReadingFooter currentSlug={currentSlug} type="part" />
 </DocsLayout>

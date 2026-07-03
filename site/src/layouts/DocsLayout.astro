@@ -23,10 +23,10 @@ const activePartSlug = parts.find(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — So, What Do You Actually Do?</title>
-    <!-- Modern Fonts -->
+    <!-- Premium Editorial & Neo-Grotesque Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     
     <!-- Theme initialisation (Runs immediately to prevent flashing) -->
     <script is:inline>
@@ -40,7 +40,13 @@ const activePartSlug = parts.find(
     </script>
   </head>
   <body>
-    <div class="docs-layout">
+    <div class="docs-layout" id="docsLayout">
+      <!-- Inline script to apply minimized class before paint if stored -->
+      <script is:inline>
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('sidebar-minimized') === 'true') {
+          document.getElementById('docsLayout').classList.add('sidebar-minimized');
+        }
+      </script>
       <!-- Top Header -->
       <header class="docs-header">
         <div class="header-left">
@@ -87,10 +93,10 @@ const activePartSlug = parts.find(
           <nav class="sidebar-nav">
             <div class="sidebar-section">
               <a href="/" class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
-                🏠 Introduction
+                Introduction
               </a>
               <a href="/sitemap" class={`sidebar-link ${currentPath === '/sitemap' ? 'active' : ''}`}>
-                🗺️ Table of Contents
+                Table of Contents
               </a>
             </div>
 
@@ -111,7 +117,7 @@ const activePartSlug = parts.find(
                   <ul class="sidebar-list">
                     <li>
                       <a href={`/parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
-                        <span class="chapter-num">📖</span>
+                        <span class="chapter-num">&mdash;</span>
                         <span class="sidebar-chapter-title-text">Part Overview</span>
                       </a>
                     </li>
@@ -144,6 +150,14 @@ const activePartSlug = parts.find(
                 </ul>
               </div>
             )}
+            <!-- Sidebar Collapse Button -->
+            <div class="sidebar-collapse-container">
+              <button class="sidebar-collapse-toggle" id="sidebarCollapseToggle" aria-label="Minimize sidebar">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+            </div>
           </nav>
         </aside>
 
@@ -164,6 +178,14 @@ const activePartSlug = parts.find(
         const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
         root.setAttribute('data-theme', nextTheme);
         localStorage.setItem('theme', nextTheme);
+      });
+
+      // Sidebar Minimization Toggle
+      const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
+      const docsLayout = document.getElementById('docsLayout');
+      sidebarCollapseToggle?.addEventListener('click', () => {
+        const isMinimized = docsLayout?.classList.toggle('sidebar-minimized');
+        localStorage.setItem('sidebar-minimized', String(isMinimized));
       });
 
       // Mobile Drawer Toggle

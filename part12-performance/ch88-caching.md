@@ -11,6 +11,18 @@
 - Population strategy (cache-aside, write-through, write-behind) and invalidation strategy (TTL, explicit, event-driven) are independent decisions — a system can combine any population strategy with any invalidation strategy.
 - **Cache stampede** — a thundering herd of concurrent requests all missing a freshly expired key at once and hitting the backing store simultaneously — is a named, specific failure mode with a standard mitigation: request coalescing or a short-lived regeneration lock.
 
+## For My Wife
+
+> *Storing fast copies of data is the easy part. Knowing when those copies are lying to you is the hard part — and it has a famous name.*
+
+**A cache is a faster copy of something stored nearby.** Imagine a convenience store that stocks the five things the neighborhood buys constantly, so you don't have to drive to the warehouse every time. The warehouse is the actual database — authoritative, slow to reach. The convenience store is the cache — fast, but only as good as when it was last stocked.
+
+**Most of the engineering work in caching isn't figuring out what to store. It's figuring out when to throw it out.** Once you've stored a fast copy of something, how do you know when the original changed and your copy is now lying to you? This problem has a famous name: cache invalidation. Phil Karlton — an engineer at Netscape in the 90s — called it one of only two genuinely hard problems in computer science, and that observation has stuck because it's accurate.
+
+**Every approach to invalidation involves a trade-off.** You can set a timer — assume the copy is stale every five minutes and refresh it. Simple, but you spend those five minutes serving wrong answers. Or you can invalidate the copy the moment a write happens. Accurate, but this requires every single piece of code that does a write to know about the cache and remember to clear it — and that is the kind of thing that gets forgotten under deadline pressure.
+
+**The chapter's recommendation is to automate it mechanically.** Watch the database's write stream automatically and fire the cache eviction without relying on any individual developer to remember. Humans under deadline pressure stop remembering things, and a caching bug where wrong data gets served quietly for days is exactly the kind of incident that costs real money or ends up in a public postmortem.
+
 ---
 
 This chapter resolves two forward references made by number — Ch 06 deferred caching layer design here, and Ch 08 deferred caching strategy here — and one made by example: Ch 02 used "managing distributed cache invalidation" as its illustration of accidental complexity, the kind of difficulty that would not exist if the same problem were solved on paper. That was never a reason to avoid caching. It was a flag that invalidation is where caching's real difficulty lives, and this chapter is where that difficulty gets a full treatment.

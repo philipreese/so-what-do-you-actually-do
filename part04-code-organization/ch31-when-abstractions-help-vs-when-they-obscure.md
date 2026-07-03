@@ -5,15 +5,15 @@
 **New vocabulary introduced:** speculative generality, indirection tax
 
 **Key takeaways:**
-- Every abstraction carries an indirection tax: a reader must now jump between an invocation and its execution, consuming working memory at every hop.
-- Abstractions for readability and abstractions for flexibility solve different problems and must be evaluated by different criteria. A single-implementation wrapper that gives a clumsy API a domain-meaningful name is justified even if the underlying implementation never changes.
-- An interface with exactly one implementation and no credible second one hides nothing. It doubles the type count and breaks IDE navigation for no architectural benefit.
-- The Strategy Pattern applied to a choice that is fixed at compile time adds the overhead of runtime polymorphism while eliminating the readability of a plain switch statement.
-- Rob Pike's Go proverb: "A little copying is better than a little dependency." Duplicating five lines of stable concrete code is often cheaper than extracting a shared abstraction that couples two call sites which have independent reasons to change.
+- Every abstraction charges an indirection tax: a reader now has to jump between an invocation and its execution, spending working memory on every single hop.
+- Abstractions for readability and abstractions for flexibility solve entirely different problems and deserve entirely different criteria. A single-implementation wrapper that hands a clumsy API a domain-meaningful name is justified even if the underlying implementation never changes across its whole lifetime.
+- An interface with exactly one implementation and no credible second one in sight hides nothing at all. It just doubles the type count and breaks IDE navigation, for zero architectural benefit in return.
+- The Strategy Pattern applied to a choice that's actually fixed at compile time adds the overhead of runtime polymorphism while throwing away the readability a plain switch statement would've given you for free.
+- Rob Pike's Go proverb: "A little copying is better than a little dependency." Duplicating five lines of stable concrete code is often cheaper, in the long run, than extracting a shared abstraction that couples two call sites with independent reasons to change.
 
 ---
 
-[Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) established that the wrong abstraction is worse than no abstraction. [Ch 14](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md) applied that test at the architectural layer level. This chapter applies the same test at the smallest grain: a single function, a single class, a localized utility. The failure modes here are distinct from architectural ones — not a misplaced layer, but an interface introduced for a variation that will never happen, a pattern applied where a plain conditional would have been clearer.
+[Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) established that the wrong abstraction is worse than none at all. [Ch 14](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md) applied that test at the architectural layer. This chapter runs the same test at the smallest possible grain: a single function, a single class, one localized utility. The failure modes here look nothing like the architectural ones — not a misplaced layer, but an interface built for a variation that will never actually happen, a pattern reached for where a plain conditional would've been clearer to everyone.
 
 ---
 
@@ -21,19 +21,19 @@
 
 **What it is:** The two legitimate motivations for introducing an abstraction — and the reason they must be evaluated differently.
 
-**Why it exists:** Judging a readability abstraction by whether it supports multiple implementations is the wrong question. Judging a flexibility abstraction by whether it clarifies local reading is equally wrong. Conflating the two causes engineers to reject wrappers that improve code clarity and to introduce interfaces that serve no real architectural purpose.
+**Why it exists:** Judging a readability abstraction by whether it supports multiple implementations is asking the wrong question entirely. Judging a flexibility abstraction by whether it clarifies local reading is equally off base. Conflate the two and engineers start rejecting wrappers that genuinely improve clarity, while waving through interfaces that serve no real architectural purpose at all.
 
 **The two categories:**
 
-**Flexibility abstractions** hide an implementation choice behind a stable contract so the implementation can be swapped — for testing, for multiple runtime behaviors, for future substitution at a real variation point. These earn their indirection by isolating genuine change. Evaluated by: does realistic variation exist, or is this speculation?
+**Flexibility abstractions** hide an implementation choice behind a stable contract so the implementation can actually be swapped — for testing, for multiple runtime behaviors, for future substitution at a real variation point. These earn their indirection by isolating genuine change. Evaluated by: does realistic variation actually exist here, or is this just speculation dressed up as architecture?
 
-**Readability abstractions** translate a noisy, awkward, or implementation-heavy call into the domain's own vocabulary. A one-line wrapper that gives a cluttered third-party API call a meaningful name belongs here. Evaluated by: does this make the calling code read as a requirements statement rather than a library manual?
+**Readability abstractions** translate a noisy, awkward, implementation-heavy call into the domain's own vocabulary instead. A one-line wrapper giving a cluttered third-party API call a meaningful name belongs squarely here. Evaluated by: does this make the calling code read like a requirements statement instead of a library manual?
 
-[Strong Recommendation] A readability abstraction is justified even with exactly one implementation, because its payoff is local clarity, not future substitutability — and it should never be held to a swappability bar it was never trying to clear.
+[Strong Recommendation] A readability abstraction is justified even with exactly one implementation forever, because its whole payoff is local clarity, not future substitutability — and it should never be held to a swappability bar it never set out to clear in the first place.
 
-**Example (readability):** A third-party SDK exposes `ThirdPartySdk.ExecuteWithTransaction(context, opts, callback)`. Wrapping it in `settleInvoice(invoiceId)` expresses domain intent at every call site and shields billing logic from the SDK's calling convention. The wrapper is correct even if `settleInvoice` will always delegate to exactly that one SDK forever.
+**Example (readability):** A third-party SDK exposes `ThirdPartySdk.ExecuteWithTransaction(context, opts, callback)`. Wrapping it in `settleInvoice(invoiceId)` puts domain intent at every call site and shields billing logic from the SDK's own calling convention. The wrapper is correct even if `settleInvoice` delegates to that exact one SDK for the rest of its natural life.
 
-**Example (readability, concrete):** A DynamoDB query via `boto3` requires assembling 15 lines of `ExpressionAttributeValues` and `KeyConditionExpression` dictionaries. Dropping this into the middle of `approve_loan()` destroys reading flow. Wrapping it in `find_customer_by_id(id)` is the right use of abstraction — not because the database will change, but because the loan approval logic should read like loan approval logic.
+**Example (readability, concrete):** A DynamoDB query through `boto3` requires assembling 15 lines of `ExpressionAttributeValues` and `KeyConditionExpression` dictionaries. Drop that in the middle of `approve_loan()` and reading flow is dead on arrival. Wrapping it in `find_customer_by_id(id)` is the right use of abstraction here — not because the database is ever going to change, but because loan approval logic should read like loan approval logic, not like a database driver's manual.
 
 ---
 
@@ -41,7 +41,7 @@
 
 **What it is:** The specific code-level smell of an interface whose sole implementation has existed unchanged since the interface was created, with no credible second implementation on the horizon.
 
-**Why it exists:** The [Dependency Inversion Principle](../part02-software-architecture/ch12-dependency-direction-inversion.md) is correctly applied when a real variation point exists — a storage backend, a notification channel, a payment gateway — where the code genuinely benefits from separating what is done from how it is done. Misapplied at the function and class level, it produces interfaces that communicate no abstraction, hide no decision, and break IDE "jump to definition" navigation by adding a layer of indirection that leads only to a single class.
+**Why it exists:** The [Dependency Inversion Principle](../part02-software-architecture/ch12-dependency-direction-inversion.md) earns its place when a real variation point exists — a storage backend, a notification channel, a payment gateway — somewhere the code genuinely benefits from separating what gets done from how it gets done. Misapplied down at the function and class level, it produces interfaces that communicate no abstraction, hide no decision, and break IDE "jump to definition" navigation by adding a layer of indirection that leads absolutely nowhere but a single class.
 
 **Options:**
 
@@ -51,15 +51,15 @@
 
 **Trade-offs:**
 
-[Strong Recommendation] **Concrete types** are correct by default for internal domain logic, data transformations, and utility functions that don't cross an I/O boundary. Refactoring a concrete type to an interface later, when a second implementation actually appears, costs one refactoring. Paying the indirection cost speculatively, forever, for a variation that never arrives, costs more.
+[Strong Recommendation] **Concrete types** are correct by default for internal domain logic, data transformations, and utility functions that never cross an I/O boundary. Refactor a concrete type to an interface later, once a second implementation genuinely shows up, and that costs exactly one refactor. Paying the indirection cost speculatively, forever, for a variation that never arrives, costs a great deal more than that.
 
-Interfaces with **multiple credible implementations** are correct at genuine variation points: a `Repository` interface with a real PostgreSQL implementation and a test in-memory implementation, an `EmailSender` interface used in production and replaced by a `FakeEmailSender` in tests. The variation is real; the interface earns its existence.
+Interfaces with **multiple credible implementations** earn their place at genuine variation points: a `Repository` interface with a real PostgreSQL implementation and a test in-memory one, an `EmailSender` interface running in production and swapped for a `FakeEmailSender` in tests. The variation is real. The interface earns its existence honestly.
 
-**Speculative generality** is the failure mode: introducing the interface not because variation exists but because it might, someday, possibly be useful. The indirection tax is paid immediately; the benefit may never arrive.
+**Speculative generality** is the failure mode here: introducing the interface not because variation exists, but because it might, someday, conceivably turn out to be useful. The indirection tax gets paid immediately. The benefit may just never show up at all.
 
-**Common failure modes:** *The Impl Suffix Anti-Pattern.* A codebase where every interface is paired with exactly one class suffixed `Impl`: `BillingManager` / `BillingManagerImpl`, `UserService` / `UserServiceImpl`, `InvoiceProcessor` / `InvoiceProcessorImpl`. The interface communicates no abstraction — it is a carbon copy of the class's public methods. Navigating to the definition of any method requires an extra hop through an interface that adds no information. This is the ritual of abstraction without the substance.
+**Common failure modes:** *The Impl Suffix Anti-Pattern.* A codebase where every interface is paired with exactly one class suffixed `Impl`: `BillingManager` / `BillingManagerImpl`, `UserService` / `UserServiceImpl`, `InvoiceProcessor` / `InvoiceProcessorImpl`. The interface communicates no abstraction whatsoever — it's a carbon copy of the class's own public methods. Jumping to the definition of any method now costs an extra hop through an interface that adds precisely nothing. This is the ritual of abstraction with none of the substance behind it.
 
-**Example:** FizzBuzzEnterpriseEdition is a real, widely cited satirical repository that solves the trivial FizzBuzz algorithm by introducing `StringReturner`, `FizzStrategy`, `BuzzStrategyFactory`, and dozens more interfaces and factories. Every abstraction exists without hiding any meaningful complexity. The humor works because the indirection is real and navigable — each hop is a genuine file, a genuine class — while serving no purpose. It is the clearest possible demonstration that indirection without variation is strictly a cost.
+**Example:** FizzBuzzEnterpriseEdition is a real, widely cited satirical repository that solves the famously trivial FizzBuzz algorithm by introducing `StringReturner`, `FizzStrategy`, `BuzzStrategyFactory`, and dozens more interfaces and factories on top. Every abstraction exists without hiding a shred of meaningful complexity. The joke lands precisely because the indirection is real and fully navigable — each hop is a genuine file, a genuine class — while serving no purpose whatsoever. It's the clearest demonstration anywhere that indirection without variation is strictly a cost, and never anything else.
 
 ---
 
@@ -67,7 +67,7 @@ Interfaces with **multiple credible implementations** are correct at genuine var
 
 **What it is:** The failure of using runtime polymorphism — the Strategy Pattern, dependency-injected interfaces — to model a behavioral choice that is actually fixed at compile time or startup configuration.
 
-**Why it exists:** The Strategy Pattern is correct when the behavior must change dynamically during a running process — different payment processors selected per request, different serializers selected per content type. Applied to a choice that is resolved once at startup and never varies, it hides the actual execution path behind indirection that provides no flexibility at runtime, only overhead at read time.
+**Why it exists:** The Strategy Pattern earns its place when behavior genuinely has to change during a running process — a different payment processor selected per request, a different serializer selected per content type. Apply it to a choice that gets resolved once at startup and never varies again, and it just buries the actual execution path behind indirection that offers zero runtime flexibility and pure overhead every time someone has to read it.
 
 **Options:**
 
@@ -76,13 +76,13 @@ Interfaces with **multiple credible implementations** are correct at genuine var
 
 **Trade-offs:**
 
-[Legitimate Trade-off] **Dynamic strategy injection** is correct when the algorithm must change during a single running process based on user input, request content, or plugin registration. It fully decouples the calling code from the branching logic; adding a new strategy requires no change to the caller.
+[Legitimate Trade-off] **Dynamic strategy injection** is correct when the algorithm genuinely has to change during a single running process based on user input, request content, or plugin registration. It fully decouples the calling code from the branching logic, and adding a new strategy costs zero changes to the caller.
 
-**Static branching** is correct when the choice is fixed for the lifetime of the process — bound to an environment variable, set at startup, or compiled in. It is linear, readable, and shows all possible execution paths in one place. The cost — violating the Open-Closed Principle on extension — is real but often acceptable when the set of strategies is small and stable.
+**Static branching** is correct when the choice stays fixed for the lifetime of the process — bound to an environment variable, set once at startup, compiled straight in. It's linear, readable, and shows every possible execution path in one place at a glance. The cost — violating the Open-Closed Principle on extension — is real, but often perfectly acceptable when the set of strategies is small and isn't going anywhere.
 
-**Common failure modes:** *The Hardcoded Strategy.* An engineer implements the Strategy Pattern for a `TaxCalculator` because the company might expand to other countries. The dependency injection framework is hardcoded to inject `USATaxCalculator` on startup. Three years later, the system still operates in one country. Every engineer who reads the tax calculation code must navigate through an interface and a DI configuration to find a concrete class that has never been swapped. The polymorphism is an illusion; the overhead is permanent.
+**Common failure modes:** *The Hardcoded Strategy.* An engineer implements the Strategy Pattern for a `TaxCalculator` on the theory that the company might expand to other countries someday. The dependency injection framework is hardcoded to inject `USATaxCalculator` on startup. Three years later, the system still operates in exactly one country. Every engineer who touches the tax calculation code has to fight through an interface and a DI configuration just to find a concrete class that has never once been swapped. The polymorphism is theater. The overhead is permanent.
 
-**Example:** In many Spring Boot Java applications, `@Qualifier` annotations inject specific implementations of a strategy interface where that implementation is statically bound in the configuration and never varies per request. A direct invocation of the concrete class would have been significantly more readable and equally correct. The pattern added indirection; it added no flexibility.
+**Example:** In plenty of Spring Boot Java applications, `@Qualifier` annotations inject a specific implementation of a strategy interface where that implementation is statically bound in configuration and never varies per request, ever. A direct call to the concrete class would've been significantly more readable and every bit as correct. The pattern added indirection. It added zero flexibility in return.
 
 ---
 
@@ -90,7 +90,7 @@ Interfaces with **multiple credible implementations** are correct at genuine var
 
 **What it is:** The explicit preference, in cases of uncertainty, for duplicating small concrete implementations over extracting a shared abstraction that couples independent call sites.
 
-**Why it exists:** Generalization requires predicting which future changes will be shared across callers. Those predictions are frequently wrong. Two call sites that look similar today often have independent reasons to diverge tomorrow. Extracting a shared abstraction couples them: when one caller needs a change, the shared abstraction must accommodate both, and the solution is usually another parameter.
+**Why it exists:** Generalization requires predicting which future changes will end up shared across callers. Those predictions are wrong more often than anyone likes to admit. Two call sites that look identical today frequently have independent reasons to drift apart tomorrow. Extract a shared abstraction anyway and you've coupled them for good: the moment one caller needs a change, the shared abstraction has to accommodate both, and the usual fix is bolting on yet another parameter.
 
 **Options:**
 
@@ -100,26 +100,26 @@ Interfaces with **multiple credible implementations** are correct at genuine var
 
 **Trade-offs:**
 
-[Strong Recommendation] **Duplicate** small, stable code when the callers are independent and future evolution is uncertain. The [Rule of Three](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) is the right threshold: duplication in two places is data; duplication in three genuinely similar cases is a pattern worth naming.
+[Strong Recommendation] **Duplicate** small, stable code whenever the callers are independent and future evolution is genuinely uncertain. The [Rule of Three](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) is the right threshold to hold yourself to: duplication in two places is just data; duplication across three genuinely similar cases is a pattern that's earned a name.
 
-**Shared abstractions** are correct after repeated evidence shows that the duplicated logic genuinely changes together — that modifying it in one place would have meant modifying it everywhere. The abstraction should reflect actual usage, not anticipated usage.
+**Shared abstractions** are correct once repeated evidence shows the duplicated logic genuinely changes together — that touching it in one place would've meant touching it everywhere. The abstraction should reflect what's actually happened, not what somebody anticipated might happen.
 
-**Configurable frameworks** — functions with many optional parameters, callbacks, and flags serving a single caller — are almost always the wrong answer. They pay the complexity cost of generalization while serving none of the benefit: a heavily parameterized function with one caller is not a library; it is a prediction that the second caller will arrive.
+**Configurable frameworks** — functions weighed down with optional parameters, callbacks, and flags, all serving exactly one caller — are almost always the wrong answer. They pay the full complexity cost of generalization while delivering none of the benefit: a heavily parameterized function with a single caller isn't a library. It's a bet that a second caller shows up eventually.
 
-**Common failure modes:** A strict DRY purist identifies three similar lines across two call sites. They extract a shared function. Because the two call sites have slightly different needs, the extracted function acquires a boolean flag: `processData(includeHeader=true)`. One caller later needs a different delimiter; the flag expands to an enum. A second caller needs a different character encoding; a third parameter appears. The abstraction now satisfies neither caller cleanly, couples both, and is more complex than the duplicated code it replaced.
+**Common failure modes:** A strict DRY purist spots three similar lines across two call sites and extracts a shared function on the spot. Because the two call sites have slightly different needs, the extracted function picks up a boolean flag: `processData(includeHeader=true)`. One caller later needs a different delimiter, so the flag grows into an enum. A second caller needs a different character encoding, and a third parameter shows up right behind it. The abstraction now satisfies neither caller cleanly, has coupled both of them together, and is more complex than the duplicated code it was supposed to replace.
 
-**Example:** Rob Pike's Go proverb — *"A little copying is better than a little dependency"* — is a recognized, authoritative industry position, not a permission slip for sloppy code. It specifically means: a five-line concrete block duplicated in two independent places is often cheaper to maintain long-term than a shared abstraction that couples those two places. When one caller's requirements change, the duplicated code forks naturally. The shared abstraction becomes a negotiation.
+**Example:** Rob Pike's Go proverb — *"A little copying is better than a little dependency"* — is a recognized, authoritative industry position, not a hall pass for sloppy code. What it specifically means: a five-line concrete block duplicated across two independent places is often cheaper to maintain long-term than a shared abstraction coupling those two places together. When one caller's requirements change, the duplicated code just forks naturally, no drama. The shared abstraction turns into a negotiation instead.
 
 ---
 
 ### Why Smart Engineers Disagree: DRY Absolutism vs. The Cost of Indirection
 
-The persistent argument about micro-abstractions is between strict DRY adherents and engineers who treat indirection as a cost to be justified rather than a virtue to be pursued.
+The persistent argument about micro-abstractions runs between strict DRY adherents and engineers who treat indirection as a cost that has to justify itself, not a virtue worth chasing on its own.
 
-A strict DRY purist sees duplication and sees a defect. Any two blocks of code that look similar should be extracted, regardless of whether the callers have independent reasons to change or whether the abstraction can be named precisely. The line count goes down; the purist considers this progress.
+A strict DRY purist sees duplication and sees a defect, full stop. Any two blocks of code that look similar get extracted, whether or not the callers have independent reasons to diverge, whether or not the resulting abstraction can even be named precisely. The line count drops. The purist calls that progress.
 
-An engineer focused on indirection cost sees the extraction differently: two call sites that happen to look similar today have been coupled through a shared abstraction they didn't need. The coupling isn't free. Every future change to either caller must now negotiate with the other through the abstraction's interface. Adding a parameter to handle the difference is the usual outcome.
+An engineer focused on indirection cost reads the same extraction very differently: two call sites that happen to look alike today just got coupled through a shared abstraction neither of them actually needed. That coupling isn't free. Every future change to either caller now has to negotiate with the other one through the abstraction's interface, and the usual resolution is bolting on one more parameter.
 
-Both positions agree that duplication is a maintenance burden. They disagree on the threshold of evidence required before paying for a shared abstraction. The correct threshold is the Rule of Three applied honestly: wait until three genuinely similar use cases appear before extracting. Two similar call sites is coincidence. Three is a pattern.
+Both sides agree duplication is a maintenance burden. They disagree on how much evidence should be required before paying for a shared abstraction. The right threshold is the Rule of Three, applied honestly: wait for three genuinely similar use cases before extracting anything. Two similar call sites is a coincidence. Three is a pattern worth naming.
 
-The language culture matters too. Enterprise Java ecosystems built around frameworks like Spring have historically tolerated high abstraction density — DI containers, interface hierarchies, factory classes — because the frameworks reward it. Go's culture deliberately pushes in the other direction: concrete types by default, interfaces introduced late, duplication tolerated. Neither is objectively correct; they reflect different calibrations of the same underlying trade-off.
+The language culture matters here too. Enterprise Java ecosystems built around frameworks like Spring have historically tolerated dense abstraction — DI containers, interface hierarchies, factory classes stacked three deep — because the frameworks reward exactly that. Go's culture pushes deliberately in the other direction: concrete types by default, interfaces introduced late if ever, duplication tolerated without much fuss. Neither is objectively right. They're just different calibrations of the same underlying trade-off.

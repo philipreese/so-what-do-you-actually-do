@@ -13,19 +13,19 @@
 
 ---
 
-Every other reader in this Part is doing ordinary development work with time to think. A runbook's reader isn't — they're responding to a known operational failure, often at an inconvenient hour, often with incomplete information. That difference changes the correctness bar. Ordinary stale documentation wastes a reader's time (Ch 66); a wrong runbook step wastes exactly the time a responder doesn't have, during the specific situation the document exists to make faster. This chapter covers what belongs in that document and how it earns the trust a responder places in it under pressure — not the alerting that gets someone to open it, and not the broader incident-response or postmortem process around it, which this handbook doesn't allocate a dedicated chapter to.
+Every other reader in this Part is doing ordinary development work with time to think. A runbook's reader isn't — they're responding to a known operational failure, often at an inconvenient hour, often with incomplete information and a phone buzzing. That difference changes the correctness bar. Ordinary stale documentation wastes a reader's time (Ch 66); a wrong runbook step wastes exactly the time a responder doesn't have, during the one situation the document exists to make faster. This chapter covers what belongs in that document and how it earns the trust a responder places in it under pressure — not the alerting that gets someone to open it, and not the broader incident-response or postmortem process around it, which this handbook doesn't allocate a dedicated chapter to.
 
 ### Decision: Write a Runbook Around One Named Failure Mode
 
 **What it is:** A runbook answers a single question — "the system is exhibiting this specific failure, what do I do?" — rather than serving as general operational or architectural documentation.
 
-**Why it exists:** General troubleshooting guidance is hard to apply under pressure; a procedure tied to a specific, recognizable symptom isn't. Mixing the two — background theory alongside recovery steps — forces a responder to parse context they don't need before reaching the command they do, and every extra paragraph is time added directly to MTTR.
+**Why it exists:** General troubleshooting guidance is hard to apply under pressure; a procedure tied to a specific, recognizable symptom isn't. Mixing the two — background theory alongside recovery steps — forces a responder to wade through context they don't need before reaching the command they do, and every extra paragraph is time added directly to MTTR.
 
 **Options:** A runbook contains the failure condition, initial verification steps, diagnostic commands with expected output, the recovery procedure, and escalation criteria with contacts. It does not contain system architecture, onboarding context, or design rationale — those belong to the README (Ch 65) and other artifacts this Part already covers.
 
 **Trade-offs:** A failure-specific runbook is fast to follow and easy to locate during the exact failure it names, at the cost of one more document to maintain per failure mode. A general operational guide covers more ground in one place, but forces a responder to interpret which part applies while the incident is active — exactly the cognitive cost a runbook exists to remove.
 
-**Common failure modes:** A runbook opens with several pages of architectural background before reaching the actual mitigation command. During an active incident, a responder burns critical minutes skimming theory to find the one shell command that matters, while the failure continues.
+**Common failure modes:** A runbook opens with several pages of architectural background before reaching the actual mitigation command. During an active incident, a responder burns critical minutes skimming theory to find the one shell command that matters, while the failure just keeps going.
 
 **Example:** PagerDuty's published incident-response templates organize runbooks around recognizable incident types, with the highest-visibility section reserved for immediate actions — exact commands and console links — rather than leading with system description.
 
@@ -35,13 +35,13 @@ Every other reader in this Part is doing ordinary development work with time to 
 
 **What it is:** Each instruction names a concrete action — a command to run, a dashboard to check, an expected output — rather than general advice a responder has to translate into action themselves.
 
-**Why it exists:** A responder mid-incident shouldn't have to convert "investigate the issue" into an actual first move. Every step that requires interpretation is a step that can be interpreted differently by different responders, or badly by a tired one.
+**Why it exists:** A responder mid-incident shouldn't have to translate "investigate the issue" into an actual first move. Every step that requires interpretation is a step that gets interpreted differently by different responders — or badly, by a tired one who just got paged out of a dead sleep.
 
 **Options:** Useful steps specify the exact command to run, the exact dashboard or log to check, and the exact threshold that triggers escalation. Vague guidance — "investigate," "check the system," "look for errors" — is not a step; it's a restatement of the fact that something is wrong.
 
 **Trade-offs:** Specific, executable steps produce faster, more consistent responses, at the cost of needing an update whenever the underlying tooling or procedure changes — the same maintenance obligation every artifact in this Part carries, applied here to something with a much higher cost of being wrong. Vague guidance requires less maintenance and is more likely to still be technically applicable years later, but at the direct cost of the response time and consistency a runbook exists to provide.
 
-**Common failure modes:** A step ends with "continue investigating" instead of a next command. A responder who has never touched the affected system has no way to translate that into action, and the runbook has effectively ended without resolving anything.
+**Common failure modes:** A step ends with "continue investigating" instead of a next command. A responder who has never touched the affected system has no way to turn that into action, and the runbook has effectively ended without resolving anything at all.
 
 **Example:** A useful step names the exact endpoint to query, the exact status to expect back, and the exact condition — "if this persists past five minutes" — that means escalate, rather than describing the failure and trusting the responder to work out what to check.
 
@@ -51,7 +51,7 @@ Every other reader in this Part is doing ordinary development work with time to 
 
 **What it is:** A runbook that has been written but never actually executed against a real or simulated failure — a **paper runbook** — whose correctness is an assumption, not a demonstrated fact.
 
-**Why it exists:** Ch 41 already established that a coverage metric measures execution, not verification — code can run inside a test without anything checking that it did the right thing. A runbook exhibits the identical gap: the document existing is not evidence it works. Worse, the only reader positioned to discover a missing step or an obsolete command is someone already mid-incident, which is the single worst moment for that discovery to happen for the first time — a more expensive version of Ch 66's honesty problem, because the reader here has no slack to absorb the surprise.
+**Why it exists:** Ch 41 already established that a coverage metric measures execution, not verification — code can run inside a test without anything checking that it did the right thing. A runbook has the identical gap: the document existing is not evidence it works. Worse, the only reader positioned to discover a missing step or an obsolete command is someone already mid-incident, which is the single worst moment for that discovery to happen for the first time — a more expensive version of Ch 66's honesty problem, because this reader has no slack left to absorb the surprise.
 
 **Options:**
 1. **Exercise it** — an onboarding walkthrough, a tabletop exercise, a scheduled game day, or a controlled failure simulation.
@@ -62,7 +62,7 @@ Every other reader in this Part is doing ordinary development work with time to 
 
 [Strong Recommendation] Exercise every runbook that protects a system whose failure matters, on a cadence that matches how critical the path is. A runbook nobody has run is a hypothesis about how to recover, not a verified procedure.
 
-**Common failure modes:** *The stale command trap.* A runbook instructs a responder to run a utility with a flag that was removed six months earlier during an unrelated rewrite. At 2 a.m., the command returns an error instead of clearing the failure, and the responder now has to debug the runbook itself before they can even start debugging the actual incident.
+**Common failure modes:** *The stale command trap.* A runbook instructs a responder to run a utility with a flag that was quietly removed six months earlier during an unrelated rewrite. At 2 a.m., the command returns an error instead of clearing the failure, and the responder now has to debug the runbook itself before they can even start debugging the actual incident — a puzzle box hiding the real problem.
 
 **Example:** Game-day exercises, in the lineage of Netflix's Chaos Monkey, deliberately trigger a failure under controlled conditions and hand the responder the runbook exactly as written. If the documented steps don't recover the system, that's logged as a failure of the runbook, not just the drill — and the runbook is fixed before it's trusted again.
 
@@ -72,13 +72,13 @@ Every other reader in this Part is doing ordinary development work with time to 
 
 **What it is:** Any runbook step that is fully deterministic — the same trigger always calls for the same action — is a candidate to become automation rather than remain prose a human executes by hand.
 
-**Why it exists:** This is Principle 8 one last time: mechanical enforcement over human discipline. Google's Site Reliability Engineering practice names this directly as toil — repetitive, mechanical operational work with no enduring value, which should be eliminated through automation rather than repeatedly performed and documented. A runbook that only grows, never shrinks, is usually a sign that steps which should have become tooling are still prose instead.
+**Why it exists:** This is Principle 8 one last time: mechanical enforcement beats human discipline. Google's Site Reliability Engineering practice names this directly as toil — repetitive, mechanical operational work with no enduring value, which should be eliminated through automation rather than repeatedly performed and lovingly documented. A runbook that only grows, never shrinks, is usually a sign that steps which should have become tooling are still stuck as prose instead.
 
 **Options:** Manual execution is appropriate for judgment and diagnosis — deciding whether a symptom warrants escalation, or which of several plausible causes applies. Automation is appropriate for deterministic recovery, repetitive validation, and environment preparation. A hybrid keeps the mechanical portion automated and leaves the human step to decide when to trigger it and confirm the result.
 
 **Trade-offs:** Automation drives recovery time down and removes operator error, at the cost of needing to be built and then maintained itself — it doesn't remove the maintenance obligation, it relocates it from documentation to code. Manual procedures are cheaper to write initially but accumulate real operational toil every time the same mechanical sequence is run by hand.
 
-**Common failure modes:** A team experiences the same recoverable failure repeatedly as their fleet grows — five nodes becomes two hundred — and keeps responding with the same manual runbook instead of automating it. The alert frequency scales with fleet size; on-call time spent executing an unchanged mechanical sequence eventually consumes the engineering capacity that would have fixed the underlying cause.
+**Common failure modes:** A team experiences the same recoverable failure repeatedly as their fleet grows — five nodes becomes two hundred — and keeps responding with the same manual runbook instead of automating it. Alert frequency scales with fleet size; on-call time spent executing an unchanged mechanical sequence eventually eats the engineering capacity that would have fixed the underlying cause for good.
 
 **Example:** Many teams replace a multi-step manual rollback procedure with a single verified automation command once the sequence has proven itself stable. The runbook that remains is shorter and more valuable: it now covers only the judgment call of *when* to roll back, not the mechanics of how.
 
@@ -90,8 +90,8 @@ Three boundaries are worth naming without expanding into them. What triggers a r
 
 The disagreement isn't about whether MTTR matters — everyone agrees a runbook exists to reduce it. It's about where the long-term investment should go: more operational guidance, or more operational automation.
 
-One position favors comprehensive runbooks that cover nearly every foreseeable variation of a failure, arguing that a well-prepared responder with explicit guidance performs better than one working from a thinner document and their own judgment.
+One position favors comprehensive runbooks that cover nearly every foreseeable variation of a failure, arguing that a well-prepared responder with explicit guidance performs better than one working from a thinner document and their own judgment at 3 a.m.
 
-The other treats every repeated manual step as unfinished engineering work rather than permanent documentation, deliberately automating aggressively so that runbooks shrink over time as tooling absorbs the deterministic portions of recovery, leaving prose only for what genuinely still requires a human.
+The other treats every repeated manual step as unfinished engineering work rather than permanent documentation, automating aggressively so that runbooks shrink over time as tooling absorbs the deterministic portions of recovery, leaving prose only for what genuinely still needs a human.
 
-Both share the same objective and the same maintenance constraint — every manual step is a future point of drift (Ch 66) and every hour spent executing it by hand is toil that could have gone toward the fix that makes the runbook unnecessary. The practical answer tracks how often and how predictably a failure recurs: a rare, well-understood failure may never justify the engineering cost of automating it, and the guidance position wins by default; a frequent, well-understood one accumulates enough repeated manual cost that automation pays for itself quickly, and the runbook is what's left over once it does.
+Both share the same objective and the same maintenance constraint — every manual step is a future point of drift (Ch 66), and every hour spent executing it by hand is toil that could have gone toward the fix that makes the runbook unnecessary. The practical answer tracks how often and how predictably a failure recurs: a rare, well-understood failure may never justify the engineering cost of automating it, and the guidance position wins by default; a frequent, well-understood one racks up enough repeated manual cost that automation pays for itself quickly, and the runbook is whatever's left over once it does.

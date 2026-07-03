@@ -5,15 +5,15 @@
 **New vocabulary introduced:** None beyond concepts established in prior chapters. This chapter applies [cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md) and the [Rule of Three](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) at the smallest practical grain.
 
 **Key takeaways:**
-- A file is a unit of comprehension, not a unit of syntax. The question is not how many declarations fit, but whether they belong together.
-- Split on falling cohesion, not rising line count. A thousand-line parser implementing one algorithm can be easier to read than a two-hundred-line file mixing authentication, logging, and business rules.
-- The signal to split is that readers naturally think "this part is about something different." The signal to keep together is that the pieces lose meaning apart.
-- A state machine whose transitions are scattered across six files is harder to understand than one that lives in a single cohesive file — even a long one.
-- Test and asset co-location follows the same cohesion reasoning: keep with the source what is understood and changed alongside it.
+- A file is a unit of comprehension, not a unit of syntax. The question was never how many declarations fit inside it — it's whether they actually belong together.
+- Split on falling cohesion, not rising line count. A thousand-line parser implementing one algorithm can be easier to read than a two-hundred-line file that mixes authentication, logging, and business rules with no relation to each other.
+- The signal to split is a reader naturally thinking "this part is about something else." The signal to keep together is the pieces losing their meaning the moment they're apart.
+- A state machine with its transitions scattered across six files is harder to understand than one sitting in a single cohesive file — even a genuinely long one.
+- Test and asset co-location follows the exact same cohesion reasoning: keep with the source whatever gets understood and changed alongside it.
 
 ---
 
-[Ch 27](ch27-file-and-module-structure.md) established package- and module-level organization. This chapter assumes that boundary already exists and asks a finer-grained question: within a module, should this concept live in its own file or alongside closely related code? Whether splitting a file introduces a new abstraction boundary worth its cost is a separate question, covered in [Ch 31](ch31-when-abstractions-help-vs-when-they-obscure.md).
+[Ch 27](ch27-file-and-module-structure.md) settled package- and module-level organization. This chapter takes that boundary as given and asks a finer-grained question: within a module, should this concept get its own file, or live alongside the code it's closely related to? Whether splitting a file introduces a new abstraction boundary worth paying for is a separate question, covered in [Ch 31](ch31-when-abstractions-help-vs-when-they-obscure.md).
 
 ---
 
@@ -21,7 +21,7 @@
 
 **What it is:** The baseline convention for how source code is distributed across files — whether a file is an exact index of individual types, or a container for one cohesive concept that may span several closely related types and functions.
 
-**Why it exists:** Files exist to help humans navigate a codebase. The convention determines what the file system indexes: individual named entities, or holistic ideas.
+**Why it exists:** Files exist purely to help humans find their way around a codebase. The convention just decides what the file system ends up indexing — individual named entities, or whole ideas.
 
 **Options:**
 
@@ -30,13 +30,13 @@
 
 **Trade-offs:**
 
-**One class per file** makes finding any specific entity trivial via file-tree navigation — you know exactly which file it's in. The cost is reading flow. A small helper type that is exclusively consumed by one parent class has no independent identity, but isolation forces the reader to open a second file to understand a single operation. Java's enforcement of this convention — one public class per file — produced directories cluttered with `UserActionFactory.java`, `UserActionBuilder.java`, `UserActionBuilderFactory.java`: dozens of files for simple workflows, a high navigation tax on shallow logic.
+**One class per file** makes finding any specific entity trivial through file-tree navigation alone — you know exactly which file to open. The cost is reading flow. A small helper type that only ever gets consumed by one parent class has no identity of its own, but isolating it into its own file still forces the reader to open a second file just to understand one operation. Java's enforcement of this convention — one public class per file, no exceptions — produces directories cluttered with `UserActionFactory.java`, `UserActionBuilder.java`, `UserActionBuilderFactory.java`: dozens of files for what was a simple workflow, and a real navigation tax on logic that was never that deep to begin with.
 
-[Strong Recommendation] **One concept per file** is the dominant convention in Go, Python, and JavaScript/TypeScript, and for good reason. It preserves reading flow: a developer can understand the entire lifecycle of a domain concept by scrolling rather than tab-switching. An interface, the struct that implements it, and the small helper types it relies on naturally share one file. The risk is the god file — the canonical failure of this approach, where the "concept" boundary softens and unrelated logic accumulates indefinitely.
+[Strong Recommendation] **One concept per file** is the dominant convention in Go, Python, and JavaScript/TypeScript, and it earns that position. It preserves reading flow: a developer follows the entire lifecycle of a domain concept by scrolling, not tab-switching between five windows. An interface, the struct implementing it, and the small helper types it leans on all share one file, naturally. The risk is the god file — the one real failure mode of this approach, where the "concept" boundary softens over time and unrelated logic just keeps piling in.
 
 **When to choose each:** Follow the idiomatic convention for the language. Java enforces one public class per file at the language level; respect it. In Go, Python, and JavaScript, prefer conceptual co-location for small, tightly related declarations that have no distinct identity outside their immediate context. Large public types with independent public APIs earn their own files in any language.
 
-**Common failure modes:** Mechanically creating a new file for every enum, exception, helper type, or small interface. A feature that would take ten minutes to understand now requires opening fifteen files. The organizational rule has increased navigation cost without clarifying anything. The opposite failure is equally common: unrelated types accumulate indefinitely because "they already happen to be in the same file."
+**Common failure modes:** Mechanically minting a new file for every enum, exception, helper type, or small interface that comes along. A feature that should take ten minutes to understand now demands opening fifteen files first. The organizational rule has driven up navigation cost and clarified exactly nothing. The opposite failure shows up just as often: unrelated types keep accumulating indefinitely, purely because "well, they're already in the same file."
 
 ---
 
@@ -44,7 +44,7 @@
 
 **What it is:** The signal that a file should be split is that it contains multiple independent concerns — not that it exceeds an arbitrary line threshold.
 
-**Why it exists:** Length alone rarely makes code difficult. Unrelated ideas do. A thousand-line parser implementing one cohesive algorithm is easier to read than a two-hundred-line file that mixes authentication, logging, configuration, and business rules. The difficulty in the second case is not the size — it's that no single organizing concept holds the pieces together.
+**Why it exists:** Length by itself rarely makes code hard to follow. Unrelated ideas jammed together do. A thousand-line parser implementing one cohesive algorithm is easier to read than a two-hundred-line file mixing authentication, logging, configuration, and business rules. What makes the second one hard isn't the size — it's that no single organizing idea is holding any of it together.
 
 **Options:**
 
@@ -54,17 +54,17 @@
 
 **Trade-offs:**
 
-[Strong Recommendation] **Responsibility-driven splitting** reflects what actually makes files hard to maintain. The Rule of Three applies here exactly as it does to abstraction: wait until multiple independent responsibilities have clearly emerged before introducing the organizational overhead of a new file. Splitting prematurely predicts an evolution that often never comes, leaving dozens of ten-line files that each contain too little context to stand alone.
+[Strong Recommendation] **Responsibility-driven splitting** reflects what actually makes files hard to maintain, instead of a proxy for it. The Rule of Three applies here exactly the way it applies to abstraction: wait until multiple independent responsibilities have genuinely emerged before paying the organizational overhead of a new file. Split too early and you're betting on an evolution that often never shows up, leaving behind a graveyard of ten-line files that don't carry enough context to stand on their own.
 
-**Threshold-based splitting** is easy to automate and enforce in code review, which explains its appeal. It is wrong. It treats line count as a proxy for cohesion, and the proxy fails in both directions: a long cohesive file gets broken up unnecessarily, while a short incoherent one passes the check.
+**Threshold-based splitting** is easy to automate and easy to enforce in code review, which explains why it's tempting. It's still wrong. It treats line count as a stand-in for cohesion, and the stand-in fails in both directions at once: a long cohesive file gets chopped up for no reason, while a short incoherent one sails right through the check.
 
-**When to split:** When modifying one responsibility in the file consistently requires ignoring the rest. When a reader has to use text search to navigate between two related functions separated by hundreds of lines of unrelated logic. When the file contains code that changes at visibly different rates for visibly different reasons.
+**When to split:** When touching one responsibility in the file consistently means ignoring everything else in it. When a reader has to reach for text search just to jump between two related functions separated by hundreds of lines of unrelated code. When the file holds pieces that visibly change at different rates for entirely different reasons.
 
-**When to keep together:** When the code shares a single axis of variation. When splitting would require a reader to trace execution across multiple files to understand one operation.
+**When to keep together:** When the code shares one single axis of variation. When splitting would force a reader to chase execution across multiple files just to understand one operation.
 
-**Common failure modes:** A growing file reaches 500 lines. Rather than identifying the conceptual boundary, a developer divides it into `billing_part1.py`, `billing_part2.py`, and `billing_helpers.py`. The original cohesion problem is unchanged; the navigation problem is now worse. The split communicated no information about what actually changed.
+**Common failure modes:** A growing file crosses 500 lines. Instead of finding the actual conceptual boundary, a developer carves it into `billing_part1.py`, `billing_part2.py`, and `billing_helpers.py`. The original cohesion problem hasn't gone anywhere — the navigation problem just got worse on top of it. The split communicated nothing about what actually changed.
 
-**Example:** An `auth_middleware.go` file that intercepts an HTTP request, validates a JWT, and returns a `401 Unauthorized` should stay in one file — those three steps are one cohesive operation. If that same file accumulates a custom base64 decoding algorithm and an RSA key-rotation cron job, those belong in `jwt_decoder.go` and `key_rotation.go`. They are independent axes of variation: they change for different reasons, at different times, in response to different requirements.
+**Example:** An `auth_middleware.go` file that intercepts an HTTP request, validates a JWT, and returns a `401 Unauthorized` should stay in one file — those three steps are one cohesive operation, start to finish. If that same file starts accumulating a custom base64 decoding algorithm and an RSA key-rotation cron job, those belong in `jwt_decoder.go` and `key_rotation.go` instead. They're independent axes of variation: different reasons to change, different timelines, different requirements driving each one.
 
 ---
 
@@ -72,42 +72,42 @@
 
 **What it is:** Some code loses meaning when separated. Small mutually dependent types, finite state machines, and tightly coordinated internal logic are often harder to understand distributed across files than collected in one.
 
-**Why it exists:** Navigation has a cost. Every additional file is another place a reader must search. When two pieces of code are almost always read together — because understanding one requires knowing the other — separation adds indirection without adding clarity.
+**Why it exists:** Navigation isn't free. Every additional file is one more place a reader has to go searching. When two pieces of code are almost always read together — because understanding one demands knowing the other — pulling them apart adds indirection and buys nothing back in clarity.
 
 **Signals that pieces belong together:**
 - Understanding a state transition requires reading the state definition, the event types, and the transition logic simultaneously
 - A small type has no meaningful identity outside the one file that uses it
 - Splitting would require importing from sibling files within the same module rather than from the module interface
 
-**Common failure modes:** An engineer applies a 100-line file limit dogmatically. A cohesive 300-line state machine is shattered across six files. Understanding a single transition now requires opening six tabs and tracing imports back and forth. The fragmented state machine has higher afferent and efferent coupling at the file level than the original monolithic one did — the opposite of the intended outcome.
+**Common failure modes:** An engineer enforces a 100-line file limit with total dogma. A cohesive 300-line state machine gets shattered across six files. Understanding one single transition now means opening six tabs and tracing imports back and forth between them. The fragmented state machine ends up with higher afferent and efferent coupling at the file level than the original monolith ever had — the exact opposite of what the split was supposed to buy.
 
-**Example:** Many parser implementations keep token definitions, parser state, and transition logic in one file because the three concepts are inseparable during maintenance. Reading a grammar rule requires seeing the token type, the parser state it appears in, and the transition it triggers. Distributing these across files forces the reader to reconstruct mentally what the file structure once made visually available.
+**Example:** Many parser implementations keep token definitions, parser state, and transition logic in one file, because the three concepts are genuinely inseparable during maintenance. Reading a grammar rule means seeing the token type, the parser state it shows up in, and the transition it triggers, all at once. Spread those across files and the reader has to reconstruct in their head what the file structure used to just show them.
 
 ---
 
 ### Test and Asset Co-Location
 
-The same cohesion reasoning that governs source file organization applies to tests and related assets. A test file exists to verify the contract of one source file; a stylesheet or template often exists to define the visual behavior of one component. The question of where they live is the same question as where closely related source types live.
+The same cohesion reasoning governing source file organization applies just as well to tests and related assets. A test file exists to verify the contract of one source file; a stylesheet or template exists to define the visual behavior of one component. Where they live is the same question as where closely related source types live — no different question, same answer.
 
 Two conventions exist:
 
 1. **Adjacent co-location** — the test and source live in the same directory: `billing.go` and `billing_test.go`, `Button.tsx` and `Button.test.tsx`.
 2. **Parallel tree** — a separate root directory mirrors the source structure: `src/billing/service.java` and `test/billing/ServiceTest.java`.
 
-Modern frontend frameworks have largely converged on adjacent co-location as a deliberate cohesion-first choice. A React component folder containing `Button.tsx`, `Button.css`, and `Button.test.tsx` keeps the full concept of a button in one place. The older layered convention — all components in `components/`, all styles in `styles/`, all tests in `tests/` — mirrors package-by-layer: it organizes by artifact type rather than by the concept that changes together.
+Modern frontend frameworks have largely converged on adjacent co-location as a deliberate, cohesion-first choice. A React component folder holding `Button.tsx`, `Button.css`, and `Button.test.tsx` keeps the entire concept of a button in one place. The older layered convention — all components in `components/`, all styles in `styles/`, all tests in `tests/` — is package-by-layer wearing a different outfit: organized by artifact type rather than by whatever actually changes together.
 
-The primary failure mode of parallel trees is the orphaned test: a developer refactors `src/` and renames several files but forgets to execute the same structural changes in `test/`. The tests become disjointed from the code they verify, and the mismatch isn't discovered until a test is needed.
+The primary failure mode of parallel trees is the orphaned test: a developer refactors `src/`, renames a batch of files, and forgets to make the same structural changes in `test/`. The tests drift out of sync with the code they're supposed to verify, and nobody notices the mismatch until a test is actually needed and isn't there.
 
-Testing strategy itself is covered in Part V. The placement decision here is a cohesion question, not a test design question, and the answer is the same: keep together the things that are understood and changed together.
+Testing strategy itself is covered in Part V. The placement question here is a cohesion question, not a test-design question, and the answer stays the same either way: keep together whatever gets understood and changed together.
 
 ---
 
 ### Why Smart Engineers Disagree: Scrolling vs. Tab-Switching
 
-The file granularity debate is usually framed as a preference argument. It isn't. It's a disagreement about which cognitive tax scales worse.
+The file granularity debate usually gets framed as a preference argument. It isn't. It's a disagreement about which cognitive tax actually scales worse.
 
-Engineers who prefer small files argue that any file over 200 lines is a smell. They claim small files enforce the Single Responsibility Principle and that scrolling is a sign of an overgrown monolith. Engineers who prefer larger files argue that tab-switching shatters context. Every time a developer opens a new file to find a helper function definition, they risk losing their place in the operation they were tracing.
+Engineers who prefer small files argue that any file over 200 lines is already a smell — small files enforce the Single Responsibility Principle, and scrolling, to them, is the visible symptom of an overgrown monolith. Engineers who prefer larger files argue that tab-switching is what actually shatters context. Every time a developer opens a new file just to find a helper function's definition, they risk losing the thread of the operation they were tracing in the first place.
 
-Both taxes are real. But they scale differently. The cost of scrolling through a cohesive file is roughly linear: more content, more scrolling. The cost of tab-switching is closer to exponential: each new file is a context-switch that risks a cache miss in the developer's working memory. The execution path has to be reconstructed from scratch on each switch.
+Both taxes are real. They just don't scale the same way. The cost of scrolling through a cohesive file is roughly linear — more content, more scrolling, nothing exotic. The cost of tab-switching is closer to exponential: every new file is a context switch that risks a cache miss in the developer's working memory, and the execution path has to be rebuilt from scratch after every single switch.
 
-The deciding factor is never the raw line count — it is the density of cohesion. A 1,500-line file implementing one cohesive protocol parser is harder to navigate than it appears in summary and easier to understand than ten 150-line files would be. If scrolling through a file feels like searching a junk drawer — if the next section is always about something different — the file lacks cohesion and should be split. If scrolling feels like following a narrative, the file is working correctly, regardless of length.
+The deciding factor was never the raw line count. It's the density of cohesion. A 1,500-line file implementing one cohesive protocol parser looks worse on paper than it reads in practice, and it's still easier to understand than ten 150-line files would be. If scrolling through a file feels like rummaging through a junk drawer — if the next section is always about something completely different — the file lacks cohesion and deserves to be split. If scrolling feels like following one continuous narrative, the file is doing its job correctly, whatever its length happens to be.

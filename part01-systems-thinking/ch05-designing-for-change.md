@@ -14,17 +14,17 @@
 
 ## Purpose
 
-A system that cannot change is already obsolete the day it ships. A system where everything can change at once is in a permanent state of low-grade collapse — every modification risks breaking every dependent. This chapter is about the deliberate partition between the two: what should remain fixed, and what should be free to evolve cheaply.
+A system that can't change is obsolete the moment it ships. A system where everything can change at once is never actually stable — it's just collapsing slowly, one modification at a time, each one a coin flip on which dependent it takes down. This chapter is the deliberate line drawn between the two: what stays fixed, and what gets to evolve cheaply.
 
-This is not future-proofing. Future-proofing speculates about unspecified requirements and pays complexity now for benefits that may never materialize. Designing for change is narrower and more disciplined: name the specific axis a system is likely to vary along, and make movement along that axis cheap. Everything else stays simple, even if that means it is harder to change later — because most of "everything else" will never need to change at all.
+This is not future-proofing, and the difference matters. Future-proofing guesses at requirements nobody's named yet and pays the complexity bill today for a benefit that may never show up. Designing for change is the narrower, more disciplined version of that same impulse: name the one axis this system is actually likely to move along, and make that specific movement cheap. Everything else gets to stay simple — even if that means it's harder to change later — because most of "everything else" was never going to need changing at all.
 
 ---
 
 ## What Should Be Stable vs. What Should Be Flexible
 
-**What it is:** System design is fundamentally about choosing invariants. Some parts of a system should not change often — interfaces, contracts, data shapes. Other parts should be designed to change frequently — implementations, algorithms, internal data structures. A well-designed system stabilizes the boundary so the interior can be modified aggressively without alerting anything outside it.
+**What it is:** Designing a system is mostly deciding what not to let move. Interfaces, contracts, data shapes — these should hold still. Implementations, algorithms, internal data structures — these should be free to churn constantly. Get the boundary right and the interior can be torn apart and rebuilt without anyone outside ever noticing.
 
-**Why it exists:** If a core component changes its contract, every component with high afferent coupling to it (Ch 03) must also change — a cascading, coordinated failure. Stabilizing the boundary converts a coordination problem into a local one: the interior can be rewritten by one team, on one schedule, with no one else needing to know.
+**Why it exists:** Change a core component's contract and every component with high afferent coupling to it (Ch 03) has to change too, all at once, in a coordinated scramble nobody scheduled on purpose. Stabilize the boundary instead, and that same coordination problem shrinks down to a local one: one team rewrites the interior on their own clock, and nobody else needs to be told.
 
 **Options:**
 1. **Rigid interface, fluid implementation** — the public contract is frozen; algorithms, data structures, and dependencies behind it can be rewritten entirely
@@ -46,19 +46,19 @@ This is not future-proofing. Future-proofing speculates about unspecified requir
 - *Fully flexible:* prototypes and experimental systems where the correct shape isn't known yet — this is a starting state, not a destination.
 
 **Common failure modes:**
-- **The "God Interface":** an attempt to stabilize a boundary fails because the interface never captured a genuinely stable domain concept — it's a dumping ground of unrelated methods that must change weekly, breaking downstream consumers despite the appearance of a contract.
-- Locking in an API shape before the domain is understood, then being unable to evolve it without breaking every client.
-- Over-stabilizing internal logic that should have stayed cheap to change, inflating the cost of ordinary feature work.
+- **The "God Interface":** someone tries to stabilize a boundary, but the interface never actually captured a stable domain concept in the first place — it's a dumping ground of unrelated methods that has to change weekly anyway, breaking every downstream consumer while still technically wearing the costume of a contract.
+- Locking in an API shape before anyone understands the domain, then discovering there's no way to evolve it later without breaking every client who trusted it.
+- Over-stabilizing internal logic that never needed to be rigid, which just quietly taxes every ordinary feature request from here on out.
 
-**Example:** The Linux kernel enforces a strict rigid-interface boundary at the syscall ABI. Linus Torvalds's governing rule is blunt: "Never break user space." Internal kernel data structures, the scheduler, and memory management are rewritten constantly — entire subsystems have been replaced more than once. Yet a binary compiled for Linux in 1998 will, with very few exceptions, still run on a modern kernel. The stability is not an accident of slow development; it is a deliberate commitment that buys the kernel team the freedom to change everything behind it. **[Strong Recommendation: when a component has high afferent coupling, stabilize the contract explicitly and treat that decision as a commitment, not a default]**
+**Example:** The Linux kernel treats the syscall ABI as a rigid interface with almost religious discipline. Linus Torvalds's rule for it isn't diplomatic: "Never break user space." Everything behind that boundary — data structures, the scheduler, memory management — gets rewritten constantly, whole subsystems replaced more than once. And yet a binary compiled for Linux in 1998 will, with very few exceptions, still run today. That stability was never an accident of the kernel moving slowly. It's a deliberate trade that bought the kernel team total freedom to gut everything behind the line, because they never move the line itself. **[Strong Recommendation: when a component has high afferent coupling, stabilize the contract explicitly and treat that decision as a commitment, not a default]**
 
 ---
 
 ## The Open/Closed Principle — Useful but Incomplete
 
-**What it is:** Software entities should be open for extension but closed for modification: new behavior is added through new code, not by editing and re-risking existing, tested code. It is a pragmatic lens for managing regression risk, not a general law that applies uniformly.
+**What it is:** Software should be open for extension but closed for modification — new behavior arrives as new code, not as an edit to code that was already tested and already trusted. Treat this as a pragmatic lens for regression risk. It is not a law that applies the same way everywhere, whatever the name suggests.
 
-**Why it exists:** Modifying heavily tested, production-hardened code carries real regression risk. Extending a system by adding new code — a plugin, a new implementation of an existing interface — isolates the risk of the new feature from the stability of the old ones.
+**Why it exists:** Editing heavily tested, production-hardened code is genuinely risky — you're re-rolling the dice on everything that code already proved it could do correctly. Adding new code instead — a plugin, a fresh implementation of an existing interface — keeps the risk of the new feature from ever touching the stability the old ones already earned.
 
 **Options:**
 1. **Strict OCP** — behavior is altered exclusively through new classes/modules conforming to existing interfaces (plugins, dependency injection, polymorphism)
@@ -76,19 +76,19 @@ This is not future-proofing. Future-proofing speculates about unspecified requir
 - *Pragmatic modification:* core business logic, where new requirements frequently contradict or replace old rules rather than extending them — additive extension is not possible when the new rule and the old rule cannot coexist.
 
 **Common failure modes:**
-- **Premature extension hooks:** an engineer builds a plugin architecture and abstract interfaces for use cases that don't exist yet. When the actual requirement arrives, the system is too complex to modify — violating the very principle it was trying to uphold.
-- Over-engineered plugin systems that never gain a second plugin.
-- Deep inheritance hierarchies that are unreasoned-about under real change pressure, because OCP was applied as a default rather than a deliberate choice.
+- **Premature extension hooks:** an engineer builds out a whole plugin architecture and a stack of abstract interfaces for use cases that don't exist yet. When the real requirement finally shows up, the system is too tangled to modify — which is precisely the failure OCP was supposed to prevent, achieved by applying OCP too early.
+- An over-engineered plugin system that, years later, still has exactly one plugin.
+- Deep inheritance hierarchies nobody can reason about under real change pressure, because OCP got applied by default instead of by decision.
 
-**Example:** PostgreSQL's wire protocol is practically closed for modification — its binary layout has been stable across decades of major versions, protecting every driver in the ecosystem. But the engine itself is famously open for extension: PostGIS adds an entire geospatial type system and indexing strategy without modifying PostgreSQL's core source. The protocol is closed; the engine is open. These are different boundaries, stabilized for different reasons. **[Consensus: apply OCP where the axis of change is additive; abandon it where new requirements genuinely contradict old ones, and modify the code directly]**
+**Example:** PostgreSQL's wire protocol is about as closed for modification as software gets — its binary layout has held stable across decades of major versions, and every driver in the ecosystem is quietly relying on that. The engine underneath it is the opposite story: PostGIS bolts on an entire geospatial type system and indexing strategy without touching a line of PostgreSQL's core source. Closed protocol, open engine — two different boundaries in the same system, stabilized for two entirely different reasons. **[Consensus: apply OCP where the axis of change is additive; abandon it where new requirements genuinely contradict old ones, and modify the code directly]**
 
 ---
 
 ## Designing for Change vs. Future-Proofing
 
-**What it is:** Designing for change means identifying a known, specific axis of variation and making movement along it cheap. Future-proofing means anticipating unknown future requirements and building generality upfront to absorb them. The first is grounded in observed or strategically committed variability. The second is speculation.
+**What it is:** Designing for change means naming a known, specific axis of variation and making movement along that one axis cheap. Future-proofing means guessing at requirements nobody's named yet and building generality now to absorb whatever might show up. One is grounded in variability you've actually observed or committed to. The other is a bet against the unknown, dressed up as diligence.
 
-**Why it exists:** Business requirements change, but not randomly — a systems engineer's job is to predict *how* a specific, known domain will evolve. Predicting *whether* an entirely unrelated domain will materialize is guessing, and guessing wrong is expensive in a specific way: the complexity is paid immediately, and the benefit may never arrive.
+**Why it exists:** Business requirements don't drift randomly — an engineer's actual job is predicting *how* a specific, known domain is going to move. Predicting *whether* some entirely unrelated domain is even going to exist yet is just guessing, and a wrong guess here has a specific, ugly cost: the complexity gets paid immediately, in full, and the benefit it was supposedly buying may simply never arrive to collect against it.
 
 **Options:**
 1. **Axis-based (targeted) design** — explicit variability points for a named, specific dimension of change
@@ -106,36 +106,36 @@ This is not future-proofing. Future-proofing speculates about unspecified requir
 - *Minimal:* early-stage systems and experimental products, where the cost of guessing wrong about the axis exceeds the cost of refactoring later.
 
 **Common failure modes:**
-- **The EAV (Entity-Attribute-Value) anti-pattern:** an engineer "future-proofs" a relational schema with a generic `(entity_id, attribute_name, attribute_value)` table so the team "never has to run a migration again." This destroys indexing, query planning, and relational integrity, and the system collapses under read load that a normal schema would have shrugged off.
-- A system built to support "multiple database backends" that only ever runs on PostgreSQL, paying for a repository-pattern indirection layer that never reduced real change cost because the second backend never arrived.
-- Missing a real axis of variation — treating something as fixed (a storage backend, an auth provider) that later genuinely needs to vary, because no one named it as a candidate axis up front.
+- **The EAV (Entity-Attribute-Value) anti-pattern:** someone "future-proofs" a relational schema into a generic `(entity_id, attribute_name, attribute_value)` table so the team can supposedly "never run a migration again." It wrecks indexing, wrecks query planning, wrecks relational integrity, and the system falls over under read load a normal schema would never have noticed.
+- A system engineered to support "multiple database backends" that has run on PostgreSQL exclusively since day one, quietly paying the tax of a repository-pattern indirection layer for a second backend that was never going to show up.
+- Missing the axis that actually mattered — treating a storage backend or an auth provider as permanently fixed, right up until it genuinely needs to vary and nobody ever flagged it as a candidate.
 
-**Example:** Linus Torvalds did not future-proof Git with a generic, extensible database layer to handle "whatever we might want to store later." He targeted one specific, named need: quickly identify and retrieve immutable trees of content. The result — a content-addressable object store of blobs, trees, and commits hashed by content — has stayed mathematically stable for two decades. Because that one axis was correctly identified and rigorously stabilized, entirely new capabilities (rebasing, sparse checkouts, partial clones) were built cheaply on top of it without ever touching the object model. **[Consensus: if you cannot name the exact requirement an abstraction is for, you cannot justify its complexity cost yet]**
+**Example:** Linus Torvalds didn't future-proof Git with some generic, extensible database layer built to handle "whatever we might want to store later." He targeted exactly one need: identify and retrieve immutable trees of content, fast. What came out of that — a content-addressable object store of blobs, trees, and commits, hashed by content — has held mathematically stable for two decades. Because that single axis got identified correctly and stabilized hard, entirely new capabilities showed up later — rebasing, sparse checkouts, partial clones — all built cheaply on top, none of them ever requiring so much as a touch to the object model underneath. **[Consensus: if you cannot name the exact requirement an abstraction is for, you cannot justify its complexity cost yet]**
 
 ---
 
 ## Stable-Core Case Studies
 
-Three systems illustrate the same underlying discipline applied at different layers: stabilize one specific, correctly identified thing, and let everything else move freely.
+Three systems, three layers, same underlying discipline: find the one thing worth stabilizing, stabilize it correctly, and let everything else move as fast as it needs to.
 
-**Git's content-addressable storage:** what's stable is object identity (content-hash addressing), the immutability of stored objects, and the basic commit graph structure. What's flexible is ref management, transfer protocols, and every UI-level feature built on top. The complexity that would otherwise live in the core instead lives in the higher layers — indexing, refs, plumbing commands — which is exactly where it's cheapest to change.
+**Git's content-addressable storage:** stable is object identity, content-hash addressing, the immutability of what's stored, and the basic shape of the commit graph. Flexible is ref management, transfer protocols, and every feature built on top at the UI layer. The complexity that would otherwise be sitting in the core instead lives up in the higher layers — indexing, refs, plumbing commands — which happens to be exactly where it's cheapest to change.
 
-**The Linux syscall ABI:** what's stable is syscall numbers, signatures, and behavioral contracts. What's flexible is the scheduler, memory management, and every hardware-specific implementation behind them. The cost of this stability is real — the kernel carries decades of legacy behavior it cannot remove, and that accumulation is itself a long-term complexity tax. The trade was made deliberately, in exchange for an ecosystem that trusts the interface absolutely.
+**The Linux syscall ABI:** stable is syscall numbers, their signatures, and the behavioral contract they promise. Flexible is the scheduler, memory management, and every hardware-specific implementation sitting behind them. This stability isn't free — the kernel is dragging decades of legacy behavior it can't remove, and that's a real, ongoing complexity tax. It's a trade made on purpose, in exchange for an ecosystem that can trust the interface without reservation.
 
-**PostgreSQL's wire protocol:** what's stable is the query/response protocol structure, authentication handshake, and basic session semantics. What's flexible is the query planner, storage engine, and indexing strategy — meaning major performance improvements have shipped for decades without forcing a single driver rewrite. The recurring failure mode here is conflating protocol stability with implementation stability: a client that relies on undocumented response behavior can still break across versions, even though the documented contract never moved.
+**PostgreSQL's wire protocol:** stable is the query/response structure, the authentication handshake, basic session semantics. Flexible is the query planner, the storage engine, the indexing strategy — which is how major performance work has shipped for decades without a single driver needing a rewrite. The failure mode that keeps recurring here is conflating protocol stability with implementation stability: a client leaning on undocumented response behavior can still break across versions, even while the documented contract never moved an inch.
 
-All three stabilize the contract and leave the implementation free. None of them attempt to stabilize everything, and none of them leave everything fluid.
+All three pick a contract, freeze it, and set the implementation loose. None of them try to freeze everything. None of them leave everything loose, either.
 
 ---
 
 ## Why Smart Engineers Disagree
 
-The fiercest disagreement in this chapter is about *when* to freeze an interface, and it tracks the same fault line as Ch 04's abstraction-altitude disagreement.
+The fight that never really ends in this chapter is about *when* to freeze an interface, and it runs along the same fault line as Ch 04's abstraction-altitude disagreement.
 
-Engineers optimizing for feature velocity and team autonomy — often product engineers — resist freezing contracts early. They argue that locking an interface before the domain is understood solidifies ignorance into architecture, and prefer to let API shapes, payloads, and schemas move continuously to track shifting product requirements.
+Product engineers optimizing for feature velocity and team autonomy resist freezing anything early. Lock an interface before you understand the domain, they'll tell you, and you've just solidified your own ignorance into architecture — better to let API shapes, payloads, and schemas keep moving until the product itself stops moving.
 
-Engineers optimizing for ecosystem scale and reliability — often platform or systems engineers — enforce stable contracts aggressively. They understand that when an interface shifts, the cost is not paid by its author; it's paid by every downstream team that has to drop its roadmap to fix a broken integration.
+Platform and systems engineers optimizing for ecosystem scale and reliability push the opposite way, hard. They've seen what happens when an interface shifts: the person who shifted it doesn't pay for it. Every downstream team that trusted it does, dropping whatever they were doing to fix an integration that broke without warning.
 
-Both are managing real risk, and both fail at the extremes. Freezing too early locks in a guess. Freezing too late destroys the trust that makes other teams willing to depend on a service at all. The resolution most mature systems converge on is sequential, not simultaneous: stay fluid while the primary use cases are still being validated, then explicitly transition the boundary from fluid to rigid once they are — permanently shifting the burden of future change from the consumer to the implementer. Git, Linux, and PostgreSQL all made this transition once, deliberately, rather than treating "stable" as a permanent default from day one.
+Both sides are managing a real risk, and both fail badly at the extreme. Freeze too early and you've locked in a guess as if it were a fact. Freeze too late and you've burned the trust that made anyone willing to depend on you in the first place. What mature systems actually converge on isn't a compromise between the two — it's a sequence: stay fluid while the real use cases are still getting discovered, then deliberately flip the boundary from fluid to rigid once they are, and never look back. Git, Linux, and PostgreSQL all made exactly that flip once, on purpose — none of them treated "stable" as a birthright from day one.
 
 *Concepts expanded in later chapters: API versioning strategies (Part II, Ch 16), branching strategies (Part VII, Ch 50), Architecture Decision Records (Part VI, Ch 45).*

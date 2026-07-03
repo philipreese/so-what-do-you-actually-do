@@ -15,21 +15,21 @@
 
 ## Purpose
 
-Most system design arguments about coupling and cohesion collapse because engineers use these terms as aesthetic complaints rather than measurable properties. "This feels tightly coupled" produces arguments. "This component has efferent dependencies on eleven services and an instability score of 0.92" produces decisions.
+Most arguments about coupling and cohesion go nowhere because engineers reach for these words as aesthetic complaints instead of measurable properties. "This feels tightly coupled" gets you an argument. "This component has efferent dependencies on eleven services and an instability score of 0.92" gets you a decision, because now there's a number attached to the complaint and numbers are harder to shout past.
 
-This chapter makes both concepts precise enough to reason about and act on. It also distinguishes them clearly — they are frequently conflated, but they describe different problems at different scales.
+This chapter makes both concepts precise enough to actually use, and pulls them apart from each other — they get conflated constantly, but they're describing different problems at different scales entirely.
 
-Coupling is about the relationship *between* components: how a change in one propagates to another. Cohesion is about the internal consistency *within* a component: whether the things it does belong together.
+Coupling lives *between* components: how a change over here propagates into a change over there. Cohesion lives *inside* one component: whether the things it does actually belong in the same place together.
 
-Later chapters apply these concepts at specific scales — dependency direction in architecture (Part II, Ch 12), API surface design (Part II, Ch 15), and module file structure (Part IV, Ch 27). This chapter establishes the underlying concepts.
+Later chapters put both concepts to work at specific scales — dependency direction in architecture (Part II, Ch 12), API surface design (Part II, Ch 15), module file structure (Part IV, Ch 27). This chapter is where the vocabulary gets built.
 
 ---
 
 ## Coupling: What It Is and Why Form Matters
 
-**What it is:** Coupling is the degree to which one component's behavior depends on another component's state, structure, or timing. The critical distinction is not whether coupling exists — in any useful system, it will — but what *form* it takes.
+**What it is:** Coupling is how much one component's behavior leans on another component's state, structure, or timing. Whether coupling exists isn't the interesting question — it exists in any system worth building. What *form* it takes is the whole ballgame.
 
-**Why it exists:** No system is truly isolated. Any useful system interacts with others: databases, services, files, APIs. The form of those interactions determines how fragile the system becomes when either side changes.
+**Why it exists:** Nothing useful runs in true isolation. Every real system talks to databases, other services, files, APIs. The shape those conversations take is what decides how badly things break when one side of the conversation changes without warning the other.
 
 **Options:**
 1. **Tight coupling** — shared state, shared schemas, synchronous direct dependencies
@@ -44,27 +44,27 @@ Later chapters apply these concepts at specific scales — dependency direction 
 | Loose | High — boundaries absorb change | Lower — boundary overhead exists | Moderate — failures may be remote | Survives independent evolution |
 | Implicit | None — breaks without warning | Variable | Very low — failure modes are invisible | Highest |
 
-Implicit coupling is the worst case specifically because it is invisible. It behaves like tight coupling but passes code review as loose coupling. Two services that are "independently deployed" but coordinate through undocumented event ordering assumptions or shared Redis key conventions are implicitly tightly coupled.
+Implicit coupling is the worst of the three precisely because nobody can see it. It behaves exactly like tight coupling in production and sails through code review looking like loose coupling. Two services that are "independently deployed" but secretly depend on an undocumented event ordering, or a shared Redis key convention nobody wrote down, are just as tightly coupled as if they imported each other's source — they just don't know it yet.
 
 **When to choose each:**
-- *Tight:* In-process modules, kernel subsystems, SQLite internals — components that will always be deployed and changed together.
-- *Loose:* Service boundaries, inter-team interfaces, anything that must evolve independently.
-- *Implicit:* Never intentionally. It appears as technical debt during rapid development and must be made explicit before it causes incidents.
+- *Tight:* in-process modules, kernel subsystems, SQLite internals — anything that will always be deployed and changed as one unit anyway, where paying for a boundary buys nothing.
+- *Loose:* service boundaries, interfaces between teams, anything that has to be able to evolve on its own schedule.
+- *Implicit:* never on purpose. It's what shows up as technical debt when a team is moving fast, and it has to be dragged into the open and made explicit before it causes an incident, not after.
 
 **Common failure modes:**
-- Microservices sharing PostgreSQL table schemas directly. The service boundary is nominal; the coupling is real and is located in the schema.
-- "Independent" services coordinated through an implicit timing assumption — service B works only if service A has finished within a certain window, but no contract states this.
-- A refactor in one service breaks others with no interface change, because the actual contract was never the stated interface.
+- Microservices that share a PostgreSQL schema directly. The service boundary exists on an architecture diagram; the actual coupling lives in the tables, and the diagram is lying.
+- "Independent" services that only work because service B happens to finish before service A needs it — a timing assumption nobody ever wrote into a contract, discovered the day it stops being true.
+- A refactor in one service takes down three others with zero interface changes on paper, because the real contract was never the one anybody documented.
 
-**Example:** Unix pipes are loosely coupled by design. `grep`, `awk`, and `sort` communicate only through a byte stream — the minimal possible contract. Each tool can be rewritten, replaced, or extended without any change to its neighbors. The contract is so thin that it has survived fifty years of Unix evolution without modification. **[Consensus: prefer loose coupling at all system boundaries that will evolve independently]**
+**Example:** Unix pipes are loosely coupled on purpose. `grep`, `awk`, and `sort` agree on exactly one thing — a byte stream — and nothing else. Any of them can be rewritten, replaced, or thrown out entirely without the others noticing. That contract is so thin there's almost nothing left to break, which is presumably why it's still working, unmodified, fifty years later. **[Consensus: prefer loose coupling at all system boundaries that will evolve independently]**
 
 ---
 
 ## Afferent vs. Efferent Coupling
 
-**What it is:** Afferent coupling (Ca) is the number of external components that depend on a given component — its inbound dependency count. Efferent coupling (Ce) is the number of external components a given component depends on — its outbound dependency count. These measure different risks.
+**What it is:** Afferent coupling (Ca) counts how many other components depend on this one — everything pointing in. Efferent coupling (Ce) counts how many other components this one depends on — everything pointing out. They sound like a matched pair; they measure two completely different kinds of risk.
 
-**Why it matters:** Ca measures impact surface — if you change this component, how much breaks? Ce measures fragility — how many upstream changes can break this component?
+**Why it matters:** Ca is your blast radius — change this thing, and Ca tells you roughly how much of the world you just put at risk. Ce is your fragility — it tells you how many other people's decisions can reach in and break you without asking.
 
 **The instability metric:** Robert C. Martin's instability formula quantifies this:
 
@@ -72,10 +72,10 @@ Implicit coupling is the worst case specifically because it is invisible. It beh
 I = Ce / (Ca + Ce)
 ```
 
-- I = 0: maximally stable — many things depend on this, it depends on nothing. Hard to change without widespread consequences.
-- I = 1: maximally unstable — nothing depends on this, it depends on many things. Easy to change but breaks constantly as its dependencies evolve.
+- I = 0: maximally stable — the whole world depends on this, and it depends on nothing. You can change it, but not without consequences rippling outward.
+- I = 1: maximally unstable — nothing depends on this, and it depends on everything. You can change it freely, and it'll break constantly anyway, every time one of its dependencies moves.
 
-Neither extreme is inherently good. The question is whether the instability of each component is *appropriate* for its role.
+Neither number is a verdict on its own. The only real question is whether a component's instability matches the job it's actually doing.
 
 **Options:**
 1. **High Ca / Low Ce (The Core)** — a foundational component that many things depend on and that depends on little
@@ -93,13 +93,13 @@ Neither extreme is inherently good. The question is whether the instability of e
 | Low Ca / Low Ce | High | Low | CLI utilities, pure functions |
 
 **When to choose each:**
-- *High Ca / Low Ce:* Standard libraries, data structures, foundational infrastructure. These must be heavily tested, carefully versioned, and changed rarely.
-- *Low Ca / High Ce:* User-facing layers, entry points, orchestration services. These should be easy to rewrite because their job is to change as business requirements change.
-- *High Ca / High Ce:* This profile is almost always accidental. A component that accumulated this shape is a systemic risk — a change to any of its efferent dependencies can cascade to all of its afferent dependents. Refactor to reduce one side.
+- *High Ca / Low Ce:* standard libraries, data structures, foundational infrastructure — anything where "heavily tested, carefully versioned, rarely touched" isn't caution, it's the job description.
+- *Low Ca / High Ce:* user-facing layers, entry points, orchestration services. These should be cheap and easy to rewrite, because changing to match the business is their entire reason for existing.
+- *High Ca / High Ce:* nobody designs this on purpose. A component that ends up here is a systemic risk sitting in the middle of the architecture — a change to anything it depends on can ripple out to everything that depends on it. Refactor to shrink one side or the other before it becomes the thing nobody's allowed to touch.
 
 **Common failure modes:**
-- A core service gains a new efferent dependency (increasing Ce). That dependency introduces instability. Now every system depending on the core is exposed to that instability.
-- An orchestration layer accumulates afferent dependencies as teams find it convenient to call into. It is now a hub: hard to change and fragile.
+- A core, heavily-depended-on service quietly picks up one new efferent dependency. That dependency has its own instability. Congratulations — every single thing that depends on your stable core just inherited that instability without anyone voting on it.
+- An orchestration layer becomes convenient to call into, and one team after another starts depending on it, until it's a hub: hard to change, fragile, and nobody remembers deciding it should be this central.
 
 **Example:** The left-pad incident in the NPM ecosystem (2016). `left-pad` was eleven lines of code that padded strings with leading characters. It had massive afferent coupling — Babel, React, and thousands of other packages depended on it — and essentially zero efferent coupling. When the author unpublished it, the entire JavaScript build ecosystem broke simultaneously, over a package most of its dependents had never heard of and would not have been able to name if asked. The package's High Ca / Low Ce profile meant a single decision by a single person caused a global cascade. The ecosystem had not recognized the risk of High Ca components controlled by untrusted third parties with no governance. **[Strong Recommendation: treat high-Ca components as infrastructure — they need versioning, governance, and stability guarantees regardless of their apparent simplicity]**
 
@@ -107,9 +107,9 @@ Neither extreme is inherently good. The question is whether the instability of e
 
 ## Connascence: The Strength of Coupling
 
-**What it is:** Connascence is a taxonomy for describing how strongly two components are coupled, based on the nature of their dependency. Two components are connascent if a change in one requires a change in the other to maintain correctness. The taxonomy orders forms of connascence from weakest (easiest to manage) to strongest (most fragile).
+**What it is:** Connascence is a taxonomy for how strongly two components are actually coupled, not just whether they are. Two components are connascent if changing one forces a change in the other to keep things correct. The taxonomy runs from weakest, easiest to manage, to strongest, most likely to ruin your week.
 
-**Why it exists:** Saying two components are "coupled" is too coarse. Components that share a function name are coupled. Components that must be called in a specific order are also coupled. These are not equivalent — one breaks on rename and is caught by a compiler; the other breaks silently at runtime under concurrency. The connascence taxonomy gives engineers vocabulary to distinguish them.
+**Why it exists:** "Coupled" alone is too blunt a word to be useful. Two components that share a function name are coupled. Two components that must be called in a specific order are also coupled. Treating those as the same problem is a mistake — one gets caught by the compiler the moment someone renames something; the other waits patiently under concurrency and breaks at runtime with no warning at all. Connascence gives you the vocabulary to tell those apart before one of them tells you the hard way.
 
 **The taxonomy, ordered weak to strong:**
 
@@ -121,36 +121,36 @@ Neither extreme is inherently good. The question is whether the instability of e
 | **Execution order** | A must happen before B | Integration tests | authenticate() before fetchData() |
 | **Timing** | A must complete within a time window for B to work | Load testing / production only | Distributed timeouts; async ordering |
 
-**The engineering goal:** Push coupling toward the top of the table. Connascence of Name and Type is caught by compilers and static analysis. Connascence of Timing is only detected in production, often during incidents.
+**The engineering goal:** drag every coupling you can toward the top of this table. Name and Type get caught by a compiler before the code ships. Timing gets caught in production, usually mid-incident, by whoever's on call.
 
 **Trade-offs:**
-- *Weak connascence (Name, Type):* Refactoring is automated and safe. Violations are caught before deployment. Requires explicit interface definitions — schemas, types, contracts.
-- *Strong connascence (Timing, Execution order):* Requires less upfront interface definition. Breaks silently at runtime. Requires deep system knowledge to diagnose.
+- *Weak connascence (Name, Type):* refactors are safe and can be automated, violations get caught before anything deploys — but you pay for it in explicit interfaces: schemas, types, contracts that someone has to write and keep current.
+- *Strong connascence (Timing, Execution order):* skip the upfront interface work entirely — and pay for it later, in silent runtime breakage that takes deep system knowledge to even begin diagnosing.
 
 **When to choose each:**
 - *Weak connascence:* Default for all inter-component interfaces, API boundaries, and service contracts. This is nearly always the right answer.
 - *Strong connascence:* Acceptable only in extreme performance-critical paths where explicit synchronization overhead is computationally prohibitive — lock-free data structures, embedded systems memory management. These cases are narrow and should be documented explicitly.
 
 **Common failure modes:**
-- **Temporal coupling:** An API client requires `authenticate()` to be called before `fetchData()`. The dependency is not expressed in types or interfaces — only in documentation. A developer calls `fetchData()` first. The system crashes in a way that is not obvious from the stack trace. The coupling was connascence of execution order, and no tool enforced it.
-- **Hardcoded values crossing boundaries:** A status code string is duplicated across five services as a literal. When one service changes its status taxonomy, the others continue accepting the old values silently. The connascence of value was never made explicit.
-- **Kubernetes controller loops:** Controllers rely on eventual consistency and timing of reconciliation loops. Debugging "stuck pods" often requires reasoning about timing connascence — which loop ran when, in what order — rather than logical errors in any single component.
+- **Temporal coupling:** an API demands `authenticate()` before `fetchData()`, and that requirement lives nowhere but a paragraph in the docs. A new developer calls `fetchData()` first, because why wouldn't they, and the system fails in a way the stack trace does nothing to explain. That was connascence of execution order the whole time, and no tool was ever going to catch it, because nothing was watching for it.
+- **Hardcoded values crossing boundaries:** a status code gets copy-pasted as a string literal into five different services. One of them updates its status taxonomy. The other four keep silently accepting the old values forever, because the connascence of value between them was never written down anywhere a compiler could check.
+- **Kubernetes controller loops:** reconciliation loops run on eventual consistency and timing that nobody fully controls. Debugging a "stuck pod" usually means reconstructing which loop fired when, relative to which other loop — reasoning about timing connascence, not hunting for a logic error in any one component.
 
-**Example:** Unix pipes effectively eliminate strong connascence. `ls` and `grep` are coupled only by Connascence of Type — they both agree to read and write byte streams — and Connascence of Name — standard input and standard output. There is no Connascence of Timing or Execution Order. They can be composed in any combination without systemic failure, which is why `ls | grep | sort | awk` pipelines built in the 1970s still work today. **[Consensus: engineer toward weak connascence at all boundaries; treat any instance of Connascence of Timing as a design risk requiring explicit documentation]**
+**Example:** Unix pipes have essentially no strong connascence left in them at all. `ls` and `grep` agree on a type — both read and write byte streams — and a name — standard input, standard output — and that's the entire relationship. No Connascence of Timing, none of Execution Order. Wire them together in any order you like and nothing breaks, which is the actual reason `ls | grep | sort | awk` pipelines written in the 1970s still run today without anyone maintaining them. **[Consensus: engineer toward weak connascence at all boundaries; treat any instance of Connascence of Timing as a design risk requiring explicit documentation]**
 
 ---
 
 ## Measuring Coupling in Practice
 
-**What it is:** Coupling can be approximated through several methods, each capturing a different dimension of the actual dependency relationship. The key insight is that the dependency graph in the code is not the only — or always the most accurate — measure of real coupling.
+**What it is:** No single method tells you the whole coupling story — each one catches a different slice of it. The thing worth internalizing here is that the dependency graph sitting in your codebase is not the only measure of real coupling, and often isn't even the most honest one.
 
-**Why it matters:** Without measurement, coupling assessments become subjective. "This feels tightly coupled" leads to arguments. Observable signals lead to decisions.
+**Why it matters:** Skip measurement and coupling assessments turn into opinions. "This feels tightly coupled" starts an argument nobody can finish. A number, on the other hand, starts a decision.
 
 **Options:**
 
 1. **Static analysis — dependency graphs, import graphs, build dependency trees.** Measures declared dependencies. Fast and cheap; catches formal coupling. Misses runtime coupling, timing coupling, and data coupling that operates through shared schemas rather than code imports.
 
-2. **Change-based analysis — co-change frequency in version history.** Files or modules that change together frequently are effectively coupled, regardless of what the dependency graph shows. `git log` over a period of months reveals the actual coupling that engineers act on, not just the coupling they declared. This is often the most honest signal.
+2. **Change-based analysis — co-change frequency in version history.** Files that keep changing together in the same commits are coupled, whatever the dependency graph claims. `git log` over a few months will tell on the coupling engineers actually live with, as opposed to the coupling they meant to declare. This is usually the most honest signal you'll get.
 
 3. **Runtime correlation — failure blast radius analysis.** Which components fail together? Which components produce correlated error spikes? This reveals coupling that static analysis and even change history cannot — especially timing coupling and environmental coupling through shared infrastructure.
 
@@ -163,18 +163,18 @@ Neither extreme is inherently good. The question is whether the instability of e
 - *Instability metric:* Architectural reviews, before major refactors.
 
 **Common failure modes:**
-- Modules that look decoupled in the import graph but always change together in practice. The actual coupling is through shared mental model, shared data format, or co-owned business logic — not through a code import.
-- Overestimating decoupling because the coupling is mediated through configuration, environment variables, or timing rather than code dependencies.
+- Two modules that look perfectly decoupled in the import graph and yet somehow always change together in practice — because the real coupling was never in an import, it was in a shared mental model, a shared data format, or business logic two teams both quietly co-own.
+- Mistaking the absence of a code dependency for actual decoupling, when the real coupling is running through config, environment variables, or timing the whole time.
 
-**Example:** Large Git repositories like the Linux kernel and Chromium reveal coupling through co-change frequency: files that change together in the same commit, repeatedly, over months, are effectively coupled even when no explicit dependency exists in the code. This is change-based coupling — the strongest signal that two things actually belong together or need a cleaner interface between them.
+**Example:** Large repositories like the Linux kernel and Chromium give up their real coupling through co-change frequency: files that show up in the same commit together, over and over, for months, are coupled — full stop — whether or not a single line of code formally depends on another. That's change-based coupling doing its job: it's the strongest signal you'll find that two things either belong together or urgently need a cleaner interface between them.
 
 ---
 
 ## Cohesion
 
-**What it is:** Cohesion measures how closely related the responsibilities within a single component are. A highly cohesive component does one logical thing. A low-cohesion component mixes unrelated responsibilities.
+**What it is:** Cohesion measures how much the responsibilities crammed into one component actually belong together. A highly cohesive component does one logical thing and knows it. A low-cohesion component is doing several unrelated jobs and calling itself one module.
 
-**Why it matters:** Low cohesion creates internal complexity — the component accumulates state and logic that interact in ways that are difficult to predict. It also creates hidden coupling: if unrelated responsibilities share internal state, changes to one responsibility unexpectedly affect the other.
+**Why it matters:** Low cohesion doesn't just look messy — it builds internal complexity, because unrelated state and logic start interacting in ways nobody predicted. It also sneaks in hidden coupling: once two unrelated responsibilities are sharing internal state, changing one of them starts affecting the other, and nothing in the code warned you that would happen.
 
 **The cohesion spectrum:**
 
@@ -192,30 +192,30 @@ Neither extreme is inherently good. The question is whether the instability of e
 - Lower cohesion is acceptable temporarily during rapid development but should be treated as technical debt: it is a signal that the component needs to be split.
 
 **Common failure modes:**
-- **The utility module:** A file named `utils.js`, `helpers.py`, or `common.go` that accumulates unrelated functions over time — the codebase's junk drawer, and just as hard to find anything in. By definition low cohesion — grouped by convenience, not by logical relationship.
-- **Shotgun surgery:** A single conceptual change — adding a new user role, changing a date format — requires modifying many files scattered across the codebase. This is the symptom of low cohesion: the concept is not owned by any one component.
-- **Mixed responsibilities:** A service that handles authentication, applies business logic, and writes to the database in the same class or function. Changing the authentication mechanism requires understanding the business logic. Changing the persistence layer requires understanding the authentication flow.
+- **The utility module:** a file named `utils.js`, `helpers.py`, or `common.go` that accumulates unrelated functions over time — the codebase's junk drawer, and just as hard to find anything in. By definition low cohesion — grouped by convenience, not by logical relationship.
+- **Shotgun surgery:** one conceptual change — a new user role, a different date format — and suddenly you're editing a dozen files scattered across the codebase to make it happen. That scatter is the tell: the concept was never owned by any single component in the first place.
+- **Mixed responsibilities:** one class handling authentication, business rules, and the database write, all at once. Touch the auth mechanism and you have to understand the business logic to do it safely. Touch the persistence layer and you have to understand the auth flow. Nothing here can be changed on its own.
 
-**Example:** SQLite maintains high cohesion by integrating storage, indexing, and query execution into a single coherent boundary. There is no query engine service separate from a storage engine service. This tight internal integration is appropriate because these responsibilities are genuinely interdependent — the query planner must know about storage layout to generate efficient plans. The cohesion reflects the actual structure of the problem.
+**Example:** SQLite keeps high cohesion by fusing storage, indexing, and query execution into one coherent boundary — there's no separate query-engine service standing apart from a storage-engine service. That tight integration isn't laziness; it matches the actual shape of the problem, because the query planner genuinely has to know about storage layout to produce an efficient plan. The cohesion here isn't a style choice. It's just what the problem looked like once someone stopped pretending it was three problems.
 
 ---
 
 ## Why Smart Engineers Disagree
 
-The most persistent coupling disagreement is over the DRY principle — Don't Repeat Yourself.
+The most durable coupling argument in the industry is the one about DRY — Don't Repeat Yourself — and it's durable precisely because both sides are right about something real.
 
-Engineers who prioritize **deduplication** abstract any repeated logic into a shared module. Three services that format dates differently get a shared `DateFormatter`. They argue this increases cohesion by putting all date logic in one place.
+The **deduplication** camp pulls any repeated logic into a shared module on sight. Three services format dates slightly differently? Give them a shared `DateFormatter` and call it a cohesion win — all the date logic lives in one place now.
 
-Engineers who prioritize **autonomy** copy the date formatting logic into each service — sometimes called WET (Write Everything Twice). They argue the shared utility creates artificial afferent coupling between services that have no other relationship.
+The **autonomy** camp copies the date-formatting logic into each service instead, a style sometimes called WET (Write Everything Twice), and argues the shared utility just bought you artificial afferent coupling between three services that otherwise have nothing to do with each other.
 
-Both positions are locally correct. The resolution is in a distinction the DRY principle glosses over: **identical code is not necessarily identical logic. If the reasons for changing are different, they must not be coupled.**
+Both sides are locally correct, which is exactly why the argument never resolves on its own. The distinction DRY quietly skips over is this: **identical code is not the same thing as identical logic. If the reasons two pieces of code might change are different, coupling them together is a mistake no matter how identical they look today.**
 
-If Service A and Service B format dates the same way today but for independent business reasons — Service A for an API payload, Service B for a database index — their future changes will diverge. Coupling them through a shared formatter means one service cannot change its date format without coordination with the other. The shared module became a coupling point masquerading as good design.
+Say Service A and Service B format dates the same way right now, but for unrelated business reasons — A for an API payload, B for a database index. Their reasons to change will diverge eventually, and once they do, a shared formatter means neither one can change its date format without dragging the other into a coordination meeting. The "deduplication" was a coupling point wearing a good-design costume.
 
-The practical question is not "is this code duplicated?" but "do the reasons for changing this code in these two places have anything to do with each other?" If yes, deduplicate. If no, the duplication is cheaper than the coupling.
+So the useful question was never "is this code duplicated?" It's "do the two places this code lives have anything to do with why they might change?" If yes, merge them. If no, the duplication is the cheap option, whatever it looks like on a code-quality dashboard.
 
-**The larger disagreement:** Some engineers optimize for minimizing coupling aggressively, accepting the coordination overhead of strict boundaries. Others prioritize cohesion first, preferring larger integrated modules that reduce fragmentation. A third camp accepts coupling but focuses on making it explicit and observable.
+**The larger disagreement:** some engineers minimize coupling aggressively and accept the coordination tax that strict boundaries impose. Others put cohesion first and prefer bigger, more integrated modules over fragmentation. A third group doesn't fight coupling at all — they just insist it be explicit and observable instead of hidden.
 
-These are defensible positions. Unix represents one extreme — minimal coupling via pipes, each tool entirely independent. SQLite represents another — high internal coupling with high cohesion, a deliberately integrated system that rejects external decomposition. Most systems need to reason about where on this spectrum each of their components should sit, rather than applying a uniform strategy everywhere.
+All three are defensible, and Unix and SQLite prove it by picking opposite ends of the spectrum and both working: Unix minimizes coupling through pipes and lets every tool live independently; SQLite embraces high internal coupling with high cohesion and refuses to decompose into separate services at all. Most systems don't get to copy either extreme wholesale — the job is figuring out where each of your own components actually belongs on that spectrum, not picking one philosophy and applying it uniformly because it worked somewhere else.
 
 *Concepts expanded in later chapters: dependency direction and inversion (Part II, Ch 12), API surface design (Part II, Ch 15), file and module structure (Part IV, Ch 27).*

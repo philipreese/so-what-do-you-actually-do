@@ -91,3 +91,15 @@ Largest Part in the book (14 chapters, not 8-9). Same inline `[Strong Recommenda
 **Pattern that keeps working, restated again:** ending a paragraph on a short, blunt clause — Ch53: "gathering dust," Ch60: "not to a generic notion of thoroughness that doesn't tell the two apart." Still the highest-value, lowest-risk move for the 1-2-jokes-per-chapter budget: it reads as personality without adding a whole new sentence's worth of risk to a technical claim.
 
 **Judgment call on the Part's closer:** Ch63 (Toolchain and Dependency Management) explicitly bookends back to Ch50 in its own closing lines ("Part VII began with... It ends here..."). Left that bookend paragraph's structure untouched and only tightened rhythm within it, consistent with how other Part-closing meta-passages (Ch09, Ch39, Ch49) have been treated — the callback is doing real structural work, not just flourish.
+
+## Part VIII (Ch 64–68) — done
+
+Small Part (5 chapters, Documentation). Distinct template flavor from Parts VI-VII: `### Decision: [Title]` headers instead of `### [Name]`, heavier use of markdown tables (trade-off tables, and Ch64's docstring-stub example table), and each chapter's closer is titled "Why Smart Engineers Disagree on [specific topic]" (e.g. "...on Documentation Volume") rather than the generic "Why Smart Engineers Disagree" used everywhere in Parts VI-VII. All 5 chapters landed at 10-19 insertions/deletions each, 68/68 total across the Part — tightest range yet, likely because this Part's chapters are shorter and more uniformly structured (3 Decision sections each) than Part VII's git-mechanics chapters.
+
+**No new retired-word catches this Part** — first Part since III without at least one pre-existing `load-bearing`/`navigate`/etc. hit in the original synthesis text. Still ran the grep per chapter as usual; came back clean every time.
+
+**Two tables per chapter left completely untouched, confirmed by targeted diff:** Ch64's trade-off tables and its tautological-docstring-stub example table (`FetchUserByID` / `IsCacheValid` rows), Ch65's artifact-comparison table, Ch67 and Ch68's option/trade-off tables. No table cell content changed in any of the 5 chapters — only the prose immediately surrounding them.
+
+**Pattern that keeps working, restated again:** ending a Why-it-exists or failure-mode paragraph on a short blunt clause — Ch64: "a fossil wearing the clothes of a live document," Ch65: "you don't edit the transcript, you file an addendum," Ch68: "a puzzle box hiding the real problem." Still the reliable move within the 1-2-jokes-per-chapter budget.
+
+**Judgment call on topic-specific closers:** unlike Parts VI-VII's generic "Why Smart Engineers Disagree" title, every Part VIII closer names its actual axis of disagreement in the heading itself (Documentation Volume, whether specs/ADRs can change, deletion vs. preservation, narrative investment, guidance vs. automation). Left every closer heading exactly as-is — these aren't flourish, they're doing the same structural labeling job as the rest of the template and were treated like any other heading.

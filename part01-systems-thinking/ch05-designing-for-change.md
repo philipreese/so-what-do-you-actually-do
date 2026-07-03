@@ -10,6 +10,14 @@
 - The Open/Closed Principle is a useful lens for managing regression risk, not a mandate for indirection everywhere. Applied where change is genuinely additive, it isolates risk. Applied where requirements actually contradict prior rules, it adds abstraction with no benefit.
 - Designing for change means identifying specific, known axes of variation and making those cheap. Future-proofing means paying complexity now for unnamed, speculative requirements that may never arrive. The first is a targeted bet; the second is usually a tax with no return.
 
+## For My Wife
+
+**The argument this chapter makes is narrow but important: know which direction your system is actually likely to move, and make that specific movement cheap. Everything else can stay simple.** This sounds obvious and is almost never done. Most engineers either treat everything as equally flexible (adding machinery to handle changes that never arrive) or treat nothing as flexible (and then spend two weeks on a change that should have been an afternoon).
+
+**Future-proofing and designing for change sound like the same thing but aren't.** Future-proofing is buying a house with twelve bedrooms because you might want eleven kids someday. Designing for change is buying a house where the walls that aren't load-bearing are easy to move, because you've thought about how your family is actually likely to grow. One is a bet on a named, probable direction. The other is expensive optionality for an imagined future.
+
+The structural principle the chapter argues for: freeze the contract, let everything behind it churn freely. The part of a system that other parts depend on should stay as stable as possible. The implementation behind that stable interface can be completely rewritten without anyone else needing to know. This is how Git added twenty years of new features on top of the same core data format — the contract didn't move; everything else was free to.
+
 ---
 
 ## Purpose

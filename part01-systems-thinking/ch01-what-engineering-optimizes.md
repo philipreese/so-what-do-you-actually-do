@@ -11,6 +11,18 @@
 - Cost of change is the dominant long-term objective for most systems — more so than runtime performance
 - Implicit optimization targets cause more damage than wrong explicit ones
 
+## For My Wife
+
+> *Every engineering argument is secretly a fight about which trade-off should win — not about who's technically right.*
+
+**No system can be great at everything.** Speed, reliability, ease of change, cost to run — every design decision quietly trades some of these against others. Making a database respond faster usually means it takes longer to add new features. Making a service cheaper to change usually means it runs a little slower. These aren't failures of engineering creativity; they're physics.
+
+**Most engineering disagreements are really disagreements about which objective matters most.** The infrastructure engineer who got paged at 2am defaults to "never fail." The product engineer with a roadmap on fire defaults to "ship fast." They're both carrying real scar tissue, and they're both extrapolating from it. The argument sounds technical, but the actual disagreement is about values.
+
+**The danger comes when nobody names the objective explicitly.** A system designed coherently on day one starts drifting — one engineer optimizes for one thing, another for something else, and a year later it's quietly committed to several contradictory goals that nobody voted on and nobody can fully list. The 2am page eventually arrives not because anyone made a bad call, but because nobody wrote down which call they were making.
+
+**The book's strongest recommendation:** write down what your system is actually optimizing for. The document isn't the point; the act of naming the trade-off is. Engineers who inherit a system with no stated priorities find out what it was really optimizing for the hard way, usually at an inconvenient hour.
+
 ---
 
 ## Purpose

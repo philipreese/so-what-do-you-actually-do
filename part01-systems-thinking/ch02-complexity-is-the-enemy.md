@@ -11,6 +11,16 @@
 - Complexity cannot be eliminated from serious systems — it can only be structured, constrained, and made visible.
 - The engineers who disagree most sharply about complexity are usually optimizing for different time horizons: day-one velocity vs. year-five maintainability.
 
+## For My Wife
+
+**There are two kinds of hard, and only one of them is your fault.** Essential complexity is the difficulty baked into the problem itself — tax rules are complicated on paper, in a spreadsheet, or in software; that's not the software's fault. Accidental complexity is the extra difficulty engineers pile on top themselves: an abstraction nobody asked for, a distributed system where a single process would have worked, a framework that solved a problem the team never actually had.
+
+The distinction matters because only one of them can be fixed. The chapter offers a dead-simple test: could you solve this problem with a pencil and paper and still run into this difficulty? If yes, it's essential. If no — if the difficulty only exists because of a particular engineering choice — it's accidental, and it's on the people who built it to remove it.
+
+> *Systems don't usually fail because the problem was too hard. They fail because the solution was harder than the problem required.*
+
+**The cost of accidental complexity accumulates invisibly and pays out all at once.** A change that should take an afternoon turns into a two-week project because nobody can hold the whole system in their head anymore. Features stop getting shipped. Engineers who were hired to build things spend most of their time carefully not breaking things. That's the end state of a system that let complexity compound without anyone watching the meter.
+
 ---
 
 ## Purpose

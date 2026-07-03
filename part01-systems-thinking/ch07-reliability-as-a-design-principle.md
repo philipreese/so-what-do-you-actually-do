@@ -11,6 +11,16 @@
 - Partial failure is the normal operational mode of distributed systems, not an edge case. Components fail independently, and some succeed while others fail simultaneously. Design must account for this explicitly.
 - The CAP theorem does not mean "pick two." Partition tolerance is not optional in real distributed systems — partitions happen. The actual choice under partition is between consistency and availability.
 
+## For My Wife
+
+> *Not all failures are equal. A crash is the polite one.*
+
+**The chapter ranks failures by how dangerous they are, and the ranking is counterintuitive.** A crash — the process just stops, loudly — is the safest kind of failure. Everything halts, an alert fires, engineers can see what happened and when, and whatever damage there is stays contained. A system that produces the wrong answer but *keeps running* is far more dangerous: it looks healthy, it doesn't page anyone, and it quietly spreads incorrect results until someone notices the books don't add up.
+
+**"Fail fast" is a design principle, not a personality trait.** The chapter argues that crashing immediately upon detecting something wrong is correct behavior — it stops damage from propagating. A system that catches the error and tries to continue anyway is often making the situation worse, because now the corrupted state is spreading through everything downstream while the system logs say everything is fine.
+
+**Partial failure is the normal operating mode of distributed systems.** When your software runs across more than one machine, some of those machines will fail while others succeed. This isn't an edge case or a disaster scenario — it's Thursday. A system that wasn't designed to survive some of its pieces failing while the rest keep running will get this wrong constantly. The CAP theorem (a well-known proof in this space) essentially says: when the network hiccups and servers can't talk to each other, you get to pick whether your system stays accurate or stays available, but not both.
+
 ---
 
 ## Purpose

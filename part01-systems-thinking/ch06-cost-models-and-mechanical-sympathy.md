@@ -10,6 +10,14 @@
 - Big-O notation assumes uniform-cost memory access. Hardware does not provide that. A theoretically worse algorithm with good cache locality routinely beats a theoretically better one that causes cache misses, for any dataset that fits in cache.
 - Redis, Kafka, and PostgreSQL are not "fast" in the same way. Each is aligned with a different physical constraint — Redis eliminates a cost path entirely, Kafka exploits a hardware property, PostgreSQL pays a deliberate cost in one place to avoid a worse one elsewhere.
 
+## For My Wife
+
+**Every piece of code runs on hardware, and the hardware has opinions.** The gap between reading something from the processor's tiny fast memory versus reading it from a hard drive — let alone from a server on the other side of the country — isn't a gradient. It's a series of cliffs. Memory is fast. Disk is roughly a hundred thousand times slower. A network call to another server can be a million times slower than a memory read. These aren't aesthetic differences; they're physics.
+
+**"Mechanical sympathy" is the term for writing software that works *with* those physical facts rather than against them.** A database that reads data in chunks, sequentially, is exploiting something real about how disks work. A database that jumps around randomly — even to slightly less data — may be slower despite doing less work, because it's fighting the hardware's natural motion. The chapter makes this concrete enough to be useful: if you understand why Redis is fast (it skips the disk entirely), you understand when using Redis makes sense and when it's solving the wrong problem.
+
+The practical upshot is that architectural choices — "add a cache," "make this asynchronous," "put this on a different server" — aren't matters of style. Each one is a decision to move data across a cost boundary that spans several orders of magnitude. An engineer who doesn't know those costs is making those decisions blind, and the bill usually arrives as a 2am page during peak traffic.
+
 ---
 
 ## Purpose

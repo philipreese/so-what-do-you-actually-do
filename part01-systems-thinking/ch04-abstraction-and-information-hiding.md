@@ -10,6 +10,17 @@
 - A wrong abstraction — one built on an incorrect guess about what will change — is worse than no abstraction at all. It creates coupling to a false model of the problem, and unwinding it costs more than the duplication it was meant to prevent.
 - Abstractions that survive decades (POSIX file descriptors) succeed because they hide what is actually stable and deliberately expose what is not, rather than trying to hide everything.
 
+## For My Wife
+
+**There's a difference between hiding a drawer and hiding what's *in* the drawer.** Encapsulation — the word engineers use for the first one — means you've bundled some things together and put a door on them. Information hiding, the more valuable concept, means you've figured out which detail is most likely to change in the future and made it so that nothing else in the system depends on that detail. The filing cabinet has a door *and* the files inside are organized so that reorganizing them later doesn't require telling anyone else about it.
+
+The problem is that engineers confuse these constantly. A class with private fields but public methods that mirror those fields one-to-one hasn't hidden anything useful — everyone who calls it still knows exactly how the data is structured, and the moment that structure changes, they all have to update. True abstraction hides the *decision*, not just the data.
+
+**All non-trivial abstractions leak eventually.** This is Spolsky's Law, and the chapter takes it as physics rather than a complaint. What it means: every shortcut you take to make something easier to use will eventually put you face-to-face with the thing it was hiding. The elevator abstraction leaks when the elevator is broken. The ORM (a tool that makes databases feel like simple objects) leaks the moment you need a query complex enough to actually think about the database. The design question isn't how to prevent the leak — it's knowing what's behind the wall and making sure the leak isn't catastrophic when it comes.
+
+> [!NOTE]
+> A wrong abstraction — one guessing at the *wrong* future change — is more expensive to undo than no abstraction at all. It couples every caller to a false model of the problem.
+
 ---
 
 ## Purpose

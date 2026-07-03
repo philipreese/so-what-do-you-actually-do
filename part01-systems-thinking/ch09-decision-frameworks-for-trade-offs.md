@@ -10,6 +10,16 @@
 - Most architectural decisions live in the "complicated" domain: there is a defensible right answer, it requires analysis to reach, and it is not a matter of running safe-to-fail experiments. Misclassifying a complicated problem as complex is how analysis paralysis is rationalized.
 - Indecision is an active failure mode with real operational cost. Teams that cannot commit to an architecture ship nothing. The goal of a decision framework is not perfect clairvoyance — it is ensuring that when the decision is wrong, the blast radius is small and the system survives long enough to correct it.
 
+## For My Wife
+
+> *Not every decision deserves the same amount of deliberation. Spending equal time on all of them is itself a form of bad decision-making.*
+
+**The chapter proposes a simple two-axis test for how hard to think about any given decision: how hard is it to reverse, and how much damage does a wrong call cause?** A decision that's easy to reverse and low-stakes doesn't warrant a three-week architecture meeting. A decision that's expensive to undo and affects every service in the company does. The failure mode this addresses is real: engineering teams that argue forever about a reversible library choice and then spend twenty minutes on a database schema that'll cost months to migrate later.
+
+**Deferring a decision is itself a decision, and not always a bad one.** Waiting to commit until you have more information makes sense — if the information is actually coming soon and the delay cost is low. What the chapter calls out is "defer" becoming the permanent answer: an "open question" that sits in a document untouched for six months while the system is being built around it anyway, just without anyone noticing they're making the call with every line of code they write.
+
+The closing argument is worth sitting with: the goal of a decision framework isn't to guarantee you pick the right answer. It's to ensure that when you pick the wrong one — and you will, everyone does — the damage is bounded and the system survives long enough to correct it. Engineers who make reversible, small-blast-radius mistakes and correct them quickly outperform engineers who deliberate until the decision is perfect and then ship it eighteen months late.
+
 ---
 
 ## Purpose

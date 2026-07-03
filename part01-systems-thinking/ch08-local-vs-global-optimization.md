@@ -10,6 +10,14 @@
 - Little's Law (L = λW) is the mathematical reason local latency improvements can cause global collapse: reducing W can increase λ, which grows L faster than W shrank, resulting in higher end-to-end latency under load.
 - Conway's Law is local vs. global optimization applied to organizational structure. Teams that optimize for their own delivery velocity produce systems that mirror their communication boundaries — which may not be the correct boundaries for the system.
 
+## For My Wife
+
+**Making one piece of a system faster doesn't necessarily make the system faster.** This is unintuitive enough that it trips up experienced engineers: a team spends two months improving a service's response time, measures genuine improvement in that service, and the overall user experience doesn't change. The reason is that the system has a bottleneck somewhere else — and speeding up a non-bottleneck changes nothing about the throughput you actually care about. It's like adding a lane to the stretch of highway before the construction zone. Traffic moves faster up until the exact same point it always did.
+
+**The constraint that limits the whole system is the only place optimization actually matters.** The chapter formalizes this with the Theory of Constraints: find the bottleneck, fix the bottleneck, repeat. Everything else is rearranging deck chairs.
+
+There's a version of this that plays out at the organizational level too. Teams that optimize for their own velocity — shipping faster, reducing their own dependencies — often produce systems that are tightly coupled in ways their org chart can't see. Two teams independently making good local choices produce a system with bad global properties because nobody was looking at the whole thing. Conway's Law names this: the structure of your software tends to mirror the structure of your communication, not the structure of your problem.
+
 ---
 
 ## Purpose

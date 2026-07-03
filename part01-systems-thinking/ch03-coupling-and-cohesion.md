@@ -11,6 +11,16 @@
 - Most real systems fail from hidden coupling, not from lack of cohesion. Hidden coupling is the worst case: it behaves like tight coupling but looks like loose coupling.
 - Co-change frequency in version history is often the most honest measure of coupling — more reliable than dependency graphs alone.
 
+## For My Wife
+
+> *Two ideas that get treated as opposites are actually two separate dials. You want both turned the right way.*
+
+**Cohesion is about whether the things inside one piece of code actually belong together.** A filing cabinet where every drawer is "miscellaneous" has low cohesion — technically everything is filed, but nobody can find anything. A module that handles invoices, user preferences, and background email delivery has the same problem. You want things grouped by what they're actually *about*.
+
+**Coupling is about how much a change in one part of the system forces changes in other parts.** Roommates who share a single Google Calendar for every personal appointment are tightly coupled — changing your dentist appointment requires a calendar negotiation. Roommates who only coordinate on shared things (rent due, apartment guests) are loosely coupled. Changing your dentist appointment is just your problem. Low coupling means changes stay local.
+
+**The thing that actually kills systems is hidden coupling** — dependencies between parts of a codebase that nobody formally declared, that don't show up in any diagram, and that only reveal themselves when you change something over here and something completely different over there breaks. The chapter tracks hidden coupling through version history: if two files almost always change in the same commit, they're coupled whether anyone admits it or not. That's the useful diagnostic — more honest than any architecture diagram anyone drew on a whiteboard in 2019.
+
 ---
 
 ## Purpose

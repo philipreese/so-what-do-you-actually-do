@@ -1,0 +1,33 @@
+---
+import DocsLayout from './DocsLayout.astro';
+import ReadingFooter from '../components/ReadingFooter.astro';
+
+interface Props {
+  partNumber: string;
+  title: string;
+  bannerEmoji?: string;
+  bannerSrc?: string;
+  eyebrow?: string;
+}
+
+const { partNumber, title, bannerEmoji = '🗺️', bannerSrc, eyebrow } = Astro.props;
+const displayEyebrow = eyebrow || `Part ${partNumber}`;
+const currentSlug = Astro.url.pathname.split('/').pop() || '';
+---
+
+<DocsLayout title={title}>
+  <div class="part-main">
+    <div class="part-banner" title="Part banner illustration placeholder">
+      {bannerSrc ? <img src={bannerSrc} alt="" /> : <span class="part-banner-placeholder">{bannerEmoji}</span>}
+    </div>
+    <p class="chapter-eyebrow">{displayEyebrow}</p>
+    <h1>{title}</h1>
+    <div class="part-body">
+      <slot />
+    </div>
+    
+    <div style="margin-top: 4rem;">
+      <ReadingFooter currentSlug={currentSlug} type="part" />
+    </div>
+  </div>
+</DocsLayout>

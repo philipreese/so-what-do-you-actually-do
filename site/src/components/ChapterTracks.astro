@@ -1,0 +1,191 @@
+---
+import './ChapterTracks.css';
+
+interface Props {
+  engineerHtml: string;
+  wifeHtml: string;
+  kidsHtml: string;
+  mascotEmoji?: string;
+  mascotSrc?: string;
+}
+
+const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = Astro.props;
+---
+
+<div class="chapter-tracks" id="tracks-wrapper">
+  <!-- Inline Initializer: Runs synchronously BEFORE paint to prevent layout flashes -->
+  <script is:inline>
+    (function() {
+      const STORAGE_KEY = 'secondaryView';
+      const DEFAULT_VIEW = 'wife';
+      
+      let initialView = DEFAULT_VIEW;
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const viewParam = urlParams.get('view');
+        if (viewParam !== null) {
+          initialView = viewParam === 'hidden' ? 'hidden' : viewParam;
+        } else {
+          const stored = window.localStorage.getItem(STORAGE_KEY);
+          if (stored !== null) {
+            initialView = stored;
+          }
+        }
+      } catch (e) {}
+
+      const wrapper = document.getElementById('tracks-wrapper');
+      if (wrapper) {
+        const showWife = initialView.includes('wife');
+        const showKids = initialView.includes('kids');
+        if (showWife) wrapper.classList.add('view-wife');
+        if (showKids) wrapper.classList.add('view-kids');
+        if (!showWife && !showKids) wrapper.classList.add('view-engineer');
+      }
+    })();
+  </script>
+
+  <!-- Track Toggles -->
+  <div class="track-toggle" role="group" aria-label="Choose which reading tracks to show">
+    <button type="button" id="toggle-wife-btn">For My Wife</button>
+    <button type="button" id="toggle-kids-btn">For My Kids</button>
+    <button type="button" id="toggle-eng-btn">Engineer Only</button>
+  </div>
+
+  <div class="track-panes">
+    <!-- Engineer Pane -->
+    <div class="pane pane-engineer">
+      <h2 class="pane-label">For Engineers</h2>
+      <div set:html={engineerHtml} />
+    </div>
+
+    <!-- Secondary Stack (Wife & Kids) -->
+    <div class="secondary-stack" id="secondaryStack">
+      <!-- Wife Pane -->
+      <div class="pane pane-secondary pane-secondary--wife">
+        <h2 class="pane-label">For My Wife</h2>
+        <div set:html={wifeHtml} />
+      </div>
+
+      <!-- Kids Pane -->
+      <div class="pane pane-secondary pane-secondary--kids">
+        <h2 class="pane-label">For My Kids</h2>
+        <div class="mascot-slot">
+          {mascotSrc ? (
+            <img class="mascot-image" src={mascotSrc} alt="Chapter mascot" />
+          ) : (
+            <span class="mascot-placeholder" title="Mascot illustration placeholder">
+              {mascotEmoji}
+            </span>
+          )}
+        </div>
+        <div set:html={kidsHtml} />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'secondaryView';
+  const DEFAULT_VIEW = 'wife';
+
+  const wrapper = document.getElementById('tracks-wrapper');
+  const toggleWifeBtn = document.getElementById('toggle-wife-btn');
+  const toggleKidsBtn = document.getElementById('toggle-kids-btn');
+  const toggleEngBtn = document.getElementById('toggle-eng-btn');
+
+  function getInitialView() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewParam = urlParams.get('view');
+    if (viewParam !== null) {
+      return viewParam === 'hidden' ? 'hidden' : viewParam;
+    }
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return stored !== null ? stored : DEFAULT_VIEW;
+  }
+
+  let currentView = getInitialView();
+
+  function updateDom() {
+    if (!wrapper) return;
+    
+    const showWife = currentView.includes('wife');
+    const showKids = currentView.includes('kids');
+    const isEngineerOnly = !showWife && !showKids;
+
+    // Toggle wrapper classes for pane visibility
+    if (showWife) wrapper.classList.add('view-wife');
+    else wrapper.classList.remove('view-wife');
+
+    if (showKids) wrapper.classList.add('view-kids');
+    else wrapper.classList.remove('view-kids');
+
+    if (isEngineerOnly) wrapper.classList.add('view-engineer');
+    else wrapper.classList.remove('view-engineer');
+
+    // Toggle button active states
+    toggleWifeBtn?.classList.toggle('active', showWife);
+    toggleWifeBtn?.setAttribute('aria-pressed', String(showWife));
+
+    toggleKidsBtn?.classList.toggle('active', showKids);
+    toggleKidsBtn?.setAttribute('aria-pressed', String(showKids));
+
+    toggleEngBtn?.classList.toggle('active', isEngineerOnly);
+    toggleEngBtn?.setAttribute('aria-pressed', String(isEngineerOnly));
+
+    // Update URL query param to reflect view state
+    const url = new URL(window.location.href);
+    if (isEngineerOnly) {
+      url.searchParams.set('view', 'hidden');
+    } else {
+      const parts = [];
+      if (showWife) parts.push('wife');
+      if (showKids) parts.push('kids');
+      url.searchParams.set('view', parts.join(','));
+    }
+    
+    // Clean URL query param if it matches default view and no other params
+    if (currentView === DEFAULT_VIEW) {
+      url.searchParams.delete('view');
+    }
+    window.history.replaceState({}, '', url);
+  }
+
+  function toggleWife() {
+    const showWife = currentView.includes('wife');
+    const showKids = currentView.includes('kids');
+    
+    let nextView = '';
+    if (showWife) {
+      nextView = showKids ? 'kids' : 'hidden';
+    } else {
+      nextView = showKids ? 'wife,kids' : 'wife';
+    }
+    setView(nextView);
+  }
+
+  function toggleKids() {
+    const showWife = currentView.includes('wife');
+    const showKids = currentView.includes('kids');
+    
+    let nextView = '';
+    if (showKids) {
+      nextView = showWife ? 'wife' : 'hidden';
+    } else {
+      nextView = showWife ? 'wife,kids' : 'kids';
+    }
+    setView(nextView);
+  }
+
+  function setView(view: string) {
+    currentView = view;
+    window.localStorage.setItem(STORAGE_KEY, view);
+    updateDom();
+  }
+
+  toggleWifeBtn?.addEventListener('click', toggleWife);
+  toggleKidsBtn?.addEventListener('click', toggleKids);
+  toggleEngBtn?.addEventListener('click', () => setView('hidden'));
+
+  // Run updates to set active button states
+  updateDom();
+</script>

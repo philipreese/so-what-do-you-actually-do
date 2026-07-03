@@ -1,0 +1,35 @@
+---
+import { getReadingSequence } from '../lib/content';
+
+interface Props {
+  currentSlug: string;
+  type: 'chapter' | 'part';
+}
+
+const { currentSlug, type } = Astro.props;
+const sequence = getReadingSequence();
+
+const currentIndex = sequence.findIndex((node) => node.slug === currentSlug && node.type === type);
+const prevNode = currentIndex > 0 ? sequence[currentIndex - 1] : null;
+const nextNode = currentIndex < sequence.length - 1 ? sequence[currentIndex + 1] : null;
+---
+
+<footer class="chapter-footer">
+  {prevNode ? (
+    <a href={prevNode.type === 'chapter' ? `/chapters/${prevNode.slug}` : `/parts/${prevNode.slug}`} class="footer-link footer-link--prev">
+      <span class="footer-link-label">← Previous {prevNode.type === 'chapter' ? 'Chapter' : 'Part'}</span>
+      <span class="footer-link-title">
+        {prevNode.type === 'chapter' ? `Ch ${prevNode.number}` : `Part ${prevNode.number}`} — {prevNode.title}
+      </span>
+    </a>
+  ) : <div />}
+  
+  {nextNode ? (
+    <a href={nextNode.type === 'chapter' ? `/chapters/${nextNode.slug}` : `/parts/${nextNode.slug}`} class="footer-link footer-link--next">
+      <span class="footer-link-label">Next {nextNode.type === 'chapter' ? 'Chapter' : 'Part'} →</span>
+      <span class="footer-link-title">
+        {nextNode.type === 'chapter' ? `Ch ${nextNode.number}` : `Part ${nextNode.number}`} — {nextNode.title}
+      </span>
+    </a>
+  ) : <div />}
+</footer>

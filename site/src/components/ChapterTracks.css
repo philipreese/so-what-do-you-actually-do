@@ -1,0 +1,466 @@
+/* Track CSS variables — Premium 2026 Developer Aesthetic */
+:root {
+  --toggle-bg: rgba(0, 0, 0, 0.05);
+  --toggle-active-bg: #1c1917;
+  --toggle-active-text: #ffffff;
+  --toggle-text: #57534e;
+  
+  --pane-engineer-bg: #ffffff;
+  --pane-engineer-border: rgba(0, 0, 0, 0.06);
+  
+  --pane-wife-bg: rgba(244, 63, 94, 0.03);
+  --pane-wife-border: rgba(244, 63, 94, 0.15);
+  --pane-wife-text: #e11d48;
+  
+  --pane-kids-bg: rgba(217, 119, 6, 0.03);
+  --pane-kids-border: rgba(217, 119, 6, 0.15);
+  --pane-kids-text: #d97706;
+  
+  --meta-card-bg: rgba(0, 0, 0, 0.02);
+  --meta-card-border: rgba(0, 0, 0, 0.05);
+  --meta-takeaways-bg: rgba(16, 185, 129, 0.03);
+  --meta-takeaways-border: rgba(16, 185, 129, 0.15);
+  --meta-takeaways-text: #15803d;
+  
+  --decision-bg: rgba(255, 255, 255, 0.8);
+  --decision-border: rgba(0, 0, 0, 0.06);
+  --decision-accent: #4f46e5;
+  
+  --failure-bg: rgba(239, 68, 68, 0.03);
+  --failure-border: rgba(239, 68, 68, 0.12);
+  --failure-text: #c2410c;
+  
+  --example-bg: rgba(59, 130, 246, 0.03);
+  --example-border: rgba(59, 130, 246, 0.12);
+  --example-text: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --toggle-bg: rgba(255, 255, 255, 0.05);
+  --toggle-active-bg: #8b5cf6;
+  --toggle-active-text: #ffffff;
+  --toggle-text: #94a3b8;
+  
+  --pane-engineer-bg: rgba(10, 10, 15, 0.65);
+  --pane-engineer-border: rgba(255, 255, 255, 0.07);
+  
+  --pane-wife-bg: rgba(244, 63, 94, 0.04);
+  --pane-wife-border: rgba(244, 63, 94, 0.18);
+  --pane-wife-text: #fda4af;
+  
+  --pane-kids-bg: rgba(245, 158, 11, 0.04);
+  --pane-kids-border: rgba(245, 158, 11, 0.18);
+  --pane-kids-text: #fde047;
+  
+  --meta-card-bg: rgba(255, 255, 255, 0.02);
+  --meta-card-border: rgba(255, 255, 255, 0.06);
+  --meta-takeaways-bg: rgba(16, 185, 129, 0.04);
+  --meta-takeaways-border: rgba(16, 185, 129, 0.18);
+  --meta-takeaways-text: #a7f3d0;
+  
+  --decision-bg: rgba(10, 10, 15, 0.7);
+  --decision-border: rgba(255, 255, 255, 0.07);
+  --decision-accent: #8b5cf6;
+  
+  --failure-bg: rgba(239, 68, 68, 0.04);
+  --failure-border: rgba(239, 68, 68, 0.15);
+  --failure-text: #fed7aa;
+  
+  --example-bg: rgba(59, 130, 246, 0.04);
+  --example-border: rgba(59, 130, 246, 0.15);
+  --example-text: #bfdbfe;
+}
+
+.chapter-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.track-toggle {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: var(--toggle-bg);
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+.track-toggle button {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--toggle-text);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s ease;
+}
+
+.track-toggle button.active {
+  background: var(--toggle-active-bg);
+  color: var(--toggle-active-text);
+}
+
+/* Track Panes Outer Layout */
+.track-panes {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+/* Panes Scroll & Width rules based on active visibility classes */
+.chapter-tracks:not(.view-engineer) .pane,
+.chapter-tracks:not(.view-engineer) .secondary-stack {
+  min-width: 0;
+  max-height: calc(100vh - 15rem);
+}
+
+.chapter-tracks:not(.view-engineer) .pane-engineer {
+  flex: 3 1 0;
+}
+
+.chapter-tracks:not(.view-engineer) .secondary-stack {
+  flex: 2 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pane {
+  overflow-y: auto;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  container-type: inline-size;
+}
+
+/* Show/Hide controls for Wife/Kids stack */
+.pane-secondary--wife,
+.pane-secondary--kids,
+.secondary-stack {
+  display: none;
+}
+
+.view-wife .pane-secondary--wife {
+  display: block;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.view-wife .secondary-stack {
+  display: flex;
+}
+
+.view-kids .pane-secondary--kids {
+  display: block;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.view-kids .secondary-stack {
+  display: flex;
+}
+
+/* Single column layout in Engineer Only view */
+.view-engineer .pane-engineer {
+  flex: 1 1 100%;
+  max-height: calc(100vh - 15rem);
+}
+
+.pane-engineer {
+  background: var(--pane-engineer-bg);
+  border-color: var(--pane-engineer-border);
+}
+
+.pane-secondary--wife {
+  background: var(--pane-wife-bg);
+  border-color: var(--pane-wife-border);
+}
+
+.pane-secondary--wife .pane-label {
+  color: var(--pane-wife-text);
+}
+
+.pane-secondary--kids {
+  background: var(--pane-kids-bg);
+  border-color: var(--pane-kids-border);
+}
+
+.pane-secondary--kids .pane-label {
+  color: var(--pane-kids-text);
+}
+
+.pane-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.mascot-slot {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mascot-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  font-size: 2.25rem;
+  border-radius: 50%;
+  background: var(--vocab-chip-bg);
+  border: 2px dashed var(--border-color);
+}
+
+.mascot-image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Mobile responsive collapse stacking */
+@media (max-width: 900px) {
+  .track-panes {
+    flex-direction: column;
+  }
+
+  .chapter-tracks:not(.view-engineer) .pane,
+  .chapter-tracks:not(.view-engineer) .secondary-stack {
+    max-height: none;
+    width: 100%;
+  }
+
+  .pane, .view-engineer .pane-engineer {
+    overflow-y: visible;
+    max-height: none;
+  }
+}
+
+/* Injected markdown components styling */
+.chapter-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@container (min-width: 620px) {
+  .chapter-meta {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.meta-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: var(--meta-card-bg);
+  border: 1px solid var(--meta-card-border);
+}
+
+.meta-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-card--takeaways {
+  background: var(--meta-takeaways-bg);
+  border-color: var(--meta-takeaways-border);
+}
+
+.meta-card--takeaways h3 {
+  color: var(--meta-takeaways-text);
+}
+
+.meta-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.meta-card li + li {
+  margin-top: 0.35rem;
+}
+
+.vocab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.vocab-chip {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--vocab-chip-bg);
+  color: var(--vocab-chip-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vocab-chip--none {
+  background: transparent;
+  color: var(--text-muted);
+  padding-left: 0;
+}
+
+.chapter-section,
+.decision-block,
+.disagree-block {
+  margin-bottom: 2rem;
+}
+
+.decision-block {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--decision-border);
+  border-left: 5px solid var(--decision-accent);
+  background: var(--decision-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.decision-heading {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.decision-lede {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@container (min-width: 520px) {
+  .decision-lede {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.decision-field h4 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--decision-accent);
+}
+
+.decision-lede .decision-field h4 {
+  margin-top: 0;
+}
+
+.decision-field--common-failure-modes {
+  padding: 0.85rem 1.15rem;
+  border-radius: 10px;
+  background: var(--failure-bg);
+  border: 1px solid var(--failure-border);
+}
+
+.decision-field--common-failure-modes h4 {
+  color: var(--failure-text);
+  margin-top: 0;
+}
+
+.decision-field--example {
+  padding: 0.85rem 1.15rem;
+  border-radius: 10px;
+  background: var(--example-bg);
+  border: 1px solid var(--example-border);
+}
+
+.decision-field--example h4 {
+  color: var(--example-text);
+  margin-top: 0;
+}
+
+.rec-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.rec-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.rec-badge--consensus {
+  background: var(--badge-consensus-bg);
+  color: var(--badge-consensus-text);
+}
+
+.rec-badge--strong {
+  background: var(--badge-strong-bg);
+  color: var(--badge-strong-text);
+}
+
+.rec-badge--tradeoff {
+  background: var(--badge-tradeoff-bg);
+  color: var(--badge-tradeoff-text);
+}
+
+.disagree-callout,
+.disagree-block {
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--disagree-border);
+  border-left: 5px solid var(--disagree-text);
+  background: var(--disagree-bg);
+}
+
+.disagree-callout {
+  margin-top: 1.5rem;
+}
+
+.disagree-callout h4,
+.disagree-block h2 {
+  margin-top: 0;
+  color: var(--disagree-text);
+  font-size: 1.25rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.table-scroll table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-scroll th {
+  background: var(--sidebar-bg);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.table-scroll th,
+.table-scroll td {
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.table-scroll tr:last-child td {
+  border-bottom: none;
+}

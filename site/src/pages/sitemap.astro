@@ -1,0 +1,170 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro';
+import { getAllPartsAndChapters, getAllAppendices } from '../lib/content';
+
+const { parts } = getAllPartsAndChapters();
+const appendices = getAllAppendices();
+---
+
+<DocsLayout title="Table of Contents">
+  <div class="sitemap-container">
+    <h1>Table of Contents</h1>
+    <p class="sitemap-intro">A complete outline of all parts, chapters, and appendices in the handbook.</p>
+    
+    <div class="parts-grid-sitemap">
+      {parts.map((part) => (
+        <div class="sitemap-part-card">
+          <a href={`/parts/${part.slug}`} class="sitemap-part-header">
+            <span class="sitemap-part-emoji">{part.emoji}</span>
+            <div class="sitemap-part-meta">
+              <span class="sitemap-part-num">Part {part.romanNumber}</span>
+              <h2 class="sitemap-part-title">{part.title}</h2>
+            </div>
+          </a>
+          <ul class="sitemap-chapters-list">
+            {part.chapters.map((ch) => (
+              <li>
+                <a href={`/chapters/${ch.slug}`} class="sitemap-chapter-link">
+                  <span class="sitemap-ch-num">{ch.number}</span>
+                  <span class="sitemap-ch-title">{ch.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    {appendices.length > 0 && (
+      <div class="sitemap-appendices">
+        <h2>Appendices</h2>
+        <div class="sitemap-appendices-list">
+          {appendices.map((app) => (
+            <a href={`/appendices/${app.slug}`} class="sitemap-appendix-link">
+              Appendix {app.letter} — {app.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</DocsLayout>
+
+<style>
+  .sitemap-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+  .sitemap-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+  }
+  .parts-grid-sitemap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .sitemap-part-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+  .sitemap-part-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .sitemap-part-header:hover .sitemap-part-title {
+    color: var(--accent-color);
+  }
+  .sitemap-part-emoji {
+    font-size: 2rem;
+    padding: 0.5rem;
+    background: var(--bg-color);
+    border-radius: 10px;
+  }
+  .sitemap-part-meta {
+    display: flex;
+    flex-direction: column;
+  }
+  .sitemap-part-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+  .sitemap-part-title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  .sitemap-chapters-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+  .sitemap-chapter-link {
+    display: flex;
+    align-items: baseline;
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .sitemap-chapter-link:hover {
+    background: var(--sidebar-link-hover-bg);
+    color: var(--accent-color);
+  }
+  .sitemap-ch-num {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-right: 0.75rem;
+  }
+  .sitemap-ch-title {
+    font-size: 0.95rem;
+  }
+  .sitemap-appendices {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+  .sitemap-appendices h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .sitemap-appendices-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sitemap-appendix-link {
+    display: block;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: all 0.15s ease;
+  }
+  .sitemap-appendix-link:hover {
+    border-color: var(--accent-color);
+    background: var(--sidebar-link-hover-bg);
+    color: var(--accent-color);
+  }
+</style>

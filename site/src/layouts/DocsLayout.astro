@@ -1,0 +1,196 @@
+---
+import '../styles/global.css';
+import { getAllPartsAndChapters, getAllAppendices } from '../lib/content';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const { parts } = getAllPartsAndChapters();
+const appendices = getAllAppendices();
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+// Find which part is currently active
+const activePartSlug = parts.find(
+  (p) => currentPath === `/parts/${p.slug}` || p.chapters.some((ch) => currentPath === `/chapters/${ch.slug}`)
+)?.slug;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — So, What Do You Actually Do?</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Theme initialisation (Runs immediately to prevent flashing) -->
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
+      document.documentElement.setAttribute('data-theme', getTheme());
+    </script>
+  </head>
+  <body>
+    <div class="docs-layout">
+      <!-- Top Header -->
+      <header class="docs-header">
+        <div class="header-left">
+          <button class="mobile-toggle" aria-label="Toggle Navigation" id="mobileToggle">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          
+          <a class="brand" href="/">
+            <span class="brand-title">So, What Do You Actually Do?</span>
+            <span class="brand-subtitle">A Software Engineer's Handbook</span>
+          </a>
+        </div>
+        
+        <div class="header-right">
+          <!-- Theme Toggle -->
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light Mode">
+            <!-- Sun Icon (shown in dark mode) -->
+            <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon Icon (shown in light mode) -->
+            <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="docs-body-container">
+        <!-- Navigation Sidebar -->
+        <aside class="docs-sidebar" id="sidebar">
+          <nav class="sidebar-nav">
+            <div class="sidebar-section">
+              <a href="/" class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
+                🏠 Introduction
+              </a>
+              <a href="/sitemap" class={`sidebar-link ${currentPath === '/sitemap' ? 'active' : ''}`}>
+                🗺️ Table of Contents
+              </a>
+            </div>
+
+            <!-- Collapsible Parts and Chapters -->
+            {parts.map((part) => {
+              const isCurrent = activePartSlug === part.slug;
+              return (
+                <div class={`sidebar-group ${isCurrent ? '' : 'collapsed'}`}>
+                  <button class="sidebar-group-header">
+                    <div class="sidebar-group-header-left">
+                      <span class="sidebar-part-num">Part {part.romanNumber}</span>
+                      <span class="sidebar-part-title">{part.title}</span>
+                    </div>
+                    <svg class="sidebar-group-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <ul class="sidebar-list">
+                    <li>
+                      <a href={`/parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
+                        <span class="chapter-num">📖</span>
+                        <span class="sidebar-chapter-title-text">Part Overview</span>
+                      </a>
+                    </li>
+                    {part.chapters.map((ch) => (
+                      <li>
+                        <a href={`/chapters/${ch.slug}`} class={`sidebar-chapter-link ${currentPath === `/chapters/${ch.slug}` ? 'active' : ''}`}>
+                          <span class="chapter-num">{ch.number}</span>
+                          <span class="sidebar-chapter-title-text">{ch.title}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+
+            <!-- Appendices -->
+            {appendices.length > 0 && (
+              <div class="sidebar-group">
+                <span class="sidebar-group-static-title">Appendices</span>
+                <ul class="sidebar-list">
+                  {appendices.map((app) => (
+                    <li>
+                      <a href={`/appendices/${app.slug}`} class={`sidebar-chapter-link ${currentPath === `/appendices/${app.slug}` ? 'active' : ''}`}>
+                        <span class="chapter-num">{app.letter}</span>
+                        <span class="sidebar-chapter-title-text">{app.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="docs-main">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <!-- Client-side Interactive Scripts -->
+    <script>
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const currentTheme = root.getAttribute('data-theme') || 'light';
+        const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+
+      // Mobile Drawer Toggle
+      const mobileToggle = document.getElementById('mobileToggle');
+      const sidebar = document.getElementById('sidebar');
+      
+      mobileToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar?.classList.toggle('open');
+      });
+
+      // Close sidebar if user clicks outside of it on mobile
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (sidebar?.classList.contains('open') && !sidebar.contains(target) && target !== mobileToggle && !mobileToggle?.contains(target)) {
+          sidebar.classList.remove('open');
+        }
+      });
+
+      // Sidebar Accordion Toggle
+      const groupHeaders = document.querySelectorAll('.sidebar-group-header');
+      groupHeaders.forEach((header) => {
+        header.addEventListener('click', () => {
+          const group = header.closest('.sidebar-group');
+          group?.classList.toggle('collapsed');
+        });
+      });
+    </script>
+  </body>
+</html>

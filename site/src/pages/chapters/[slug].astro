@@ -1,0 +1,27 @@
+---
+import fs from 'node:fs';
+import ChapterLayout from '../../layouts/ChapterLayout.astro';
+import ChapterTracks from '../../components/ChapterTracks.astro';
+import { getAllPartsAndChapters, splitChapterTracks } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const { chapters } = getAllPartsAndChapters();
+  return chapters.map((ch) => ({
+    params: { slug: ch.slug },
+    props: { chapter: ch },
+  }));
+}
+
+const { chapter } = Astro.props;
+const rawMarkdown = fs.readFileSync(chapter.filePath, 'utf-8');
+
+const { engineerHtml, wifeHtml, kidsHtml, headings } = splitChapterTracks(rawMarkdown, chapter.slug);
+---
+
+<ChapterLayout 
+  chapterNumber={chapter.number} 
+  title={chapter.title} 
+  headings={headings}
+>
+  <ChapterTracks engineerHtml={engineerHtml} wifeHtml={wifeHtml} kidsHtml={kidsHtml} mascotEmoji="🦫" />
+</ChapterLayout>

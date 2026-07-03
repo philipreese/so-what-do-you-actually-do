@@ -1,0 +1,27 @@
+---
+import fs from 'node:fs';
+import { marked } from 'marked';
+import PartLayout from '../../layouts/PartLayout.astro';
+import { getAllAppendices, resolveRelativeLinks } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const appendices = getAllAppendices();
+  return appendices.map((app) => ({
+    params: { slug: app.slug },
+    props: { appendix: app },
+  }));
+}
+
+const { appendix } = Astro.props;
+const rawMarkdown = fs.readFileSync(appendix.filePath, 'utf-8');
+
+// Drop the leading "# Appendix B — ..." heading; the layout already renders the title.
+const cleanedMarkdown = rawMarkdown.replace(/^#[^\n]*\n/, '');
+const resolvedMarkdown = resolveRelativeLinks(cleanedMarkdown);
+
+const bodyHtml = marked.parse(resolvedMarkdown) as string;
+---
+
+<PartLayout partNumber={appendix.letter} title={appendix.title} bannerEmoji="📚" eyebrow={`Appendix ${appendix.letter}`}>
+  <Fragment set:html={bodyHtml} />
+</PartLayout>

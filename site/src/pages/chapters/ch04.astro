@@ -1,0 +1,23 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { marked } from 'marked';
+import ChapterLayout from '../../layouts/ChapterLayout.astro';
+import ChapterTracks from '../../components/ChapterTracks';
+import { demoContent } from '../../data/demoContent';
+
+const repoRoot = path.resolve(process.cwd(), '..');
+const rawMarkdown = fs.readFileSync(
+  path.join(repoRoot, 'part01-systems-thinking', 'ch04-abstraction-and-information-hiding.md'),
+  'utf-8'
+);
+
+const bodyMarkdown = rawMarkdown.replace(/^#[^\n]*\n/, '');
+const engineerHtml = marked.parse(bodyMarkdown) as string;
+
+const { wife, kids } = demoContent.ch04;
+---
+
+<ChapterLayout chapterNumber="04" title="Abstraction and Information Hiding">
+  <ChapterTracks client:load engineerHtml={engineerHtml} wifeHtml={wife} kidsHtml={kids} />
+</ChapterLayout>

@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  chapterNumber: string;
+  title: string;
+}
+
+const { chapterNumber, title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — So, What Do You Actually Do?</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-title">So, What Do You Actually Do?</span>
+        <span class="brand-subtitle">A Software Engineer's Handbook — With a Chapter for Everyone Else</span>
+      </a>
+    </header>
+
+    <main class="chapter-main">
+      <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
+      <h1>{title}</h1>
+      <slot />
+    </main>
+  </body>
+</html>

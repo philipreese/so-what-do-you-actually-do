@@ -12,7 +12,8 @@ interface Props {
 
 const { partNumber, title, bannerEmoji = '🗺️', bannerSrc, eyebrow } = Astro.props;
 const displayEyebrow = eyebrow || `Part ${partNumber}`;
-const currentSlug = Astro.url.pathname.split('/').pop() || '';
+const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+const currentSlug = pathname.split('/').pop() || '';
 ---
 
 <DocsLayout title={title}>

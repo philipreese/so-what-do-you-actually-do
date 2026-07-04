@@ -17,7 +17,8 @@ interface Props {
 }
 
 const { chapterNumber, title, subtitle = '', thesis = '', headings = [], imageSrc } = Astro.props;
-const currentSlug = Astro.url.pathname.split('/').pop() || '';
+const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+const currentSlug = pathname.split('/').pop() || '';
 ---
 
 <DocsLayout title={title} description={subtitle || undefined}>

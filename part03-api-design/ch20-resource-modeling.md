@@ -22,11 +22,19 @@ The chapter takes a firm position: build a translation layer between your databa
 
 ## For My Kids
 
-Say you run a lemonade stand, and instead of a menu, you just hand customers a list of exactly how your ingredients are organized in the cooler — "shelf 2, jug 3, mixed 40% lemon, 60% water." That's genuinely how your operation works back there. It's also a terrible way to take an order, because a customer doesn't care about shelf 2 — they care about "regular lemonade" or "extra sour."
+Say you run a lemonade stand, and instead of a menu, you just hand customers a list of exactly how your ingredients are organized in the cooler — "shelf 2, jug 3, mixed 40% lemon, 60% water."
 
-**A menu exists specifically to translate your internal mess into something a stranger can actually use.** "Regular Lemonade — $2" is the thing your customer wants. What happens behind the counter to make that cup — which jug, which shelf, how you're mixing it today — is entirely your business, and it should be free to change.
+That's genuinely how your operation works back there. It's also a terrible way to take an order, because a customer doesn't care about shelf 2 — they care about "regular lemonade" or "extra sour."
 
-**Here's why that split actually matters.** Say you reorganize your cooler next weekend — new shelf order, a different mixing ratio, whatever. If your "menu" was just a mirror of the cooler, every regular customer's usual order stops making sense the moment you rearrange a single shelf. If your menu was its own separate thing all along, you can reorganize the entire cooler overnight and not one customer notices, because the only promise you ever made them was "Regular Lemonade — $2," never "shelf 2, jug 3."
+**A menu exists specifically to translate your internal mess into something a stranger can actually use.** "Regular Lemonade — $2" is the thing your customer wants.
+
+What happens behind the counter to make that cup — which jug, which shelf, how you're mixing it today — is entirely your business, and it should be free to change.
+
+**Here's why that split actually matters.** Say you reorganize your cooler next weekend — new shelf order, a different mixing ratio, whatever.
+
+If your "menu" was just a mirror of the cooler, every regular customer's usual order stops making sense the moment you rearrange a single shelf.
+
+If your menu was its own separate thing all along, you can reorganize the entire cooler overnight and not one customer notices, because the only promise you ever made them was "Regular Lemonade — $2," never "shelf 2, jug 3."
 
 ---
 

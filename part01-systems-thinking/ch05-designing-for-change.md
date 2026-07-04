@@ -20,11 +20,17 @@ The structural principle the chapter argues for: freeze the contract, let everyt
 
 ## For My Kids
 
-**At the start of the year, you know one thing for sure about your locker: gym clothes are going to pile up.** Gym meets three times a week, and that stuff has to go somewhere. So you clear one whole shelf just for it, with an extra hook for a bag if it overflows some week. That's the one part of your locker you actually built to flex.
+**At the start of the year, you know one thing for sure about your locker: gym clothes are going to pile up.** Gym meets three times a week, and that stuff has to go somewhere.
 
-**What you don't do is build in fourteen speculative compartments** for a trombone you don't play, cleats for a sport you might join in March, and textbooks for an elective you never signed up for. Most of that space sits empty all year. Every morning you're digging past shelves you never use to reach the two things you actually need.
+So you clear one whole shelf just for it, with an extra hook for a bag if it overflows some week. That's the one part of your locker you actually built to flex.
 
-The kid who guessed right about gym clothes has a locker that keeps working all year, no matter how packed it gets. The kid who tried to prepare for every hypothetical has a locker jammed with dead space — and still doesn't have room for the binder that actually showed up in November. It rides around loose in the bottom of a backpack all year instead, getting more crumpled every week.
+**What you don't do is build in fourteen speculative compartments** for a trombone you don't play, cleats for a sport you might join in March, and textbooks for an elective you never signed up for.
+
+Most of that space sits empty all year. Every morning you're digging past shelves you never use to reach the two things you actually need.
+
+The kid who guessed right about gym clothes has a locker that keeps working all year, no matter how packed it gets.
+
+The kid who tried to prepare for every hypothetical has a locker jammed with dead space — and still doesn't have room for the binder that actually showed up in November. It rides around loose in the bottom of a backpack all year instead, getting more crumpled every week.
 
 ---
 

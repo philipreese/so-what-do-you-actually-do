@@ -22,9 +22,15 @@ That second part matters more than it sounds like it should. The moment a second
 
 ## For My Kids
 
-Say a friend asks you to check her science fair poster before the judges see it. Spelling's already fine — she ran spellcheck. What she actually needs from you is different: does the explanation make sense to someone who wasn't standing there watching her do the experiment, and does her conclusion actually match the data on the chart, or does it quietly jump somewhere the numbers don't support.
+Say a friend asks you to check her science fair poster before the judges see it. Spelling's already fine — she ran spellcheck.
 
-**That only works if you actually read it.** Glance at the poster for ten seconds, say "looks great," and hand it back, and you've done something worse than nothing. She now walks into judging believing a second person genuinely checked her logic — when nobody did. If a judge asks a hard question and the argument falls apart, she's caught off guard by a problem a real read-through would have caught the night before, with time left to fix it.
+What she actually needs from you is different: does the explanation make sense to someone who wasn't standing there watching her do the experiment, and does her conclusion actually match the data on the chart, or does it quietly jump somewhere the numbers don't support.
+
+**That only works if you actually read it.**
+
+Glance at the poster for ten seconds, say "looks great," and hand it back, and you've done something worse than nothing. She now walks into judging believing a second person genuinely checked her logic — when nobody did.
+
+If a judge asks a hard question and the argument falls apart, she's caught off guard by a problem a real read-through would have caught the night before, with time left to fix it.
 
 **A real check doesn't need to find something wrong to be worth doing.** Reading it carefully and saying "yeah, this actually holds up" is a completely legitimate outcome — as long as you actually read it to find that out, instead of skimming and hoping.
 

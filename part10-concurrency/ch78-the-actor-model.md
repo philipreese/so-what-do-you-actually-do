@@ -21,11 +21,19 @@ This chapter argues computer programs can be built the same way: instead of care
 
 ## For My Kids
 
-In art class, everyone gets their own fully stocked supply box — scissors, glue, markers, all of it — instead of one shared bin in the middle of the table. Need a color your neighbor has? They don't hand you their marker. They hand you a fresh piece of paper they colored on, and you tape that into your own project. **Nobody's ever reaching into someone else's box, so nobody can ever mess up a project that wasn't theirs to touch.**
+In art class, everyone gets their own fully stocked supply box — scissors, glue, markers, all of it — instead of one shared bin in the middle of the table. Need a color your neighbor has? They don't hand you their marker.
 
-It's slower than one shared bin would be — you're waiting on someone to make you a copy instead of just grabbing what you need. But there's a whole category of disaster this makes impossible: two kids fighting over the same glue bottle, someone's masterpiece smudged because a classmate's hand was in their space.
+They hand you a fresh piece of paper they colored on, and you tape that into your own project. **Nobody's ever reaching into someone else's box, so nobody can ever mess up a project that wasn't theirs to touch.**
 
-**And when one kid's own box has a real disaster — glue spilled through everything, markers dried out, paper soaked through — the fix isn't trying to keep working with a ruined box.** It's clearing the station completely and starting over with a brand-new one. Limping along with contaminated supplies, hoping it still mostly works, just guarantees the next thing made in that box turns out wrong too — better to start clean than build on top of a mess you can't fully see the extent of.
+It's slower than one shared bin would be — you're waiting on someone to make you a copy instead of just grabbing what you need.
+
+But there's a whole category of disaster this makes impossible: two kids fighting over the same glue bottle, someone's masterpiece smudged because a classmate's hand was in their space.
+
+**And when one kid's own box has a real disaster — glue spilled through everything, markers dried out, paper soaked through — the fix isn't trying to keep working with a ruined box.**
+
+It's clearing the station completely and starting over with a brand-new one.
+
+Limping along with contaminated supplies, hoping it still mostly works, just guarantees the next thing made in that box turns out wrong too — better to start clean than build on top of a mess you can't fully see the extent of.
 
 ---
 

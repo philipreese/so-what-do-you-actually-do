@@ -21,11 +21,21 @@
 
 ## For My Kids
 
-Say you're sorting a huge tub of Legos. You don't decide what goes in which bin by how many pieces fit — you decide by which build the pieces actually belong to. An 800-piece castle set can all live in one big bin together, no problem, because every piece is part of the same one thing. But a random leftover pile — ten pieces from a spaceship, six from a race car, four from something you don't even remember building — shouldn't get dumped into one bin just because ten-plus-six-plus-four is a small, tidy number.
+Say you're sorting a huge tub of Legos. You don't decide what goes in which bin by how many pieces fit — you decide by which build the pieces actually belong to.
 
-**The size was never the actual question.** A giant bin that's entirely one castle is easy, because you already know what you're looking at the second you open it. A small bin holding five unrelated leftovers is the annoying one, because opening it means digging through pieces that have nothing to do with each other, trying to remember which ones you even still need.
+An 800-piece castle set can all live in one big bin together, no problem, because every piece is part of the same one thing.
 
-**The real signal to split things apart is "this piece is about something else,"** not "this bin got kind of full." And the real signal to leave things together is the opposite: pieces that only make sense as part of the same build, no matter how many of them there are. Sort by size instead of by build, and you'll spend more time next spring untangling five unrelated projects than you ever would have spent just building the castle.
+But a random leftover pile — ten pieces from a spaceship, six from a race car, four from something you don't even remember building — shouldn't get dumped into one bin just because ten-plus-six-plus-four is a small, tidy number.
+
+**The size was never the actual question.** A giant bin that's entirely one castle is easy, because you already know what you're looking at the second you open it.
+
+A small bin holding five unrelated leftovers is the annoying one, because opening it means digging through pieces that have nothing to do with each other, trying to remember which ones you even still need.
+
+**The real signal to split things apart is "this piece is about something else,"** not "this bin got kind of full."
+
+And the real signal to leave things together is the opposite: pieces that only make sense as part of the same build, no matter how many of them there are.
+
+Sort by size instead of by build, and you'll spend more time next spring untangling five unrelated projects than you ever would have spent just building the castle.
 
 ---
 

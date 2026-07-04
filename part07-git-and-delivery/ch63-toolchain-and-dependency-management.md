@@ -21,11 +21,19 @@ This chapter argues software has the exact same relationship with the small piec
 
 ## For My Kids
 
-Say your family has a garden, and pulling the few weeds that pop up takes about five minutes, once a week. Boring, routine, barely worth mentioning. The garden stays exactly as manageable as it was last week.
+Say your family has a garden, and pulling the few weeds that pop up takes about five minutes, once a week. Boring, routine, barely worth mentioning.
 
-**Now say you skip that five minutes every single week, all summer, because nothing looks that bad yet.** By August the weeds haven't just kept growing — they've tangled around the actual plants you wanted, and some of your vegetables are already dead underneath them. Fixing it now isn't five minutes. It's an entire weekend of brutal digging, and the plants that quietly died along the way aren't coming back no matter how much weeding happens now.
+The garden stays exactly as manageable as it was last week.
 
-**The fix was never "never let a single weed grow" or "let the whole garden do whatever it wants."** It's the boring five minutes, every week, whether or not anything looks urgent yet. Small and routine costs almost nothing and keeps the garden exactly as manageable as it's always been. Skipped long enough, the exact same job turns into the kind of weekend that ruins actual plants you can't get back.
+**Now say you skip that five minutes every single week, all summer, because nothing looks that bad yet.**
+
+By August the weeds haven't just kept growing — they've tangled around the actual plants you wanted, and some of your vegetables are already dead underneath them. Fixing it now isn't five minutes.
+
+It's an entire weekend of brutal digging, and the plants that quietly died along the way aren't coming back no matter how much weeding happens now.
+
+**The fix was never "never let a single weed grow" or "let the whole garden do whatever it wants."** It's the boring five minutes, every week, whether or not anything looks urgent yet.
+
+Small and routine costs almost nothing and keeps the garden exactly as manageable as it's always been. Skipped long enough, the exact same job turns into the kind of weekend that ruins actual plants you can't get back.
 
 ---
 

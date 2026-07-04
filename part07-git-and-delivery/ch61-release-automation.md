@@ -21,11 +21,17 @@ This chapter is about that same idea applied to how a piece of software gets rel
 
 ## For My Kids
 
-Say your class has an app that automatically ranks everyone on a "Books Read This Month" leaderboard, based on what each kid logs after finishing a book. That only works if the logging is actually specific and honest: title, date finished, page count. Log "read some books" with nothing else, and the leaderboard can't do its job — it can only rank what actually got written down clearly.
+Say your class has an app that automatically ranks everyone on a "Books Read This Month" leaderboard, based on what each kid logs after finishing a book. That only works if the logging is actually specific and honest: title, date finished, page count.
 
-**Here's where automating it gets risky: if kids start logging vaguely, or not logging at all, the leaderboard doesn't get less confident.** It gets confidently wrong, instantly, with nobody double-checking it by hand anymore. A kid who finished four real books but logged them as "stuff" ends up ranked behind someone who logged one book properly — not because they read less, but because the system can only work with what actually got written down.
+Log "read some books" with nothing else, and the leaderboard can't do its job — it can only rank what actually got written down clearly.
 
-**The lesson isn't "don't trust the automatic leaderboard."** It's that the leaderboard was always only as honest as the logging feeding it. Fix the habit of logging clearly and specifically every time, and the automatic system ends up more accurate and way faster than a teacher trying to track forty kids' reading by hand ever could be.
+**Here's where automating it gets risky: if kids start logging vaguely, or not logging at all, the leaderboard doesn't get less confident.**
+
+It gets confidently wrong, instantly, with nobody double-checking it by hand anymore. A kid who finished four real books but logged them as "stuff" ends up ranked behind someone who logged one book properly — not because they read less, but because the system can only work with what actually got written down.
+
+**The lesson isn't "don't trust the automatic leaderboard."** It's that the leaderboard was always only as honest as the logging feeding it.
+
+Fix the habit of logging clearly and specifically every time, and the automatic system ends up more accurate and way faster than a teacher trying to track forty kids' reading by hand ever could be.
 
 ---
 

@@ -25,11 +25,21 @@
 
 ## For My Kids
 
-Say your team has a group chat, and after every practice somebody pins a message: "Next practice: Tuesday, gym B." From then on, nobody texts the coach to ask where to go — everybody just glances at the pinned message. Faster for everyone, since you're checking a copy sitting right there instead of going straight to the one person who actually knows.
+> *Keeping a quick copy of the answer is the easy part. Knowing the second it stops being true is the hard part.*
 
-Keeping that copy around is the easy part. The hard part is knowing the exact moment it stops being true. Say practice gets moved to gym A. If the pinned message doesn't change with it, everyone who trusts it walks confidently into the wrong gym — worse than never having pinned anything, because at least then somebody would have asked. You could make the message expire on its own, good for three days, then force everyone back to checking with the coach directly — safe, but you re-ask about things that never changed. Or you could make it whoever moves practice's job to update the message by hand.
+Say your team has a group chat, and after every practice somebody pins a message: "Next practice: Tuesday, gym B." From then on, nobody texts the coach to ask where to go — everybody just glances at the pinned message. That's faster for everyone: you're checking a copy sitting right there instead of going straight to the one person who actually knows.
 
-That second option quietly breaks, because it depends on someone remembering to do something extra on exactly the day they're most distracted. What actually holds up is connecting the message straight to the schedule, so it updates itself the instant practice moves — nobody has to remember, because nobody has to. Skip that, and the day the schedule changes and nobody updates the chat, your whole team stands in the wrong gym at 4:00, gear on, while practice already started somewhere else.
+**Keeping that copy around is the easy part. The hard part is knowing the exact moment it stops being true.**
+
+Say practice gets moved to gym A. If the pinned message doesn't change with it, everyone who trusts it walks confidently into the wrong gym — worse than never having pinned anything, because at least then somebody would have asked.
+
+You could make the message expire on its own: good for three days, then everyone's forced back to checking with the coach directly. Safe, but you end up re-asking about things that never changed.
+
+Or you could make it whoever moves practice's job to update the message by hand. **That one quietly breaks**, because it depends on someone remembering to do something extra on exactly the day they're most distracted.
+
+**What actually holds up is connecting the message straight to the schedule**, so it updates itself the instant practice moves. Nobody has to remember, because nobody has to.
+
+Skip that, and the day the schedule changes and nobody updates the chat, your whole team stands in the wrong gym at 4:00, gear on, while practice already started somewhere else.
 
 ---
 

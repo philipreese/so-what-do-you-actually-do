@@ -21,6 +21,19 @@ The distinction matters because only one of them can be fixed. The chapter offer
 
 **The cost of accidental complexity accumulates invisibly and pays out all at once.** A change that should take an afternoon turns into a two-week project because nobody can hold the whole system in their head anymore. Features stop getting shipped. Engineers who were hired to build things spend most of their time carefully not breaking things. That's the end state of a system that let complexity compound without anyone watching the meter.
 
+## For My Kids
+
+Say you're packing your own bag for a week at sleepaway camp. Some of the hard part you can't dodge — a week needs a week's worth of stuff, a sleeping bag takes up the space a sleeping bag takes up, and no clever trick shrinks that. **That's just the job.**
+
+Then there's the hard part you invent yourself. Maybe you build your own system: color-coded ziplock bags, nested inside other bags, sorted by day and outfit, with a logic only you fully understand. Nothing about camp required that. **You built it, on your own, while trying to be extra prepared.**
+
+That's the whole split. Some difficulty is baked into the situation, and no amount of cleverness makes it go away. Some difficulty you added on top yourself, usually without noticing.
+
+> [!NOTE]
+> The test: would this still be hard if you just dumped everything on your bed and looked at it? A week's worth of clothes taking up real space — yes, unavoidable. A four-layer ziplock filing system nobody else could operate — that one's on you.
+
+It's worth tearing out before the bag gets zipped, not after. Skip that, and the first night at camp you're digging through your own system in the dark, hunting for a flashlight buried three bags deep, while everyone else in the cabin's already asleep.
+
 ---
 
 ## Purpose

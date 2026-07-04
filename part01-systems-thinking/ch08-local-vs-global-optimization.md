@@ -18,6 +18,16 @@
 
 There's a version of this that plays out at the organizational level too. Teams that optimize for their own velocity — shipping faster, reducing their own dependencies — often produce systems that are tightly coupled in ways their org chart can't see. Two teams independently making good local choices produce a system with bad global properties because nobody was looking at the whole thing. Conway's Law names this: the structure of your software tends to mirror the structure of your communication, not the structure of your problem.
 
+## For My Kids
+
+Say your relay team has four runners. Three of them are lightning fast. The fourth is solid, but nowhere near as quick, and everyone on the team knows it.
+
+Your team spends a whole month drilling the fastest runner until she shaves two-tenths of a second off her leg. She does it. Genuinely impressive. **Your team's overall race time doesn't move at all.** She was never the problem — the baton was always going to sit with the slow runner for the same stretch of track, and that stretch decides the whole race, no matter how much faster everyone else gets.
+
+**Here's the part that trips people up:** speeding up your fastest runner feels like obvious progress. The stopwatch even proves it. But the team's actual result was never about any one runner alone — it's the whole chain of handoffs, and only one link in that chain decides how long the chain takes.
+
+The team that beats you next meet is the one that spent that same month working with its fourth runner instead. A small gain there moves the real result. A big gain anywhere else moves nothing, and you still lose by the same two seconds you lost by last time.
+
 ---
 
 ## Purpose

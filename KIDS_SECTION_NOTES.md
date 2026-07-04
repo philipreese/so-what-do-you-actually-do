@@ -164,3 +164,30 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part VI, Ch42–Ch49
 - Push after Part V+VI+VII together (per this session's request to cover Parts V, VI, VII)
+
+---
+
+## Part VI complete, Ch42–Ch49
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch42**: "buy a new door" (guessed fix) vs. "the door won't shut" (the real problem); "clean your room" (no finish line) vs. "put the clean laundry in the dresser" (checkable done)
+- **Ch43**: a six-week science fair project checked at small stages by a teacher vs. only checked once, the day before presentations
+- **Ch44**: five friends building a multi-room haunted house — a bare walking-skeleton walkthrough first vs. perfecting each room in isolation; the party date never moves, scope does
+- **Ch45**: a coach's written reasons for a lineup change, old note never erased, a new note added instead
+- **Ch46**: a joint yard sale with a neighbor — a two-minute upfront conversation about what's in and out of scope, before any tables come out
+- **Ch47**: checking a friend's science fair poster for real (logic, not spelling) vs. a ten-second "looks great" rubber stamp
+- **Ch48**: shoving stuff in the closet on purpose with a real Saturday plan (real debt) vs. calling it "cleaning" with no plan at all (just a mess)
+- **Ch49**: a family road-trip rulebook that only ever grows (grape juice stain, carsickness) and never gets re-checked against whether the original reason still holds
+
+### What worked
+- This Part's wife sections lean heavily on domestic/family scenarios already (dinner party, doctor's chart, road trip, toaster) — kids sections deliberately used different domestic scenes (haunted house, yard sale, closet, science fair) rather than translating the same picture, keeping the two sections' images distinct throughout
+- Sports/coaching (Ch45) and school project checkpoints (Ch43) gave natural homes for "written record of why" and "small checks beat one big check" without reaching for the same well twice
+- Kept process-management chapters (48, 49) grounded in things a kid actually owns the consequences of (their own closet, their own family's road trip rules) rather than abstract "systems," which kept the translation honest instead of hand-wavy
+
+### Edge cases and decisions
+- Ch44 and Ch46 both touch "small conversation now vs. expensive surprise later" — kept them structurally distinct: Ch44 is about building a rough whole-thing-first vs. perfecting one piece at a time (integration risk), Ch46 is about agreeing on scope before starting at all (design agreement) — different mechanisms, so different scenes (haunted house vs. yard sale) even though both are "talk first, build second"
+- Ch42 and Ch46 both involve "state the actual problem/scope, not a premature guess" — kept surface scenarios (broken door vs. yard sale planning) distinct since one is about diagnosing a single problem and the other is about scoping a joint project
+
+### Next session
+- Continue with Part VII, Ch50–Ch63 (14 chapters — largest Part)
+- Push after Part V+VI+VII together (per this session's request)

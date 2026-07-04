@@ -20,6 +20,16 @@ This chapter argues software projects should be planned the second way: build a 
 
 **The chapter also insists on picking one fixed thing — the date or the guest list — never pretending you can hold both.** If Thanksgiving is definitely happening Thursday, some dishes might have to get cut, and that's a real decision made on purpose, days in advance. Pretending you can promise the full menu and the exact date no matter what goes wrong in the kitchen doesn't make the conflict disappear. It just guarantees the corner that gets cut is whichever one nobody was watching — usually the quality nobody had time to taste-test, served to people who were told it would be perfect.
 
+## For My Kids
+
+Say five friends are building a haunted house in one garage for a Halloween party, each person in charge of a different room.
+
+**One way to do it: each person perfects their own room completely — full decorations, sound effects, everything — before anyone checks how the rooms connect.** Nobody finds out until the night before the party that room three's doorway doesn't line up with room four's, or that two rooms both planned on using the one working fog machine at the same time.
+
+**The smarter way: build a rough, empty version of the whole path first** — just walls and doorways, no decorations yet — and walk the whole thing together, room to room, checking it actually connects and nothing's fighting over the same fog machine. It looks embarrassingly bare that first walkthrough. That's fine — the point isn't to be scary yet. **It's finding out, with weeks still on the calendar, whether the whole thing works together — not finding out with one night left and nothing left to do about it.**
+
+**And the party date itself doesn't move, no matter what.** Run out of time before Halloween, and you cut a room — you don't delay trick-or-treating for the whole neighborhood. What flexes is how much gets finished. What never flexes is the date everyone already has plans around.
+
 ---
 
 An issue ([Ch 42](ch42-issue-tracking-what-makes-a-good-issue.md)) is a bounded unit of intent. A milestone groups many issues into a meaningful increment of the system — not to satisfy a calendar or produce a chart for someone's status meeting, but to create a point where integration actually happens, hidden assumptions get tested, and the plan has to answer to reality whether it wants to or not. Good milestone planning surfaces uncertainty while it's still cheap to act on. Poor milestone planning doesn't make that uncertainty go away — it just puts off the bill until it's more expensive. Specifications for the work being planned are covered in [Ch 46](ch46-spec-first-development.md); release mechanics, tagging, and deployment promotion belong to Part VII.

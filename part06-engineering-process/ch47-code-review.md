@@ -20,6 +20,14 @@ That second part matters more than it sounds like it should. The moment a second
 
 **None of this works, though, if the friend just glances at the email and says "looks good" without actually reading it.** A review that technically happened but didn't involve anyone truly looking is worse than no review at all, because it creates the appearance of a second opinion that was never actually given — and everyone downstream keeps trusting a safety check that was never really performed. The whole point was a second set of eyes. A rubber stamp isn't one, no matter how official it looks glued to the page.
 
+## For My Kids
+
+Say a friend asks you to check her science fair poster before the judges see it. Spelling's already fine — she ran spellcheck. What she actually needs from you is different: does the explanation make sense to someone who wasn't standing there watching her do the experiment, and does her conclusion actually match the data on the chart, or does it quietly jump somewhere the numbers don't support.
+
+**That only works if you actually read it.** Glance at the poster for ten seconds, say "looks great," and hand it back, and you've done something worse than nothing. She now walks into judging believing a second person genuinely checked her logic — when nobody did. If a judge asks a hard question and the argument falls apart, she's caught off guard by a problem a real read-through would have caught the night before, with time left to fix it.
+
+**A real check doesn't need to find something wrong to be worth doing.** Reading it carefully and saying "yeah, this actually holds up" is a completely legitimate outcome — as long as you actually read it to find that out, instead of skimming and hoping.
+
 ---
 
 Code review is the most practiced and least examined process in engineering: most teams do it because they always have, without ever agreeing on what it's actually supposed to accomplish. That question matters more than it looks, because it determines every other policy in this chapter — a team that believes review exists mainly to catch bugs will tolerate slow, adversarial review as the price of thoroughness; a team that understands it as a code-health and knowledge-transfer mechanism will optimize instead for throughput and teaching. This chapter takes a position on that question and on the standard, size, latency, and scope that follow from it. PR sizing and the issue-to-PR mapping were already established in [Ch 43](ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md) and are referenced here, not re-derived. Branching, merge mechanics, commit conventions, and pre-merge CI checks belong to Part VII.

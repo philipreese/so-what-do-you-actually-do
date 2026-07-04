@@ -20,6 +20,16 @@ This chapter argues software teams should have the same conversation before buil
 
 **And the amount of planning conversation should match the size of the trip.** A weekend getaway needs one text message confirming the dates. A three-week trip across four countries deserves a written itinerary someone actually reads before the flights get booked — because unwinding a bad plan after the tickets are non-refundable costs everyone far more than it would have cost to catch on paper, before any money changed hands at all.
 
+## For My Kids
+
+Say you and a neighbor decide to run a joint yard sale, and before either of you drags a single table outside, you have a two-minute conversation: what are we actually selling, what date, and — just as important — what are we NOT doing this time (no furniture, one Saturday only, not inviting the whole street). That conversation is cheap. Any mismatch gets caught right there, before anyone's spent an afternoon pricing stuff or printing signs.
+
+**Skip that conversation, and you find out the hard way — the morning of.** Your neighbor invited three more families and is planning to run it both Saturday and Sunday, and you've already printed signs for one date. Untangling that now costs a lot more than the two-minute talk would have, and someone ends up annoyed no matter how it gets sorted out.
+
+**Saying "no furniture this time" out loud matters as much as saying what you ARE selling.** Without it, your neighbor reasonably assumes the old couch is fair game, because nobody ever said it wasn't — and now you're arguing about a couch in the driveway instead of running a sale.
+
+**And the size of that conversation should match the size of the sale.** A quick two-person sale needs exactly the two-minute chat you already had. A whole-block sale with fifteen families needs an actual plan somebody writes down and everyone reads first — because unwinding a fifteen-family misunderstanding on sale morning is a real disaster, not just an awkward five minutes.
+
 ---
 
 A specification describes work that hasn't been built yet. Its job isn't to explain code to a future reader — that's what the code, the tests, and an ADR are for — but to expose a bad idea while it's still just a document, before it costs anyone real implementation time to find out the hard way. This chapter argues for writing that document on purpose, and for matching its weight to how much the decision it's proposing actually matters. Recording a decision after it's made belongs to the ADR ([Ch 45](ch45-architecture-decision-records.md)); a spec's "alternatives considered" section often becomes the raw material for that later ADR, but this chapter is about the proposal, not the record. Where specs live long-term as a documentation type is covered in Part VIII.

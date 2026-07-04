@@ -20,6 +20,16 @@ This chapter is about writing that same kind of permanent chart entry for big, h
 > [!NOTE]
 > Not every choice deserves this treatment — nobody needs a permanent chart entry for which brand of bandage to use. This is reserved for decisions that are genuinely expensive to reverse and would affect a lot of people if they turned out wrong — the equivalent of major surgery, not a scraped knee.
 
+## For My Kids
+
+Say your coach decides, in week one, to start Jamie at first base instead of Alex, and writes down why: "Alex's shoulder is still recovering from spring; Jamie's been the more consistent fielder in practice this month." Not just the decision — the actual reasons, and specifically why Alex didn't get picked.
+
+**Three weeks later, Alex is fully healed and takes over first base instead.** The coach doesn't go back and erase the first note like it never happened. She writes a new one: "Switching to Alex — shoulder's fully cleared, and his bat's been hotter the last two weeks." The old note about Jamie stays exactly as it was, because it was true and correct at the time, for real reasons that genuinely applied then.
+
+**Here's why that matters months later, when someone asks "wait, why was Jamie even starting over Alex back in April?"** The answer's sitting right there, unedited, instead of vanishing the moment the lineup changed — and nobody has to re-argue a decision that already had a good reason, made with information that was genuinely true back then.
+
+**Not every decision needs this treatment, obviously.** Nobody's writing a permanent note about which color batting gloves someone picked. It's for the calls that are hard to undo and that people will still be asking about months later — a real lineup change, not a shoelace choice.
+
 ---
 
 [Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) established that architectural decisions with high reversal cost or wide blast radius deserve a permanent record, and [Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md) ruled that repository-level design rationale belongs in that record rather than crammed into an inline comment. Both chapters punted the actual format and lifecycle to here — this chapter doesn't re-litigate why ADRs exist; it defines what one looks like, how it moves through its lifecycle, and the judgment call for when writing one is actually worth the effort. Exploring a proposed design before a decision gets made belongs to [Ch 46](ch46-spec-first-development.md); the broader taxonomy of README vs. spec vs. ADR as documentation types belongs to Part VIII.

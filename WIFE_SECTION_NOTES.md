@@ -97,3 +97,195 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part III, Ch19–Ch27
 - Push after Part III (or after Part II + III together if III is short)
+
+---
+
+## Part IV, Ch27–Ch33 / Part V, Ch34–Ch41
+
+### Explicit correction mid-session
+- User flagged that sections were starting to converge on one shape (bold-topic-sentence paragraphs every time). Corrected by deliberately alternating: some chapters now use no bold at all (pure flowing prose), some use a mid-section pull-quote instead of an opener, some end on an italicized closing line instead of a bold one. Check the actual chapter files for the current mix before assuming a pattern — don't default to "2-3 bold paragraphs" as the safe choice.
+
+### Formatting used (for reference)
+- **Ch27**: 3 bold paragraphs, no opener (filing cabinet / junk drawer analogies)
+- **Ch28**: 3 bold paragraphs, no opener (sticky-note-as-promise / red binder analogy)
+- **Ch29**: 3 bold paragraphs (packing boxes for a move analogy)
+- **Ch30**: 3 bold paragraphs (sticky note on the fridge / paint-fumes window note analogy — deliberately different concrete image from Ch28 despite both being about notes/labels)
+- **Ch31**: pull-quote opener + 3 plain paragraphs, only 1 bold topic sentence (universal remote analogy)
+- **Ch32**: 2 bold paragraphs + `[!NOTE]` block (exceptions-as-invisible-jump / fire-alarm-vs-out-of-milk analogy)
+- **Ch33**: 3 plain paragraphs, zero bold (childproof cap / medicine bottle analogy)
+- **Ch34**: 2 plain paragraphs + mid-section italic pull-quote + 1 plain closer (book editing stages: spellcheck/editor/beta reader analogy)
+- **Ch35**: 2 bold paragraphs + 1 plain closer (tasting the sauce vs. sealed casserole analogy)
+- **Ch36**: 3 plain paragraphs + italicized closing line (GPS route vs. delivery outcome analogy)
+- **Ch37**: 3 plain paragraphs, zero bold (hotel room reset between guests analogy)
+- **Ch38**: 2 bold paragraphs (spelling-bee-style stress test / earthquake-vs-single-note shrinking analogy)
+- **Ch39**: 2 plain paragraphs + 1 bold closer (warranty-card-hoarding analogy)
+- **Ch40**: 3 plain paragraphs, zero bold (fire alarm panel: "Zone 14" vs. "Smoke detected: Kitchen")
+- **Ch41**: 2 bold paragraphs + 1 plain closer (class attendance vs. learning / pop quiz sabotage = mutation testing)
+
+### What worked
+- Deliberately varying bold-density chapter to chapter reads much more human than a uniform template — do this on purpose, don't let it happen by accident
+- Reusing a *theme* (notes/labels going stale) across two adjacent chapters (Ch28 naming, Ch30 comments) is fine as long as the concrete image differs (red binder vs. fridge sticky note) — avoid reusing the literal same image twice in a row
+- Analogies drawn from ordinary domestic life (fire alarms, hotel rooms, warranty cards, packing boxes, fridges) land better than workplace-generic ones
+- Ending on a concrete real cost (a wrong customer balance, a debugging afternoon, a team that stops refactoring, false confidence in production) rather than restating the analogy
+
+### Next session
+- Continue with Part VI, Ch42–Ch49
+- Push after Part VI or VI+VII together
+
+---
+
+## Part VI, Ch42–Ch49
+
+### Formatting used (for reference)
+- **Ch42**: pull-quote opener + 2 bold paragraphs (grocery list / garage-cleanup analogy)
+- **Ch43**: 2 plain paragraphs + `[!NOTE]` block (kitchen renovation inspection analogy)
+- **Ch44**: 2 plain paragraphs + 1 bold closer (Thanksgiving dinner prep analogy)
+- **Ch45**: 2 plain paragraphs + `[!NOTE]` block (doctor's chart / immutable medical record analogy)
+- **Ch46**: 2 plain paragraphs + 1 bold closer (planning a trip itinerary analogy)
+- **Ch47**: 2 bold paragraphs + 1 plain (friend proofreading an email before you hit send)
+- **Ch48**: 2 plain paragraphs + 1 bold closer (credit card debt — leaned into the term's literal financial origin on purpose, since the chapter's whole point is reclaiming the precise financial meaning)
+- **Ch49**: 2 plain paragraphs + 1 bold closer (toaster safety rule / Chesterton's fence — deliberately NOT the classic "cut the roast ends" anecdote, wrote a fresh equivalent instead)
+
+### What worked
+- For a chapter about a term that's a metaphor already (technical debt), leaning into the literal version of the metaphor (real credit-card debt) works better than inventing an unrelated analogy — the chapter is partly *about* reclaiming what the metaphor originally meant
+- When a chapter's own central example is a very famous, oft-cited anecdote (Chesterton's fence's "why do we cut the ends off the roast"), write an original analogy with the same shape rather than reusing the famous one — keeps the section from reading like a cliché
+- `[!NOTE]` used twice in this Part (Ch43, Ch45) — still an occasional device, not every chapter
+
+### Next session
+- Continue with Part VII, Ch50–Ch63 (largest Part — 14 chapters, consider splitting the push mid-Part if needed)
+- Push after Part VII (or in two batches within it if it runs long)
+
+---
+
+## Part VII, Ch50–Ch63 (14 chapters — largest Part)
+
+### Formatting used (for reference)
+- **Ch50**: 2 plain paragraphs + 1 bold closer (washing dishes as you go vs. letting them pile up)
+- **Ch51**: 2 plain paragraphs + 1 bold closer (caption on the back of an old photograph)
+- **Ch52**: 2 plain paragraphs + 1 bold closer (family group text — noise vs. a real negotiated decision)
+- **Ch53**: 2 plain paragraphs + 1 bold closer (empty moving boxes after unpacking vs. a labeled storage bin)
+- **Ch54**: 2 plain paragraphs + 1 bold closer (private journal vs. shared fridge calendar)
+- **Ch55**: 2 plain paragraphs + 1 bold closer (two cars driving separate routes to the same reunion — honest parallel account vs. flattened single timeline)
+- **Ch56**: 2 plain paragraphs + 1 bold closer (a building's dedication plaque vs. a knife-scratched mark)
+- **Ch57**: 2 plain paragraphs + 1 bold closer (smoke detector vs. full home inspection)
+- **Ch58**: 2 plain paragraphs + 1 bold closer (one contaminated blood sample vs. three independent doctor's-visit tests)
+- **Ch59**: 2 plain paragraphs + 1 bold closer (fridge leftovers labeled by day vs. by contents; periodic full clean-out)
+- **Ch60**: 2 plain paragraphs + 1 bold closer (dinner party dietary-restriction combinatorics)
+- **Ch61**: 2 plain paragraphs + 1 bold closer (family chore whiteboard driving automatic allowance payout)
+- **Ch62**: 2 plain paragraphs + 1 bold closer (sealed contract carried between desks vs. retyped at each one)
+- **Ch63**: 2 plain paragraphs + 1 bold closer (car oil changes vs. a seized engine)
+
+### What worked
+- This Part's chapters are mechanically dense (Git/CI plumbing) with less inherent emotional stakes than earlier Parts — leaning on very concrete, everyday systems (dishes, calendars, whiteboards, oil changes) rather than trying to force emotional weight the subject matter doesn't have was the right call
+- Noticed a risk of formula fatigue (2 plain + 1 bold closer used for nearly the whole Part) — this was a deliberate trade-off given how procedural/technical this Part's content is, but the NEXT Part should actively vary structure again (pull-quotes, NOTE blocks, no-bold-at-all) rather than let "2 plain + 1 bold" become the new unconscious default
+- When two adjacent chapters cover structurally similar ground (Ch54 force-push / Ch55 rebase both hinge on "never rewrite shared history"), pick a fresh concrete image for each rather than reusing one — fridge calendar for Ch54, road-trip cars for Ch55
+- Deliberately did NOT reuse Ch48's credit-card-debt analogy for Ch63's "dependency debt" (a direct callback in the source text) — used car maintenance instead, since repeating the exact same image across Parts would feel lazy even though the concept is explicitly the same
+
+### Next session
+- Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
+- IMPORTANT: actively vary structure again — this Part fell into "2 plain + 1 bold closer" almost every chapter; break that pattern deliberately (bring back pull-quotes, [!NOTE] blocks, zero-bold prose, mid-section quotes)
+- Push after Part VIII (or VIII+IX together)
+
+---
+
+## Part VIII, Ch64–Ch68
+
+### Formatting used (for reference) — deliberately varied per prior session's note
+- **Ch64**: pull-quote opener + 3 plain paragraphs, zero bold (sticky note on a broken stove burner)
+- **Ch65**: 2 plain paragraphs + `[!NOTE]` block (utility bill vs. home inspection report)
+- **Ch66**: 3 plain paragraphs, zero bold (allergy list taped to the fridge)
+- **Ch67**: 2 plain paragraphs + 1 bold closer (IKEA furniture instructions / parts list)
+- **Ch68**: 2 plain paragraphs + 1 bold closer (fire escape plan + fire drill)
+
+### What worked
+- Successfully broke the "2 plain + 1 bold" monoculture from Part VII — mixed pull-quote, NOTE block, and zero-bold prose back in
+- This Part's chapters are naturally about categories/taxonomy (README vs spec vs ADR, what to automate vs audit) — analogies built around "two kinds of X that get confused for each other" (utility bill/inspection report, mechanical vs. judgment steps) mapped cleanly
+- Avoided repeating the same domestic domain twice in a row: stove (64), paperwork (65), fridge list (66), furniture (67), fire safety (68) — five different concrete settings, no overlap
+- The fire-drill analogy (Ch68) carried real emotional stakes without forcing it — operational runbooks are genuinely a life-safety-adjacent metaphor already, so it wasn't a stretch
+
+### Next session
+- Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
+- Keep mixing formats chapter to chapter; don't let any single shape run more than 2-3 chapters in a row
+- Push after Part IX (or IX+X together)
+
+---
+
+## Part IX, Ch69–Ch73
+
+### Formatting used (for reference)
+- **Ch69**: 3 plain paragraphs, zero bold (notes left for a babysitter — actionability test + triage levels)
+- **Ch70**: 2 bold paragraphs (household budget: monthly total vs. one receipt vs. the whole shoebox — three signal types + cardinality)
+- **Ch71**: 2 plain paragraphs + 1 bold closer (car alarm nobody responds to anymore — alert fatigue + symptom vs. cause)
+- **Ch72**: 2 bold paragraphs (package tracking number vs. handoff-by-handoff scan record — trace context + sampling)
+- **Ch73**: 2 bold paragraphs (diet cheat-meal budget — spend the error budget + multi-window burn rate)
+
+### What worked
+- This Part's chapters are unusually mechanical/quantitative (cardinality, burn rate math, sampling) — picking one clean analogy that can carry BOTH of a chapter's two major decisions (Ch70: signal shape + cardinality; Ch72: trace structure + sampling; Ch73: spend-the-budget + multi-window) kept sections from feeling like two disconnected halves stapled together
+- Avoided reusing "allowance/chore chart" (already used in Ch61) for Ch73's budget chapter — used a diet/cheat-meal frame instead, since the concept (a budget meant to be spent) is the same shape but the concrete image needs to differ
+- Deliberately did NOT reach for smoke-detector/fire imagery again for Ch71 (already used twice: Ch57, Ch68) — used a car alarm instead, which carries the same "false alarms erode trust" point without repeating an image a third time
+
+### Next session
+- Continue with Part X, Ch74–Ch78 (5 chapters — concurrency)
+- Push after Part X (or X+XI together)
+
+---
+
+## Part X, Ch74–Ch78
+
+### Formatting used (for reference)
+- **Ch74**: 2 plain paragraphs + 1 bold closer (kids sharing one bathroom vs. three separate bathrooms)
+- **Ch75**: 2 plain paragraphs + 1 bold closer (one shared family car vs. two cars; bulletin board reading vs. posting)
+- **Ch76**: 2 bold paragraphs (restaurant chef vs. host — CPU-bound vs. I/O-bound work)
+- **Ch77**: 3 plain paragraphs + 1 bold closer (couch stuck in two doorways = deadlock; hallway side-step dance = livelock; too-polite driver at a stop sign = starvation — three distinct images for three distinct named concepts, ran slightly over the usual word count on purpose since the chapter genuinely has three things to keep separate)
+- **Ch78**: 2 bold paragraphs (private locked desks vs. shared filing cabinet; sending a melted-down employee home vs. nursing them through the day — isolation + "let it crash")
+
+### What worked
+- Concurrency chapters are the most abstract/technical material so far — grounding each one in a single, very physical, very human scene (a bathroom, a car, a kitchen, a hallway, an office desk) did more work than trying to explain the computer science directly
+- Ch77 covering three named, easily-confused concepts (deadlock/livelock/starvation) justified running longer than the usual ~280 words — when a chapter's core content really is "these three things are NOT the same," compressing to the usual length would have lost the distinctions that are the entire point
+- Kept the concurrency Part's analogies domestic/physical rather than reaching for computer-adjacent metaphors, which would have just re-described the technical concept instead of translating it
+
+### Next session
+- Continue with Part XI, Ch79–Ch84 (6 chapters — security)
+- Push after Part XI (or XI+XII together to finish)
+
+---
+
+## Part XI, Ch79–Ch84
+
+### Formatting used (for reference)
+- **Ch79**: 2 plain paragraphs + 1 bold closer (listing everyone with house access before moving in; home-inspector checklist vs. gut feeling — STRIDE)
+- **Ch80**: 2 plain paragraphs + 1 bold closer (nested locks around jewelry; three locks sharing one key = fake redundancy)
+- **Ch81**: 2 bold paragraphs (fill-in-the-blank form letter read literally = injection; bouncer's ban list vs. guest list = allowlist/denylist)
+- **Ch82**: 2 plain paragraphs + 1 bold closer (hotel key card: whose card vs. which doors it opens — authentication vs. authorization; Equifax case)
+- **Ch83**: 2 plain paragraphs + 1 bold closer (spare key under the doormat vs. a smart lock's one-time code — eliminating vs. managing a secret)
+- **Ch84**: 2 plain paragraphs + 1 bold closer (babysitter handoff to an unvetted friend, same slot on the calendar — maintainer compromise / supply chain trust)
+
+### What worked
+- Security chapters have unusually strong, concrete real-world case studies already built in (Target, OPM, Equifax, Codecov, event-stream) — didn't try to retell the case study itself in the wife section; used a separate, simpler domestic analogy for the mechanism, then let the chapter's own case study stand as the "real stakes" backing it up
+- The babysitter-handoff analogy for Ch84 maps almost exactly onto the chapter's actual case study (a maintainer handoff to an unvetted person) — when a chapter's real-world example already has this shape, building the analogy around the same shape (rather than a generic one) makes the section click into place once the reader later learns the real case
+- Physical security analogies (locks, keys, key cards, doormats) carried this entire Part naturally, since the chapter content is literally about trust boundaries and access — didn't need to force domestic variety as hard as in more abstract Parts
+
+### Next session
+- Continue with Part XII, Ch85–Ch87, Ch89–Ch90 (Ch88 already done as calibration example)
+- This is the FINAL part — after this, all 90 chapters have "For My Wife" sections
+- Flag to the user in the final summary that WIFE_SECTION_NOTES.md can now be deleted (scaffolding only, user's call)
+- Push after Part XII (final push)
+
+---
+
+## Part XII, Ch85–Ch87, Ch89–Ch90 (Ch88 was done earlier as the calibration example)
+
+### Formatting used (for reference)
+- **Ch85**: 2 bold paragraphs (family always running late — shoe-tying vs. missing car keys; only optimize a confirmed problem)
+- **Ch86**: 2 bold paragraphs (traffic camera vs. an officer interviewing every driver — sampling profiler; twelve short stoplights add up — aggregate view)
+- **Ch87**: 2 bold paragraphs (grocery checkout: one fast lane vs. ten lanes — latency vs. throughput; broken-scanner register hidden by the average — tail latency)
+- **Ch89**: 2 bold paragraphs (filing cabinet vs. loose stack of papers — Big-O narrows candidates, measurement picks the winner; fifty mailbox trips vs. one — N+1)
+- **Ch90**: 2 plain paragraphs + 1 bold closer (doors in a house — every abstraction costs something real; "zero-cost" as a verified pocket door, not a guess; closes on the book's central measure-before-you-cut argument)
+
+### What worked
+- Performance-Part chapters compress well into "X sounds obviously better in theory, but only measuring the real case tells you which one actually wins" — this shape (filing cabinet, traffic camera, checkout lanes) recurs naturally because it's the chapter content's actual shape, not a forced analogy
+- Ch90, being the literal last chapter of the book, was written to also serve as a soft close to the whole "For My Wife" project's throughline (measure before you remove something that looks unnecessary) — intentional, not just chapter-local
+- Full 90-chapter verification run (`grep -L "## For My Wife"` equivalent) confirmed zero chapters missing the section before declaring the pass complete
+
+## PROJECT STATUS: COMPLETE
+All 90 chapters (Ch01–Ch90) now have "For My Wife" sections. This file has done its job — it can be deleted once the user confirms, but that deletion is the user's call, not something to do automatically.

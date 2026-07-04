@@ -11,6 +11,16 @@
 - Livelock gets broken by randomizing retry timing, not by retrying faster — symmetric, deterministic backoff is exactly what locks participants into a lockstep collision loop in the first place.
 - These failures are the direct, concrete instance of Ch 02's state space explosion: the combinatorial number of possible interleavings between concurrent operations is why they're non-deterministic, timing-dependent, and can vanish the moment a debugger or a stray log line changes the timing that exposed them.
 
+## For My Wife
+
+Picture two people carrying a couch through a house, one on each end, each one stuck in a different doorway. Neither will set their end down and back up, because each is sure the other should yield first — so they just stand there, frozen, each one holding onto exactly what's stopping the other person from moving. That's a dead stop. Nothing changes until somebody deliberately intervenes.
+
+Now picture two people meeting in a narrow hallway, both stepping left to let the other pass, realizing they're still blocked, both stepping right at the exact same moment, still blocked, and repeating that little side-to-side dance for an embarrassingly long time. Nobody's frozen — there's constant motion — but neither has actually gotten anywhere. That's a different problem: not a standstill, but motion with no progress, because both people keep making the identical move at the identical moment.
+
+And picture a four-way stop where one especially polite driver keeps waving everyone else through, while three other drivers who never return the courtesy just keep taking their turns one after another. The polite driver isn't stuck or frozen or dancing back and forth — they're just never getting a turn, while everyone else moves along fine.
+
+**This chapter argues software runs into all three of these exact problems, and the fixes match the couch, the hallway, and the stop sign.** The couch gets solved by agreeing on a fixed rule in advance — always set down the end closer to the front door first. The hallway gets solved by making the next move random instead of automatic, so two people's timing stops syncing up by accident. And the stop sign gets solved by a rule that stops rewarding whoever's least polite, so the one considerate driver eventually, guaranteed, gets a turn.
+
 ---
 
 Ch 75 established locks as the primary tool for making shared state safe, and Ch 76 split the execution unit off from that coordination question entirely. This chapter asks what happens when the coordination those chapters covered goes wrong — not from incorrect logic, but from the sheer number of ways independently executing operations can interleave. This is Ch 02's state space explosion made concrete: every additional concurrent execution path multiplies the number of possible orderings, and only a vanishingly small fraction of them need to be wrong for a failure to eventually show up in production, no matter how cleanly the same code ran the previous million times. That same combinatorics is why this chapter stops at explaining the failure modes and doesn't expand into a concurrent-testing methodology — no part of this handbook owns that as a dedicated topic, and exhaustively enumerating interleavings was never a teachable testing strategy to begin with.

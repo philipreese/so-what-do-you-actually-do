@@ -11,6 +11,14 @@
 - [Strong Recommendation] Rust's ownership and borrow-checker model (`Send`/`Sync`) is Principle 8 applied to concurrency specifically: catching a data race at compile time instead of trusting convention, documentation, or review to prevent it.
 - Well-designed systems combine both models rather than picking one globally: shared mutable state stays small and local, message passing is exposed at every boundary that crosses a team, process, or service.
 
+## For My Wife
+
+Picture two ways to design a house for three kids who all need to get ready in the morning. One bathroom, shared by all three, is efficient — one sink, one mirror, no duplicated plumbing — but it only works if everyone reliably knocks and waits their turn. The instant one kid barges in assuming nobody's inside, you get a collision, and it's rarely a small one. The other option is three separate bathrooms, one per kid, with nothing to collide over because nobody ever has to share the same physical space at all — but now the house needs three sinks, three mirrors, three of everything, and if the kids need to hand each other the good hairbrush, they have to actually walk it over instead of just grabbing it off a shared shelf.
+
+This chapter is about the same trade-off inside a computer program that's doing several things at once. Sharing one "bathroom" — the same piece of memory — is the cheap, efficient option, and it works perfectly as long as every part of the program reliably takes its turn instead of barging in. That discipline sounds manageable in a small house with three kids you know well. It gets much harder to guarantee in a program with dozens of moving parts written by people who've never met each other, and the collision it eventually causes doesn't announce itself the way a bathroom door does — it just quietly corrupts something, sometimes without anyone noticing for a while.
+
+**The safer, if slightly slower, alternative is giving every part its own space and having them hand each other copies of what they need through a window, instead of ever standing in the same room at all.** Nobody can barge in on someone who was never in the room to begin with.
+
 ---
 
 Part I named this Part's central tension by number: throughput versus reasoning simplicity (Ch 01). Concurrency is where that tension stops living in a diagram and starts showing up in an incident channel. Every later chapter in this Part assumes the choice this chapter makes has already been framed — Ch 75 goes deep on the primary tool for making shared state safe once it's chosen; Ch 76 pulls apart a second, often-conflated axis (which execution unit actually runs the work) from the coordination question answered here; Ch 77 catalogs how coordination goes wrong no matter which model was chosen; Ch 78 goes deep on the actor model — Erlang/OTP's mailbox-and-isolation design is the extreme point of the message-passing spectrum — named here but not derived.

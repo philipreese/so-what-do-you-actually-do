@@ -11,6 +11,14 @@
 - Difficulty writing a unit test is a design signal, not a testing problem. Code that's hard to isolate is code mixing concerns that should've been separated in the first place.
 - Test co-location — tests living right next to the code they verify — is the natural expression of package-by-feature organization. It heads off the structural drift a parallel test tree accumulates over time, quietly and reliably.
 
+## For My Wife
+
+**This chapter picks up where the last one left off: given three tiers of tests, which one actually tests which piece of code?** Good cooks taste as they go — the sauce before it's poured, the seasoning before the dish is assembled — because tasting a component on its own tells you immediately whether that specific piece is right. A recipe that seals everything into one casserole from the start, no tasting until it comes out of the oven, means that if the finished dish is off, you're stuck guessing: too much salt in the sauce, undercooked at the base, wrong ratio somewhere. You find out something is wrong. You don't find out what.
+
+**The chapter's real point is that this isn't a testing choice at all — it's a design choice wearing a testing costume.** A recipe built so you *can* taste the sauce on its own, before it touches anything else, is simply a better-organized recipe: the parts are separable because someone thought about the parts separately in the first place. Code works the same way. If you can't check whether one calculation is correct without first wiring up a database, a network connection, and half the rest of the application, that's not a fact about testing — it's a fact about the code. It welded pieces together that should have stayed apart, and now proving any one part works means firing up the whole kitchen every time.
+
+The fix is the same one earlier chapters already argued for: keep the actual thinking — the calculations, the decisions, the rules — separate from the plumbing that carries data in and out. Once that separation exists, the easy tests fall out for free, and a change to how data gets stored stops being able to break a rule that never had anything to do with storage to begin with.
+
 ---
 
 [Ch 34](ch34-the-testing-pyramid.md) established that different tests answer different questions at different costs. This chapter answers the practical question that follows from it: for any given piece of code, which layer should actually be testing it?

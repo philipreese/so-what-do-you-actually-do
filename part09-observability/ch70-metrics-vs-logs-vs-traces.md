@@ -11,6 +11,14 @@
 - Kafka consumer lag is the resolved example of a metric-shaped operational question: whether a consumer is keeping pace with a topic is answered by one low-cardinality number, not by logging every message that passes through.
 - The signal choice is downstream of Ch 69's actionability test, not a replacement for it — a trace or metric that nobody acts on is exactly as much waste as a log line nobody reads.
 
+## For My Wife
+
+**Picture three completely different ways of keeping track of household spending.** One is the monthly summary: "we spent $612 on groceries in June." Fast to check, cheap to keep, and exactly what you want if the only question is "are we spending more than usual lately." The second is a single specific receipt you go digging for when something looks off: "why was Tuesday's grocery run $340?" — you pull that one receipt and see exactly what happened that one time. The third is the whole shoebox of every receipt from the year, useful when you're trying to reconstruct something specific that happened three months ago and you don't even remember which day.
+
+This chapter argues computer systems need the equivalent of all three, and that reaching for the wrong one wastes money and still doesn't answer the question. The monthly summary can't tell you what happened on one specific Tuesday — it already threw that detail away on purpose to stay fast and cheap. The single receipt can't tell you whether spending is trending up over the whole year — that was never its job either. Each one is deliberately built to answer a different question, and no amount of cleverness turns one into a substitute for the other two.
+
+**And there's one specific way people ruin the cheap summary version: trying to make it also track something unique about every single event.** A monthly total stays fast precisely because it only has a handful of categories — groceries, gas, dining out. The moment someone tries to make that same summary also record who exactly went on every single shopping trip, it stops being a summary at all. It quietly turns into the entire shoebox of receipts, just now pretending to be the one-line total everybody thought they were still getting for free.
+
 ---
 
 Ch 69 established what belongs in a log once logging is already the right tool. This chapter goes up a level: which of the three observability signals is the right tool at all, for a given question, at what cost. Two of the three are new here — logs already exist from Ch 69, metrics and traces get introduced fresh. Traces get named and placed in the taxonomy; the mechanics of context propagation and sampling that actually make tracing work are Ch 72's problem, not this chapter's.

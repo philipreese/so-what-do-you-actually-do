@@ -11,6 +11,14 @@
 - Prefer real or near-real dependencies wherever the cost is acceptable. Replace a dependency only when it's genuinely outside your control, introduces non-determinism you can't remove, or is prohibitively expensive to run.
 - Refactoring fragility — a suite that breaks during valid internal restructuring because it specified implementation rather than behavior — is the dominant cost of over-mocking, and it's a cost that compounds.
 
+## For My Wife
+
+Imagine two ways of checking whether a food delivery went well. One watches the driver's entire route on GPS and flags anything that deviates from the exact turns originally planned. The other just checks: did the food arrive at the right address, still warm, on time? The first sounds thorough, but it fails the moment the driver finds a smarter shortcut around traffic — even though the delivery itself was flawless. It was never actually checking whether the delivery worked. It was checking whether the driver followed a specific script.
+
+That's the whole distinction this chapter argues over. One style of test watches exactly which internal steps a piece of code takes, in what order, with what inputs — the same way the GPS-route checker does. Another style just checks the actual outcome: is the final answer correct, did the right thing get saved. The chapter's position is that outcome-checking should be the default, because a program's internal steps are allowed to change — get reorganized, sped up, simplified — as long as what comes out the other end is still right. A test that locks in the exact route breaks every time an engineer improves how the work gets done, even when nothing about the actual result changed at all.
+
+*The real cost shows up months later, when a team stops trusting its own tests to mean anything, and starts leaving working code alone rather than face the false alarm every small improvement sets off.*
+
 ---
 
 [Ch 35](ch35-what-belongs-at-each-layer.md) established which layer should test a given piece of code. This chapter answers the question that lives inside a layer: when a unit test needs a collaborator, should that collaborator be real, or replaced with something else entirely?

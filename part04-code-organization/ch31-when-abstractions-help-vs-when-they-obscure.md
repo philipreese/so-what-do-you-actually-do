@@ -11,6 +11,16 @@
 - The Strategy Pattern applied to a choice that's actually fixed at compile time adds the overhead of runtime polymorphism while throwing away the readability a plain switch statement would've given you for free.
 - Rob Pike's Go proverb: "A little copying is better than a little dependency." Duplicating five lines of stable concrete code is often cheaper, in the long run, than extracting a shared abstraction that couples two call sites with independent reasons to change.
 
+## For My Wife
+
+> *An abstraction is a name you give something so you don't have to think about how it works. That's only a gift if you actually needed the extra name.*
+
+Think about a universal remote that claims to control your TV, your speakers, and your thermostat with one set of buttons. If you genuinely own all three and switch between them constantly, that's a real convenience — one remote instead of three. But if you only ever own the TV, and the remote still has speaker and thermostat buttons molded into the plastic, you haven't gained anything. You've just made the remote more confusing to pick up, for a flexibility you were never going to use.
+
+That's the whole argument in this chapter, applied to code instead of remotes. Programmers build "abstractions" — general-purpose tools meant to cover several future situations — and every one of them costs something: whoever reads the code later has to stop, figure out which situation they're actually in, and jump to a different piece of code to see what really happens. That jump is worth making when the variation is real. It's dead weight when it's imaginary — built for a future that never shows up, "just in case."
+
+**The chapter's sharpest example is a fictional company's absurdly over-engineered solution to a children's counting game**, one that invents a dozen extra layers and interchangeable parts for a program that only ever needed to do one simple thing. It's funny precisely because everyone recognizes it: the extra machinery isn't protecting anyone from a change that's coming. It's a remote control with eleven unused buttons, and someone still has to find the power switch every single day.
+
 ---
 
 [Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) established that the wrong abstraction is worse than none at all. [Ch 14](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md) applied that test at the architectural layer. This chapter runs the same test at the smallest possible grain: a single function, a single class, one localized utility. The failure modes here look nothing like the architectural ones — not a misplaced layer, but an interface built for a variation that will never actually happen, a pattern reached for where a plain conditional would've been clearer to everyone.

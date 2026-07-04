@@ -10,6 +10,14 @@
 - Knuth's "premature optimization is the root of all evil" is routinely quoted stripped of its context. The actual claim is narrower and more useful: roughly 97% of a program's code has no measurable effect on its runtime cost, and the error is not optimizing — it's optimizing the wrong 97%.
 - This chapter is the gate; it does not supply the method. Ch 86 covers how a bottleneck is actually found once the gate says one must be.
 
+## For My Wife
+
+**A family always running a few minutes late for school starts timing things, looking for what to fix.** Someone notices tying shoes seems to take forever and spends a week practicing, shaving a tied-shoe time down from forty seconds to fifteen — real, measurable improvement, genuinely faster shoes. And the family is still just as late every morning, because shoes were never the reason. The actual delay was always the five minutes spent searching for car keys that get set down in a different spot every day. Getting faster at the wrong thing doesn't get anyone out the door sooner, no matter how much better the shoe-tying gets.
+
+This chapter argues companies make exactly this mistake with slow software: they notice one part that looks slow in isolation and spend real effort speeding it up, without ever confirming that part is actually what's making customers wait. If the real delay is happening somewhere else entirely, a faster shoe-tying routine doesn't move the actual departure time by a single second — it just feels like progress because something measurably got quicker.
+
+**The chapter's other rule is about deciding whether to even go looking in the first place: only bother hunting for the slow part once being late is an actual, confirmed problem, not a vague feeling that mornings could be smoother.** A family that's never actually missed the bus has no real reason to overhaul its whole routine on a hunch. The moment for that kind of effort is when the bus has actually been missed — repeatedly, provably — not before, and the fix, once it's worth chasing at all, needs to go after whatever's really causing the delay, not whichever step happened to catch someone's attention first.
+
 ---
 
 Ch 01 closed with a specific, qualified recommendation: optimize the cost of change over the cost of execution *until profiling identifies a specific runtime bottleneck*. That qualifier has been doing quiet, unglamorous work throughout this handbook — every chapter that recommended a boundary, an interface, or a layer over a faster but more rigid alternative was leaning on it without saying so. This chapter finally gives it the full treatment: what counts as a bottleneck, and what makes "until" actually arrive.

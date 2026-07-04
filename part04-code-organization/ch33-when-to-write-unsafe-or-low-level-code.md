@@ -11,6 +11,14 @@
 - Every unsafe block depends on invariants the compiler can no longer verify on its own. Document them explicitly — they've just become part of the code's correctness contract, whether anyone wrote that down or not.
 - Unsafe code deserves more review, more testing, and narrower ownership than ordinary application code gets. The less the compiler verifies, the more engineering discipline has to pick up the slack.
 
+## For My Wife
+
+Most programming languages come with a childproof cap already screwed on — built-in checks that stop a piece of code from reaching past the end of a list or touching memory nothing ever gave it permission to touch. That cap is friction on purpose, and for almost all code, leaving it on is simply correct: it rules out an entire category of mistake automatically, forever, at essentially no cost.
+
+This chapter is about the narrow, legitimate reasons to twist that cap off anyway. Not "it's annoying" — a pharmacist measuring an exact dose sometimes has to remove a safety cap to do the job at all, and a factory line filling ten thousand bottles a day genuinely can't afford the friction on every single one. The equivalent cases in code are just as narrow: you've actually measured, with real numbers, that the safety check itself is what's slowing things down — not guessed, measured — or you're building the one component everyone else is going to rely on, and somebody has to write the careful version so the rest of the team gets the safe one for free.
+
+And the rule for removing the cap is non-negotiable: put it back on immediately, and write down exactly why it was safe to take off in the first place. A bottle left uncapped on a shelf, with no label saying what's inside or why, is a hazard to whoever picks it up next — someone who wasn't in the room for the original decision and has no way of knowing whether it's still safe to touch. That's the whole discipline this chapter asks for. Skip it, and the shortcut that saved one engineer an afternoon becomes the outage that costs the company a very bad night.
+
 ---
 
 Most software should be written entirely within its language's safety guarantees. Memory safety, type safety, bounds checking, managed runtimes — these exist because they wipe out entire classes of defects, not as obstacles standing in a programmer's way but as structural guarantees the compiler enforces on their behalf, for free. This chapter is about the narrow set of circumstances where stepping outside those guarantees is actually justified, and the discipline that decision demands.

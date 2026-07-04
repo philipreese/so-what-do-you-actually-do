@@ -11,6 +11,15 @@
 - Not every decision warrants an ADR. Use [Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md)'s reversibility-and-blast-radius quadrant directly: hard-to-reverse, wide-blast-radius decisions almost always warrant one; cheap-to-reverse, local decisions almost never do.
 - ADRs live in the repository, next to the code they govern, versioned with it — never in a wiki that can drift out of sync with the system it claims to describe.
 
+## For My Wife
+
+A good doctor's chart doesn't get erased and rewritten every time your treatment changes. When a new medication replaces an old one, the old entry stays exactly as written, and a new entry gets added explaining what changed and why — because if the new medication doesn't work either, the next doctor needs to see the whole history: what was tried, what the reasoning was at the time, and what happened as a result. Erase the old entries to match today's plan, and you've thrown away exactly the information that would stop a future doctor from confidently trying the same failed treatment all over again, with no idea it was ever attempted.
+
+This chapter is about writing that same kind of permanent chart entry for big, hard-to-undo decisions on a software project — not a transcript of the meeting where people argued, but a clean record of what was decided, what was ruled out, and why, frozen at the moment it was true. Once written, nobody edits it to look better in hindsight or to match how things turned out. If circumstances change and the decision needs revisiting, that becomes a new entry that explicitly supersedes the old one — the old one stays on the record forever, exactly as written, because the fact that a decision changed is itself something worth remembering.
+
+> [!NOTE]
+> Not every choice deserves this treatment — nobody needs a permanent chart entry for which brand of bandage to use. This is reserved for decisions that are genuinely expensive to reverse and would affect a lot of people if they turned out wrong — the equivalent of major surgery, not a scraped knee.
+
 ---
 
 [Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) established that architectural decisions with high reversal cost or wide blast radius deserve a permanent record, and [Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md) ruled that repository-level design rationale belongs in that record rather than crammed into an inline comment. Both chapters punted the actual format and lifecycle to here — this chapter doesn't re-litigate why ADRs exist; it defines what one looks like, how it moves through its lifecycle, and the judgment call for when writing one is actually worth the effort. Exploring a proposed design before a decision gets made belongs to [Ch 46](ch46-spec-first-development.md); the broader taxonomy of README vs. spec vs. ADR as documentation types belongs to Part VIII.

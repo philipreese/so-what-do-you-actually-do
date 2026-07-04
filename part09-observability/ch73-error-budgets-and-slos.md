@@ -11,6 +11,14 @@
 - The budget this chapter defines is the metric that gates Ch 62's canary and progressive-rollout promotion decisions, and the target Ch 68's runbooks exist to protect by recovering quickly — both referenced here as the destination this chapter's math points at, neither re-derived.
 - This chapter closes Part IX by naming what logging, the signal taxonomy, alerting, and tracing all ultimately serve: none of it is collected for its own sake — it exists to measure a system against an explicit, numeric reliability target.
 
+## For My Wife
+
+**A diet that allows three "off" meals a month isn't broken if you actually use them — that's the plan working as designed.** Someone who white-knuckles through the entire month eating perfectly, skipping the birthday cake and the pizza night with friends, isn't succeeding more than the plan called for. They're being needlessly rigid about a number that already accounted for a normal, human amount of slipping — the three cheat meals were never a failure waiting to happen, they were a built-in allowance, and using zero of them isn't virtue, it's missing out on birthday cake for no actual benefit to anyone.
+
+This chapter argues companies should treat their own tolerance for things going wrong the same way — decide up front how much imperfection is genuinely fine, and then actually spend that allowance on worthwhile risks, like trying a faster but slightly less proven way of shipping updates, instead of treating every single blemish as a crisis to be avoided at all costs.
+
+**And the smart way to watch a diet isn't just checking for one huge blowout — it's also watching for quiet, steady overdoing it that never looks dramatic in the moment.** One birthday cake eaten in a single sitting is obvious and easy to notice. A slightly-too-big snack every single day for three weeks straight is much easier to miss, because no individual day looks alarming — but by the end of the month it can add up to far more than the one cake ever would have. This chapter's real insight is that watching only for the dramatic, sudden slip while ignoring the slow, steady one misses exactly the kind of problem that quietly does the most damage, one unremarkable day at a time.
+
 ---
 
 Every signal Part IX has covered so far — what to log, which signal answers which question, what's worth paging a human for, how to trace a request across a boundary — assumes a target already exists to measure against. This chapter supplies that target, and closes three forward references at once: Ch 07 promised error budgets, SLOs, and alerting strategy to this Part by number; Ch 62 promised the specific metric that gates a canary promotion; Ch 68 promised what a runbook ultimately protects. It also loops back to Ch 01: once reliability has an explicit numeric target, engineering effort spent past that target is a trade-off to justify, not a virtue nobody's allowed to question.

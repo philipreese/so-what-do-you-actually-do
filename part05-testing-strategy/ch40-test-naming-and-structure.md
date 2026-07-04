@@ -11,6 +11,14 @@
 - Table-driven tests are the deliberate, named exception to one-behavior-per-test: many input/output examples of the *same* behavior belong in one structured table with one execution path, not scattered across one function per case.
 - A test's name and structure should be optimized for the moment it gets read under the worst possible conditions: a failing CI log, no source file open anywhere. If the failure alone doesn't explain what broke, the test hasn't finished its job yet.
 
+## For My Wife
+
+Picture two different fire alarm panels. One reads "Smoke detected: Kitchen." The other reads "Zone 14." Both are technically reporting the same event, but only one of them is actually useful in the moment you're reading it — startled, at 2am, with no time to go dig up the blueprint that explains what "Zone 14" even refers to.
+
+This chapter argues that a piece of testing code should be named exactly like the first panel, never the second. A test ought to describe what was supposed to happen and the situation that was supposed to cause it — "rejects an expired login" rather than "test three," or a name that just repeats which internal function got poked. The reasoning is about timing: nobody reads a test's name in a calm, unhurried moment. They read it while a build is failing, a deploy is blocked, and there's no source code open anywhere — just a name sitting in a log. "Zone 14" sends someone hunting through the whole building. A name that states exactly what broke, and under what circumstance, turns a failure straight into an answer, with no detective work required.
+
+The chapter's structural advice follows the same logic: lay out each test in the same three-part order every time — set the scene, do the thing, check what happened — so a reader can tell at a glance which part of the story they're looking at, the same way every incident report follows the same format so nobody has to hunt for the part that matters.
+
 ---
 
 A test gets written once and read many times, and most of those readings happen under real pressure — a CI failure blocking a deploy, a production regression mid-investigation, an unfamiliar behavior surfacing halfway through development. In that moment, the test's name and structure get read before its body does, often instead of its body entirely. A test communicating its purpose through its name and its intent through its structure is documentation that outlives whoever wrote it. A test forcing the reader to reconstruct intent from implementation before diagnosis can even start has failed at the one job a test uniquely exists to do: turning a failure into an answer.

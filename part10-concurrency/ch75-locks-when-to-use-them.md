@@ -11,6 +11,14 @@
 - Read-write locks, optimistic concurrency control, and MVCC (already established in Ch 06) are legitimate alternatives to a plain mutex, each suited to a specific contention shape rather than a universal upgrade.
 - No mature runtime uses one synchronization primitive everywhere — the Linux kernel's mutex/spinlock/RCU split exists because the right tool depends on the workload's latency and contention profile, not sophistication for its own sake.
 
+## For My Wife
+
+Imagine a family with one shared car. Whoever needs it signs it out, uses it, and returns it — dead simple, one clear rule, easy for everyone to reason about. The obvious cost is that if two people need to run separate errands at the same time in different directions, one of them waits, even though nothing about their trips actually conflicts. Buy a second car and now two people can go at once — but there are two insurance bills, two maintenance schedules, and the one time someone needs both cars for a single big move, coordinating that reservation gets genuinely harder than it ever was with one car.
+
+This chapter argues that computer programs juggling several things at once should default to the one-car version — one simple rule protecting a big chunk of shared stuff — and only split into more "cars" once there's actual, measured proof that people really are waiting around for no good reason. Buying a second car because of a hunch it might be needed someday is exactly backwards: it's real, ongoing cost paid against a problem that was never actually confirmed.
+
+**There's one specific situation worth a different rule entirely: a bulletin board that people mostly just read.** Anyone can walk up and read the board freely, all at once, with no waiting — reading never damages anything. It's only the rare moment someone wants to pin up a brand-new note that everyone else needs to briefly step back. That arrangement is worth the extra bulletin-board hardware specifically because almost everyone using it is reading, not posting — flip that ratio, with people constantly posting new notes, and the special hardware stops paying for itself.
+
 ---
 
 Ch 74 established that shared state needs synchronization to stay correct; this chapter goes deep on the primary tool for providing it. A lock guarantees that only one execution context enters a protected critical section at a time, converting a data race (Ch 74) into an explicit, deliberate ordering of accesses. The question here isn't whether to use a lock — Ch 74 already settled that — it's how much state a single lock should protect, and when a lock is the wrong tool entirely.

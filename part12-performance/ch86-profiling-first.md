@@ -11,6 +11,14 @@
 - [Strong Recommendation] The single most common benchmarking distortion is cache state: a micro-benchmark that repeatedly hits a small, static dataset lives entirely in L1 cache and hides the memory-access cost that dominates under production data volume and concurrency.
 - Ch 33's rule — production-realistic profiling evidence must precede performance-motivated unsafe code — is this chapter's discipline applied to one specific, already-settled case, not a second definition of it.
 
+## For My Wife
+
+**Trying to figure out why a road is backed up, you have two very different ways to watch it.** One is stationing an officer at every car, pulling each driver aside to ask what's going on — thorough, but the interviewing itself now causes exactly the traffic jam you're trying to study, because forty cars are stopped answering questions instead of driving normally. The other is a traffic camera quietly snapping a photo every few seconds from a distance, barely noticeable to anyone driving past, that adds up over thousands of quick glances into a reliable picture of exactly where cars actually pile up — without the watching itself changing how anyone drives.
+
+This chapter argues that figuring out why software is slow needs the traffic camera, not the officer pulling everyone over. A heavy-handed way of watching every single step in complete detail can slow the program down so much in the process of watching it that you end up "finding" a slowdown that was actually caused by the measuring itself, not by anything really wrong. A light, occasional glance barely disturbs anything, and enough of those glances add up to a trustworthy picture of where the real time is actually going.
+
+**And the chapter insists on looking at the whole route at once, not one traffic light at a time.** No single stoplight on a long commute might look individually terrible, but if the same route happens to hit twelve short stoplights, each costing just a couple of seconds, those twelve small delays can add up to the majority of the whole trip — completely invisible if you check each light separately, and obvious the instant you look at the entire route as one connected picture instead of a dozen disconnected ones.
+
 ---
 
 Ch 72 already drew the line this chapter starts from: reach for a distributed trace first, and reach for a local profiler only once a trace has pinned a delay down to time genuinely spent executing inside one uninterrupted process. That boundary is settled and doesn't get reopened here. What Ch 85 adds is the reason to reach for a profiler at all — the Optimization Gate is open, a measured bottleneck has to be found — and this chapter is the methodology for finding it: how to actually see where time and resources inside that one process are going, instead of guessing and calling it engineering.

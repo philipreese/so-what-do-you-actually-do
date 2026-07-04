@@ -11,6 +11,14 @@
 - [Strong Recommendation] Force-push protection on shared branches should be enforced mechanically through branch protection settings (Principle 8), not through memory or team etiquette. A workflow that depends on everyone remembering not to force-push `main` is already broken by design.
 - The question that matters is never "can this branch technically accept a force push" — it's "does anyone besides me have unpushed work or dependent state built on top of what I'm about to overwrite."
 
+## For My Wife
+
+Rewriting a page in your own private journal is completely harmless — it's yours, nobody else has read it, and if you decide the entry you wrote yesterday was wrong, you just cross it out and write it again. Rewriting a page in the shared calendar on the fridge is a different animal entirely, because other people have already looked at that page and made plans around what it said. Erase Saturday's "soccer, 10am" and write in "dentist, 2pm" instead, and anyone who already checked the calendar and built their own plans around soccer practice is now wrong about their own Saturday, with no idea anything changed, until they show up at the wrong place at the wrong time.
+
+This chapter is about that exact distinction, applied to a tool programmers use to go back and rewrite their own recent work before sharing it more widely. Doing it to something only you've seen is completely fine — that's just editing your own journal. Doing it to something a teammate has already looked at and built plans on top of is the fridge-calendar problem: the moment someone else has actually seen and relied on what used to be there, changing it out from under them without warning isn't a private edit anymore. It's quietly rewriting a shared plan everybody thought they could count on.
+
+**The safest habit is to always double-check the calendar hasn't changed since you last looked at it, before writing anything new on top of it** — the software equivalent takes one extra second, and it turns "I accidentally erased your plans" into "wait, something changed here, let me look before I touch this."
+
 ---
 
 This chapter is a narrow, specific judgment call: a direct application of Ch 09's reversibility-and-blast-radius framework to one Git operation, not a re-derivation of that framework. It does not cover merge-versus-rebase as a general integration strategy (Ch 55 — force-pushing is just the mechanical consequence of rebasing your own already-pushed branch, referenced here, not re-argued) or branch lifecycle and deletion (Ch 53).

@@ -11,6 +11,14 @@
 - An unpruned branch list degrades exactly like an unpruned issue backlog: the write-only tracker failure mode (Ch 42), expressed in Git's namespace instead of the issue tracker's. Cheap to add to, expensive to prune, and eventually untrusted by everyone who has to search it.
 - Deleting a merged branch's ref doesn't delete history — the commits already live on the target branch. Retaining branches "for safety" is solving a problem tags and releases (Ch 56) already solve, with a mechanism actually designed for long-term retention.
 
+## For My Wife
+
+After a move, once every box has been unpacked and its contents are actually put away in the house, the boxes themselves are empty. Some people flatten and recycle them right away. Others keep every single one "just in case" — stacked in the garage, then the basement, then wherever there's still room — on the theory that having them around feels like a kind of insurance. But the stuff that actually mattered already made it into the house. The box isn't protecting anything anymore. It's just cardboard, taking up space, and after a few years of "just in case" the garage is so full of empty boxes that finding the one thing you're actually looking for means digging through a wall of flattened cardboard first.
+
+This chapter argues for treating a piece of in-progress software work the same way once it's been folded into the main, permanent version: get rid of the empty box right away. The valuable stuff — the finished change — already made it into the house. Keeping the empty container around doesn't protect it any further; it just makes the garage harder to navigate every time someone actually needs to find something real in it.
+
+**What does deserve keeping "just in case" is something different: an actual labeled, dated snapshot of an important moment** — a real release, a version people are actually running — the equivalent of a labeled storage bin, not a leftover shipping box that already did its one job and is now just sitting there.
+
 ---
 
 This chapter covers two mechanically independent concerns: how a branch is named, and what happens to it after it merges. It does not re-litigate branching topology or why branches should be short-lived (Ch 50 — this chapter takes that conclusion as given), commit message format (Ch 51), or history-preservation policy at the merge gate (Ch 52). Nor does it redefine what makes an issue well-scoped (Ch 42) — a branch name can reference an issue, but the issue's quality is that chapter's argument, not this one's.

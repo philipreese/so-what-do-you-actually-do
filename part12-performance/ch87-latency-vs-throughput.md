@@ -10,6 +10,14 @@
 - Tail latency is a distinct concern from average latency, not a more extreme version of the same number. A system tuned against a mean or median can look excellent on that number while performing badly at the tail — Ch 73's percentile SLI is the already-established, correct way to express this.
 - Connection pooling, request coalescing, bulk database writes, and Nagle's algorithm are all the same amortization principle applied at a different layer — a scarce resource, duplicate work, a transaction boundary, or a network packet, respectively.
 
+## For My Wife
+
+**A grocery store has to decide what "fast checkout" actually means, and those two meanings pull in different directions.** One measure is how long any single customer waits from the moment they walk up to the moment they walk out — that's how fast one person gets through. A completely different measure is how many total customers the whole store can process in an hour — that's how much the store gets through overall. A store could open one blazing-fast express lane that serves each individual customer in under a minute, and still move fewer total customers per hour than a store running ten ordinary lanes at once, because ten lanes working in parallel push more people through overall even if any one of them isn't quite as snappy. "Make checkout faster" doesn't actually specify which of these two things is meant, and a change that helps one can make the other worse.
+
+This chapter argues software has the identical ambiguity, and most confused arguments about "making something faster" come down to nobody having agreed which of the two was actually meant.
+
+**And there's a third trap hiding inside both of them: the store's overall average wait time can look perfectly fine while one specific register with a broken scanner has a line that just keeps growing.** The average across every register smooths right over that one terrible line, because it gets averaged in with nine other registers running fine. But the people actually stuck behind the broken scanner don't experience "the average" — they experience their own specific, terrible wait, and a store that only ever checks its overall average will never notice that a real, growing group of customers is having a genuinely bad time.
+
 ---
 
 "Make this faster" is a request with two different, sometimes opposite answers. Latency is the time a single unit of work takes to complete. Throughput is the volume of work a system completes per unit of time. A service that responds in 20 milliseconds has low latency; a service that processes a million requests per second has high throughput. Neither implies the other, and treating them as interchangeable is how teams end up optimizing the wrong number — showing up to a meeting with an improved requests-per-second chart while the users in the room are complaining that their one request is slow.

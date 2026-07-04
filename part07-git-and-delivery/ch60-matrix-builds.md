@@ -11,6 +11,14 @@
 - Context changes the right default: cancel remaining cells on the first failure for a fast, everyday PR pipeline, where speed matters more than knowing every affected platform at once; let every cell run to completion for a release-gating or nightly run, where the entire point is knowing exactly which platforms are affected before a release ships.
 - A matrix that tests environments nobody actually deploys to doesn't increase confidence — it manufactures the appearance of it, at a real and multiplying compute cost.
 
+## For My Wife
+
+Imagine planning a big dinner party where guests have different dietary needs: some want vegetarian, some need gluten-free, some are avoiding nuts. Cover every possible combination of those three things separately and you're suddenly cooking eight different versions of the meal, not three — vegetarian-and-gluten-free-and-nut-free, vegetarian-and-gluten-free-with-nuts, and so on through every combination. Add a fourth consideration, like dairy-free, and it doesn't creep up to nine dishes. It jumps to sixteen. That's how these numbers actually behave: each new thing you decide to account for doesn't add to the workload, it multiplies it.
+
+This chapter is about software teams facing the identical multiplication problem when deciding how many different setups to test a program against — different operating systems, different versions, different configurations. Try to cover every theoretical combination and the number of things to check explodes fast, the same way the dinner options did. The smart move isn't cooking all sixteen versions. It's looking at who's actually coming to dinner and cooking only the combinations that describe the real guests — if nobody attending is both vegetarian and nut-allergic at once, that particular combination was never worth preparing in the first place, however thorough it might look on paper.
+
+**The chapter's real point is that "more combinations tested" isn't the same thing as "more confidence" — sometimes it's just more work protecting against a guest who was never coming.** A dinner planned around the people actually showing up feeds everyone who's there. A dinner planned around every dietary combination that exists anywhere in the world mostly just leaves someone exhausted in the kitchen with eleven dishes nobody ordered.
+
 ---
 
 This chapter covers running the same verification logic across multiple environment dimensions to catch environment-specific breakage a single-configuration pipeline would never see. It does not re-derive the general fail-fast-versus-fail-safe principle (Ch 58 — this chapter applies it to one specific configuration option), how caching interacts with a matrix (Ch 59 — each cell needs its own cache key, referenced here, not re-argued), or what checks are worth running at all (Ch 57).

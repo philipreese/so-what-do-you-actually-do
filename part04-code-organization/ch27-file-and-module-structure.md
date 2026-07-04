@@ -11,6 +11,14 @@
 - Circular package dependencies are almost never a naming or tooling problem — they're a sign the architectural boundary got drawn in the wrong place.
 - A `utils/` or `common/` package isn't an architectural layer. It's the absence of one, wearing a folder name.
 
+## For My Wife
+
+**Most companies keep their filing cabinets organized one of two ways.** Either by client — one folder holds everything about the Martinez account, contract and invoices and correspondence all together — or by document type: one drawer for every invoice regardless of whose it is, another drawer for every contract. Programmers organize code the same way, and this chapter argues client-style organization wins for almost anything a business actually changes over time. If the Martinez account's terms change, you open one folder. Organize by document type instead, and that same change sends you digging through five different drawers — the invoice one, then the contract one, then the correspondence one — turning a small update into a scavenger hunt.
+
+**The one place document-type organization actually earns its keep is when the type of document is the whole job** — a filing service whose entire business is "process invoices," where the invoice format itself is what changes, not any particular client's invoice. For an ordinary business, that's the exception, not the rule.
+
+**The other trap this chapter names is the junk drawer.** Every kitchen has one — takeout menus, dead batteries, a screwdriver, kept together because nobody wants to decide where they actually belong. Codebases grow the same drawer, usually named "utils" or "common," and it fills up the same way: nobody owns it, everyone tosses something in because deciding is more work than not deciding, and within a couple of years it's so large and so tangled into the rest of the system that touching it risks breaking three unrelated features nobody remembers still depend on it.
+
 ---
 
 Previous chapters established the principles of [coupling and cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [information hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [ports and adapters](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md), and [dependency direction](../part02-software-architecture/ch12-dependency-direction-inversion.md). This chapter answers the question those chapters explicitly punted on: once you understand the principles, what do they actually look like as directories and import statements in a real codebase?

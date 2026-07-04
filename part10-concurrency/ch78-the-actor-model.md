@@ -11,6 +11,14 @@
 - The trade-off is real, not free: a mailbox that receives messages faster than its actor can process them grows without bound — the direct, concrete instance of Ch 08's Little's Law and backpressure argument — and every actor-to-actor message pays a real allocation, copying, and scheduling cost that direct shared-memory access never has to.
 - The actor model's structural guarantees hold only inside a single coherent runtime. The moment actors run on physically separate machines, network partitions and message loss bring back a different, harder problem — distributed consensus — that this handbook doesn't resolve.
 
+## For My Wife
+
+**Imagine an office where nobody shares a filing cabinet.** Every employee has their own private desk and their own locked drawer that literally nobody else has a key to. If someone needs information a coworker has, they can't just walk over and grab the original file — they ask, and the coworker hands them a photocopy. Nobody can ever mess up someone else's drawer, because nobody else has ever had access to it in the first place. That's a slower way to share information than everyone reaching into one big shared cabinet, but it makes one whole category of disaster — someone messing up a file that wasn't theirs to touch — structurally impossible, not just against the rules.
+
+This chapter argues computer programs can be built the same way: instead of carefully managing who's allowed to touch shared information and when, give every part its own private stuff that nothing else can ever reach, and pass around copies instead of originals. Nothing to fight over means nothing can get corrupted by two parts reaching for it at once.
+
+**And this chapter's other idea is almost as unintuitive: when one of those private desks has a genuine meltdown, the right move isn't nursing that employee through the rest of the day at their compromised desk — it's sending them home immediately and having a fresh, rested replacement start clean at that same desk the next morning.** Trying to keep a clearly broken worker limping along, hoping they'll recover mid-task, risks decisions made from an already-compromised state that's worse than just stopping and starting over. A quick, clean restart from a known-good position beats a heroic effort to patch something that's already gone wrong in ways nobody's fully sure of yet.
+
 ---
 
 Ch 74 placed the actor model at the extreme end of the message-passing spectrum and deferred it to here. Ch 75 made shared state safe through synchronization discipline; Ch 77 cataloged every way that discipline can fail. This chapter closes Part X with an architecture that doesn't manage shared state more carefully at all — it removes shared state from the model entirely.

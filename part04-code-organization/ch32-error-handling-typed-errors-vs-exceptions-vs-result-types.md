@@ -12,6 +12,15 @@
 - Checked exceptions are a widely acknowledged historical misstep at this point. Leave them out of new designs entirely.
 - Rust's `?` operator proves that explicit propagation and a readable success path were never mutually exclusive — they just needed language support, not some fundamental trade-off everyone assumed was permanent.
 
+## For My Wife
+
+**Every time a piece of code might fail, a programmer has to decide how that failure gets communicated back — and this chapter is about how much that one decision changes what a production emergency actually looks like at two in the morning.** One approach lets any piece of code silently jump backward, sometimes many steps, to wherever somebody bothered to write a "catch this" block. Nothing where you're looking warns you a jump might happen — you find out by reading documentation nobody kept up to date, or by getting paged when it happens somewhere nobody expected. The other approach forces every function that can fail to say so plainly, right at the spot where it's called, so tracing what happens never means wondering whether something invisible is about to interrupt.
+
+**The chapter comes down firmly on one side for anything where reliability actually matters: state the failure up front, every time, even though it means more typing at every call site.** The reasoning is about who reads the code and when. The person writing it writes it once, pleased with how clean the success path looks. The person debugging it later, tracing a crash back through fifteen functions they've never seen before, pays for every silent jump nobody warned them about.
+
+> [!NOTE]
+> Not every failure deserves the same response, either. A store being out of milk is routine — you adjust and move on. A fire alarm means you stop and get out, and calmly continuing to shop instead is the actually dangerous move. Code has the same split: a missing file or a wrong password is routine, something the immediate caller should be ready to handle. A program discovering its own internal bookkeeping is impossible is a bug, not a possibility, and should stop cold rather than keep running on a broken assumption — quietly producing wrong answers that look fine right up until someone downstream trusts one.
+
 ---
 
 [Ch 21](../part03-api-design/ch21-error-handling-contracts.md) covers how failures get serialized and communicated across a network boundary. [Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) established the system-level taxonomy: crash failures, corruption failures, wrong-answer failures. This chapter sits in the layer between them — how failure gets represented and propagated through function calls inside a single codebase, before any of it ever reaches an API boundary at all.

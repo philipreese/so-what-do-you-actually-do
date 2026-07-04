@@ -11,6 +11,14 @@
 - [Legitimate Trade-off] Whether a finished branch's integration produces an explicit merge commit or a linearized history matters less than either side's advocates claim, as long as a team is consistent about it — and squash-merge (Ch 52) sidesteps the debate entirely for most PR-based workflows by collapsing the question to one commit either way.
 - The deeper disagreement isn't about which integration style is correct — it's about whether Git history should function as an audit log of what actually happened or a reasoning tool optimized for whoever reads it next. Both are legitimate, and which one applies depends on how parallel the actual development really is.
 
+## For My Wife
+
+Two cars, two drivers, taking separate routes to the same family reunion, texting occasional updates, meeting up at the same hotel that evening. There are two honest ways to tell that story afterward. One keeps both routes visible: "Sarah drove through Ohio, I drove through Kentucky, and we both pulled into the hotel parking lot around six." The other flattens it into a single, straight timeline, as if only one trip ever happened: "First we drove through Ohio, then through Kentucky, then we arrived" — which reads simpler, but quietly erases the fact that two different things were happening in parallel the entire day, making it sound like one drive followed the other instead of both happening at once.
+
+This chapter is about that same choice, applied to how programmers record the history of a project once two people's separate work gets joined back together. One option keeps the honest shape: here's what I was doing, here's what you were doing, and here's the exact moment our two efforts came together. The other rewrites it into a single, tidy, sequential story, as if nobody had ever been working apart from anyone else at all.
+
+**Neither option is wrong, and the chapter's actual position is that the choice matters far less than picking one and sticking with it.** The honest, two-lane version is worth the extra visual clutter on a big project where several people are genuinely working in parallel all the time and it matters later who was doing what, when. The tidy, single-lane version is worth the small omission on a smaller project where nobody actually needs to know two routes were driven — they just want a clean, readable account of how everyone ended up in the same place.
+
 ---
 
 This chapter covers the two mechanisms for integrating one branch's changes into another and the history shape each leaves behind. It does not re-litigate branch topology (Ch 50), commit message format (Ch 51), or the specific server-side force-push protections that block a rewritten shared branch (Ch 54) — this chapter borrows that framework and applies it to one specific operation, rather than re-deriving it from scratch.

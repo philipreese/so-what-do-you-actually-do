@@ -11,6 +11,14 @@
 - A trace is the direct observational tool for Ch 08's warning that local optimization can damage the global system: it is the one signal that can show a request's time was spent waiting between services, not inside any one of them — a category of cost no local profiler can see.
 - This chapter goes deep on tracing mechanics; where tracing sits relative to logs and metrics is already settled by Ch 70, and alerting on trace-derived latency is Ch 71's decision, not this chapter's.
 
+## For My Wife
+
+**Knowing a package's tracking number tells you it exists and that all its scans belong to the same package. It doesn't tell you where the delay actually happened.** A tracking number lets you see the package touched five different facilities, but not which facility took forty minutes when it should have taken five, or whether the real delay was inside any facility at all versus sitting on a truck between two of them. To actually find the bottleneck, you need something more specific than a shared number stamped on every scan: you need each facility to record exactly when the package arrived, from where, and exactly when it left, so the delay shows up as a gap between two specific handoffs instead of a mystery hiding somewhere in five vague stops.
+
+This chapter is about giving computer systems that same specific, handoff-by-handoff record instead of just a shared tracking number, because the actual slowdown in a system built from many different services is very often not inside any one of those services — it's in the waiting between them, the same way a package is often fine at every facility and just sitting on a truck in between.
+
+**And because you can't personally inspect every single package that ever ships, you have to decide which ones are worth a closer look — and deciding that in advance, before anything's happened, is a losing strategy.** Pre-selecting a random 1% of packages to inspect closely will almost certainly miss the rare, actually-damaged one, since damage is rare and a fixed random slice wasn't picking for that. The smarter approach is to wait until a package's actual journey is finished and then decide: did this one arrive late, or damaged, or otherwise unusual? Keep the detailed record for that one. Let the thousands of ordinary, on-time packages go unrecorded, because there was never anything to learn from them in the first place.
+
 ---
 
 Ch 70 already placed tracing in the observability taxonomy: it's the signal that answers "where did the time go for this one request," at a cost the other two signals don't have to pay. This chapter goes deep on how that signal actually gets produced — the data model, the propagation discipline it depends on, and the sampling trade-off that makes it affordable at all.

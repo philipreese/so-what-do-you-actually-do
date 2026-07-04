@@ -11,6 +11,14 @@
 - Publishing credentials are worth naming, not deeply treating, here: OIDC-based trusted publishing (npm, PyPI) is the current direction of travel away from long-lived API tokens stored as CI secrets. The full secrets-management treatment belongs to Part XI, Ch 83.
 - This chapter is about how a version number gets produced mechanically, not what it promises about compatibility — that's Ch 16's argument, treated here as a fixed input, not re-derived.
 
+## For My Wife
+
+Picture a family that tracks chores on a whiteboard by the fridge — who did the dishes, who took out the trash, on which day — specifically so allowance can be calculated automatically at the end of the week without a parent manually re-adding everything by hand. That system only works because the entries on the board are actually specific and honest. "Dishes — Tuesday — Sam" gives the automatic calculation exactly what it needs. If people instead scribble "did stuff" or don't write anything at all, automating the payout doesn't make it more accurate. It just pays out a confident, wrong number faster, with nobody left double-checking the math by hand to catch that it's wrong.
+
+This chapter is about that same idea applied to how a piece of software gets released to the world: bumping the version number, writing up what changed, and publishing it, all done automatically instead of by a person doing it by hand each time. That automation is only trustworthy if the record of what actually happened — what got added, what got fixed, what might break for someone relying on the old behavior — was kept honestly and specifically all along, the same way the whiteboard has to be. Automate on top of vague, sloppy record-keeping and the software equivalent happens: a change that quietly breaks something for existing users gets shipped with total confidence, labeled as a routine, harmless update, because nothing in the record ever said otherwise.
+
+**The lesson isn't "don't trust the automatic system" — it's that the system was only ever as honest as what got written on the whiteboard in the first place.** Fix the habit of writing things down clearly, and the automatic system becomes more reliable than a tired parent doing the math by hand ever was.
+
 ---
 
 This chapter covers turning code that has already passed CI into a published, versioned release without manual, error-prone, human-executed steps. It does not re-specify the commit message grammar this automation depends on (Ch 51 — a hard prerequisite, referenced here, not re-argued), what a version number promises about compatibility (Ch 16), how the published artifact moves through environments afterward (Ch 62), or the full treatment of secrets management for publishing credentials (Part XI, Ch 83).

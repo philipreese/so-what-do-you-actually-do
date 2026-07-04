@@ -11,6 +11,14 @@
 - Implementation comments (for the next maintainer) and API documentation comments (for the next caller) serve different audiences and carry entirely different obligations.
 - If the urge to comment comes from a block of code that needs explaining, the right move is almost always extracting the block into a well-named function, not bolting on more prose.
 
+## For My Wife
+
+**A comment is a sticky note left on the code for whoever reads it next, and this chapter's argument is that most sticky notes people leave are worthless — not because writing them is wrong, but because they say the wrong thing.** A note on the fridge that says "this is the fridge" tells you nothing you couldn't already see, and that's most of what programmers write: a note above a line of code that just restates, in English, exactly what the line already says. The note worth leaving instead is the one that says "don't unplug this — the downstairs tenant's insulin is in here": the thing you'd never guess just by looking, and the reason someone actually needs before they touch anything.
+
+**The far more expensive mistake is the sticky note nobody ever takes down.** Someone taped a note to a window three years ago: "leave this open, we're airing out paint fumes." The paint smell is long gone. The note is still there. Now it's actively lying — someone reads it, assumes the instruction still holds, and leaves a window open in the dead of winter for a reason that stopped existing years ago. Code comments rot the same way: nothing forces anyone to update a comment when the code underneath it changes, so an old one doesn't just go unhelpful, it becomes a small, confident lie sitting in plain sight.
+
+**The rule this chapter lands on is to write the note only when the code genuinely can't tell the story itself.** A stale comment isn't a harmless leftover — it's the reason an engineer spends a whole afternoon debugging behavior that flatly contradicts what the note on top of it swears is happening, because nothing ever told them the note stopped being true.
+
 ---
 
 Repository-level design rationale — the reasoning behind the big decisions — belongs in Architecture Decision Records, covered in [Part VI, Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md). API documentation as a publishing discipline gets its own treatment in [Part VIII, Ch 64–68](../part08-documentation/). This chapter is narrower: inline code comments specifically, what they're for, when they're worth their maintenance cost, and when they plainly aren't.

@@ -11,6 +11,14 @@
 - A state machine with its transitions scattered across six files is harder to understand than one sitting in a single cohesive file — even a genuinely long one.
 - Test and asset co-location follows the exact same cohesion reasoning: keep with the source whatever gets understood and changed alongside it.
 
+## For My Wife
+
+**Picture packing boxes for a move.** You could give every single object its own box — one for the lamp, one for each book — which makes any one item trivial to find later but leaves you hauling forty boxes out of one small room. Or you could pack by room instead: everything from the kitchen goes in together, however many boxes that ends up taking. This chapter's answer to when a programmer should split code into a new file follows the same logic, and the verdict is that boxes should be organized by what actually belongs together, not by how heavy the box has gotten. A box that's entirely kitchen items is fine no matter its size. A box holding kitchen stuff, bathroom stuff, and whatever was in the garage is a problem — not because it's heavy, but because opening it later means digging through unrelated things to find anything.
+
+**The real signal to split isn't length — it's whether the box has stopped being about one thing.** A long piece of code that's genuinely doing one job, like a parser working through one grammar, is often easier to follow than a short file secretly juggling three unrelated jobs at once, because the long one is still telling one coherent story start to finish.
+
+**The same logic covers when not to split something that only makes sense as a whole.** A board game's rules work because the rule for how a piece moves sits right next to the rule for what happens when it lands somewhere. Spread those across three separate pamphlets and nothing got simpler — someone just has to flip between three books to understand a single move.
+
 ---
 
 [Ch 27](ch27-file-and-module-structure.md) settled package- and module-level organization. This chapter takes that boundary as given and asks a finer-grained question: within a module, should this concept get its own file, or live alongside the code it's closely related to? Whether splitting a file introduces a new abstraction boundary worth paying for is a separate question, covered in [Ch 31](ch31-when-abstractions-help-vs-when-they-obscure.md).

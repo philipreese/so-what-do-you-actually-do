@@ -74,8 +74,8 @@ export function toRoman(num: number): string {
 }
 
 export function cleanChapterTitle(fullTitle: string): string {
-  // Cleans "Chapter 1 — What Engineering Actually Optimizes" or "1 — What Engineering Actually Optimizes" -> "What Engineering Actually Optimizes"
-  const match = /^(?:Chapter\s+)?\d+\s+[\s\S]*?[-—–:]\s*(.+)$/i.exec(fullTitle);
+  // Cleans "Chapter 1 — ...", "Ch 1 — ...", or bare "1 — ..." -> just the title after the dash
+  const match = /^(?:Ch(?:apter)?\s+)?\d+\s*[-—–:]\s*(.+)$/i.exec(fullTitle);
   return match ? match[1].trim() : fullTitle;
 }
 

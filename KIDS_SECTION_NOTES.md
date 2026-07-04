@@ -84,3 +84,30 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part III, Ch19–Ch26
 - Push now (after Part I + Part II) per the 2-3 Part cadence
+
+---
+
+## Part III complete, Ch19–Ch26
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch19**: family group chat, "walked the dog" as fact vs. request — same words, two meanings, mixed up
+- **Ch20**: lemonade stand menu ("Regular Lemonade — $2") vs. handing customers the cooler's internal shelf/jug layout
+- **Ch21**: school locker drop-box rejecting homework — wrong slot (your fault) vs. jammed box (not your fault) vs. a box that lies and says "delivered!"
+- **Ch22**: texting a friend at the concession stand "grab me a soda" twice, worried the first didn't send — needs a named "soda request #1" to be recognized as a repeat
+- **Ch23**: team roster stapled-to-the-front-of-the-stack — skip-N-names (slow, breaks when the list shifts) vs. "next 10 after Jordan Smith" (fast, stable)
+- **Ch24**: an 8th-grader's badge scan letting a 6th-grader's bag get fetched — the door checks *who* can enter, never checks *what*/*for whom* the errand was
+- **Ch25**: a shortcut through the woods that a dozen classmates start relying on without ever asking permission — becomes a real obligation whether or not you meant it to
+- **Ch26**: two partners never agreeing who packs away grandma's borrowed glass ornaments each night — both assume the other has it, until one night both grab the same one at once
+
+### What worked
+- Ch19 and Ch22 both hinge on "the exact same message can mean two different things" / "a duplicate has to be recognized as a duplicate" — kept the surface scenarios totally distinct (group chat wording vs. a named request) since the underlying shape is genuinely different (ambiguity vs. deduplication)
+- For the most jargon-dense chapter yet (Ch26, FFI/ABI/memory ownership — three sub-concepts), picked only the one sub-idea that survives translation cleanly (ownership/responsibility) rather than forcing all three into one analogy — the "no do-over, it just breaks" stakes did double duty covering the chapter's "least forgiving surface" framing without a separate analogy for it
+- Continued avoiding screens/apps as the reflexive analogy — group chat text wording (Ch19, Ch22) is the closest this Part came to a screen, and even those are about the words/timing, not the technology
+
+### Edge cases and decisions
+- When a chapter's core idea is very close to one already covered (Ch25's Hyrum's Law vs. Ch16's backward-compatibility-as-a-promise), picked a genuinely distinct surface analogy (a shortcut path vs. a carpool pickup time) so neither reads as a rerun, even though the underlying lesson ("an unannounced/unintended promise is still a promise once people depend on it") rhymes on purpose
+- Highly technical chapters (Ch26) still get zero jargon — no "memory," "pointer," "allocate," or "crash" used in the literal computing sense; translated entirely into a physical, breakable, borrowed object
+
+### Next session
+- Continue with Part IV, Ch27–Ch33
+- Push after Part IV (or IV+V together)

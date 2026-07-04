@@ -18,6 +18,14 @@
 
 The retention window is the honest limitation: servers don't keep those keys forever. Stripe keeps them for 24 hours. A retry that shows up three days later gets processed as a brand-new request. This isn't a bug — it's a documented trade-off the contract spells out explicitly. Getting it wrong in the charging-money direction means customers see duplicate transactions on their statements and a support queue full of "I was charged twice" tickets that require manual refunds to clear.
 
+## For My Kids
+
+Say you're not going to the game, so you text your friend "grab me a soda" while he's already at the concession stand. You don't see a reply for a minute, so — worried the text didn't send — you text the exact same thing again. If your friend just buys a soda every single time that text lands, you now owe him for two sodas, and neither of you can tell afterward whether you actually wanted two or the message just landed twice.
+
+**The fix isn't "text less" or "wait longer before panicking."** It's giving each request its own name: "soda request #1," not just "grab me a soda." If your friend sees "soda request #1" arrive a second time, he checks it against the sodas he's already bought under that exact name and says "already got you covered" instead of buying another one — same message, recognized as a repeat, not treated as a brand-new ask.
+
+**That only actually works if he's keeping one real list he checks every time, not just going off memory.** A friend juggling six people's orders from a messy pile of texts will still buy two sodas under the same request number, because "I probably remember" isn't the same thing as an actual list with a name crossed off on it.
+
 ---
 
 ## Natural vs. Designed Idempotency

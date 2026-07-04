@@ -100,10 +100,22 @@ const activePartSlug = parts.find(
           <nav class="sidebar-nav">
             <div class="sidebar-section">
               <a href="/" class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
-                Introduction
+                <svg class="sidebar-link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 10.5 12 3l9 7.5"></path>
+                  <path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"></path>
+                </svg>
+                <span class="sidebar-link-text">Introduction</span>
               </a>
               <a href="/sitemap" class={`sidebar-link ${currentPath === '/sitemap' ? 'active' : ''}`}>
-                Table of Contents
+                <svg class="sidebar-link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+                <span class="sidebar-link-text">Table of Contents</span>
               </a>
             </div>
 
@@ -124,7 +136,7 @@ const activePartSlug = parts.find(
                   <ul class="sidebar-list">
                     <li>
                       <a href={`/parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
-                        <span class="chapter-num">&mdash;</span>
+                        <span class="chapter-num">{part.romanNumber}</span>
                         <span class="sidebar-chapter-title-text">Part Overview</span>
                       </a>
                     </li>

@@ -108,8 +108,6 @@ const currentSlug = Astro.url.pathname.split('/').pop() || '';
   // Run on load and after dynamic pane changes
   setupScrollSpy();
 
-  // Watch for click events on toggles to re-initialize scroll spy
-  document.getElementById('toggle-wife-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
-  document.getElementById('toggle-kids-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
-  document.getElementById('toggle-eng-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
+  // Watch for click events on the toggle to re-initialize scroll spy
+  document.getElementById('toggle-secondary-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
 </script>

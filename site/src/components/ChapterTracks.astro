@@ -1,6 +1,4 @@
 ---
-import './ChapterTracks.css';
-
 interface Props {
   engineerHtml: string;
   wifeHtml: string;
@@ -16,42 +14,28 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
   <!-- Inline Initializer: Runs synchronously BEFORE paint to prevent layout flashes -->
   <script is:inline>
     (function() {
-      const STORAGE_KEY = 'secondaryView';
-      const DEFAULT_VIEW = 'wife';
-      
-      let initialView = DEFAULT_VIEW;
+      const STORAGE_KEY = 'secondaryCollapsed';
+
+      let collapsed = false;
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const viewParam = urlParams.get('view');
         if (viewParam !== null) {
-          initialView = viewParam === 'hidden' ? 'hidden' : viewParam;
+          collapsed = viewParam === 'collapsed';
         } else {
           const stored = window.localStorage.getItem(STORAGE_KEY);
           if (stored !== null) {
-            initialView = stored;
+            collapsed = stored === 'true';
           }
         }
       } catch (e) {}
 
       const wrapper = document.getElementById('tracks-wrapper');
-      if (wrapper) {
-        const showWife = initialView.includes('wife');
-        const showKids = initialView.includes('kids');
-        if (showWife) wrapper.classList.add('view-wife');
-        if (showKids) wrapper.classList.add('view-kids');
-        if (!showWife && !showKids) wrapper.classList.add('view-engineer');
+      if (wrapper && collapsed) {
+        wrapper.classList.add('secondary-collapsed');
       }
     })();
   </script>
-
-  <!-- Control bar aligned above panes, float toggles to the right -->
-  <div class="tracks-control-bar">
-    <span class="tracks-label"></span>
-    <div class="track-toggle" role="group" aria-label="Toggle supplementary summaries">
-      <button type="button" id="toggle-wife-btn">For My Wife</button>
-      <button type="button" id="toggle-kids-btn">For My Kids</button>
-    </div>
-  </div>
 
   <div class="track-panes">
     <!-- Engineer Pane -->
@@ -64,7 +48,7 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
       </div>
     </div>
 
-    <!-- Secondary Stack (Wife & Kids) -->
+    <!-- Secondary Stack (Wife & Kids, shown together by default) -->
     <div class="secondary-stack" id="secondaryStack">
       <!-- Wife Pane -->
       <div class="pane pane-secondary pane-secondary--wife">
@@ -95,106 +79,47 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
         </div>
       </div>
     </div>
+
+    <!-- Vertical tab: collapses/expands the Wife + Kids panes together -->
+    <button
+      type="button"
+      class="tracks-vertical-tab"
+      id="toggle-secondary-btn"
+      aria-label="Toggle For My Wife and For My Kids panes"
+      aria-pressed="true"
+    >
+      <span class="tracks-vertical-tab-label">For My Wife &amp; Kids</span>
+    </button>
   </div>
 </div>
 
 <script>
-  const STORAGE_KEY = 'secondaryView';
-  const DEFAULT_VIEW = 'wife';
+  const STORAGE_KEY = 'secondaryCollapsed';
 
   const wrapper = document.getElementById('tracks-wrapper');
-  const toggleWifeBtn = document.getElementById('toggle-wife-btn');
-  const toggleKidsBtn = document.getElementById('toggle-kids-btn');
+  const toggleBtn = document.getElementById('toggle-secondary-btn');
 
-  function getInitialView() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const viewParam = urlParams.get('view');
-    if (viewParam !== null) {
-      return viewParam === 'hidden' ? 'hidden' : viewParam;
-    }
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return stored !== null ? stored : DEFAULT_VIEW;
+  function isCollapsed(): boolean {
+    return wrapper?.classList.contains('secondary-collapsed') ?? false;
   }
 
-  let currentView = getInitialView();
+  function setCollapsed(collapsed: boolean) {
+    wrapper?.classList.toggle('secondary-collapsed', collapsed);
+    toggleBtn?.setAttribute('aria-pressed', String(!collapsed));
+    window.localStorage.setItem(STORAGE_KEY, String(collapsed));
 
-  function updateDom() {
-    if (!wrapper) return;
-    
-    const showWife = currentView.includes('wife');
-    const showKids = currentView.includes('kids');
-    const isEngineerOnly = !showWife && !showKids;
-
-    // Toggle wrapper classes for pane visibility
-    if (showWife) wrapper.classList.add('view-wife');
-    else wrapper.classList.remove('view-wife');
-
-    if (showKids) wrapper.classList.add('view-kids');
-    else wrapper.classList.remove('view-kids');
-
-    if (isEngineerOnly) wrapper.classList.add('view-engineer');
-    else wrapper.classList.remove('view-engineer');
-
-    // Toggle button active states
-    toggleWifeBtn?.classList.toggle('active', showWife);
-    toggleWifeBtn?.setAttribute('aria-pressed', String(showWife));
-
-    toggleKidsBtn?.classList.toggle('active', showKids);
-    toggleKidsBtn?.setAttribute('aria-pressed', String(showKids));
-
-    // Update URL query param to reflect view state
+    // Update URL query param to reflect view state; clean it up for the default (expanded) view
     const url = new URL(window.location.href);
-    if (isEngineerOnly) {
-      url.searchParams.set('view', 'hidden');
+    if (collapsed) {
+      url.searchParams.set('view', 'collapsed');
     } else {
-      const parts = [];
-      if (showWife) parts.push('wife');
-      if (showKids) parts.push('kids');
-      url.searchParams.set('view', parts.join(','));
-    }
-    
-    // Clean URL query param if it matches default view and no other params
-    if (currentView === DEFAULT_VIEW) {
       url.searchParams.delete('view');
     }
     window.history.replaceState({}, '', url);
   }
 
-  function toggleWife() {
-    const showWife = currentView.includes('wife');
-    const showKids = currentView.includes('kids');
-    
-    let nextView = '';
-    if (showWife) {
-      nextView = showKids ? 'kids' : 'hidden';
-    } else {
-      nextView = showKids ? 'wife,kids' : 'wife';
-    }
-    setView(nextView);
-  }
+  toggleBtn?.addEventListener('click', () => setCollapsed(!isCollapsed()));
 
-  function toggleKids() {
-    const showWife = currentView.includes('wife');
-    const showKids = currentView.includes('kids');
-    
-    let nextView = '';
-    if (showKids) {
-      nextView = showWife ? 'wife' : 'hidden';
-    } else {
-      nextView = showWife ? 'wife,kids' : 'kids';
-    }
-    setView(nextView);
-  }
-
-  function setView(view: string) {
-    currentView = view;
-    window.localStorage.setItem(STORAGE_KEY, view);
-    updateDom();
-  }
-
-  toggleWifeBtn?.addEventListener('click', toggleWife);
-  toggleKidsBtn?.addEventListener('click', toggleKids);
-
-  // Run updates to set active button states
-  updateDom();
+  // Reflect the initial state (set synchronously by the inline script above) in the button
+  toggleBtn?.setAttribute('aria-pressed', String(!isCollapsed()));
 </script>

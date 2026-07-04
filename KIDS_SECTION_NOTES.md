@@ -324,3 +324,27 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part XII, Ch85–Ch90 (6 chapters — performance, final Part)
 - Push after Part XII; note in final summary that KIDS_SECTION_NOTES.md can be deleted once the user confirms all 90 chapters are done
+
+---
+
+## Part XII complete, Ch85–Ch90 (6 chapters — performance, final Part)
+
+**Ch88 was already done** — it was one of the two original calibration chapters from the very first session (see top of this file) and already carried both "For My Wife" and "For My Kids" sections. Confirmed present, left untouched. Only Ch85, 86, 87, 89, 90 needed writing this session.
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch85**: a school band drilling a hard trumpet run for two weeks while the actual concert breakdown is a missed clarinet cue in bar forty — two stacked mistakes (fixing the part that felt hard, and starting before confirming a real, repeated problem)
+- **Ch86**: a parent secretly clocking a kid's morning routine with quick hallway glances (doesn't disturb anything) vs. hovering with a stopwatch narrating every step (changes the very thing being timed) — plus checking the whole routine, not just the one step that looks slow
+- **Ch87**: a group-project text thread — answering instantly vs. batching replies every fifteen minutes — and how a great average reply time can still hide one specific person having a genuinely bad night
+- **Ch89**: alphabetized comic-book bins (great at 500, overkill at 40) plus a separate mistake — cleaning a living room one cup at a time instead of stacking a full armful for one trip
+- **Ch90**: a backpack's zippered pockets — a real, small cost every time, worth it for what it buys back, and the fix is noticing the one pocket genuinely costing time rather than ripping all of them out on a hunch
+
+### What worked
+- Ch90, the book's final "For My Kids" section, deliberately did not reuse the wife section's own "doors in a house" image, landing on a backpack instead — same underlying closing argument (a cost is real but usually worth it; measure before removing it), different concrete object, continuing the discipline held across all twelve Parts
+- **Formatting continued to be chosen per chapter's content shape:** Ch85 (a clean "two mistakes stacked" callout) got a `[!NOTE]`. Ch86 (one embedded second insight after the main scene) got a single bold lead. Ch87 (one crisp, quotable aphorism) got an italic pull-quote, then closed by returning to the same idea in concrete terms — a deliberate callback structure, not redundancy. Ch89 (two genuinely separate mistakes under one theme) got plain prose in short paragraphs, letting the two-part structure carry itself. Ch90 got a single bold lead marking its closing reveal.
+- Avoided reusing "band practice" too literally close to Part VII Ch50's band-practice-frequency analogy — Ch85 uses a band but the actual mechanism (misdiagnosing which part is broken) is unrelated to Ch50's mechanism (how often the whole group rehearses together), so the shared vehicle doesn't read as a repeat
+
+### Edge cases and decisions
+- Ch87's kids section opens with a pull-quote stating the tail-latency insight, then the closing paragraph restates it in the story's own concrete terms (the missed dinner text) — this is the same "state the insight, then prove it" shape as Ch77's NOTE-then-narrative structure in Part X, applied here with a quote instead of a NOTE
+- Considered a video-game analogy for Ch87 (server tick rate, lag) given the chapter is inherently about responsiveness — passed in favor of texting, keeping with the book's running discipline of not defaulting to screens/games as the reflexive kid vehicle
+
+### All 90 chapters now have "For My Kids" sections. This file is scaffolding for the duration of this pass only — the user can delete it now that the pass is complete; flagging that choice to them rather than deleting it here.

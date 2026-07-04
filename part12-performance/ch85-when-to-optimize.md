@@ -18,6 +18,17 @@ This chapter argues companies make exactly this mistake with slow software: they
 
 **The chapter's other rule is about deciding whether to even go looking in the first place: only bother hunting for the slow part once being late is an actual, confirmed problem, not a vague feeling that mornings could be smoother.** A family that's never actually missed the bus has no real reason to overhaul its whole routine on a hunch. The moment for that kind of effort is when the bus has actually been missed — repeatedly, provably — not before, and the fix, once it's worth chasing at all, needs to go after whatever's really causing the delay, not whichever step happened to catch someone's attention first.
 
+## For My Kids
+
+Say your school band is getting ready for the winter concert, and the trumpet section spends two weeks after school perfecting one tricky sixteenth-note run — real, measurable improvement, genuinely faster and cleaner fingers than before.
+
+And the full run-through still falls apart in the exact same spot it always has, because that was never actually the problem. The clarinets miss a tempo change cue in bar forty, every single time, and that's the moment the whole band actually loses its footing. Getting faster at the trumpet run doesn't fix a single second of that, no matter how clean it now sounds.
+
+> [!NOTE]
+> Two separate mistakes stacked on top of each other here. The first was fixing a part that merely felt hard, instead of the part that was actually breaking the run-through. The second was starting to fix anything at all before confirming there was a real, repeated problem — not just a private feeling that the trumpet run could probably be crisper.
+
+The right move is listening back to an actual recording of the run-through first, finding the exact bar where it falls apart, and only then deciding what's worth two weeks of extra practice. Skip that step, and you can spend the whole month getting better at exactly the wrong instrument's part, walking into the concert with gorgeous trumpets and the same collapse in bar forty nobody ever actually fixed.
+
 ---
 
 Ch 01 closed with a specific, qualified recommendation: optimize the cost of change over the cost of execution *until profiling identifies a specific runtime bottleneck*. That qualifier has been doing quiet, unglamorous work throughout this handbook — every chapter that recommended a boundary, an interface, or a layer over a faster but more rigid alternative was leaning on it without saying so. This chapter finally gives it the full treatment: what counts as a bottleneck, and what makes "until" actually arrive.

@@ -19,6 +19,14 @@ This chapter argues the extra layers and conveniences built into software work e
 
 **The chapter's — and really the whole book's — closing argument is to leave the doors alone until you've actually measured one costing you something real, and only then decide whether to take it out.** Ripping doors out of a house on a hunch that they're slowing you down, without ever actually timing anyone walking through, is how you end up with a house that's faster to walk through and a nightmare to ever change again. Measure first. Then decide what, if anything, actually needs to go.
 
+## For My Kids
+
+Every zippered pocket in your backpack costs you something real: an extra second or two to unzip it and dig around, every single time you need what's inside. Nobody seriously argues pockets are free. And almost nobody dumps their whole backpack out on the floor to save that second, because what the pockets buy back is worth far more than they cost — your pencils aren't buried under your textbooks, your phone isn't sitting loose next to a half-eaten granola bar, and losing one pocket's contents to a rip doesn't mean losing everything else too.
+
+**The smart move isn't assuming a pocket is "basically free" just because it feels quick — it's actually noticing, for real, the one pocket that's genuinely costing you time,** the front pocket you fumble through every single morning hunting for a pencil that's never actually in there. That's worth reorganizing. The zipper you barely notice using isn't.
+
+Ripping out every pocket because you have a hunch backpacks would be faster without them gets you a backpack that's quicker to grab one specific thing from, and a nightmare the instant you're carrying more than one item at once. Notice the actual problem first. Then decide what, if anything, is actually worth changing.
+
 ---
 
 Every layer this handbook has recommended — an interface, a service boundary, a safe language runtime standing between a program and raw memory — was justified in terms of reasoning complexity and cost of change. Ch 04 argued for abstraction and information hiding; Ch 14 and Ch 31 named the indirection tax those abstractions charge in return; Ch 05 argued for designing around volatility rather than performance. None of those arguments are wrong, and none get re-derived here. What they deliberately set aside — because Part XII hadn't yet supplied the tools to answer it — is that every one of those abstractions also has a cost the machine pays at runtime, not just a cost a reader pays in working memory. This chapter closes that other half of the ledger.

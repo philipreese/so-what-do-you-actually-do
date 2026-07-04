@@ -1,0 +1,482 @@
+# Appendix D — Full Glossary
+
+Every term this handbook defines, in one alphabetical list. This is a consolidated,
+reference-formatted version of the working glossary — the authoritative source for
+each definition is unchanged; only the ordering and presentation differ. A term appears
+here because it is used across more than one chapter, or because its precise meaning
+matters to an argument the book makes. Each entry links to the chapter that first
+introduces it.
+
+---
+
+## #
+
+**90%-done syndrome**: The pattern where a project reports a high percentage of tasks complete for an extended period because the remaining, unestimated tasks were always the actual technical risk — integration, debugging, and dependency work that doesn't compress into a clean percentage. The project-planning expression of Principle 9: task-completion percentage is a proxy metric that stops representing real progress once it becomes the reported target. First introduced in: [Part VI, Ch 44](../part06-engineering-process/ch44-milestone-and-phase-planning.md).
+
+## A
+
+**ABAC (Attribute-Based Access Control)**: An authorization model that evaluates a policy against runtime attributes of the subject, resource, action, and environment at the moment of the request, rather than a fixed role membership. Expresses relational and contextual constraints RBAC cannot natively represent, at the cost of a policy surface that has no static answer to "what can this user access" — the answer is computed per request. Contrasted with RBAC. First introduced in: [Part XI, Ch 82](../part11-security/ch82-authentication-vs-authorization.md).
+
+**accidental complexity**: Complexity introduced by the engineering solution rather than the problem domain itself. Can be reduced by changing the solution. Contrasted with essential complexity. First introduced in: [Part I, Ch 02](../part01-systems-thinking/ch02-complexity-is-the-enemy.md).
+
+**the action problem**: The recurring case in resource-oriented API design where a real business operation — canceling an order, refunding a payment — doesn't map cleanly onto standard CRUD verbs (GET/PUT/PATCH/DELETE), forcing a choice between generic state patching, an explicit sub-resource action endpoint, or a separate action resource. First introduced in: [Part III, Ch 20](../part03-api-design/ch20-resource-modeling.md).
+
+**actionability test**: The filter for whether a runtime log line belongs in the system: would a specific person make a different decision because this line exists, rather than whether the event felt notable to the engineer who wrote it. First introduced in: [Part IX, Ch 69](../part09-observability/ch69-logging-what-to-log-and-at-what-level.md).
+
+**actor**: An isolated unit of computation that owns private state no other actor can directly access or mutate, communicates exclusively through asynchronous messages delivered to its own mailbox, and processes exactly one message at a time. The unit of the actor model, the extreme point of Ch 74's message-passing spectrum. First introduced in: [Part X, Ch 78](../part10-concurrency/ch78-the-actor-model.md).
+
+**ADR graveyard**: The failure mode where ADRs are written to satisfy a process checkpoint and then never consulted again — most often because they are stored somewhere outside the normal review workflow, such as an external wiki, so nothing forces an engineer to encounter them during actual development. First introduced in: [Part VI, Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md).
+
+**ADR inflation**: The failure mode where the threshold for writing an ADR is lowered until routine, cheap-to-reverse, local decisions receive the same permanent-record treatment as genuinely architectural ones. The resulting volume drowns the signal of the decisions that actually matter, and engineers stop consulting the collection altogether. First introduced in: [Part VI, Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md).
+
+**adversary**: Any party that benefits from compromising an asset, characterized by realistic capability — an anonymous internet scanner, a malicious insider, a resourced criminal group — rather than a vague label like "hackers." Security requirements should reflect the actual adversary a system faces, not an undifferentiated worst case or an unrealistically narrow one. First introduced in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**afferent coupling (Ca)**: The number of external components that depend on a given component. High afferent coupling means changes to this component have wide impact. Contrasted with efferent coupling. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**alert fatigue**: The failure mode where a high volume of low-value, non-actionable alerts trains a responder to acknowledge and dismiss notifications reflexively, so the one alert that actually matters receives the same automatic dismissal as the hundred before it that didn't. The monitoring-domain instance of the proxy-metric failure named in Ch 49 — the paging system starts optimizing for "an alert was sent" rather than "a human usefully responded." First introduced in: [Part IX, Ch 71](../part09-observability/ch71-alerting-signal-vs-noise.md).
+
+**allowlist validation**: A validation posture that accepts only input matching an explicitly defined, known-good shape — a format, a bounded length, an enumerated set of values — rather than trying to enumerate every malicious variant in advance. Preferred over denylist validation because the space of legitimate inputs is small and stable while the space of malicious ones is unbounded and adversarially evolving. First introduced in: [Part XI, Ch 81](../part11-security/ch81-input-validation.md).
+
+**annotated tag**: A full Git object marking a commit as a release point, carrying a tagger identity, timestamp, message, and optionally a GPG signature. The correct default for any tag representing a release, as distinct from a lightweight tag. First introduced in: [Part VII, Ch 56](../part07-git-and-delivery/ch56-tagging-and-release-markers.md).
+
+**anti-corruption layer (ACL)**: A translation boundary, from Domain-Driven Design, placed between an internal bounded context and an external or legacy system whose model and vocabulary are incompatible with it. It translates the external system's shape into the internal domain's own vocabulary so foreign constraints never enter the core. First introduced in: [Part II, Ch 14](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md).
+
+**Application Binary Interface (ABI)**: The physical, compiled contract between two pieces of code — exact memory layout, struct padding, register usage, and calling convention — as distinct from the logical, source-level API contract. Two compilers agreeing on behavior does not mean they agree on the bytes a struct contains. First introduced in: [Part III, Ch 26](../part03-api-design/ch26-ffi-and-native-binding-design.md).
+
+**architectural seam**: A design boundary — most frequently an abstract interface or port — that separates components tested at different layers of the testing pyramid. Unit tests stop at the architectural seam; integration tests verify the seam itself. In hexagonal architecture, ports are the seams: domain logic lives inside them and is unit-tested; adapters implement them and are integration-tested against real infrastructure. First introduced in: [Part V, Ch 35](../part05-testing-strategy/ch35-what-belongs-at-each-layer.md).
+
+**Architecture Decision Record (ADR)**: A lightweight document stored in the repository that records what was decided, the context and constraints present at decision time, and what alternatives were rejected and why. The mechanism by which a decision's reasoning outlives the people who made it. First introduced in: [Part I, Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md).
+
+**Arrange/Act/Assert**: The canonical internal structure for a test body — construct the required preconditions (Arrange), execute the operation under test (Act), verify the observable outcome (Assert) — with each section visually distinct. Coined by Bill Wake (2001). Equivalent in structure to the Given/When/Then vocabulary used by behavior-driven frameworks. First introduced in: [Part V, Ch 40](../part05-testing-strategy/ch40-test-naming-and-structure.md).
+
+**asset**: Anything whose compromise would matter — not only databases and customer records, but credentials, cryptographic keys, build infrastructure, source code, availability, and reputation. The value of a security control tracks the value, and blast radius (Ch 09), of the asset it protects; protecting every component equally is not possible, so threat modeling starts by ranking what actually deserves the effort. First introduced in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**assume-breach posture**: The design stance that treats every individual security control as eventually failing or being bypassed, and designs containment around that certainty instead of trying to build a control that cannot fail. The security-specific application of Ch 07's partial-failure argument. First introduced in: [Part XI, Ch 80](../part11-security/ch80-defense-in-depth.md).
+
+**attack surface**: Everything reachable from outside a given trust boundary — every API, administrative interface, file-upload path, build pipeline, and diagnostic endpoint. Reducing what's reachable is often a bigger security gain than adding defenses to what remains reachable. First introduced in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**axis of variation**: A specific, named dimension along which a system is expected to change — an authentication method, a storage backend, a data format. Identifying real axes of variation is what distinguishes designing for change from future-proofing. First introduced in: [Part I, Ch 05](../part01-systems-thinking/ch05-designing-for-change.md).
+
+## B
+
+**backpressure**: A flow-control mechanism that enforces a hard upper bound on queue depth and rejects new requests once that bound is reached, preventing queue exhaustion and node crashes at the cost of requiring upstream callers to handle rejection. Contrasted with unbounded queues. First introduced in: [Part I, Ch 08](../part01-systems-thinking/ch08-local-vs-global-optimization.md).
+
+**behavioral invariant**: A property or constraint that must remain true for every valid input to a component — independent of any specific input value. The subject of a property-based test. Examples: `decode(encode(x)) == x` for all byte sequences; a sort output always contains exactly the same elements as its input. Contrasted with an example assertion, which verifies one specific case. First introduced in: [Part V, Ch 38](../part05-testing-strategy/ch38-property-based-testing.md).
+
+**behavioral specification naming**: The convention of naming a test after the observable behavior it verifies and the condition that triggers it (`returns_null_when_user_id_does_not_exist`) rather than after the method or class it exercises (`testGetUser`). Survives refactoring that leaves behavior unchanged and turns a failing test's name into an immediate diagnosis rather than a prompt to open the source file. First introduced in: [Part V, Ch 40](../part05-testing-strategy/ch40-test-naming-and-structure.md).
+
+**big ball of mud**: A monolith with no enforced internal module boundaries, where any component can call any other. The degenerate case a modular monolith is meant to prevent. First introduced in: [Part II, Ch 10](../part02-software-architecture/ch10-monolith-vs-service-decomposition.md).
+
+**big-bang integration**: The failure mode where independently developed components are connected for the first time in a dedicated integration phase at the end of a project, rather than continuously throughout it. The predictable consequence of horizontal phase planning, not a scheduling accident — it concentrates technical risk at the point in the schedule with the least slack left to absorb it. First introduced in: [Part VI, Ch 44](../part06-engineering-process/ch44-milestone-and-phase-planning.md).
+
+**blast radius**: The scope of damage a wrong decision causes to the broader system or business. Combined with reversibility, determines how much deliberation a decision warrants. First introduced in: [Part I, Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md).
+
+**bounded context**: The largest architectural scope, from Domain-Driven Design (Eric Evans), within which a domain model's terms and rules remain internally consistent. The unit a service boundary should be drawn around. First introduced in: [Part II, Ch 13](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md).
+
+**branch coverage**: A stronger tier of the coverage measurement hierarchy than line coverage: whether every independent outcome of a conditional — both the true and false path of an `if`, every case of a `switch` — was executed at least once. Catches unexercised decision outcomes that line coverage cannot see, but still cannot confirm that the executed code's output was actually checked by an assertion. First introduced in: [Part V, Ch 41](../part05-testing-strategy/ch41-coverage-what-it-measures-and-what-it-doesnt.md).
+
+**branch topology**: The structural choice of how many long-lived branches a repository maintains and how work flows between them before reaching production — the fundamental Git-mechanics decision every other version-control and delivery practice builds on. First introduced in: [Part VII, Ch 50](../part07-git-and-delivery/ch50-branching-strategies.md).
+
+**build-once-promote-many**: The practice of compiling or packaging a single immutable artifact exactly once, then deploying that identical artifact, unchanged, through every subsequent environment rather than rebuilding from source at each stage. Guarantees that what was validated in an earlier environment is what actually runs in a later one. First introduced in: [Part VII, Ch 62](../part07-git-and-delivery/ch62-environment-promotion.md).
+
+**burn rate**: The ratio of a service's current error rate to the error rate that would exactly exhaust its error budget over the budget's full tracking window. Evaluated across multiple sliding windows at once to catch both a sudden, severe spike and a slow, persistent leak — either of which a single static threshold alert misses in one direction or the other. First introduced in: [Part IX, Ch 73](../part09-observability/ch73-error-budgets-and-slos.md).
+
+## C
+
+**cache stampede**: A failure mode (also called a thundering herd) where a popular cache entry expires or is invalidated and many concurrent requests miss it simultaneously, all attempting to regenerate it against the backing store at once. Mitigated with request coalescing or a short-lived regeneration lock. First introduced in: [Part XII, Ch 88](../part12-performance/ch88-caching.md).
+
+**CAP theorem**: In the presence of a network partition, a distributed system must choose between consistency (every read receives the most recent write or an error) and availability (every request receives a non-error response). Partition tolerance is not optional in real distributed systems. First introduced in: [Part I, Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md).
+
+**cardinality (metric)**: The number of distinct label-value combinations a metric can take on. Metrics stay cheap because cardinality is kept low and bounded; a label carrying a near-unique value per event (a user ID, a request ID) produces close to one time series per event, collapsing the cost advantage that distinguishes a metric from a log. First introduced in: [Part IX, Ch 70](../part09-observability/ch70-metrics-vs-logs-vs-traces.md).
+
+**Chesterton's fence**: The principle that a rule or barrier should not be removed until the reason it was put up is understood. Correctly applied, it is an argument for investigation before removal, not for permanent preservation — once the original reason is understood and found to no longer apply, the fence must actually come down. First introduced in: [Part VI, Ch 49](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md).
+
+**Coffman conditions**: The four conditions — mutual exclusion, hold-and-wait, no preemption, and circular wait — that must all hold simultaneously for deadlock to occur. Breaking any single one is sufficient to prevent it; breaking circular wait via a consistent global lock-acquisition order is the cheapest and most common technique, because it requires giving up none of the other three. First introduced in: [Part X, Ch 77](../part10-concurrency/ch77-deadlock-livelock-and-starvation.md).
+
+**cohesion**: The degree to which the elements inside a single component belong together and serve a single well-defined purpose. High cohesion reduces internal complexity. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**comment rot**: The condition where a comment no longer matches the code it describes, caused by the code evolving while the comment did not. Strictly worse than no comment: a missing comment forces the reader to reason from the code, while a stale comment leads the reader to reason from a wrong model with no visible indication that it is wrong. First introduced in: [Part IV, Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md).
+
+**compensating action**: An explicit action that reverses the effect of a previously completed step in a distributed workflow, used in place of a database rollback when a multi-step process spans more than one service. First introduced in: [Part II, Ch 17](../part02-software-architecture/ch17-sync-vs-async-communication.md).
+
+**compliance theater**: The condition where a team optimizes visibly against a process-compliance metric — tickets filed, fields completed, meetings attended — while the actual outcome the process was meant to protect (cycle time, defect rate, delivery velocity) steadily worsens. The process-level expression of Principle 9: a compliance metric is satisfied by compliance, not by the outcome it was designed to proxy. First introduced in: [Part VI, Ch 49](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md).
+
+**concurrency**: The structural property of a program organized to make progress on more than one unit of work during overlapping periods of time. A property of code structure, not execution — it requires no particular hardware and can run on a single core. Contrasted with parallelism. First introduced in: [Part X, Ch 76](../part10-concurrency/ch76-async-vs-threads-vs-processes.md).
+
+**confused deputy problem**: A failure mode where a service uses its own elevated, perimeter-trusted privileges to act on a caller's behalf without verifying that the caller was actually authorized to request that action — the service isn't compromised, it's tricked into misusing its own authority. First introduced in: [Part III, Ch 24](../part03-api-design/ch24-authentication-authorization-boundaries.md).
+
+**connascence**: A taxonomy for evaluating the strength of coupling between two components. Two components are connascent if a change in one requires a change in the other. Forms range from weak (name, type) to strong (execution order, timing). First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**consumer-driven contract test**: A test, authored from the consumer's expectations of an API rather than the provider's implementation, that runs against the provider to verify a proposed change won't break that specific known consumer before it ships. The mechanism formal change management uses to replace direct, synchronous coordination once consumers can't be reached directly. First introduced in: [Part III, Ch 25](../part03-api-design/ch25-internal-vs-external-api-design.md).
+
+**Conway's Law**: Organizations that design systems are constrained to produce designs that mirror their own communication structures. Local team autonomy produces systems with those team boundaries baked in — which may not be the correct system boundaries. First introduced in: [Part I, Ch 08](../part01-systems-thinking/ch08-local-vs-global-optimization.md).
+
+**coordination model**: The choice, made before and independent of any execution-unit decision, of how concurrent units of execution coordinate correctness over data they touch — either by accessing shared memory under synchronization or by exchanging copies of data through message passing. Contrasted with the execution model (thread, process, async task) that actually runs the work. First introduced in: [Part X, Ch 74](../part10-concurrency/ch74-shared-state-vs-message-passing.md).
+
+**correlation ID**: A unique identifier included in an error response (and propagated through internal logs and traces) that lets a caller hand a single failure back to the provider and have it matched to the exact request that produced it. First introduced in: [Part III, Ch 21](../part03-api-design/ch21-error-handling-contracts.md).
+
+**cost of change**: How expensive it is to modify a system over time, measured in engineering time, risk, and coordination overhead. Distinct from cost of execution. First introduced in: [Part I, Ch 01](../part01-systems-thinking/ch01-what-engineering-optimizes.md).
+
+**coupling**: The degree to which one component's behavior depends on another component's state, structure, or timing. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**CPU-bound work**: Work whose completion time is limited by the processor's own computation rate rather than by waiting on an external resource. Adding concurrency without adding execution cores cannot make it faster, because the bottleneck is parallelism, not scheduling. Contrasted with I/O-bound work. First introduced in: [Part X, Ch 76](../part10-concurrency/ch76-async-vs-threads-vs-processes.md).
+
+**CQRS (Command Query Responsibility Segregation)**: An architectural pattern that separates the model used to write data from the model used to read it, commonly used across service boundaries to build a fast, local, read-optimized projection of data another service owns. First introduced in: [Part II, Ch 18](../part02-software-architecture/ch18-data-ownership-boundaries.md).
+
+**credential scoping**: Limiting both the permissions and the lifetime of an issued credential to the minimum a specific task requires, rather than issuing broad, long-lived access for convenience. The complementary mitigation to rotation: rotation limits how long a leaked credential stays useful, scoping limits how much damage it can do before it's rotated. First introduced in: [Part XI, Ch 83](../part11-security/ch83-secrets-management.md).
+
+**critical section**: The minimal span of code that reads or mutates shared state and must execute as if atomic — with respect to every other concurrent accessor of that same state — to avoid a data race. A lock protects the invariant guarded by a critical section, not merely the memory location it touches. First introduced in: [Part X, Ch 75](../part10-concurrency/ch75-locks-when-to-use-them.md).
+
+**cursor (keyset pagination)**: A stable, unique, sortable pointer to a specific position in a collection, used to anchor a pagination request ("items after this one") instead of a relative offset counted from the start. Lets the database jump directly to the position via an index, giving constant performance regardless of depth and immunity to page drift. First introduced in: [Part III, Ch 23](../part03-api-design/ch23-pagination-and-streaming.md).
+
+**cyclomatic complexity**: A quantitative measure of the number of independent execution paths through a program, derived from the control flow graph. Higher values indicate harder-to-test and harder-to-reason-about code. First introduced in: [Part I, Ch 02](../part01-systems-thinking/ch02-complexity-is-the-enemy.md).
+
+**Cynefin framework**: A sense-making model (Snowden) that classifies problems by the relationship between cause and effect: Simple (best practice applies), Complicated (analysis required, right answer exists), Complex (probe-sense-respond, no single right answer), Chaotic (act first to restore order). Most architectural decisions are complicated. First introduced in: [Part I, Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md).
+
+## D
+
+**data race**: Two concurrent accesses to the same memory location, at least one of them a write, with no synchronization establishing an ordering between them. The concurrency-specific instance of the undefined behavior defined in Ch 33 — not merely a wrong answer, but a condition the language no longer makes any guarantee about. First introduced in: [Part X, Ch 74](../part10-concurrency/ch74-shared-state-vs-message-passing.md).
+
+**Data Transfer Object (DTO)**: A data structure designed specifically for a boundary crossing — an API request or response — distinct from the domain model or database entity it is mapped to or from. First introduced in: [Part II, Ch 11](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md).
+
+**database-per-service pattern**: The rule that each service's datastore is reachable only by that service; every other service accesses its data exclusively through its API. The hard prerequisite for treating a decomposed service as actually independent. First introduced in: [Part II, Ch 18](../part02-software-architecture/ch18-data-ownership-boundaries.md).
+
+**deadlock**: A set of concurrent execution units each waiting indefinitely for a resource held by another member of the same set, forming a cycle in which no participant can proceed and none will release what it already holds — a permanent, total standstill. Contrasted with livelock and starvation. First introduced in: [Part X, Ch 77](../part10-concurrency/ch77-deadlock-livelock-and-starvation.md).
+
+**debt-as-excuse**: The failure mode where a team declares "we'll fix it later" under deadline pressure with no issue filed, no owner assigned, and no recorded intention anywhere. Because no payback was ever actually tracked, no debt decision was made — a quality decision was made silently, and "later" has no mechanism to ever arrive. First introduced in: [Part VI, Ch 48](../part06-engineering-process/ch48-technical-debt.md).
+
+**defense in depth**: The architectural principle that no single security control should be the only thing standing between an asset and a successful attack — independent, redundant controls are layered at every tier (network, host, runtime, application, data) so that one layer's failure exposes the next layer rather than the asset itself. Ch 24's zero-trust architecture generalized past the single service-to-service boundary it originally covered. First introduced in: [Part XI, Ch 80](../part11-security/ch80-defense-in-depth.md).
+
+**delegated authorization**: The pattern where a service acts on a user's behalf using a narrowly scoped, revocable credential issued by an identity provider, instead of the user's primary credential — eliminating the need to share a password with every application that needs limited access. The mechanism OAuth 2.0 formalizes, and the structural alternative to direct credential sharing. First introduced in: [Part XI, Ch 82](../part11-security/ch82-authentication-vs-authorization.md).
+
+**denylist validation**: A validation posture that accepts all input except what matches a known-bad pattern or signature. Never complete, requires continuous maintenance as new bypass techniques surface, and is trivially defeated by any encoding or obfuscation its author didn't anticipate — defensible only as a supplemental detection signal, not a primary validation gate. Contrasted with allowlist validation. First introduced in: [Part XI, Ch 81](../part11-security/ch81-input-validation.md).
+
+**dependency confusion**: A supply-chain attack that exploits namespace ambiguity between a private and a public package registry: an attacker publishes a public package sharing an internal package's name, at a higher version, so a build system configured to prefer the public registry or the higher version resolves to the attacker's package instead of the internal one. First introduced in: [Part XI, Ch 84](../part11-security/ch84-dependency-supply-chain-risk.md).
+
+**dependency debt**: The accumulated gap between a project's pinned dependency and toolchain versions and the versions currently maintained upstream, caused by deferring routine updates. A direct instance of the technical debt model (Ch 48): every postponed update increases what eventually has to be absorbed at once, paid down continuously in small increments or all at once in a large, high-risk migration. First introduced in: [Part VII, Ch 63](../part07-git-and-delivery/ch63-toolchain-and-dependency-management.md).
+
+**Dependency Inversion Principle (DIP)**: High-level (stable) modules must not depend on low-level (volatile) modules; both should depend on an abstraction, and that abstraction must be owned by the high-level side. First introduced in: [Part II, Ch 12](../part02-software-architecture/ch12-dependency-direction-inversion.md).
+
+**Design Stamina Hypothesis**: Martin Fowler's model of the economics of internal code quality: a low-quality codebase can appear to deliver features faster for a short initial period, but the crossover point — where a well-designed alternative becomes the faster one to extend — arrives within weeks of sustained development, not years. The basis for rejecting quality-versus-speed as a stable long-term trade-off. First introduced in: [Part VI, Ch 48](../part06-engineering-process/ch48-technical-debt.md).
+
+**distributed monolith**: A system decomposed into multiple services that remain tightly coupled through a shared database schema, undocumented contracts, or implicit timing dependencies. Has the operational complexity of microservices with the coupling of a monolith. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**documentation tax**: The ongoing cost of a piece of external documentation — being located, read, trusted, and eventually corrected by someone who did not write it — as distinct from the one-time cost of writing it. Paid indefinitely once a page exists, whether or not the page turns out to have been worth writing. First introduced in: [Part VIII, Ch 64](../part08-documentation/ch64-what-to-document-vs-what-to-leave-to-the-code.md).
+
+**dummy**: A test double passed to satisfy a method signature or parameter list but never actually invoked during the test. Carries no logic and holds no state. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+## E
+
+**efferent coupling (Ce)**: The number of external components a given component depends on. High efferent coupling makes a component fragile — vulnerable to changes in any of its dependencies. Contrasted with afferent coupling. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**encapsulation**: The mechanical bundling of data with the methods that operate on it. A language feature, not an architectural guarantee — encapsulation hides implementation but does not by itself hide volatile design decisions. Contrasted with information hiding. First introduced in: [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md).
+
+**error budget**: The direct mathematical consequence of an SLO (1 − SLO): the explicit, spendable volume of allowed failure a service can consume within a tracking window. Intended to be spent deliberately on deploys, migrations, and experimentation rather than hoarded — a service that never spends its budget is under-using risk its own objective already permits. First introduced in: [Part IX, Ch 73](../part09-observability/ch73-error-budgets-and-slos.md).
+
+**error-as-value**: A design pattern in which a function's possible failure is represented as an ordinary return value tracked by the type system, rather than a thrown exception. The function signature explicitly declares that failure is possible; callers must handle or forward the failure through standard control flow. Exemplified by Go's `(result, error)` return convention and Rust's `Result<T, E>`. First introduced in: [Part IV, Ch 32](../part04-code-organization/ch32-error-handling-typed-errors-vs-exceptions-vs-result-types.md).
+
+**essential complexity**: Complexity inherent to the problem domain that cannot be eliminated without changing what the system does. Contrasted with accidental complexity. First introduced in: [Part I, Ch 02](../part01-systems-thinking/ch02-complexity-is-the-enemy.md).
+
+**event-carried state transfer**: An event payload design where the message carries the full state of the resource at the moment of the event ("a fat event"), rather than only an identifier — letting consumers act without calling back to the publisher, at the cost of risking eventual-consistency collapse if delivery lags behind newer mutations. First introduced in: [Part III, Ch 19](../part03-api-design/ch19-rest-vs-rpc-vs-event-driven.md).
+
+**exceptional failure**: An unrecoverable violation of an invariant indicating a programming bug or environmental collapse — an array access out of bounds, a null dereference in code that asserted non-null, out-of-memory. Attempting to recover and continue from an exceptional failure risks operating in an undefined state. The correct response is fail-fast termination via a panic or exception. Contrasted with operational failure. First introduced in: [Part IV, Ch 32](../part04-code-organization/ch32-error-handling-typed-errors-vs-exceptions-vs-result-types.md).
+
+**executable documentation**: Documentation content that is mechanically verified by the build itself — a code sample that is actually compiled and executed, a link that is checked, a schema validated against the real API it documents — converting a specific class of drift into a build failure instead of a silent, undetected one. Covers only what's objectively checkable; explanatory accuracy remains a human audit responsibility. First introduced in: [Part VIII, Ch 66](../part08-documentation/ch66-keeping-documentation-honest.md).
+
+**execution-verification gap**: The structural blind spot in every coverage metric: code can be fully executed by a test run while the test asserts nothing about the result, so the code registers as "covered" without its behavior ever being checked. The reason high coverage percentages are not evidence of test quality — coverage tooling measures execution, not verification, and has no way to distinguish the two. First introduced in: [Part V, Ch 41](../part05-testing-strategy/ch41-coverage-what-it-measures-and-what-it-doesnt.md).
+
+## F
+
+**fail-fast**: The design principle of terminating execution immediately upon detecting an invalid or inconsistent state, rather than continuing in a potentially corrupted state. Converts wrong-answer failures into crash failures — visible and bounded rather than silent and spreading. First introduced in: [Part I, Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md).
+
+**fake**: A test double that contains a genuine, working implementation backed by a mechanism unsuitable for production — an in-memory repository, a local SMTP server, an embedded message queue. Unlike stubs and mocks, fakes perform real computation and implement the same contract as the production dependency; they simply substitute a lightweight backing store. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**feedback loop latency**: The elapsed time between a code change and a trusted signal from the test runner that the change is correct or broken. Short feedback loop latency enables frequent verification; long feedback loop latency causes developers to skip local testing, accumulate defects across commits, and spend more time diagnosing failures that could have been caught immediately. First introduced in: [Part V, Ch 34](../part05-testing-strategy/ch34-the-testing-pyramid.md).
+
+**fixture**: The complete set of preconditions a test requires: database records, in-memory objects, configuration values, and any environmental state the system under test depends on. Distinct from test doubles, which replace dependencies; fixtures provide the state those dependencies contain. First introduced in: [Part V, Ch 37](../part05-testing-strategy/ch37-fixture-based-testing.md).
+
+**fixture bloat**: The progressive accumulation of records in a shared fixture dataset, driven by engineers incrementally adding rows to cover specific edge cases, until the dataset is too large and interdependent for any single engineer to understand in full. Any change to the fixture risks breaking unrelated tests through associations no one has mapped. The structural failure mode of static shared fixtures at scale. First introduced in: [Part V, Ch 37](../part05-testing-strategy/ch37-fixture-based-testing.md).
+
+**flame graph**: A visualization that aggregates sampled stack traces by merging identical call stacks and sizing each frame's width to the proportion of time spent in it, making a dominant execution path visible without preserving chronological order. First introduced in: [Part XII, Ch 86](../part12-performance/ch86-profiling-first.md).
+
+**Foreign Function Interface (FFI)**: The mechanism that lets code written in one language directly call routines compiled in another, within the same process. Information hiding under the harshest possible constraints: no shared garbage collector, no shared type system, and a mistake can terminate the entire host process rather than degrade gracefully. First introduced in: [Part III, Ch 26](../part03-api-design/ch26-ffi-and-native-binding-design.md).
+
+**frozen spec**: A specification that quietly diverges from the system it once described, because it was treated as a living reference instead of an archived proposal artifact. More dangerous than having no spec at all, since nothing signals to a reader that it can no longer be trusted. The reason a spec should be archived once implementation begins, with the code, tests, and any resulting ADR treated as the authoritative sources going forward. First introduced in: [Part VI, Ch 46](../part06-engineering-process/ch46-spec-first-development.md).
+
+**future-proofing**: Speculative anticipation of unknown future requirements through upfront generality, as distinct from designing for change along a known, specific axis of variation. Usually an anti-pattern — the complexity cost is paid immediately for a benefit that may never arrive. First introduced in: [Part I, Ch 05](../part01-systems-thinking/ch05-designing-for-change.md).
+
+## G
+
+**GitFlow**: A branching topology, formalized by Vincent Driessen in 2010, using a hierarchy of long-lived branches (`main`, `develop`, `release/*`, `hotfix/*`) to isolate work until a scheduled stabilization phase. Contrasted with trunk-based development; appropriate when release cadence is genuinely decoupled from continuous deployment. First introduced in: [Part VII, Ch 50](../part07-git-and-delivery/ch50-branching-strategies.md).
+
+**god package**: A package named `common/`, `shared/`, `helpers/`, or `utils/` that accumulates code whose only relationship is that it lacked an obvious owner. Characterized by near-zero internal cohesion and high afferent coupling — everything imports it, nothing owns it. The canonical organizational failure mode of a codebase that abandoned domain-based package ownership in favor of convenience. First introduced in: [Part IV, Ch 27](../part04-code-organization/ch27-file-and-module-structure.md).
+
+## H
+
+**HATEOAS (Hypermedia As The Engine Of Application State)**: REST's textbook ideal in which server responses embed the links describing every action currently available, so a client never needs prior knowledge of the API's URL structure. Almost never implemented in production — the coordination and tooling cost rarely outweighs disciplined, documented, pragmatic REST. First introduced in: [Part III, Ch 19](../part03-api-design/ch19-rest-vs-rpc-vs-event-driven.md).
+
+**hexagonal architecture (ports-and-adapters)**: An internal architecture, introduced by Alistair Cockburn, in which business logic sits at the center and defines the interfaces ("ports") it needs; infrastructure connects to the core by implementing those interfaces ("adapters"), so dependencies always point inward. First introduced in: [Part II, Ch 11](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md).
+
+**Hungarian notation**: A naming convention, originating in the C-era Windows API, in which a variable's type or memory layout is encoded as a prefix in its name (`lpszName` for "long pointer to null-terminated string," `strEmail`, `intAge`). Justified when compilers provided no type visibility; redundant cargo-culting in any modern statically or gradually typed language where the compiler already tracks types. Distinct from semantic predicate naming (`isActive`, `hasPermission`), which encodes domain state rather than memory layout and retains value in modern code. First introduced in: [Part IV, Ch 28](../part04-code-organization/ch28-naming-conventions-and-when-they-matter.md).
+
+**Hyrum's Law**: With a sufficient number of consumers, every observable behavior of a system — whether documented as part of the contract or not — will eventually be depended on by somebody. Coined at Google. The mechanism behind accidental externalization: an undocumented sort order or incidental field becomes an implicit contract the moment enough consumers rely on it. First introduced in: [Part III, Ch 25](../part03-api-design/ch25-internal-vs-external-api-design.md).
+
+## I
+
+**I/O-bound work**: Work whose completion time is limited primarily by waiting on an external resource — network or disk — rather than by processor computation. Benefits from concurrency that overlaps multiple waits cheaply rather than from added CPU cores. Contrasted with CPU-bound work. First introduced in: [Part X, Ch 76](../part10-concurrency/ch76-async-vs-threads-vs-processes.md).
+
+**ice cream cone anti-pattern**: The inverted testing pyramid — a suite with many slow end-to-end tests, a thin integration layer, and few or no unit tests. The predictable result of testing a codebase whose internal components cannot be isolated because architectural boundaries were not enforced. Produces suites too slow to run locally, too brittle to trust, and too coarse to diagnose failures precisely. First introduced in: [Part V, Ch 34](../part05-testing-strategy/ch34-the-testing-pyramid.md).
+
+**idempotency key**: A unique identifier, generated by the client per logical operation, that the server uses to recognize a retried request and return the original cached result instead of re-executing its side effect. Enforced correctly with a database uniqueness constraint, written atomically with the side effect, never with a separate read-then-write check. First introduced in: [Part III, Ch 22](../part03-api-design/ch22-idempotency.md).
+
+**implementation coupling**: The condition where a test's assertions depend on a component's private methods, internal call sequences, or intermediate state rather than its externally observable behavior, causing the test to fail whenever the internals are restructured even though the component's contract with its callers is unchanged. The primary cause of tests that penalize refactoring instead of enabling it. First introduced in: [Part V, Ch 39](../part05-testing-strategy/ch39-when-not-to-test.md).
+
+**indirection tax**: The cognitive cost of every abstraction layer — the reader must now jump between an invocation and its implementation, consuming working memory at each hop. An abstraction is justified when the benefit it provides (hiding a volatile decision, clarifying domain vocabulary) exceeds this tax. First introduced in: [Part IV, Ch 31](../part04-code-organization/ch31-when-abstractions-help-vs-when-they-obscure.md).
+
+**information hiding**: The deliberate concealment of a design decision that is likely to change, as distinct from merely hiding implementation. Coined by Parnas (1972). The goal is to isolate volatility behind a stable interface so that an internal change does not propagate to callers. Contrasted with encapsulation. First introduced in: [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md).
+
+**injection**: The failure pattern where untrusted input is concatenated into a string that a downstream interpreter — a SQL engine, a shell, a template renderer, an LDAP client — then executes or evaluates as instructions rather than treats strictly as data. The same architectural mistake recurring across SQL injection, command injection, template injection, and Log4Shell, differing only in which interpreter is targeted. First introduced in: [Part XI, Ch 81](../part11-security/ch81-input-validation.md).
+
+**instability metric**: I = Ce / (Ca + Ce). A value of 0 indicates a maximally stable component (depended on by many, depends on nothing); a value of 1 indicates a maximally unstable component (depends on many, depended on by nothing). First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**instrumenting profiler**: A profiler that injects measurement code at every function's entry and exit, recording an exact call count and duration for every invocation. Delivers precision a sampling profiler cannot, at overhead heavy enough to alter the timing it measures (the observer effect). Contrasted with sampling profiler. First introduced in: [Part XII, Ch 86](../part12-performance/ch86-profiling-first.md).
+
+**interaction verification**: A testing approach that asserts correctness by confirming how a module invoked its collaborators — which methods were called, with what arguments, and in what order — rather than what the module ultimately produced. Appropriate for outbound side effects with no inspectable return value; prone to refactoring fragility when applied to computation logic. Contrasted with state verification. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**invisible control flow**: The side-channel execution path created by unchecked exceptions, where control jumps directly from a deeply nested call to an upstream catch block, bypassing the intervening function signatures without any visible indication at the call site. A caller reading a function invocation has no way to know the function might exit multiple frames up the stack without inspecting all transitive dependencies. The dominant cost of unchecked exception paradigms. First introduced in: [Part IV, Ch 32](../part04-code-organization/ch32-error-handling-typed-errors-vs-exceptions-vs-result-types.md).
+
+## L
+
+**latency hierarchy**: The approximate cost, in time, of retrieving data from each layer of a real system — CPU cache, RAM, SSD, and network — spanning many orders of magnitude rather than a smooth gradient. Memorized by systems engineers as a baseline for reasoning about architectural cost. First introduced in: [Part I, Ch 06](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md).
+
+**lateral movement**: An attacker's progression from an initial, often narrow foothold to other systems inside a network, made possible when internal boundaries fail to re-verify trust and the compromise of one component is implicitly extended to everything reachable from it. The defining failure mode of perimeter-only security. First introduced in: [Part XI, Ch 80](../part11-security/ch80-defense-in-depth.md).
+
+**layer leakage**: The failure mode where infrastructure or implementation details surface above the layer meant to hide them — for example, a SQL exception reaching the API layer — defeating the information hiding the layering was supposed to provide. First introduced in: [Part II, Ch 11](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md).
+
+**leaky abstraction**: Spolsky's Law (2002): all non-trivial abstractions, to some degree, leak — the implementation details they were meant to hide eventually surface under load, failure, or scale. The design question is not whether an abstraction will leak, but when, how badly, and whether the system was built to survive it. First introduced in: [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md).
+
+**let it crash**: The actor-model philosophy of allowing an actor that hits an unexpected error to terminate outright rather than defensively coding it to survive every conceivable failure inline, trusting a supervising actor to restart it into a known-good state instead. The concurrency-architecture application of Ch 07's fail-fast principle and MTTR-over-MTBF framing, applied at process-isolation granularity instead of whole-system granularity. First introduced in: [Part X, Ch 78](../part10-concurrency/ch78-the-actor-model.md).
+
+**lightweight tag**: A bare, named pointer to a commit SHA with no accompanying metadata — mechanically, a branch reference that never moves. Appropriate only for local, throwaway bookmarks, never a production release marker. Contrasted with annotated tag. First introduced in: [Part VII, Ch 56](../part07-git-and-delivery/ch56-tagging-and-release-markers.md).
+
+**line coverage**: The weakest tier of the coverage measurement hierarchy: whether a given line of source code was executed at least once by any test. Vulnerable to compound conditionals that report full coverage from a single test satisfying only one clause, leaving the remaining logical outcomes unexercised. First introduced in: [Part V, Ch 41](../part05-testing-strategy/ch41-coverage-what-it-measures-and-what-it-doesnt.md).
+
+**Little's Law**: L = λW. In any stable queuing system, queue depth (L) equals arrival rate (λ) multiplied by average time in system (W). Explains why reducing local latency can increase arrival rate at a downstream component, growing queue depth and worsening system-level latency. First introduced in: [Part I, Ch 08](../part01-systems-thinking/ch08-local-vs-global-optimization.md).
+
+**livelock**: A concurrency failure where execution units continuously change state and respond to one another yet make no forward progress — the system stays active without ever completing useful work, distinguishing it from deadlock's total standstill. First introduced in: [Part X, Ch 77](../part10-concurrency/ch77-deadlock-livelock-and-starvation.md).
+
+**living document**: A documentation artifact expected to always describe the system as it currently exists — a README, a generated API reference — as distinct from a point-in-time record like a spec or ADR, which is allowed to diverge from present reality without being wrong. A living document that goes stale is a failure the artifact was supposed to prevent; a stale point-in-time record is functioning as designed. First introduced in: [Part VIII, Ch 65](../part08-documentation/ch65-readme-vs-spec-vs-adr-vs-inline-comment.md).
+
+**localization precision**: The ability of a failing test to identify the specific file, module, or code path containing the defect, without requiring log tracing or debugger attachment. Highest in unit tests (failure points directly at the isolated unit); lowest in end-to-end tests (failure indicates something is broken somewhere in the full stack). Decreases as test scope increases. First introduced in: [Part V, Ch 34](../part05-testing-strategy/ch34-the-testing-pyramid.md).
+
+**lock contention**: The condition where one or more threads are blocked waiting to acquire a lock currently held by another thread, forcing the waiting threads to idle or context-switch instead of making progress. The measured signal that justifies moving from coarse-grained to fine-grained locking — and the thing that should be measured before that move is made, not assumed. First introduced in: [Part X, Ch 75](../part10-concurrency/ch75-locks-when-to-use-them.md).
+
+**lock granularity**: How much shared state a single lock protects, ranging from one lock guarding an entire subsystem (coarse-grained) to many independent locks each guarding a narrow slice of it (fine-grained). Coarser locking is easier to reason about and carries no multi-lock deadlock risk; finer locking buys parallelism under contention at the cost of exponentially more interleavings to reason about. First introduced in: [Part X, Ch 75](../part10-concurrency/ch75-locks-when-to-use-them.md).
+
+**lockfile**: An immutable manifest recording the exact version, source, and content hash of every direct and transitive dependency a build resolves. Converts "trust that nothing changed since last time" into a fact the build system verifies automatically — Principle 8 applied to the build plane — rather than a discipline anyone has to remember to apply. First introduced in: [Part XI, Ch 84](../part11-security/ch84-dependency-supply-chain-risk.md).
+
+## M
+
+**mailbox**: The queue through which an actor receives messages, processed one at a time in delivery order. Subject to the same arrival-rate-versus-service-rate dynamics as any other queue (Ch 08's Little's Law); an actor's mailbox growing without bound is backpressure's concurrency-architecture-specific failure mode. First introduced in: [Part X, Ch 78](../part10-concurrency/ch78-the-actor-model.md).
+
+**measured bottleneck**: A component confirmed, through end-to-end measurement, to be the actual constraint limiting a system against a violated requirement — as distinct from a local hotspot, a component that merely profiles as slow in isolation without evidence it limits the system overall. First introduced in: [Part XII, Ch 85](../part12-performance/ch85-when-to-optimize.md).
+
+**mechanical sympathy**: The principle, popularized by Martin Thompson, that software performs better when it respects how the underlying hardware actually executes instructions, moves data, and manages memory, rather than fighting those properties for the sake of abstract code cleanliness. First introduced in: [Part I, Ch 06](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md).
+
+**message-passing concurrency**: A coordination model in which each concurrent unit of execution exclusively owns its own state and communicates only by sending copies of data through a channel, mailbox, or queue, eliminating shared memory — and therefore data races — by construction. Contrasted with shared-state concurrency. First introduced in: [Part X, Ch 74](../part10-concurrency/ch74-shared-state-vs-message-passing.md).
+
+**mock**: A test double pre-programmed with behavioral expectations before a test runs. If the code under test fails to call the expected methods in the expected order with the expected arguments, the mock fails the test immediately. Mocks verify interactions (how collaborators were called) rather than state (what the system produced). The most commonly misapplied term in the test double taxonomy. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**modular monolith**: A single deployable unit with strictly enforced internal module boundaries and information hiding, as distinct from a big ball of mud. The recommended default starting architecture for most systems. First introduced in: [Part II, Ch 10](../part02-software-architecture/ch10-monolith-vs-service-decomposition.md).
+
+**monster PR**: A pull request that grows to encompass an entire issue's implementation as a single, unreviewable diff — the predictable result of forcing a strict one-issue-to-one-PR mapping onto work that doesn't decompose that small. Reviewers cannot hold the whole change in working memory at once, and review degrades from verification into trust. First introduced in: [Part VI, Ch 43](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md).
+
+**MTBF (Mean Time Between Failures)**: A reliability paradigm that optimizes for preventing failures from occurring. Contrasted with MTTR. First introduced in: [Part I, Ch 01](../part01-systems-thinking/ch01-what-engineering-optimizes.md).
+
+**MTTR (Mean Time To Recovery)**: A reliability paradigm that accepts failures as inevitable and optimizes for recovering from them quickly. Contrasted with MTBF. First introduced in: [Part I, Ch 01](../part01-systems-thinking/ch01-what-engineering-optimizes.md).
+
+**mutation testing**: The strongest tier of the coverage measurement hierarchy: deliberately injecting small behavioral defects into production code (flipping an operator, inverting a conditional, altering a return value) and re-running the test suite to see whether any test fails. A mutation that survives — the suite still passes despite the injected defect — reveals that the corresponding code path is executed but not meaningfully verified. Computationally expensive enough to be suited to periodic auditing of critical modules rather than continuous CI enforcement. Implemented by tools such as PIT (Java) and mutmut (Python). First introduced in: [Part V, Ch 41](../part05-testing-strategy/ch41-coverage-what-it-measures-and-what-it-doesnt.md).
+
+**MVCC (Multi-Version Concurrency Control)**: A concurrency strategy where every update creates a new version of a row rather than mutating it in place, allowing readers and writers to proceed without blocking each other at the cost of storage overhead and background cleanup (vacuuming). Contrasted with pessimistic locking. First introduced in: [Part I, Ch 06](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md).
+
+## N
+
+**negative ROI test**: A test whose ongoing maintenance cost — the time spent understanding, debugging, and updating it — exceeds the confidence it provides about the system's correctness. Identified by asking whether the test catches realistic regressions, survives reasonable refactoring, and would be missed if removed; a "no" to all three marks a candidate for deletion. First introduced in: [Part V, Ch 39](../part05-testing-strategy/ch39-when-not-to-test.md).
+
+**nitpick storm**: A code review failure mode where a reviewer's comments consist almost entirely of style, formatting, and minor preference remarks, leaving little or no attention for design, correctness, or test adequacy. The review appears thorough by comment count while the reviewer's attention was consumed before it reached the parts of the change that actually carried risk. First introduced in: [Part VI, Ch 47](../part06-engineering-process/ch47-code-review.md).
+
+**non-goal**: An explicit statement in a specification of what the proposed work will not attempt, placed alongside its goals rather than left for a reader to infer. Prevents scope creep more effectively than a review comment written after the fact, because it gives reviewers and stakeholders a stated boundary to point back to instead of an assumed one to relitigate. First introduced in: [Part VI, Ch 46](../part06-engineering-process/ch46-spec-first-development.md).
+
+## O
+
+**observer effect**: The distortion a profiling or measurement tool introduces into the very system it is observing — an instrumenting profiler's injected timing code can alter cache behavior and scheduling enough to change which code path actually dominates. First introduced in: [Part XII, Ch 86](../part12-performance/ch86-profiling-first.md).
+
+**Open/Closed Principle (OCP)**: Software entities should be open for extension but closed for modification — new behavior is added through new code rather than by editing existing, tested code. A pragmatic lens for managing regression risk where change is genuinely additive, not a mandate to apply everywhere. First introduced in: [Part I, Ch 05](../part01-systems-thinking/ch05-designing-for-change.md).
+
+**operational failure**: An expected, predictable anomaly that can occur during correct execution — a file not found, a network timeout, a validation error on user-supplied input. The immediate caller is realistically expected to handle it through normal control flow. Contrasted with exceptional failure. First introduced in: [Part IV, Ch 32](../part04-code-organization/ch32-error-handling-typed-errors-vs-exceptions-vs-result-types.md).
+
+**optimistic concurrency control (OCC)**: A lock-avoiding coordination strategy where an operation executes speculatively against a local copy of shared data, then checks at commit time whether the underlying data changed underneath it, retrying the whole operation on conflict rather than blocking upfront. Delivers near-native throughput when conflicts are rare; degrades sharply into a retry storm when they are not. Contrasted with pessimistic locking. First introduced in: [Part X, Ch 75](../part10-concurrency/ch75-locks-when-to-use-them.md).
+
+**Optimization Gate**: The condition that must hold before performance work counts as justified engineering rather than speculative refinement: a documented requirement (an SLO, a cost budget, a measured UX threshold) is being violated, and a measured bottleneck — not merely a local hotspot — has been identified as the cause. First introduced in: [Part XII, Ch 85](../part12-performance/ch85-when-to-optimize.md).
+
+**optimization target**: An objective a system is designed to optimize — latency, throughput, reliability, cost of change, etc. Targets may be explicit (documented) or implicit (inferred). First introduced in: [Part I, Ch 01](../part01-systems-thinking/ch01-what-engineering-optimizes.md).
+
+**optimization target drift**: The phenomenon where a system's actual optimization targets diverge from its intended ones over time due to accumulated changes, hotfixes, and operational adjustments. First introduced in: [Part I, Ch 01](../part01-systems-thinking/ch01-what-engineering-optimizes.md).
+
+## P
+
+**package-by-feature**: An organizational strategy in which directories are named after business capabilities (e.g., `orders/`, `billing/`), each containing all the code — controller, service, repository — required to serve that domain concept. Maximizes domain cohesion and change locality. The consensus default for application code. Contrasted with package-by-layer. First introduced in: [Part IV, Ch 27](../part04-code-organization/ch27-file-and-module-structure.md).
+
+**package-by-layer**: An organizational strategy in which directories are named after technical roles (e.g., `controllers/`, `services/`, `repositories/`), grouping all code of a given technical type together regardless of the business domain it serves. Maximizes technical cohesion at the cost of domain cohesion; appropriate for framework and platform code where the technical role is itself the primary domain. Contrasted with package-by-feature. First introduced in: [Part IV, Ch 27](../part04-code-organization/ch27-file-and-module-structure.md).
+
+**page drift**: The instability that offset-based pagination suffers under concurrent writes — an insert or delete shifts which items fall on which page between requests, causing a client to silently see duplicates or skip items entirely. First introduced in: [Part III, Ch 23](../part03-api-design/ch23-pagination-and-streaming.md).
+
+**paper runbook**: A runbook that has been written but never actually executed against a real or simulated failure, so its correctness is an unverified assumption rather than a demonstrated fact. Carries the same false-confidence risk as an untested code path (Ch 41's execution-verification gap) — the document existing is not evidence it works, and the only reader positioned to discover it doesn't is someone already mid-incident. First introduced in: [Part VIII, Ch 68](../part08-documentation/ch68-runbooks-and-operational-documentation.md).
+
+**parallelism**: The literal, simultaneous execution of more than one unit of work at the same physical instant, requiring multiple CPU cores or hardware execution units. A property of execution, not of code structure. Contrasted with concurrency. First introduced in: [Part X, Ch 76](../part10-concurrency/ch76-async-vs-threads-vs-processes.md).
+
+**parameterization**: A structural defense against injection that separates executable instructions from supplied data values at the interpreter's protocol level — the interpreter compiles the instruction structure first, entirely independent of the data, so supplied values can never be read as anything but data regardless of their contents. Contrasted with defensive cleansing (escaping or filtering characters within a single concatenated string), which it structurally dominates. First introduced in: [Part XI, Ch 81](../part11-security/ch81-input-validation.md).
+
+**partial failure**: The condition in distributed systems where some components succeed and others fail simultaneously, producing a state that is neither success nor failure globally. The normal operational mode of distributed systems, not an edge case. First introduced in: [Part I, Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md).
+
+**pass-through layer**: An architectural layer that forwards a call unchanged, hiding no decision and performing no transformation — the dominant failure mode of adding layers as a default rather than in response to real volatility. First introduced in: [Part II, Ch 14](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md).
+
+**process ratchet**: The structural asymmetry by which organizational process accumulates but rarely decays: adding a rule after a real failure is easy and socially reinforced, while removing one requires proving a negative — that nothing bad will happen without it. Left unchecked, a team's process stack comes to reflect its entire failure history rather than its current risk profile. First introduced in: [Part VI, Ch 49](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md).
+
+**progressive disclosure**: An API design strategy where the default request and response are as simple as possible, with advanced capability available through explicit optional parameters or expansion rather than present by default. First introduced in: [Part II, Ch 15](../part02-software-architecture/ch15-api-surface-design-expose-hide.md).
+
+**property-based testing**: A testing technique that specifies a universal statement (a behavioral invariant) that must hold for all valid inputs and delegates input selection to a framework, which generates inputs automatically and searches for counterexamples. Contrasted with example-based testing, which verifies specific input-output pairs. Supplements rather than replaces example-based tests: examples document expected behavior; properties explore the input space examples cannot cover. First introduced in: [Part V, Ch 38](../part05-testing-strategy/ch38-property-based-testing.md).
+
+**provenance attestation**: A cryptographic record proving that a specific artifact was built by a specific pipeline from a specific source commit, as distinct from merely verifying that a version number or publishing account matches. Extends Ch 56's tag-signing argument from "who possessed the signing key" to "was this exact binary produced the way it claims to have been" — closing a gap a stolen publishing credential alone cannot. First introduced in: [Part XI, Ch 84](../part11-security/ch84-dependency-supply-chain-risk.md).
+
+## R
+
+**RBAC (Role-Based Access Control)**: An authorization model that groups permissions into named roles and assigns callers to roles, with access computed as the union of a caller's assigned roles' permissions. Intuitive to reason about and audit when permissions map onto a small, stable set of organizational roles; prone to role explosion when forced to express context-dependent constraints it has no native vocabulary for. Contrasted with ABAC. First introduced in: [Part XI, Ch 82](../part11-security/ch82-authentication-vs-authorization.md).
+
+**refactoring fragility**: The condition where a test suite breaks during valid internal restructuring — splitting a method, merging two helpers, reorganizing collaborators — despite the system's external behavioral contract remaining unchanged. The primary cost of interaction-based testing (mocks) at scale: the suite becomes a rigid transcript of the code's current structure, penalizing the refactoring it was meant to enable. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**repository pattern**: An interface, owned by the domain, that abstracts data access behind domain vocabulary (e.g., `findUserById`) rather than a specific database client, allowing the underlying storage implementation to be swapped without changing the code that depends on it. First introduced in: [Part II, Ch 12](../part02-software-architecture/ch12-dependency-direction-inversion.md).
+
+**request coalescing**: Merging multiple concurrent, identical in-flight requests into a single execution whose result is shared across all callers, avoiding redundant load on whatever backs the request. Used both as a general throughput lever and as the standard mitigation for a cache stampede. First introduced in: [Part XII, Ch 87](../part12-performance/ch87-latency-vs-throughput.md).
+
+**retroactive ADR theater**: The practice of writing an ADR after a decision's consequences are already known — typically following an incident or post-mortem — and recording a sanitized, idealized version of the reasoning rather than the actual, flawed assumptions present at the time. Documents the outcome while laundering the reasoning, defeating the record's purpose of preserving what was genuinely believed at decision time. First introduced in: [Part VI, Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md).
+
+**reversibility**: How expensive it is to undo a decision. Combined with blast radius, determines how much deliberation a decision warrants. Low-reversibility / high-blast-radius decisions require heavy deliberation; high-reversibility / low-blast-radius decisions should be made quickly. First introduced in: [Part I, Ch 09](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md).
+
+**review-as-gatekeeping**: A code review failure mode where a reviewer withholds approval to enforce a personal stylistic preference or assert authority rather than to protect code health, correctness, or maintainability. Turns a collaborative process into a demonstration of status and discourages contribution rather than improving the code. First introduced in: [Part VI, Ch 47](../part06-engineering-process/ch47-code-review.md).
+
+**round-trip invariance**: The behavioral invariant that composing a transformation with its inverse reconstructs the original input: `decode(encode(x)) == x`, `deserialize(serialize(x)) == x`. The most common and highest-return property-based test pattern, applicable to every serializer, codec, compressor, and protocol adapter. First introduced in: [Part V, Ch 38](../part05-testing-strategy/ch38-property-based-testing.md).
+
+**rubber stamping**: A code review failure mode where an approval is granted as a formality — confirming CI is green and skimming the diff — without the scrutiny the approval is supposed to represent. The predictable outcome when a change is too large to review carefully (a monster PR) or when approval count is tracked as a mandatory metric: the metric gets satisfied whether or not real review occurred. First introduced in: [Part VI, Ch 47](../part06-engineering-process/ch47-code-review.md).
+
+**Rule of Three**: A heuristic for deferring abstraction: tolerate duplication until a third genuinely similar use case appears before extracting a shared interface. Guards against premature abstraction built on too little evidence of an actual pattern. First introduced in: [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md).
+
+## S
+
+**safety escape hatch**: A language-level mechanism that suspends some or all of a language's automatic safety verification for a narrowly scoped region of code, shifting the responsibility for correctness from the compiler to the engineer. Examples include Rust's `unsafe` block, C#'s `unsafe` context, and Python C extension modules. Distinguished from languages like C and C++ where no escape hatch is needed because unsafe operations are the default. First introduced in: [Part IV, Ch 33](../part04-code-organization/ch33-when-to-write-unsafe-or-low-level-code.md).
+
+**saga pattern**: A pattern for maintaining consistency across a multi-step workflow spanning several services, using a sequence of local transactions and explicit compensating actions instead of a single atomic database transaction. First introduced in: [Part II, Ch 17](../part02-software-architecture/ch17-sync-vs-async-communication.md).
+
+**sampling profiler**: A profiler that periodically interrupts execution to record the active call stack, approximating where time is spent statistically rather than exactly. Imposes low enough overhead to run against production traffic. Contrasted with instrumenting profiler. First introduced in: [Part XII, Ch 86](../part12-performance/ch86-profiling-first.md).
+
+**SBOM (Software Bill of Materials)**: A machine-readable inventory of every direct and transitive dependency, and toolchain component, actually built into a release. Converts "what's inside this build" from a manual audit performed after a vulnerability is disclosed into a query against an asset already on hand. First introduced in: [Part XI, Ch 84](../part11-security/ch84-dependency-supply-chain-risk.md).
+
+**secret**: Any credential, key, or token whose disclosure to an unintended party grants that party capability it shouldn't have — a password, an API key, a signing key, a session token. The defining property is not confidentiality but authority: the security problem is unauthorized capability, not disclosure in the abstract. First introduced in: [Part XI, Ch 83](../part11-security/ch83-secrets-management.md).
+
+**semantic predicate naming**: The convention of prefixing boolean variables and boolean-returning functions with `is`, `has`, `can`, or `should` (`isActive`, `hasPermission`, `canRetry`). One of the few naming conventions that carries real disambiguating value: it distinguishes a boolean condition from an object or string without encoding memory layout, and is stable across refactors. Contrasted with Hungarian notation. First introduced in: [Part IV, Ch 28](../part04-code-organization/ch28-naming-conventions-and-when-they-matter.md).
+
+**Service Level Agreement (SLA)**: The external, often contractual commitment made to customers, set deliberately looser than the internal SLO it's built on so that a normal operational dip has room to be caught and fixed before it becomes a breach of contract. First introduced in: [Part IX, Ch 73](../part09-observability/ch73-error-budgets-and-slos.md).
+
+**Service Level Indicator (SLI)**: The specific, empirically measured value a reliability target is built on — a percentage of successful requests, a latency percentile. Distinct from the target set for it (SLO) and the external commitment built on top of that target (SLA). First introduced in: [Part IX, Ch 73](../part09-observability/ch73-error-budgets-and-slos.md).
+
+**Service Level Objective (SLO)**: The internal target set for an SLI over a rolling window — the number engineering actually operates against. Deliberately tighter than any corresponding SLA, to preserve a margin for internal mitigation before an external commitment is at risk. First introduced in: [Part IX, Ch 73](../part09-observability/ch73-error-budgets-and-slos.md).
+
+**shared-state concurrency**: A coordination model in which multiple concurrent units of execution read and write the same memory location, so correctness depends entirely on synchronizing every access to it. Contrasted with message-passing concurrency. First introduced in: [Part X, Ch 74](../part10-concurrency/ch74-shared-state-vs-message-passing.md).
+
+**shotgun surgery**: A symptom of low cohesion where a single conceptual change requires modifying many files scattered across a codebase. Indicates the concept is not owned by any one component. First introduced in: [Part I, Ch 03](../part01-systems-thinking/ch03-coupling-and-cohesion.md).
+
+**shrinking**: The process by which a property-based testing framework automatically reduces a discovered failing input to the smallest input that still fails the property. Converts a large, noisy random counterexample into a minimal, diagnosable failure. The mechanism that makes property-based testing practical at the unit test layer. First formalized in QuickCheck (Haskell, 1999). First introduced in: [Part V, Ch 38](../part05-testing-strategy/ch38-property-based-testing.md).
+
+**spec theater**: The failure mode where a specification is written after implementation is already complete, purely to satisfy a process requirement that a proposal be reviewed before work begins. The review happens, but against a document describing a decision already made and shipped, so it changes nothing — the artifact exists without performing the function that justified requiring it. First introduced in: [Part VI, Ch 46](../part06-engineering-process/ch46-spec-first-development.md).
+
+**speculative generality**: The design failure of introducing an abstraction — an interface, a generic function, a configurable framework — to handle a hypothetical future variation that does not yet exist, paying the indirection tax immediately for a benefit that may never arrive. The function-and-class-level expression of the wrong-abstraction failure first introduced in [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md). First introduced as a named concept in: [Part IV, Ch 31](../part04-code-organization/ch31-when-abstractions-help-vs-when-they-obscure.md).
+
+**spy**: A test double that records its own interaction history — how many times a method was invoked, with what arguments — for inspection after execution completes. Distinguished from a mock in that a spy does not declare expectations before the test runs; it records for later assertion. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**stale-cache masking**: The failure mode where a cached build or dependency artifact is valid under its own cache key's rules but no longer matches what a clean build from scratch would produce, causing a pipeline to pass for the wrong reason. The reason a scheduled, cache-bypassing clean build is a necessary backstop rather than an optional debugging step. First introduced in: [Part VII, Ch 59](../part07-git-and-delivery/ch59-caching-strategy-in-ci.md).
+
+**starvation**: A concurrency failure where a correct, ready-to-proceed execution unit is perpetually denied the resource or scheduling turn it needs, while the rest of the system continues operating normally — a fairness failure rather than a correctness or activity failure. First introduced in: [Part X, Ch 77](../part10-concurrency/ch77-deadlock-livelock-and-starvation.md).
+
+**state contamination**: The condition where a test modifies a shared resource — a database table, a global variable, an in-memory cache — and fails to clean it up, leaving the execution environment in a state that corrupts subsequent tests. The root cause of tests that pass in isolation but fail when run as part of a suite. First introduced in: [Part V, Ch 37](../part05-testing-strategy/ch37-fixture-based-testing.md).
+
+**state space explosion**: The condition where mutable state variables combine to produce a number of possible system configurations that exceeds what engineers can anticipate or test. A primary failure mode of unconstrained mutable state. First introduced in: [Part I, Ch 02](../part01-systems-thinking/ch02-complexity-is-the-enemy.md).
+
+**state verification**: A testing approach that asserts correctness by inspecting the final output, return value, or persisted state of a system after an operation completes — independent of how the system produced that state internally. Contrasted with interaction verification. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**strangler fig pattern**: An incremental migration pattern, named by Martin Fowler, in which a new service is grown around the edge of an existing monolith — intercepting a growing slice of live traffic — until the corresponding functionality can be removed from the monolith entirely. First introduced in: [Part II, Ch 10](../part02-software-architecture/ch10-monolith-vs-service-decomposition.md).
+
+**STRIDE**: A structured taxonomy — Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege — used to walk a system's trust boundaries and systematically evaluate what can go wrong at each one, popularized by Microsoft as a design-review framework. Guards against the natural tendency to only examine the vulnerability categories a reviewer already finds interesting. First introduced in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**stub**: A test double that returns predetermined responses to specific calls, providing data the code under test requires. A stub carries no interaction tracking and makes no assertions about whether or how it was called. Contrasted with mocks (which assert on call patterns) and fakes (which contain real logic). First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**sunset pattern**: A structured, time-bound lifecycle for retiring an obsolete API version — active, deprecated, sunset, removal — communicated through escalating, programmatic signals rather than documentation alone. First introduced in: [Part II, Ch 16](../part02-software-architecture/ch16-versioning-backward-compatibility.md).
+
+**supervision tree**: A hierarchy of actors in which a supervising actor monitors its children and decides how to respond when one crashes — restart it, replace it, or propagate the failure upward — rather than requiring the failing actor to defensively anticipate and recover from every possible fault inline. First introduced in: [Part X, Ch 78](../part10-concurrency/ch78-the-actor-model.md).
+
+**symptom-based alerting**: The practice of triggering a page from a user-visible degradation (elevated error rate, elevated latency) rather than from an internal condition that might, but frequently doesn't, ever reach a user. Contrasted with cause-based alerting, which fires on conditions — a CPU threshold, one unhealthy replica — that often self-correct through the same redundancy and autoscaling the system was built with, manufacturing noise without preventing user-visible harm. First introduced in: [Part IX, Ch 71](../part09-observability/ch71-alerting-signal-vs-noise.md).
+
+## T
+
+**table-driven test**: A test pattern in which many input/output examples of the same behavior are expressed as entries in a data table, iterated by a single test function with one shared execution path, rather than as separate hand-written functions per example. The idiomatic Go convention (paired with `t.Run` for per-case isolation) and a deliberate, named exception to the one-behavior-per-test principle — each table entry is still one behavior, expressed repeatedly. First introduced in: [Part V, Ch 40](../part05-testing-strategy/ch40-test-naming-and-structure.md).
+
+**tail latency**: The latency experienced by the slowest fraction of requests (commonly reported as a p95, p99, or p99.9 percentile), as distinct from and not necessarily correlated with average or median latency. A system can have an excellent average while its tail quietly degrades from a different cause entirely. First introduced in: [Part XII, Ch 87](../part12-performance/ch87-latency-vs-throughput.md).
+
+**technical debt**: A deliberate gap between the design a system currently embodies and the design the team's current, improved understanding of the problem would produce — taken on knowingly, with an accepted future cost and an intent to close the gap later. Distinct from careless or sloppy code, which is not debt regardless of how the term is colloquially applied; only Fowler's deliberate-prudent quadrant is debt in the economic sense the term implies. First introduced in: [Part VI, Ch 48](../part06-engineering-process/ch48-technical-debt.md).
+
+**temporal coupling**: The requirement that a caller and a callee both be available, healthy, and reachable at the same instant for an interaction to succeed — the defining property of synchronous communication, and the architectural expression of connascence of execution order. First introduced in: [Part II, Ch 13](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md).
+
+**test double**: The umbrella term, coined by Gerard Meszaros, for any synthetic substitute injected into a system under test in place of a real production collaborator. Encompasses dummies, stubs, spies, mocks, and fakes — each with distinct semantics. Using "mock" as a catch-all for all five categories causes communication failures and poor test design. First introduced in: [Part V, Ch 36](../part05-testing-strategy/ch36-when-to-mock-vs-use-real-dependencies.md).
+
+**testability diagnostic**: The direct correlation between a module's difficulty to unit-test and its internal design quality. Code that requires constructing infrastructure, many mocked dependencies, or significant application context just to assert a single behavior is revealing coupling problems — the test difficulty is a signal about the design, not about the test. First introduced in: [Part V, Ch 35](../part05-testing-strategy/ch35-what-belongs-at-each-layer.md).
+
+**testing pyramid**: The structural model for distributing automated tests across three layers — unit tests (many, fast, isolated), integration tests (fewer, slower, cross-boundary), and end-to-end tests (fewest, slowest, full-stack) — shaped so that the cheapest tests are the most numerous and the most expensive are the fewest. Encodes the economic principle that confidence becomes more expensive as test scope increases. First introduced in: [Part V, Ch 34](../part05-testing-strategy/ch34-the-testing-pyramid.md).
+
+**theme**: An ongoing, unbounded aspiration — "improve performance," "clean up the codebase" — that has no natural completion point and therefore cannot function as an issue. A legitimate planning category only when decomposed into bounded, closeable issues before being assigned to anyone. First introduced in: [Part VI, Ch 42](../part06-engineering-process/ch42-issue-tracking-what-makes-a-good-issue.md).
+
+**Theory of Constraints**: Goldratt's principle that system throughput is bounded by the single slowest component (the bottleneck). Optimizing any non-bottleneck component has no effect on system throughput and often increases load on the actual bottleneck. First introduced in: [Part I, Ch 08](../part01-systems-thinking/ch08-local-vs-global-optimization.md).
+
+**threat model**: The structured output of identifying a system's assets, adversaries, trust boundaries, and attack surface before implementation begins — the design-time artifact this Part's remaining chapters assume already exists when they discuss specific controls. First introduced in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**trace context**: The correlation ID (Ch 21) extended into a structured, explicitly propagated set of identifiers — trace ID, span ID, parent span ID — that captures causality between operations across service boundaries, not merely their relatedness. Every participating service must read it from an inbound request and forward it on every outbound call; one service that fails to do so orphans every span downstream of it. First introduced in: [Part IX, Ch 72](../part09-observability/ch72-distributed-tracing.md).
+
+**trunk-based development (TBD)**: A branching topology in which all work integrates frequently, via short-lived branches measured in hours or a few days, into a single long-lived branch (`main` or trunk) kept perpetually releasable. Shifts blast-radius containment from branch isolation onto runtime guardrails such as feature flags. First introduced in: [Part VII, Ch 50](../part07-git-and-delivery/ch50-branching-strategies.md).
+
+**trust boundary**: The point in a system's architecture where the level of trust in data or control changes as it crosses from one component to another — from an unvalidated domain to a validated one, or between different administrative, network, or privilege domains. An application's boundary with the frameworks and libraries it depends on — the line where tests should stop, since vendors already test their own code (Ch 39) — is one narrow instance of this general concept. Formalized as a foundational concept for security design, alongside asset, adversary, and attack surface, in Part XI, Ch 79. First introduced in: [Part V, Ch 39](../part05-testing-strategy/ch39-when-not-to-test.md); generalized in: [Part XI, Ch 79](../part11-security/ch79-threat-modeling.md).
+
+**trusted publishing**: An OIDC-based authentication pattern where a CI pipeline exchanges a short-lived, workload-scoped identity assertion for a temporary publish session, with no static credential persisted anywhere for anything to leak. Strictly better than rotating a long-lived token, since there's no standing secret to rotate in the first place. First introduced in: [Part VII, Ch 61](../part07-git-and-delivery/ch61-release-automation.md); full treatment in: [Part XI, Ch 83](../part11-security/ch83-secrets-management.md).
+
+## U
+
+**ubiquitous language**: The shared vocabulary, coined by Eric Evans in Domain-Driven Design, that domain experts and engineers agree to use consistently in both conversation and code. When identifiers match the terms the business already uses, code and domain model stay aligned and translation overhead disappears. First formally used alongside bounded contexts in [Part II, Ch 13](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md); its application to identifier naming is developed in [Part IV, Ch 28](../part04-code-organization/ch28-naming-conventions-and-when-they-matter.md).
+
+**undefined behavior**: The condition produced by a low-level operation whose result is not defined by the language specification — typically, accessing memory outside its valid bounds, dereferencing a freed or invalid pointer, or violating aliasing rules. Unlike safe-language errors that produce predictable panics or exceptions, undefined behavior can produce silent data corruption, incorrect values written to unrelated memory, security exploits, or crashes that appear far from the original fault under specific conditions. The primary risk that safety escape hatches introduce. First introduced in: [Part IV, Ch 33](../part04-code-organization/ch33-when-to-write-unsafe-or-low-level-code.md).
+
+**unit of intent**: The role an issue plays in the engineering process: a record of why a change exists and what observable outcome would resolve it, which stays open until that outcome is achieved regardless of how many implementation steps it took. Contrasted with unit of review. First introduced in: [Part VI, Ch 43](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md).
+
+**unit of review**: The role a pull request plays in the engineering process: a diff sized for what a human reviewer can evaluate for correctness in one sitting, distinct from and typically smaller than the unit of intent (the issue) that motivated it. Contrasted with unit of intent. First introduced in: [Part VI, Ch 43](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md).
+
+## W
+
+**walking skeleton**: Alistair Cockburn's term for the thinnest possible end-to-end implementation of a system, exercising every major architectural layer before any layer is built out in depth. The recommended shape of a new system's first milestone; later milestones thicken the skeleton rather than build disconnected subsystems in parallel. Echoed by Hunt and Thomas's "tracer bullet" in *The Pragmatic Programmer*. First introduced in: [Part VI, Ch 44](../part06-engineering-process/ch44-milestone-and-phase-planning.md).
+
+**Write-Ahead Log (WAL)**: A durability mechanism where a database appends transaction intent to a sequential log before updating data files, enabling durability guarantees without paying the latency cost of random I/O on every commit. On crash, the log is replayed to recover committed transactions. First introduced in: [Part I, Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md).
+
+**write-only tracker**: The degenerate end state of an issue backlog that is never pruned: hundreds or thousands of stale issues accumulate until the collection no longer reflects what the team actually intends to do, and engineers stop trusting it as a planning signal. The failure mode that makes continuous backlog pruning, including closing issues as "won't do," a legitimate maintenance practice rather than a lapse in discipline. First introduced in: [Part VI, Ch 42](../part06-engineering-process/ch42-issue-tracking-what-makes-a-good-issue.md).
+
+**wrong abstraction**: An abstraction built on an incorrect guess about what will change, which couples every caller to a false model of the problem. Worse than no abstraction at all, because unwinding the coupling costs more than the duplication it was meant to prevent. First introduced in: [Part I, Ch 04](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md).
+
+## Z
+
+**zero-cost abstraction**: A precise engineering claim, originating with Rust and C++, that an abstraction is verified to compile away entirely, producing the same machine code a programmer would have written by hand — distinct from the much looser colloquial use of the phrase to mean an abstraction's overhead is merely small enough not to worry about. First introduced in: [Part XII, Ch 90](../part12-performance/ch90-cost-of-abstraction.md).
+
+**zero-trust architecture**: A security model that re-verifies identity and authorization at every service boundary instead of trusting requests based on network location alone. The structural response to the confused deputy problem — no internal call is trusted just because it originated inside the perimeter. First introduced in: [Part III, Ch 24](../part03-api-design/ch24-authentication-authorization-boundaries.md).

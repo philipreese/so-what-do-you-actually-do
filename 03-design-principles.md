@@ -10,9 +10,13 @@ These principles are not rules to follow blindly — they are the result of hard
 genuinely discovers one — not for every chapter's takeaway. The principles emerge from the
 content, not the other way around.*
 
+*Verified complete against all 90 chapters (Parts I–XII): no chapter past Part VI cites a
+principle beyond the ten below, so the list held for the rest of the book without needing
+an eleventh entry.*
+
 ---
 
-## Principles (confirmed through Part IX)
+## Principles (confirmed through Part XII — the full 90-chapter main sequence)
 
 1. **Complexity is the primary enemy.** Almost every engineering failure traces back to unmanaged complexity. Simpler systems fail less, are easier to debug, and survive longer.
 

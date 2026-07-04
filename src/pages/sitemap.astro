@@ -13,7 +13,7 @@ const appendices = getAllAppendices();
     <div class="parts-grid-sitemap">
       {parts.map((part) => (
         <div class="sitemap-part-card">
-          <a href={`/parts/${part.slug}`} class="sitemap-part-header">
+          <a href={`${import.meta.env.BASE_URL}parts/${part.slug}`} class="sitemap-part-header">
             <span class="sitemap-part-emoji">{part.emoji}</span>
             <div class="sitemap-part-meta">
               <span class="sitemap-part-num">Part {part.romanNumber}</span>
@@ -23,7 +23,7 @@ const appendices = getAllAppendices();
           <ul class="sitemap-chapters-list">
             {part.chapters.map((ch) => (
               <li>
-                <a href={`/chapters/${ch.slug}`} class="sitemap-chapter-link">
+                <a href={`${import.meta.env.BASE_URL}chapters/${ch.slug}`} class="sitemap-chapter-link">
                   <span class="sitemap-ch-num">{ch.number}</span>
                   <span class="sitemap-ch-text">
                     <span class="sitemap-ch-title">{ch.title}</span>
@@ -42,7 +42,7 @@ const appendices = getAllAppendices();
         <h2>Appendices</h2>
         <div class="sitemap-appendices-list">
           {appendices.map((app) => (
-            <a href={`/appendices/${app.slug}`} class="sitemap-appendix-link">
+            <a href={`${import.meta.env.BASE_URL}appendices/${app.slug}`} class="sitemap-appendix-link">
               Appendix {app.letter} — {app.title}
             </a>
           ))}

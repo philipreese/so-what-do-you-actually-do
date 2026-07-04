@@ -19,6 +19,16 @@ This chapter is about the same trade-off inside a computer program that's doing 
 
 **The safer, if slightly slower, alternative is giving every part its own space and having them hand each other copies of what they need through a window, instead of ever standing in the same room at all.** Nobody can barge in on someone who was never in the room to begin with.
 
+## For My Kids
+
+**Movie night with five people and one big bowl of popcorn in the middle is efficient — one bowl, no extra dishes — and it works exactly as long as everyone glances first before reaching in.** The instant two hands dive in at the same second without looking, you get a collision: buttery fingers colliding, popcorn on the floor, an argument about whose handful that actually was.
+
+Give everyone their own bowl instead and that collision becomes impossible — nobody's hand is ever in someone else's bowl to begin with. But now there are five bowls to wash, and if you actually want to share your good kettle corn with your sister, you can't just reach across — you have to physically pass the bowl over.
+
+Most families land somewhere in between without even thinking about it: everyone gets their own bowl, but the remote stays one shared object in the middle, handed back and forth on purpose because there's only one TV.
+
+**The one thing worth remembering: the shared bowl only stays safe as long as everyone reliably looks before reaching in.** With five overtired kids all reaching at once during the best part of the movie, "reliably" is exactly the part that stops holding — and that's the night popcorn ends up all over the couch.
+
 ---
 
 Part I named this Part's central tension by number: throughput versus reasoning simplicity (Ch 01). Concurrency is where that tension stops living in a diagram and starts showing up in an incident channel. Every later chapter in this Part assumes the choice this chapter makes has already been framed — Ch 75 goes deep on the primary tool for making shared state safe once it's chosen; Ch 76 pulls apart a second, often-conflated axis (which execution unit actually runs the work) from the coordination question answered here; Ch 77 catalogs how coordination goes wrong no matter which model was chosen; Ch 78 goes deep on the actor model — Erlang/OTP's mailbox-and-isolation design is the extreme point of the message-passing spectrum — named here but not derived.

@@ -274,3 +274,27 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part X, Ch74–Ch78 (5 chapters — concurrency and parallelism)
 - Push after Part IX+X together
+
+---
+
+## Part X complete, Ch74–Ch78 (5 chapters — concurrency and parallelism)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch74**: one shared popcorn bowl at movie night (fast, but needs everyone to look before reaching in) vs. everyone getting their own bowl (no collision, more dishes, have to physically pass a bowl to share) — plus the shared remote as the "small, local" exception
+- **Ch75**: a single driveway basketball hoop with a simple turn-taking rule — build a second hoop only once you've actually watched kids standing around waiting, not on a hunch
+- **Ch76**: a group project split into writing a report from scratch (genuinely continuous work) vs. texting five classmates and waiting on replies (mostly waiting, one person can juggle it) — and what breaks when the writer is also stuck juggling texts
+- **Ch77**: one continuous scene, the cafeteria line, carrying all three failure modes — frozen face-off at the drink station (deadlock), the tray-return "you go" shuffle (livelock), and the too-polite kid at the ketchup pump who never gets a turn (starvation)
+- **Ch78**: individual fully stocked art-class supply boxes with copies passed instead of originals (no shared bin to fight over) — and a ruined box getting cleared and restarted fresh rather than nursed along contaminated
+
+### What worked
+- This Part's wife sections are unusually strong, purpose-built analogies (three bathrooms, one shared car, restaurant kitchen vs. dining room, couch/hallway/stop-sign, office with locked drawers) — every kids section still found a distinct vehicle (popcorn bowl, driveway hoop, group-project texting, cafeteria line, art-class supply box) rather than a kid-language translation of the same image
+- **Formatting was chosen per chapter's shape, not rotated on a fixed schedule, per explicit user correction this session:** Ch74 (a nuanced "combine both, but the risk is real" chapter) got two bold leads. Ch75 (one crisp, single-sentence warning) got an italic pull-quote carrying that exact warning. Ch76 (an asymmetric "one failure is much worse" chapter, matching its own wife section's structure) got a single bold sentence marking the worse case, plain prose elsewhere. Ch77 (a chapter that names three distinct, equally-weighted failure modes) got a `[!NOTE]` framing the organizing test up top, then plain narrative for the three vignettes. Ch78 (two genuinely separate decisions — isolation, then crash/restart) got two bold leads, one per decision.
+- Ch77 (deadlock/livelock/starvation) was the first "for my kids" section this pass to deliberately keep a chapter's full three-way taxonomy rather than collapsing to one sub-idea, because the taxonomy itself *is* the chapter's one idea — unlike Ch26 (FFI) in Part III, where three sub-concepts got collapsed to just one because only one of them was actually the throughline. Test for which applies: if a chapter's wife section already treats several named things as co-equal parts of one insight (not one primary idea plus supporting asides), the kids section should too, inside a single connecting scene.
+
+### Edge cases and decisions
+- Ch77 ran to 242 words, the longest section yet still under the 250 cap — a three-beat structure with a matching three-part resolution eats the budget fast; needed unusually tight sentences per beat (one paragraph per failure mode, no more) to fit at all
+- Considered a lifeguard-whistle or fire-drill analogy for Ch77's shared "someone gets hurt" stakes but stayed with the cafeteria line instead — lower-stakes, funnier, and still lands each failure mode's version of "this actually goes wrong" (a teacher intervening, ten wasted seconds, lunch period running out) without reaching for anything medical or emergency-flavored
+
+### Next session
+- Continue with Part XI, Ch79–Ch84 (6 chapters — security)
+- Push after Part X+XI together

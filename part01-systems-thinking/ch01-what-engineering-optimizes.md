@@ -23,6 +23,12 @@
 
 **The book's strongest recommendation:** write down what your system is actually optimizing for. The document isn't the point; the act of naming the trade-off is. Engineers who inherit a system with no stated priorities find out what it was really optimizing for the hard way, usually at an inconvenient hour.
 
+## For My Kids
+
+Say four friends decide to build a fort in the woods over one weekend. Nobody's in charge, but everybody's got an idea. One wants it strong enough to survive the whole summer, storms included. Another wants it done by tonight so you can start hanging out in it. A third wants it to look genuinely impressive when people from school come see it. None of them are wrong. A stronger fort takes longer to build. A faster build means walls that wobble. A fort designed to look cool eats up space you'd actually want to sit in. You cannot have the strongest, fastest, and best-looking fort at once — every choice that helps one of those steals from the others.
+
+The real disaster isn't disagreeing about which one to chase. It's four kids never saying out loud what they're going for, so each person quietly builds toward their own version. One's overbuilding the back wall. One's already inviting people over. One's out front, still deciding what to carve into the door. Nobody voted, nobody argued, everyone worked hard — and the fort that shows up Monday is somehow slow AND weak AND kind of ugly, because it was never actually built for anything in particular. The fix costs nothing: before the first board goes up, someone has to ask, out loud, "what are we actually building this for?" Skip that, and you don't get to pick your trade-off — you get whichever one happens by accident, and it's never the good one.
+
 ---
 
 ## Purpose

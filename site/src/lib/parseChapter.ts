@@ -131,12 +131,16 @@ function extractSubtitleAndThesis(header: string): { subtitle: string; thesis: s
 }
 
 export function parseChapter(rawMarkdown: string): ParsedChapter {
-  const titleMatch = /^#\s+(.+)$/m.exec(rawMarkdown);
+  // Windows checkouts convert the repo's LF line endings to CRLF; the blank-line
+  // ("\n\n") delimiters below assume LF, so normalize before parsing.
+  const rawMarkdownLf = rawMarkdown.replace(/\r\n/g, '\n');
+
+  const titleMatch = /^#\s+(.+)$/m.exec(rawMarkdownLf);
   const title = titleMatch ? titleMatch[1].trim() : 'Untitled Chapter';
 
-  const firstH2Index = rawMarkdown.search(/^##\s+/m);
-  const header = firstH2Index === -1 ? rawMarkdown : rawMarkdown.slice(0, firstH2Index);
-  const body = firstH2Index === -1 ? '' : rawMarkdown.slice(firstH2Index);
+  const firstH2Index = rawMarkdownLf.search(/^##\s+/m);
+  const header = firstH2Index === -1 ? rawMarkdownLf : rawMarkdownLf.slice(0, firstH2Index);
+  const body = firstH2Index === -1 ? '' : rawMarkdownLf.slice(firstH2Index);
 
   const headerAfterTitle = titleMatch ? header.slice(titleMatch.index! + titleMatch[0].length) : header;
   const { subtitle, thesis } = extractSubtitleAndThesis(headerAfterTitle);
@@ -145,7 +149,10 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
   const vocabMatch = /\*\*New vocabulary introduced:\*\*\s*([\s\S]*?)\n\n/.exec(header);
   const takeawaysMatch = /\*\*Key takeaways:\*\*\s*\n([\s\S]*?)\n\n-{3,}/.exec(header);
 
-  const prerequisitesHtml = marked.parseInline((prereqMatch?.[1] ?? 'None').trim()) as string;
+  const prereqRaw = (prereqMatch?.[1] ?? '').trim();
+  // "None" (the entry-point chapter's convention for "no prerequisites") means the
+  // card should be omitted entirely rather than rendered with that literal text.
+  const prerequisitesHtml = prereqRaw && !/^none\b/i.test(prereqRaw) ? (marked.parseInline(prereqRaw) as string) : '';
   const vocabulary = (vocabMatch?.[1] ?? '')
     .split(',')
     .map((term) => term.trim())
@@ -261,27 +268,34 @@ function wrapTablesForScroll(html: string): string {
 }
 
 export function renderChapterHtml(parsed: ParsedChapter): string {
-  const vocabChips = parsed.vocabulary.length
-    ? parsed.vocabulary.map((term) => `<span class="vocab-chip">${escapeHtml(term)}</span>`).join('')
-    : '<span class="vocab-chip vocab-chip--none">None</span>';
+  const hasPrerequisites = parsed.prerequisitesHtml.length > 0;
+  const hasVocabulary = parsed.vocabulary.length > 0;
+  const hasTakeaways = parsed.keyTakeaways.length > 0;
 
+  const vocabChips = parsed.vocabulary.map((term) => `<span class="vocab-chip">${escapeHtml(term)}</span>`).join('');
   const takeawaysList = parsed.keyTakeaways.map((item) => `<li>${marked.parseInline(item)}</li>`).join('');
 
-  const header = `
-    <section class="chapter-meta">
-      <div class="meta-card meta-card--prereq">
+  const metaCards = [
+    hasPrerequisites &&
+      `<div class="meta-card meta-card--prereq">
         <h3>Prerequisites</h3>
         <div>${parsed.prerequisitesHtml}</div>
-      </div>
-      <div class="meta-card meta-card--vocab">
+      </div>`,
+    hasVocabulary &&
+      `<div class="meta-card meta-card--vocab">
         <h3>New Vocabulary</h3>
         <div class="vocab-chips">${vocabChips}</div>
-      </div>
-      <div class="meta-card meta-card--takeaways">
+      </div>`,
+    hasTakeaways &&
+      `<div class="meta-card meta-card--takeaways">
         <h3>Key Takeaways</h3>
         <ul>${takeawaysList}</ul>
-      </div>
-    </section>`;
+      </div>`,
+  ]
+    .filter(Boolean)
+    .join('');
+
+  const header = metaCards ? `<section class="chapter-meta">${metaCards}</section>` : '';
 
   return wrapTablesForScroll(header + parsed.sections.map(renderSection).join('\n'));
 }

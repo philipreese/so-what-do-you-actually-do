@@ -1,0 +1,146 @@
+/* Global design system tokens — Catppuccin Latte & Macchiato with Lavender Accent */
+:root {
+  --bg-color: #eff1f5; /* Catppuccin Latte Base */
+  --text-color: #4c4f69; /* Catppuccin Latte Text */
+  --text-muted: #6c6f85; /* Catppuccin Latte Subtext1 */
+
+  --border-color: #ccd0da; /* Catppuccin Latte Surface0 */
+  --border-focus: #7287fd; /* Catppuccin Latte Lavender */
+
+  --card-bg: #ffffff; /* Crisp white paper card */
+  --header-bg: rgba(239, 241, 245, 0.9); /* Translucent base */
+
+  --sidebar-bg: #e6e9ef; /* Catppuccin Latte Mantle */
+  --sidebar-link-text: #6c6f85;
+  --sidebar-link-hover-bg: #ccd0da;
+  --sidebar-link-hover-text: #4c4f69;
+  --sidebar-link-active-text: #7287fd;
+  --sidebar-link-active-bg: rgba(114, 135, 253, 0.08);
+
+  --accent-color: #7287fd; /* Lavender */
+  --accent-hover: #5d6edc;
+  --accent-low: rgba(114, 135, 253, 0.05);
+
+  --pre-bg: #e6e9ef;
+  --pre-text: #4c4f69;
+  --vocab-chip-bg: #ccd0da;
+  --vocab-chip-text: #4c4f69;
+
+  --disagree-bg: #fff8f2; /* Creamy peach/lavender disagree card */
+  --disagree-border: #fcdbb2;
+  --disagree-text: #fe640b;
+
+  --badge-consensus-bg: #d2f4e1;
+  --badge-consensus-text: #40a02b; /* Latte Green */
+  --badge-strong-bg: #d0ebfe;
+  --badge-strong-text: #1e66f5; /* Latte Blue */
+  --badge-tradeoff-bg: #fde8b5;
+  --badge-tradeoff-text: #df8e1d; /* Latte Yellow */
+
+  --callout-info-bg: #e3effc;
+  --callout-info-border: #adcdf5;
+  --callout-info-text: #1e4a7a;
+
+  /* Supplementary Tracks variables */
+  --pane-engineer-bg: var(--bg-color);
+  --pane-engineer-border: #1e66f5; /* Latte Blue */
+
+  --pane-wife-bg: rgba(236, 72, 153, 0.02);
+  --pane-wife-border: #ec4899; /* Pink, not red */
+  --pane-wife-text: #ec4899;
+
+  --pane-kids-bg: rgba(217, 119, 6, 0.02);
+  --pane-kids-border: #df8e1d;
+  --pane-kids-text: #d97706;
+  
+  --meta-card-bg: rgba(0, 0, 0, 0.015);
+  --meta-card-border: var(--border-color);
+  --meta-takeaways-bg: rgba(16, 185, 129, 0.02);
+  --meta-takeaways-border: rgba(16, 185, 129, 0.12);
+  --meta-takeaways-text: #15803d;
+  
+  --decision-bg: var(--card-bg);
+  --decision-border: var(--border-color);
+  --decision-accent: var(--accent-color);
+  
+  --failure-bg: rgba(239, 68, 68, 0.02);
+  --failure-border: rgba(239, 68, 68, 0.1);
+  --failure-text: #c2410c;
+  
+  --example-bg: rgba(59, 130, 246, 0.02);
+  --example-border: rgba(59, 130, 246, 0.1);
+  --example-text: #1d4ed8;
+}
+
+[data-theme="dark"] {
+  --bg-color: #24273a; /* Catppuccin Macchiato Base */
+  --text-color: #cad3f5; /* Catppuccin Macchiato Text */
+  --text-muted: #a5adcb; /* Catppuccin Macchiato Subtext1 */
+
+  --border-color: #36394f; /* Catppuccin Macchiato Surface0 */
+  --border-focus: #b4befe; /* Catppuccin Macchiato Lavender */
+
+  --card-bg: #181926; /* Catppuccin Macchiato Crust */
+  --header-bg: rgba(36, 39, 58, 0.9); /* Translucent dark base */
+
+  --sidebar-bg: #1e2030; /* Catppuccin Macchiato Mantle */
+  --sidebar-link-text: #a5adcb;
+  --sidebar-link-hover-bg: #36394f;
+  --sidebar-link-hover-text: #ffffff;
+  --sidebar-link-active-text: #b4befe;
+  --sidebar-link-active-bg: rgba(180, 190, 254, 0.15);
+
+  --accent-color: #b4befe; /* Lavender */
+  --accent-hover: #c6d0ff;
+  --accent-low: rgba(180, 190, 254, 0.08);
+
+  --pre-bg: #1e2030;
+  --pre-text: #e0cbb3;
+  --vocab-chip-bg: #36394f;
+  --vocab-chip-text: #cad3f5;
+
+  --disagree-bg: #2e2524;
+  --disagree-border: #5b3e34;
+  --disagree-text: #f5a97f;
+
+  --badge-consensus-bg: #1c3224;
+  --badge-consensus-text: #a6da95; /* Macchiato Green */
+  --badge-strong-bg: #18274a;
+  --badge-strong-text: #8cadfa; /* Macchiato Blue */
+  --badge-tradeoff-bg: #3c3224;
+  --badge-tradeoff-text: #eed49f; /* Macchiato Yellow */
+
+  --callout-info-bg: #1b2f47;
+  --callout-info-border: #2f527c;
+  --callout-info-text: #b6d5f7;
+
+  /* Supplementary Tracks variables - Dark Mode */
+  --pane-engineer-bg: var(--bg-color);
+  --pane-engineer-border: #8cadfa; /* Macchiato Blue */
+
+  --pane-wife-bg: rgba(244, 63, 94, 0.03);
+  --pane-wife-border: #fda4af;
+  --pane-wife-text: #fda4af;
+
+  --pane-kids-bg: rgba(245, 158, 11, 0.03);
+  --pane-kids-border: #eed49f;
+  --pane-kids-text: #fde047;
+  
+  --meta-card-bg: rgba(255, 255, 255, 0.015);
+  --meta-card-border: var(--border-color);
+  --meta-takeaways-bg: rgba(16, 185, 129, 0.03);
+  --meta-takeaways-border: rgba(16, 185, 129, 0.15);
+  --meta-takeaways-text: #a7f3d0;
+  
+  --decision-bg: var(--card-bg);
+  --decision-border: var(--border-color);
+  --decision-accent: var(--accent-color);
+  
+  --failure-bg: rgba(239, 68, 68, 0.03);
+  --failure-border: rgba(239, 68, 68, 0.12);
+  --failure-text: #fed7aa;
+  
+  --example-bg: rgba(59, 130, 246, 0.03);
+  --example-border: rgba(59, 130, 246, 0.12);
+  --example-text: #bfdbfe;
+}

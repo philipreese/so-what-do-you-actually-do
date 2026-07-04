@@ -19,6 +19,16 @@ This chapter is about software teams facing the identical multiplication problem
 
 **The chapter's real point is that "more combinations tested" isn't the same thing as "more confidence" — sometimes it's just more work protecting against a guest who was never coming.** A dinner planned around the people actually showing up feeds everyone who's there. A dinner planned around every dietary combination that exists anywhere in the world mostly just leaves someone exhausted in the kitchen with eleven dishes nobody ordered.
 
+## For My Kids
+
+Say you're helping pack school lunches for the week, and there are 3 sandwich choices, 4 side choices, and 2 drink choices. Try to prep every single mathematically possible combination in advance, just to "be ready for anything," and that's not 3 plus 4 plus 2. It's 3 times 4 times 2 — twenty-four completely different lunches, made and wrapped, sitting in the fridge.
+
+**Add one more choice — say, two possible dessert options — and the number doesn't creep up to twenty-five.** It jumps to forty-eight. That's the part that sneaks up on people: every new thing you decide to cover multiplies the whole pile, it doesn't just add to it.
+
+**Here's the actual fix: you don't need every combination that's mathematically possible — you need the combinations someone's actually going to eat.** If nobody in your family likes turkey with the spicy chips, that combination was never worth making in the first place, no matter how thorough making it would look. Prep the handful of combos people genuinely choose, not all twenty-four just because they technically exist.
+
+**More combinations prepped was never the same thing as more kids actually fed.** Forty-eight lunches nobody asked for just means a fridge stuffed with food going bad, and someone exhausted from making sandwiches nobody wanted in the first place.
+
 ---
 
 This chapter covers running the same verification logic across multiple environment dimensions to catch environment-specific breakage a single-configuration pipeline would never see. It does not re-derive the general fail-fast-versus-fail-safe principle (Ch 58 — this chapter applies it to one specific configuration option), how caching interacts with a matrix (Ch 59 — each cell needs its own cache key, referenced here, not re-argued), or what checks are worth running at all (Ch 57).

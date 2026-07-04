@@ -19,6 +19,14 @@ This chapter argues software has the exact same relationship with the small piec
 
 **The fix the chapter recommends isn't "never touch anything" or "always run the newest version of everything blindly" — it's the boring, routine oil change, done on a schedule, every time, whether or not anything currently feels wrong.** Small, regular, low-drama updates, reviewed and accepted one at a time, cost almost nothing individually and keep the whole car close enough to current that nobody ever has to face a seized engine as the price of skipping a decade of oil changes.
 
+## For My Kids
+
+Say your family has a garden, and pulling the few weeds that pop up takes about five minutes, once a week. Boring, routine, barely worth mentioning. The garden stays exactly as manageable as it was last week.
+
+**Now say you skip that five minutes every single week, all summer, because nothing looks that bad yet.** By August the weeds haven't just kept growing — they've tangled around the actual plants you wanted, and some of your vegetables are already dead underneath them. Fixing it now isn't five minutes. It's an entire weekend of brutal digging, and the plants that quietly died along the way aren't coming back no matter how much weeding happens now.
+
+**The fix was never "never let a single weed grow" or "let the whole garden do whatever it wants."** It's the boring five minutes, every week, whether or not anything looks urgent yet. Small and routine costs almost nothing and keeps the garden exactly as manageable as it's always been. Skipped long enough, the exact same job turns into the kind of weekend that ruins actual plants you can't get back.
+
 ---
 
 This chapter is the capstone of Part VII: how a team manages the versions of the compiler, runtime, and third-party packages its build depends on over the project's entire lifetime, not just at a single point in time. It covers version management mechanics, not the security threat model of a compromised or malicious dependency (Part XI, Ch 84 — that's a different question from whether a version is current), and it applies Ch 48's technical debt framing to dependencies specifically rather than re-deriving technical debt from scratch.

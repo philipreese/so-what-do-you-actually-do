@@ -191,3 +191,37 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part VII, Ch50–Ch63 (14 chapters — largest Part)
 - Push after Part V+VI+VII together (per this session's request)
+
+---
+
+## Part VII complete, Ch50–Ch63 (14 chapters — largest Part)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch50**: a band practicing together daily vs. only playing together once, the night before the show
+- **Ch51**: a science lab notebook — "changed to 2 tbsp" (what) vs. "...because 1 tbsp fizzled in under 10 seconds" (why)
+- **Ch52**: fifteen crossed-out math scratch-paper attempts (squash) vs. a five-step geometry proof worth keeping intact (preserve)
+- **Ch53**: training wheels left bolted on after you've learned to balance, vs. a dated photo of the day you learned
+- **Ch54**: two siblings building one shared LEGO city — tearing out your own road is fine alone, not once a sibling's neighborhood connects to it
+- **Ch55**: two friends searching separate streets for a lost dog — telling it as two parallel searches vs. one flattened fake sequence
+- **Ch56**: an official 5K finisher certificate (name, date, time, stamp) vs. a sticky note saying "I ran a race"
+- **Ch57**: the ten-second shoes/lunch/homework check every morning vs. a full "am I organized for the semester" review crammed into the same two minutes
+- **Ch58**: a Saturday with three unrelated things to get ready for (soccer, birthday present, piano video) — a ripped bag stops that one task, but doesn't stop checking the other two
+- **Ch59**: reusing last year's camping packing list, labeled "Camping List" instead of by what's actually still true (same campground, same dates, same gear)
+- **Ch60**: prepping every mathematically possible school-lunch combination (3×4×2) vs. just the combos people actually eat
+- **Ch61**: a class "Books Read" leaderboard app that's only as honest as how specifically kids log their reading
+- **Ch62**: carrying the same science-fair project through school → district → state judging, vs. rebuilding it fresh before each round
+- **Ch63**: pulling a garden's weeds five minutes a week vs. an ignored summer ending in a weekend of digging and dead plants
+
+### What worked
+- This was the largest Part (14 chapters) and the most mechanically dense (Git/CI plumbing) — leaned almost entirely on kid-owned routines and hobbies (garden, science fair, LEGO, band practice, camping list, lunch packing) rather than reaching for screens/apps, keeping the same discipline as earlier Parts
+- Several wife-section analogies for this Part are unusually strong and specific (two cars to a reunion, dishes vs. piled-up sink, moving boxes, contract sign-off, oil changes) — every kids section deliberately found a different vehicle rather than a kid-language translation of the same image, per the pattern set in Part IV/V
+- The "two things converging, told two ways" shape (Ch55) mapped cleanly onto a lost-dog search — physical, easy to picture, and the "does the parallel part matter" question survived the translation intact
+- Kept "check once, fast, everything at once" (Ch58) visually distinct from "check often, small, cheap" (Ch50, Ch63) even though both are frequency/cost trade-offs — different underlying mechanism (aggregating independent failures vs. paying integration cost continuously vs. routine maintenance), so different scenes
+
+### Edge cases and decisions
+- Several chapters in this Part (Ch50, 57, 58, 59) are all shades of "how often/how much to check or combine work" — deliberately varied the domain every time (band practice, backpack, Saturday errands, camping list) so the throughline doesn't read as the same joke four times in a row
+- Wife pass explicitly avoided reusing fire/smoke-alarm imagery too many times across the book; kids pass continued that discipline here (Ch57 could have reached for "smoke detector" again but used a morning backpack check instead)
+
+### Next session
+- Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
+- Push now (Parts V+VI+VII complete, per this session's request to cover them)

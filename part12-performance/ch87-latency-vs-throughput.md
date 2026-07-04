@@ -1,5 +1,9 @@
 # Ch 87 — Latency vs. Throughput Trade-offs
 
+*"Make it faster" is ambiguous between two measures that routinely trade against each other.*
+
+Latency is the time to complete one unit of work; throughput is units of work completed per unit of time, and "make it faster" is ambiguous between the two — a change that improves one routinely costs the other, and this ambiguity is the source of most confused performance discussions. [Strong Recommendation] Batching is the primary throughput-over-latency lever, amortizing a fixed per-operation cost across many operations at the direct cost of the earliest item in a batch waiting for the batch to fill. Tail latency is a distinct concern from average latency, not a more extreme version of the same number — a system tuned against a mean or median can look excellent on that number while performing badly at the tail. Connection pooling, request coalescing, bulk database writes, and Nagle's algorithm are all the same amortization principle applied at a different layer — a scarce resource, duplicate work, a transaction boundary, or a network packet, respectively.
+
 **Prerequisites:** [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md) (Little's Law, Theory of Constraints), [Error Budgets and SLOs](../part09-observability/ch73-error-budgets-and-slos.md) (SLI vocabulary), [Profiling-First](ch86-profiling-first.md)
 
 **New vocabulary introduced:** tail latency, request coalescing

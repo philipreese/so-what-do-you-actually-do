@@ -1,5 +1,9 @@
 # Ch 76 — Async vs. Threads vs. Processes
 
+*The right execution model is decided by what the program is waiting for, not by which one is fastest.*
+
+Coordination and execution — what actually runs the work — are separate questions that combine freely, and confusing them turns a coordination disagreement into a "threads vs. async" argument nobody can win. Concurrency is a property of a program's structure, making progress on more than one unit of work in overlapping time; parallelism is a property of execution, more than one unit actually running at the same physical instant — a program can be one, both, or neither. [Strong Recommendation] The selection test is never which model is fastest, it's what the program is actually waiting for: CPU-bound work needs true parallelism to go faster, while I/O-bound work needs concurrency without needing more cores, and async is often strictly cheaper for it. Using threads for I/O-bound work pays overhead that buys nothing back, but using async for CPU-bound work is the worse failure, since one long computation stalls every other task sharing its event loop, not just the one that caused it.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (latency hierarchy, context-switch cost), [Shared State vs. Message Passing](ch74-shared-state-vs-message-passing.md), [Locks: When to Use Them](ch75-locks-when-to-use-them.md)
 
 **New vocabulary introduced:** concurrency, parallelism, CPU-bound work, I/O-bound work

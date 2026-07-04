@@ -1,5 +1,9 @@
 # Ch 77 — Deadlock, Livelock, and Starvation
 
+*Deadlock, livelock, and starvation are three precisely distinct failures, not synonyms for broken concurrency.*
+
+Deadlock, livelock, and starvation are precisely distinct: deadlock is a permanent, total standstill; livelock is continuous activity with no forward progress; starvation is one correct participant perpetually denied its turn while everyone else proceeds normally. [Strong Recommendation] All four Coffman conditions have to hold simultaneously for deadlock to occur, and enforcing a single, consistent global lock-acquisition order is the cheapest technique, because it only requires giving up circular wait, not the other three. Prevention and detection-and-recovery serve different contexts — structural lock ordering fits a codebase the team fully controls, while runtime cycle detection fits a system like a database whose access patterns can't be pre-ordered — and livelock gets broken by randomizing retry timing, not by retrying faster. These failures are the direct, concrete instance of state space explosion: the combinatorial number of possible interleavings is why they're non-deterministic and can vanish the moment a debugger changes the timing that exposed them.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md) (state space explosion), [Shared State vs. Message Passing](ch74-shared-state-vs-message-passing.md), [Locks: When to Use Them](ch75-locks-when-to-use-them.md) (lock granularity), [Async vs. Threads vs. Processes](ch76-async-vs-threads-vs-processes.md)
 
 **New vocabulary introduced:** deadlock, livelock, starvation, Coffman conditions

@@ -1,5 +1,9 @@
 # Ch 84 — Dependency Supply Chain Risk
 
+*A dependency can be exactly current and still be malicious.*
+
+A dependency is code the team didn't write and typically didn't fully review, pulled from a registry whose trust model is usually "anyone can publish a package" — whether a version is current is a separate question from whether it's trustworthy, and a dependency can be exactly current and still be malicious. [Strong Recommendation] A lockfile pinning the exact, hashed version of every transitive dependency is the mechanical floor, converting "trust that nothing changed since last time" into a fact the build system verifies automatically. Provenance attestation extends tag-signing one level further, confirming an artifact was actually built by the expected pipeline from the expected source, and a Software Bill of Materials answers what's actually inside a build as a queryable fact rather than a manual archaeology project. The 2018 event-stream compromise is the canonical case: a maintainer handoff to a bad-faith volunteer published a malicious transitive dependency under a legitimate, currently-updated package name — nothing about the version number indicated compromise, because the trust relationship itself was what got exploited.
+
 **Prerequisites:** [Tagging and Release Markers](../part07-git-and-delivery/ch56-tagging-and-release-markers.md) (signed tags, deferred supply-chain threat model), [Toolchain and Dependency Management](../part07-git-and-delivery/ch63-toolchain-and-dependency-management.md) (dependency debt, deferred security threat model), [Defense in Depth](ch80-defense-in-depth.md), [Secrets Management](ch83-secrets-management.md)
 
 **New vocabulary introduced:** lockfile, provenance attestation, SBOM, dependency confusion

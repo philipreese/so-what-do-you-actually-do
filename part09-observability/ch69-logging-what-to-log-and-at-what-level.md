@@ -1,5 +1,9 @@
 # Ch 69 — Logging: What to Log and at What Level
 
+*A log line earns its place by passing the actionability test, not by feeling worth writing.*
+
+A log line belongs in the system only if it passes the actionability test — a specific person, at some later point, makes a different decision because it exists — not whether it felt interesting to write. [Strong Recommendation] Log levels classify who is expected to act and how urgently, not how the author felt while writing the code, so the identical event can legitimately be DEBUG in one service and ERROR in another. Structured, machine-parseable fields beat free-text messages once logs are aggregated across more than a handful of services, and every request-scoped entry should carry a correlation ID so a request's full history is one indexed query. Logging is a cost center, not a free byproduct of execution, and logging on the chance it's needed repeats the documentation-coverage mistake with a runtime signal instead of a written one.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md) (accidental complexity), Principle 6, [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (MTTR), [Error Handling Contracts](../part03-api-design/ch21-error-handling-contracts.md) (correlation ID), [What to Document vs. What to Leave to the Code](../part08-documentation/ch64-what-to-document-vs-what-to-leave-to-the-code.md) (coverage vs. usefulness)
 
 **New vocabulary introduced:** actionability test

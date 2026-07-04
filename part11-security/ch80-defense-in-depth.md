@@ -1,5 +1,9 @@
 # Ch 80 — Defense in Depth
 
+*No single control should ever stand between an attacker and an asset.*
+
+[Consensus] No single security control should be the only thing standing between an asset and a successful attack — defense in depth places multiple, independent controls between an attacker and an asset, so one control's failure exposes the next layer rather than the asset itself. This generalizes zero-trust architecture past the one boundary it originally covered to every layer of a system, and applies the partial-failure argument to security specifically: assume any individual control eventually fails or is bypassed, and design so that failure is contained instead of catastrophic. [Strong Recommendation] The number of independent layers a given asset warrants should scale with its blast radius and reversibility, not be applied uniformly — a public documentation site and a release-signing key do not deserve identical defensive investment. Redundancy only helps if layers fail independently: three checkpoints that all trust the same credential or the same network location are one control wearing three costumes, not three controls.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (partial failure, fail-fast), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) (blast radius and reversibility), [Authentication and Authorization Boundaries](../part03-api-design/ch24-authentication-authorization-boundaries.md) (zero-trust architecture, confused deputy problem), [Threat Modeling](ch79-threat-modeling.md) (assets, adversaries, trust boundaries, attack surface)
 
 **New vocabulary introduced:** defense in depth, assume-breach posture, lateral movement

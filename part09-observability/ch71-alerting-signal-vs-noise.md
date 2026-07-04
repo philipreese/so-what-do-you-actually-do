@@ -1,5 +1,9 @@
 # Ch 71 — Alerting: Signal vs. Noise
 
+*An alert spends a scarce human's attention — it isn't a notification.*
+
+An alert is a decision to spend a scarce, non-scalable resource, a human's attention, often outside working hours, not a notification, so the actionability test applies here at a higher stakes level: page only when a human, not software, must take the next action. Alert fatigue is this chapter's central failure mode — a paging system optimizing for "an alert was sent" instead of "a human usefully responded" trains responders to dismiss reflexively, until the one alert that matters gets the same dismissal as the hundred before it that didn't. [Strong Recommendation] Default to symptom-based alerting, paging on conditions a user would actually notice, over cause-based alerting on every internal condition that could plausibly produce one, since most internal causes self-correct through the same redundancy the system was built with. Not every detected anomaly deserves the same channel — route by calculated urgency into distinct tiers, page-worthy, ticket-worthy, log-worthy, and by ownership, to the smallest group actually capable of resolving it.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md) (optimization targets), Principle 6, [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (MTTR), [Process Overhead: The Value Threshold](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md) (proxy-metric process failures), [Runbooks and Operational Documentation](../part08-documentation/ch68-runbooks-and-operational-documentation.md), [Logging: What to Log and at What Level](ch69-logging-what-to-log-and-at-what-level.md) (actionability test), [Metrics vs. Logs vs. Traces](ch70-metrics-vs-logs-vs-traces.md)
 
 **New vocabulary introduced:** alert fatigue, symptom-based alerting

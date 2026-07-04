@@ -1,5 +1,9 @@
 # Ch 83 — Secrets Management
 
+*A leaked secret rarely looks like an exploit — it looks like a legitimately authenticated request.*
+
+A secret is any credential, key, or token whose disclosure grants an unintended party capability it shouldn't have — the defining property is not confidentiality, it's authority, which is exactly what makes a leaked secret dangerous: it looks like a legitimate request, not an exploit. A secret committed to version control is categorically worse than an ordinary bug, since history is close to permanent and rotating the credential is the only real recovery. [Strong Recommendation] Rotation and credential scoping address different halves of the same problem — rotation limits how long a leaked credential stays useful, scoping limits how much damage it can do before it's rotated — and trusted publishing, a short-lived, pipeline-scoped identity exchanged via OIDC, is strictly better than either, because there's no static credential sitting anywhere to leak in the first place. [Strong Recommendation] A dedicated secret manager is the correct default for anything beyond a single-developer project, since it makes rotation and audit mechanical properties of the infrastructure instead of a discipline every engineer has to remember and never skip.
+
 **Prerequisites:** [Release Automation](../part07-git-and-delivery/ch61-release-automation.md) (OIDC-based trusted publishing, named but deferred), [Runbooks and Operational Documentation](../part08-documentation/ch68-runbooks-and-operational-documentation.md) (credential handling, deferred), [Logging: What to Log and at What Level](../part09-observability/ch69-logging-what-to-log-and-at-what-level.md) (logging as attack surface, deferred), [Defense in Depth](ch80-defense-in-depth.md), [Authentication vs. Authorization](ch82-authentication-vs-authorization.md)
 
 **New vocabulary introduced:** secret, credential scoping, trusted publishing

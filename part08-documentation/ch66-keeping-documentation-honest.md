@@ -1,5 +1,9 @@
 # Ch 66 — Keeping Documentation Honest
 
+*Living documentation stays trustworthy only if it's reviewed like code and pruned like a backlog.*
+
+This chapter applies only to living documents (Ch 65) — a stale spec or ADR is a different, expected condition, not a failure this chapter addresses. Storing documentation in the same repository and pull request as the code it describes doesn't guarantee it stays accurate, but it's the only structural change that gives a behavior change and its documentation update a chance to land together. What's objectively checkable — a code example that compiles, a link that resolves — should be automated into a build failure; everything else stays a periodic audit responsibility rather than something left to be noticed by accident. A documentation corpus is exactly as vulnerable to becoming a write-only tracker as an issue backlog, and deleting a page that's wrong or no longer relevant is legitimate maintenance, not a loss.
+
 **Prerequisites:** [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md) (comment rot), [Issue Tracking: What Makes a Good Issue](../part06-engineering-process/ch42-issue-tracking-what-makes-a-good-issue.md) (write-only tracker), [Process Overhead: The Value Threshold](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md) (audit discipline), [README vs. Spec vs. ADR vs. Inline Comment](ch65-readme-vs-spec-vs-adr-vs-inline-comment.md) (living document vs. point-in-time record)
 
 **New vocabulary introduced:** executable documentation

@@ -1,5 +1,9 @@
 # Ch 88 — Caching: Layers, Invalidation, Failure Modes
 
+*Storage is the easy part of caching — invalidation is the hard part, and it has a famous name.*
+
+Caching is a spectrum of layers — CPU cache, an in-process application cache, a distributed cache, a CDN edge cache — each trading isolation and control for reach and shared visibility. [Consensus] Storage is the easy part of caching; invalidation, knowing when cached data is no longer trustworthy, is the hard part, as Phil Karlton's aphorism names directly, and "managing distributed cache invalidation is not a pencil-and-paper problem" was never an argument against caching, it was a statement that invalidation deserves an explicit strategy. [Strong Recommendation] Event-driven invalidation triggered mechanically by the write path is more reliable than a manually remembered cache-bust call, which reliably gets forgotten under deadline pressure; TTL expiration is the cheap fallback that requires no write-path discipline at all, at the cost of a bounded staleness window. Cache stampede — a thundering herd of concurrent requests all missing a freshly expired key at once and hitting the backing store simultaneously — is a named, specific failure mode with a standard mitigation: request coalescing or a short-lived regeneration lock.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md) (essential vs. accidental complexity, the pencil-and-paper test), [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (CPU cache and the latency hierarchy, referenced not redefined), [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md), Principle 8 (mechanical enforcement over human discipline), [When to Optimize (and When Not To)](ch85-when-to-optimize.md)
 
 **New vocabulary introduced:** cache stampede

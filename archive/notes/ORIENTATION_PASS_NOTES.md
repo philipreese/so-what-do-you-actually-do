@@ -51,3 +51,36 @@ line before `**Prerequisites:**`.
   "why read this before anything else" rather than "why now, given what came before,"
   which won't apply to Parts II–XII the same way. Expect those intros to spend more of
   the opening paragraph on what the part assumes from earlier parts.
+
+## STATUS: ALL 90 CHAPTERS AND ALL 12 PART INTROS DONE
+
+Parts I–VII were completed in earlier sessions. Parts VIII–XII (Ch 64–90, plus their five
+Part intros) were completed in this session. `npm run build` + grepping every
+`dist/chapters/chNN/index.html` for `chapter-subtitle`/`chapter-thesis` confirmed all 90
+chapters parse cleanly; all 12 Part `index.md` intros land between 370–510 words.
+
+This pass is complete. This notes file and `archive/prompts/edit4-orientation-pass.md` are
+now scaffolding with no more work to guide — flag them for deletion to whoever reviews
+this, don't delete them as part of this session.
+
+## Calibration notes from Parts VIII–XII
+
+- For a Part with a clear internal escalation (Part IX: log → signal taxonomy → alert →
+  budget; Part XII: gate → method → three applications → closing synthesis), say so
+  explicitly in the intro rather than just listing chapters in order — the reader benefits
+  from knowing *why* the order is that order, not just that it is.
+- When a chapter's Key Takeaways already contain a `[Strong Recommendation]`, `[Consensus]`,
+  or `[Legitimate Trade-off]` tag, keep that tag in the thesis sentence built from it. It's
+  a direct, load-bearing signal from the source material about how hedged the claim should
+  be, and dropping it in the thesis silently changes the confidence level the chapter is
+  actually asserting.
+- Chapters that close out a Part (or the book) benefit from a thesis sentence that
+  explicitly returns to what the Part/book opened with, not just what the chapter itself
+  argues — Ch 90's thesis loops back to Ch 01's cost-of-change claim, and its Part intro
+  does the same at greater length. This lands better than treating the last chapter as
+  just another entry in the list.
+- Cross-part callbacks read stronger when they're concrete artifacts (a named example, a
+  reused vocabulary term, a numbered chapter) rather than a vague "this builds on earlier
+  ideas." Part XI's intro naming the 2018 Equifax breach's chapter and the OIDC-trusted-
+  publishing tie back to Part VII are the kind of thing that makes an intro feel like it
+  was written by someone who read the actual chapters.

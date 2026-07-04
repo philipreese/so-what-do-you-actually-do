@@ -43,6 +43,8 @@ type Section = PlainSection | DecisionSection | DisagreeSection;
 
 export interface ParsedChapter {
   title: string;
+  subtitle: string;
+  thesis: string;
   prerequisitesHtml: string;
   vocabulary: string[];
   keyTakeaways: string[];
@@ -118,6 +120,16 @@ function extractNestedDisagree(content: string): { main: string; disagree: { hea
   };
 }
 
+/**
+ * Chapters open with "# Title", then optionally a one-line italic subtitle and a
+ * short thesis paragraph, before the "**Prerequisites:**" metadata block begins.
+ */
+function extractSubtitleAndThesis(header: string): { subtitle: string; thesis: string } {
+  const match = /^\s*\*([^\n*]+)\*\s*\n\n([\s\S]*?)\n\n\*\*Prerequisites:\*\*/.exec(header);
+  if (!match) return { subtitle: '', thesis: '' };
+  return { subtitle: match[1].trim(), thesis: match[2].trim() };
+}
+
 export function parseChapter(rawMarkdown: string): ParsedChapter {
   const titleMatch = /^#\s+(.+)$/m.exec(rawMarkdown);
   const title = titleMatch ? titleMatch[1].trim() : 'Untitled Chapter';
@@ -125,6 +137,9 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
   const firstH2Index = rawMarkdown.search(/^##\s+/m);
   const header = firstH2Index === -1 ? rawMarkdown : rawMarkdown.slice(0, firstH2Index);
   const body = firstH2Index === -1 ? '' : rawMarkdown.slice(firstH2Index);
+
+  const headerAfterTitle = titleMatch ? header.slice(titleMatch.index! + titleMatch[0].length) : header;
+  const { subtitle, thesis } = extractSubtitleAndThesis(headerAfterTitle);
 
   const prereqMatch = /\*\*Prerequisites:\*\*\s*([\s\S]*?)\n\n/.exec(header);
   const vocabMatch = /\*\*New vocabulary introduced:\*\*\s*([\s\S]*?)\n\n/.exec(header);
@@ -165,7 +180,7 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
     return { kind: 'decision', heading, fieldsHtml, badges, disagree };
   });
 
-  return { title, prerequisitesHtml, vocabulary, keyTakeaways, sections };
+  return { title, subtitle, thesis, prerequisitesHtml, vocabulary, keyTakeaways, sections };
 }
 
 const BADGE_CLASS: Record<RecommendationKind, string> = {
@@ -269,8 +284,4 @@ export function renderChapterHtml(parsed: ParsedChapter): string {
     </section>`;
 
   return wrapTablesForScroll(header + parsed.sections.map(renderSection).join('\n'));
-}
-
-export function buildEngineerHtml(rawMarkdown: string): string {
-  return renderChapterHtml(parseChapter(rawMarkdown));
 }

@@ -1,5 +1,9 @@
 # Ch 65 — README vs. Spec vs. ADR vs. Inline Comment
 
+*A living document and a point-in-time record fail in opposite ways.*
+
+Every documentation artifact is placed by two independent questions: who is the intended reader, and does the artifact need to track current reality or is it allowed to freeze a past moment. A README is a living document — a stale one is a documentation failure, because it costs a newcomer their first, most trust-forming hour. A spec or an ADR is a point-in-time record, where staleness is expected and not a failure, provided both are treated as archived once implementation begins. The most common taxonomy mistake is conflating the two — editing an ADR to match today's architecture, or trusting an old spec as current — and asking whether the answer needs to still be true tomorrow routes almost every case correctly.
+
 **Prerequisites:** [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md), [Architecture Decision Records (ADRs)](../part06-engineering-process/ch45-architecture-decision-records.md), [Spec-First Development](../part06-engineering-process/ch46-spec-first-development.md), [What to Document vs. What to Leave to the Code](ch64-what-to-document-vs-what-to-leave-to-the-code.md)
 
 **New vocabulary introduced:** living document

@@ -1,5 +1,9 @@
 # Ch 67 — API Documentation: What Consumers Need
 
+*For an API consumer, the documentation isn't supplemental to the interface — it is the interface.*
+
+An API consumer is structurally different from every other reader in this Part: often without access to the implementation or knowledge of internal conventions, and for an external API, sometimes outside the organization entirely. [Strong Recommendation] Generate the reference layer — operations, request and response shapes, types, status codes — mechanically from the interface definition wherever tooling allows, since a generated reference cannot drift from what it's generated from the way hand-written prose can, reserving hand-writing for what generation can't produce: getting-started narrative, integration patterns, working examples. A runnable, copyable example answers "how do I make this request" faster than a paragraph re-describing fields a generated parameter table already shows. An explicit non-guarantee, like an undefined iteration order, is a documented defense against Hyrum's Law — it's what lets an API owner change the undocumented part later without breaking anyone who was told not to rely on it.
+
 **Prerequisites:** [Error Handling Contracts](../part03-api-design/ch21-error-handling-contracts.md), [Authentication and Authorization Boundaries](../part03-api-design/ch24-authentication-authorization-boundaries.md), [Internal vs. External API Design](../part03-api-design/ch25-internal-vs-external-api-design.md) (Hyrum's Law), [Keeping Documentation Honest](ch66-keeping-documentation-honest.md)
 
 **New vocabulary introduced:** None — this chapter applies Principle 8 and Hyrum's Law (Ch 25) to API reference content specifically, rather than introducing new concepts.

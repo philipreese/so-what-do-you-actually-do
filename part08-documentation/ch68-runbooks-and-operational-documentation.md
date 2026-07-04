@@ -1,5 +1,9 @@
 # Ch 68 — Runbooks and Operational Documentation
 
+*A runbook earns trust by being rehearsed, not by being carefully written.*
+
+A runbook is a script for one specific, named failure mode — the failure condition, verification steps, recovery commands, and escalation criteria — not general architecture explanation and not an open-ended troubleshooting essay. [Strong Recommendation] A paper runbook, one written but never exercised, carries the same false-confidence risk as a coverage metric: its existence is not evidence it works, so every runbook should be exercised deliberately through a game-day drill or an onboarding walkthrough, at minimum. Any step that is genuinely mechanical and deterministic should become automation instead of prose — a runbook that keeps growing is often a signal that more of it should have become tooling. A runbook's value is judged by exactly one thing, whether it reduces MTTR, and length or apparent thoroughness are not the metric and can actively work against it.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (MTTR), [Coverage: What It Measures and What It Doesn't](../part05-testing-strategy/ch41-coverage-what-it-measures-and-what-it-doesnt.md) (execution-verification gap), [Keeping Documentation Honest](ch66-keeping-documentation-honest.md)
 
 **New vocabulary introduced:** paper runbook

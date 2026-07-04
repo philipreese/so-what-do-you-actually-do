@@ -1,5 +1,9 @@
 # Ch 86 — Profiling-First
 
+*Measuring performance changes what you're measuring, unless you pick the right tool.*
+
+[Strong Recommendation] Start with a sampling profiler, not an instrumenting one: sampling periodically snapshots the call stack at near-zero overhead and is safe against production traffic, while instrumenting profilers record every call exactly but can slow execution by 2–10x, enough to change the very bottleneck being measured — the observer effect. A flame graph turns thousands of stack samples into one picture where frame width is proportion of time spent, and is the default way to read sampling output, since a flat table sorted by self-time misses the common case where a single cheap function is called from forty places and their combined cost dominates. Benchmarking is not profiling — profiling finds where time goes, benchmarking confirms whether a specific change made the measured path faster, and neither replaces the other. [Strong Recommendation] The single most common benchmarking distortion is cache state: a micro-benchmark that repeatedly hits a small, static dataset lives entirely in cache and hides the memory-access cost that dominates under production data volume and concurrency.
+
 **Prerequisites:** [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (latency hierarchy), [When to Write Unsafe or Low-Level Code](../part04-code-organization/ch33-when-to-write-unsafe-or-low-level-code.md) (profiling evidence as a precondition for unsafe code), [Distributed Tracing](../part09-observability/ch72-distributed-tracing.md) (the trace-versus-profiler boundary), [When to Optimize (and When Not To)](ch85-when-to-optimize.md) (the Optimization Gate)
 
 **New vocabulary introduced:** sampling profiler, instrumenting profiler, observer effect, flame graph

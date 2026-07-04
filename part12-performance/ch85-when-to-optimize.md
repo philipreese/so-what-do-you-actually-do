@@ -1,5 +1,9 @@
 # Ch 85 — When to Optimize (and When Not To)
 
+*Performance work is justified only when a documented requirement is actually being violated.*
+
+[Strong Recommendation] The Optimization Gate holds that performance work is justified only when a documented requirement — an SLO, a cost budget, a measured UX threshold — is actually being violated, and evidence points to a specific system-level constraint causing it; absent either condition, performance work is speculative refinement, not engineering. A component that is slow in isolation is not necessarily a measured bottleneck, the thing actually limiting the system against its requirement — local optimization can leave the global problem untouched. Knuth's "premature optimization is the root of all evil" is routinely quoted stripped of context: the actual claim is that roughly 97% of a program's code has no measurable effect on its runtime cost, and the error is not optimizing, it's optimizing the wrong 97%. This chapter is the gate, not the method — finding a bottleneck once the gate says one must exist is the next chapter's job.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md) (cost of change vs. cost of execution, Principle 6), [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (latency hierarchy, referenced not re-derived), [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md) (Little's Law, Theory of Constraints), [Distributed Tracing](../part09-observability/ch72-distributed-tracing.md) (the checkout endpoint case, the trace-versus-profiler boundary), [Error Budgets and SLOs](../part09-observability/ch73-error-budgets-and-slos.md) (SLI, SLO, error budget)
 
 **New vocabulary introduced:** Optimization Gate, measured bottleneck

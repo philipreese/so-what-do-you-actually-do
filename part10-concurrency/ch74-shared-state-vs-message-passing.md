@@ -1,5 +1,9 @@
 # Ch 74 — Shared State vs. Message Passing
 
+*Coordination model and execution unit are two separate decisions, and conflating them is the most common mistake.*
+
+A coordination model — shared state or message passing — is a decision made before and independent of any execution-unit choice, and conflating the two is the most common architectural mistake in concurrent design. [Strong Recommendation] Message passing eliminates the data race by construction, at the real cost of copying data and added latency per exchange, while shared state avoids that cost but demands continuous synchronization discipline that fails silently under real production concurrency. A data race is the concurrency-specific instance of undefined behavior, and it's at its sharpest when shared memory crosses an FFI boundary with no runtime's safety guarantees active on either side. Well-designed systems combine both models rather than picking one globally — shared mutable state stays small and local, message passing is exposed at every boundary that crosses a team, process, or service.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md) (throughput vs. reasoning simplicity), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md) (state space explosion), [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (MVCC vs. pessimistic locking), Principle 8, [FFI and Native Binding Design](../part03-api-design/ch26-ffi-and-native-binding-design.md), [When to Write Unsafe or Low-Level Code](../part04-code-organization/ch33-when-to-write-unsafe-or-low-level-code.md) (undefined behavior)
 
 **New vocabulary introduced:** coordination model, shared-state concurrency, message-passing concurrency, data race

@@ -1,5 +1,9 @@
 # Ch 75 — Locks: When to Use Them
 
+*Default to one coarse lock; earn fine-grained locking with a profiler, not intuition.*
+
+A lock protects an invariant across a critical section, not just a single variable — every read and write that could observe or break that invariant must happen while the lock is held, or the lock guarantees nothing. [Strong Recommendation] Default to coarse-grained locking, since it's easier to reason about and harder to get wrong, and move to fine-grained locking only after profiling has actually shown lock contention is the real bottleneck. Fine-grained locking buys real throughput under contention at a real cost: exponentially more possible interleavings to hold in your head and meaningfully higher deadlock risk once multiple locks must be acquired together. Read-write locks, optimistic concurrency control, and MVCC are legitimate alternatives to a plain mutex, each suited to a specific contention shape rather than a universal upgrade — no mature runtime uses one synchronization primitive everywhere.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md) (Principle 6), [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (MVCC vs. pessimistic locking), [Shared State vs. Message Passing](ch74-shared-state-vs-message-passing.md) (data race, shared-state concurrency)
 
 **New vocabulary introduced:** critical section, lock granularity, lock contention, optimistic concurrency control (OCC)

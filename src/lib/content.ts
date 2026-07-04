@@ -252,8 +252,9 @@ export function splitChapterTracks(rawMarkdown: string) {
   const parsed = parseChapter(cleanMarkdownResolved);
   const engineerHtml = renderChapterHtml(parsed);
 
-  // Extract headings for the right sidebar TOC
-  const headingPattern = /^##\s+(.+)$/gm;
+  // Extract headings for the right sidebar TOC — match ## or ### since chapters
+  // 27+ shifted to ### for content sections.
+  const headingPattern = /^#{2,3}\s+(.+)$/gm;
   const headings = [...cleanMarkdown.matchAll(headingPattern)]
     .map((match) => match[1].trim())
     .filter((h) => !/For My Wife|For My Kids/i.test(h))

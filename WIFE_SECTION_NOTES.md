@@ -227,3 +227,23 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part X, Ch74–Ch78 (5 chapters — concurrency)
 - Push after Part X (or X+XI together)
+
+---
+
+## Part X, Ch74–Ch78
+
+### Formatting used (for reference)
+- **Ch74**: 2 plain paragraphs + 1 bold closer (kids sharing one bathroom vs. three separate bathrooms)
+- **Ch75**: 2 plain paragraphs + 1 bold closer (one shared family car vs. two cars; bulletin board reading vs. posting)
+- **Ch76**: 2 bold paragraphs (restaurant chef vs. host — CPU-bound vs. I/O-bound work)
+- **Ch77**: 3 plain paragraphs + 1 bold closer (couch stuck in two doorways = deadlock; hallway side-step dance = livelock; too-polite driver at a stop sign = starvation — three distinct images for three distinct named concepts, ran slightly over the usual word count on purpose since the chapter genuinely has three things to keep separate)
+- **Ch78**: 2 bold paragraphs (private locked desks vs. shared filing cabinet; sending a melted-down employee home vs. nursing them through the day — isolation + "let it crash")
+
+### What worked
+- Concurrency chapters are the most abstract/technical material so far — grounding each one in a single, very physical, very human scene (a bathroom, a car, a kitchen, a hallway, an office desk) did more work than trying to explain the computer science directly
+- Ch77 covering three named, easily-confused concepts (deadlock/livelock/starvation) justified running longer than the usual ~280 words — when a chapter's core content really is "these three things are NOT the same," compressing to the usual length would have lost the distinctions that are the entire point
+- Kept the concurrency Part's analogies domestic/physical rather than reaching for computer-adjacent metaphors, which would have just re-described the technical concept instead of translating it
+
+### Next session
+- Continue with Part XI, Ch79–Ch84 (6 chapters — security)
+- Push after Part XI (or XI+XII together to finish)

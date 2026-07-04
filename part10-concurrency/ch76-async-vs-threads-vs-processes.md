@@ -11,6 +11,14 @@
 - Using threads for I/O-bound work pays context-switch and memory overhead that buys nothing back. Using async for CPU-bound work is the worse failure: one long computation blocks the single event loop and stalls every other concurrent task sharing it, not just the one that caused it.
 - Real runtimes make this trade-off visible rather than quietly resolving it for you: Python's GIL means OS threads don't buy CPU parallelism at all; Node.js commits fully to a single-threaded event loop for I/O-bound work; Go's goroutines are a deliberate M:N hybrid, scheduled by the runtime onto a small pool of OS threads, blurring the thread/async line by design.
 
+## For My Wife
+
+**A restaurant kitchen needs actual chefs — expensive, trained, and there's only room for so many at the stove — because cooking is genuinely hard, ongoing work that has to happen somewhere. A dining room, on the other hand, runs on a single host who checks in on twenty tables at once, moving from one to the next as each actually needs something, instead of assigning one full-time staff member to stand beside every table just in case.** Those are two completely different jobs, and hiring the wrong kind of person for either one is expensive in its own way. Put a trained chef at a table just to wait for guests to decide what they want, and the most expensive resource in the building is doing nothing. Ask the single host to personally cook a complicated dish at one table, and every other table in their section goes unattended until it's done — one host can't be in two places, and now twenty tables are waiting on one plate.
+
+This chapter argues computer programs face the exact same choice, and the question that actually decides it isn't "which is faster" in the abstract — it's "is this task genuinely busy the whole time, or is it mostly just waiting for something else to finish?" Real, ongoing computation needs the equivalent of a chef: dedicated capacity actually doing the work. Waiting on something slow — a customer deciding, a network response arriving — needs the equivalent of a host: someone cheap and nimble who can juggle many waits at once without being tied down by any single one of them.
+
+**The costly mistake runs in both directions, but one is much worse: hiring extra hosts to cook is fine, if wasteful. Asking the one host to cook is how an entire dining room stops getting served.**
+
 ---
 
 Chapters 74 and 75 established how concurrent units coordinate access to shared data — through synchronization or through messages. This chapter asks a different, independent question: what actually executes the work. A team arguing over "threads versus async" while the real disagreement is about lock granularity is solving the wrong problem, and vice versa; the two decisions combine freely, and this chapter concerns only the execution vehicle.

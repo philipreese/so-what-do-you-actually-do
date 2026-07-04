@@ -90,8 +90,9 @@ function stripTrailingRule(text: string): string {
   return text.replace(/\n?-{3,}\s*$/, '').trim();
 }
 
-function splitTopLevelSections(body: string): { heading: string; content: string }[] {
-  const headingPattern = /^##\s+(.+)$/gm;
+function splitTopLevelSections(body: string, level: 2 | 3 = 2): { heading: string; content: string }[] {
+  const prefix = '#'.repeat(level);
+  const headingPattern = new RegExp(`^${prefix}\\s+(.+)$`, 'gm');
   const matches = [...body.matchAll(headingPattern)];
   const sections: { heading: string; content: string }[] = [];
 
@@ -138,9 +139,17 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
   const titleMatch = /^#\s+(.+)$/m.exec(rawMarkdownLf);
   const title = titleMatch ? titleMatch[1].trim() : 'Untitled Chapter';
 
-  const firstH2Index = rawMarkdownLf.search(/^##\s+/m);
-  const header = firstH2Index === -1 ? rawMarkdownLf : rawMarkdownLf.slice(0, firstH2Index);
-  const body = firstH2Index === -1 ? '' : rawMarkdownLf.slice(firstH2Index);
+  // Detect which heading level is used for content sections in this chapter.
+  // Chapters 1-26 use ## (level 2); chapters 27+ shifted to ### (level 3).
+  // After splitChapterTracks() strips "## For My Wife" / "## For My Kids", the
+  // first remaining ^#{2,3} heading marks where the header block ends and the
+  // content body begins.
+  const firstSectionMatch = /^(#{2,3})\s+/m.exec(rawMarkdownLf);
+  const sectionLevel = firstSectionMatch ? (firstSectionMatch[1].length as 2 | 3) : 2;
+  const firstSectionIndex = firstSectionMatch ? firstSectionMatch.index! : -1;
+
+  const header = firstSectionIndex === -1 ? rawMarkdownLf : rawMarkdownLf.slice(0, firstSectionIndex);
+  const body = firstSectionIndex === -1 ? '' : rawMarkdownLf.slice(firstSectionIndex);
 
   const headerAfterTitle = titleMatch ? header.slice(titleMatch.index! + titleMatch[0].length) : header;
   const { subtitle, thesis } = extractSubtitleAndThesis(headerAfterTitle);
@@ -162,11 +171,14 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
     .map((line) => line.replace(/^-\s*/, '').trim())
     .filter(Boolean);
 
-  const sections: Section[] = splitTopLevelSections(body).map(({ heading, content }) => {
+  const sections: Section[] = splitTopLevelSections(body, sectionLevel).map(({ heading, content }) => {
     if (/why smart engineers disagree/i.test(heading)) {
       return { kind: 'disagree', heading, html: marked.parse(content) as string };
     }
 
+    // For level-3 chapters, nested disagree would be ####; no current content uses
+    // that convention so extractNestedDisagree (hardcoded to ###) is effectively a
+    // no-op for those chapters — correct behavior.
     const { main, disagree } = extractNestedDisagree(content);
     const rawFields = splitFields(main);
 

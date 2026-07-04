@@ -12,11 +12,14 @@ const sequence = getReadingSequence();
 const currentIndex = sequence.findIndex((node) => node.slug === currentSlug && node.type === type);
 const prevNode = currentIndex > 0 ? sequence[currentIndex - 1] : null;
 const nextNode = currentIndex < sequence.length - 1 ? sequence[currentIndex + 1] : null;
+
+const base = import.meta.env.BASE_URL || '/';
+const cleanBase = base.endsWith('/') ? base : base + '/';
 ---
 
 <footer class="chapter-footer">
   {prevNode ? (
-    <a href={prevNode.type === 'chapter' ? `${import.meta.env.BASE_URL}chapters/${prevNode.slug}` : `${import.meta.env.BASE_URL}parts/${prevNode.slug}`} class="footer-link footer-link--prev">
+    <a href={prevNode.type === 'chapter' ? `${cleanBase}chapters/${prevNode.slug}` : `${cleanBase}parts/${prevNode.slug}`} class="footer-link footer-link--prev">
       <span class="footer-link-label">← Previous {prevNode.type === 'chapter' ? 'Chapter' : 'Part'}</span>
       <span class="footer-link-title">
         {prevNode.type === 'chapter' ? `Ch ${prevNode.number}` : `Part ${prevNode.number}`} — {prevNode.title}
@@ -25,7 +28,7 @@ const nextNode = currentIndex < sequence.length - 1 ? sequence[currentIndex + 1]
   ) : <div />}
   
   {nextNode ? (
-    <a href={nextNode.type === 'chapter' ? `${import.meta.env.BASE_URL}chapters/${nextNode.slug}` : `${import.meta.env.BASE_URL}parts/${nextNode.slug}`} class="footer-link footer-link--next">
+    <a href={nextNode.type === 'chapter' ? `${cleanBase}chapters/${nextNode.slug}` : `${cleanBase}parts/${nextNode.slug}`} class="footer-link footer-link--next">
       <span class="footer-link-label">Next {nextNode.type === 'chapter' ? 'Chapter' : 'Part'} →</span>
       <span class="footer-link-title">
         {nextNode.type === 'chapter' ? `Ch ${nextNode.number}` : `Part ${nextNode.number}`} — {nextNode.title}

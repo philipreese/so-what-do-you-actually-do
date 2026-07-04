@@ -11,7 +11,9 @@ const { title, description = "A software engineer's handbook — with a chapter 
 const { parts } = getAllPartsAndChapters();
 const appendices = getAllAppendices();
 
-const basePath = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const base = import.meta.env.BASE_URL || '/';
+const cleanBase = base.endsWith('/') ? base : base + '/';
+const basePath = base.replace(/\/$/, '');
 const currentPath = Astro.url.pathname.replace(/\/$/, '').replace(new RegExp('^' + basePath), '');
 
 // Find which part is currently active
@@ -24,7 +26,7 @@ const activePartSlug = parts.find(
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png?v=4`} />
+    <link rel="icon" type="image/png" href={`${cleanBase}favicon.png?v=4`} />
     <title>{title} — So, What Do You Actually Do?</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={`${title} — So, What Do You Actually Do?`} />
@@ -67,7 +69,7 @@ const activePartSlug = parts.find(
             </svg>
           </button>
           
-          <a class="brand" href={import.meta.env.BASE_URL}>
+          <a class="brand" href={cleanBase}>
             <span class="brand-title">So, What Do You Actually Do?</span>
             <span class="brand-subtitle">A Software Engineer's Handbook</span>
           </a>
@@ -101,14 +103,14 @@ const activePartSlug = parts.find(
         <aside class="docs-sidebar" id="sidebar">
           <nav class="sidebar-nav">
             <div class="sidebar-section">
-              <a href={import.meta.env.BASE_URL} class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
+              <a href={cleanBase} class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
                 <svg class="sidebar-link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 10.5 12 3l9 7.5"></path>
                   <path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"></path>
                 </svg>
                 <span class="sidebar-link-text">Introduction</span>
               </a>
-              <a href={`${import.meta.env.BASE_URL}sitemap`} class={`sidebar-link ${currentPath === '/sitemap' ? 'active' : ''}`}>
+              <a href={`${cleanBase}sitemap`} class={`sidebar-link ${currentPath === '/sitemap' ? 'active' : ''}`}>
                 <svg class="sidebar-link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="8" y1="6" x2="21" y2="6"></line>
                   <line x1="8" y1="12" x2="21" y2="12"></line>
@@ -137,14 +139,14 @@ const activePartSlug = parts.find(
                   </button>
                   <ul class="sidebar-list">
                     <li>
-                      <a href={`${import.meta.env.BASE_URL}parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
+                      <a href={`${cleanBase}parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
                         <span class="chapter-num">{part.romanNumber}</span>
                         <span class="sidebar-chapter-title-text">Part Overview</span>
                       </a>
                     </li>
                     {part.chapters.map((ch) => (
                       <li>
-                        <a href={`${import.meta.env.BASE_URL}chapters/${ch.slug}`} class={`sidebar-chapter-link ${currentPath === `/chapters/${ch.slug}` ? 'active' : ''}`}>
+                        <a href={`${cleanBase}chapters/${ch.slug}`} class={`sidebar-chapter-link ${currentPath === `/chapters/${ch.slug}` ? 'active' : ''}`}>
                           <span class="chapter-num">{ch.number}</span>
                           <span class="sidebar-chapter-title-text">{ch.title}</span>
                         </a>
@@ -162,7 +164,7 @@ const activePartSlug = parts.find(
                 <ul class="sidebar-list">
                   {appendices.map((app) => (
                     <li>
-                      <a href={`${import.meta.env.BASE_URL}appendices/${app.slug}`} class={`sidebar-chapter-link ${currentPath === `/appendices/${app.slug}` ? 'active' : ''}`}>
+                      <a href={`${cleanBase}appendices/${app.slug}`} class={`sidebar-chapter-link ${currentPath === `/appendices/${app.slug}` ? 'active' : ''}`}>
                         <span class="chapter-num">{app.letter}</span>
                         <span class="sidebar-chapter-title-text">{app.title}</span>
                       </a>

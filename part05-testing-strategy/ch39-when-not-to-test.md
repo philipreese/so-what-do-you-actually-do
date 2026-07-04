@@ -1,5 +1,9 @@
 # Ch 39 — When Not to Test
 
+*A test suite has its own complexity budget, not infinite value.*
+
+Every test carries a lifetime cost — written, understood, maintained, debugged, re-run — and a test suite is an engineering system with its own complexity budget, not a free good that only accumulates value as it grows. Trivial delegation buys no meaningful confidence relative to its upkeep, and application tests should stop at the trust boundary separating business logic from frameworks and runtimes vendors have already tested more extensively than any one team could. Tests should bind to public behavior, never private implementation, since a test that fails when an internal detail changes while external behavior stays the same has implementation coupling and punishes exactly the refactoring a healthy suite is supposed to protect. Hard-to-test code and not-worth-testing code demand opposite responses: the first signals a design problem to fix, the second is easy to test and verifies nothing, and should be skipped rather than written out of habit.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [When to Mock vs. Use Real Dependencies](ch36-when-to-mock-vs-use-real-dependencies.md), [Fixture-Based Testing](ch37-fixture-based-testing.md)
 
 **New vocabulary introduced:** trust boundary, implementation coupling, negative ROI test

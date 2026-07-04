@@ -1,5 +1,9 @@
 # Ch 34 — The Testing Pyramid
 
+*The pyramid's shape is an economic reality, not a decoration.*
+
+The testing pyramid is a resource allocation model, not a decorating scheme — different tests answer different questions at different costs, and the shape encodes an economic reality whether anyone stated it out loud or not. Verification should be pushed as low in the pyramid as the architecture allows, because every unnecessary dependency dragged into a test adds execution time and one more possible cause a failure could be hiding behind. The ice cream cone anti-pattern — many slow end-to-end tests and barely any unit tests — produces a suite too slow to run locally and too brittle to trust when it does. A failing end-to-end test tells you something is broken, not where, and the cost of finding out climbs right along with the scope of the test that caught it.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md), [Layered, Hexagonal, and Ports-and-Adapters Architecture](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md)
 
 **New vocabulary introduced:** testing pyramid, ice cream cone anti-pattern, localization precision, feedback loop latency

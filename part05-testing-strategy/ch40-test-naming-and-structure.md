@@ -1,5 +1,9 @@
 # Ch 40 — Test Naming and Structure
 
+*A test's name should survive refactoring; a method's name doesn't.*
+
+A test name should describe the behavior under test and the condition that triggers it, never the method being invoked, because behavior-oriented names survive refactoring while method-oriented names go stale the instant the method is renamed. Arrange/Act/Assert is the default internal structure for a test body, and the specific vocabulary matters far less than the consistency of keeping each part visually distinct. Each test should verify one coherent behavior; a test stitching together several unrelated behaviors hides every failure after the first and forces the reader to untangle multiple concerns to diagnose one regression. Table-driven tests are the deliberate exception, gathering many examples of the same behavior in one structured table instead of scattering them across one function per case — and a test's name and structure should be optimized for the worst moment it will ever be read: a failing CI log, with no source file open.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [Fixture-Based Testing](ch37-fixture-based-testing.md), [When Not to Test](ch39-when-not-to-test.md), [Naming Conventions and When They Matter](../part04-code-organization/ch28-naming-conventions-and-when-they-matter.md)
 
 **New vocabulary introduced:** behavioral specification naming, Arrange/Act/Assert, table-driven test

@@ -1,5 +1,9 @@
 # Ch 38 — Property-Based Testing
 
+*PBT strips out the confirmation bias behind example-based tests.*
+
+Property-based testing states a universal claim that must hold for all valid inputs and lets the framework hunt for counterexamples on its own, supplementing example-based testing rather than replacing it. The inputs a human picks for example-based tests reflect what the engineer already expects to work, and PBT strips out that confirmation bias by generating inputs no one would have thought to write by hand. Shrinking, the framework's automatic reduction of a failing input to the smallest case that still fails, is what makes PBT practical, since a failure on fifty thousand characters is undebuggable and a failure on two isn't. PBT pays off strongly when correctness can be stated as a universal structural property, and poorly on business logic riddled with human-defined exceptions, where stating the invariant is harder than writing the examples would have been.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [Fixture-Based Testing](ch37-fixture-based-testing.md), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md)
 
 **New vocabulary introduced:** property-based testing, behavioral invariant, shrinking, round-trip invariance

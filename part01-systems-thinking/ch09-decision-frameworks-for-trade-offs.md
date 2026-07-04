@@ -1,5 +1,9 @@
 # Chapter 9 — Decision Frameworks for Trade-offs
 
+*How much deliberation a decision deserves depends on how hard it is to undo.*
+
+Not every engineering decision deserves the same deliberation — the right amount of analysis is a function of how reversible a choice is and how much damage a wrong call would cause. This chapter gives that intuition a name, reversibility × blast radius, and applies the Cynefin framework to show that most real architectural decisions are merely complicated, not genuinely complex, which makes analysis paralysis a misclassification rather than appropriate caution. It closes Part I by treating indecision itself as an active failure mode: a decision framework's job isn't perfect foresight, it's keeping the blast radius small enough that a wrong decision doesn't sink the system.
+
 **Prerequisites:** All prior chapters in Part I. This chapter assumes fluency with the vocabulary Part I established: complexity, coupling, abstraction, cost models, reliability, and local vs. global optimization. It applies those models to the problem of making real decisions under pressure.
 
 **New vocabulary introduced:** reversibility, blast radius, Cynefin framework, Architecture Decision Record (ADR)

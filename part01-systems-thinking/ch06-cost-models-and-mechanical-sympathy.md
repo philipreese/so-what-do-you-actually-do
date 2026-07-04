@@ -1,5 +1,9 @@
 # Chapter 6 — Cost Models and Mechanical Sympathy
 
+*Architecture decisions are physics problems, not aesthetic ones.*
+
+A cache, a batch, a network call — these read like design choices, but they're governed by a latency hierarchy spanning many orders of magnitude, and treating them as merely "a bit slower" is a category error. This chapter introduces mechanical sympathy: writing software that works with hardware's actual behavior instead of against it, since Big-O notation assumes a uniform-cost memory model that no real hardware provides. It uses Redis, Kafka, and PostgreSQL to show that being "fast" means being aligned with a specific physical constraint, not some general property a system either has or lacks.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md), [Ch 02 — Complexity Is the Enemy](ch02-complexity-is-the-enemy.md), [Ch 04 — Abstraction and Information Hiding](ch04-abstraction-and-information-hiding.md). Specifically: that abstractions hide decisions but never hide cost, and that change cost is not the only cost engineers manage.
 
 **New vocabulary introduced:** mechanical sympathy, latency hierarchy, MVCC (Multi-Version Concurrency Control)

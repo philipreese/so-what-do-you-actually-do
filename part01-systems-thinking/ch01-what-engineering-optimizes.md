@@ -1,5 +1,9 @@
 # Chapter 1 — What Engineering Actually Optimizes
 
+*Every design decision is a trade-off between objectives nobody named out loud.*
+
+Every system optimizes multiple objectives at once — latency, reliability, cost of change — whether or not anyone said so out loud. This chapter identifies the primary axes those objectives compete along, and why most architectural arguments are really disagreements about which axis should win. Naming the optimization target explicitly, even imperfectly, prevents the far more expensive failure: a system that drifts toward contradictory goals nobody voted on.
+
 **Prerequisites:** None. This is the entry point.
 
 **New vocabulary introduced:** optimization target, accidental complexity, essential complexity, MTBF, MTTR, cost of change, optimization target drift

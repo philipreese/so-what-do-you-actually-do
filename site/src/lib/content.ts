@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
-import { parseChapter, buildEngineerHtml, type ParsedChapter } from './parseChapter';
+import { parseChapter, renderChapterHtml } from './parseChapter';
 import { demoContent } from '../data/demoContent';
 
 const ROMAN_NUMERALS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
@@ -24,6 +24,7 @@ export interface ChapterInfo {
   slug: string; // e.g. "ch01"
   number: string; // e.g. "01"
   title: string; // e.g. "What Engineering Actually Optimizes"
+  subtitle: string; // e.g. "Managing complexity by hiding unnecessary detail."
   partSlug: string; // e.g. "part01"
   partNumber: string; // e.g. "I"
   filePath: string;
@@ -135,11 +136,13 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
       if (parsedTitle) {
         chTitle = parsedTitle;
       }
+      const chSubtitle = parseChapter(chContent).subtitle;
 
       const chapterInfo: ChapterInfo = {
         slug: chSlug,
         number: chNumStr,
         title: chTitle,
+        subtitle: chSubtitle,
         partSlug,
         partNumber: roman,
         filePath: chPath,
@@ -231,7 +234,8 @@ export function splitChapterTracks(rawMarkdown: string, chapterSlug: string) {
   }
 
   const cleanMarkdownResolved = resolveRelativeLinks(cleanMarkdown);
-  const engineerHtml = buildEngineerHtml(cleanMarkdownResolved);
+  const parsed = parseChapter(cleanMarkdownResolved);
+  const engineerHtml = renderChapterHtml(parsed);
 
   // Extract headings for the right sidebar TOC
   const headingPattern = /^##\s+(.+)$/gm;
@@ -248,6 +252,8 @@ export function splitChapterTracks(rawMarkdown: string, chapterSlug: string) {
     wifeHtml,
     kidsHtml,
     headings,
+    subtitle: parsed.subtitle,
+    thesis: parsed.thesis,
   };
 }
 

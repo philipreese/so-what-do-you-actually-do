@@ -1,5 +1,9 @@
 # Chapter 3 — Coupling and Cohesion
 
+*Two independent axes, not opposite ends of the same one.*
+
+Coupling and cohesion get treated as opposites more often than they should be, but a component can be tightly coupled and highly cohesive at the same time. This chapter separates the two axes, introduces connascence as a way to measure how strongly components depend on each other, and argues that the coupling which actually breaks systems is the hidden kind — the dependency that looks loose until it isn't. The goal it argues for is specific: high cohesion inside components and low coupling between them, pursued as two separate problems rather than one dial.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md), [Ch 02 — Complexity Is the Enemy](ch02-complexity-is-the-enemy.md). Specifically: accidental complexity, cost of change, and state as a complexity source.
 
 **New vocabulary introduced:** coupling, cohesion, afferent coupling (Ca), efferent coupling (Ce), instability metric, connascence, distributed monolith, shotgun surgery

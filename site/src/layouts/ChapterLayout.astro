@@ -10,20 +10,24 @@ interface HeadingItem {
 interface Props {
   chapterNumber: string;
   title: string;
+  subtitle?: string;
+  thesis?: string;
   headings?: HeadingItem[];
 }
 
-const { chapterNumber, title, headings = [] } = Astro.props;
+const { chapterNumber, title, subtitle = '', thesis = '', headings = [] } = Astro.props;
 const currentSlug = Astro.url.pathname.split('/').pop() || '';
 ---
 
-<DocsLayout title={title}>
+<DocsLayout title={title} description={subtitle || undefined}>
   <div class="docs-content-container">
     <div class="chapter-container">
       <header class="chapter-header">
         <div class="chapter-header-left">
           <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
           <h1>{title}</h1>
+          {subtitle && <p class="chapter-subtitle">{subtitle}</p>}
+          {thesis && <p class="chapter-thesis">{thesis}</p>}
         </div>
       </header>
       <div class="chapter-content-slot">

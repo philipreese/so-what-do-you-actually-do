@@ -26,7 +26,10 @@ const appendices = getAllAppendices();
               <li>
                 <a href={`/chapters/${ch.slug}`} class="sitemap-chapter-link">
                   <span class="sitemap-ch-num">{ch.number}</span>
-                  <span class="sitemap-ch-title">{ch.title}</span>
+                  <span class="sitemap-ch-text">
+                    <span class="sitemap-ch-title">{ch.title}</span>
+                    {ch.subtitle && <span class="sitemap-ch-subtitle">{ch.subtitle}</span>}
+                  </span>
                 </a>
               </li>
             ))}
@@ -117,7 +120,7 @@ const appendices = getAllAppendices();
   }
   .sitemap-chapter-link {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     padding: 0.5rem;
     border-radius: 8px;
     text-decoration: none;
@@ -133,9 +136,20 @@ const appendices = getAllAppendices();
     font-weight: 600;
     color: var(--text-muted);
     margin-right: 0.75rem;
+    padding-top: 0.1rem;
+  }
+  .sitemap-ch-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
   }
   .sitemap-ch-title {
     font-size: 0.95rem;
+  }
+  .sitemap-ch-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.35;
   }
   .sitemap-appendices {
     margin-top: 3.5rem;

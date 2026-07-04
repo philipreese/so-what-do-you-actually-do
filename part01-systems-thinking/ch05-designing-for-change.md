@@ -1,5 +1,9 @@
 # Chapter 5 — Designing for Change
 
+*Deciding what's allowed to move, and locking down everything else.*
+
+Systems rarely fail because they were badly designed — they fail because the wrong things were made hard to change. This chapter treats designing for change as an act of constraint selection: choosing which axes of a system are allowed to move and freezing the rest, typically behind a stable interface over a churning implementation. It draws a hard line between designing for change, which bets on specific, known variation, and future-proofing, which pays for speculative variation that may never arrive.
+
 **Prerequisites:** [Ch 02 — Complexity Is the Enemy](ch02-complexity-is-the-enemy.md), [Ch 03 — Coupling and Cohesion](ch03-coupling-and-cohesion.md), [Ch 04 — Abstraction and Information Hiding](ch04-abstraction-and-information-hiding.md). Specifically: accidental complexity, afferent coupling, and information hiding as a tool for isolating volatile decisions.
 
 **New vocabulary introduced:** Open/Closed Principle (OCP), axis of variation, future-proofing

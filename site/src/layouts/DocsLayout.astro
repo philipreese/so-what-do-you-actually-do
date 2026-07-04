@@ -4,9 +4,10 @@ import { getAllPartsAndChapters, getAllAppendices } from '../lib/content';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = "A software engineer's handbook — with a chapter for everyone else." } = Astro.props;
 const { parts } = getAllPartsAndChapters();
 const appendices = getAllAppendices();
 
@@ -23,6 +24,12 @@ const activePartSlug = parts.find(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — So, What Do You Actually Do?</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} — So, What Do You Actually Do?`} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${title} — So, What Do You Actually Do?`} />
+    <meta name="twitter:description" content={description} />
     <!-- Premium Editorial & Neo-Grotesque Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

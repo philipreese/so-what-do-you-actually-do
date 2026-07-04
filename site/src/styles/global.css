@@ -781,6 +781,27 @@ html[data-theme="light"] .moon-icon {
   line-height: 1.15;
 }
 
+.chapter-header-left h1 {
+  margin-bottom: 0.4rem;
+}
+
+.chapter-subtitle {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0 0 0.9rem;
+}
+
+.chapter-thesis {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--text-color);
+  max-width: 68ch;
+  margin: 0 0 1.25rem;
+}
+
 .chapter-main h2, .part-main h2 {
   font-family: 'Newsreader', Georgia, serif;
   font-size: 1.55rem;

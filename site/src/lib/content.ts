@@ -50,6 +50,23 @@ function getRepoRoot(): string {
   return path.resolve(process.cwd(), '..');
 }
 
+function assetPathIfExists(fileName: string): string | undefined {
+  const exists = fs.existsSync(path.join(getRepoRoot(), 'assets', fileName));
+  return exists ? `/assets/${fileName}` : undefined;
+}
+
+export function getChapterImage(chapterNumber: string): string | undefined {
+  return assetPathIfExists(`Ch${chapterNumber}.jpg`);
+}
+
+export function getPartImage(partNumber: string): string | undefined {
+  return assetPathIfExists(`part${partNumber}.jpg`);
+}
+
+export function getAppendixImage(letter: string): string | undefined {
+  return assetPathIfExists(`Ap${letter.toUpperCase()}.jpg`);
+}
+
 export function toRoman(num: number): string {
   return ROMAN_NUMERALS[num] || String(num);
 }

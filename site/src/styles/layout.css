@@ -496,6 +496,34 @@ html[data-theme="light"] .moon-icon {
     background: var(--bg-color);
 }
 
+.chapter-header-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.chapter-header-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.chapter-header-image {
+    flex-shrink: 0;
+    width: 220px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--pre-bg);
+}
+
+.chapter-header-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .chapter-eyebrow {
     margin: 0;
     color: var(--accent-color);
@@ -519,7 +547,6 @@ html[data-theme="light"] .moon-icon {
 }
 
 .chapter-thesis {
-    max-width: 68ch;
     margin: 0 0 1.25rem;
     color: var(--text-color);
     font-family: "Newsreader", Georgia, serif;
@@ -565,7 +592,7 @@ html[data-theme="light"] .moon-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 140px;
+    height: 300px;
     margin-bottom: 1.5rem;
     border: 1.5px solid var(--border-color);
     border-radius: 8px;
@@ -576,7 +603,7 @@ html[data-theme="light"] .moon-icon {
 .part-banner img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .part-banner-placeholder {
@@ -751,5 +778,16 @@ html[data-theme="light"] .moon-icon {
 
     .chapter-footer {
         padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .chapter-header-row {
+        flex-direction: column;
+    }
+
+    .chapter-header-image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
     }
 }

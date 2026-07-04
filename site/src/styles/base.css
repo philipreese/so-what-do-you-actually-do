@@ -101,6 +101,15 @@ blockquote p {
     line-height: 1.65;
 }
 
+.chapter-main li,
+.part-body li,
+.pane li {
+    color: var(--text-color);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.02rem;
+    line-height: 1.65;
+}
+
 /* ==========================================================================
    3. Unified Tables
    ========================================================================== */

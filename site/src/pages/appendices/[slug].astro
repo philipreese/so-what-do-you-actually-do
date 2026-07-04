@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { marked } from 'marked';
 import PartLayout from '../../layouts/PartLayout.astro';
-import { getAllAppendices, resolveRelativeLinks } from '../../lib/content';
+import { getAllAppendices, getAppendixImage, resolveRelativeLinks } from '../../lib/content';
 
 export async function getStaticPaths() {
   const appendices = getAllAppendices();
@@ -20,8 +20,9 @@ const cleanedMarkdown = rawMarkdown.replace(/^#[^\n]*\n/, '');
 const resolvedMarkdown = resolveRelativeLinks(cleanedMarkdown);
 
 const bodyHtml = marked.parse(resolvedMarkdown) as string;
+const bannerSrc = getAppendixImage(appendix.letter);
 ---
 
-<PartLayout partNumber={appendix.letter} title={appendix.title} bannerEmoji="📚" eyebrow={`Appendix ${appendix.letter}`}>
+<PartLayout partNumber={appendix.letter} title={appendix.title} bannerEmoji="📚" eyebrow={`Appendix ${appendix.letter}`} bannerSrc={bannerSrc}>
   <Fragment set:html={bodyHtml} />
 </PartLayout>

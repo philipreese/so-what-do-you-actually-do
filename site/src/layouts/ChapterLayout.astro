@@ -13,9 +13,10 @@ interface Props {
   subtitle?: string;
   thesis?: string;
   headings?: HeadingItem[];
+  imageSrc?: string;
 }
 
-const { chapterNumber, title, subtitle = '', thesis = '', headings = [] } = Astro.props;
+const { chapterNumber, title, subtitle = '', thesis = '', headings = [], imageSrc } = Astro.props;
 const currentSlug = Astro.url.pathname.split('/').pop() || '';
 ---
 
@@ -23,11 +24,18 @@ const currentSlug = Astro.url.pathname.split('/').pop() || '';
   <div class="docs-content-container">
     <div class="chapter-container">
       <header class="chapter-header">
-        <div class="chapter-header-left">
-          <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
-          <h1>{title}</h1>
-          {subtitle && <p class="chapter-subtitle">{subtitle}</p>}
-          {thesis && <p class="chapter-thesis">{thesis}</p>}
+        <div class="chapter-header-row">
+          <div class="chapter-header-left">
+            <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
+            <h1>{title}</h1>
+            {subtitle && <p class="chapter-subtitle">{subtitle}</p>}
+            {thesis && <p class="chapter-thesis">{thesis}</p>}
+          </div>
+          {imageSrc && (
+            <div class="chapter-header-image">
+              <img src={imageSrc} alt="" />
+            </div>
+          )}
         </div>
       </header>
       <div class="chapter-content-slot">

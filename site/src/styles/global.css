@@ -40,6 +40,18 @@
   --callout-info-bg: #e3effc;
   --callout-info-border: #adcdf5;
   --callout-info-text: #1e4a7a;
+
+  --meta-card-bg: rgba(0, 0, 0, 0.015);
+
+  --track-engineer-bg: rgba(30, 102, 245, 0.04);
+  --track-engineer-border: rgba(30, 102, 245, 0.18);
+  --track-engineer-text: #1e66f5;
+  --track-wife-bg: rgba(225, 29, 72, 0.04);
+  --track-wife-border: rgba(225, 29, 72, 0.18);
+  --track-wife-text: #e11d48;
+  --track-kids-bg: rgba(223, 142, 29, 0.05);
+  --track-kids-border: rgba(223, 142, 29, 0.2);
+  --track-kids-text: #df8e1d;
 }
 
 [data-theme="dark"] {
@@ -83,6 +95,18 @@
   --callout-info-bg: #1b2f47;
   --callout-info-border: #2f527c;
   --callout-info-text: #b6d5f7;
+
+  --meta-card-bg: rgba(255, 255, 255, 0.015);
+
+  --track-engineer-bg: rgba(140, 173, 250, 0.06);
+  --track-engineer-border: rgba(140, 173, 250, 0.2);
+  --track-engineer-text: #8cadfa;
+  --track-wife-bg: rgba(253, 164, 175, 0.06);
+  --track-wife-border: rgba(253, 164, 175, 0.2);
+  --track-wife-text: #fda4af;
+  --track-kids-bg: rgba(238, 212, 159, 0.06);
+  --track-kids-border: rgba(238, 212, 159, 0.2);
+  --track-kids-text: #eed49f;
 }
 
 * {
@@ -782,7 +806,7 @@ html[data-theme="light"] .moon-icon {
 }
 
 .chapter-header-left h1 {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.65rem;
 }
 
 .chapter-subtitle {

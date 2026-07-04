@@ -188,53 +188,48 @@ import DocsLayout from '../layouts/DocsLayout.astro';
   }
   
   .grid-card {
-    position: relative;
-    background: var(--card-bg);
-    border: 2.5px solid var(--border-color);
+    padding: 1.25rem;
     border-radius: 8px;
-    padding: 2rem 1.75rem;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    border: 2.5px solid var(--border-color);
+    background: var(--meta-card-bg);
   }
-  
+
   .card-engineer {
-    border-left: 6px solid #1e66f5; /* Catppuccin Blue */
-  }
-  
-  [data-theme="dark"] .card-engineer {
-    border-left-color: #8cadfa;
+    background: var(--track-engineer-bg);
+    border-color: var(--track-engineer-border);
   }
 
   .card-wife {
-    border-left: 6px solid #e11d48; /* Red/Rose */
-  }
-  
-  [data-theme="dark"] .card-wife {
-    border-left-color: #fda4af;
+    background: var(--track-wife-bg);
+    border-color: var(--track-wife-border);
   }
 
   .card-kids {
-    border-left: 6px solid #df8e1d; /* Yellow/Amber */
-  }
-  
-  [data-theme="dark"] .card-kids {
-    border-left-color: #eed49f;
+    background: var(--track-kids-bg);
+    border-color: var(--track-kids-border);
   }
 
-  .grid-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border-focus);
-    box-shadow: 0 12px 30px -10px rgba(114, 135, 253, 0.2), 0 4px 12px -8px rgba(0, 0, 0, 0.05);
-  }
-  
   .grid-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-    font-family: 'Newsreader', Georgia, serif;
+    margin: 0 0 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
-  
+
+  .card-engineer h3 {
+    color: var(--track-engineer-text);
+  }
+
+  .card-wife h3 {
+    color: var(--track-wife-text);
+  }
+
+  .card-kids h3 {
+    color: var(--track-kids-text);
+  }
+
   .grid-card p {
     font-size: 0.92rem;
     color: var(--text-muted);

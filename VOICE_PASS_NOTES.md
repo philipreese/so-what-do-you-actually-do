@@ -155,3 +155,13 @@ Performance, the last numbered Part in the book. Same inline `[Strong Recommenda
 **Pattern that keeps working, restated again:** ending a Why-it-exists or trade-off paragraph on a short blunt clause — Ch85: "a component that looks slow in isolation is not evidence it is the bottleneck," Ch89: "a structural fix removes the cost. A cache just defers or amortizes it." Still the reliable, low-risk move for the 1-2-jokes-per-chapter budget — used more sparingly this Part than most, since the source prose was already fairly tight.
 
 **This closes every Part.** Ch 01–90 and Appendix B are all that `edit1-voice-pass.md` scopes — Appendix B is next and last.
+
+## Appendix B (Common Engineering Smells) — done
+
+Structurally unlike every chapter so far: a flat catalog of ~40 named smells across 11 categories, each entry four fields (*What you observe* / *Usually a symptom of* / *Full treatment* / *False positive*), no Decision template, no recommendation labels, no "Why Smart Engineers Disagree" section. Treated each smell's four-line entry as the paragraph unit; left every bolded smell name, every `##` category header, and every `[Ch NN — ...](...)` cross-reference link byte-identical (verified with a targeted grep-diff on all three, not just a general diff read). 80/80 total — lighter touch than any chapter-format Part, appropriate for terse, already-compressed catalog prose where most entries only needed a word-choice or rhythm tweak to one of the two prose lines, not a full paragraph rework.
+
+**Judgment call on scope:** unlike a chapter, this file has no single obvious place for "1-2 jokes" to land, since there's no continuous narrative — added exactly two for the whole appendix (the intro's Chesterton's-fence aside, and one aside on the Multi-Flag God Endpoint entry) and left the other ~39 entries as word-choice/rhythm-only edits. Treated the appendix as one chapter-equivalent unit for budgeting purposes, not 40 independent chances to add humor.
+
+**No retired-word or AI-tell catches** — clean on the first pass, consistent with how tight and pre-compressed this catalog's prose already was going in.
+
+**This is the last file in scope.** `edit1-voice-pass.md` is now fully applied across Ch 01–90 and Appendix B. Per the original prompt's instruction, `VOICE_PASS_NOTES.md` is safe to delete now that every Part is done — flagging that for the user rather than deleting it here.

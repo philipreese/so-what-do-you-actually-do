@@ -19,6 +19,16 @@ This chapter argues software logs deserve exactly the same discipline, and most 
 
 The other half of this chapter is about how urgently something gets flagged. A babysitter needs to know the difference between "mention this when the parents get home" and "call immediately" — and that label has nothing to do with how alarming it felt to the babysitter in the moment. It has to mean the same thing every time, to everyone reading it, or the "call immediately" note gets ignored the one time it actually matters, buried under a pile of routine notes that never needed the same label at all.
 
+## For My Kids
+
+Say you're on lookout during capture the flag, radio in hand, watching the tree line at dusk. You could report literally everything you see — a squirrel, a shadow, your own team walking past — but nobody wants that channel. **The only thing worth radioing in is something your team would actually do something different because of:** "two of them just crossed by the shed" changes what your team does next. "I think I saw a bird" doesn't.
+
+**The second rule matters just as much: whatever word you use for "drop everything, this is serious" has to mean the exact same thing every single time.** Not how nervous you personally feel right now — an actual, agreed-on signal everyone on the team can trust without having to guess how big a deal it really is.
+
+Say it once for something small — "code red, I think that might've been a raccoon" — and it stops meaning anything. Your team hears "code red" a few times for nothing and starts tuning the radio out entirely, the same way anyone tunes out a friend who's always convinced something's a big deal.
+
+Then the actual two players really do come around the shed. You call it in exactly the way you always do. And this time nobody moves — because the radio already trained them not to.
+
 ---
 
 Every line an application logs in production has to be generated, serialized, shipped, indexed, and stored somewhere — nothing about a `log.info()` call is free just because it's one line in the source. It's the same information-cost argument Ch 02 makes about complexity and Ch 30 and Ch 64 make about comments and documentation, just running at 3 a.m. instead of at review time. An unread log line that restates a step already visible in the code is worth exactly what a comment that restates the code next to it is worth: nothing, plus a bill. It's accidental complexity injected straight into the observability pipeline, paid for whether or not a single human ever queries it. This chapter covers what belongs in a log once logging is already the right tool for the job. Whether a log, a metric, or a trace is the right tool at all is Ch 70's question, not this one's.

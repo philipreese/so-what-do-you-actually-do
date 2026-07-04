@@ -250,3 +250,27 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
 - Push after Part VIII (or VIII+IX together)
+
+---
+
+## Part IX complete, Ch69–Ch73 (5 chapters — observability)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch69**: capture-the-flag lookout on a walkie-talkie — only radio in what changes what the team does, and the "drop everything" word has to mean the same thing every time or it stops working
+- **Ch70**: a league standings board (season health, one glance) vs. one game's box score (the specific final number) vs. a play-by-play (exact sequence in one stretch) — three different questions, none a substitute for the others
+- **Ch71**: the family rule for calling Dad at work — only for something that can't wait and nobody else can fix, with an older sibling already absorbing most small stuff before it's ever a question
+- **Ch72**: a scavenger hunt clue physically handed off across five stops — timing each handoff to find the actual gap, one missed log orphaning everyone after it, and reviewing slow/broken hunts after the fact instead of a pre-picked random sample
+- **Ch73**: a daily screen-time allowance built to flex to 70 minutes — using none of the slack isn't virtue, and a slow ten-minutes-a-day creep is easier to miss and costlier than one big blowout day
+
+### What worked
+- **Formatting was chosen per chapter's actual shape, not rotated on a schedule.** Ch69 (two explicit named rules) got bold lead-ins on each rule. Ch71 (one sentence is the whole point) got an italic pull-quote opener. Ch72 (two distinct mechanisms — propagation, sampling) got bold leads marking each. Ch70 and Ch73 (a parallel comparison and an extended single scene, respectively) got plain prose, since the content's own structure carried the section without needing typographic emphasis.
+- **When a section is plain prose with no bold/pull-quote/NOTE, its paragraphs need to run shorter than a styled section's would** — one or two sentences each, sometimes a single sentence standing alone as its own paragraph (e.g. Ch70's "Three different questions, three completely different records. None of them substitutes for the other two." / Ch73's "Including the day a new game update actually was worth staying up an extra twenty minutes for." as its own line). Plain prose has no bold text to create visual rhythm, so paragraph breaks have to do that work instead — this needed a real revision pass on both Ch70 and Ch73, not just a first-draft habit to carry forward.
+- Avoided reusing the walkie-talkie/radio vehicle anywhere else in the book so far; avoided reusing Ch67's babysitting-note analogy for Ch69 even though both chapters' wife sections independently reached for a babysitter
+
+### Edge cases and decisions
+- Ch69's wife section already uses a babysitter-note analogy, and Ch67 (previous Part)'s kids section also used babysitting handoff notes — picked capture-the-flag lookout instead specifically to avoid a same-vehicle collision one Part apart, even though neither wife section shares an image with the other
+- Ch73's kids section deliberately did not reuse "diet cheat meals" (its own wife section's image) or "allowance" (already spent as Ch09's reversibility analogy in Part I) — landed on a screen-time budget instead, a resource a middle schooler negotiates directly and recognizes as genuinely capped
+
+### Next session
+- Continue with Part X, Ch74–Ch78 (5 chapters — concurrency and parallelism)
+- Push after Part IX+X together

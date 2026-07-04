@@ -19,6 +19,22 @@ This chapter argues computer systems need the equivalent of all three, and that 
 
 **And there's one specific way people ruin the cheap summary version: trying to make it also track something unique about every single event.** A monthly total stays fast precisely because it only has a handful of categories — groceries, gas, dining out. The moment someone tries to make that same summary also record who exactly went on every single shopping trip, it stops being a summary at all. It quietly turns into the entire shoebox of receipts, just now pretending to be the one-line total everybody thought they were still getting for free.
 
+## For My Kids
+
+A league standings board — win, loss, win, loss for every team — answers one question fast: are we having a good season. That's all it's built to do, and it does it in about half a second.
+
+It can't answer "wait, did we actually beat the Hawks by twenty or by two?" For that you need one specific box score — the actual final numbers from that one game.
+
+And if the question is "how exactly did we blow a ten-point lead in the last two minutes," even the box score won't cut it. You need the actual play-by-play, the exact sequence of passes and shots from that one stretch.
+
+Three different questions, three completely different records. None of them substitutes for the other two.
+
+The standings board was never going to show you a single possession. The play-by-play would be insane to keep for an entire season of every game.
+
+Here's the part that ruins it: the standings board only stays fast because it only tracks wins and losses — one number per team.
+
+The moment someone decides it should also track every player's individual stats for every game all season, it stops being a board you can glance at. It quietly turns into the entire archive, just wearing the standings board's name.
+
 ---
 
 Ch 69 established what belongs in a log once logging is already the right tool. This chapter goes up a level: which of the three observability signals is the right tool at all, for a given question, at what cost. Two of the three are new here — logs already exist from Ch 69, metrics and traces get introduced fresh. Traces get named and placed in the taxonomy; the mechanics of context propagation and sampling that actually make tracing work are Ch 72's problem, not this chapter's.

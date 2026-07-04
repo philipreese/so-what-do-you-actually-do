@@ -19,6 +19,16 @@ This chapter argues that waking someone up to deal with a computer problem works
 
 **The real alarm — the one worth trusting — should be rare enough that when it goes off, everyone still looks up.** That's not a coincidence. It's the entire design goal.
 
+## For My Kids
+
+*You only call Dad at work if it's something that genuinely can't wait and nobody else can handle it — the basement's flooding, not "he took the last granola bar."*
+
+Most small stuff never even reaches that decision. Your older sibling already handles it — a fight over the remote, a scraped knee — without anyone picking up a phone at all. That's not the rule working by accident. That's the whole point of having an older sibling around.
+
+Call about every little disagreement, though, and the rule stops meaning anything. Dad starts answering distracted, half-expecting nothing urgent, because the last dozen calls weren't. Some of those small things are still worth mentioning — just not with a phone call. A text he'll see at dinner works fine for "we're out of milk."
+
+The day the basement actually floods, you call exactly the way you always do. But by now the calls have trained him to expect a granola bar complaint, and he almost lets it go to voicemail — because nothing about this call sounded any different from the twenty before it that turned out to be nothing.
+
 ---
 
 Ch 68 already defines what a responder reads once paged. This chapter decides whether they get paged at all. Applying Principle 6 to real-time operations: interrupting an engineer, especially outside working hours, is a real and expensive operation, and it's justified only when the cost of not knowing immediately outweighs the cost of the interruption itself. Most conditions a monitoring system detects fail that test — they belong on a dashboard or in a ticket, not buzzing in someone's pocket at 3 a.m.

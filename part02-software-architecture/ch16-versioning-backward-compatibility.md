@@ -22,6 +22,16 @@ When a breaking change genuinely has to ship, the answer is versioning — runni
 
 Retiring the old version safely is its own discipline. Documentation alone doesn't work — a surprising fraction of consumers never read it, and "deprecated" in the changelog doesn't generate a 2am alert when traffic on `/v1/` is still running at 40% two weeks before the sunset date. The sunset pattern puts active, programmatic signals in the responses themselves: a warning header, then a `Sunset` date header, then scheduled brownouts — deliberate brief outages designed to trip the alerting of whatever client wasn't paying attention to the headers. Not cruel. Necessary.
 
+## For My Kids
+
+Say you drive your neighbor's kid to school every morning, and the deal has always been: be at the corner by 7:45, and you'll wait a couple minutes for stragglers.
+
+**One day you decide 7:45 means 7:45, no more grace period — waiting felt sloppy, and this seems like an easy fix.** You don't mention it to anyone; it's such a small change, barely worth a text. The next morning, the kid who's always been a minute late is standing on an empty corner, watching a car that already left. From where they're standing, that's not "a small adjustment." That's just you not showing up.
+
+**Here's the part that matters: to the person depending on you, there's no difference between "I changed the rules quietly" and "I just didn't show up."** Both look exactly the same from the corner. Whatever you meant by it never reaches them — only what actually happened does.
+
+If the pickup time genuinely has to change, the fix isn't complicated: tell everyone first, pick a date it actually starts, and keep the old grace period running until then. A promise you're changing needs a warning. A promise you're just breaking doesn't — and from the sidewalk, those look identical.
+
 ---
 
 ## The Backward Compatibility Boundary

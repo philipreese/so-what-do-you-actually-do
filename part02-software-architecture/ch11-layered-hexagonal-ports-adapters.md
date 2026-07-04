@@ -22,6 +22,14 @@
 
 The honest cost is boilerplate. You need explicit translation layers between the database shape and the domain model. You need wiring code that connects the pieces together. For a service whose entire job is moving form submissions into a table, that overhead is genuinely wasteful. For a billing engine or a pricing system with hundreds of overlapping rules, it's what keeps the test suite fast and the business logic readable for the next five years.
 
+## For My Kids
+
+Say you and your friends invent your own card game on a long car ride. **The rules are the actual game — everything else is just whatever cards happen to be in your hands.** A good rule sounds like "compare the two highest numbers, higher one wins." It doesn't care what deck you're holding. Play it with Uno cards, a regular deck, cards you found in a drawer at grandma's — the rule still works, because it was never written about the deck in the first place.
+
+**A lazy rule sounds like "the blue Uno card beats the red one."** Fast to write, and it works fine — right up until the Uno deck goes missing and you're stuck with a normal deck that doesn't even have blue cards. Now half your rulebook doesn't mean anything, because the rule and the one deck you happened to own got welded together.
+
+Writing the clean version takes more thought up front — you have to actually separate "what decides who wins" from "which cards are sitting in front of you." For a game you're only playing once, in one car, on one trip, that extra care is wasted effort. For a game your whole friend group keeps playing for years, with whatever cards anyone happens to have around, it's the only version that doesn't fall apart the first time the deck changes.
+
 ---
 
 ## Layered (N-Tier) Architecture

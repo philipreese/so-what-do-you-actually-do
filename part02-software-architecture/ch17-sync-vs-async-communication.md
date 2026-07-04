@@ -20,6 +20,14 @@
 
 The saga pattern is the answer for when a multi-step transaction has to span services and stay consistent. Unlike a database transaction, there's no automatic rollback: if step three fails, the system has to run explicit "compensating actions" for steps one and two — manually issuing a refund, manually marking an order failed. That's code someone has to write, test, and watch. If the compensating action itself fails and nobody's watching the dead-letter queue, the system gets stuck half-committed, and the only way to find out is a customer calling support.
 
+## For My Kids
+
+Say your phone's about to die and you need a charger, so you call a friend who's already at the hangout spot. **She doesn't have one either, so she puts you on hold and calls a second friend to check — and now you're just standing there, stuck on a call you can't hang up on, because hanging up means losing the whole chain.** The second friend takes a minute digging through her bag. You didn't do anything wrong. Everyone in that chain just has to stay on the line at the same exact moment for it to work at all.
+
+**Now picture the other way: you text the group chat, "anyone have a charger?" and go back to getting ready.** You're not standing by the phone waiting on anyone. Whoever sees it and has one replies whenever they check — five minutes from now, twenty, doesn't matter, because you were never stuck holding still for it.
+
+**The trade is real, though.** The phone call gets you an answer immediately, one way or the other. The group text might sit there unanswered for an hour if nobody happens to look — and you won't find out you're stuck without a charger until you're already at the door at 2%. Waiting live and getting stuck waiting are two different problems. You don't get to dodge both at once.
+
 ---
 
 ## The Communication Paradigm: Synchronous vs. Asynchronous

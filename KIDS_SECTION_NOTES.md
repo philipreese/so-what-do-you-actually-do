@@ -56,3 +56,31 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part II, Ch10–Ch18
 - Push after Part II (or Part II+III together)
+
+---
+
+## Part II complete, Ch10–Ch18
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch10**: group project — working together at one table vs. splitting up "because it feels grown-up" while still texting every ten minutes (distributed monolith)
+- **Ch11**: an invented card game — rules written generically ("compare the two highest numbers") vs. welded to one deck ("the blue Uno card wins")
+- **Ch12**: science-fair shopping list written in your own words vs. one volunteer's private shorthand (interface ownership)
+- **Ch13**: two unrelated school clubs secretly sharing one spreadsheet (shared-database anti-pattern — same failure shape as Ch03's hidden coupling, different scale)
+- **Ch14**: relaying a message through your sister to Mom — real middleman (she times it, softens it) vs. pointless one (repeats verbatim, just adds a hop)
+- **Ch15**: guest WiFi password vs. handing out the real one that's now impossible to walk back a year later
+- **Ch16**: neighbor carpool pickup time quietly tightened with no warning — indistinguishable, to the kid on the corner, from just not showing up
+- **Ch17**: borrowing a phone charger — calling a chain of friends live (stuck until everyone answers) vs. texting the group chat (free to walk away, but might not hear back in time)
+- **Ch18**: three family members independently feeding the hamster "to be safe" — nobody was the one actual owner of the true answer
+
+### What worked
+- Several chapters this Part circle the same underlying shape (own the vocabulary / don't weld to one implementation — Ch04, Ch11, Ch12, Ch14 all touch it) — kept each one's *surface scenario* distinct (card game, shopping list, message relay) even when the underlying lesson rhymes; a reader shouldn't notice the repetition
+- Physical/social kid analogies continue to outperform anything ops-flavored — no chapter in Part II reached for an app or screen as the vehicle
+- The "two things looked independent but weren't" shape (Ch10, Ch13) reads well as a reveal — state the surface appearance first, then show the moment it breaks
+
+### Edge cases and decisions
+- When a wife-section chapter already has a strong, obvious analogy (Ch17's phone-call/text-message), it's fine for the kids section to reuse the same vehicle rather than force a different one — reused it here (charger/group-chat framing) since it was genuinely the best fit, not because of laziness. Sharing an image across the two sections is allowed; it's just not required.
+- Ch18 and Ch13 are both "shared state, multiple owners" chapters at different scales (data ownership vs. architecture-level coupling) — used genuinely different scenarios (hamster feeding vs. shared spreadsheet) so they don't read as the same joke twice
+
+### Next session
+- Continue with Part III, Ch19–Ch26
+- Push now (after Part I + Part II) per the 2-3 Part cadence

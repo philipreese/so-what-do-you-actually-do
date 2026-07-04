@@ -20,6 +20,16 @@
 
 The chapter's other justified case is the *anti-corruption layer* — a translation boundary you build specifically when integrating with a legacy system or a third-party API that was designed with completely different assumptions than your own. The warehouse system that identifies products by a 14-character code nobody would design on purpose today gets wrapped in a clean interface, and only one small adapter class ever has to speak its language. The rest of the product doesn't know it exists. When the legacy system eventually gets replaced, only that adapter has to change — not the dozen places in the codebase that would have been infected with its naming conventions otherwise.
 
+## For My Kids
+
+Say you want money for a field trip, and instead of asking your mom directly, you ask your older sister to ask her for you.
+
+If your sister actually does something with that message — she knows Mom's in a rough mood today, so she picks the moment, mentions you already finished your chores, softens the ask — she's a real middleman. She absorbed something you couldn't have handled yourself. Worth the extra step.
+
+**Most of the time, though, "asking your sister to ask Mom" just means your sister walks over and repeats your exact sentence, word for word, unchanged.** She didn't do anything with the message. She just added a stop between you and Mom — now you have to find her, wait until she's free, and wait again for her to relay the answer — for a conversation that would've taken the same ten seconds if you'd walked up and asked yourself.
+
+**The question worth asking before you loop anyone in isn't "does this feel more official."** It's "is this person actually going to do something with the message, or just pass it along unchanged." A messenger who changes nothing isn't help. They're just a longer line between you and the answer you were always going to get anyway.
+
 ---
 
 ## The Justification Threshold

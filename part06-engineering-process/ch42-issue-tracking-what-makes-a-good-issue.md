@@ -12,6 +12,14 @@
 - One issue should represent one unit of work that can close. An issue with no natural completion point — "improve performance," "clean up the codebase" — is a theme, not an issue, and will sit open indefinitely.
 - Creating issues is cheap; maintaining the collection is not. A backlog that is never pruned decays into a *write-only tracker* — closing an issue as "won't do" is a legitimate outcome, not a failure.
 
+## For My Wife
+
+> *A ticket that says "the search is broken" and a ticket that says "search returns zero results when a product name contains an apostrophe" aren't the same amount of work to read — but only one of them can actually be handed to somebody else.*
+
+**A good work ticket is basically a grocery list you're leaving for someone else to shop from, not a note only you could decode.** "Get stuff for dinner" means nothing to whoever picks up the list — they don't know what dinner is, what you already have, or what counts as done. "Two pounds of chicken thighs, skin on, from the meat counter" means the same thing to anyone who reads it, and you can both look in the cart afterward and agree, with no argument, whether the job got done. This chapter's core advice does the same thing for engineering tickets: describe the actual problem, not the fix you've already guessed at, and say exactly what "finished" looks like, so two different people don't end up quietly disagreeing later about whether the work is really over.
+
+**The other trap is the chore that never has an end.** "Clean the garage" sits on a to-do list for years, because there's no moment where it's obviously, checkably done — you can always find one more shelf. "Sort and label the tools in the left cabinet" has an actual finish line. A ticket needs the same thing. If nobody can point to the moment it's over, it isn't a task yet — it's a wish, and wishes sit open forever, cluttering the list until nobody trusts the list at all.
+
 ---
 
 An issue is the smallest planning artifact in an engineering process: a description of work that someone can understand, perform, verify, and close, ideally without anyone getting paged for clarification. Every larger construct in this Part — the pull request in [Ch 43](ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), the milestone in [Ch 44](ch44-milestone-and-phase-planning.md) — is ultimately just issues stacked on top of each other, and the whole apparatus still has to justify its own overhead in [Ch 49](ch49-process-overhead-the-value-threshold.md). Get the base unit wrong and every process built on it inherits the same fuzziness, just at a larger and more expensive scale. This chapter covers what makes an issue actually actionable, how to scope one so it has a chance of closing, and why a healthy tracker needs as much deletion as creation — hoarding tickets is not the same as managing work.

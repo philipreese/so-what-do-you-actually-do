@@ -12,6 +12,15 @@
 - Incremental PRs, feature flags, and stacked PRs are the standard techniques for splitting implementation into reviewable steps while keeping one stable issue as the record of intent.
 - Every PR should reference the issue that motivated it. An issue with no linked activity, or a PR with no linked issue, is a signal worth noticing — the alternative is a PR-only workflow where the diff explains how but nothing records why.
 
+## For My Wife
+
+Renovating a kitchen is one project with one reason behind it — you want a bigger kitchen, and that's true from the first sledgehammer swing to the day you cook dinner in it. But no inspector signs off on the whole renovation in a single visit at the very end. They come by after the electrical is roughed in, again after the plumbing, again after the drywall goes up, because each of those checks has to be small enough for one person to actually look at closely enough to catch a real problem. This chapter draws the same distinction for engineering work: the reason a project exists and the size of a check someone can carefully verify are two different things, and forcing them into the same size breaks one or the other.
+
+If the whole kitchen only ever gets checked once, at the very end, the inspector either waves it through without really looking — nobody can hold an entire renovation in their head during one walkthrough — or you'd have to pretend it was six unrelated tiny projects instead of one kitchen, which makes it impossible for anyone to see the actual goal anymore. Neither is good. The renovation stays one project. The inspections stay small enough to be real.
+
+> [!NOTE]
+> This isn't a matter of some reviewers being lazier than others — it's closer to a physical limit. Studies of code review at companies like Google and Cisco found that once a single review passes a few hundred lines, the number of real problems a reviewer actually catches drops off sharply, no matter how conscientious they are. Past a certain size, a careful check and a rubber stamp start looking identical from the outside.
+
 ---
 
 [Ch 42](ch42-issue-tracking-what-makes-a-good-issue.md) established what makes a single issue actionable. This chapter draws a distinction most teams never make explicit, and pay for that omission later, usually in the form of a backlog nobody trusts or a PR nobody can review: the issue and the pull request are different units, sized for different purposes, and the mapping between them is naturally one-to-many. Confuse them and you get planning artifacts that stopped representing real work months ago, or code reviews too large for anyone to actually review. The mechanics of branches and merging are covered in Part VII; what reviewers should actually look for during review is covered in [Ch 47](ch47-code-review.md). This chapter is only about what size each artifact should be.

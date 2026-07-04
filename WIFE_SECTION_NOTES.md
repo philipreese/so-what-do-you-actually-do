@@ -131,3 +131,26 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part VI, Ch42–Ch49
 - Push after Part VI or VI+VII together
+
+---
+
+## Part VI, Ch42–Ch49
+
+### Formatting used (for reference)
+- **Ch42**: pull-quote opener + 2 bold paragraphs (grocery list / garage-cleanup analogy)
+- **Ch43**: 2 plain paragraphs + `[!NOTE]` block (kitchen renovation inspection analogy)
+- **Ch44**: 2 plain paragraphs + 1 bold closer (Thanksgiving dinner prep analogy)
+- **Ch45**: 2 plain paragraphs + `[!NOTE]` block (doctor's chart / immutable medical record analogy)
+- **Ch46**: 2 plain paragraphs + 1 bold closer (planning a trip itinerary analogy)
+- **Ch47**: 2 bold paragraphs + 1 plain (friend proofreading an email before you hit send)
+- **Ch48**: 2 plain paragraphs + 1 bold closer (credit card debt — leaned into the term's literal financial origin on purpose, since the chapter's whole point is reclaiming the precise financial meaning)
+- **Ch49**: 2 plain paragraphs + 1 bold closer (toaster safety rule / Chesterton's fence — deliberately NOT the classic "cut the roast ends" anecdote, wrote a fresh equivalent instead)
+
+### What worked
+- For a chapter about a term that's a metaphor already (technical debt), leaning into the literal version of the metaphor (real credit-card debt) works better than inventing an unrelated analogy — the chapter is partly *about* reclaiming what the metaphor originally meant
+- When a chapter's own central example is a very famous, oft-cited anecdote (Chesterton's fence's "why do we cut the ends off the roast"), write an original analogy with the same shape rather than reusing the famous one — keeps the section from reading like a cliché
+- `[!NOTE]` used twice in this Part (Ch43, Ch45) — still an occasional device, not every chapter
+
+### Next session
+- Continue with Part VII, Ch50–Ch63 (largest Part — 14 chapters, consider splitting the push mid-Part if needed)
+- Push after Part VII (or in two batches within it if it runs long)

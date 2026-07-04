@@ -12,6 +12,14 @@
 - A spec's weight must match the decision's weight (Principle 6 applied directly): a one-way-door architectural change earns a full document and review cycle, a bounded feature earns a paragraph in the issue, a bug fix earns nothing. Mismatch either direction and you get *spec theater* or design review happening for the first time in a pull request.
 - Once implementation begins, the spec has done its job. It is a proposal artifact, not living documentation — the *frozen spec*, quietly diverging from what was actually built, is a failure mode, not a maintenance backlog. What survives is the code, the tests, and the ADR ([Ch 45](ch45-architecture-decision-records.md)).
 
+## For My Wife
+
+Before booking a big trip together, the smart move is agreeing on the itinerary in a five-minute conversation — beach, not mountains, home by the 12th, no scuba diving this time — before anyone buys a single non-refundable ticket. Skip that conversation and you find out three days into an expensive vacation that one of you wanted to relax by a pool and the other packed hiking boots. By then the money's spent, the schedule's set, and turning back costs a lot more than catching the mismatch during that five-minute conversation ever would have.
+
+This chapter argues software teams should have the same conversation before building something substantial — a short description, in writing, of what's about to get built, and just as important, what it deliberately won't cover this time. That second part matters as much as the first: saying out loud "no scuba diving this trip" heads off a much worse argument on day three than staying quiet and hoping everyone assumed the same thing.
+
+**And the amount of planning conversation should match the size of the trip.** A weekend getaway needs one text message confirming the dates. A three-week trip across four countries deserves a written itinerary someone actually reads before the flights get booked — because unwinding a bad plan after the tickets are non-refundable costs everyone far more than it would have cost to catch on paper, before any money changed hands at all.
+
 ---
 
 A specification describes work that hasn't been built yet. Its job isn't to explain code to a future reader — that's what the code, the tests, and an ADR are for — but to expose a bad idea while it's still just a document, before it costs anyone real implementation time to find out the hard way. This chapter argues for writing that document on purpose, and for matching its weight to how much the decision it's proposing actually matters. Recording a decision after it's made belongs to the ADR ([Ch 45](ch45-architecture-decision-records.md)); a spec's "alternatives considered" section often becomes the raw material for that later ADR, but this chapter is about the proposal, not the record. Where specs live long-term as a documentation type is covered in Part VIII.

@@ -207,3 +207,23 @@ Delete after all 90 chapters are done (flag to user first).
 - Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
 - Keep mixing formats chapter to chapter; don't let any single shape run more than 2-3 chapters in a row
 - Push after Part IX (or IX+X together)
+
+---
+
+## Part IX, Ch69–Ch73
+
+### Formatting used (for reference)
+- **Ch69**: 3 plain paragraphs, zero bold (notes left for a babysitter — actionability test + triage levels)
+- **Ch70**: 2 bold paragraphs (household budget: monthly total vs. one receipt vs. the whole shoebox — three signal types + cardinality)
+- **Ch71**: 2 plain paragraphs + 1 bold closer (car alarm nobody responds to anymore — alert fatigue + symptom vs. cause)
+- **Ch72**: 2 bold paragraphs (package tracking number vs. handoff-by-handoff scan record — trace context + sampling)
+- **Ch73**: 2 bold paragraphs (diet cheat-meal budget — spend the error budget + multi-window burn rate)
+
+### What worked
+- This Part's chapters are unusually mechanical/quantitative (cardinality, burn rate math, sampling) — picking one clean analogy that can carry BOTH of a chapter's two major decisions (Ch70: signal shape + cardinality; Ch72: trace structure + sampling; Ch73: spend-the-budget + multi-window) kept sections from feeling like two disconnected halves stapled together
+- Avoided reusing "allowance/chore chart" (already used in Ch61) for Ch73's budget chapter — used a diet/cheat-meal frame instead, since the concept (a budget meant to be spent) is the same shape but the concrete image needs to differ
+- Deliberately did NOT reach for smoke-detector/fire imagery again for Ch71 (already used twice: Ch57, Ch68) — used a car alarm instead, which carries the same "false alarms erode trust" point without repeating an image a third time
+
+### Next session
+- Continue with Part X, Ch74–Ch78 (5 chapters — concurrency)
+- Push after Part X (or X+XI together)

@@ -11,6 +11,14 @@
 - Not every detected anomaly deserves the same channel. [Strong Recommendation] Route by calculated urgency into distinct tiers — page-worthy, ticket-worthy, log-worthy — and by ownership, to the smallest group actually capable of resolving the condition without a handoff.
 - This chapter decides which signals from Ch 69 and Ch 70 clear the bar to interrupt a human; it does not cover what a responder does once paged (Ch 68) or the budget math that ultimately justifies the bar (Ch 73).
 
+## For My Wife
+
+A car alarm that goes off every time a truck rumbles past, or the wind slams a nearby gate, teaches the whole street exactly one lesson: ignore it. Nobody looks up anymore, because the alarm has fired a hundred times for nothing, and there was never a way to tell which blare was the real one just by listening. The night someone actually breaks a window and gets in, the alarm sounds identical to every false one before it, and the street keeps ignoring it right on schedule — not because anyone stopped caring about the car, but because the alarm trained everyone to stop caring about the alarm.
+
+This chapter argues that waking someone up to deal with a computer problem works exactly the same way, and the fix is the same too: an alarm should only ever go off for something a person actually needs to get out of bed for. Not every gust of wind, not every passing truck — only an actual break-in. The chapter's other point is about where to point the alarm in the first place: a good system is built with its own defenses, the equivalent of a car with reinforced windows and an automatic locking system, that quietly handles most attempted break-ins on its own without anyone needing to wake up at all. Wiring the alarm to fire on every gust of wind near a car that's already handling itself just recreates the exact problem the reinforced windows were supposed to solve.
+
+**The real alarm — the one worth trusting — should be rare enough that when it goes off, everyone still looks up.** That's not a coincidence. It's the entire design goal.
+
 ---
 
 Ch 68 already defines what a responder reads once paged. This chapter decides whether they get paged at all. Applying Principle 6 to real-time operations: interrupting an engineer, especially outside working hours, is a real and expensive operation, and it's justified only when the cost of not knowing immediately outweighs the cost of the interruption itself. Most conditions a monitoring system detects fail that test — they belong on a dashboard or in a ticket, not buzzing in someone's pocket at 3 a.m.

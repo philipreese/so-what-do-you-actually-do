@@ -1,15 +1,27 @@
 # So, What Do You Actually Do?
 ### A Software Engineer's Handbook — With a Chapter for Everyone Else
 
-A comprehensive engineering reference covering the decisions senior software engineers
-face, why those decisions exist, and the trade-offs between realistic alternatives. This
-is not a tutorial or a project-specific document — it's a career-long reference organized
-so you can look up any decision and understand the full landscape before choosing.
+Every engineer has been asked some version of the title question — at a dinner table, by
+a parent, by a partner who has heard the word "microservice" enough times to resent it —
+and has given some version of an unsatisfying answer. This book is the long answer. It
+works from the premise that "what do you actually do" doesn't have one answer; it has
+(at least) three, depending on who's asking and how much context they're willing to sit
+through.
 
-Every chapter also carries a second voice: a plain-English **"For My Wife"** summary (and,
-eventually, a **"For My Kids"** version) that explains the same idea to someone who has
-never written a line of code — because half the reason this book exists is finally having
-a good answer to the question in the title.
+**The technical chapter** is the answer for another engineer: the decisions senior
+software engineers actually face, why those decisions exist, and the trade-offs between
+realistic alternatives — not a tutorial, not tied to any one project, but a career-long
+reference organized so you can look up a decision and see the whole landscape before
+making it. **"For My Wife"** is the answer given over dinner: the same idea in plain
+English, jargon replaced by an analogy that actually holds up, aimed at someone smart and
+curious who has never written a line of code and shouldn't have to in order to follow the
+real argument. **"For My Kids"** (rolling out incrementally) is the answer given on the
+drive to school: the same idea again, one size smaller.
+
+All three tracks argue for the same conclusion — that's the point. None of them is a
+watered-down version of the "real" chapter for people who couldn't handle it; each is a
+genuine translation of the same argument into the vocabulary its reader already has. Read
+whichever one matches the conversation you're actually having.
 
 ---
 

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { marked } from 'marked';
 import PartLayout from '../../layouts/PartLayout.astro';
-import { getAllPartsAndChapters } from '../../lib/content';
+import { getAllPartsAndChapters, getPartImage } from '../../lib/content';
 
 export async function getStaticPaths() {
   const { parts } = getAllPartsAndChapters();
@@ -24,8 +24,9 @@ for (const ch of part.chapters) {
 }
 
 const bodyHtml = marked.parse(bodyMarkdown) as string;
+const bannerSrc = getPartImage(part.number);
 ---
 
-<PartLayout partNumber={part.romanNumber} title={part.title} bannerEmoji={part.emoji}>
+<PartLayout partNumber={part.romanNumber} title={part.title} bannerEmoji={part.emoji} bannerSrc={bannerSrc}>
   <Fragment set:html={bodyHtml} />
 </PartLayout>

@@ -154,3 +154,34 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part VII, Ch50–Ch63 (largest Part — 14 chapters, consider splitting the push mid-Part if needed)
 - Push after Part VII (or in two batches within it if it runs long)
+
+---
+
+## Part VII, Ch50–Ch63 (14 chapters — largest Part)
+
+### Formatting used (for reference)
+- **Ch50**: 2 plain paragraphs + 1 bold closer (washing dishes as you go vs. letting them pile up)
+- **Ch51**: 2 plain paragraphs + 1 bold closer (caption on the back of an old photograph)
+- **Ch52**: 2 plain paragraphs + 1 bold closer (family group text — noise vs. a real negotiated decision)
+- **Ch53**: 2 plain paragraphs + 1 bold closer (empty moving boxes after unpacking vs. a labeled storage bin)
+- **Ch54**: 2 plain paragraphs + 1 bold closer (private journal vs. shared fridge calendar)
+- **Ch55**: 2 plain paragraphs + 1 bold closer (two cars driving separate routes to the same reunion — honest parallel account vs. flattened single timeline)
+- **Ch56**: 2 plain paragraphs + 1 bold closer (a building's dedication plaque vs. a knife-scratched mark)
+- **Ch57**: 2 plain paragraphs + 1 bold closer (smoke detector vs. full home inspection)
+- **Ch58**: 2 plain paragraphs + 1 bold closer (one contaminated blood sample vs. three independent doctor's-visit tests)
+- **Ch59**: 2 plain paragraphs + 1 bold closer (fridge leftovers labeled by day vs. by contents; periodic full clean-out)
+- **Ch60**: 2 plain paragraphs + 1 bold closer (dinner party dietary-restriction combinatorics)
+- **Ch61**: 2 plain paragraphs + 1 bold closer (family chore whiteboard driving automatic allowance payout)
+- **Ch62**: 2 plain paragraphs + 1 bold closer (sealed contract carried between desks vs. retyped at each one)
+- **Ch63**: 2 plain paragraphs + 1 bold closer (car oil changes vs. a seized engine)
+
+### What worked
+- This Part's chapters are mechanically dense (Git/CI plumbing) with less inherent emotional stakes than earlier Parts — leaning on very concrete, everyday systems (dishes, calendars, whiteboards, oil changes) rather than trying to force emotional weight the subject matter doesn't have was the right call
+- Noticed a risk of formula fatigue (2 plain + 1 bold closer used for nearly the whole Part) — this was a deliberate trade-off given how procedural/technical this Part's content is, but the NEXT Part should actively vary structure again (pull-quotes, NOTE blocks, no-bold-at-all) rather than let "2 plain + 1 bold" become the new unconscious default
+- When two adjacent chapters cover structurally similar ground (Ch54 force-push / Ch55 rebase both hinge on "never rewrite shared history"), pick a fresh concrete image for each rather than reusing one — fridge calendar for Ch54, road-trip cars for Ch55
+- Deliberately did NOT reuse Ch48's credit-card-debt analogy for Ch63's "dependency debt" (a direct callback in the source text) — used car maintenance instead, since repeating the exact same image across Parts would feel lazy even though the concept is explicitly the same
+
+### Next session
+- Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
+- IMPORTANT: actively vary structure again — this Part fell into "2 plain + 1 bold closer" almost every chapter; break that pattern deliberately (bring back pull-quotes, [!NOTE] blocks, zero-bold prose, mid-section quotes)
+- Push after Part VIII (or VIII+IX together)

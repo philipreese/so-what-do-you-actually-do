@@ -1,5 +1,9 @@
 # Ch 33 — When to Write Unsafe or Low-Level Code
 
+*Unsafe code moves correctness from the compiler to the engineer.*
+
+Unsafe code transfers correctness responsibility straight from the compiler to the engineer, and that transfer carries a permanent maintenance cost that has to be purchased with demonstrated need, not a hunch. Legitimate reasons stay narrow: a measured, profiled bottleneck where a safe abstraction's overhead is the proven cause, an unavoidable FFI boundary, or a foundational component everyone else gets to use safely. Unsafe code has to be wrapped immediately by a safe public API, concentrating the unavoidable unsafety into one small, auditable core while the rest of the system stays safe. Every unsafe block depends on invariants the compiler can no longer verify, so they have to be documented explicitly — they've become part of the code's correctness contract whether or not anyone wrote that down.
+
 **Prerequisites:** [Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md) (the hardware reasoning that justifies unsafe code when it is justified), [FFI and Native Binding Design](../part03-api-design/ch26-ffi-and-native-binding-design.md) (the boundary-wrapper discipline this chapter reuses at the single-language level)
 
 **New vocabulary introduced:** undefined behavior, safety escape hatch

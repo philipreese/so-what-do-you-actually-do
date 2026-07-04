@@ -1,5 +1,9 @@
 # Ch 30 — Comments: What to Comment, What Not To
 
+*The test is why versus what, and comment rot is worse than silence.*
+
+A comment is a maintenance liability — it has to stay synchronized with code that keeps changing, and nothing forces it to. The central test is why versus what: a comment restating what the next line already says is pure cost, while one capturing a hidden constraint or a workaround for an external bug preserves knowledge the code has no way to express on its own. Comment rot, a comment that no longer matches the code, is worse than no comment at all, because it actively misleads a reader with no way of knowing it's gone stale. When the urge to comment comes from a block that needs explaining, the right move is almost always extracting that block into a well-named function.
+
 **Prerequisites:** [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Naming Conventions and When They Matter](ch28-naming-conventions-and-when-they-matter.md), [API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md)
 
 **New vocabulary introduced:** comment rot

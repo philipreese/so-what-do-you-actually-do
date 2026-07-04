@@ -1,5 +1,9 @@
 # Ch 27 — File and Module Structure
 
+*A file tree enforces architecture, whether anyone designed it that way or not.*
+
+A file tree isn't storage, it's the physical enforcement mechanism for architectural boundaries, whether or not anyone designed it that way on purpose. Package-by-feature is the correct default for application code, while package-by-layer belongs in frameworks where the technical role genuinely is the domain. Physical directory segregation is what lets the compiler enforce dependency direction instead of a code review comment, which is why circular package dependencies are almost never a naming problem — they're a sign the boundary was drawn in the wrong place. A `utils/` or `common/` package isn't an architectural layer; it's the absence of one, wearing a folder name.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Layered, Hexagonal, and Ports-and-Adapters Architecture](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md), [Dependency Direction and Inversion](../part02-software-architecture/ch12-dependency-direction-inversion.md)
 
 **New vocabulary introduced:** package-by-layer, package-by-feature, god package

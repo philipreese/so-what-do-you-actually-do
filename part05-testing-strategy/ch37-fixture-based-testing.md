@@ -11,6 +11,14 @@
 - State reset between tests is a separate decision from state construction, and the two get conflated constantly. Transactional rollback is fast and sufficient for most integration tests. Truncation is required when tests involve asynchronous workers or multiple database connections committing outside the test thread's own transaction.
 - The data configurations that directly determine whether a test passes or fails belong inline and visible, right where the assertion lives. Infrastructure setup — connections, containers, authentication contexts — is legitimately shared through scoped injection. Conflate the two and both decisions suffer.
 
+## For My Wife
+
+A well-run hotel resets every room completely between guests: fresh sheets, empty minibar, nothing left over from whoever stayed there the night before. That's what a good test is supposed to do too — start from a clean, known room every time, so what happens during the test only ever depends on the test itself, never on whoever "stayed there" before it ran.
+
+This chapter is about what goes wrong when that reset doesn't happen. Some testing setups instead keep one big shared room that every test checks into and nobody fully cleans up afterward — a shared pile of sample data everybody borrows from and occasionally leaves a little worse than they found it. At first that's harmless. Over years, though, dozens of people have stashed things in that room for their own reasons, and nobody remembers anymore whose suitcase is under which bed, or why unplugging one lamp breaks a completely unrelated guest's stay three doors down.
+
+The bugs this produces are uniquely maddening, because they only show up depending on the order tests happen to run in. A test that passes perfectly alone fails only when it runs right after a different, unrelated one — because that other test left something behind in the shared room, and nobody can see the connection from either test by itself. The chapter's answer is to stop sharing the room: give every test its own freshly built, disposable set of data, so nobody inherits a mess they didn't make, and a failing test always points at the test that actually failed — not at whichever stranger happened to check out an hour earlier.
+
 ---
 
 [Ch 36](ch36-when-to-mock-vs-use-real-dependencies.md) addressed whether dependencies should be real or replaced. This chapter addresses the state those dependencies actually hold: how to set it up, how to keep it from coupling tests to each other behind the scenes, and how to reset it cleanly between runs.

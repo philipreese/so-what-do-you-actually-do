@@ -11,6 +11,16 @@
 - A failing E2E test tells you something is broken. It tells you nothing about where. Localization precision drops as scope climbs, and the cost of diagnosing a failure climbs right along with it.
 - The pyramid is a directional model, not a fixed ratio carved in stone. A domain-logic-heavy service and a CRUD API proxy land at completely different natural distributions. The underlying principle — push coverage down — applies to both regardless.
 
+## For My Wife
+
+Think about how a book actually gets checked before it's printed. Spellcheck catches typos as you type — instant, free, and it tells you the exact word that's wrong. An editor reading one finished chapter catches things spellcheck can't: a plot thread that doesn't connect, a detail that contradicts the last chapter — slower, but still contained to one chapter. Then, before printing, someone reads the entire book start to finish, the way a real reader would, checking that the whole thing actually holds together once you can't split it into pieces anymore.
+
+This chapter argues software testing should be built the same way, in the same proportions: lots of quick, spellcheck-style tests running constantly, fewer chapter-level checks, and only a small handful of full-book read-throughs — because those are the slowest to do, and, this is the part that surprises people, actually the least useful for figuring out what's wrong.
+
+> *A beta reader who finishes the whole book and says "something felt off around the middle" has told you something is broken. They have told you nothing about where.*
+
+That's the trap with leaning mainly on the expensive, whole-system check: it tells you there's a problem, not which chapter, not which sentence. Now imagine skipping the spellcheck and the chapter edit entirely and relying only on beta readers — which is exactly what happens to software projects that skip cheap, fast tests and lean entirely on running the whole finished product end to end. You get slow, expensive verification that can only ever say "something's wrong in here somewhere," while the actual hunting still has to happen by hand, one page at a time, after the fact.
+
 ---
 
 Every chapter in Part V assumes this model going forward. Later chapters cover what belongs at each layer, when to reach for test doubles, how to structure fixtures, and how to actually read a coverage number. This chapter builds the frame all of those decisions have to fit inside.

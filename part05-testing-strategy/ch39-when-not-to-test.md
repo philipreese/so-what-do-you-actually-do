@@ -12,6 +12,14 @@
 - Hard-to-test code and not-worth-testing code are different diagnoses demanding opposite responses. Hard-to-test code signals a design problem — fix the design, don't skip the test. Not-worth-testing code is easy to test and verifies nothing of value — skip the test, don't write it out of sheer habit.
 - Deleting a negative-ROI test is a legitimate engineering call, not a lapse in discipline. A smaller suite that runs fast and gets trusted delivers more real value than a bloated one that's slow and quietly ignored.
 
+## For My Wife
+
+Imagine keeping a detailed, permanently maintained file on literally everything you own — a folder for the refrigerator, a folder for the two-dollar pen, a folder for a paperclip. Filing something away costs time up front, and it costs time again forever after, every time the drawer gets reorganized, every time someone else has to be told what's in a folder and why it's there. For the paperclip, none of that was ever going to pay for itself. Nothing about a paperclip needs tracking, and if one bends, you notice with your own eyes and just grab another.
+
+This chapter argues that programmers do the exact same thing with tests, and it's just as wasteful. Writing a test isn't a one-time act of diligence — it's a promise to keep reading it, updating it, and debugging it for as long as the code exists. That promise is worth making for the refrigerator: the thing that's actually complicated, actually likely to fail in a way nobody would notice on their own, actually worth the folder. It's not worth making for the paperclip, or for a part the manufacturer already tested exhaustively before it ever reached the house — reopening the warranty on something the factory has already verified a thousand times over doesn't make anything safer. It just adds one more folder somebody has to keep straight.
+
+**And the chapter's least comfortable, most useful point is that throwing out an old file isn't sloppiness — sometimes it's exactly right.** A drawer stuffed with decades of warranty cards for things nobody owns anymore isn't more careful than an empty one. It's just harder to search, and the one card that actually matters is buried somewhere in the middle of it.
+
 ---
 
 Every other chapter in this Part argues for testing something. This one argues the opposite case: some code shouldn't be tested at all, some tests should never get written, and some tests already sitting in the suite deserve to be deleted. The failure mode here is a suite whose maintenance burden outweighs the confidence it actually delivers — a cost that piles up quietly, one low-value test at a time, until the entire system slows to a crawl.

@@ -97,3 +97,37 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part III, Ch19–Ch27
 - Push after Part III (or after Part II + III together if III is short)
+
+---
+
+## Part IV, Ch27–Ch33 / Part V, Ch34–Ch41
+
+### Explicit correction mid-session
+- User flagged that sections were starting to converge on one shape (bold-topic-sentence paragraphs every time). Corrected by deliberately alternating: some chapters now use no bold at all (pure flowing prose), some use a mid-section pull-quote instead of an opener, some end on an italicized closing line instead of a bold one. Check the actual chapter files for the current mix before assuming a pattern — don't default to "2-3 bold paragraphs" as the safe choice.
+
+### Formatting used (for reference)
+- **Ch27**: 3 bold paragraphs, no opener (filing cabinet / junk drawer analogies)
+- **Ch28**: 3 bold paragraphs, no opener (sticky-note-as-promise / red binder analogy)
+- **Ch29**: 3 bold paragraphs (packing boxes for a move analogy)
+- **Ch30**: 3 bold paragraphs (sticky note on the fridge / paint-fumes window note analogy — deliberately different concrete image from Ch28 despite both being about notes/labels)
+- **Ch31**: pull-quote opener + 3 plain paragraphs, only 1 bold topic sentence (universal remote analogy)
+- **Ch32**: 2 bold paragraphs + `[!NOTE]` block (exceptions-as-invisible-jump / fire-alarm-vs-out-of-milk analogy)
+- **Ch33**: 3 plain paragraphs, zero bold (childproof cap / medicine bottle analogy)
+- **Ch34**: 2 plain paragraphs + mid-section italic pull-quote + 1 plain closer (book editing stages: spellcheck/editor/beta reader analogy)
+- **Ch35**: 2 bold paragraphs + 1 plain closer (tasting the sauce vs. sealed casserole analogy)
+- **Ch36**: 3 plain paragraphs + italicized closing line (GPS route vs. delivery outcome analogy)
+- **Ch37**: 3 plain paragraphs, zero bold (hotel room reset between guests analogy)
+- **Ch38**: 2 bold paragraphs (spelling-bee-style stress test / earthquake-vs-single-note shrinking analogy)
+- **Ch39**: 2 plain paragraphs + 1 bold closer (warranty-card-hoarding analogy)
+- **Ch40**: 3 plain paragraphs, zero bold (fire alarm panel: "Zone 14" vs. "Smoke detected: Kitchen")
+- **Ch41**: 2 bold paragraphs + 1 plain closer (class attendance vs. learning / pop quiz sabotage = mutation testing)
+
+### What worked
+- Deliberately varying bold-density chapter to chapter reads much more human than a uniform template — do this on purpose, don't let it happen by accident
+- Reusing a *theme* (notes/labels going stale) across two adjacent chapters (Ch28 naming, Ch30 comments) is fine as long as the concrete image differs (red binder vs. fridge sticky note) — avoid reusing the literal same image twice in a row
+- Analogies drawn from ordinary domestic life (fire alarms, hotel rooms, warranty cards, packing boxes, fridges) land better than workplace-generic ones
+- Ending on a concrete real cost (a wrong customer balance, a debugging afternoon, a team that stops refactoring, false confidence in production) rather than restating the analogy
+
+### Next session
+- Continue with Part VI, Ch42–Ch49
+- Push after Part VI or VI+VII together

@@ -11,6 +11,14 @@
 - PBT pays off strongly when correctness can be stated as a universal structural property: round-trip invariants (`encode/decode`), algebraic laws (commutativity, idempotency), data structure invariants (sorted output contains every input element). It pays off poorly on business logic riddled with human-defined exceptions, on UI behavior, or on any domain where stating the invariant is harder than just writing the examples would've been.
 - Partial properties still catch bugs example-based tests miss entirely. A property doesn't need to be mathematically complete to earn its place in the suite.
 
+## For My Wife
+
+**Most of the time, testing code means thinking up a handful of situations you expect to cause trouble and checking that the code handles them.** The obvious blind spot is that you can only test for the trouble you already thought of — the weird accented name, the empty list, the negative number nobody typed on purpose tend to slip right through, precisely because nobody imagined trying them.
+
+This chapter describes a different approach: instead of picking specific examples, you write down a rule that has to be true no matter what — "translating a sentence to French and back always gives you the same sentence you started with" — and hand a machine the job of trying to break that rule, throwing thousands of inputs at it nobody would have thought to type by hand.
+
+**The genuinely clever part is what happens once it finds a failure.** A stress test that reports "your code broke somewhere in this 40,000-character document" is nearly useless — nobody can comb through 40,000 characters hunting for the one problem. So the tool doesn't hand back the whole mess. It keeps simplifying the failing case, throwing away everything that isn't necessary to still trigger the bug, until it's found the smallest input that breaks the rule — sometimes down to a single character. That's the difference between "something in here is wrong" and "this exact character is wrong," and it's the entire reason this approach is usable at all, instead of just clever in theory.
+
 ---
 
 Example-based tests verify specific scenarios: `sort([3,1,2])` returns `[1,2,3]`; `encode("abc")` produces `"YWJj"`. Each test covers exactly one input. An engineer writing examples is implicitly selecting inputs they already expect to work — edge cases they've thought of, representative values from the domain they know well. The inputs they haven't thought of are precisely the ones the code is most likely to fail on.

@@ -1,5 +1,50 @@
 import { marked } from 'marked';
 
+/**
+ * Pre-process GitHub-style alert blockquotes (> [!NOTE] ...) into callout divs
+ * before marked sees them, since marked v13 changed the renderer API in a way
+ * that makes recursive token parsing inside a blockquote renderer unreliable.
+ *
+ * Transforms:
+ *   > [!NOTE]
+ *   > Some text here.
+ *
+ * Into:
+ *   <div class="callout callout--note" role="note">
+ *   <span class="callout__label">Note</span>
+ *   <p>Some text here.</p>
+ *   </div>
+ */
+const ALERT_LABELS: Record<string, string> = {
+  NOTE: 'Note',
+  TIP: 'Tip',
+  IMPORTANT: 'Important',
+  WARNING: 'Warning',
+  CAUTION: 'Caution',
+};
+
+export function preprocessAlerts(markdown: string): string {
+  // Normalize line endings so the regex works on Windows-checkout files (\r\n).
+  const md = markdown.replace(/\r\n/g, '\n');
+  // Match a blockquote that starts with [!TYPE] on the first line.
+  // The blockquote may span multiple consecutive "> " lines.
+  return md.replace(
+    /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\n((?:> ?[^\n]*\n?)*)/gim,
+    (_match, type: string, body: string) => {
+      const label = ALERT_LABELS[type.toUpperCase()] ?? type;
+      // Strip leading "> " from each continuation line and trim.
+      const text = body
+        .split('\n')
+        .map((line) => line.replace(/^> ?/, ''))
+        .join('\n')
+        .trim();
+      return `<div class="callout callout--${type.toLowerCase()}" role="note">\n<span class="callout__label">${label}</span>\n\n${text}\n\n</div>\n\n`;
+    }
+  );
+}
+
+
+
 const FIELD_LABELS = [
   'What it is',
   'Why it exists',
@@ -173,7 +218,7 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
 
   const sections: Section[] = splitTopLevelSections(body, sectionLevel).map(({ heading, content }) => {
     if (/why smart engineers disagree/i.test(heading)) {
-      return { kind: 'disagree', heading, html: marked.parse(content) as string };
+      return { kind: 'disagree', heading, html: marked.parse(preprocessAlerts(content)) as string };
     }
 
     // For level-3 chapters, nested disagree would be ####; no current content uses
@@ -183,7 +228,7 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
     const rawFields = splitFields(main);
 
     if (!rawFields) {
-      return { kind: 'plain', heading, html: marked.parse(main) as string };
+      return { kind: 'plain', heading, html: marked.parse(preprocessAlerts(main)) as string };
     }
 
     const fieldsHtml: Partial<Record<FieldLabel, string>> = {};
@@ -193,7 +238,7 @@ export function parseChapter(rawMarkdown: string): ParsedChapter {
       if (!raw) continue;
       const { text, badges: found } = extractBadges(raw);
       badges.push(...found);
-      fieldsHtml[label] = marked.parse(text) as string;
+      fieldsHtml[label] = marked.parse(preprocessAlerts(text)) as string;
     }
 
     return { kind: 'decision', heading, fieldsHtml, badges, disagree };

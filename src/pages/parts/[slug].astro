@@ -20,7 +20,7 @@ let bodyMarkdown = rawIntro.replace(/^#[^\n]*\n/, '');
 
 // Dynamically link all chapters in this part
 for (const ch of part.chapters) {
-  bodyMarkdown = bodyMarkdown.replace(ch.title, `[${ch.title}](/chapters/${ch.slug})`);
+  bodyMarkdown = bodyMarkdown.replace(ch.title, `[${ch.title}](${import.meta.env.BASE_URL}chapters/${ch.slug})`);
 }
 
 const bodyHtml = marked.parse(bodyMarkdown) as string;

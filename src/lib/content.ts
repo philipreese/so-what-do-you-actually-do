@@ -52,7 +52,9 @@ function getRepoRoot(): string {
 
 function assetPathIfExists(fileName: string): string | undefined {
   const exists = fs.existsSync(path.join(getRepoRoot(), 'assets', fileName));
-  return exists ? `/assets/${fileName}` : undefined;
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  return exists ? `${cleanBase}assets/${fileName}` : undefined;
 }
 
 export function getChapterImage(chapterNumber: string): string | undefined {
@@ -90,15 +92,18 @@ export function cleanAppendixTitle(fullTitle: string): string {
 }
 
 export function resolveRelativeLinks(markdown: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  
   return markdown
     // Replace relative links to chapters in other directories: ../partXX-.../chYY-....md -> /chapters/chYY
-    .replace(/\.\.\/part\d+-[a-zA-Z0-9-]+\/(ch\d+)-[a-zA-Z0-9-]+\.md/g, '/chapters/$1')
+    .replace(/\.\.\/part\d+-[a-zA-Z0-9-]+\/(ch\d+)-[a-zA-Z0-9-]+\.md/g, `${cleanBase}chapters/$1`)
     // Replace same-directory chapter links: chYY-....md -> /chapters/chYY
-    .replace(/\b(ch\d+)-[a-zA-Z0-9-]+\.md/g, '/chapters/$1')
+    .replace(/\b(ch\d+)-[a-zA-Z0-9-]+\.md/g, `${cleanBase}chapters/$1`)
     // Replace links to parts: ../partXX-.../index.md -> /parts/partXX
-    .replace(/\.\.\/(part\d+)-[a-zA-Z0-9-]+\/index\.md/g, '/parts/$1')
+    .replace(/\.\.\/(part\d+)-[a-zA-Z0-9-]+\/index\.md/g, `${cleanBase}parts/$1`)
     // Replace links to appendices: ../appendices/appendix-b-...md -> /appendices/appendix-b
-    .replace(/\.\.\/appendices\/(appendix-[a-z])-[a-zA-Z0-9-]+\.md/g, '/appendices/$1');
+    .replace(/\.\.\/appendices\/(appendix-[a-z])-[a-zA-Z0-9-]+\.md/g, `${cleanBase}appendices/$1`);
 }
 
 export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: ChapterInfo[] } {

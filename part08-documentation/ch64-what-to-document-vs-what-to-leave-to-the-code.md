@@ -1,5 +1,9 @@
 # Ch 64 — What to Document vs. What to Leave to the Code
 
+*Documentation is what's left after a code-level fix is ruled out.*
+
+External documentation is not the default response to confusing code — it's what's left after a code-level fix, better naming, clearer structure, a why comment, has been ruled out. Every page of external documentation carries a documentation tax, an ongoing cost of being located, read, trusted, and eventually corrected, paid whether or not the page turns out to have been worth writing. Information that clears the bar for external documentation falls into a small number of recurring categories — onboarding context, decision rationale, operational knowledge — that answer different questions for different readers and shouldn't be collapsed into one undifferentiated document.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), Principle 6, [File and Module Structure](../part04-code-organization/ch27-file-and-module-structure.md), [Naming Conventions and When They Matter](../part04-code-organization/ch28-naming-conventions-and-when-they-matter.md), [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md)
 
 **New vocabulary introduced:** documentation tax

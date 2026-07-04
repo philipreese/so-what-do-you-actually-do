@@ -1,5 +1,9 @@
 # Ch 46 — Spec-First Development
 
+*A flaw caught in a one-page proposal costs minutes, not days.*
+
+A spec is a proposal for work not yet done, not documentation of work already done, and its purpose is to surface disagreement while changing direction is still cheap. A flaw caught in a one-page proposal costs minutes to fix; the same flaw caught after implementation costs days of rework, and arrives at the exact moment objecting to the design is most expensive. A spec describes interfaces, data flow, and constraints, not implementation, because the moment it reads like pseudocode reviewers start debating naming instead of the architectural questions it exists to settle. An explicit non-goal prevents scope creep more effectively than any review comment written after the fact, and a spec's weight has to match the decision's weight or you get spec theater in one direction and undiscussed design in the other.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), [Issue Tracking: What Makes a Good Issue](ch42-issue-tracking-what-makes-a-good-issue.md), [Architecture Decision Records (ADRs)](ch45-architecture-decision-records.md)
 
 **New vocabulary introduced:** non-goal, spec theater, frozen spec

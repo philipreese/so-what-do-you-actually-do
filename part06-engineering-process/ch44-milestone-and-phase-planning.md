@@ -1,5 +1,9 @@
 # Ch 44 — Milestone and Phase Planning
 
+*A milestone earns its keep by forcing integration, not reporting status.*
+
+A milestone is a coordination and risk-reduction tool, not a deadline ritual — it earns its existence by forcing independently built pieces to integrate and creating a point where reality gets to correct the plan. The first milestone of any new system should be a walking skeleton, the thinnest possible end-to-end slice through every architectural layer, thickened by every milestone after it, because a horizontal plan defers integration risk to the point where it's most expensive to discover. A milestone can fix its date or its scope, but not both without hiding the cost somewhere else, and fixed time with variable scope is the default that keeps plans honest. Progress should be measured by working, integrated functionality rather than the percentage of tasks marked complete, since task-based progress is a proxy metric that stops tracking reality the moment it becomes the target — the 90%-done syndrome.
+
 **Prerequisites:** [Issue Tracking: What Makes a Good Issue](ch42-issue-tracking-what-makes-a-good-issue.md), [Issue as Tracking Unit vs. PR as Review Unit](ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md)
 
 **New vocabulary introduced:** walking skeleton, big-bang integration, 90%-done syndrome

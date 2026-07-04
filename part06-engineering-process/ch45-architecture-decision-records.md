@@ -1,5 +1,9 @@
 # Ch 45 — Architecture Decision Records (ADRs)
 
+*An ADR explains a decision already made, not a proposal to debate.*
+
+An ADR is not a design proposal and not a discussion transcript — it's the historical record of a decision already made, meant to explain today's decision to the team that inherits it. Context and Consequences carry almost all of an ADR's long-term value, freezing the constraints that made the decision correct at the time and recording what was knowingly given up. Accepted ADRs are immutable; when a decision changes, a new ADR supersedes the old one and links back to it, because editing history destroys the exact thing the record exists to preserve. Not every decision warrants one — hard-to-reverse, wide-blast-radius decisions almost always do, and cheap-to-reverse, local decisions almost never do.
+
 **Prerequisites:** [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md), [Issue Tracking: What Makes a Good Issue](ch42-issue-tracking-what-makes-a-good-issue.md)
 
 **New vocabulary introduced:** ADR graveyard, retroactive ADR theater, ADR inflation

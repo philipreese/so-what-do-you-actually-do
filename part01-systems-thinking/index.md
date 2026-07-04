@@ -9,31 +9,3 @@ The throughline is that every non-trivial engineering choice is a trade-off, and
 None of this is abstract for its own sake. Every concept here gets used, by name, in a part you haven't read yet — Chapter 2's complexity sources come back in code organization, Chapter 6's latency hierarchy comes back in performance, Chapter 8's Little's Law comes back in concurrency. Read this part with the expectation that you're not learning theory, you're loading the vocabulary the rest of the book assumes you already have.
 
 If you read only one part, read this one. The vocabulary and concepts introduced here are assumed throughout Parts II–XII.
-
----
-
-## Chapters
-
-| Chapter | Title | Status |
-|---------|-------|--------|
-| Ch 01 | What Engineering Actually Optimizes | [Complete] |
-| Ch 02 | Complexity Is the Enemy | [Complete] |
-| Ch 03 | Coupling and Cohesion | [Complete] |
-| Ch 04 | Abstraction and Information Hiding | [Complete] |
-| Ch 05 | Designing for Change | [Complete] |
-| Ch 06 | Cost Models and Mechanical Sympathy | [Complete] |
-| Ch 07 | Reliability as a Design Principle | [Complete] |
-| Ch 08 | Local vs. Global Optimization | [Complete] |
-| Ch 09 | Decision Frameworks for Trade-offs | [Complete] |
-
----
-
-## Prerequisites
-
-None. This is the entry point.
-
-## What This Part Establishes
-
-- A shared vocabulary for reasoning about complexity, coupling, and abstraction
-- The primary cost dimensions engineers optimize for (and the tensions between them)
-- A framework for making decisions under genuine uncertainty

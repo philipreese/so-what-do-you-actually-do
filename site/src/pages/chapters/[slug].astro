@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { chapter } = Astro.props;
 const rawMarkdown = fs.readFileSync(chapter.filePath, 'utf-8');
 
-const { engineerHtml, wifeHtml, kidsHtml, headings, subtitle, thesis } = splitChapterTracks(rawMarkdown, chapter.slug);
+const { engineerHtml, wifeHtml, kidsHtml, headings, subtitle, thesis } = splitChapterTracks(rawMarkdown);
 ---
 
 <ChapterLayout

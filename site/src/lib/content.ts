@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
 import { parseChapter, renderChapterHtml } from './parseChapter';
-import { demoContent } from '../data/demoContent';
 
 const ROMAN_NUMERALS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 const PART_EMOJIS: Record<string, string> = {
@@ -79,8 +78,8 @@ export function resolveRelativeLinks(markdown: string): string {
     .replace(/\.\.\/part\d+-[a-zA-Z0-9-]+\/(ch\d+)-[a-zA-Z0-9-]+\.md/g, '/chapters/$1')
     // Replace same-directory chapter links: chYY-....md -> /chapters/chYY
     .replace(/\b(ch\d+)-[a-zA-Z0-9-]+\.md/g, '/chapters/$1')
-    // Replace links to parts: ../partXX-.../README.md -> /parts/partXX
-    .replace(/\.\.\/(part\d+)-[a-zA-Z0-9-]+\/README\.md/g, '/parts/$1')
+    // Replace links to parts: ../partXX-.../index.md -> /parts/partXX
+    .replace(/\.\.\/(part\d+)-[a-zA-Z0-9-]+\/index\.md/g, '/parts/$1')
     // Replace links to appendices: ../appendices/appendix-b-...md -> /appendices/appendix-b
     .replace(/\.\.\/appendices\/(appendix-[a-z])-[a-zA-Z0-9-]+\.md/g, '/appendices/$1');
 }
@@ -107,12 +106,12 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
     const emoji = PART_EMOJIS[partNumStr] || '🗺️';
 
     const partPath = path.join(repoRoot, partDir);
-    const readmePath = path.join(partPath, 'README.md');
-    
+    const introPath = path.join(partPath, 'index.md');
+
     let partTitle = partDir.replace(/^part\d+-/, '').replace(/-/g, ' ');
-    if (fs.existsSync(readmePath)) {
-      const readmeContent = fs.readFileSync(readmePath, 'utf-8');
-      const firstLine = (readmeContent.split('\n')[0] || '').trim();
+    if (fs.existsSync(introPath)) {
+      const introContent = fs.readFileSync(introPath, 'utf-8');
+      const firstLine = (introContent.split('\n')[0] || '').trim();
       const parsedTitle = cleanPartTitle(firstLine.replace(/^#\s*/, ''));
       if (parsedTitle) {
         partTitle = parsedTitle;
@@ -158,7 +157,7 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
       romanNumber: roman,
       title: partTitle,
       emoji,
-      filePath: readmePath,
+      filePath: introPath,
       chapters: partChapters,
     });
   }
@@ -202,7 +201,7 @@ export function getAllAppendices(): AppendixInfo[] {
   return appendices;
 }
 
-export function splitChapterTracks(rawMarkdown: string, chapterSlug: string) {
+export function splitChapterTracks(rawMarkdown: string) {
   let wifeHtml = '';
   let kidsHtml = '';
 
@@ -219,18 +218,12 @@ export function splitChapterTracks(rawMarkdown: string, chapterSlug: string) {
     const resolvedWife = resolveRelativeLinks(wifeMatch[1].trim());
     wifeHtml = marked.parse(resolvedWife) as string;
     cleanMarkdown = cleanMarkdown.replace(wifeRegex, '');
-  } else {
-    // Fallback to demoContent if available
-    wifeHtml = demoContent[chapterSlug]?.wife || '';
   }
 
   if (kidsMatch) {
     const resolvedKids = resolveRelativeLinks(kidsMatch[1].trim());
     kidsHtml = marked.parse(resolvedKids) as string;
     cleanMarkdown = cleanMarkdown.replace(kidsRegex, '');
-  } else {
-    // Fallback to demoContent if available
-    kidsHtml = demoContent[chapterSlug]?.kids || '';
   }
 
   const cleanMarkdownResolved = resolveRelativeLinks(cleanMarkdown);

@@ -11,6 +11,14 @@
 - Semantic Versioning is the scheme a release tag typically encodes (`v1.4.2`), but what major/minor/patch actually promises about compatibility is Ch 16's argument, not this chapter's. Here it's only the string the tag carries.
 - Unlike a branch, a tag is meant to stay fixed. Deleting and recreating a published version tag on a different commit defeats the entire reason a tag exists — it silently redefines what a version number pointed to, out from under anyone who already fetched it.
 
+## For My Wife
+
+When a new building opens, nobody just scratches a date into a random brick with a pocketknife and calls it done. There's an actual plaque: who built it, the date, who dedicated it, sometimes an official seal. That formality isn't decoration — it's what lets anyone standing there years later trust that this building really opened on this date, under this authority, and not just take some stranger's word for it.
+
+This chapter argues that a software release deserves the same formality when it gets marked in a project's history. A bare scratch mark — just a name, no other information — might be fine for a personal note to yourself, but it's the wrong thing to use for an actual release: it says nothing about who created it, when, or why, and gives nobody a way to tell an intentional milestone from an accident. A proper release marker carries all of that, the software equivalent of the plaque: who made this, when, and for the more sensitive occasions, an official signature confirming it really came from someone with the authority to put it there.
+
+**And once the plaque is bolted to the wall, it stays exactly as written — nobody sneaks back at night and swaps it for one with a different date, hoping nobody who already read the first one notices.** A release marker is supposed to work as a fixed point everyone can trust stayed put. Quietly moving it to point at a different moment after people have already seen and relied on the original one doesn't correct history — it just makes the plaque worthless to anyone who trusted it the first time they read it.
+
 ---
 
 This chapter resolves the forward references from Ch 16 and Ch 44: it covers the Git-level artifact that anchors a release, not what a version number promises (Ch 16 — go there directly, this chapter doesn't re-derive compatibility semantics) or how that tag gets created inside an automated pipeline (Ch 61) or moves through environments afterward (Ch 62).

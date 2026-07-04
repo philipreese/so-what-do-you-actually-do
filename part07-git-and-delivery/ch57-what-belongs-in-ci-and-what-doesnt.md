@@ -11,6 +11,14 @@
 - What doesn't belong in the blocking path is whatever is genuinely expensive relative to the value of running it on every single commit — full end-to-end suites, exhaustive security scans, multi-service simulations. These aren't worthless; they don't earn a place gating every change, and belong on a slower, scheduled cadence instead.
 - A pipeline that grows past the point where developers actually wait for it has stopped functioning as continuous integration, no matter how much it checks. The failure mode isn't insufficient coverage — it's a system nobody trusts enough to use the way it was designed to be used.
 
+## For My Wife
+
+A smoke detector's entire value is that it's fast, cheap, and constantly running. It checks for exactly one thing, in under a second, every time, and if that one thing is present it tells you immediately, while there's still time to do something about it. It would be a worse smoke detector, not a better one, if someone tried to make it also check the wiring, the foundation, and the roof before it would agree to sound an alarm — the added thoroughness wouldn't make the house safer, it would just mean nobody's warned about the fire until the inspection finishes, defeating the entire reason a smoke detector exists.
+
+This chapter argues software teams make exactly that mistake with the automated checks that run every time someone tries to make a change. The whole value of checking every single change is that it's fast enough for someone to actually wait for the answer and fix the problem while it's still fresh in their mind. Stuff a thorough, hours-long inspection into that same gate — checking everything imaginable before letting anything through — and the system isn't safer. Everyone just stops waiting for the alarm at all, because it takes so long to sound that people have already moved on to something else by the time it goes off.
+
+**The actual answer isn't to skip the thorough inspection — it's to stop pretending it belongs at the front door.** A full home inspection still matters, on its own proper schedule: annually, or before a big decision. It was just never supposed to be the thing standing between anyone and walking through their own door every morning.
+
 ---
 
 This chapter opens the second half of Part VII by resolving the scope question Ch 47 left open when it deferred "pre-merge CI checks and what belongs in them" here. It covers what an automated pipeline should validate on every change and what should be deferred elsewhere — not the testing pyramid itself (Ch 34, Ch 35 already own what belongs at each test layer; this chapter references their conclusions rather than re-deriving them), not the code review standard (Ch 47), and not the order checks run in or what happens when one fails (Ch 58 — that's ordering and failure semantics; this chapter is scope only).

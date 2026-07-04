@@ -11,6 +11,14 @@
 - [Strong Recommendation] Maintain a scheduled, cache-bypassing clean build — nightly or pre-release — specifically to catch the drift a warm cache would otherwise hide indefinitely. No amount of careful key design eliminates every source of drift; an unpinned system package or an upstream registry change can still slip past a cache that's keyed correctly on everything it was designed to track.
 - Caching is mandatory for CI to stay fast, but it is not part of CI's correctness model. A CI system that fails a clean build is merely broken; one that only passes because of its cache is worse — it's indistinguishable from correctness until the day it fails somewhere that isn't warmed by the same cache.
 
+## For My Wife
+
+Imagine labeling leftovers in the fridge by the day of the week instead of by what's actually inside. "Tuesday" goes on a container so you know to reheat it instead of cooking something fresh. The problem is a label like that doesn't actually track whether the food is still good — it just says which day it was made, and if you make soup every Tuesday, "Tuesday" could mean this week's fresh batch or a container that's been sitting since three Tuesdays ago and never got thrown out. The label only tells the truth by accident, when the calendar happens to line up with reality. The moment it doesn't, you reheat something you shouldn't, and everything still looks and smells fine right up until it doesn't.
+
+This chapter argues that software pipelines make exactly the same mistake when deciding whether to reuse old, saved-up work instead of redoing it from scratch. The label deciding "reuse this" has to actually track the thing that matters — what's really inside the container, not the day it happened to be made — or the pipeline ends up confidently serving something stale and calling it fresh, passing every check for the wrong reason entirely.
+
+**And even with a perfect labeling system, the chapter insists on one more habit: periodically clean out the whole fridge and cook everything from raw ingredients, on a schedule, whether anyone thinks it's needed or not.** A label can be exactly right by its own rules and still miss something it was never built to catch — a jar that got mislabeled by accident, a fridge running a little warmer than it should. The only way to know the shortcut is still telling the truth is to occasionally skip it entirely and see if starting from scratch gives the same answer.
+
 ---
 
 This chapter covers how a CI pipeline reuses work across runs without letting that reuse quietly stand in for correctness. It does not cover what checks belong in the pipeline (Ch 57), matrix build mechanics (Ch 60), or how a project's dependency versions are chosen and updated over time (Ch 63 — this chapter is about build speed given a fixed dependency state; that chapter is about how the state itself changes).

@@ -11,6 +11,14 @@
 - Squashing coarsens `git bisect`'s resolution from a single commit to an entire PR. This is a second, independent reason — alongside Ch 43's review-size argument — to keep PRs small: a large squashed PR turns "bisect found the bad commit" into "now manually audit two thousand lines by hand."
 - Merge policy is downstream of commit hygiene, not the reverse. Decide how disciplined the team's commits actually are, then let that decide the merge policy — choosing preserve-history first and hoping discipline follows produces the worst outcome available.
 
+## For My Wife
+
+Imagine planning a family dinner over a group text. Most of that thread is noise nobody needs kept forever — "wait no," "ignore that," "typo, meant Tuesday not Thursday," fifteen messages just nailing down a time everyone can make. Nobody wants that whole thread saved as the official family record. What's actually worth keeping is the clean summary: "Dinner Saturday at 6, Sam's bringing dessert."
+
+This chapter is about that exact choice, applied to how programmers save their work. While someone's building something, they save their progress constantly, and most of those saves are exactly like that group chat: "fix typo," "try again," "oops." Collapsing them into one clean, final entry before it becomes part of the permanent record is usually the right call, for the same reason nobody archives the "wait no" texts — keeping them doesn't preserve anything valuable, it just clutters the record with noise nobody will ever want to read again.
+
+**But every so often, the individual messages actually were worth keeping.** Picture a different group chat — a real, careful negotiation about which restaurant to pick, with each person laying out an actual reason: allergies, budget, how far someone has to drive. That thread tells a story worth keeping intact, message by message, because each one was a real, separate piece of reasoning, not filler. The chapter's actual point is that the decision isn't about which approach seems more thorough — it's about being honest with yourself about which kind of thread you actually have, because a record stuffed with fifteen "ignore that" texts is exactly what nobody wants to be searching through at two in the morning when something's actually gone wrong.
+
 ---
 
 This chapter covers what a pull request's history looks like once it merges: collapsed into one synthetic commit (squash), or kept as the sequence of commits made during development, either preserved as-is or linearized via rebase beforehand. It does not cover commit message format itself — that's Ch 51's job, and this chapter's entire argument leans on it — nor the rebase mechanics used to clean up a branch before merging (Ch 55), nor the force-push required to apply that cleanup (Ch 54).

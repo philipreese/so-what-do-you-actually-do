@@ -11,6 +11,16 @@
 - Ordering is a second, independent lever from the fail-fast/fail-safe choice: cheap, fast checks (lint, type-check) should gate expensive ones (integration, end-to-end) regardless of how failures are aggregated, so a trivial failure aborts the pipeline before it burns twenty minutes on a suite that was never going to matter once that failure gets fixed anyway.
 - GitHub Actions' literal `fail-fast: true/false` matrix-job setting is the concrete, named expression of this exact trade-off at the orchestration level — though the mechanics of matrix builds themselves belong to Ch 60, not this chapter.
 
+## For My Wife
+
+Picture a single blood draw at the doctor's office run through a machine that checks five things from that one sample. If the machine detects the sample itself is contaminated on the first check, there's no point letting it keep grinding through the rest of the tests on that same bad sample — every other result would just be more noise built on the same ruined input. Stopping immediately there is exactly right.
+
+But now picture a full checkup that includes a blood test, an X-ray, and a hearing test — three genuinely separate, unrelated things. If the blood test comes back with a problem, that's not a reason to cancel the X-ray and the hearing test and send you home. Nobody wants to find out about three unrelated issues one office visit at a time, over three separate weeks, each discovered only after the last one got fixed. The sane thing is to run all three and hand over one complete report, so everything that needs attention gets addressed together instead of trickling in.
+
+This chapter argues software testing pipelines should follow the same two rules. Stop immediately the moment one step is built on results that are already meaningless — there's no point running more checks against something that already failed for a reason that invalidates everything after it. But when several genuinely separate checks are running side by side, let them all finish and report everything at once, instead of stopping at the first one and forcing someone through round after round of "fix one thing, wait, discover the next thing."
+
+**And the cheap check still goes first, the same way a nurse takes your blood pressure before anyone schedules an expensive scan** — there's no reason to pay for the costly test on someone who was already going to get sent home over something a two-minute check would have caught.
+
 ---
 
 Given the checks Ch 57 puts in the pipeline, this chapter covers the order they run in and what happens when one of them fails. It's a direct, specific application of the fail-fast principle already defined in Ch 07 — reused here, not redefined — applied to pipeline architecture instead of a single running program. It does not cover what checks belong in the pipeline at all (Ch 57), caching strategy (Ch 59), or the specific configuration mechanics of matrix builds, where `fail-fast` is a literal per-matrix setting (Ch 60 — this chapter covers the general principle; that chapter covers the matrix-specific configuration).

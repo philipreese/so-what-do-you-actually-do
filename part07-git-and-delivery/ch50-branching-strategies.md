@@ -11,6 +11,14 @@
 - Long-lived branches are a horizontal-phase plan expressed in Git: the same big-bang-integration failure mode from Ch 44, at branch-lifetime granularity.
 - Branch topology is a downstream consequence of release cadence, not a stylistic preference. Every other Git-mechanics chapter in this Part assumes the topology chosen here.
 
+## For My Wife
+
+Two ways to handle dishes after dinner: wash the few you used tonight, right now, while the mess is small and still soft. Or let them sit in the sink, night after night, and set aside one dedicated evening to deal with the whole pile once it's gotten completely out of hand. Both approaches get all the dishes clean eventually. They are not remotely the same amount of unpleasant. A pile that's sat for a week means food is crusted on, dishes are stacked in ways that are actually a little dangerous to unstack, and the job that would've taken five minutes a night now eats an entire evening you'd rather spend doing anything else.
+
+This chapter argues that teams building software face the identical choice about combining everyone's work together, and gives each option a name: doing it constantly, in tiny amounts, the moment each person finishes something, or letting everyone work separately for weeks and setting aside one dreaded day to smash it all together. The total amount of reconciling doesn't go away either way — but tiny and immediate is a completely different experience from huge and put off, the same way a few dinner plates are a different experience from a week's worth of encrusted pots.
+
+**The chapter's real point, though, is that the pile-it-up approach isn't always wrong — it depends on how often the kitchen actually gets used.** A house cooking dinner every night should wash as it goes, no question. A vacation cabin used once a season can reasonably do one big cleaning before it locks up for winter — piling up was never really a choice there, because nothing was arriving in between to pile up against.
+
 ---
 
 Branching strategy is the topology decision every other Git-mechanics chapter in this Part builds on: how many long-lived branches exist, how long a branch is allowed to diverge before it integrates, and how work flows between them. It has nothing to do with commit formatting ([Ch 51](ch51-commit-message-conventions.md)), squash-versus-preserve merge policy ([Ch 52](ch52-squash-vs-preserve-history.md)), branch naming or deletion ([Ch 53](ch53-branch-naming-and-lifecycle.md)), force-push judgment ([Ch 54](ch54-force-push-when-its-acceptable.md)), merge-versus-rebase mechanics ([Ch 55](ch55-merge-vs-rebase.md)), or tagging ([Ch 56](ch56-tagging-and-release-markers.md)). All six assume a topology already exists; this is the chapter where somebody actually has to pick one.

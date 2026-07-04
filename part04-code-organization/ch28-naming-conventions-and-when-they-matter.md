@@ -11,6 +11,14 @@
 - Predicate prefixes (`is`, `has`, `can`) are one of the rare naming conventions that carry genuine disambiguating value — they tell a boolean apart from an object without encoding a single byte of memory layout.
 - `camelCase` vs. `snake_case` is a style choice, not a correctness choice. It only matters for consistency, and consistency belongs to a linter, not a Slack thread.
 
+## For My Wife
+
+**Every name is a small promise about what something is, and the mistake this chapter tracks down is making that promise about how a thing happens to work right now instead of what it actually means.** Call a shared binder "the red one" and the name is accurate right up until someone switches to a blue one — at which point every note that says "check the red binder" is quietly lying. Call it "the invoices binder" instead, and it can change color, shelf, even format, forever, without the name ever needing to catch up. Code has the identical trap: name something after the database it's stored in today, or the slow way it currently searches for a match, and the moment that mechanism changes — a different database, a faster search — every place that name shows up is now describing something that no longer exists.
+
+**Older programming languages made this worse by baking the data type directly into the name** — a variable literally called `strName`, so a programmer with no other way to check could tell at a glance that it held text. Modern tools show you the type automatically, the same way your phone's contacts already know a number is a phone number without you spelling that into the contact's name. Keeping the old habit anyway just adds one more thing that can quietly go stale and start lying.
+
+**Nobody gets an alert when a name goes stale — it just sits there, technically wrong, until it costs something.** A variable called `intAge`, built to hold a whole number, gets quietly upgraded somewhere down the line to hold a decimal instead. The name never gets updated to match. A new engineer reads `intAge`, reasonably assumes whole numbers are safe, and writes math that chops off the decimal — and the resulting error doesn't announce itself, it just shows up wrong three steps downstream, in a number somebody eventually has to explain to a customer.
+
 ---
 
 Naming is the smallest unit of design there is. Before a reader ever understands an implementation, they run into the identifiers first — and a good name does enough work that reading the implementation afterward feels like confirmation, not discovery. This chapter separates the naming decisions that actually carry architectural weight from the ones that are pure style. The two get treated as equally important far more often than they deserve to be.

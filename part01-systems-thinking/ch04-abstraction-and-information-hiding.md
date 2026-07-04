@@ -1,5 +1,9 @@
 # Chapter 4 — Abstraction and Information Hiding
 
+*Every abstraction leaks eventually — the design question is when, and how badly.*
+
+Abstraction gets confused with encapsulation more often than not, but hiding an implementation and hiding the decision most likely to change are not the same act. This chapter argues that every non-trivial abstraction leaks, so the real design question is never whether but when and how survivably. It also makes the case that a wrong abstraction — one built on a bad guess about what will change — costs more than no abstraction at all, because unwinding a false model is more expensive than the duplication it was meant to prevent.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md), [Ch 02 — Complexity Is the Enemy](ch02-complexity-is-the-enemy.md), [Ch 03 — Coupling and Cohesion](ch03-coupling-and-cohesion.md). Specifically: accidental complexity, cost of change, and afferent/efferent coupling.
 
 **New vocabulary introduced:** encapsulation, information hiding, leaky abstraction, wrong abstraction, Rule of Three

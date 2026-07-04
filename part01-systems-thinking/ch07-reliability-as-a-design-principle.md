@@ -1,5 +1,9 @@
 # Chapter 7 — Reliability as a Design Principle
 
+*Reliability is built into the structure, not bolted on with monitoring.*
+
+Reliability isn't an operational layer added after the fact — it's an emergent property of decisions made at design time, and no amount of monitoring or retries fixes a fundamentally fragile architecture. This chapter ranks failure modes by danger — a visible crash is far safer than a silent wrong answer — and argues that fail-fast is a correctness mechanism, not a sign of fragility. It also treats partial failure as the normal condition of distributed systems rather than an edge case, and reframes the CAP theorem as a real choice made specifically under partition, not a permanent pick-two.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md), [Ch 06 — Cost Models and Mechanical Sympathy](ch06-cost-models-and-mechanical-sympathy.md). Specifically: the MTBF vs. MTTR paradigm from Ch 01, and the physical cost of disk I/O and network latency from Ch 06.
 
 **New vocabulary introduced:** fail-fast, Write-Ahead Log (WAL), partial failure, CAP theorem

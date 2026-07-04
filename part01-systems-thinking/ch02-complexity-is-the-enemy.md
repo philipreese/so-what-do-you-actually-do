@@ -1,5 +1,9 @@
 # Chapter 2 — Complexity Is the Enemy
 
+*Complexity, not scale, is what actually kills systems.*
+
+Software fails from complexity far more often than from scale, bad requirements, or poor performance — scale just exposes complexity that was already there. This chapter separates the essential complexity a problem inherently requires from the accidental complexity a solution adds on top, since only the second kind can be removed. It traces complexity to three sources — state, control flow, and code volume — and shows how they compound each other rather than staying independent.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md). Specifically: cost of change as the dominant long-term objective, and the concept of optimization target drift.
 
 **New vocabulary introduced:** essential complexity, accidental complexity, state space explosion, cyclomatic complexity

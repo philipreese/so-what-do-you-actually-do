@@ -1,5 +1,9 @@
 # Chapter 8 — Local vs. Global Optimization
 
+*A system is not the sum of its parts — it's the sum of their interactions.*
+
+Improving one component in isolation routinely makes the whole system worse, because system behavior comes from contention, queuing, and shared resources between parts, not from any part's standalone performance. This chapter uses Little's Law to show why local latency fixes can cause global collapse under load, and the Theory of Constraints to show why optimizing anything but the bottleneck accomplishes almost nothing. It closes with Conway's Law, which applies the same local-vs-global logic to team structure: a team optimizing for its own velocity can produce a system shaped by communication lines instead of correct boundaries.
+
 **Prerequisites:** [Ch 01 — What Engineering Actually Optimizes](ch01-what-engineering-optimizes.md), [Ch 03 — Coupling and Cohesion](ch03-coupling-and-cohesion.md), [Ch 06 — Cost Models and Mechanical Sympathy](ch06-cost-models-and-mechanical-sympathy.md). Specifically: the latency vs. throughput tension from Ch 01, the distributed monolith failure mode from Ch 03, and the latency hierarchy from Ch 06.
 
 **New vocabulary introduced:** Little's Law, Theory of Constraints, Conway's Law, backpressure

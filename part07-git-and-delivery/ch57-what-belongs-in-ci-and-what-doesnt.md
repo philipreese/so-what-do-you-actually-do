@@ -1,5 +1,9 @@
 # Ch 57 — What Belongs in CI (and What Doesn't)
 
+*CI is what's cheap and fast, not everything testable.*
+
+CI is everything cheap, fast, and deterministically enforceable per change, not everything that could conceivably be tested, answering the scope question that code review's mandate to automate machine-verifiable checks left open. Continuous Integration's original definition is about feedback speed, not test completeness, and a pipeline that takes hours or is routinely red for unrelated reasons has already defeated its own purpose regardless of how thorough it's become. Anything mechanically verifiable — lint, formatting, type-checking, the unit-test layer of the pyramid — belongs in the blocking pipeline and out of human review entirely, since a reviewer's attention spent on brace placement is attention not spent on real risk.
+
 **Prerequisites:** [The Testing Pyramid](../part05-testing-strategy/ch34-the-testing-pyramid.md) (feedback loop latency), [What Belongs at Each Layer](../part05-testing-strategy/ch35-what-belongs-at-each-layer.md), [Code Review](../part06-engineering-process/ch47-code-review.md) (Principle 8)
 
 **New vocabulary introduced:** None — this chapter applies feedback loop latency (Ch 34) and mechanical enforcement (Principle 8, Ch 47) to pipeline scope rather than coining new concepts.

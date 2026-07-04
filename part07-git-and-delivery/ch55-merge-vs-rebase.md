@@ -1,5 +1,9 @@
 # Ch 55 — Merge vs. Rebase
 
+*Merge and rebase produce different history shapes from the same code.*
+
+Merge and rebase aren't competing correctness mechanisms — they produce different history shapes from the same correct code, and the decision that actually matters is the golden rule of rebasing, not the choice between a merge commit and a linear history. Never rebase a branch that other people have already pulled or built work on top of, since rebase rewrites commit identity as well as content, invalidating every downstream clone's understanding of where that history is. Rebasing a private, unpublished branch to clean up before review is safe and recommended, precisely because nobody else's history depends on the commits being rewritten.
+
 **Prerequisites:** [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) (reversibility and blast radius), [Branching Strategies](ch50-branching-strategies.md), [Squash vs. Preserve History](ch52-squash-vs-preserve-history.md), [Force Push: When It's Acceptable](ch54-force-push-when-its-acceptable.md)
 
 **New vocabulary introduced:** None — the golden rule of rebasing is a widely used industry term this chapter applies, not a handbook-coined concept.

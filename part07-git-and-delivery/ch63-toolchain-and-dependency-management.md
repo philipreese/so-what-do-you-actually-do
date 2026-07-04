@@ -1,5 +1,9 @@
 # Ch 63 — Toolchain and Dependency Management
 
+*A build is reproducible only if its dependency graph is pinned.*
+
+A build is only reproducible if it can be recreated with the exact same compiler, runtime, and dependency graph, and lockfiles exist to pin that graph precisely — this isn't housekeeping, it's part of the build system itself. Exact versions should be pinned through a lockfile for reproducibility, paired with small, frequent, automated update proposals reviewed like any other pull request, rather than either freezing indefinitely or floating on latest with no pin at all. Dependency debt — the accumulated gap between a project's pinned versions and current upstream reality — is a direct instance of technical debt: every postponed update increases what eventually has to be absorbed at once, paid down continuously in small increments or all at once in a large, high-risk migration.
+
 **Prerequisites:** [Internal vs. External API Design](../part03-api-design/ch25-internal-vs-external-api-design.md) (Hyrum's Law), [Code Review](../part06-engineering-process/ch47-code-review.md), [Technical Debt](../part06-engineering-process/ch48-technical-debt.md), [Caching Strategy in CI](ch59-caching-strategy-in-ci.md)
 
 **New vocabulary introduced:** dependency debt

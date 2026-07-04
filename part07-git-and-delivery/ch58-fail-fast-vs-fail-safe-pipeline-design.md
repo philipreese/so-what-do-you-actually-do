@@ -1,5 +1,9 @@
 # Ch 58 — Fail-Fast vs. Fail-Safe Pipeline Design
 
+*The fail-fast answer isn't the same at every pipeline level.*
+
+Whether to fail fast is already settled elsewhere in this book; this chapter is about where inside a pipeline's architecture that principle actually applies, and the answer isn't the same at every level. Within a single logical stage, fail-fast is correct, since once a build doesn't compile, running the rest of that stage's checks against uncompilable code produces noise, not additional signal. Across independent, parallel check categories — lint, unit tests, integration tests — running to completion and aggregating every failure into one report is the better default, costing more compute but saving developers a full CI round-trip per failure discovered one at a time.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (fail-fast), [The Testing Pyramid](../part05-testing-strategy/ch34-the-testing-pyramid.md) (feedback loop latency), [What Belongs in CI (and What Doesn't)](ch57-what-belongs-in-ci-and-what-doesnt.md)
 
 **New vocabulary introduced:** None — this chapter applies Ch 07's fail-fast principle to pipeline architecture rather than introducing a new concept.

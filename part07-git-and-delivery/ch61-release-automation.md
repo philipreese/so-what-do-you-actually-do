@@ -1,5 +1,9 @@
 # Ch 61 — Release Automation
 
+*Automation is only as reliable as the commit history feeding it.*
+
+Release automation turns a validated, merged change into a published, versioned release without manual editing of the version number, changelog, or tag, and every one of those decisions is only as reliable as the structured commit history feeding it. It's the correct default once a team's commit discipline is genuinely, consistently in practice; automating on top of inconsistent commit messages doesn't make the process safer, it just computes unreliable version bumps faster and with less oversight. Two real automation shapes exist: instant, synchronous publishing the moment code merges to trunk, and deferred staging through a persistent release PR that a human merges to trigger publication, trading continuous delivery's speed for a final human checkpoint and manifest files that stay in sync.
+
 **Prerequisites:** [Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md), [Commit Message Conventions](ch51-commit-message-conventions.md) (hard prerequisite, not optional), [Tagging and Release Markers](ch56-tagging-and-release-markers.md), [What Belongs in CI (and What Doesn't)](ch57-what-belongs-in-ci-and-what-doesnt.md)
 
 **New vocabulary introduced:** None — this chapter mechanizes concepts already established (Conventional Commits from Ch 51, tags from Ch 56, version semantics from Ch 16) rather than introducing new ones.

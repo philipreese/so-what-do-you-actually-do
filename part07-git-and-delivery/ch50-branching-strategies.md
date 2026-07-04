@@ -1,5 +1,9 @@
 # Ch 50 — Branching Strategies
 
+*Branching is a decision about when integration risk gets paid.*
+
+Branching strategy is a decision about when integration risk gets paid, not whether it exists — trunk-based development pays it continuously in small amounts, while GitFlow-style hierarchies defer it to a stabilization event where it arrives concentrated and expensive. Trunk-based development, short-lived branches merged into a single perpetually-releasable main, is the correct default for continuously deployed software, backed by DORA's elite-performance correlation data rather than intuition. GitFlow's long-lived branch hierarchy isn't a legacy mistake; it's the right topology when release cadence is genuinely decoupled from main, as in embedded firmware or libraries backporting fixes across several live versions.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (fail-fast), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) (reversibility and blast radius), [Issue as Tracking Unit vs. PR as Review Unit](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md) (small-batch integration, feature flags), [Milestone and Phase Planning](../part06-engineering-process/ch44-milestone-and-phase-planning.md) (big-bang integration), [Process Overhead: The Value Threshold](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md)
 
 **New vocabulary introduced:** branch topology, trunk-based development, GitFlow

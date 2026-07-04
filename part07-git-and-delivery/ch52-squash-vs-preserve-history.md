@@ -1,5 +1,9 @@
 # Ch 52 — Squash vs. Preserve History
 
+*The real question is whether you trust the commits inside a PR.*
+
+Squash versus preserve is not an aesthetic choice — it's a consistency check on whether the team actually trusts the commits inside a PR to be individually meaningful units of history. Squash-and-merge is the pragmatic default when in-review commits are genuinely noisy, since it guarantees one clean commit with one clean message regardless of how messy the process behind it was. Preserving full history is superior only when the commits being preserved were actually curated under real commit discipline; preserving a noisy history is strictly worse than squashing it, since it fills the permanent record with the exact noise squashing exists to remove.
+
 **Prerequisites:** [Issue as Tracking Unit vs. PR as Review Unit](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), [Process Overhead: The Value Threshold](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md), [Branching Strategies](ch50-branching-strategies.md), [Commit Message Conventions](ch51-commit-message-conventions.md)
 
 **New vocabulary introduced:** None — this chapter is a consistency check against commit discipline (Ch 51) and PR sizing (Ch 43) already established, not a source of new cross-chapter terms.

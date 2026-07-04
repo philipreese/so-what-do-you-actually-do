@@ -1,5 +1,9 @@
 # Ch 54 — Force Push: When It's Acceptable
 
+*A branch is private only until a second person depends on it.*
+
+Force push is two operations sharing one name: rewriting a branch only you depend on, low blast radius and often the healthy thing to do before review, and rewriting a branch others have already pulled or built on, high blast radius and effectively irreversible for whoever's unpushed work gets silently discarded. A branch's private status is a property of who is actually building on it, not who created it, and the moment a second person depends on its state it carries the same risk as force-pushing to main. `--force-with-lease` should be the default over plain `--force`, even for legitimate private-branch use, because it aborts instead of overwriting blindly if the remote has moved since your last fetch.
+
 **Prerequisites:** [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) (reversibility and blast radius), [Branching Strategies](ch50-branching-strategies.md), [Commit Message Conventions](ch51-commit-message-conventions.md)
 
 **New vocabulary introduced:** None — this chapter is a direct application of Ch 09's reversibility-and-blast-radius framework to one specific Git operation.

@@ -1,5 +1,9 @@
 # Ch 59 — Caching Strategy in CI
 
+*Done wrong, caching makes CI lying fast, not actually fast.*
+
+Caching makes CI fast by reusing work, but done wrong it makes CI lying fast instead of actually fast, since a cache is only correct if its key encodes exactly the inputs that determine the build's output. Dependency and build-artifact caches should be keyed on a hash of the lockfile, never on a branch name or a date, since anything broader either serves stale results across unrelated commits or fails to invalidate when it should. Stale-cache masking is the resulting failure mode: an overly broad cache key serves an artifact from a different dependency state than the one being tested, producing a pipeline that passes for the wrong reason.
+
 **Prerequisites:** [What Belongs in CI (and What Doesn't)](ch57-what-belongs-in-ci-and-what-doesnt.md), [Fail-Fast vs. Fail-Safe Pipeline Design](ch58-fail-fast-vs-fail-safe-pipeline-design.md)
 
 **New vocabulary introduced:** stale-cache masking

@@ -2,10 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const siteDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const repoRoot = path.resolve(siteDir, '..');
-const srcDir = path.join(repoRoot, 'assets');
-const destDir = path.join(siteDir, 'public', 'assets');
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const srcDir = path.join(projectRoot, 'content', 'assets');
+const destDir = path.join(projectRoot, 'public', 'assets');
 
 if (!fs.existsSync(srcDir)) {
   process.exit(0);

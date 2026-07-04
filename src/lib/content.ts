@@ -47,7 +47,7 @@ export interface AppendixInfo {
 }
 
 function getRepoRoot(): string {
-  return path.resolve(process.cwd(), '..');
+  return path.join(process.cwd(), 'content');
 }
 
 function assetPathIfExists(fileName: string): string | undefined {

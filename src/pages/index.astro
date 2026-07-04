@@ -1,5 +1,7 @@
 ---
 import DocsLayout from '../layouts/DocsLayout.astro';
+const base = import.meta.env.BASE_URL;
+const cleanBase = base.endsWith('/') ? base : base + '/';
 ---
 
 <DocsLayout title="A Software Engineer's Handbook">
@@ -15,10 +17,10 @@ import DocsLayout from '../layouts/DocsLayout.astro';
       </p>
       
       <div class="hero-buttons">
-        <a href={`${import.meta.env.BASE_URL}parts/part01`} class="btn btn--primary">
+        <a href={`${cleanBase}parts/part01`} class="btn btn--primary">
           Start Reading <span class="btn-arrow">→</span>
         </a>
-        <a href={`${import.meta.env.BASE_URL}sitemap`} class="btn btn--secondary">
+        <a href={`${cleanBase}sitemap`} class="btn btn--secondary">
           Table of Contents
         </a>
       </div>

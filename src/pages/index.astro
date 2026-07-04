@@ -15,10 +15,10 @@ import DocsLayout from '../layouts/DocsLayout.astro';
       </p>
       
       <div class="hero-buttons">
-        <a href="/parts/part01" class="btn btn--primary">
+        <a href={`${import.meta.env.BASE_URL}parts/part01`} class="btn btn--primary">
           Start Reading <span class="btn-arrow">→</span>
         </a>
-        <a href="/sitemap" class="btn btn--secondary">
+        <a href={`${import.meta.env.BASE_URL}sitemap`} class="btn btn--secondary">
           Table of Contents
         </a>
       </div>

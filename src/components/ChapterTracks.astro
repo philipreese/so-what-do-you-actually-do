@@ -3,11 +3,9 @@ interface Props {
   engineerHtml: string;
   wifeHtml: string;
   kidsHtml: string;
-  mascotEmoji?: string;
-  mascotSrc?: string;
 }
 
-const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = Astro.props;
+const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
 ---
 
 <div class="chapter-tracks" id="tracks-wrapper">
@@ -66,15 +64,6 @@ const { engineerHtml, wifeHtml, kidsHtml, mascotEmoji = '🦫', mascotSrc } = As
           <h2 class="pane-label">For My Kids</h2>
         </div>
         <div class="pane-content">
-          <div class="mascot-slot">
-            {mascotSrc ? (
-              <img class="mascot-image" src={mascotSrc} alt="Chapter mascot" />
-            ) : (
-              <span class="mascot-placeholder" title="Mascot illustration placeholder">
-                {mascotEmoji}
-              </span>
-            )}
-          </div>
           <div set:html={kidsHtml} />
         </div>
       </div>

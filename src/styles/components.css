@@ -169,6 +169,18 @@
   flex: 1;
 }
 
+.pane-secondary .pane-content {
+  padding: 0 1.5rem;
+}
+
+.pane-secondary .pane-content > *:first-child {
+  margin-top: 0;
+}
+
+.pane-secondary .pane-content > *:last-child {
+  margin-bottom: 0;
+}
+
 .pane-engineer {
   border-color: var(--pane-engineer-border);
   background: var(--pane-engineer-bg);

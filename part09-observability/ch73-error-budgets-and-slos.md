@@ -19,6 +19,22 @@ This chapter argues companies should treat their own tolerance for things going 
 
 **And the smart way to watch a diet isn't just checking for one huge blowout — it's also watching for quiet, steady overdoing it that never looks dramatic in the moment.** One birthday cake eaten in a single sitting is obvious and easy to notice. A slightly-too-big snack every single day for three weeks straight is much easier to miss, because no individual day looks alarming — but by the end of the month it can add up to far more than the one cake ever would have. This chapter's real insight is that watching only for the dramatic, sudden slip while ignoring the slow, steady one misses exactly the kind of problem that quietly does the most damage, one unremarkable day at a time.
 
+## For My Kids
+
+Say your parents set your screen time at one hour a day, no big deal if some days run to seventy minutes. That's already built into the number, not a rule you're secretly failing every time you use it.
+
+Someone who plays zero minutes for a whole month, terrified of "wasting" any of it, isn't doing better than the plan asked for. They're just leaving something already agreed to be fine sitting unused.
+
+Including the day a new game update actually was worth staying up an extra twenty minutes for.
+
+The smarter move is spending that extra time on purpose, on something actually worth it — not treating every minute over sixty like a crisis.
+
+What actually deserves watching isn't the one obvious big day. It's the quiet kind of overspending nobody notices.
+
+A single ninety-minute Saturday is easy to spot and easy to explain. Ten extra minutes every single day for three weeks straight is much easier to miss, since no individual day looks alarming on its own.
+
+By the end of the month, though, that quiet daily creep adds up to way more borrowed time than the one big Saturday ever would have. And now there's none left banked for the night before a test, when twenty minutes to unwind was the thing you actually needed.
+
 ---
 
 Every signal Part IX has covered so far — what to log, which signal answers which question, what's worth paging a human for, how to trace a request across a boundary — assumes a target already exists to measure against. This chapter supplies that target, and closes three forward references at once: Ch 07 promised error budgets, SLOs, and alerting strategy to this Part by number; Ch 62 promised the specific metric that gates a canary promotion; Ch 68 promised what a runbook ultimately protects. It also loops back to Ch 01: once reliability has an explicit numeric target, engineering effort spent past that target is a trade-off to justify, not a virtue nobody's allowed to question.

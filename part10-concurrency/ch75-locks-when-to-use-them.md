@@ -19,6 +19,18 @@ This chapter argues that computer programs juggling several things at once shoul
 
 **There's one specific situation worth a different rule entirely: a bulletin board that people mostly just read.** Anyone can walk up and read the board freely, all at once, with no waiting — reading never damages anything. It's only the rare moment someone wants to pin up a brand-new note that everyone else needs to briefly step back. That arrangement is worth the extra bulletin-board hardware specifically because almost everyone using it is reading, not posting — flip that ratio, with people constantly posting new notes, and the special hardware stops paying for itself.
 
+## For My Kids
+
+*Don't build the second hoop until you've actually watched people standing around waiting for the first one.*
+
+Say your driveway hoop is the only one on the block, and the rule is simple: winner stays, next person waits their turn. Easy rule, one thing to remember, and it works fine as long as people aren't standing around forever waiting to play.
+
+The tempting fix, the second you see one kid waiting, is a second hoop down the street. But a second hoop means two nets to maintain, two sets of kids to referee, and the one time you actually want everyone playing the same full-court game, now you've got to coordinate two separate hoops into one.
+
+Put the second hoop up before you've actually watched people standing around waiting, and you've just doubled your problems to solve one that might not have been real. Maybe on a normal Tuesday nobody's ever actually waiting more than a minute.
+
+The right move is watching first — actually counting how often someone's standing there with a ball, arms crossed, waiting their turn — before building anything new. One hoop, one simple rule, is the right answer until you've got real proof kids are standing around long enough that it's actually costing you games.
+
 ---
 
 Ch 74 established that shared state needs synchronization to stay correct; this chapter goes deep on the primary tool for providing it. A lock guarantees that only one execution context enters a protected critical section at a time, converting a data race (Ch 74) into an explicit, deliberate ordering of accesses. The question here isn't whether to use a lock — Ch 74 already settled that — it's how much state a single lock should protect, and when a lock is the wrong tool entirely.

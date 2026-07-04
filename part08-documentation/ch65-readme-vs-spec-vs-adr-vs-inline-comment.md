@@ -20,6 +20,20 @@ This chapter argues software teams keep several different kinds of written recor
 > [!NOTE]
 > The question that sorts nearly every case correctly is simple: does this piece of writing need to still be true next year for it to be worth anything? If yes, it's a utility bill — keep it current or it's useless. If no — if its whole value is capturing exactly what was true and why, at one specific moment — it's an inspection report, and "updating" it isn't tidiness. It's erasing the one thing it was written to protect.
 
+## For My Kids
+
+*A grocery list and a note explaining why you switched grocery stores are both stuck to the same fridge — mixing up which one's allowed to go out of date is the actual mistake.*
+
+The grocery list has to be right today. If it still says "milk" after someone already bought milk, you end up with three cartons and no eggs.
+
+There's a second note stuck under a different magnet: "switched to the big grocery store because the corner store stopped carrying the bread we like." That note isn't describing today. It's explaining a decision from back when it happened, and it's supposed to stay exactly like that.
+
+The mistake shows up when people mix the two up. Someone "helpfully" edits the switching note every time shopping habits shift a little, until it just says whatever's true right now — and nobody remembers the actual reason the switch happened.
+
+Or the opposite goes wrong: nobody touches the grocery list for a week because it feels like it should stay accurate on its own, and by Thursday it's confidently wrong about what's in the fridge.
+
+A current list only works if someone keeps it current. A decision note only works if nobody "fixes" it to match today. Mix the two up, and next spring, when someone asks why you don't just go back to the corner store, there's no real answer left — just a fridge covered in notes nobody trusts.
+
 ---
 
 Four documentation artifacts have already appeared across this handbook: inline comments ([Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md)), ADRs ([Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md)), specs ([Ch 46](../part06-engineering-process/ch46-spec-first-development.md)), and READMEs (named in [Ch 64](ch64-what-to-document-vs-what-to-leave-to-the-code.md)'s onboarding-context category). This chapter lines them up and settles which one a given piece of information actually becomes. It does not re-argue why specs and ADRs exist, or when an inline comment earns its cost — those cases were already made. It answers a narrower, prior question: given that something is worth writing down externally at all (Ch 64), which of the four does it become?

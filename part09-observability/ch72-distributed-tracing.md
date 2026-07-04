@@ -19,6 +19,16 @@ This chapter is about giving computer systems that same specific, handoff-by-han
 
 **And because you can't personally inspect every single package that ever ships, you have to decide which ones are worth a closer look — and deciding that in advance, before anything's happened, is a losing strategy.** Pre-selecting a random 1% of packages to inspect closely will almost certainly miss the rare, actually-damaged one, since damage is rare and a fixed random slice wasn't picking for that. The smarter approach is to wait until a package's actual journey is finished and then decide: did this one arrive late, or damaged, or otherwise unusual? Keep the detailed record for that one. Let the thousands of ordinary, on-time packages go unrecorded, because there was never anything to learn from them in the first place.
 
+## For My Kids
+
+Picture a scavenger hunt where one clue gets physically handed off from teammate to teammate across five stops. Knowing your team finished in forty minutes tells you almost nothing about where those forty minutes actually went.
+
+**To find the actual slow spot, each teammate needs to write down exactly when they got the clue and exactly when they handed it off** — so any gap shows up as the space between two specific people, not a mystery hiding somewhere in five vague stops.
+
+If even one teammate forgets to log their handoff time, it's not just their own leg that goes dark. Everyone after them loses the timestamp trail too, since each person's log only makes sense chained to the one before it.
+
+**And you can't decide ahead of time which handoffs are worth timing closely.** Picking a random one-in-twenty hunt to review in detail almost always lands on a normal one — the slow, broken handoff was never going to show up in a random slice like that. The smarter move is to let every hunt finish first, then go back and look closely at the ones that actually ran long or went sideways. There's nothing to learn from timing the ones that went fine.
+
 ---
 
 Ch 70 already placed tracing in the observability taxonomy: it's the signal that answers "where did the time go for this one request," at a cost the other two signals don't have to pay. This chapter goes deep on how that signal actually gets produced — the data model, the propagation discipline it depends on, and the sampling trade-off that makes it affordable at all.

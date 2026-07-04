@@ -19,6 +19,18 @@ This chapter argues companies make exactly this mistake with their computer syst
 
 **A real company once lost 147 million people's personal records this exact way.** The internal system that got broken into was never impersonating anyone — it was using its own genuine, correctly verified identity the entire time. Nobody had ever separately checked whether that identity should be allowed to look up unrelated records it had no real reason to touch. The front desk correctly confirmed the card belonged to that guest. Nobody had ever bothered to program the card to open only the guest's own room.
 
+## For My Kids
+
+Your school's computer lab checks two completely different things, and mixing them up is how a mess happens. The first check: is this login actually you, not someone who guessed your password. The second, totally separate check: now that we know it's really you, what are you actually allowed to open?
+
+A lab that's excellent at the first check and sloppy at the second is exactly the setup for trouble. The system can perfectly confirm every login is genuine — no impersonation, no stolen passwords, nothing fake about who's sitting at that keyboard — while nobody's ever separately locked down which folders a student account can actually reach.
+
+Knowing for certain it's really you tells the system nothing about whether "you" should be allowed into the gradebook software.
+
+That's exactly what happened to one curious kid last year. Genuinely logged in as themselves, no trickery at all, they clicked around and found the shared drive had never actually blocked student accounts from the teacher folder — just never got around to it.
+
+They weren't hacking anything. The system was completely sure who they were the entire time. It had just never separately asked whether that specific, real, verified student should be allowed to see everyone's grades in the first place.
+
 ---
 
 Authentication and authorization get conflated in casual engineering conversation the same way Ch 76 warned concurrency and parallelism get conflated: two structurally separate questions, routinely discussed as though answering one answers the other. Authentication verifies identity — *who is making this request*. Authorization evaluates permission — *what is this now-verified caller allowed to do*. Ch 24 already drew that line and settled where the authorization check architecturally belongs: in the owning service, not stripped out at the edge. This chapter doesn't relitigate that placement. It goes deep on the mechanics Ch 24 deferred — how identity actually gets verified, and how a permission decision actually gets made, wherever in the system that logic runs.

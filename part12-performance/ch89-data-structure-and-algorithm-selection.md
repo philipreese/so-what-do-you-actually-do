@@ -18,6 +18,20 @@ This chapter argues choosing how to store and organize data inside a computer pr
 
 **And the chapter's other point is about a specific, very common mistake: running out to the mailbox fifty separate times instead of grabbing the whole stack of mail in one trip.** Fifty individual trips will always lose to one trip carrying everything, no matter how fast any single sprint to the mailbox gets. This chapter has caught this exact mistake happening over and over throughout the whole book, dressed up differently each time — and the fix was never sprinting faster to the mailbox. It was noticing there was no reason to make fifty trips when one would do.
 
+## For My Kids
+
+A friend swears that alphabetizing your whole comic book collection into labeled bins is objectively the better system — and for a collection of five hundred, it absolutely is. For the forty comics actually sitting in your closet right now, just flipping through the stack by hand might genuinely find what you want faster, because the fancy system's advantage only shows up once there's enough stuff to actually need it.
+
+Knowing which system wins in theory, at some huge imagined size, doesn't tell you which one wins for the forty comics you actually have. For that, you just try both and see which one's actually quicker with what's really there.
+
+The second mistake shows up somewhere completely different: cleaning the living room one cup at a time.
+
+Spotting a cup on the couch, walking it to the kitchen, coming back, spotting a plate on the floor, walking that to the kitchen too, over and over — ten separate round trips instead of one.
+
+Stacking everything you can carry and making a single trip will always beat ten individual sprints back and forth, no matter how fast any one sprint gets.
+
+And that mistake shows up disguised in a dozen different chores if you're not looking for it. The fix was never moving faster room to room. It was noticing there was never a reason to make ten trips when one would do.
+
 ---
 
 Ch 06 already made the core argument this chapter extends: Big-O notation assumes every memory access costs the same, real hardware does not, and for any dataset that fits in cache, a theoretically worse algorithm with good locality routinely beats a theoretically better one that fights the hardware — worked through there with a linked list losing to an array despite its better nominal insertion complexity. That example doesn't get repeated here. What follows generalizes its conclusion into a practical selection discipline, and resolves N+1's recurring appearances across the handbook into the one lesson they were all instances of the whole time.

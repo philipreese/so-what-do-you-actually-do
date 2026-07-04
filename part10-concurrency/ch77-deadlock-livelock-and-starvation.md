@@ -21,6 +21,19 @@ And picture a four-way stop where one especially polite driver keeps waving ever
 
 **This chapter argues software runs into all three of these exact problems, and the fixes match the couch, the hallway, and the stop sign.** The couch gets solved by agreeing on a fixed rule in advance — always set down the end closer to the front door first. The hallway gets solved by making the next move random instead of automatic, so two people's timing stops syncing up by accident. And the stop sign gets solved by a rule that stops rewarding whoever's least polite, so the one considerate driver eventually, guaranteed, gets a turn.
 
+## For My Kids
+
+> [!NOTE]
+> The cafeteria line produces all three of this chapter's actual problems, back to back, most days.
+
+By the drink station, two kids meet face-to-face with full trays, in a spot too narrow for both. Neither will step back first — stepping back means losing your spot in line — so they just stand there. Frozen. Nobody moves until a teacher tells one of them to back up.
+
+Down at the tray return, two kids do the classic "you go" shuffle: both lean left at the same instant, still blocked, both lean right at the same instant, still blocked. Constant motion, actual movement of arms and trays — and neither one has gone anywhere in ten seconds.
+
+And at the ketchup pump, one kid keeps waving everyone else ahead, being nice about it every single time. Three other kids never once return the favor. They're not frozen and they're not stuck dancing — they're just never getting a turn, while lunch period quietly runs out.
+
+Three totally different problems, three totally different fixes. The doorway gets solved with an actual rule: whoever's closer to the register keeps going, full stop. The shuffle gets solved by making the next move random instead of automatic, so the timing stops matching up. And the ketchup pump gets solved by a rule that stops letting the same three kids cut every time — so the one being nice about it, eventually, guaranteed, gets a turn before the bell rings.
+
 ---
 
 Ch 75 established locks as the primary tool for making shared state safe, and Ch 76 split the execution unit off from that coordination question entirely. This chapter asks what happens when the coordination those chapters covered goes wrong — not from incorrect logic, but from the sheer number of ways independently executing operations can interleave. This is Ch 02's state space explosion made concrete: every additional concurrent execution path multiplies the number of possible orderings, and only a vanishingly small fraction of them need to be wrong for a failure to eventually show up in production, no matter how cleanly the same code ran the previous million times. That same combinatorics is why this chapter stops at explaining the failure modes and doesn't expand into a concurrent-testing methodology — no part of this handbook owns that as a dedicated topic, and exhaustively enumerating interleavings was never a teachable testing strategy to begin with.

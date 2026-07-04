@@ -19,6 +19,16 @@ This chapter argues companies should do the exact same exercise with their own s
 
 **And the chapter insists on using an actual checklist for this instead of just eyeballing the house and trusting your gut.** A home inspector who just wanders around looking for whatever catches their eye will reliably find something interesting and just as reliably miss the one boring, unglamorous thing that actually matters, like a carbon monoxide detector that was never installed. A structured room-by-room checklist catches the boring, dangerous gap precisely because it doesn't rely on anyone's gut noticing it — it makes them check the closet under the stairs whether or not it looked interesting.
 
+## For My Kids
+
+*Most surprises don't get ruined by the leak everyone was already watching for. They get ruined by the boring one nobody thought to check.*
+
+Say you're planning a surprise party, and the fun part is imagining the reveal. The actually useful part is sitting down first and listing every single way the surprise could leak — not just the obvious risk (your loud little brother), but every quieter one too: the shared family calendar the guest of honor also checks, the neighbor who might mention balloons on the porch, the group chat that includes someone you forgot was in it.
+
+That's why the smart move is an actual list, gone through point by point, instead of just trusting your gut and hoping you'd notice a leak if one happened. Your gut is great at worrying about the sibling who can't keep a secret. It's much worse at remembering the shared calendar, because nobody's gut flags "boring app nobody thinks about" as dangerous.
+
+Do this on paper, days before the party, and fixing a leak just means telling one person to keep quiet or muting one calendar. Skip it, and you find out about the leak the way most people do — when the guest of honor walks in already knowing, and asks why nobody just told her instead of pretending.
+
 ---
 
 A security control is only as good as the understanding of what it defends and against whom, and most security failures never trace back to weak cryptography or a sloppy line of code. They trace back to an engineer protecting the wrong thing — a team hardens password storage to bank-vault standards while an administrative API sits wide open to the internet next door, or ships careful authorization logic while a diagnostic endpoint leaks the internal topology that logic was supposed to hide in the first place. Threat modeling exists to catch that class of mistake on paper, before anyone's built the thing worth breaking into.

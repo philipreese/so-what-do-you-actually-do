@@ -18,6 +18,20 @@ This chapter argues software has the identical ambiguity, and most confused argu
 
 **And there's a third trap hiding inside both of them: the store's overall average wait time can look perfectly fine while one specific register with a broken scanner has a line that just keeps growing.** The average across every register smooths right over that one terrible line, because it gets averaged in with nine other registers running fine. But the people actually stuck behind the broken scanner don't experience "the average" — they experience their own specific, terrible wait, and a store that only ever checks its overall average will never notice that a real, growing group of customers is having a genuinely bad time.
 
+## For My Kids
+
+*Your average reply time can look great while one specific person is having a genuinely bad night — averages don't feel anything. Only that one person does.*
+
+Say a group project has an ongoing text thread, and "getting back to people fast" turns out to mean two different things depending on what you actually care about.
+
+One version: answer every single text within seconds, the second it buzzes. Great for whoever's waiting on you right now, terrible for how much actual work you get done, since you're picking your phone up and putting it down every ninety seconds all night.
+
+The other version: check the thread every fifteen minutes and answer everything that piled up in one batch. You get way more actual replies out per hour this way — but whoever asked something right after your last check now waits fifteen minutes for something that could've taken ten seconds.
+
+Neither one is just "better at replying." They're answering two different questions, and mixing them up is how someone ends up annoyed that you're "slow" when you're actually replying to more people per hour than anyone else in the group.
+
+If you're mostly fast but you missed one question during dinner, the group's average response time barely moves — but that one person spent forty-five minutes thinking they got ignored, and the average never shows you that.
+
 ---
 
 "Make this faster" is a request with two different, sometimes opposite answers. Latency is the time a single unit of work takes to complete. Throughput is the volume of work a system completes per unit of time. A service that responds in 20 milliseconds has low latency; a service that processes a million requests per second has high throughput. Neither implies the other, and treating them as interchangeable is how teams end up optimizing the wrong number — showing up to a meeting with an improved requests-per-second chart while the users in the room are complaining that their one request is slow.

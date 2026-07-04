@@ -19,6 +19,14 @@ This chapter argues computer programs can be built the same way: instead of care
 
 **And this chapter's other idea is almost as unintuitive: when one of those private desks has a genuine meltdown, the right move isn't nursing that employee through the rest of the day at their compromised desk — it's sending them home immediately and having a fresh, rested replacement start clean at that same desk the next morning.** Trying to keep a clearly broken worker limping along, hoping they'll recover mid-task, risks decisions made from an already-compromised state that's worse than just stopping and starting over. A quick, clean restart from a known-good position beats a heroic effort to patch something that's already gone wrong in ways nobody's fully sure of yet.
 
+## For My Kids
+
+In art class, everyone gets their own fully stocked supply box — scissors, glue, markers, all of it — instead of one shared bin in the middle of the table. Need a color your neighbor has? They don't hand you their marker. They hand you a fresh piece of paper they colored on, and you tape that into your own project. **Nobody's ever reaching into someone else's box, so nobody can ever mess up a project that wasn't theirs to touch.**
+
+It's slower than one shared bin would be — you're waiting on someone to make you a copy instead of just grabbing what you need. But there's a whole category of disaster this makes impossible: two kids fighting over the same glue bottle, someone's masterpiece smudged because a classmate's hand was in their space.
+
+**And when one kid's own box has a real disaster — glue spilled through everything, markers dried out, paper soaked through — the fix isn't trying to keep working with a ruined box.** It's clearing the station completely and starting over with a brand-new one. Limping along with contaminated supplies, hoping it still mostly works, just guarantees the next thing made in that box turns out wrong too — better to start clean than build on top of a mess you can't fully see the extent of.
+
 ---
 
 Ch 74 placed the actor model at the extreme end of the message-passing spectrum and deferred it to here. Ch 75 made shared state safe through synchronization discipline; Ch 77 cataloged every way that discipline can fail. This chapter closes Part X with an architecture that doesn't manage shared state more carefully at all — it removes shared state from the model entirely.

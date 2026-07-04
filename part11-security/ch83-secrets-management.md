@@ -21,6 +21,16 @@ This chapter argues companies should treat their passwords and access codes the 
 
 **And the chapter's hardest lesson is that finding out the doormat key leaked doesn't mean "take the key back." It means changing the lock.** Once a permanent key has been seen by the wrong person, there's no way to un-see it — the only real recovery is making that specific key stop working at all, which is a much bigger job than just hoping it wasn't noticed.
 
+## For My Kids
+
+Say your garage has a keypad, and the code has been 1-2-3-4 for six years. Every kid who's ever needed to grab a bike from in there knows it by now — you gave it out once, years ago, and it's been the same ever since. Nobody remembers anymore exactly who all actually has it memorized.
+
+A smarter garage generates a fresh, temporary code you text to one specific friend for one specific afternoon — it stops working again that same night on its own. If that code ever got passed around, it's already useless by dinner. There was never a permanent secret sitting there for anyone to collect.
+
+**The hardest part to accept: finding out the old 1-2-3-4 code leaked doesn't mean quietly hoping nobody uses it. It means actually changing the code.** You can't un-tell someone a number they've already heard. The only real fix once a code's been seen by the wrong person is making that exact code stop working entirely — not just feeling better because you decided to be more careful going forward.
+
+Skip that, and the kid who overheard your code freshman year is still walking into your garage senior year, and you'll never even know it was them, because as far as the keypad's concerned, 1-2-3-4 has always been a perfectly valid code.
+
 ---
 
 Authentication and authorization (Ch 82) ultimately rest on credentials. A correctly implemented protocol and a carefully scoped permission policy both become irrelevant the moment the credential backing them gets out — an attacker holding a valid secret doesn't need to defeat either control, because the system has no way to tell them apart from the legitimate holder. A secret's defining property isn't that its value is confidential; it's that possessing the value grants capability. The security problem isn't disclosure in the abstract, it's unauthorized capability, and that reframing is what makes a database password and a signing key comparable risks even though only one of them looks cryptographic.

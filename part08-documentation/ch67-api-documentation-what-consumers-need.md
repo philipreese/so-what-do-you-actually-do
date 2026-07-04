@@ -19,6 +19,18 @@ This chapter argues that documentation for other programs to talk to should be b
 
 **And the smartest instruction booklets also say what they're not promising — "panel color may vary slightly by batch," say — because that one sentence is what protects the manufacturer from an angry call the day they change the finish slightly.** Software documentation needs the same kind of honesty: stating plainly what isn't guaranteed is what allows a detail to change later without it counting as breaking a promise nobody actually made.
 
+## For My Kids
+
+Say you're the one who knows the house — where the dog's leash is, what your little brother's actually allowed to eat, when bedtime really is — and tonight a babysitter's covering while your parents are somewhere with no signal for four hours. You write it all down before you leave.
+
+The instructions describing your actual house, right now, beat instructions describing whatever you remember from months ago. If your brother's allergic to peanuts as of this year, that goes on the card exactly as it stands today, not as loosely recalled as "I think he can have those now?"
+
+The card also has to say what genuinely doesn't matter, not just what does. "Bedtime can slip to 8:30, that's fine" saves the sitter from panicking over a rule you never actually meant to be strict about.
+
+What it shouldn't include is why your family does things a certain way. The sitter doesn't need your whole history with the dog, just where the leash actually is tonight.
+
+Get any of this wrong, and there's no fixing it live. Nobody's answering a text for four hours. A missing detail doesn't get politely worked around — it turns into a decision the sitter has to guess at alone, with your little brother standing right there watching to see what happens.
+
 ---
 
 Every other chapter in this Part assumes a reader with the source in front of them. This one doesn't. Per Ch 25's internal-vs-external distinction, an API consumer frequently can't inspect the implementation, doesn't know the team's internal conventions, and often can't just walk over and ask someone for clarification — which is exactly why API documentation earns separate treatment instead of being folded into the general README case. This chapter covers what that reader needs and how to keep it accurate; it doesn't re-derive how the interface itself should be designed — resource shapes (Ch 20), the error contract (Ch 21), and authentication schemes (Ch 24) are referenced here, not redesigned.

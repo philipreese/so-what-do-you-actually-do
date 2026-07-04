@@ -225,3 +225,126 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
 - Push now (Parts V+VI+VII complete, per this session's request to cover them)
+
+---
+
+## Part VIII complete, Ch64–Ch68 (5 chapters — documentation)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch64**: a bike with quirks (skipping gear, soft brakes, sticky kickstand) patched with a verbal warning speech to whoever borrows it, instead of actually getting it fixed
+- **Ch65**: two fridge notes — a grocery list (must stay current) vs. a note explaining why the family switched grocery stores (frozen record, ruined by editing it to match today)
+- **Ch66**: a chore chart taped to the actual fridge in the actual kitchen (updates happen because you're standing right there) vs. a "real" copy in a drawer upstairs nobody updates in the moment
+- **Ch67**: babysitting handoff notes for a sitter with zero way to reach you for four hours — current facts only, explicit "this part doesn't matter" callouts, no family history
+- **Ch68**: a family's one specific, pre-walked plan for getting separated in a crowd (exact meeting spot, contact numbers already written down) vs. a vague "just find us" agreed to once in the car and never checked against reality
+
+### What worked
+- This Part's wife sections lean on strong physical objects (kitchen note, utility bill/inspection report, fridge allergy list, furniture instructions, fire escape plan) — every kids section still found a different vehicle rather than translating the same image, continuing the discipline from every prior Part
+- This was the first Part where two chapters (Ch65, Ch66) are both fundamentally about "which writing is allowed to go stale and which isn't" — kept them structurally distinct: Ch65 is about *classifying* a document up front (two fridge notes, two purposes); Ch66 is about *maintaining* a document that's already supposed to stay current (one chore chart, location determines whether updates actually happen)
+- Deliberately reused a domestic caretaking frame (babysitter, family emergency plan) for Ch67/Ch68 rather than reaching for a technical-adjacent "handoff" scenario — both land on real, recognizable kid-relevant stakes (a sibling watching, a kid alone in a crowd) without being heavier than the material calls for
+
+### Edge cases and decisions
+- Ch65's kids section ran to 252 words on first draft (over the hard 250 cap) — trimmed repeated phrases ("the actual reason the switch happened in the first place" → "the actual reason the switch happened") rather than cutting content; confirms the note from Ch01/88 calibration that a trim pass should be budgeted for nearly every chapter, not just the first two
+- Considered an EpiPen/allergy-action-plan analogy for Ch68 (maps "automate the mechanical part" onto the auto-injector device itself) but chose a lost-in-a-crowd family plan instead — same one-named-failure-mode shape, without introducing real medical/emergency content that would tonally clash with this book's otherwise-light stakes
+- Formatting rotation this Part: Ch64 bold lead-ins, Ch65 italic pull-quote opener (no bold), Ch66 `[!NOTE]` block, Ch67 plain prose only (no devices), Ch68 bold lead-ins — deliberately varied so no two adjacent chapters use the same device, per this session's reminder to keep varying format chapter to chapter
+
+### Next session
+- Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
+- Push after Part VIII (or VIII+IX together)
+
+---
+
+## Part IX complete, Ch69–Ch73 (5 chapters — observability)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch69**: capture-the-flag lookout on a walkie-talkie — only radio in what changes what the team does, and the "drop everything" word has to mean the same thing every time or it stops working
+- **Ch70**: a league standings board (season health, one glance) vs. one game's box score (the specific final number) vs. a play-by-play (exact sequence in one stretch) — three different questions, none a substitute for the others
+- **Ch71**: the family rule for calling Dad at work — only for something that can't wait and nobody else can fix, with an older sibling already absorbing most small stuff before it's ever a question
+- **Ch72**: a scavenger hunt clue physically handed off across five stops — timing each handoff to find the actual gap, one missed log orphaning everyone after it, and reviewing slow/broken hunts after the fact instead of a pre-picked random sample
+- **Ch73**: a daily screen-time allowance built to flex to 70 minutes — using none of the slack isn't virtue, and a slow ten-minutes-a-day creep is easier to miss and costlier than one big blowout day
+
+### What worked
+- **Formatting was chosen per chapter's actual shape, not rotated on a schedule.** Ch69 (two explicit named rules) got bold lead-ins on each rule. Ch71 (one sentence is the whole point) got an italic pull-quote opener. Ch72 (two distinct mechanisms — propagation, sampling) got bold leads marking each. Ch70 and Ch73 (a parallel comparison and an extended single scene, respectively) got plain prose, since the content's own structure carried the section without needing typographic emphasis.
+- **When a section is plain prose with no bold/pull-quote/NOTE, its paragraphs need to run shorter than a styled section's would** — one or two sentences each, sometimes a single sentence standing alone as its own paragraph (e.g. Ch70's "Three different questions, three completely different records. None of them substitutes for the other two." / Ch73's "Including the day a new game update actually was worth staying up an extra twenty minutes for." as its own line). Plain prose has no bold text to create visual rhythm, so paragraph breaks have to do that work instead — this needed a real revision pass on both Ch70 and Ch73, not just a first-draft habit to carry forward.
+- Avoided reusing the walkie-talkie/radio vehicle anywhere else in the book so far; avoided reusing Ch67's babysitting-note analogy for Ch69 even though both chapters' wife sections independently reached for a babysitter
+
+### Edge cases and decisions
+- Ch69's wife section already uses a babysitter-note analogy, and Ch67 (previous Part)'s kids section also used babysitting handoff notes — picked capture-the-flag lookout instead specifically to avoid a same-vehicle collision one Part apart, even though neither wife section shares an image with the other
+- Ch73's kids section deliberately did not reuse "diet cheat meals" (its own wife section's image) or "allowance" (already spent as Ch09's reversibility analogy in Part I) — landed on a screen-time budget instead, a resource a middle schooler negotiates directly and recognizes as genuinely capped
+
+### Next session
+- Continue with Part X, Ch74–Ch78 (5 chapters — concurrency and parallelism)
+- Push after Part IX+X together
+
+---
+
+## Part X complete, Ch74–Ch78 (5 chapters — concurrency and parallelism)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch74**: one shared popcorn bowl at movie night (fast, but needs everyone to look before reaching in) vs. everyone getting their own bowl (no collision, more dishes, have to physically pass a bowl to share) — plus the shared remote as the "small, local" exception
+- **Ch75**: a single driveway basketball hoop with a simple turn-taking rule — build a second hoop only once you've actually watched kids standing around waiting, not on a hunch
+- **Ch76**: a group project split into writing a report from scratch (genuinely continuous work) vs. texting five classmates and waiting on replies (mostly waiting, one person can juggle it) — and what breaks when the writer is also stuck juggling texts
+- **Ch77**: one continuous scene, the cafeteria line, carrying all three failure modes — frozen face-off at the drink station (deadlock), the tray-return "you go" shuffle (livelock), and the too-polite kid at the ketchup pump who never gets a turn (starvation)
+- **Ch78**: individual fully stocked art-class supply boxes with copies passed instead of originals (no shared bin to fight over) — and a ruined box getting cleared and restarted fresh rather than nursed along contaminated
+
+### What worked
+- This Part's wife sections are unusually strong, purpose-built analogies (three bathrooms, one shared car, restaurant kitchen vs. dining room, couch/hallway/stop-sign, office with locked drawers) — every kids section still found a distinct vehicle (popcorn bowl, driveway hoop, group-project texting, cafeteria line, art-class supply box) rather than a kid-language translation of the same image
+- **Formatting was chosen per chapter's shape, not rotated on a fixed schedule, per explicit user correction this session:** Ch74 (a nuanced "combine both, but the risk is real" chapter) got two bold leads. Ch75 (one crisp, single-sentence warning) got an italic pull-quote carrying that exact warning. Ch76 (an asymmetric "one failure is much worse" chapter, matching its own wife section's structure) got a single bold sentence marking the worse case, plain prose elsewhere. Ch77 (a chapter that names three distinct, equally-weighted failure modes) got a `[!NOTE]` framing the organizing test up top, then plain narrative for the three vignettes. Ch78 (two genuinely separate decisions — isolation, then crash/restart) got two bold leads, one per decision.
+- Ch77 (deadlock/livelock/starvation) was the first "for my kids" section this pass to deliberately keep a chapter's full three-way taxonomy rather than collapsing to one sub-idea, because the taxonomy itself *is* the chapter's one idea — unlike Ch26 (FFI) in Part III, where three sub-concepts got collapsed to just one because only one of them was actually the throughline. Test for which applies: if a chapter's wife section already treats several named things as co-equal parts of one insight (not one primary idea plus supporting asides), the kids section should too, inside a single connecting scene.
+
+### Edge cases and decisions
+- Ch77 ran to 242 words, the longest section yet still under the 250 cap — a three-beat structure with a matching three-part resolution eats the budget fast; needed unusually tight sentences per beat (one paragraph per failure mode, no more) to fit at all
+- Considered a lifeguard-whistle or fire-drill analogy for Ch77's shared "someone gets hurt" stakes but stayed with the cafeteria line instead — lower-stakes, funnier, and still lands each failure mode's version of "this actually goes wrong" (a teacher intervening, ten wasted seconds, lunch period running out) without reaching for anything medical or emergency-flavored
+
+### Next session
+- Continue with Part XI, Ch79–Ch84 (6 chapters — security)
+- Push after Part X+XI together
+
+---
+
+## Part XI complete, Ch79–Ch84 (6 chapters — security)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch79**: planning a surprise party — listing every way it could leak (including the boring shared-calendar risk nobody's gut flags) instead of just trusting instinct to notice a problem
+- **Ch80**: Halloween candy layered across room/drawer/latched container — same-combination-everywhere as the fake-depth trap, and not over-defending the gummy worms
+- **Ch81**: a substitute teacher checking a "note from Mom" against the office's actual cleared-to-leave list, not taking the note's word for it — plus why an allow-list of who's cleared beats a ban-list of known tricks
+- **Ch82**: a school computer lab confirming a login is genuinely you (authentication) while never separately checking what that verified account should be allowed to open (authorization) — a curious, non-malicious kid stumbling into the teacher gradebook folder
+- **Ch83**: a garage keypad stuck on the same 1-2-3-4 for six years, known by half the neighborhood, vs. a one-day code that expires on its own — and why a leaked code has to be changed, not just "used more carefully" going forward
+- **Ch84**: a class notes document passed between rotating class reps, same title and "last updated today" freshness every semester, while the actual person behind it quietly changes and nobody re-checks whether the new one is trustworthy
+
+### What worked
+- This Part's wife sections lean on strong, specific images (moving into a new house, layered locks/jewelry box, a fill-in-the-blank form letter, a hotel key card, a doormat key vs. a dog-walker's one-time code, a rotating babysitter) — every kids section found a different vehicle, continuing the discipline from every earlier Part
+- **Formatting was picked per chapter's actual content shape rather than alternated on a schedule, per the standing correction from Part IX/X:** Ch79 (one crisp, quotable aphorism) got an italic pull-quote. Ch80 (a distinct "gotcha" rule worth isolating, same-key-everywhere) got a `[!NOTE]`. Ch81 and Ch83 (each with one pivotal mechanism/reveal sentence) got a single bold lead. Ch82 (a story better told straight, no aphorism to isolate) got plain prose with short paragraphs. Ch84 (another single crisp aphorism, distinct from Ch79's) got a pull-quote too — repeating a device across the Part is fine as long as adjacent chapters differ, which they do here (quote → NOTE → bold → plain → bold → quote).
+- Avoided reusing Ch67's babysitting-note vehicle and Part II Ch15's guest-WiFi-password vehicle for Ch83, even though both are close conceptually (a static shared secret vs. a scoped, expiring one is this chapter's literal subject) — landed on a garage keypad code instead, specifically because the "static secret becomes known to an unknowable number of people over years" shape needed a fresh surface image
+- Ch82's computer-lab setting is the first "screen-adjacent" vehicle used in a while — judged acceptable rather than a lazy default because the chapter's actual subject (login vs. permission) maps onto a school computer login more precisely than any non-screen substitute would, and the scene itself (clicking through folders) isn't about a game or social media
+
+### Edge cases and decisions
+- Ch82 stayed intentionally low-drama (a curious kid finding an unlocked folder, not a hacker) to match the tone of the real Equifax case the wife section already cites — the failure being "nobody meant any harm and it happened anyway" is the actual point, not a dramatized break-in
+- Ch84's kids section deliberately avoided any second recurring-trusted-person scenario (carpool driver, tutor) that would land too close to Ch67 (babysitting) or read as a stranger-danger note — a class notes document keeps the stakes at "you might study wrong information," matching the book's usual non-heavy register
+
+### Next session
+- Continue with Part XII, Ch85–Ch90 (6 chapters — performance, final Part)
+- Push after Part XII; note in final summary that KIDS_SECTION_NOTES.md can be deleted once the user confirms all 90 chapters are done
+
+---
+
+## Part XII complete, Ch85–Ch90 (6 chapters — performance, final Part)
+
+**Ch88 was already done** — it was one of the two original calibration chapters from the very first session (see top of this file) and already carried both "For My Wife" and "For My Kids" sections. Confirmed present, left untouched. Only Ch85, 86, 87, 89, 90 needed writing this session.
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch85**: a school band drilling a hard trumpet run for two weeks while the actual concert breakdown is a missed clarinet cue in bar forty — two stacked mistakes (fixing the part that felt hard, and starting before confirming a real, repeated problem)
+- **Ch86**: a parent secretly clocking a kid's morning routine with quick hallway glances (doesn't disturb anything) vs. hovering with a stopwatch narrating every step (changes the very thing being timed) — plus checking the whole routine, not just the one step that looks slow
+- **Ch87**: a group-project text thread — answering instantly vs. batching replies every fifteen minutes — and how a great average reply time can still hide one specific person having a genuinely bad night
+- **Ch89**: alphabetized comic-book bins (great at 500, overkill at 40) plus a separate mistake — cleaning a living room one cup at a time instead of stacking a full armful for one trip
+- **Ch90**: a backpack's zippered pockets — a real, small cost every time, worth it for what it buys back, and the fix is noticing the one pocket genuinely costing time rather than ripping all of them out on a hunch
+
+### What worked
+- Ch90, the book's final "For My Kids" section, deliberately did not reuse the wife section's own "doors in a house" image, landing on a backpack instead — same underlying closing argument (a cost is real but usually worth it; measure before removing it), different concrete object, continuing the discipline held across all twelve Parts
+- **Formatting continued to be chosen per chapter's content shape:** Ch85 (a clean "two mistakes stacked" callout) got a `[!NOTE]`. Ch86 (one embedded second insight after the main scene) got a single bold lead. Ch87 (one crisp, quotable aphorism) got an italic pull-quote, then closed by returning to the same idea in concrete terms — a deliberate callback structure, not redundancy. Ch89 (two genuinely separate mistakes under one theme) got plain prose in short paragraphs, letting the two-part structure carry itself. Ch90 got a single bold lead marking its closing reveal.
+- Avoided reusing "band practice" too literally close to Part VII Ch50's band-practice-frequency analogy — Ch85 uses a band but the actual mechanism (misdiagnosing which part is broken) is unrelated to Ch50's mechanism (how often the whole group rehearses together), so the shared vehicle doesn't read as a repeat
+
+### Edge cases and decisions
+- Ch87's kids section opens with a pull-quote stating the tail-latency insight, then the closing paragraph restates it in the story's own concrete terms (the missed dinner text) — this is the same "state the insight, then prove it" shape as Ch77's NOTE-then-narrative structure in Part X, applied here with a quote instead of a NOTE
+- Considered a video-game analogy for Ch87 (server tick rate, lag) given the chapter is inherently about responsiveness — passed in favor of texting, keeping with the book's running discipline of not defaulting to screens/games as the reflexive kid vehicle
+
+### All 90 chapters now have "For My Kids" sections. This file is scaffolding for the duration of this pass only — the user can delete it now that the pass is complete; flagging that choice to them rather than deleting it here.

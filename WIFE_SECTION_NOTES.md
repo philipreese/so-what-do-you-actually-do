@@ -185,3 +185,25 @@ Delete after all 90 chapters are done (flag to user first).
 - Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
 - IMPORTANT: actively vary structure again — this Part fell into "2 plain + 1 bold closer" almost every chapter; break that pattern deliberately (bring back pull-quotes, [!NOTE] blocks, zero-bold prose, mid-section quotes)
 - Push after Part VIII (or VIII+IX together)
+
+---
+
+## Part VIII, Ch64–Ch68
+
+### Formatting used (for reference) — deliberately varied per prior session's note
+- **Ch64**: pull-quote opener + 3 plain paragraphs, zero bold (sticky note on a broken stove burner)
+- **Ch65**: 2 plain paragraphs + `[!NOTE]` block (utility bill vs. home inspection report)
+- **Ch66**: 3 plain paragraphs, zero bold (allergy list taped to the fridge)
+- **Ch67**: 2 plain paragraphs + 1 bold closer (IKEA furniture instructions / parts list)
+- **Ch68**: 2 plain paragraphs + 1 bold closer (fire escape plan + fire drill)
+
+### What worked
+- Successfully broke the "2 plain + 1 bold" monoculture from Part VII — mixed pull-quote, NOTE block, and zero-bold prose back in
+- This Part's chapters are naturally about categories/taxonomy (README vs spec vs ADR, what to automate vs audit) — analogies built around "two kinds of X that get confused for each other" (utility bill/inspection report, mechanical vs. judgment steps) mapped cleanly
+- Avoided repeating the same domestic domain twice in a row: stove (64), paperwork (65), fridge list (66), furniture (67), fire safety (68) — five different concrete settings, no overlap
+- The fire-drill analogy (Ch68) carried real emotional stakes without forcing it — operational runbooks are genuinely a life-safety-adjacent metaphor already, so it wasn't a stretch
+
+### Next session
+- Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
+- Keep mixing formats chapter to chapter; don't let any single shape run more than 2-3 chapters in a row
+- Push after Part IX (or IX+X together)

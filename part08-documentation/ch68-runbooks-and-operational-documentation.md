@@ -11,6 +11,14 @@
 - What triggers a responder to open a runbook (an alerting decision, Ch 71) and what a runbook ultimately protects (an SLO or error budget, Ch 73) are both out of scope here; so is embedding a credential directly instead of pointing to where to obtain one (Ch 83).
 - A runbook's value is judged by exactly one thing: whether it reduces MTTR (Ch 07). Length and apparent thoroughness are not the metric, and can actively work against it.
 
+## For My Wife
+
+A fire escape plan taped to the back of a hotel room door is only useful if it says something exact: "use the stairwell at the end of this hallway, meet in the parking lot by the blue sign." A plan that just says "exit the building safely" isn't a plan, it's a restatement of the emergency — nobody standing in a smoke-filled hallway at 3am has the spare attention to improvise a strategy from a vague suggestion. They need the next physical step spelled out, with nothing left to interpret.
+
+This chapter argues that the emergency instructions companies write for their own systems — what to do the moment something specific breaks — need exactly that same precision, for exactly the same reason: whoever reads it will be reading it under real pressure, not calmly, with time to think it through.
+
+**And the chapter's sharper point is that writing the plan was never the hard part — trusting a plan nobody has ever actually walked through is the real danger.** A fire escape plan nobody has practiced might have a stairwell door that's actually locked, an exit that's been blocked by storage boxes for two years, a meeting spot that's now a construction site — and the only way anyone finds that out is by actually walking the route ahead of time, not by reading the laminated sign and assuming it's still accurate. That's exactly why real fire drills exist: not to see if people can read, but to catch the gap between a plan that looks correct on paper and one that actually works, before the day it's the only thing standing between everyone and getting out safely.
+
 ---
 
 Every other reader in this Part is doing ordinary development work with time to think. A runbook's reader isn't — they're responding to a known operational failure, often at an inconvenient hour, often with incomplete information and a phone buzzing. That difference changes the correctness bar. Ordinary stale documentation wastes a reader's time (Ch 66); a wrong runbook step wastes exactly the time a responder doesn't have, during the one situation the document exists to make faster. This chapter covers what belongs in that document and how it earns the trust a responder places in it under pressure — not the alerting that gets someone to open it, and not the broader incident-response or postmortem process around it, which this handbook doesn't allocate a dedicated chapter to.

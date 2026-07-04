@@ -11,6 +11,15 @@
 - Conflating those two categories — editing an ADR to match today's architecture, or trusting an old spec as a current reference — is the single most common taxonomy mistake, and the opposite failure from a stale README.
 - The selection test is: identify who is asking, what question they're asking, and whether the answer needs to still be true tomorrow. That third question alone routes almost every case correctly.
 
+## For My Wife
+
+Every house accumulates different kinds of paperwork, and mixing them up causes real problems. The current utility bill has to be accurate right now — if it's showing last year's rate, it's simply wrong, and nobody has any use for an outdated one. The home inspection report from the day you bought the house is a completely different kind of document: it's supposed to freeze exactly what the inspector found on that one specific day, cracks, quirks, and all. Nobody expects it to update itself as the house changes, and "updating" it to reflect a kitchen renovation you did last year would actually ruin it — it would erase the honest record of what the house looked like when you agreed to buy it.
+
+This chapter argues software teams keep several different kinds of written records for the same underlying reason a house does, and the recurring mistake is treating a home inspection report like a utility bill, or the other way around: expecting a permanent, point-in-time record to somehow always describe today's reality, or letting a document that's supposed to stay current quietly fill up with old, frozen history nobody flags as historical.
+
+> [!NOTE]
+> The question that sorts nearly every case correctly is simple: does this piece of writing need to still be true next year for it to be worth anything? If yes, it's a utility bill — keep it current or it's useless. If no — if its whole value is capturing exactly what was true and why, at one specific moment — it's an inspection report, and "updating" it isn't tidiness. It's erasing the one thing it was written to protect.
+
 ---
 
 Four documentation artifacts have already appeared across this handbook: inline comments ([Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md)), ADRs ([Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md)), specs ([Ch 46](../part06-engineering-process/ch46-spec-first-development.md)), and READMEs (named in [Ch 64](ch64-what-to-document-vs-what-to-leave-to-the-code.md)'s onboarding-context category). This chapter lines them up and settles which one a given piece of information actually becomes. It does not re-argue why specs and ADRs exist, or when an inline comment earns its cost — those cases were already made. It answers a narrower, prior question: given that something is worth writing down externally at all (Ch 64), which of the four does it become?

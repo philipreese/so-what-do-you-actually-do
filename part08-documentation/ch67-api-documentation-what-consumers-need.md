@@ -11,6 +11,14 @@
 - Hyrum's Law (Ch 25) applies directly to documentation completeness: an incomplete or ambiguous contract doesn't prevent consumers from depending on undocumented behavior — it only hides that dependency from the API owner until a change breaks it.
 - An explicit non-guarantee ("iteration order is not defined," "this field may be null") is a documented defense against Hyrum's Law, not just a descriptive courtesy — it's what lets the API owner change the undocumented part later without breaking anyone who was told not to rely on it.
 
+## For My Wife
+
+Assembling furniture from a box with only the included instructions is a very particular kind of reading: there's no calling the factory, no looking at how it was actually built, nothing but that one booklet standing between you and a finished bookshelf. That's why the parts list at the front has to be exactly right — the actual count of screws, the actual panels — and why the best manufacturers generate that list directly from what's really in the box rather than having someone type up a description from memory. A typed-up list can say "12 screws" when the machine that packed the box actually put in 10, and now you're stuck disassembling half a bookshelf trying to figure out whether you lost two screws or the list was wrong from the start.
+
+This chapter argues that documentation for other programs to talk to should be built the same way — generated straight from the actual interface wherever possible, so the description can never drift out of sync with what's really there, with a person only writing the parts a machine can't: the getting-started walkthrough, the "here's actually how you'd use this" examples nobody can auto-generate from a parts list alone.
+
+**And the smartest instruction booklets also say what they're not promising — "panel color may vary slightly by batch," say — because that one sentence is what protects the manufacturer from an angry call the day they change the finish slightly.** Software documentation needs the same kind of honesty: stating plainly what isn't guaranteed is what allows a detail to change later without it counting as breaking a promise nobody actually made.
+
 ---
 
 Every other chapter in this Part assumes a reader with the source in front of them. This one doesn't. Per Ch 25's internal-vs-external distinction, an API consumer frequently can't inspect the implementation, doesn't know the team's internal conventions, and often can't just walk over and ask someone for clarification — which is exactly why API documentation earns separate treatment instead of being folded into the general README case. This chapter covers what that reader needs and how to keep it accurate; it doesn't re-derive how the interface itself should be designed — resource shapes (Ch 20), the error contract (Ch 21), and authentication schemes (Ch 24) are referenced here, not redesigned.

@@ -11,6 +11,14 @@
 - A documentation corpus is exactly as vulnerable to becoming a write-only tracker (Ch 42) as an issue backlog: writing feels productive, pruning feels risky and gets no credit, and an untrusted corpus poisons even its accurate pages, because nothing distinguishes them from the stale ones without checking.
 - Deleting a page that's wrong or no longer relevant is a legitimate, healthy maintenance action — not a loss to be avoided.
 
+## For My Wife
+
+Imagine a family that keeps a list of kids' allergies taped to the fridge, because babysitters and grandparents and friends' parents need to check it fast, without calling anyone first. That list is only useful if it's actually current. An allergy that was outgrown needs to come off. A new one needs to go on the same day it's discovered. Nobody benefits from a "thorough" list that's three years out of date — a wrong list is worse than no list at all, because it hands a babysitter false confidence instead of an honest "I don't know, better ask."
+
+This chapter is about keeping written explanations of a software project just as reliably current, and its main recommendation is almost too simple: keep the list somewhere it actually gets checked at the same moment the underlying facts change, instead of somewhere separate that nobody remembers to open. Tape it to the actual fridge, not to a binder in the garage nobody opens except during a move.
+
+The second recommendation is about pruning. Some facts on that fridge list can be checked automatically — is this a real food, is this a kid still actually living in the house. Everything else — is this still the right list, does anyone still need to know this — has to be checked by an actual person, on a real schedule, and taking a kid's name off the list once they've moved out isn't losing information. It's exactly what keeps the whole list trustworthy enough that the next babysitter actually reads it instead of shrugging and hoping for the best.
+
 ---
 
 [Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md) established comment rot: a stale comment is worse than no comment because it actively misleads a reader with no signal that it's wrong. This chapter applies the same failure at the scale of an entire documentation corpus, and it gets worse there, not just bigger. A stale comment sits right next to the code it misrepresents, giving an attentive reader some chance of catching the mismatch. A stale README or wiki page can be several clicks removed from the code it describes, with nothing structurally forcing a reader — or the engineer changing the underlying behavior — to notice the two have drifted apart at all. Everything below applies only to documentation that's supposed to track current reality; Ch 65 already established that a stale spec or ADR is expected, not a failure this chapter is answering.

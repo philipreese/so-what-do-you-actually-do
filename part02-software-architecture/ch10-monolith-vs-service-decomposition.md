@@ -1,5 +1,9 @@
 # Chapter 10 — Monolith vs. Service Decomposition
 
+*Splitting a system is a trade you make, not a maturity milestone.*
+
+Decomposition trades local simplicity for independent scaling, deployment, and failure — and that trade costs real latency, coordination, and operational overhead, so most systems should start, and stay, monolithic. Extraction is justified only by a specific, named constraint, not by the belief that microservices are the natural endpoint. The dominant failure mode, the distributed monolith, keeps every cost of distribution while forfeiting the autonomy that was supposed to pay for it. When extraction is warranted, the strangler fig pattern extracts services incrementally against live traffic instead of betting everything on a rewrite.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Ch 06 — Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md), [Ch 07 — Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md), [Ch 08 — Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md). Specifically: the latency hierarchy, partial failure, the distributed monolith anti-pattern, and Conway's Law.
 
 **New vocabulary introduced:** modular monolith, big ball of mud, strangler fig pattern

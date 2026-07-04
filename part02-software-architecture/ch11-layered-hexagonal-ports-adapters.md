@@ -1,5 +1,9 @@
 # Chapter 11 — Layered, Hexagonal, and Ports-and-Adapters Architecture
 
+*Dependency direction, not file layout, is the real decision.*
+
+Once a system is a deployable unit, the next decision is how dependencies flow inside it, not how the files are arranged. Layered architecture lets dependencies flow downward and is fast to build, but infrastructure concepts leak upward as the system ages. Hexagonal architecture inverts that by putting business logic at the center and making infrastructure implement the interfaces it defines, buying fast, infrastructure-free tests at the cost of boilerplate and a mapping layer at every boundary. The right choice depends on how much real business logic exists to protect.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Ch 04 — Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Part II, Ch 10 — Monolith vs. Service Decomposition](ch10-monolith-vs-service-decomposition.md). Specifically: afferent/efferent coupling, the distinction between encapsulation and information hiding, and connascence.
 
 **New vocabulary introduced:** hexagonal architecture (ports-and-adapters), layer leakage, Data Transfer Object (DTO)

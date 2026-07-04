@@ -1,5 +1,9 @@
 # Chapter 14 — Abstraction Layers: When to Add One
 
+*A layer is a bet that something specific is going to change.*
+
+A layer is not structure for its own sake — it's a bet that a specific decision is likely to change, and that without it, that change would force every upstream caller to change too. Every layer charges an indirection tax, so it has to destroy more complexity than it adds or it isn't earning its cost. The anti-corruption layer is the clearest justified case, translating an external system's vocabulary at the boundary so it doesn't pollute the internal domain model. The pass-through layer — one that forwards a call unchanged, hiding no decision — is the dominant failure mode, and it's what happens when "layers are good architecture" gets applied as a default instead of a response to real volatility.
+
 **Prerequisites:** [Part I, Ch 04 — Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Part II, Ch 11 — Layered, Hexagonal, and Ports-and-Adapters Architecture](ch11-layered-hexagonal-ports-adapters.md), [Ch 12 — Dependency Direction and Inversion](ch12-dependency-direction-inversion.md), [Ch 13 — Coupling and Cohesion at the Architecture Level](ch13-coupling-cohesion-architecture-level.md). Specifically: information hiding versus encapsulation, afferent coupling, and the wrong-abstraction failure mode.
 
 **New vocabulary introduced:** anti-corruption layer (ACL), pass-through layer

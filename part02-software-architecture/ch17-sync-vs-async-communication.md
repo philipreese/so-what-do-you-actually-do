@@ -1,5 +1,9 @@
 # Chapter 17 — Synchronous vs. Asynchronous Communication
 
+*The real choice is about coupling in time, not raw performance.*
+
+The choice between synchronous and asynchronous communication is really a choice about temporal coupling: a synchronous call requires caller and callee to both be healthy at the same instant, while an asynchronous one doesn't. A synchronous chain fails by propagation — one slow dependency exhausts resources all the way up the call stack — while an asynchronous one fails by divergence, where the caller succeeds before the system has converged on the truth. Exactly-once delivery across a real network boundary isn't achievable, so production systems should default to at-least-once and build idempotency into every consumer. Once a write spans more than one service, there's no transaction left to roll back, and the saga pattern's explicit compensating actions are only worth their added complexity when a workflow genuinely can't be a single service's job.
+
 **Prerequisites:** [Part I, Ch 07 — Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md), [Ch 08 — Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md), [Part II, Ch 13 — Coupling and Cohesion at the Architecture Level](ch13-coupling-cohesion-architecture-level.md). Specifically: partial failure, Little's Law, and temporal coupling.
 
 **New vocabulary introduced:** saga pattern, compensating action

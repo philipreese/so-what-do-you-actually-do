@@ -270,3 +270,22 @@ Delete after all 90 chapters are done (flag to user first).
 - This is the FINAL part — after this, all 90 chapters have "For My Wife" sections
 - Flag to the user in the final summary that WIFE_SECTION_NOTES.md can now be deleted (scaffolding only, user's call)
 - Push after Part XII (final push)
+
+---
+
+## Part XII, Ch85–Ch87, Ch89–Ch90 (Ch88 was done earlier as the calibration example)
+
+### Formatting used (for reference)
+- **Ch85**: 2 bold paragraphs (family always running late — shoe-tying vs. missing car keys; only optimize a confirmed problem)
+- **Ch86**: 2 bold paragraphs (traffic camera vs. an officer interviewing every driver — sampling profiler; twelve short stoplights add up — aggregate view)
+- **Ch87**: 2 bold paragraphs (grocery checkout: one fast lane vs. ten lanes — latency vs. throughput; broken-scanner register hidden by the average — tail latency)
+- **Ch89**: 2 bold paragraphs (filing cabinet vs. loose stack of papers — Big-O narrows candidates, measurement picks the winner; fifty mailbox trips vs. one — N+1)
+- **Ch90**: 2 plain paragraphs + 1 bold closer (doors in a house — every abstraction costs something real; "zero-cost" as a verified pocket door, not a guess; closes on the book's central measure-before-you-cut argument)
+
+### What worked
+- Performance-Part chapters compress well into "X sounds obviously better in theory, but only measuring the real case tells you which one actually wins" — this shape (filing cabinet, traffic camera, checkout lanes) recurs naturally because it's the chapter content's actual shape, not a forced analogy
+- Ch90, being the literal last chapter of the book, was written to also serve as a soft close to the whole "For My Wife" project's throughline (measure before you remove something that looks unnecessary) — intentional, not just chapter-local
+- Full 90-chapter verification run (`grep -L "## For My Wife"` equivalent) confirmed zero chapters missing the section before declaring the pass complete
+
+## PROJECT STATUS: COMPLETE
+All 90 chapters (Ch01–Ch90) now have "For My Wife" sections. This file has done its job — it can be deleted once the user confirms, but that deletion is the user's call, not something to do automatically.

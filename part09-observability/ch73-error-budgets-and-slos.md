@@ -1,5 +1,9 @@
 # Ch 73 — Error Budgets and SLOs
 
+*An error budget is meant to be spent, not hoarded.*
+
+Three distinct layers are routinely conflated: an SLI is the measured value, an SLO is the internal target for it, and an SLA is the external, often contractual commitment, deliberately set looser than the SLO to leave a defensive margin. [Strong Recommendation] An error budget is the explicit, spendable inverse of an SLO — a 99.9% target grants roughly 43 minutes of allowed failure a month — and it should be spent deliberately on risky deploys, migrations, and experiments; a service running at 100% isn't over-delivering, it's under-spending a resource its own target already allows. [Strong Recommendation] Gate pages on burn rate measured across multiple time windows, not a single static error-rate threshold, since a static threshold either wakes someone for a self-correcting spike or stays silent while a slow leak drains the month's budget over days. This chapter closes the Part by naming what logging, the signal taxonomy, alerting, and tracing all ultimately serve: none of it is collected for its own sake, it exists to measure a system against an explicit, numeric reliability target.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md) (optimization targets), Principle 6, [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (MTBF, MTTR), [Environment Promotion](../part07-git-and-delivery/ch62-environment-promotion.md) (canary and progressive rollout), [Runbooks and Operational Documentation](../part08-documentation/ch68-runbooks-and-operational-documentation.md), [Alerting: Signal vs. Noise](ch71-alerting-signal-vs-noise.md) (symptom-based alerting, actionability test)
 
 **New vocabulary introduced:** Service Level Indicator (SLI), Service Level Objective (SLO), Service Level Agreement (SLA), error budget, burn rate

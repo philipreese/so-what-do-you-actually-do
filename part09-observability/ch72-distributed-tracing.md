@@ -1,5 +1,9 @@
 # Ch 72 — Distributed Tracing
 
+*A trace context captures causality between services — a shared ID alone only proves relatedness.*
+
+A trace context — trace ID, span ID, parent span ID — extends the correlation ID into a structure that captures causality, not only relatedness: log correlation can tell you two events shared a request, only an explicit, propagated context can tell you which service called which and how long the gap between them was. [Strong Recommendation] Trace propagation is a cross-team discipline, not a per-service implementation detail — one service that fails to forward its inbound context orphans every span downstream of it, breaking the trace for services that did everything correctly. Tracing every request is prohibitively expensive at real scale, so sampling is a required design decision: head-based sampling is cheap but structurally blind to rare failures, while tail-based sampling catches them at the cost of buffering every in-flight request until it finishes. A trace is the direct observational tool for the warning that local optimization can damage the global system — the one signal that can show a request's time was spent waiting between services, a category of cost no local profiler can see.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (partial failure), [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md) (Little's Law), [Coupling and Cohesion at the Architecture Level](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md) (service boundaries), [Error Handling Contracts](../part03-api-design/ch21-error-handling-contracts.md) (correlation ID), [Metrics vs. Logs vs. Traces](ch70-metrics-vs-logs-vs-traces.md)
 
 **New vocabulary introduced:** trace context

@@ -506,6 +506,27 @@ html[data-theme="light"] .moon-icon {
     letter-spacing: 0.1em;
 }
 
+.chapter-header-left h1 {
+    margin-bottom: 0.65rem;
+}
+
+.chapter-subtitle {
+    margin: 0 0 0.9rem;
+    color: var(--text-muted);
+    font-family: "Newsreader", Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+.chapter-thesis {
+    max-width: 68ch;
+    margin: 0 0 1.25rem;
+    color: var(--text-color);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
 .chapter-content-slot {
     flex: 1;
     height: 100%;

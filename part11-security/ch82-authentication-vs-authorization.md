@@ -1,5 +1,9 @@
 # Ch 82 — Authentication vs. Authorization
 
+*A verified identity and a correct permission decision are two independent guarantees.*
+
+Authentication verifies who a caller is; authorization decides what that verified caller is allowed to do — a system can authenticate a caller flawlessly and still authorize the wrong thing, or vice versa. [Legitimate Trade-off] A server-held session can be revoked instantly because the server holds the authoritative state, while a signed token needs no server-side lookup to verify but can't be revoked before expiry without adding back the same stateful check tokens exist to avoid. [Strong Recommendation] RBAC is simpler to reason about and audit when permissions map onto a small number of stable roles; ABAC scales better once access depends on runtime attributes a fixed role hierarchy can't express, at a real cost to auditability RBAC doesn't pay. The 2018 Equifax breach turned a single authenticated internal service into 147 million exposed records precisely because nothing behind the authentication check verified what that authenticated identity was actually authorized to query.
+
 **Prerequisites:** [Authentication and Authorization Boundaries](../part03-api-design/ch24-authentication-authorization-boundaries.md) (confused deputy problem, zero-trust architecture, where authorization logic architecturally lives), [Defense in Depth](ch80-defense-in-depth.md) (independent, orthogonal controls), [Input Validation](ch81-input-validation.md)
 
 **New vocabulary introduced:** RBAC, ABAC, delegated authorization

@@ -1,5 +1,9 @@
 # Ch 79 — Threat Modeling
 
+*A threat model answers three questions before a line of implementation code is written.*
+
+A threat model answers three questions before implementation begins: what's worth protecting, who benefits from compromising it and what they're capable of, and where trust assumptions change as data crosses a boundary. [Strong Recommendation] Threat model at design time, not after deployment — a trust-boundary mistake caught on a diagram costs a redraw, the same mistake caught in production costs a redesign under incident pressure. [Strong Recommendation] Treat every boundary crossing as untrusted by default — an "internal" network or a trusted vendor integration is not a reason to skip enumeration, it's the next trust boundary to examine. [Consensus] A structured taxonomy like STRIDE beats open-ended "think like an attacker" brainstorming, because ad hoc review reliably finds the exotic vulnerability reviewers already find interesting and misses the mundane one real adversaries actually use.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (partial failure, fail-fast), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md) (reversibility and blast radius), [Authentication and Authorization Boundaries](../part03-api-design/ch24-authentication-authorization-boundaries.md) (confused deputy problem, zero-trust architecture), [Spec-First Development](../part06-engineering-process/ch46-spec-first-development.md) (Principle 10), [Distributed Tracing](../part09-observability/ch72-distributed-tracing.md)
 
 **New vocabulary introduced:** asset, adversary, attack surface, STRIDE, threat model

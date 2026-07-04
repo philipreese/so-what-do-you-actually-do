@@ -1,5 +1,9 @@
 # Ch 81 — Input Validation
 
+*Injection is the same architectural mistake recurring across every interpreter that assigns input meaning.*
+
+Data becomes dangerous only once software assigns it meaning, and injection is the same architectural mistake recurring across every interpreter — a SQL engine, a shell, a template engine — where untrusted input is concatenated into a string the interpreter then executes instead of being kept strictly as data. [Strong Recommendation] Validate at every trust boundary a request crosses, not only once at the system's outer edge, since a downstream service that assumes an upstream gateway already validated everything has exactly one control standing between it and a bypass. [Consensus] Parameterization is the correct fix for injection, not pattern-matching or blocklisting known-bad input, because it removes the interpreter's ability to treat supplied data as anything other than data, structurally, regardless of what it contains. Log4Shell is this chapter's anchor: despite being described as a logging vulnerability, it was structurally a missing-validation defect, an attacker-controlled string reaching an interpreter capable of acting on it before anything checked whether it was safe to.
+
 **Prerequisites:** [Error Handling Contracts](../part03-api-design/ch21-error-handling-contracts.md) (structured error responses), [Defense in Depth](ch80-defense-in-depth.md) (layered, independently failing controls), [Logging: What to Log and at What Level](../part09-observability/ch69-logging-what-to-log-and-at-what-level.md) (Log4Shell forward reference), [Threat Modeling](ch79-threat-modeling.md) (trust boundaries, attack surface)
 
 **New vocabulary introduced:** injection, parameterization, allowlist validation, denylist validation

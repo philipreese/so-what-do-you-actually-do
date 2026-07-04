@@ -1,5 +1,9 @@
 # Chapter 24 — Authentication and Authorization Boundaries
 
+*Authentication centralizes; authorization can't, and conflating them is the trap.*
+
+Every request answers two separate questions — who is this caller, and what are they actually allowed to do — and this chapter is about where each check gets enforced architecturally. Authentication is cheap to centralize at a gateway because identity is the same fact everywhere it's asked, but authorization can't be centralized the same way, since only the owning service has the domain data to know whether this user can act on this resource. Forwarding a token downstream without re-verifying it at every hop builds the confused-deputy problem by hand, letting a trusted internal service spend its own elevated privilege on a caller's behalf without checking whether that caller was ever allowed to ask. Zero trust — verifying identity at every hop instead of trusting the perimeter once — is the structural answer, not an optional hardening step.
+
 **Prerequisites:** [Part I, Ch 06 — Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md), [Part II, Ch 13 — Coupling and Cohesion at the Architecture Level](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md), [Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Part III, Ch 21 — Error Handling Contracts](ch21-error-handling-contracts.md). Specifically: the network latency tax, bounded contexts, and minimal API surface area.
 
 **New vocabulary introduced:** confused deputy problem, zero-trust architecture

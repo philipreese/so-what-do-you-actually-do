@@ -1,5 +1,9 @@
 # Chapter 23 — Pagination and Streaming
 
+*How you hand back a big result set is a consistency contract.*
+
+Any API returning a collection eventually has to decide how to hand back more results than fit in one response, and that decision is a consistency and performance contract, not a UI nicety. Offset/limit pagination is the simplest model and the one every SQL query produces unasked, but it's unstable under concurrent writes and gets linearly more expensive with depth. Cursor-based pagination anchors each request to a specific, indexed position, buying constant performance and immunity to page drift at the cost of arbitrary jump-to-page access and a genuinely unique sort key. Streaming abandons discrete pages entirely for datasets that are open-ended or too large to paginate, trading normal request/response statelessness for the operational complexity of holding a connection open indefinitely.
+
 **Prerequisites:** [Part I, Ch 06 — Cost Models and Mechanical Sympathy](../part01-systems-thinking/ch06-cost-models-and-mechanical-sympathy.md), [Part II, Ch 16 — Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md), [Part III, Ch 20 — Resource Modeling](ch20-resource-modeling.md), [Ch 21 — Error Handling Contracts](ch21-error-handling-contracts.md). Specifically: sequential vs. random I/O cost, and backward-compatible API surfaces.
 
 **New vocabulary introduced:** cursor (keyset pagination), page drift

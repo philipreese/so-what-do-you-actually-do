@@ -1,5 +1,9 @@
 # Chapter 19 — REST vs. RPC vs. Event-Driven
 
+*REST, RPC, and events are ontological choices, not interchangeable styles.*
+
+Once timing is settled, the remaining question is what shape a call takes on the wire, and REST, RPC, and event-driven are three different answers to what an API actually is. REST treats the system as stateful nouns, RPC as functions to invoke, and event-driven as a stream of facts that already happened — and picking one quietly decides how coupling, evolvability, and debuggability will behave. The failure that shows up in production isn't choosing the wrong one of the three; it's mixing them without noticing. HATEOAS is REST's textbook ideal, and almost nobody ships it, because the coordination tax it charges rarely buys back more than disciplined, pragmatic REST already gets for free.
+
 **Prerequisites:** [Part II, Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Ch 17 — Synchronous vs. Asynchronous Communication](../part02-software-architecture/ch17-sync-vs-async-communication.md). Specifically: minimal surface area, temporal coupling, the synchronous vs. asynchronous coupling decision, and the saga pattern.
 
 **New vocabulary introduced:** HATEOAS, event-carried state transfer

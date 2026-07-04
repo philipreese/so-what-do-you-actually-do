@@ -1,5 +1,9 @@
 # Chapter 21 — Error Handling Contracts
 
+*An error response carries the same obligations as a success one.*
+
+Error responses are part of the API surface and carry the same backward-compatibility obligations a success response does, so an undocumented, inconsistent error shape is a contract violation whether or not anyone called it that. A structured error body — a stable code, a human-readable message, a correlation ID — is what lets a client branch on failure instead of parsing prose. The 4xx/5xx boundary is a retry contract, not a style preference, and getting it wrong breaks automated retry logic in a specific, predictable direction. A single status code can't represent a batch operation where some items succeeded and others didn't; partial failure at the wire level needs a per-item result, not an all-or-nothing verdict.
+
 **Prerequisites:** [Part I, Ch 07 — Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md), [Part II, Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Ch 16 — Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md). Specifically: minimal surface area, backward vs. breaking changes, and partial failure.
 
 **New vocabulary introduced:** correlation ID

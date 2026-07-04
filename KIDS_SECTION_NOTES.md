@@ -298,3 +298,29 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part XI, Ch79–Ch84 (6 chapters — security)
 - Push after Part X+XI together
+
+---
+
+## Part XI complete, Ch79–Ch84 (6 chapters — security)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch79**: planning a surprise party — listing every way it could leak (including the boring shared-calendar risk nobody's gut flags) instead of just trusting instinct to notice a problem
+- **Ch80**: Halloween candy layered across room/drawer/latched container — same-combination-everywhere as the fake-depth trap, and not over-defending the gummy worms
+- **Ch81**: a substitute teacher checking a "note from Mom" against the office's actual cleared-to-leave list, not taking the note's word for it — plus why an allow-list of who's cleared beats a ban-list of known tricks
+- **Ch82**: a school computer lab confirming a login is genuinely you (authentication) while never separately checking what that verified account should be allowed to open (authorization) — a curious, non-malicious kid stumbling into the teacher gradebook folder
+- **Ch83**: a garage keypad stuck on the same 1-2-3-4 for six years, known by half the neighborhood, vs. a one-day code that expires on its own — and why a leaked code has to be changed, not just "used more carefully" going forward
+- **Ch84**: a class notes document passed between rotating class reps, same title and "last updated today" freshness every semester, while the actual person behind it quietly changes and nobody re-checks whether the new one is trustworthy
+
+### What worked
+- This Part's wife sections lean on strong, specific images (moving into a new house, layered locks/jewelry box, a fill-in-the-blank form letter, a hotel key card, a doormat key vs. a dog-walker's one-time code, a rotating babysitter) — every kids section found a different vehicle, continuing the discipline from every earlier Part
+- **Formatting was picked per chapter's actual content shape rather than alternated on a schedule, per the standing correction from Part IX/X:** Ch79 (one crisp, quotable aphorism) got an italic pull-quote. Ch80 (a distinct "gotcha" rule worth isolating, same-key-everywhere) got a `[!NOTE]`. Ch81 and Ch83 (each with one pivotal mechanism/reveal sentence) got a single bold lead. Ch82 (a story better told straight, no aphorism to isolate) got plain prose with short paragraphs. Ch84 (another single crisp aphorism, distinct from Ch79's) got a pull-quote too — repeating a device across the Part is fine as long as adjacent chapters differ, which they do here (quote → NOTE → bold → plain → bold → quote).
+- Avoided reusing Ch67's babysitting-note vehicle and Part II Ch15's guest-WiFi-password vehicle for Ch83, even though both are close conceptually (a static shared secret vs. a scoped, expiring one is this chapter's literal subject) — landed on a garage keypad code instead, specifically because the "static secret becomes known to an unknowable number of people over years" shape needed a fresh surface image
+- Ch82's computer-lab setting is the first "screen-adjacent" vehicle used in a while — judged acceptable rather than a lazy default because the chapter's actual subject (login vs. permission) maps onto a school computer login more precisely than any non-screen substitute would, and the scene itself (clicking through folders) isn't about a game or social media
+
+### Edge cases and decisions
+- Ch82 stayed intentionally low-drama (a curious kid finding an unlocked folder, not a hacker) to match the tone of the real Equifax case the wife section already cites — the failure being "nobody meant any harm and it happened anyway" is the actual point, not a dramatized break-in
+- Ch84's kids section deliberately avoided any second recurring-trusted-person scenario (carpool driver, tutor) that would land too close to Ch67 (babysitting) or read as a stranger-danger note — a class notes document keeps the stakes at "you might study wrong information," matching the book's usual non-heavy register
+
+### Next session
+- Continue with Part XII, Ch85–Ch90 (6 chapters — performance, final Part)
+- Push after Part XII; note in final summary that KIDS_SECTION_NOTES.md can be deleted once the user confirms all 90 chapters are done

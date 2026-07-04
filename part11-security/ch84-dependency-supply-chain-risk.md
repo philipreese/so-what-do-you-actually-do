@@ -19,6 +19,16 @@ This chapter argues that most of the small pieces of borrowed code a program dep
 
 **The chapter's key insight is that "up to date" and "trustworthy" are two completely different questions, and only one of them shows up on the label.** A babysitting service that keeps a written, checkable record of exactly who's covering each slot, and confirms it's really that specific approved person showing up — not just whoever happens to arrive on the usual day — catches the handoff a family relying on habit alone never would. Software needs the equivalent: some actual record of exactly what's really inside the build, and some way to verify it was truly made by the people it claims, not just a version number everyone's learned to trust out of habit.
 
+## For My Kids
+
+*A fresh update this morning doesn't tell you whether whoever's actually behind it deserves the same trust as whoever was behind it last time.*
+
+Your grade's shared notes document for a class has been going strong for two years. Same title at the top, same familiar name everyone trusts, updated faithfully before every single test. You've never met most of the people who've actually typed into it — it's been passed from class rep to class rep as each one graduates or drops the class, and whoever's turn it is just keeps adding to the same doc under the same name.
+
+That's exactly how a lot of the tools your favorite apps quietly depend on work too: the name and the "last updated" date look exactly the same, semester after semester, even as the actual person behind it changes hands completely, sometimes more than once, with nobody re-checking whether the new person is even trustworthy.
+
+Copy blindly from that doc without ever checking who's actually maintaining it lately, and you might study confidently for a test using notes that are current, freshly updated, and quietly, completely wrong — because nobody ever asked whether the new person behind the same familiar title deserved the same trust as the last one.
+
 ---
 
 Part XI opened with trust boundaries (Ch 79) and closes here, at the boundary furthest from anything the team actually controls: code it didn't write and, realistically, never fully read. A dependency comes from a registry whose baseline trust model, across npm, PyPI, Maven Central, and most of their peers, amounts to "anyone can create an account and publish a package." It runs with the same privileges as application code the moment it's imported — often earlier, during install-time scripts — unless something has gone out of its way to stop that. And it isn't a static artifact: it gets updated automatically or semi-automatically as routine maintenance, which is exactly Ch 63's subject and exactly not this one's. Ch 63 asks whether a dependency's version is current. This chapter asks something else entirely: whether the current version can be trusted, a question a version number can't answer on its own.

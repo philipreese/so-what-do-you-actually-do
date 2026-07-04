@@ -19,6 +19,16 @@ This chapter argues software has to enforce that same boundary explicitly, every
 
 **And the chapter's other big point is about how to write the guest list at the door.** A bouncer holding a list of specific troublemakers to turn away lets in absolutely everyone else — including someone in a clever disguise nobody's thought to ban yet. A bouncer holding a list of specifically invited guests turns away everyone who isn't on it, disguise or not, because being unlisted is enough on its own. The first approach means constantly updating the ban list every time someone invents a new disguise. The second means the list barely needs updating at all, because it was never trying to anticipate every possible trick — it just already knows exactly who's supposed to be there.
 
+## For My Kids
+
+A substitute teacher gets handed a note: "Front office says I can leave five minutes early today — signed, Mom." A good substitute treats that note as just a claim, not an instruction to obey on the spot — because the note is words on paper a student could easily have written themselves, and reading it as an actual command is exactly how a sub gets talked into letting the wrong kid walk out the door.
+
+**The safe move is checking the note against something the sub didn't just take on faith: the actual, official list of students cleared to leave early today, sent down from the front office directly.** If a name's not on that list, it doesn't matter how convincing the note sounds.
+
+That list works precisely because it says who's allowed, not who to watch out for. A list of "kids known to fake notes" only ever covers tricks a sub has already seen before — the first kid who invents a new one just isn't on it yet, and walks right through. A list of who's actually supposed to leave doesn't have that gap. Being unlisted is enough on its own, clever new trick or not.
+
+Skip both checks, trust the note at face value, and the sub finds out the hard way at 3 p.m. — a very concerned parent calling the school asking why their kid was allowed to just walk out.
+
 ---
 
 An HTTP request is just bytes until something decides what those bytes mean. The moment an interpreter — a SQL engine, a shell, a template renderer, a browser's HTML parser, an LDAP client — treats untrusted input as an instruction instead of a value, the system has handed control of its own behavior to whoever supplied that input. Input validation is the control that stops that handoff: checking that data crossing into a more-trusted context actually conforms to what the receiving component expects, before anything meaningful happens to it. It answers one question — *is this data structurally safe to process* — and deliberately not a second one: whether the caller sending it is allowed to make this request at all, which is Ch 82's problem.

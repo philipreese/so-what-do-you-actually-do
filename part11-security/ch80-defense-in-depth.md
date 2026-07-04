@@ -19,6 +19,15 @@ This chapter argues computer systems need the exact same layered setup, and for 
 
 **But there's a specific way people fake this kind of security without actually having it: putting three locks on the door that all happen to open with the exact same key.** That isn't three barriers. It's one barrier, dressed up to look like three. The moment someone copies that one key — and keys get copied, that's just a fact about keys — every lock relying on it opens at once, and the burglar never even notices they were supposed to be stopped three separate times. Real layered protection means the jewelry box uses a completely different lock than the bedroom door, which uses a different one than the front door, so that beating one of them tells an attacker nothing at all about how to beat the next.
 
+## For My Kids
+
+Say your Halloween candy is worth actually protecting from your little brother. The smart setup isn't one great hiding spot — it's several: the good stuff lives in your room, not the shared kitchen; inside your room, it's in a specific drawer, not sitting on your desk; and inside that drawer, it's in a container with a little latch he hasn't figured out yet. Beating one of those doesn't hand him everything — it just gets him as far as your room, still facing two more obstacles.
+
+> [!NOTE]
+> If the drawer, the container, and your bedroom door all lock with the identical combination you use for everything, that's not three layers. That's one trick, worn three times. The second he figures out your go-to combination, he's straight through all three at once — and he never even notices he was supposed to be stopped three separate times.
+
+And you don't need this much effort everywhere. The loose gummy worms in the kitchen bowl don't need a hidden compartment — nobody's staging a heist for gummy worms. Save the real layers for the good chocolate, the stuff that's actually worth your little brother's best effort to get to.
+
 ---
 
 Every security control has a failure mode. Firewalls get misconfigured. Authentication systems ship defects. Credentials leak. Dependencies get compromised. Administrators, being human, make mistakes. None of this is hypothetical — it's Ch 07's partial-failure argument, and defense in depth starts by accepting it instead of trying to engineer it away. There is no perfect control, so that's not the goal. The goal is making sure that when one control fails — and eventually one will — the failure stops there instead of cascading into the whole system going down with it. Ch 24 already made this argument once, narrowly: zero-trust architecture re-verifies identity at every service boundary instead of trusting a request just because it came from inside the perimeter. Defense in depth is that same **assume-breach posture**, carried past the one boundary Ch 24 covered to every layer a system has.

@@ -206,7 +206,7 @@ Status: `[Stub]` = listed only | `[Draft]` = raw drafts exist | `[Complete]` = s
 
 | Appendix | Title | Status |
 |----------|-------|--------|
-| A | Decision Frameworks | [Stub] |
+| A | Decision Frameworks | [Complete] |
 | B | Common Engineering Smells | [Complete] |
-| C | Architecture Patterns Catalog | [Stub] |
-| D | Full Glossary | [Stub] |
+| C | Architecture Patterns Catalog | [Complete] |
+| D | Full Glossary | [Complete] |

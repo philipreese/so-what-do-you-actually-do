@@ -23,11 +23,17 @@ The practical benefit the chapter emphasizes is *not* "you can swap payment proc
 
 ## For My Kids
 
-Say you're captain of your team's science fair project, and a different parent volunteer drives you to the store for supplies each week. You write the list yourself, in your own plain words: "poster board, three highlighter colors, a glue stick." Whoever's driving that week can read it and get exactly what you need, because it's written in words you control, not words that only make sense to one specific person.
+Say you're captain of your team's science fair project, and a different parent volunteer drives you to the store for supplies each week. You write the list yourself, in your own plain words: "poster board, three highlighter colors, a glue stick."
 
-**The lazy version is writing the list the way one particular volunteer talks** — "SKU 44192, aisle 7B, the Micro Center brand." Fast to jot down, and it works fine, as long as that exact volunteer at that exact store is the one driving. The day someone else picks you up, or you end up at a different store, your list means nothing. Aisle 7B isn't a real place there.
+Whoever's driving that week can read it and get exactly what you need, because it's written in words you control, not words that only make sense to one specific person.
 
-**Here's the part that trips people up: just having a list at all can feel like you've solved the problem.** You haven't, if the list is written in someone else's language instead of yours. The whole point of writing your own list is that any volunteer, any store, can fill it. Hand someone a list built around one person's private shorthand, and you've quietly made yourself depend on that one person showing up — list or no list.
+**The lazy version is writing the list the way one particular volunteer talks** — "SKU 44192, aisle 7B, the Micro Center brand." Fast to jot down, and it works fine, as long as that exact volunteer at that exact store is the one driving.
+
+The day someone else picks you up, or you end up at a different store, your list means nothing. Aisle 7B isn't a real place there.
+
+**Here's the part that trips people up: just having a list at all can feel like you've solved the problem.** You haven't, if the list is written in someone else's language instead of yours.
+
+The whole point of writing your own list is that any volunteer, any store, can fill it. Hand someone a list built around one person's private shorthand, and you've quietly made yourself depend on that one person showing up — list or no list.
 
 ---
 

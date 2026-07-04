@@ -21,11 +21,17 @@
 
 ## For My Kids
 
-Say your family has one car, and everyone just calls it "the blue car." Works great — until it gets a new paint job after some body work, and now "the blue car" is red. Anyone who still says "grab the blue car keys" is describing something that plain doesn't exist anymore, and a new babysitter hearing that for the first time would go looking for a car that isn't in the driveway.
+Say your family has one car, and everyone just calls it "the blue car." Works great — until it gets a new paint job after some body work, and now "the blue car" is red.
 
-**"Mom's car" never has this problem.** It doesn't care what color the car is, whether it got repainted, or even if it got swapped for a different car next year. The name was never about the paint — it was about whose car it is, and that part doesn't change just because the outside does.
+Anyone who still says "grab the blue car keys" is describing something that plain doesn't exist anymore, and a new babysitter hearing that for the first time would go looking for a car that isn't in the driveway.
 
-**Nobody gets a warning when a name like "the blue car" goes stale.** It just quietly keeps getting said long after it stopped being true, and the first person who actually gets tripped up is whoever trusted it literally — standing in the driveway looking for a car that isn't there, while everyone else already knows what "blue car" really means and forgot that a stranger wouldn't.
+**"Mom's car" never has this problem.** It doesn't care what color the car is, whether it got repainted, or even if it got swapped for a different car next year.
+
+The name was never about the paint — it was about whose car it is, and that part doesn't change just because the outside does.
+
+**Nobody gets a warning when a name like "the blue car" goes stale.**
+
+It just quietly keeps getting said long after it stopped being true, and the first person who actually gets tripped up is whoever trusted it literally — standing in the driveway looking for a car that isn't there, while everyone else already knows what "blue car" really means and forgot that a stranger wouldn't.
 
 ---
 

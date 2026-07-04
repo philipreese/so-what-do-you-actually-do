@@ -23,11 +23,17 @@ That's the whole argument in this chapter, applied to code instead of remotes. P
 
 ## For My Kids
 
-Say it's your turn to do the dishes tonight, then your sibling's turn tomorrow, forever — that's the whole system, always has been. A magnet on the fridge that just says "Dish Duty: You" or "Dish Duty: Sam," flipped each night, does the entire job. Nobody has to remember the rule; they just glance at the fridge.
+Say it's your turn to do the dishes tonight, then your sibling's turn tomorrow, forever — that's the whole system, always has been. A magnet on the fridge that just says "Dish Duty: You" or "Dish Duty: Sam," flipped each night, does the entire job.
 
-**Now say instead you'd built an elaborate spinning chore wheel** — six labeled slots for kids you don't have, three chore categories for chores nobody in your house does, a locking pin so nobody spins it out of turn. It's genuinely impressive. It's also complete overkill for two people alternating one job, and now everyone has to learn how the wheel works before they can figure out something a flipped magnet would've told them instantly.
+Nobody has to remember the rule; they just glance at the fridge.
 
-**Here's the part that's easy to miss: the flipped magnet still counts as "building something."** You didn't just wing it every night — you made a small, clear, permanent system, and it's exactly the right amount of system for two people and one chore that's never getting more complicated. The wheel wasn't wrong because systems are bad. It was wrong because it was built for six kids and three chores that were never actually going to show up, while the real job — telling two people whose turn it is — got buried under parts nobody needed.
+**Now say instead you'd built an elaborate spinning chore wheel** — six labeled slots for kids you don't have, three chore categories for chores nobody in your house does, a locking pin so nobody spins it out of turn. It's genuinely impressive.
+
+It's also complete overkill for two people alternating one job, and now everyone has to learn how the wheel works before they can figure out something a flipped magnet would've told them instantly.
+
+**Here's the part that's easy to miss: the flipped magnet still counts as "building something."** You didn't just wing it every night — you made a small, clear, permanent system, and it's exactly the right amount of system for two people and one chore that's never getting more complicated.
+
+The wheel wasn't wrong because systems are bad. It was wrong because it was built for six kids and three chores that were never actually going to show up, while the real job — telling two people whose turn it is — got buried under parts nobody needed.
 
 ---
 

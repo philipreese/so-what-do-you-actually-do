@@ -21,12 +21,18 @@ This chapter argues computer systems need the exact same layered setup, and for 
 
 ## For My Kids
 
-Say your Halloween candy is worth actually protecting from your little brother. The smart setup isn't one great hiding spot — it's several: the good stuff lives in your room, not the shared kitchen; inside your room, it's in a specific drawer, not sitting on your desk; and inside that drawer, it's in a container with a little latch he hasn't figured out yet. Beating one of those doesn't hand him everything — it just gets him as far as your room, still facing two more obstacles.
+Say your Halloween candy is worth actually protecting from your little brother.
+
+The smart setup isn't one great hiding spot — it's several: the good stuff lives in your room, not the shared kitchen; inside your room, it's in a specific drawer, not sitting on your desk; and inside that drawer, it's in a container with a little latch he hasn't figured out yet.
+
+Beating one of those doesn't hand him everything — it just gets him as far as your room, still facing two more obstacles.
 
 > [!NOTE]
 > If the drawer, the container, and your bedroom door all lock with the identical combination you use for everything, that's not three layers. That's one trick, worn three times. The second he figures out your go-to combination, he's straight through all three at once — and he never even notices he was supposed to be stopped three separate times.
 
-And you don't need this much effort everywhere. The loose gummy worms in the kitchen bowl don't need a hidden compartment — nobody's staging a heist for gummy worms. Save the real layers for the good chocolate, the stuff that's actually worth your little brother's best effort to get to.
+And you don't need this much effort everywhere. The loose gummy worms in the kitchen bowl don't need a hidden compartment — nobody's staging a heist for gummy worms.
+
+Save the real layers for the good chocolate, the stuff that's actually worth your little brother's best effort to get to.
 
 ---
 

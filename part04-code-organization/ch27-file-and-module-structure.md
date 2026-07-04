@@ -21,11 +21,17 @@
 
 ## For My Kids
 
-Say you organize your school binders one of two ways. Either by subject — one binder holds everything for Math: notes, homework, old tests, all together — or by type — one binder holds every subject's notes, a separate one holds every subject's homework, a third holds every test from every class. Most people go with subject, for a good reason: when Math switches to a new unit, you open exactly one binder. Organize by type instead, and that same switch means checking three different binders to update one class.
+Say you organize your school binders one of two ways. Either by subject — one binder holds everything for Math: notes, homework, old tests, all together — or by type — one binder holds every subject's notes, a separate one holds every subject's homework, a third holds every test from every class.
 
-**The one time "by type" actually makes sense is if type is basically all you do** — like if your entire job was being the school's official notes-formatter for every class, period. For an actual student juggling six classes, that's the rare exception, not how you'd ever really organize.
+Most people go with subject, for a good reason: when Math switches to a new unit, you open exactly one binder. Organize by type instead, and that same switch means checking three different binders to update one class.
 
-**Then there's the folder every backpack somehow grows: the one labeled "stuff," or nothing at all.** Random worksheets, an old permission slip, a flyer you meant to read — nobody decided any of it belongs together, it just all needed somewhere to go that wasn't a real decision. Six weeks in, that folder is the thickest one in your bag, and finding anything specific inside means dumping the whole thing on your desk and starting over.
+**The one time "by type" actually makes sense is if type is basically all you do** — like if your entire job was being the school's official notes-formatter for every class, period.
+
+For an actual student juggling six classes, that's the rare exception, not how you'd ever really organize.
+
+**Then there's the folder every backpack somehow grows: the one labeled "stuff," or nothing at all.** Random worksheets, an old permission slip, a flyer you meant to read — nobody decided any of it belongs together, it just all needed somewhere to go that wasn't a real decision.
+
+Six weeks in, that folder is the thickest one in your bag, and finding anything specific inside means dumping the whole thing on your desk and starting over.
 
 ---
 

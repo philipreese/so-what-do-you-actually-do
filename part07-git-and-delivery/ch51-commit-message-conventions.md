@@ -21,11 +21,17 @@ This chapter argues that a commit message — the short explanation a programmer
 
 ## For My Kids
 
-Say you're doing a science experiment over several weeks, tweaking your setup a little each time, and you keep a lab notebook. After one round, you write "changed to 2 tablespoons of baking soda." That tells you what changed. It tells you nothing about why, and in three weeks, you won't remember either.
+Say you're doing a science experiment over several weeks, tweaking your setup a little each time, and you keep a lab notebook. After one round, you write "changed to 2 tablespoons of baking soda."
 
-**"Changed to 2 tablespoons because 1 tablespoon fizzled out in under 10 seconds and I couldn't get a clean timing reading" is a completely different entry.** It survives long after that exact setup is gone — you'll run a dozen more versions, change the baking soda again, maybe swap the vinegar out entirely, and this one note still tells you exactly why 2 tablespoons became the number in the first place.
+That tells you what changed. It tells you nothing about why, and in three weeks, you won't remember either.
 
-**The habit only works if you write it down in the moment, not later.** You will not remember, three weeks and six versions from now, why you made a change that felt obvious at the time. The reason is only easy to write down for about the next ten minutes. After that, it's already starting to blur, and by the science fair it's gone completely — replaced by a guess dressed up as a memory.
+**"Changed to 2 tablespoons because 1 tablespoon fizzled out in under 10 seconds and I couldn't get a clean timing reading" is a completely different entry.**
+
+It survives long after that exact setup is gone — you'll run a dozen more versions, change the baking soda again, maybe swap the vinegar out entirely, and this one note still tells you exactly why 2 tablespoons became the number in the first place.
+
+**The habit only works if you write it down in the moment, not later.** You will not remember, three weeks and six versions from now, why you made a change that felt obvious at the time.
+
+The reason is only easy to write down for about the next ten minutes. After that, it's already starting to blur, and by the science fair it's gone completely — replaced by a guess dressed up as a memory.
 
 ---
 

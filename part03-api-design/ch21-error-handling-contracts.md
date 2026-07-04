@@ -23,11 +23,19 @@ Miss this on a batch operation that sends a hundred records at once — where fo
 
 ## For My Kids
 
-Say your school has a locker-style drop box for turning in late homework, and it can reject your paper for two very different reasons. Maybe you tried the wrong period's slot — that's on you, and shoving the exact same paper in again won't fix it, you need the right slot. Or maybe the box itself is jammed today — not your fault at all, and trying again in an hour will probably just work.
+Say your school has a locker-style drop box for turning in late homework, and it can reject your paper for two very different reasons.
 
-**If the box just flashes "rejected" with no reason, both problems look identical from where you're standing.** You genuinely can't tell whether to fix something or just try again later, so you either give up on a paper that would've gone through fine, or keep jamming the same wrong submission into the same wrong slot for a week.
+Maybe you tried the wrong period's slot — that's on you, and shoving the exact same paper in again won't fix it, you need the right slot. Or maybe the box itself is jammed today — not your fault at all, and trying again in an hour will probably just work.
 
-**The worse version is a box that lies.** Say the light flashes "delivered!" the second your paper touches the slot, even though it actually got stuck halfway and never reached the teacher's stack. You walk away confident. Nobody checks again. Days later, grades post, yours is marked missing, and you're arguing that you definitely turned it in — because as far as you knew, you had.
+**If the box just flashes "rejected" with no reason, both problems look identical from where you're standing.**
+
+You genuinely can't tell whether to fix something or just try again later, so you either give up on a paper that would've gone through fine, or keep jamming the same wrong submission into the same wrong slot for a week.
+
+**The worse version is a box that lies.** Say the light flashes "delivered!" the second your paper touches the slot, even though it actually got stuck halfway and never reached the teacher's stack.
+
+You walk away confident. Nobody checks again.
+
+Days later, grades post, yours is marked missing, and you're arguing that you definitely turned it in — because as far as you knew, you had.
 
 ---
 

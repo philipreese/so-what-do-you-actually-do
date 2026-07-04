@@ -21,11 +21,21 @@ This chapter argues software teams make exactly that mistake with the automated 
 
 ## For My Kids
 
-Say you check three quick things every single morning before running out the door: shoes tied, lunch packed, homework folder in your bag. Ten seconds, every day, and if something's missing you catch it right there on the porch, with time to fix it.
+Say you check three quick things every single morning before running out the door: shoes tied, lunch packed, homework folder in your bag.
 
-**Now imagine instead you tried to do a full "am I actually organized for the whole semester" review every single morning** — checking every binder, re-sorting your backpack, reorganizing your locker plan. That's genuinely useful to do sometimes. It is a terrible thing to force into your two minutes before the bus. Do that every morning and one of two things happens: you're late for school constantly, or you eventually just stop checking anything at all because the whole routine got too painful to keep up.
+Ten seconds, every day, and if something's missing you catch it right there on the porch, with time to fix it.
 
-**The fix was never "check less carefully."** It's doing the right amount of checking at the right frequency. The three-second shoes-lunch-homework check belongs every single morning, because it's fast and it catches the thing that would actually ruin your day. The full organization review still matters — it just belongs once a month on a Sunday, not jammed into the two minutes before the bus shows up.
+**Now imagine instead you tried to do a full "am I actually organized for the whole semester" review every single morning** — checking every binder, re-sorting your backpack, reorganizing your locker plan.
+
+That's genuinely useful to do sometimes. It is a terrible thing to force into your two minutes before the bus.
+
+Do that every morning and one of two things happens: you're late for school constantly, or you eventually just stop checking anything at all because the whole routine got too painful to keep up.
+
+**The fix was never "check less carefully."** It's doing the right amount of checking at the right frequency.
+
+The three-second shoes-lunch-homework check belongs every single morning, because it's fast and it catches the thing that would actually ruin your day.
+
+The full organization review still matters — it just belongs once a month on a Sunday, not jammed into the two minutes before the bus shows up.
 
 ---
 

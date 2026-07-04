@@ -21,11 +21,19 @@ This chapter argues software should move through its own approval stages — a t
 
 ## For My Kids
 
-Say your science project wins first place at the school science fair, and now it moves on to the district competition, then possibly state. The right way to do this: you carry the exact same poster, the exact same experiment results, the exact same board, to every single round. What wins at school is literally the same physical thing being judged at districts.
+Say your science project wins first place at the school science fair, and now it moves on to the district competition, then possibly state. The right way to do this: you carry the exact same poster, the exact same experiment results, the exact same board, to every single round.
 
-**The wrong way: rebuilding the whole project from scratch before each round, "using the same method," hoping it comes out identical.** It might not. Rerun the exact same experiment again and you could get a slightly different measurement, misremember a number, redesign a chart slightly differently. By the time it reaches state, the project being judged might not actually be the one that won at school — it just probably resembles it.
+What wins at school is literally the same physical thing being judged at districts.
 
-**What's allowed to change between rounds is just the outside stuff: your entry number, which table you're assigned to, maybe a new ribbon pinned to the corner.** The actual project — the poster, the data, the conclusion — stays exactly the same object the whole way through. Change the entry tag all you want. Never rebuild the actual project and hope it turns out the same twice.
+**The wrong way: rebuilding the whole project from scratch before each round, "using the same method," hoping it comes out identical.** It might not.
+
+Rerun the exact same experiment again and you could get a slightly different measurement, misremember a number, redesign a chart slightly differently.
+
+By the time it reaches state, the project being judged might not actually be the one that won at school — it just probably resembles it.
+
+**What's allowed to change between rounds is just the outside stuff: your entry number, which table you're assigned to, maybe a new ribbon pinned to the corner.** The actual project — the poster, the data, the conclusion — stays exactly the same object the whole way through.
+
+Change the entry tag all you want. Never rebuild the actual project and hope it turns out the same twice.
 
 ---
 

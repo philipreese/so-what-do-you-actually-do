@@ -19,6 +19,16 @@ This chapter argues that software pipelines make exactly the same mistake when d
 
 **And even with a perfect labeling system, the chapter insists on one more habit: periodically clean out the whole fridge and cook everything from raw ingredients, on a schedule, whether anyone thinks it's needed or not.** A label can be exactly right by its own rules and still miss something it was never built to catch — a jar that got mislabeled by accident, a fridge running a little warmer than it should. The only way to know the shortcut is still telling the truth is to occasionally skip it entirely and see if starting from scratch gives the same answer.
 
+## For My Kids
+
+Say every summer you reuse last year's camping packing list instead of making a new one, because it saved time and nothing's gone wrong yet.
+
+**The list works great as long as the label actually matches what's true.** A list titled "Camping List," used every year regardless of which campground or which month, is a broad, lazy label — it doesn't actually track whether anything real has changed. A list titled "same campground, same June dates, same gear" is a far more honest label, because it only applies when those specific things are still true.
+
+**Here's where it quietly goes wrong: this year you're going to a different campground, in the mountains, in September instead of June.** You grab last year's list anyway, because it's labeled "Camping List" and that's technically what this is. It doesn't mention a warm jacket, because last year was June and hot. You don't find out the list was wrong until you're already there, freezing the first night.
+
+**Even a perfectly labeled list can't catch everything, though.** Maybe your tent developed a small hole since last time, and no list would know to mention that. That's why, every so often, it's worth ignoring the list completely and packing from scratch, checking every item fresh — not because the list is bad, but because the only way to know your shortcut is still telling the truth is to occasionally skip it and see if you get the same answer.
+
 ---
 
 This chapter covers how a CI pipeline reuses work across runs without letting that reuse quietly stand in for correctness. It does not cover what checks belong in the pipeline (Ch 57), matrix build mechanics (Ch 60), or how a project's dependency versions are chosen and updated over time (Ch 63 — this chapter is about build speed given a fixed dependency state; that chapter is about how the state itself changes).

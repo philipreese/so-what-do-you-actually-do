@@ -247,3 +247,26 @@ Delete after all 90 chapters are done (flag to user first).
 ### Next session
 - Continue with Part XI, Ch79–Ch84 (6 chapters — security)
 - Push after Part XI (or XI+XII together to finish)
+
+---
+
+## Part XI, Ch79–Ch84
+
+### Formatting used (for reference)
+- **Ch79**: 2 plain paragraphs + 1 bold closer (listing everyone with house access before moving in; home-inspector checklist vs. gut feeling — STRIDE)
+- **Ch80**: 2 plain paragraphs + 1 bold closer (nested locks around jewelry; three locks sharing one key = fake redundancy)
+- **Ch81**: 2 bold paragraphs (fill-in-the-blank form letter read literally = injection; bouncer's ban list vs. guest list = allowlist/denylist)
+- **Ch82**: 2 plain paragraphs + 1 bold closer (hotel key card: whose card vs. which doors it opens — authentication vs. authorization; Equifax case)
+- **Ch83**: 2 plain paragraphs + 1 bold closer (spare key under the doormat vs. a smart lock's one-time code — eliminating vs. managing a secret)
+- **Ch84**: 2 plain paragraphs + 1 bold closer (babysitter handoff to an unvetted friend, same slot on the calendar — maintainer compromise / supply chain trust)
+
+### What worked
+- Security chapters have unusually strong, concrete real-world case studies already built in (Target, OPM, Equifax, Codecov, event-stream) — didn't try to retell the case study itself in the wife section; used a separate, simpler domestic analogy for the mechanism, then let the chapter's own case study stand as the "real stakes" backing it up
+- The babysitter-handoff analogy for Ch84 maps almost exactly onto the chapter's actual case study (a maintainer handoff to an unvetted person) — when a chapter's real-world example already has this shape, building the analogy around the same shape (rather than a generic one) makes the section click into place once the reader later learns the real case
+- Physical security analogies (locks, keys, key cards, doormats) carried this entire Part naturally, since the chapter content is literally about trust boundaries and access — didn't need to force domestic variety as hard as in more abstract Parts
+
+### Next session
+- Continue with Part XII, Ch85–Ch87, Ch89–Ch90 (Ch88 already done as calibration example)
+- This is the FINAL part — after this, all 90 chapters have "For My Wife" sections
+- Flag to the user in the final summary that WIFE_SECTION_NOTES.md can now be deleted (scaffolding only, user's call)
+- Push after Part XII (final push)

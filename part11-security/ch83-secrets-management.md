@@ -11,6 +11,16 @@
 - [Strong Recommendation] **Trusted publishing** — exchanging a short-lived, pipeline-scoped identity via OIDC for a temporary publish session — is strictly better than rotating a long-lived token, because there's no static credential sitting anywhere to leak in the first place. Eliminating the secret dominates managing it better.
 - [Strong Recommendation] A dedicated secret manager is the correct default for anything beyond a single-developer project — Principle 8 applied to credentials specifically: rotation and audit become mechanical properties of the infrastructure instead of a discipline every engineer has to remember and never skip.
 
+## For My Wife
+
+A house key hidden under the doormat is a permanent secret: it opens the door for as long as that lock exists, it looks completely identical whether the person using it is you or a stranger who found it, and if anyone else ever discovers it's there, they now have exactly what you have, indefinitely, with no way to tell the two of you apart. The only real fix, once you suspect someone's found it, is changing the lock entirely — you can't just "un-find" a key that's already been seen and copied.
+
+A smart lock that texts the dog walker a one-time code, valid only for the hour of their visit, works completely differently. There's no permanent key sitting under any mat for anyone to stumble across. Even if that specific code somehow leaked, it's worthless five minutes after the visit ends — there was never a lasting secret there to protect in the first place, just a brief, disposable one that expires on its own.
+
+This chapter argues companies should treat their passwords and access codes the same way: stop hiding permanent keys under doormats hoping nobody finds them, and instead hand out short-lived, single-purpose codes that expire on their own schedule, so a leak — and leaks happen, that's the whole premise — only ever exposes something that was already about to stop working anyway.
+
+**And the chapter's hardest lesson is that finding out the doormat key leaked doesn't mean "take the key back." It means changing the lock.** Once a permanent key has been seen by the wrong person, there's no way to un-see it — the only real recovery is making that specific key stop working at all, which is a much bigger job than just hoping it wasn't noticed.
+
 ---
 
 Authentication and authorization (Ch 82) ultimately rest on credentials. A correctly implemented protocol and a carefully scoped permission policy both become irrelevant the moment the credential backing them gets out — an attacker holding a valid secret doesn't need to defeat either control, because the system has no way to tell them apart from the legitimate holder. A secret's defining property isn't that its value is confidential; it's that possessing the value grants capability. The security problem isn't disclosure in the abstract, it's unauthorized capability, and that reframing is what makes a database password and a signing key comparable risks even though only one of them looks cryptographic.

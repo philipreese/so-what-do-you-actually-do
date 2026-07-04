@@ -1,5 +1,9 @@
 # Ch 48 — Technical Debt
 
+*Careless code isn't debt; it's just careless code.*
+
+Technical debt is not "code someone dislikes" — Cunningham's original metaphor describes shipping a design that reflects the team's current, incomplete understanding in order to learn faster, never a license to write bad code and call it debt. Fowler's quadrant makes the term decision-useful again: only deliberate-prudent debt, where the cost is known and there's a plan, is a legitimate financial instrument, while reckless shortcuts are damage wearing the same name. Debt charges interest — every subsequent change that touches it gets slower and riskier, and the crossover where clean design outpaces sloppy design arrives in weeks, not years. Debt that isn't tracked isn't managed, so the default should be opportunistic repayment during other work, with scheduled capacity reserved for the debt opportunism structurally can't reach.
+
 **Prerequisites:** [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), [Issue Tracking: What Makes a Good Issue](ch42-issue-tracking-what-makes-a-good-issue.md), [Architecture Decision Records (ADRs)](ch45-architecture-decision-records.md)
 
 **New vocabulary introduced:** technical debt, debt-as-excuse, Design Stamina Hypothesis

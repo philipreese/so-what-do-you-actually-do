@@ -1,5 +1,9 @@
 # Ch 49 — Process Overhead: The Value Threshold
 
+*Adding process is easy and rewarded; removing it isn't.*
+
+Nearly every process is scar tissue, a rule created in the aftermath of a specific past failure, which is exactly what makes it feel unremovable and exactly why process accumulates without its original justification ever being re-examined. The process ratchet is the resulting asymmetry: adding process is easy and socially rewarded, while removing it requires proving a negative, so a team's process stack ends up reflecting its failure history rather than its current risk. Process weight has to match team size, blast radius, and reversibility, and a small team running a thousand-person company's approval apparatus is buying insurance against risks it doesn't have. Every standing process should be re-justifiable on demand — what failure it prevents, how often, and what it costs — and measured by outcomes, never compliance, since a compliance metric gets satisfied by compliance whether or not the outcome actually moved.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), all of [Ch 42](ch42-issue-tracking-what-makes-a-good-issue.md)–[48](ch48-technical-debt.md)
 
 **New vocabulary introduced:** process ratchet, Chesterton's fence, compliance theater

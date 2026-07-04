@@ -1,5 +1,9 @@
 # Ch 36 — When to Mock vs. Use Real Dependencies
 
+*Mocks verify interactions; fakes and real objects verify state.*
+
+The test double taxonomy — dummy, stub, spy, mock, fake — has precise, distinct meanings, and using "mock" as a catch-all conflates four different techniques and blurs what a test is actually telling you. Mocks verify interactions, that collaborators got called correctly; fakes and real objects verify state, that the system produced the right output, and these aren't interchangeable forms of confidence. The classicist school reaches for real collaborators wherever it can and produces tests that survive internal refactoring; the mockist school replaces every collaborator with a mock and ties the suite to implementation structure instead of behavior. Real or near-real dependencies should be preferred wherever the cost is acceptable, replacing a dependency only when it's genuinely outside your control, non-deterministic, or prohibitively expensive to run.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Layered, Hexagonal, and Ports-and-Adapters Architecture](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md)
 
 **New vocabulary introduced:** test double, dummy, stub, spy, mock, fake, refactoring fragility, state verification, interaction verification

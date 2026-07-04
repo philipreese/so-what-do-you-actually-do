@@ -1,5 +1,9 @@
 # Chapter 16 — Versioning and Backward Compatibility
 
+*There is no neutral middle category between compatible and breaking.*
+
+Once an API has a consumer, every change is either backward compatible or breaking, and most versioning incidents are classification failures where an engineer believed a change was safe when it wasn't. A version number in a URL doesn't make an API evolvable; a disciplined process for classifying changes and migrating consumers off old contracts does. URI versioning, header-based versioning, and schema-level versioning all solve the same problem with different trade-offs in discoverability, caching, and tooling, and none of them is an interchangeable default. Deprecating a version safely requires a time-bound, instrumented lifecycle, not documentation that merely says a version is deprecated.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Part II, Ch 15 — API Surface Design: What to Expose, What to Hide](ch15-api-surface-design-expose-hide.md). Specifically: afferent coupling and the minimal-surface-area principle.
 
 **New vocabulary introduced:** sunset pattern

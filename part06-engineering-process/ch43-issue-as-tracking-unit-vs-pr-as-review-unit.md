@@ -1,5 +1,9 @@
 # Ch 43 — Issue as Tracking Unit vs. PR as Review Unit
 
+*The issue and the PR answer different questions at different sizes.*
+
+An issue and a pull request answer different questions and have different natural sizes: the issue is the unit of intent, the PR is the unit of review, and the mapping between them is one-to-many, not one-to-one. Review effectiveness degrades sharply as diff size grows, an empirical finding rather than a matter of reviewer discipline, so the burden of keeping diffs small belongs to the author. Forcing a 1:1 mapping produces one of two failure modes: the monster PR that reviews an entire issue in one unreviewable diff, or a fragmented tracker sliced to match convenient diff boundaries. Incremental PRs, feature flags, and stacked PRs are the standard techniques for splitting implementation into reviewable steps while keeping one stable issue as the record of intent.
+
 **Prerequisites:** [Issue Tracking: What Makes a Good Issue](ch42-issue-tracking-what-makes-a-good-issue.md), [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md)
 
 **New vocabulary introduced:** unit of intent, unit of review, monster PR

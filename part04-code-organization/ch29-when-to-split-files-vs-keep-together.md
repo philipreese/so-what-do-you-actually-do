@@ -1,5 +1,9 @@
 # Ch 29 — When to Split Files vs. Keep Together
 
+*Split on falling cohesion, never on rising line count.*
+
+A file is a unit of comprehension, not a unit of syntax — the question was never how many declarations fit inside it, but whether they actually belong together. The signal to split is a reader thinking "this part is about something else"; the signal to keep together is the pieces losing their meaning the moment they're apart. A thousand-line parser implementing one algorithm can be easier to read than a two-hundred-line file mixing unrelated concerns, because cohesion, not length, is what determines readability. Test and asset co-location follow the same reasoning: keep with the source whatever gets understood and changed alongside it.
+
 **Prerequisites:** [Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) (specifically: the Rule of Three), [File and Module Structure](ch27-file-and-module-structure.md)
 
 **New vocabulary introduced:** None beyond concepts established in prior chapters. This chapter applies [cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md) and the [Rule of Three](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) at the smallest practical grain.

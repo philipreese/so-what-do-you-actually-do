@@ -1,5 +1,9 @@
 # Chapter 25 — Internal vs. External API Design
 
+*What makes an API external is who controls the deploy schedule.*
+
+Chapter 15 drew the structural line between internal and external API stability; this chapter is about what actually changes operationally once that line is crossed. An API is external the moment a consumer the provider can't coordinate with depends on it, regardless of whether it sits on the public internet or was ever designed as a public contract. Hyrum's Law is the mechanism behind the trap: with enough consumers, every observable behavior, intended or not, eventually becomes something somebody depends on. SDKs, formal change management, and gateway infrastructure are how the cost of that uncoordinated consumer base gets paid predictably, instead of landing unplanned on the support queue.
+
 **Prerequisites:** [Part II, Ch 14 — Abstraction Layers: When to Add One](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md), [Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Ch 16 — Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md), [Part III, Ch 21 — Error Handling Contracts](ch21-error-handling-contracts.md). Specifically: the structural internal/external stability distinction, backward-compatible vs. breaking changes, and the sunset pattern.
 
 **New vocabulary introduced:** Hyrum's Law, consumer-driven contract test

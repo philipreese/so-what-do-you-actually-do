@@ -1,5 +1,9 @@
 # Ch 60 — Matrix Builds
 
+*A matrix scales multiplicatively, which teams reliably underestimate.*
+
+A matrix build isn't a different pipeline — it's a Cartesian expansion of one pipeline across dimensions like operating system, runtime version, or dependency set, and total job count is the product of every dimension's size, scaling multiplicatively rather than additively. Matrix dimensions should encode a project's actual, published support commitments, not a maximized theoretical net, since testing every patch version when only the major version changes observable behavior is waste, not thoroughness. The fail-fast matrix setting is the same compute-versus-visibility trade-off this part already established for pipeline stages, applied here at the granularity of one matrix cell instead.
+
 **Prerequisites:** [What Belongs in CI (and What Doesn't)](ch57-what-belongs-in-ci-and-what-doesnt.md), [Fail-Fast vs. Fail-Safe Pipeline Design](ch58-fail-fast-vs-fail-safe-pipeline-design.md), [Caching Strategy in CI](ch59-caching-strategy-in-ci.md)
 
 **New vocabulary introduced:** None — this chapter applies the fail-fast/fail-safe trade-off (Ch 58) and cache-key precision (Ch 59) to one specific mechanism rather than introducing new concepts.

@@ -1,5 +1,9 @@
 # Chapter 18 — Data Ownership Boundaries
 
+*Boundaries follow who controls the data, not where the code lives.*
+
+In a decomposed system, boundaries are defined by who controls the data, not by where the code happens to live — every piece of mutable data needs exactly one authoritative owner, and everyone else gets a read-only view through that owner's API. The shared database is the central failure mode: two services querying the same tables are coupled by schema no matter how independently they're deployed. Ownership goes to whichever service controls an entity's lifecycle, not to whichever service happens to use it most. Database-per-service breaks the trivial SQL join, and CQRS gets a fast cross-domain read back by having the owner emit events that downstream services fold into their own local projections, instead of granting anyone direct write access to data they don't own.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Part II, Ch 10 — Monolith vs. Service Decomposition](ch10-monolith-vs-service-decomposition.md), [Ch 13 — Coupling and Cohesion at the Architecture Level](ch13-coupling-cohesion-architecture-level.md), [Ch 17 — Synchronous vs. Asynchronous Communication](ch17-sync-vs-async-communication.md). Specifically: connascence of schema and value, the distributed monolith anti-pattern, and temporal coupling.
 
 **New vocabulary introduced:** database-per-service pattern, CQRS (Command Query Responsibility Segregation)

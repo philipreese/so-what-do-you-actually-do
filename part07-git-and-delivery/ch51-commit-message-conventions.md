@@ -1,5 +1,9 @@
 # Ch 51 — Commit Message Conventions
 
+*A commit message outlives the exact lines it describes.*
+
+Code gets refactored, and once a commit is merged its message is effectively permanent, carrying reasoning that survives long after the lines it describes have been rewritten or deleted. Structured, human-readable commit messages — separated subject and body, imperative mood, a body that explains why rather than what — are the baseline for any codebase expected to outlive its author or gain a second contributor. Conventional Commits' machine-parseable prefixes are a hard prerequisite for the automated version-bumping and changelog generation covered later in this part, not a stylistic preference.
+
 **Prerequisites:** [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md), [Issue as Tracking Unit vs. PR as Review Unit](../part06-engineering-process/ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), [Architecture Decision Records (ADRs)](../part06-engineering-process/ch45-architecture-decision-records.md), [Branching Strategies](ch50-branching-strategies.md)
 
 **New vocabulary introduced:** None — this chapter applies comment-rot (Ch 30) and ADR (Ch 45) concepts already defined, rather than coining new terms.

@@ -1,5 +1,9 @@
 # Ch 62 — Environment Promotion
 
+*Build the artifact once; only its configuration should vary.*
+
+This chapter assumes the versioned, tagged artifact already exists and covers only how it moves through environments afterward — development, staging, production. A single immutable artifact should be built exactly once and promoted identically through every environment, because rebuilding at each stage is a real correctness risk: a rebuild can silently resolve a different dependency version than whatever was actually validated in the prior environment. The Twelve-Factor App's build/release/run separation formalizes this — build produces the artifact, release combines it with environment-specific configuration, run executes it — and the artifact has to stay identical across environments precisely so that only configuration is allowed to vary.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (MTTR), [Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md), [Tagging and Release Markers](ch56-tagging-and-release-markers.md), [Release Automation](ch61-release-automation.md)
 
 **New vocabulary introduced:** build-once-promote-many

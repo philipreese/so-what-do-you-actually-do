@@ -1,5 +1,9 @@
 # Chapter 20 — Resource Modeling
 
+*A resource is a noun in the consumer's language, not the schema's.*
+
+Once an API commits to exposing resources, the next question is what a resource actually is — a stable, externally meaningful noun with identity and state, not a database table or an ORM model wearing a URL. Resources should be modeled around the language the consumer already speaks, because a resource that's just the schema in a trench coat couples every client to internal refactors they were never supposed to notice. URIs should nest shallowly, since every extra level of hierarchy encodes a traversal dependency that eventually breaks something. Operations that refuse to map onto CRUD get an explicit sub-resource action endpoint, keeping the resource a noun instead of quietly turning REST back into RPC.
+
 **Prerequisites:** [Part II, Ch 04 — Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Part III, Ch 19 — REST vs. RPC vs. Event-Driven](ch19-rest-vs-rpc-vs-event-driven.md). Specifically: information hiding, minimal surface area, progressive disclosure, and REST's resource-oriented ontology.
 
 **New vocabulary introduced:** the action problem

@@ -1,5 +1,9 @@
 # Ch 28 — Naming Conventions and When They Matter
 
+*A good name is information hiding with no runtime cost.*
+
+Naming is the cheapest form of information hiding there is: a good name communicates intent for free, with no extra indirection and no runtime cost. Names should come from the problem domain before the implementation, matching the ubiquitous language the business already speaks rather than the one the codebase invented. Hungarian notation earned its keep in untyped C environments, but in any modern typed language it just duplicates what the compiler already knows and then lies the moment a type changes. Predicate prefixes carry genuine disambiguating value, while camelCase versus snake_case is a style choice that belongs to a linter, not a debate.
+
 **Prerequisites:** [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Coupling and Cohesion at the Architecture Level](../part02-software-architecture/ch13-coupling-cohesion-architecture-level.md) (specifically: ubiquitous language and bounded context vocabulary), [File and Module Structure](ch27-file-and-module-structure.md)
 
 **New vocabulary introduced:** ubiquitous language, Hungarian notation, semantic predicate naming

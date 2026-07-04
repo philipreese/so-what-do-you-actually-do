@@ -1,5 +1,9 @@
 # Ch 32 — Error Handling: Typed Errors vs. Exceptions vs. Result Types
 
+*The cost of a failure path never disappears; it only moves.*
+
+Unchecked exceptions introduce invisible control flow, letting any function call silently exit the stack several frames up with no warning in the signature, while error-as-value makes every failure path visible in the type itself. Neither cost disappears — exceptions impose invisible control flow, error-as-value imposes boilerplate — so the mechanism should be matched to the kind of failure on purpose, not by habit. Operational failures a caller can realistically handle belong in error-as-value; exceptional conditions like violated invariants belong to exceptions or fail-fast termination, where local recovery would be the wrong move. Checked exceptions are a widely acknowledged historical misstep at this point, and don't belong in a new design.
+
 **Prerequisites:** [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) (specifically: fail-fast and the crash/corruption/wrong-answer taxonomy), [Error Handling Contracts](../part03-api-design/ch21-error-handling-contracts.md) (the wire-level counterpart to this chapter's in-process mechanisms)
 
 **New vocabulary introduced:** invisible control flow, error-as-value, operational failure, exceptional failure

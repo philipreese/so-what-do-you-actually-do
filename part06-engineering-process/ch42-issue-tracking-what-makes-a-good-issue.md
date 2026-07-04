@@ -1,5 +1,9 @@
 # Ch 42 — Issue Tracking: What Makes a Good Issue
 
+*A theme is not an issue if it never gets to close.*
+
+An issue is a shared engineering artifact, not a personal reminder, and it should contain enough context that someone other than its author can complete the work without a clarification thread. Stating the problem before the solution — "cache invalidation serves stale reads after writes" instead of "replace Redis with Postgres" — preserves the freedom to discover a better fix during implementation. Acceptance criteria convert "done" from an opinion into something another engineer can verify independently, and without them issues reopen because people disagree about what was actually promised. An issue with no natural completion point is a theme, not an issue, and will sit open indefinitely.
+
 **Prerequisites:** [What Engineering Actually Optimizes](../part01-systems-thinking/ch01-what-engineering-optimizes.md), [Complexity Is the Enemy](../part01-systems-thinking/ch02-complexity-is-the-enemy.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), [Comments: What to Comment, What Not To](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md)
 
 **New vocabulary introduced:** theme, write-only tracker

@@ -1,5 +1,9 @@
 # Chapter 22 — Idempotency
 
+*Idempotency doesn't stop a retry — it makes one harmless.*
+
+At-least-once delivery is the realistic default once a call crosses a network boundary, and idempotency is what makes that survivable: it doesn't stop a request from arriving twice, it makes arriving twice a non-event. Some operations are naturally idempotent by construction, while others need a client-supplied key the server uses to recognize a retry and return the original result instead of redoing the work. The only enforcement mechanism that actually holds up is a database-level uniqueness constraint, since an application-level check-then-insert leaves a race window two concurrent retries can both slip through. A server can't remember every key forever, and the retention window is a genuine trade-off between treating a delayed retry as brand new and letting transport metadata bloat domain tables permanently.
+
 **Prerequisites:** [Part II, Ch 17 — Synchronous vs. Asynchronous Communication](../part02-software-architecture/ch17-sync-vs-async-communication.md), [Part III, Ch 21 — Error Handling Contracts](ch21-error-handling-contracts.md). Specifically: at-least-once delivery, the impossibility of real exactly-once delivery across a network boundary, and structured error responses.
 
 **New vocabulary introduced:** idempotency key

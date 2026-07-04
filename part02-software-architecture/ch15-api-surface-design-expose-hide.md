@@ -1,5 +1,9 @@
 # Chapter 15 — API Surface Design: What to Expose, What to Hide
 
+*Every exposed field is a permanent commitment, not a convenience.*
+
+Information hiding applied at the network boundary means every field, parameter, and operation an API exposes is cheap to add and exponentially expensive to remove once a consumer depends on it. The surface should be designed around what you're willing to maintain forever, not around what data happens to be available. Progressive disclosure keeps the common path simple while making advanced capability available but not mandatory, so most consumers never have to learn the parameters only a few actually need. Internal and external APIs carry different stability obligations, because internal consumers can be migrated on a schedule you control and external ones cannot be coordinated with at all.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Ch 04 — Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Part II, Ch 13 — Coupling and Cohesion at the Architecture Level](ch13-coupling-cohesion-architecture-level.md), [Ch 14 — Abstraction Layers: When to Add One](ch14-abstraction-layers-when-to-add-one.md). Specifically: information hiding, afferent coupling, and connascence of value.
 
 **New vocabulary introduced:** progressive disclosure

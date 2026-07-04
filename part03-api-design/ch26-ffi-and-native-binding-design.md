@@ -1,5 +1,9 @@
 # Chapter 26 — FFI and Native Binding Design
 
+*The least forgiving API surface anywhere in this book.*
+
+This chapter is a deliberate register change: not a network boundary but a language boundary, where there's no timeout, no retry, and no graceful degradation, and a mistake can take down the entire host process. An API is a logical contract, but an ABI is the physical one — exact memory layout and calling convention, none of it negotiable, and two compilers agreeing on source-level behavior says nothing about whether they agree on what bytes a struct contains. Memory ownership is the central design problem, because there's no shared garbage collector, and exactly one side has to be responsible for freeing whatever crosses the boundary. Exceptions and stack unwinding are runtime features that cannot safely cross into a different runtime, so error handling here drops to return codes and out-parameters instead.
+
 **Prerequisites:** [Part I, Ch 04 — Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Part III, Ch 15 — API Surface Design: What to Expose, What to Hide](../part02-software-architecture/ch15-api-surface-design-expose-hide.md), [Ch 22 — Idempotency](ch22-idempotency.md). Specifically: information hiding, minimal surface area, and the contrast with network-level graceful degradation this chapter inverts.
 
 **New vocabulary introduced:** Foreign Function Interface (FFI), Application Binary Interface (ABI)

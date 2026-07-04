@@ -1,5 +1,9 @@
 # Chapter 13 — Coupling and Cohesion at the Architecture Level
 
+*The same two axes, but a compile error becomes a network partition.*
+
+Coupling and cohesion don't change definition at the architecture level, but the stakes do — a coupling mistake between services produces coordinated deployments and network partitions instead of a local compile error. The bounded context is architectural cohesion: the largest scope within which a domain model's terms and rules stay internally consistent, with a narrow, deliberate interface to the outside. The shared database is the canonical failure mode, coupling services through schema no matter how independently they're deployed. Event-driven communication reduces that coupling at a real cost: eventual consistency, and a debugging trail that has to follow an indirect, asynchronous chain instead of a stack trace.
+
 **Prerequisites:** [Part I, Ch 03 — Coupling and Cohesion](../part01-systems-thinking/ch03-coupling-and-cohesion.md), [Ch 07 — Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md), [Part II, Ch 10 — Monolith vs. Service Decomposition](ch10-monolith-vs-service-decomposition.md), [Ch 12 — Dependency Direction and Inversion](ch12-dependency-direction-inversion.md). Specifically: afferent/efferent coupling, connascence, partial failure, and the distributed monolith anti-pattern.
 
 **New vocabulary introduced:** bounded context, temporal coupling

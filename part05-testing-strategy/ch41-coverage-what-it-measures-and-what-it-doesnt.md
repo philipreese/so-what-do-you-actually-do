@@ -1,5 +1,9 @@
 # Ch 41 — Coverage: What It Measures and What It Doesn't
 
+*Coverage proves code ran, never that its behavior was checked.*
+
+Coverage measures whether code got executed by a test run, not whether its behavior was verified, and the gap between those two claims is where coverage's reputation as a quality metric quietly falls apart. The measurement hierarchy runs three tiers deep — line coverage, branch coverage, and mutation testing — each stronger and pricier than the last. Low coverage is a meaningful warning that flags untouched code, but high coverage is not proof of quality, since a suite executing every line while asserting nothing reports the same number as one built on rigorous assertions. Making coverage a mandatory CI gate triggers Goodhart's Law on schedule, as engineers under deadline pressure satisfy the number by writing tests that execute lines without checking a single outcome.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [Property-Based Testing](ch38-property-based-testing.md), [When Not to Test](ch39-when-not-to-test.md)
 
 **New vocabulary introduced:** line coverage, branch coverage, mutation testing, execution-verification gap

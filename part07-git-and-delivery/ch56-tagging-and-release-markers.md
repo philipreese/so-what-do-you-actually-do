@@ -1,5 +1,9 @@
 # Ch 56 — Tagging and Release Markers
 
+*A tag is the artifact; what it promises is a separate question.*
+
+A Git tag is the mechanical artifact that marks a specific commit as a release point, and it says nothing on its own about what a version number promises to consumers — this chapter is about the tag as artifact, not the meaning of the string it carries. Annotated tags, carrying a tagger, timestamp, message, and optionally a signature, are the correct default for anything called a release, while a lightweight tag is a bare pointer appropriate only for local, throwaway bookmarks. A signed tag lets a consumer verify a release actually came from an authorized maintainer, at a real but modest key-management cost worth paying for anything distributed beyond a single trusted pipeline.
+
 **Prerequisites:** [Versioning and Backward Compatibility](../part02-software-architecture/ch16-versioning-backward-compatibility.md), [Milestone and Phase Planning](../part06-engineering-process/ch44-milestone-and-phase-planning.md), [Branching Strategies](ch50-branching-strategies.md), [Merge vs. Rebase](ch55-merge-vs-rebase.md)
 
 **New vocabulary introduced:** annotated tag, lightweight tag

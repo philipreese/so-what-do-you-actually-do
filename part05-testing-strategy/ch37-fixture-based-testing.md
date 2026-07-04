@@ -1,5 +1,9 @@
 # Ch 37 — Fixture-Based Testing
 
+*Fixture bloat isn't a maintenance failure; it's structurally inevitable.*
+
+A fixture is the complete set of preconditions a test depends on, and shared mutable fixtures — datasets multiple tests draw from with no isolation — are the primary source of order-dependent test failures. Static fixture files earn their place only for genuinely immutable reference data; factory and scoped fixture functions are the default for entity data because they keep state creation local to whatever test needs it. Fixture bloat, a shared dataset grown until no single engineer understands its full dependency graph, is structurally inevitable in large static fixture systems, and the remedy is not building them for mutable data at all. State reset is a separate decision from state construction: transactional rollback is fast and sufficient for most integration tests, while truncation is required once asynchronous workers or multiple connections commit outside the test thread's own transaction.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [What Belongs at Each Layer](ch35-what-belongs-at-each-layer.md), [When to Mock vs. Use Real Dependencies](ch36-when-to-mock-vs-use-real-dependencies.md), [Reliability as a Design Principle](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md)
 
 **New vocabulary introduced:** fixture, state contamination, fixture bloat

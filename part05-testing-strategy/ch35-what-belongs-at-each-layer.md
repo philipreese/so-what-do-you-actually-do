@@ -1,5 +1,9 @@
 # Ch 35 — What Belongs at Each Layer
 
+*Difficulty writing a unit test is a design signal, not a testing problem.*
+
+Unit tests belong wherever behavior is purely computational, and if bolting on a database or network call contributes nothing to verifying that behavior, the call doesn't belong in the test. Integration tests belong at architectural boundaries and need real or near-real infrastructure, since an in-memory substitute that doesn't speak the production engine's exact dialect will pass every test and still let production fail. End-to-end tests belong at complete user journeys — a critical handful, never a comprehensive catalog. Difficulty writing a unit test is a design signal, not a testing problem: code that's hard to isolate is code mixing concerns that should have been separated in the first place.
+
 **Prerequisites:** [The Testing Pyramid](ch34-the-testing-pyramid.md), [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md), [Layered, Hexagonal, and Ports-and-Adapters Architecture](../part02-software-architecture/ch11-layered-hexagonal-ports-adapters.md), [When to Split Files vs. Keep Together](../part04-code-organization/ch29-when-to-split-files-vs-keep-together.md)
 
 **New vocabulary introduced:** architectural seam, testability diagnostic

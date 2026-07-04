@@ -1,5 +1,9 @@
 # Ch 53 — Branch Naming and Lifecycle
 
+*Naming is a near-bikeshed; lifecycle is the real constraint.*
+
+Branch naming is a weak convention layer, while branch lifecycle is a real system-design constraint, and this chapter spends far more argument on the second than the near-bikeshed of the first. A hybrid naming scheme — type prefix plus issue key — earns its minor friction by letting CI and platform webhooks parse a branch name and automatically transition the linked ticket's state, though a branch name is never a substitute for the issue it should reference. Automatic deletion of a branch on merge, mechanically enforced through the hosting platform, is the correct default, since it's not worth leaving to manual discipline what a platform toggle can enforce for free.
+
 **Prerequisites:** [Issue Tracking: What Makes a Good Issue](../part06-engineering-process/ch42-issue-tracking-what-makes-a-good-issue.md) (write-only tracker), [Process Overhead: The Value Threshold](../part06-engineering-process/ch49-process-overhead-the-value-threshold.md), [Branching Strategies](ch50-branching-strategies.md), [Squash vs. Preserve History](ch52-squash-vs-preserve-history.md)
 
 **New vocabulary introduced:** None — the failure mode this chapter's lifecycle argument rests on is the write-only tracker, already defined in Ch 42.

@@ -1,5 +1,9 @@
 # Ch 47 — Code Review
 
+*Review's most durable value is code health, not defect detection.*
+
+Code review's most durable value is long-term code health and knowledge transfer, not defect detection, since most implementation defects are already caught by types, tests, and static analysis. The standard is improvement, not perfection: approve when a change clearly leaves the codebase better than it found it, because perfection-gating stalls PRs and demoralizes authors for no corresponding gain in quality. Anything a machine can check must be automated out of review entirely, since human attention is the scarcest resource in the process and spending it on formatting is a straightforward misallocation. Change size and review latency dominate review quality more than any written policy, and comments must be labeled blocking or optional, since conflating the two either stalls good changes over taste or lets real problems slide past as if they were.
+
 **Prerequisites:** [Local vs. Global Optimization](../part01-systems-thinking/ch08-local-vs-global-optimization.md), [Decision Frameworks for Trade-offs](../part01-systems-thinking/ch09-decision-frameworks-for-trade-offs.md), [Issue as Tracking Unit vs. PR as Review Unit](ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), [Spec-First Development](ch46-spec-first-development.md)
 
 **New vocabulary introduced:** nitpick storm, rubber stamping, review-as-gatekeeping

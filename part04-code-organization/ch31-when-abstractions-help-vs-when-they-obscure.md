@@ -1,5 +1,9 @@
 # Ch 31 — When Abstractions Help vs. When They Obscure
 
+*An abstraction with no second implementation in sight hides nothing.*
+
+Every abstraction charges an indirection tax, forcing a reader to jump between an invocation and its execution and spend working memory on every hop. Abstractions for readability and abstractions for flexibility solve different problems and deserve different criteria — a single-implementation wrapper that gives a clumsy API a domain-meaningful name is justified even if the implementation never changes. An interface with exactly one implementation and no credible second one in sight hides nothing at all; it just doubles the type count for zero benefit. Rob Pike's proverb applies directly here: a little copying is often cheaper, in the long run, than a shared abstraction that couples two call sites with independent reasons to change.
+
 **Prerequisites:** [Abstraction and Information Hiding](../part01-systems-thinking/ch04-abstraction-and-information-hiding.md) (specifically: the wrong abstraction and the Rule of Three), [Dependency Direction and Inversion](../part02-software-architecture/ch12-dependency-direction-inversion.md), [Abstraction Layers: When to Add One](../part02-software-architecture/ch14-abstraction-layers-when-to-add-one.md)
 
 **New vocabulary introduced:** speculative generality, indirection tax

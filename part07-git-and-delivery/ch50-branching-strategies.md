@@ -19,6 +19,16 @@ This chapter argues that teams building software face the identical choice about
 
 **The chapter's real point, though, is that the pile-it-up approach isn't always wrong — it depends on how often the kitchen actually gets used.** A house cooking dinner every night should wash as it goes, no question. A vacation cabin used once a season can reasonably do one big cleaning before it locks up for winter — piling up was never really a choice there, because nothing was arriving in between to pile up against.
 
+## For My Kids
+
+Say you're in a band with three friends, and everyone's working on their own part — drums, guitar, vocals — separately at home.
+
+**One way: you all get together and play through the song together every single day, even just for ten minutes.** Any mismatch — wrong key, a tempo nobody agreed on — shows up small and immediately, while it's still a two-minute fix.
+
+**The other way: everyone practices alone for two months and only plays together once, the day before the show.** All those mismatches still exist. They just all show up at the exact same time, stacked on top of each other, the night before you're supposed to perform — and now you're trying to fix four problems at once with no time left.
+
+**Here's the part that actually matters: playing together constantly isn't automatically the right call for every band.** A band that's just messing around for fun, with no show booked for months, doesn't need daily practice together — there's nothing urgent enough yet to make catching mismatches early worth the hassle. It's the band with a show coming up soon, that actually needs to sound right together on a specific night, that can't afford to save all its reconciling for the last possible day.
+
 ---
 
 Branching strategy is the topology decision every other Git-mechanics chapter in this Part builds on: how many long-lived branches exist, how long a branch is allowed to diverge before it integrates, and how work flows between them. It has nothing to do with commit formatting ([Ch 51](ch51-commit-message-conventions.md)), squash-versus-preserve merge policy ([Ch 52](ch52-squash-vs-preserve-history.md)), branch naming or deletion ([Ch 53](ch53-branch-naming-and-lifecycle.md)), force-push judgment ([Ch 54](ch54-force-push-when-its-acceptable.md)), merge-versus-rebase mechanics ([Ch 55](ch55-merge-vs-rebase.md)), or tagging ([Ch 56](ch56-tagging-and-release-markers.md)). All six assume a topology already exists; this is the chapter where somebody actually has to pick one.

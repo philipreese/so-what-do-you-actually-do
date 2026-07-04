@@ -19,6 +19,16 @@ This chapter is about that exact choice, applied to how programmers save their w
 
 **But every so often, the individual messages actually were worth keeping.** Picture a different group chat — a real, careful negotiation about which restaurant to pick, with each person laying out an actual reason: allergies, budget, how far someone has to drive. That thread tells a story worth keeping intact, message by message, because each one was a real, separate piece of reasoning, not filler. The chapter's actual point is that the decision isn't about which approach seems more thorough — it's about being honest with yourself about which kind of thread you actually have, because a record stuffed with fifteen "ignore that" texts is exactly what nobody wants to be searching through at two in the morning when something's actually gone wrong.
 
+## For My Kids
+
+Say you're solving a math problem, and your scratch paper has fifteen different attempts scribbled on it — false starts, crossed-out mistakes, a "wait, that's wrong" you circled and abandoned twice. Nobody wants that handed in as your actual answer. What you turn in is one clean final version: here's the problem, here's the answer, done.
+
+**Collapsing fifteen messy scratch attempts into one clean answer is exactly right — most of that mess was never worth keeping.** The three minutes you spent chasing a wrong approach before erasing it isn't useful history. It's just what solving something actually looks like while it's still happening.
+
+**But sometimes the steps themselves genuinely matter, and erasing them loses something real.** A geometry proof with five real, deliberate steps — each one an actual piece of reasoning, not a false start — is worth keeping exactly as written, because a teacher checking your work needs to see which specific step the logic breaks down on, not just a final answer with no path to it.
+
+**The real question was never "clean vs. messy" as a matter of taste.** It's whether what you're keeping was actually a sequence of meaningful steps, or just the ordinary mess of getting to an answer. Keep real steps. Erase actual scratch work. Confusing the two either buries a real proof under a clean-looking final answer, or hands in fifteen crossed-out false starts as if they were the actual point.
+
 ---
 
 This chapter covers what a pull request's history looks like once it merges: collapsed into one synthetic commit (squash), or kept as the sequence of commits made during development, either preserved as-is or linearized via rebase beforehand. It does not cover commit message format itself — that's Ch 51's job, and this chapter's entire argument leans on it — nor the rebase mechanics used to clean up a branch before merging (Ch 55), nor the force-push required to apply that cleanup (Ch 54).

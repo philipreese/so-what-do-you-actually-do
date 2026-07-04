@@ -19,6 +19,16 @@ This chapter argues for treating a piece of in-progress software work the same w
 
 **What does deserve keeping "just in case" is something different: an actual labeled, dated snapshot of an important moment** — a real release, a version people are actually running — the equivalent of a labeled storage bin, not a leftover shipping box that already did its one job and is now just sitting there.
 
+## For My Kids
+
+Say you finally learn to ride your bike without training wheels. Some kids take the wheels off immediately, done, box them up. Others leave them attached "just in case" — bolted on, dragging along, for months, on a bike they can now ride perfectly fine without them.
+
+**Those training wheels aren't protecting anything anymore.** The thing that mattered — you learning to balance — already happened, and it happened whether or not the wheels stay bolted on. Keeping them attached doesn't preserve that moment. It just means extra weight rattling around and getting in the way every ride, for no reason connected to anything you actually still need.
+
+**What's actually worth keeping is something different: an actual labeled memory of the day it happened** — a photo of you wobbling down the driveway the first time, dated, maybe with the exact day written on the back. That's worth holding onto. The training wheels themselves, still bolted to a bike you've outgrown needing them on, are not the same thing as a memory. They're just clutter wearing the costume of one.
+
+**The habit that actually works: take the wheels off the second you don't need them, and if the moment's worth remembering, write it down properly somewhere else** — not by leaving old hardware attached to something it no longer belongs on.
+
 ---
 
 This chapter covers two mechanically independent concerns: how a branch is named, and what happens to it after it merges. It does not re-litigate branching topology or why branches should be short-lived (Ch 50 — this chapter takes that conclusion as given), commit message format (Ch 51), or history-preservation policy at the merge gate (Ch 52). Nor does it redefine what makes an issue well-scoped (Ch 42) — a branch name can reference an issue, but the issue's quality is that chapter's argument, not this one's.

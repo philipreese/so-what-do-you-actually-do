@@ -19,6 +19,14 @@ This chapter is about that same idea applied to how a piece of software gets rel
 
 **The lesson isn't "don't trust the automatic system" — it's that the system was only ever as honest as what got written on the whiteboard in the first place.** Fix the habit of writing things down clearly, and the automatic system becomes more reliable than a tired parent doing the math by hand ever was.
 
+## For My Kids
+
+Say your class has an app that automatically ranks everyone on a "Books Read This Month" leaderboard, based on what each kid logs after finishing a book. That only works if the logging is actually specific and honest: title, date finished, page count. Log "read some books" with nothing else, and the leaderboard can't do its job — it can only rank what actually got written down clearly.
+
+**Here's where automating it gets risky: if kids start logging vaguely, or not logging at all, the leaderboard doesn't get less confident.** It gets confidently wrong, instantly, with nobody double-checking it by hand anymore. A kid who finished four real books but logged them as "stuff" ends up ranked behind someone who logged one book properly — not because they read less, but because the system can only work with what actually got written down.
+
+**The lesson isn't "don't trust the automatic leaderboard."** It's that the leaderboard was always only as honest as the logging feeding it. Fix the habit of logging clearly and specifically every time, and the automatic system ends up more accurate and way faster than a teacher trying to track forty kids' reading by hand ever could be.
+
 ---
 
 This chapter covers turning code that has already passed CI into a published, versioned release without manual, error-prone, human-executed steps. It does not re-specify the commit message grammar this automation depends on (Ch 51 — a hard prerequisite, referenced here, not re-argued), what a version number promises about compatibility (Ch 16), how the published artifact moves through environments afterward (Ch 62), or the full treatment of secrets management for publishing credentials (Part XI, Ch 83).

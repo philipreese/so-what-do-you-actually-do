@@ -18,6 +18,14 @@
 
 The practical upshot is that signed credentials (the thing that says "this specific user is making this request") need to travel intact through every hop of a call chain, not just to the front door — and every service that makes an authorization decision needs to verify that signature itself rather than trusting the previous service already checked. A token that only gets verified once, at the edge, means one compromised internal service gets the run of the whole building.
 
+## For My Kids
+
+Say only 8th graders are allowed in the library's back study room, checked by scanning a badge at the door. You're in 6th grade, so you ask an 8th-grade friend to grab your bag from that room since you left it there. She scans her own badge, walks in, grabs it, hands it over. The door's scanner did its job perfectly: it confirmed an 8th grader walked through. It has zero idea the person who actually wanted in was you.
+
+**Nobody hacked anything. Nobody even lied, exactly.** Your friend used her own real, valid access to run an errand for you, and the system trusted her badge without ever asking whose errand this was. If that room held something that mattered — other kids' private stuff, test materials, whatever — you just got it, because the door checked *who* could scan in, and never checked *what* the request was actually for, or *who* it was really for.
+
+**The fix isn't "don't trust your friend."** It's that "is this person allowed in the building" and "is this specific thing this specific person is asking for actually okay" are two completely different questions — and the second one has to get checked at the actual thing being protected, not just waved through at the front door based on whoever happened to walk in with a working badge.
+
 ---
 
 ## Enforcement Placement: Gateway vs. Service

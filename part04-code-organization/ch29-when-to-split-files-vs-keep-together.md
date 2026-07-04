@@ -19,6 +19,14 @@
 
 **The same logic covers when not to split something that only makes sense as a whole.** A board game's rules work because the rule for how a piece moves sits right next to the rule for what happens when it lands somewhere. Spread those across three separate pamphlets and nothing got simpler — someone just has to flip between three books to understand a single move.
 
+## For My Kids
+
+Say you're sorting a huge tub of Legos. You don't decide what goes in which bin by how many pieces fit — you decide by which build the pieces actually belong to. An 800-piece castle set can all live in one big bin together, no problem, because every piece is part of the same one thing. But a random leftover pile — ten pieces from a spaceship, six from a race car, four from something you don't even remember building — shouldn't get dumped into one bin just because ten-plus-six-plus-four is a small, tidy number.
+
+**The size was never the actual question.** A giant bin that's entirely one castle is easy, because you already know what you're looking at the second you open it. A small bin holding five unrelated leftovers is the annoying one, because opening it means digging through pieces that have nothing to do with each other, trying to remember which ones you even still need.
+
+**The real signal to split things apart is "this piece is about something else,"** not "this bin got kind of full." And the real signal to leave things together is the opposite: pieces that only make sense as part of the same build, no matter how many of them there are. Sort by size instead of by build, and you'll spend more time next spring untangling five unrelated projects than you ever would have spent just building the castle.
+
 ---
 
 [Ch 27](ch27-file-and-module-structure.md) settled package- and module-level organization. This chapter takes that boundary as given and asks a finer-grained question: within a module, should this concept get its own file, or live alongside the code it's closely related to? Whether splitting a file introduces a new abstraction boundary worth paying for is a separate question, covered in [Ch 31](ch31-when-abstractions-help-vs-when-they-obscure.md).

@@ -19,6 +19,16 @@ This chapter argues that a piece of testing code should be named exactly like th
 
 The chapter's structural advice follows the same logic: lay out each test in the same three-part order every time — set the scene, do the thing, check what happened — so a reader can tell at a glance which part of the story they're looking at, the same way every incident report follows the same format so nobody has to hunt for the part that matters.
 
+## For My Kids
+
+Say your family keeps a chore chart, and there are two ways to write down what needs checking. One way: "Task 7." The other way: "Trash bins are out by 7am Tuesday." Both are marking the same actual job. Only one of them tells you anything when it's not checked off.
+
+**"Task 7" is fine right up until it's the one thing that didn't get done.** Now somebody has to dig up the original master list just to remember what Task 7 even was, while the actual trash truck is already coming down the street. "Trash bins are out by 7am Tuesday," left unchecked, tells you immediately and completely what went wrong, when it needed to happen, and what to do about it right now — no extra list required.
+
+**Here's why this matters more than it seems: nobody reads a chore chart in a calm moment.** They read it exactly when something's already gone wrong — the bins are still in the garage and the truck's already at the end of the block. That's the worst possible time to also need to go track down what "Task 7" was supposed to mean.
+
+**The rule is simple: name the thing by what's supposed to happen, not by a number that only makes sense if you already remember the list.** A chart that explains itself the moment something's wrong beats one that requires a second trip just to figure out what broke.
+
 ---
 
 A test gets written once and read many times, and most of those readings happen under real pressure — a CI failure blocking a deploy, a production regression mid-investigation, an unfamiliar behavior surfacing halfway through development. In that moment, the test's name and structure get read before its body does, often instead of its body entirely. A test communicating its purpose through its name and its intent through its structure is documentation that outlives whoever wrote it. A test forcing the reader to reconstruct intent from implementation before diagnosis can even start has failed at the one job a test uniquely exists to do: turning a failure into an answer.

@@ -19,6 +19,16 @@ This chapter is about that same choice, applied to how programmers record the hi
 
 **Neither option is wrong, and the chapter's actual position is that the choice matters far less than picking one and sticking with it.** The honest, two-lane version is worth the extra visual clutter on a big project where several people are genuinely working in parallel all the time and it matters later who was doing what, when. The tidy, single-lane version is worth the small omission on a smaller project where nobody actually needs to know two routes were driven — they just want a clean, readable account of how everyone ended up in the same place.
 
+## For My Kids
+
+Say you and a friend split up to search for a lost dog in the neighborhood — you take Oak Street, she takes Elm Street — and you meet back at the park twenty minutes later, dog found.
+
+**One way to tell the story afterward: "I searched Oak Street while she searched Elm Street, and we both showed up at the park around the same time."** That's the honest shape — two searches happening at once, converging at the end. **The other way: "First I searched Oak Street, then I searched Elm Street, then we found the dog at the park."** Reads cleaner, one tidy sequence — and it quietly erases that two searches were ever happening at the same time. It makes it sound like one person searched alone, street after street.
+
+**Neither version is wrong, and the choice matters less than people think.** For the two of you and one dog, twenty minutes, a tidy story is plenty — nobody's asking exactly which minute you hit Oak Street. For a real search-and-rescue operation with six teams covering a town over three days, flattening it into one fake sequence becomes a real problem — knowing which teams covered what, and when, at the same time as each other, genuinely matters for figuring out what got missed.
+
+**The real skill is picking based on whether the parallel part of the story actually matters, and staying consistent about it** — not agonizing over which version sounds more impressive.
+
 ---
 
 This chapter covers the two mechanisms for integrating one branch's changes into another and the history shape each leaves behind. It does not re-litigate branch topology (Ch 50), commit message format (Ch 51), or the specific server-side force-push protections that block a rewritten shared branch (Ch 54) — this chapter borrows that framework and applies it to one specific operation, rather than re-deriving it from scratch.

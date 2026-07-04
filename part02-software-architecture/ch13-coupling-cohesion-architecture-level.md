@@ -20,6 +20,16 @@
 
 Services that genuinely need to communicate without being tightly coupled to each other's availability publish events — announcements that something happened — to a shared broker instead of calling each other directly. The publisher doesn't wait for every subscriber to react. The downside is that the system is now *eventually consistent*: a user who changes their password and immediately tries to log in might find the new password not yet recognized, because the relevant service hasn't processed the event yet. That window is usually milliseconds, but it's real, and the 2am page that comes from a business process failing because a projection fell hours behind is a very specific kind of bad night.
 
+## For My Kids
+
+Say Chess Club and Robotics Club are two totally separate clubs — different presidents, different meeting days, different everything. But whoever set up sign-ups years ago put both clubs on the exact same shared spreadsheet, different tabs, because it was sitting right there and seemed efficient.
+
+**That looks like two independent clubs. It isn't.** Robotics decides to reorganize its tab — adds a column for "which robot kit," reorders a few others — and somehow Chess Club's sign-up sheet breaks too, the day before tryouts. Nobody on Chess Club touched a single cell. They didn't need to. Both clubs were quietly leaning on the same underlying sheet the whole time, and Robotics just proved it by moving something.
+
+**The two clubs were never actually separate — they just looked that way from the outside**, right up until one of them changed something and the "unrelated" club took the hit anyway.
+
+The fix isn't complicated: each club gets its own sheet, full stop. If Robotics genuinely needs to know how many Chess members also do Robotics, someone asks the Chess president for that one number directly — instead of reaching into Chess's actual sheet and hoping nothing they touch matters to anyone else.
+
 ---
 
 ## Bounded Contexts as Architectural Cohesion

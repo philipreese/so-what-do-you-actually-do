@@ -19,6 +19,16 @@ This chapter argues that a software release deserves the same formality when it 
 
 **And once the plaque is bolted to the wall, it stays exactly as written — nobody sneaks back at night and swaps it for one with a different date, hoping nobody who already read the first one notices.** A release marker is supposed to work as a fixed point everyone can trust stayed put. Quietly moving it to point at a different moment after people have already seen and relied on the original one doesn't correct history — it just makes the plaque worthless to anyone who trusted it the first time they read it.
 
+## For My Kids
+
+Say you finish your first 5K race, and you get an official finisher certificate: your name, the date, your exact time, a stamp from the race organizers. That certificate means something specific — anyone who sees it later knows exactly when you ran it, how fast, and that it's real, because an actual organization is standing behind it.
+
+**Compare that to just scrawling "I ran a race" on a sticky note and sticking it on the fridge.** Technically true. Tells nobody anything useful — not which race, not when, not how you did, not even whether you're joking. If someone questions it later, there's nothing behind the claim at all.
+
+**A real certificate isn't decoration — it's what lets your time actually mean something to someone else, a year later, who wasn't there.** That's why races with real prize money or qualifying spots require an official timing chip and a signed certificate, not just a runner's word: when it actually matters whether the claim is real, "trust me" isn't good enough anymore.
+
+**And once that certificate is printed, it doesn't get quietly edited.** If you found out your actual time was two minutes slower than what got printed, you don't sneak back and change the number to look better — that certificate is only worth anything to anyone else because it's supposed to be a fixed, honest record of what actually happened that day, not a claim you get to keep touching up.
+
 ---
 
 This chapter resolves the forward references from Ch 16 and Ch 44: it covers the Git-level artifact that anchors a release, not what a version number promises (Ch 16 — go there directly, this chapter doesn't re-derive compatibility semantics) or how that tag gets created inside an automated pipeline (Ch 61) or moves through environments afterward (Ch 62).

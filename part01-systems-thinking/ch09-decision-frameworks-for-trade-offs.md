@@ -20,6 +20,18 @@
 
 The closing argument is worth sitting with: the goal of a decision framework isn't to guarantee you pick the right answer. It's to ensure that when you pick the wrong one — and you will, everyone does — the damage is bounded and the system survives long enough to correct it. Engineers who make reversible, small-blast-radius mistakes and correct them quickly outperform engineers who deliberate until the decision is perfect and then ship it eighteen months late.
 
+## For My Kids
+
+Say you've got five bucks of allowance burning a hole in your pocket, and also three hundred dollars saved up from birthdays that you've been going back and forth on spending on a gaming console.
+
+Don't spend three days agonizing over the five bucks. Buy the gum, whatever — if it's the wrong flavor, you're out fifty cents and you know better next time. **That decision barely deserves thirty seconds of thought.**
+
+The console is a different kind of decision, and treating it the same way is the actual mistake. Three hundred dollars doesn't come back once it's spent. Hate the console, and you're not just out the money — you're stuck with it sitting in your room. **That one earns the research, the waiting, the asking around before you commit.**
+
+Almost everyone runs this backwards: agonizing over the snack, then blowing the real money on the console because a friend wanted you to decide right that second.
+
+And not deciding isn't neutral either — the console you're "still thinking about" six months later is money doing nothing, while the exact deal you wanted comes and goes twice. Waiting felt careful. It was still a decision. Nobody just admitted to making it.
+
 ---
 
 ## Purpose

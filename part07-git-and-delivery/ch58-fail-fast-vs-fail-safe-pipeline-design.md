@@ -21,6 +21,16 @@ This chapter argues software testing pipelines should follow the same two rules.
 
 **And the cheap check still goes first, the same way a nurse takes your blood pressure before anyone schedules an expensive scan** — there's no reason to pay for the costly test on someone who was already going to get sent home over something a two-minute check would have caught.
 
+## For My Kids
+
+Say you're getting ready for a busy Saturday: a soccer game in the morning, a friend's birthday party in the afternoon, and a piano audition video due tonight.
+
+**If you find, halfway through packing your soccer bag, that the bag itself has a huge rip and everything keeps falling through it, there's no point carefully arranging your shin guards inside it.** Stop right there, grab a bag that actually holds things, then go back to packing. Continuing to arrange gear inside a broken bag isn't extra effort — it's wasted effort.
+
+**But finding that ripped bag is not a reason to stop checking on the birthday present and the piano piece too.** Those are three completely separate things. Check on only one at a time — fix the bag, then check the present, then check the piano — and each turns out to have its own separate problem, and you're discovering bad news three separate times throughout the day instead of once, this morning, with the whole day still ahead to fix all of it.
+
+**The smarter move: check all three at once, first thing, and find out about every problem you're going to hit today in one pass** — not stretched out, one discovery at a time, each arriving right when you thought you were finally done.
+
 ---
 
 Given the checks Ch 57 puts in the pipeline, this chapter covers the order they run in and what happens when one of them fails. It's a direct, specific application of the fail-fast principle already defined in Ch 07 — reused here, not redefined — applied to pipeline architecture instead of a single running program. It does not cover what checks belong in the pipeline at all (Ch 57), caching strategy (Ch 59), or the specific configuration mechanics of matrix builds, where `fail-fast` is a literal per-matrix setting (Ch 60 — this chapter covers the general principle; that chapter covers the matrix-specific configuration).

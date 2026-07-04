@@ -19,6 +19,16 @@
 
 **The rule this chapter lands on is to write the note only when the code genuinely can't tell the story itself.** A stale comment isn't a harmless leftover — it's the reason an engineer spends a whole afternoon debugging behavior that flatly contradicts what the note on top of it swears is happening, because nothing ever told them the note stopped being true.
 
+## For My Kids
+
+Say the class hamster cage has a note taped to the front. "This is the hamster's cage" tells a substitute nothing they couldn't already see — that's a note restating the obvious, and it's not helping anyone.
+
+**"No sunflower seeds — allergic" is a completely different kind of note.** Nobody could guess that just by looking. It's the one fact that actually changes what a substitute does, and it needed writing down because the hamster obviously can't say it out loud.
+
+**Here's the part that actually causes trouble.** That hamster died last spring. The school got a new one that isn't allergic to anything. Nobody peeled the old note off the cage. The new sub, following the only instructions taped up, skips seeds that would've been perfectly fine — a small thing here, but now imagine that note was a real medication schedule instead, left over from a hamster two hamsters ago and never updated.
+
+**An old note left up out of habit isn't harmless.** It's a wrong instruction wearing the costume of a correct one, and nothing about it looks any different from a note that's actually still true. Whoever trusts it has no way of knowing, from the note alone, that it stopped being real months ago.
+
 ---
 
 Repository-level design rationale — the reasoning behind the big decisions — belongs in Architecture Decision Records, covered in [Part VI, Ch 45](../part06-engineering-process/ch45-architecture-decision-records.md). API documentation as a publishing discipline gets its own treatment in [Part VIII, Ch 64–68](../part08-documentation/). This chapter is narrower: inline code comments specifically, what they're for, when they're worth their maintenance cost, and when they plainly aren't.

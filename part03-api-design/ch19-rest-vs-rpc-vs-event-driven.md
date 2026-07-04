@@ -20,6 +20,16 @@ The one firm position: HATEOAS — the textbook version of the file-cabinet appr
 
 Getting the shape wrong doesn't usually produce a clean error — it produces a system that works fine in development, subtly misbehaves under load, and costs someone an unplanned weekend when a cache silently executes a deletion that was disguised as a read request.
 
+## For My Kids
+
+Your family group chat runs into the same message meaning two totally different things, depending on which kind it secretly is. "Walked the dog" can be an announcement — it already happened, nobody needs to do anything else — or it can be a request written badly, meaning "someone please go walk the dog," typo and all.
+
+**Say your little brother texts "walking the dog" as a joke, before he's actually done it.** Two different people read that as a done deal and cross it off their mental list. Twenty minutes later the dog is still sitting by the door, and everyone's genuinely confused, because as far as three people were concerned, that job was finished.
+
+**The problem was never which kind of message he should've sent.** An announcement and a request are both fine, useful things. The problem is that both of them looked exactly the same on the screen, and nobody could tell, from the words alone, which one they were reading.
+
+**The fix is boring and it works: make the two kinds unmistakable.** "Dog: walked" reads as a fact nobody has to act on. "Can someone walk the dog?" reads as a request that needs an actual person to say yes. Blur that line even once, and you get exactly what happened here — a dog that didn't get walked, and three people who all thought somebody else already handled it.
+
 ---
 
 ## REST: Resource-Oriented Architecture

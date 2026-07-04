@@ -20,6 +20,16 @@ This chapter argues that businesses accumulate rules exactly the same way, for t
 
 **The fix isn't to stop questioning things, and it isn't to rip out every old rule on principle either — it's to actually go find out why the rule exists before deciding anything.** Sometimes the answer is "the toaster still does that, keep unplugging it." Sometimes it's "we replaced the toaster years ago and never noticed we didn't need to anymore." Only the second answer means the rule should go — and a company that never asks the question at all just keeps stacking new precautions on top of old ones nobody remembers the reason for, until an ordinary morning routine costs everyone real time for no reason at all.
 
+## For My Kids
+
+Say your family has a road trip rulebook that grows a little every single trip. Someone spills grape juice once, so "no purple drinks in the car" gets added forever. Someone gets carsick reading, so "no books past exit 40" joins the list. Every rule made total sense the day it got added — each one was a real problem, once.
+
+**Here's what never happens: nobody ever goes back and asks whether last year's rules still matter.** Maybe you got a car with actual stain-proof seats two years ago, which would make the purple-drinks rule pointless now — but nobody checks, because a rule that came from a real mess feels risky to question, even after the actual risk is gone.
+
+**By the tenth road trip, the rulebook has thirty items on it, and reading the whole list out loud in the driveway takes longer than most of these rules have ever actually saved anyone.** Adding a rule after something goes wrong is easy and feels responsible. Nobody ever gets around to the harder job: going back and asking which of these are still doing anything.
+
+**The fix isn't refusing to make new rules, and it isn't tearing up the whole list out of frustration either.** It's actually checking, one at a time: does this specific problem still happen without the rule? If the stain-proof seats really do make purple drinks a non-issue, that rule should go — not stay forever just because it once had a good reason.
+
 ---
 
 Every chapter in this Part described a process and argued for its value: issues, the issue-to-PR mapping, milestones, ADRs, specs, review, debt management. This chapter doesn't repeat any of those arguments — it's the standing audit that keeps them honest. Design Principle 6 said it plainly: process only when it adds more than it costs, and that threshold sits higher than most teams assume. This is the same move [Ch 39](../part05-testing-strategy/ch39-when-not-to-test.md) made for Part V after seven chapters of "test this": one chapter of "and here's when the answer is no." CI pipeline mechanics belong to Part VII; documentation maintenance burden belongs to Part VIII.

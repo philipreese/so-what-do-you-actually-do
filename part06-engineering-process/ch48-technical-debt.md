@@ -20,6 +20,16 @@ This chapter argues that's exactly what's happened to the phrase "technical debt
 
 **And just like real debt, the interest is real whether or not you write it down.** A credit card balance you never look at doesn't stop accruing interest just because you're not checking the statement — it just means the number waiting for you is bigger and more surprising than expected. A shortcut nobody wrote down anywhere, that nobody has a plan to revisit, isn't being managed as debt at all. It's just quietly getting more expensive every day, owed to nobody in particular, until somebody finally has to pay for all of it at once, usually at the worst possible moment.
 
+## For My Kids
+
+Say your friends are coming over in ten minutes, and your room's a disaster. You grab an armful of stuff and shove it in the closet — on purpose, knowing exactly what you're doing, with a real plan to actually sort it Saturday morning. That's a legitimate shortcut. You know what you owe, and you know when you're paying it back.
+
+**Calling it "cleaning" instead, with zero plan to ever open that closet again, is a different thing wearing a nicer name.** It looks the same from the doorway. The difference only shows up later, when you need something from that closet and can't find it under the pile, or when Saturday never actually comes and the pile just grows every week you avoid the door.
+
+**Here's the part that's easy to miss: the mess doesn't wait quietly while you ignore it.** Every week you don't deal with it, finding anything in there gets a little harder, and the eventual cleanup gets a little bigger. A shortcut with a real plan to circle back stays small and manageable. A shortcut with no plan at all just keeps quietly getting worse, whether you're thinking about it or not.
+
+**The whole difference comes down to one question: is there an actual plan to go back, or are you just hoping "later" handles itself?** A shoved-in closet with a Saturday plan is a real shortcut. A shoved-in closet with no plan is just a mess wearing a shortcut's name.
+
 ---
 
 "Technical debt" has drifted into meaning "any code someone dislikes," which makes it useless for the one thing it was supposed to help with: deciding whether to defer a design cost on purpose, and if so, on what terms. This chapter drags the term back to its precise meaning and then treats debt as what it actually is — a financial instrument that's sometimes exactly the right thing to issue, with the same discipline any financial instrument demands: a known principal, a known interest rate, a repayment plan. This isn't a chapter about complexity in general — complexity itself is [Ch 02](../part01-systems-thinking/ch02-complexity-is-the-enemy.md)'s subject; debt is a specific, tracked gap between what was built and what current understanding says should have been built, managed as a process decision. Refactoring mechanics and the code-level judgment of when abstractions help or obscure belong to Part IV.

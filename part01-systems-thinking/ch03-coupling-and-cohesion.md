@@ -21,6 +21,18 @@
 
 **The thing that actually kills systems is hidden coupling** — dependencies between parts of a codebase that nobody formally declared, that don't show up in any diagram, and that only reveal themselves when you change something over here and something completely different over there breaks. The chapter tracks hidden coupling through version history: if two files almost always change in the same commit, they're coupled whether anyone admits it or not. That's the useful diagnostic — more honest than any architecture diagram anyone drew on a whiteboard in 2019.
 
+## For My Kids
+
+Say you and a partner split a class presentation in half. You take the first five slides, they take the last five. Clean split — you each do your part, hand it off, done.
+
+Except somewhere in there, your partner writes their closing line as "like slide 4 showed," pointing back at your section. **Nobody agreed on that out loud. It's not written in your shared doc.** It's just something that happened to be true the day they wrote it.
+
+The night before, you notice slide 4 flows better as slide 6, so you move it. Nothing looks broken. Your section still makes sense on its own. Their section still makes sense on its own too.
+
+Then you're standing in front of the class, your partner says "like slide 4 showed," and everyone's looking at a slide about something completely different, wondering what your partner is even talking about.
+
+**That's the dangerous kind of connection between two things:** the one nobody wrote down anywhere, the one you can't spot by looking at either half on its own, and the one that only tells on itself the moment somebody changes something — right when it's too late to fix it quietly.
+
 ---
 
 ## Purpose

@@ -19,6 +19,16 @@
 
 None of this makes attendance worthless — a student who never shows up at all is a real, obvious problem worth flagging immediately, and that's exactly what a coverage number is genuinely good for: finding the code nobody has tested even once. It was never built to say whether the testing that did happen was any good, and treating it that way is where a great deal of false confidence quietly comes from.
 
+## For My Kids
+
+Say you're required to log 30 minutes of piano practice every day, and your parents check the log to see it's filled in. A full log tells them exactly one thing: you sat at the piano for 30 minutes. It says nothing about whether you spent that time working through the hard part of the song or just playing the same easy four measures over and over because they're the ones you already know.
+
+**A stricter check would make sure you actually touched every section of the song at least once** — the easy opening, the fast middle part, the tricky ending — not just the parts you like. That catches more than the timer ever could, but it still doesn't prove you learned any of it. You could play through every section badly, once, and still check every box.
+
+**The real test is somebody stopping you cold and saying "play measure 12," out of nowhere, with no warm-up.** If you can actually do it, that tells everyone something the log never could. If you freeze, that's the honest answer: the minutes were logged, the sections got touched, and none of it means you actually learned the song.
+
+**A full practice log isn't proof you're ready for the recital.** It's proof you weren't being completely ignored — which is worth something, just not nearly as much as it looks like on paper.
+
 ---
 
 Coverage is one of the few testing properties measurable entirely automatically, which is exactly what's made it one of the most widely used — and most widely misunderstood — proxies for software quality across the entire industry. Coverage tooling instruments a test run and reports which lines, branches, or code paths got touched. That's genuinely useful telemetry, no argument there. The mistake is treating "this code ran" as equivalent to "this code was checked" — coverage tools have no possible way of knowing whether anything got asserted about what happened once the code ran. This chapter closes out Part V by drawing that distinction precisely: what each coverage metric can actually tell you, what none of them ever can, and how to use coverage as one diagnostic input rather than a stand-in for confidence itself.

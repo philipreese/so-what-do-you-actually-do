@@ -23,6 +23,24 @@
 
 **The chapter's recommendation is to automate it mechanically.** Watch the database's write stream automatically and fire the cache eviction without relying on any individual developer to remember. Humans under deadline pressure stop remembering things, and a caching bug where wrong data gets served quietly for days is exactly the kind of incident that costs real money or ends up in a public postmortem.
 
+## For My Kids
+
+> *Keeping a quick copy of the answer is the easy part. Knowing the second it stops being true is the hard part.*
+
+Say your team has a group chat, and after every practice somebody pins a message: "Next practice: Tuesday, gym B." From then on, nobody texts the coach to ask where to go — everybody just glances at the pinned message. That's faster for everyone: you're checking a copy sitting right there instead of going straight to the one person who actually knows.
+
+**Keeping that copy around is the easy part. The hard part is knowing the exact moment it stops being true.**
+
+Say practice gets moved to gym A. If the pinned message doesn't change with it, everyone who trusts it walks confidently into the wrong gym — worse than never having pinned anything, because at least then somebody would have asked.
+
+You could make the message expire on its own: good for three days, then everyone's forced back to checking with the coach directly. Safe, but you end up re-asking about things that never changed.
+
+Or you could make it whoever moves practice's job to update the message by hand. **That one quietly breaks**, because it depends on someone remembering to do something extra on exactly the day they're most distracted.
+
+**What actually holds up is connecting the message straight to the schedule**, so it updates itself the instant practice moves. Nobody has to remember, because nobody has to.
+
+Skip that, and the day the schedule changes and nobody updates the chat, your whole team stands in the wrong gym at 4:00, gear on, while practice already started somewhere else.
+
 ---
 
 This chapter resolves two forward references made by number — Ch 06 deferred caching layer design here, and Ch 08 deferred caching strategy here — and one made by example: Ch 02 used "managing distributed cache invalidation" as its illustration of accidental complexity, the kind of difficulty that wouldn't exist if the same problem were solved on paper. That was never a reason to avoid caching. It was a flag that invalidation is where caching's real difficulty lives, and this chapter finally gives it the full treatment.

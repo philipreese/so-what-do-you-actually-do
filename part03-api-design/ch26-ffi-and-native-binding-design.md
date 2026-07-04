@@ -18,6 +18,16 @@
 
 Memory ownership is the other problem nobody thinks about until it causes a late-night incident. In a single language, the runtime tracks which memory is in use and cleans it up automatically. Cross a language boundary and there are two runtimes, neither of which knows what the other allocated. Someone has to be explicitly responsible for freeing every object that crosses the line — and the rule for who has to be written down and enforced at the API level, not assumed. Get it wrong in either direction — either nobody frees it (memory leak) or two systems both try to free it (crash) — and neither failure announces itself clearly. The application just quietly runs out of memory, or falls over at what looks like a completely unrelated moment hours later.
 
+## For My Kids
+
+Say you and a partner are building a diorama for social studies, and part of it uses tiny glass ornaments your partner borrowed from her grandma — the kind where breaking one means an actual conversation with grandma, not just redoing homework.
+
+**You never actually discussed who's in charge of packing those ornaments away when you're done working each night.** Some nights you assume she's got it, since they're technically hers. Other nights she assumes you've already handled it, since you were sitting closest to the box. One night, you both quietly pack the same ornament away at the same time — and it doesn't survive being handled twice at once.
+
+**Notice what didn't happen: no argument, no obvious mistake in the moment.** Two people, each acting completely reasonably from where they were sitting, both reached for the same fragile thing, because nobody had ever said out loud, up front, "you're the one who packs these, every time, no exceptions."
+
+**With something this fragile and this irreplaceable, "we'll figure out who does it" isn't good enough.** One of you needed to be named responsible before the first ornament ever came out of the box — not because you don't trust each other, but because the one time it's unclear is the one time it breaks.
+
 ---
 
 ## ABI vs. API: The Binary Contract

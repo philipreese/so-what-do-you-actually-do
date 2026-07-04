@@ -20,6 +20,16 @@
 
 **The other trap is the chore that never has an end.** "Clean the garage" sits on a to-do list for years, because there's no moment where it's obviously, checkably done — you can always find one more shelf. "Sort and label the tools in the left cabinet" has an actual finish line. A ticket needs the same thing. If nobody can point to the moment it's over, it isn't a task yet — it's a wish, and wishes sit open forever, cluttering the list until nobody trusts the list at all.
 
+## For My Kids
+
+Say your bedroom door won't shut all the way, and you tell your dad "we need to buy a new door." He spends an afternoon and real money on a new door — and it turns out the actual problem was one bent hinge a wrench could've fixed in five minutes. You didn't tell him the problem. You told him your guess at the fix, and that guess is the only thing that ever got considered.
+
+**"My door won't shut all the way" is a completely different request.** It tells him what's actually wrong and lets him find the real fix — hinge, warped wood, whatever it turns out to be — instead of locking in your first guess before anyone's even looked.
+
+**Then there's the other trap: asking for something with no actual finish line.** "Clean your room" can go on forever — there's always one more thing to straighten, so it never feels done, and you can argue about it for years. "Put the clean laundry from the chair into your dresser" has a real ending: you can both look at the chair, see it's empty, and agree it's actually finished.
+
+**Good requests do both things at once:** they describe the real problem instead of a guessed-at fix, and they have a moment where anyone can look and say "yep, that's done" — not a vague hope that just sits there, half-finished, forever.
+
 ---
 
 An issue is the smallest planning artifact in an engineering process: a description of work that someone can understand, perform, verify, and close, ideally without anyone getting paged for clarification. Every larger construct in this Part — the pull request in [Ch 43](ch43-issue-as-tracking-unit-vs-pr-as-review-unit.md), the milestone in [Ch 44](ch44-milestone-and-phase-planning.md) — is ultimately just issues stacked on top of each other, and the whole apparatus still has to justify its own overhead in [Ch 49](ch49-process-overhead-the-value-threshold.md). Get the base unit wrong and every process built on it inherits the same fuzziness, just at a larger and more expensive scale. This chapter covers what makes an issue actually actionable, how to scope one so it has a chance of closing, and why a healthy tracker needs as much deletion as creation — hoarding tickets is not the same as managing work.

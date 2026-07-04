@@ -21,6 +21,16 @@ If the whole kitchen only ever gets checked once, at the very end, the inspector
 > [!NOTE]
 > This isn't a matter of some reviewers being lazier than others — it's closer to a physical limit. Studies of code review at companies like Google and Cisco found that once a single review passes a few hundred lines, the number of real problems a reviewer actually catches drops off sharply, no matter how conscientious they are. Past a certain size, a careful check and a rubber stamp start looking identical from the outside.
 
+## For My Kids
+
+Say you're doing a science fair project that takes six weeks — one project, one question you're trying to answer, from day one to presentation day.
+
+**Your teacher doesn't wait until presentation day to look at any of it.** She checks in at specific small points: is your question actually testable, does your experiment design make sense, are you recording data correctly. Each check is small enough that she can actually look closely and catch a real problem — a flawed test, a missing control group — while there's still time to fix it.
+
+**Now imagine she only checked the whole thing once, the day before presentations.** Six weeks of work, all at once — she can maybe skim it, nod, and hope it's fine, because there's no realistic way to catch a real flaw buried somewhere in six weeks of work in the ten minutes she has to look. That's not extra thoroughness. It just looks like a check without actually being one.
+
+**The project itself never got smaller — it's still the same one big question the whole time.** What changed is that the checks got small enough to actually mean something. Splitting it into six real checkpoints isn't turning one project into six unrelated ones; it's making sure somebody could genuinely catch a problem before it's too late to fix.
+
 ---
 
 [Ch 42](ch42-issue-tracking-what-makes-a-good-issue.md) established what makes a single issue actionable. This chapter draws a distinction most teams never make explicit, and pay for that omission later, usually in the form of a backlog nobody trusts or a PR nobody can review: the issue and the pull request are different units, sized for different purposes, and the mapping between them is naturally one-to-many. Confuse them and you get planning artifacts that stopped representing real work months ago, or code reviews too large for anyone to actually review. The mechanics of branches and merging are covered in Part VII; what reviewers should actually look for during review is covered in [Ch 47](ch47-code-review.md). This chapter is only about what size each artifact should be.

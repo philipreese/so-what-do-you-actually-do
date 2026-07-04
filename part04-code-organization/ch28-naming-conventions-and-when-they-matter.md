@@ -19,6 +19,14 @@
 
 **Nobody gets an alert when a name goes stale — it just sits there, technically wrong, until it costs something.** A variable called `intAge`, built to hold a whole number, gets quietly upgraded somewhere down the line to hold a decimal instead. The name never gets updated to match. A new engineer reads `intAge`, reasonably assumes whole numbers are safe, and writes math that chops off the decimal — and the resulting error doesn't announce itself, it just shows up wrong three steps downstream, in a number somebody eventually has to explain to a customer.
 
+## For My Kids
+
+Say your family has one car, and everyone just calls it "the blue car." Works great — until it gets a new paint job after some body work, and now "the blue car" is red. Anyone who still says "grab the blue car keys" is describing something that plain doesn't exist anymore, and a new babysitter hearing that for the first time would go looking for a car that isn't in the driveway.
+
+**"Mom's car" never has this problem.** It doesn't care what color the car is, whether it got repainted, or even if it got swapped for a different car next year. The name was never about the paint — it was about whose car it is, and that part doesn't change just because the outside does.
+
+**Nobody gets a warning when a name like "the blue car" goes stale.** It just quietly keeps getting said long after it stopped being true, and the first person who actually gets tripped up is whoever trusted it literally — standing in the driveway looking for a car that isn't there, while everyone else already knows what "blue car" really means and forgot that a stranger wouldn't.
+
 ---
 
 Naming is the smallest unit of design there is. Before a reader ever understands an implementation, they run into the identifiers first — and a good name does enough work that reading the implementation afterward feels like confirmation, not discovery. This chapter separates the naming decisions that actually carry architectural weight from the ones that are pure style. The two get treated as equally important far more often than they deserve to be.

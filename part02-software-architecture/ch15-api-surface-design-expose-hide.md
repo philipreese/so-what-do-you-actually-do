@@ -20,6 +20,16 @@
 
 The chapter also draws a sharp line between APIs used only inside your organization and APIs used by people outside it. For an internal API, when you need to break something, you can find every consumer, tell them, and redeploy everything together. For an external API, you have no idea who's using it or how. A bank that maintains developer APIs can't call every fintech startup to coordinate a field change — those consumers have to just keep working, unchanged, indefinitely. Getting that distinction wrong is how a "routine cleanup" becomes a simultaneous production outage at a hundred companies you've never spoken to.
 
+## For My Kids
+
+Say a friend comes over to do homework and asks for the WiFi password. **You give them the guest network — not the real one that also runs the smart lock and the thermostat.** They get exactly what today's situation needs: internet, nothing else. That's the whole skill: hand out precisely enough, not whatever happens to be lying around.
+
+**Say instead you'd handed over the real password, because it was easier and you weren't thinking about it.** No big deal in the moment. But that password doesn't stay contained — it's saved on their phone now, their phone auto-connects every time they're near your house, and they've probably shared it with a couple of people you don't even remember agreeing to.
+
+**Then, a year later, your family wants to change it** — maybe for a real reason, maybe just spring cleaning. Suddenly it's not simple. Half your grade has that password memorized. Changing it means everyone who ever visited has to be tracked down and told, and some of them are going to be annoyed about it, and a few you'll never even reach.
+
+Giving out the guest password up front cost you nothing. Giving out the real one cost you a year of being stuck maintaining a decision you made without thinking twice about it.
+
 ---
 
 ## The Principle of Minimal Surface Area

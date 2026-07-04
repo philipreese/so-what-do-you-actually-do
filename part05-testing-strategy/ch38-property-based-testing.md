@@ -19,6 +19,16 @@ This chapter describes a different approach: instead of picking specific example
 
 **The genuinely clever part is what happens once it finds a failure.** A stress test that reports "your code broke somewhere in this 40,000-character document" is nearly useless — nobody can comb through 40,000 characters hunting for the one problem. So the tool doesn't hand back the whole mess. It keeps simplifying the failing case, throwing away everything that isn't necessary to still trigger the bug, until it's found the smallest input that breaks the rule — sometimes down to a single character. That's the difference between "something in here is wrong" and "this exact character is wrong," and it's the entire reason this approach is usable at all, instead of just clever in theory.
 
+## For My Kids
+
+Say you invent a way to fold any piece of paper into an airplane, and you want to prove that unfolding it afterward always gives you back a flat, undamaged sheet — no rips, no matter what paper you used.
+
+**The normal way to test this is grabbing a few sheets lying around and trying it on those.** That tells you it works on those specific sheets. It says nothing about the giant poster paper in the art closet, the flimsy tissue paper from a gift bag, or the thick cardstock from an old project — the ones you never thought to grab, because you weren't thinking about them.
+
+**A better way: state the rule out loud — "any paper, folded this way, unfolds back to flat and undamaged" — then actually go try it on a huge pile of paper you'd never normally bother testing:** thin, thick, tiny, huge, oddly shaped. Somewhere in that pile, the tissue paper rips on fold four. That's a real discovery your usual few sheets would never have shown you.
+
+**Here's the part that makes it actually useful.** Once you find the tissue paper fails, you don't stop there — you keep testing smaller and smaller scraps of that exact paper until you find the tiniest piece that still rips on fold four. "It broke somewhere in this huge stack" is useless. "A two-inch scrap rips exactly on the fourth fold" tells you precisely where the real problem is.
+
 ---
 
 Example-based tests verify specific scenarios: `sort([3,1,2])` returns `[1,2,3]`; `encode("abc")` produces `"YWJj"`. Each test covers exactly one input. An engineer writing examples is implicitly selecting inputs they already expect to work — edge cases they've thought of, representative values from the domain they know well. The inputs they haven't thought of are precisely the ones the code is most likely to fail on.

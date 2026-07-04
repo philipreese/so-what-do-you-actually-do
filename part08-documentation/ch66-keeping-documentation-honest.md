@@ -19,6 +19,17 @@ This chapter is about keeping written explanations of a software project just as
 
 The second recommendation is about pruning. Some facts on that fridge list can be checked automatically — is this a real food, is this a kid still actually living in the house. Everything else — is this still the right list, does anyone still need to know this — has to be checked by an actual person, on a real schedule, and taking a kid's name off the list once they've moved out isn't losing information. It's exactly what keeps the whole list trustworthy enough that the next babysitter actually reads it instead of shrugging and hoping for the best.
 
+## For My Kids
+
+Your family's chore chart works because it hangs on the actual fridge, in the actual kitchen, where the actual chores happen. The second someone finishes trash duty, they're standing right next to the chart that says trash duty — so crossing it off is one step, not a special trip.
+
+Now imagine the "real" version lived somewhere else instead — a notebook in a drawer upstairs, so it doesn't get messy. Nobody updates that copy in the moment, because updating it means walking away from the dishes to go find it. A week later it still says your little sister owes two loads of laundry she finished on Tuesday.
+
+> [!NOTE]
+> Crossing something off the chart isn't losing information — it's the chart doing its job. A chore chart nobody's allowed to erase just turns into a wall of tasks nobody trusts, half of them already done, half of them made up by someone who quit checking months ago.
+
+That's the real risk: not that the chart gets something wrong once, but that it stays wrong long enough that people stop looking at it and start just yelling "did you take out the trash?" across the house instead — which means the chart, accurate or not, has already stopped mattering.
+
 ---
 
 [Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md) established comment rot: a stale comment is worse than no comment because it actively misleads a reader with no signal that it's wrong. This chapter applies the same failure at the scale of an entire documentation corpus, and it gets worse there, not just bigger. A stale comment sits right next to the code it misrepresents, giving an attentive reader some chance of catching the mismatch. A stale README or wiki page can be several clicks removed from the code it describes, with nothing structurally forcing a reader — or the engineer changing the underlying behavior — to notice the two have drifted apart at all. Everything below applies only to documentation that's supposed to track current reality; Ch 65 already established that a stale spec or ADR is expected, not a failure this chapter is answering.

@@ -225,3 +225,28 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part VIII, Ch64–Ch68 (5 chapters — documentation)
 - Push now (Parts V+VI+VII complete, per this session's request to cover them)
+
+---
+
+## Part VIII complete, Ch64–Ch68 (5 chapters — documentation)
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch64**: a bike with quirks (skipping gear, soft brakes, sticky kickstand) patched with a verbal warning speech to whoever borrows it, instead of actually getting it fixed
+- **Ch65**: two fridge notes — a grocery list (must stay current) vs. a note explaining why the family switched grocery stores (frozen record, ruined by editing it to match today)
+- **Ch66**: a chore chart taped to the actual fridge in the actual kitchen (updates happen because you're standing right there) vs. a "real" copy in a drawer upstairs nobody updates in the moment
+- **Ch67**: babysitting handoff notes for a sitter with zero way to reach you for four hours — current facts only, explicit "this part doesn't matter" callouts, no family history
+- **Ch68**: a family's one specific, pre-walked plan for getting separated in a crowd (exact meeting spot, contact numbers already written down) vs. a vague "just find us" agreed to once in the car and never checked against reality
+
+### What worked
+- This Part's wife sections lean on strong physical objects (kitchen note, utility bill/inspection report, fridge allergy list, furniture instructions, fire escape plan) — every kids section still found a different vehicle rather than translating the same image, continuing the discipline from every prior Part
+- This was the first Part where two chapters (Ch65, Ch66) are both fundamentally about "which writing is allowed to go stale and which isn't" — kept them structurally distinct: Ch65 is about *classifying* a document up front (two fridge notes, two purposes); Ch66 is about *maintaining* a document that's already supposed to stay current (one chore chart, location determines whether updates actually happen)
+- Deliberately reused a domestic caretaking frame (babysitter, family emergency plan) for Ch67/Ch68 rather than reaching for a technical-adjacent "handoff" scenario — both land on real, recognizable kid-relevant stakes (a sibling watching, a kid alone in a crowd) without being heavier than the material calls for
+
+### Edge cases and decisions
+- Ch65's kids section ran to 252 words on first draft (over the hard 250 cap) — trimmed repeated phrases ("the actual reason the switch happened in the first place" → "the actual reason the switch happened") rather than cutting content; confirms the note from Ch01/88 calibration that a trim pass should be budgeted for nearly every chapter, not just the first two
+- Considered an EpiPen/allergy-action-plan analogy for Ch68 (maps "automate the mechanical part" onto the auto-injector device itself) but chose a lost-in-a-crowd family plan instead — same one-named-failure-mode shape, without introducing real medical/emergency content that would tonally clash with this book's otherwise-light stakes
+- Formatting rotation this Part: Ch64 bold lead-ins, Ch65 italic pull-quote opener (no bold), Ch66 `[!NOTE]` block, Ch67 plain prose only (no devices), Ch68 bold lead-ins — deliberately varied so no two adjacent chapters use the same device, per this session's reminder to keep varying format chapter to chapter
+
+### Next session
+- Continue with Part IX, Ch69–Ch73 (5 chapters — observability)
+- Push after Part VIII (or VIII+IX together)

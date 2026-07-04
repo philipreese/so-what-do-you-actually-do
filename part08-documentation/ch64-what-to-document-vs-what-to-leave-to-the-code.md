@@ -21,6 +21,20 @@ This chapter argues that most of the explanatory documents people write about co
 
 Some information genuinely doesn't belong taped to any single appliance, though. "Here's why we picked a gas stove over induction three years ago, and what we ruled out" isn't a note you can stick to the stove itself — it's a decision that outlives any one appliance. "If the smoke alarm goes off at 2am, here's exactly who to call and what to check first" isn't information anyone wants buried in a stove manual either — it needs its own place, written for someone in a specific kind of hurry. The real skill isn't writing more notes. It's telling the difference between a broken burner and a fact that was never going to fit on any appliance in the first place.
 
+## For My Kids
+
+Say your bike has a gear that skips unless you flick the shifter twice, fast, right before it happens. You've ridden it so long you don't even think about it anymore. Instead of getting it fixed, you started telling anyone who borrows the bike: "flick it twice, trust me."
+
+**That's cheaper than fixing the gear. For today.**
+
+But bikes don't stay at one weird quirk forever. The brakes need a hard squeeze now too. The kickstand only holds if you kick it left first. Each one gets added to the whole speech you give before handing the bike over.
+
+**Eventually that speech is longer than just fixing the actual bike would've been — and you're the only one who has it memorized.**
+
+So if you're not standing there when your little cousin borrows it, none of that gets passed along. They just get a bike with three quirks and zero warnings.
+
+The gear was fixable from day one. Warnings feel free because you're not the one who pays for them later — the kid riding downhill on brakes nobody warned them about is.
+
 ---
 
 This chapter opens Part VIII by extending [Ch 30](../part04-code-organization/ch30-comments-what-to-comment-what-not-to.md)'s WHY-vs-WHAT test one level up. That chapter asked whether a specific comment, attached to a specific line, earns its keep. This chapter asks the prior question: whether any external documentation is warranted at all, before which artifact it becomes (Ch 65) is even a live question. Ch 02's complexity argument and Principle 6 apply unchanged — documentation is a cost paid to reduce complexity for a future reader, not a free good, and it should only exist when its value clears that cost.

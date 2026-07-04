@@ -268,6 +268,44 @@
   }
 }
 
+/* === GFM-style Alert Callouts (> [!NOTE], etc.) ========================= */
+.callout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 1.5rem 0;
+  padding: 0.85rem 1.1rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--callout-border, var(--accent-color));
+  background: var(--callout-bg, var(--accent-low));
+  font-style: normal;
+}
+
+.callout__label {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--callout-label-color, var(--accent-color));
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--callout-text, var(--text-color));
+}
+
+/* NOTE variant — uses the existing callout-info tokens */
+.callout--note {
+  --callout-bg: var(--callout-info-bg);
+  --callout-border: var(--callout-info-border);
+  --callout-label-color: var(--callout-info-text);
+  --callout-text: var(--callout-info-text);
+}
+
 .meta-card {
   padding: 1.25rem;
   border: 2.5px solid var(--border-color);

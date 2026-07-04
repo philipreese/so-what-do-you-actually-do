@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
-import { parseChapter, renderChapterHtml } from './parseChapter';
+import { parseChapter, renderChapterHtml, preprocessAlerts } from './parseChapter';
 
 const ROMAN_NUMERALS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 const PART_EMOJIS: Record<string, string> = {
@@ -238,13 +238,13 @@ export function splitChapterTracks(rawMarkdown: string) {
 
   if (wifeMatch) {
     const resolvedWife = resolveRelativeLinks(wifeMatch[1].trim());
-    wifeHtml = marked.parse(resolvedWife) as string;
+    wifeHtml = marked.parse(preprocessAlerts(resolvedWife)) as string;
     cleanMarkdown = cleanMarkdown.replace(wifeRegex, '');
   }
 
   if (kidsMatch) {
     const resolvedKids = resolveRelativeLinks(kidsMatch[1].trim());
-    kidsHtml = marked.parse(resolvedKids) as string;
+    kidsHtml = marked.parse(preprocessAlerts(resolvedKids)) as string;
     cleanMarkdown = cleanMarkdown.replace(kidsRegex, '');
   }
 

@@ -19,6 +19,16 @@ This chapter is about the narrow, legitimate reasons to twist that cap off anywa
 
 And the rule for removing the cap is non-negotiable: put it back on immediately, and write down exactly why it was safe to take off in the first place. A bottle left uncapped on a shelf, with no label saying what's inside or why, is a hazard to whoever picks it up next — someone who wasn't in the room for the original decision and has no way of knowing whether it's still safe to touch. That's the whole discipline this chapter asks for. Skip it, and the shortcut that saved one engineer an afternoon becomes the outage that costs the company a very bad night.
 
+## For My Kids
+
+Say your family keeps the good sharp chef's knife locked away, and you're allowed the safe, dull one for basically everything — it cuts fine, and nobody's getting hurt reaching for it.
+
+**Once in a while, a real recipe actually needs the sharp knife** — paper-thin garlic that the dull one just mushes instead of slicing. That's a real, specific reason, not "the dull one's kind of annoying today." You get the sharp knife out, for that one task, for as long as that task takes.
+
+**The part that actually matters is what happens right after.** You don't leave the sharp knife sitting on the counter because you might need it again in twenty minutes. You wash it, put it straight back where it locks up, and if your little brother's going to be in the kitchen later, you say something: "I used the sharp knife for the garlic, it's put away now." Skip that last part, and the real danger isn't the slicing — it's a six-year-old finding a knife on the counter that isn't supposed to be there, with nobody around who remembers leaving it out.
+
+**The dull knife stays the right choice almost every single time.** The sharp one earns its one use only because the job genuinely needed it, and it earns being trusted again only because it went straight back to being locked up the second the job was done.
+
 ---
 
 Most software should be written entirely within its language's safety guarantees. Memory safety, type safety, bounds checking, managed runtimes — these exist because they wipe out entire classes of defects, not as obstacles standing in a programmer's way but as structural guarantees the compiler enforces on their behalf, for free. This chapter is about the narrow set of circumstances where stepping outside those guarantees is actually justified, and the discipline that decision demands.

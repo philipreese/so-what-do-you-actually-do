@@ -111,3 +111,29 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part IV, Ch27–Ch33
 - Push after Part IV (or IV+V together)
+
+---
+
+## Part IV complete, Ch27–Ch33
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch27**: school binders organized by subject vs. by type, plus the backpack's catch-all "stuff" folder (junk-drawer package)
+- **Ch28**: calling the family car "the blue car" (breaks the day it's repainted) vs. "Mom's car" (survives any paint job)
+- **Ch29**: sorting a Lego tub by build (a whole 800-piece castle in one bin, fine) vs. by size (five unrelated leftover pieces dumped together, useless)
+- **Ch30**: a note taped to the class hamster cage — "this is the hamster's cage" (worthless) vs. "no sunflower seeds, allergic" (earns its place) vs. the same note surviving two hamsters past being true
+- **Ch31**: a flipped fridge magnet for two-sibling dish duty (right-sized, permanent) vs. an elaborate six-slot chore wheel built for kids and chores that don't exist
+- **Ch32**: texting a friend to grab something from the store — an explicit "got it" / "sold out" vs. silence you have to guess about
+- **Ch33**: the family's locked-away sharp chef's knife, used only for a real reason (paper-thin garlic) and put straight back, with a heads-up given to whoever's in the kitchen next
+
+### What worked
+- Ch05 (locker, Part I) and Ch31 cover near-identical lessons (don't build for imagined future needs) — kept the concrete images completely different (school locker shelving vs. a chore wheel) so neither reads as a rerun, same approach used for Ch13/Ch18 and Ch16/Ch25 pairs in earlier Parts
+- This Part's chapters are the most inward-facing/mechanical yet (file trees, naming, comments, error propagation) — leaning on a kid's own physical organizing systems (binders, a Lego tub, a chore magnet) mapped cleanly, same way Part VII's wife pass leaned on dishes/calendars for its own mechanical chapters
+- Ch33's knife analogy carries real, appropriate-for-the-age stakes (a locked-away sharp tool, a younger sibling's safety) without being gratuitous — mirrors how the wife pass let genuinely serious analogies (fire drills, security) stand on their own weight rather than forcing artificial lightness
+
+### Edge cases and decisions
+- Ch30 deliberately did NOT reuse the wife section's own strong images (the fridge note, the window note) — picked a fresh scenario (hamster cage) rather than riffing on the same picture, since the wife section for this chapter is unusually good and reusing it would read as copying rather than translating
+- For chapters this technical (Ch32's exception vs. error-as-value; Ch33's unsafe code), still zero jargon — no "exception," "stack," "compiler," or "memory" in the literal technical sense anywhere in either kids section
+
+### Next session
+- Continue with Part V, Ch34–Ch41
+- Push after Part IV+V together (per this session's request to cover at least Parts III and IV, now both done — user said pause after this)

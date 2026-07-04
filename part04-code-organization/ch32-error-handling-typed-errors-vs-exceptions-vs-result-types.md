@@ -21,6 +21,14 @@
 > [!NOTE]
 > Not every failure deserves the same response, either. A store being out of milk is routine — you adjust and move on. A fire alarm means you stop and get out, and calmly continuing to shop instead is the actually dangerous move. Code has the same split: a missing file or a wrong password is routine, something the immediate caller should be ready to handle. A program discovering its own internal bookkeeping is impossible is a bug, not a possibility, and should stop cold rather than keep running on a broken assumption — quietly producing wrong answers that look fine right up until someone downstream trusts one.
 
+## For My Kids
+
+Say you ask a friend to grab something for you from the store while she's out. Good version: she texts back either "got it" or "nope, they were sold out" — either way, you know immediately, and you can plan your next move right then. Bad version: she just doesn't respond. Maybe she's still shopping. Maybe she forgot. Maybe something went wrong. You don't know, and you won't find out until she happens to show back up, whenever that is.
+
+**The bad version isn't dishonest, exactly — it's just silent in a way that costs you.** Every minute spent guessing "did it work or not" is a minute you can't spend actually reacting to whichever answer turns out to be true. A clear "no" the second she knows it beats a "maybe" that eventually resolves itself an hour later.
+
+**This is why the boring, explicit answer beats the silent one — even though typing "nope, sold out" takes an extra second she'd rather skip.** Whoever's waiting on the answer needs to know the second something didn't work, not eventually, and not by having to guess from the silence.
+
 ---
 
 [Ch 21](../part03-api-design/ch21-error-handling-contracts.md) covers how failures get serialized and communicated across a network boundary. [Ch 07](../part01-systems-thinking/ch07-reliability-as-a-design-principle.md) established the system-level taxonomy: crash failures, corruption failures, wrong-answer failures. This chapter sits in the layer between them — how failure gets represented and propagated through function calls inside a single codebase, before any of it ever reaches an API boundary at all.

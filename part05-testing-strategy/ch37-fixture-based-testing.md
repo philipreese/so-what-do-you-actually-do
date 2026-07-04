@@ -19,6 +19,16 @@ This chapter is about what goes wrong when that reset doesn't happen. Some testi
 
 The bugs this produces are uniquely maddening, because they only show up depending on the order tests happen to run in. A test that passes perfectly alone fails only when it runs right after a different, unrelated one — because that other test left something behind in the shared room, and nobody can see the connection from either test by itself. The chapter's answer is to stop sharing the room: give every test its own freshly built, disposable set of data, so nobody inherits a mess they didn't make, and a failing test always points at the test that actually failed — not at whichever stranger happened to check out an hour earlier.
 
+## For My Kids
+
+Say three siblings share one bathroom every school morning, one after another. If each person leaves it exactly as they found it — towel back on the hook, sink wiped, nothing borrowed and not returned — whoever goes next starts from the same clean bathroom every time, no matter who went before them.
+
+**Now say nobody bothers resetting anything.** One morning, sibling two can't find the toothpaste, because sibling one used the last of it and didn't say anything. Another morning, sibling two's routine goes perfectly fine, because sibling one happened to leave everything in order that day. Same kid, same routine — some mornings it works, some mornings it mysteriously doesn't, and the only thing that changed was who went through first.
+
+**That's the maddening part: the problem never shows up when you check it alone.** Sibling two, getting ready by herself on a Saturday with nobody ahead of her, never has an issue. The trouble only appears depending on exactly who went before, leaving exactly what mess — and good luck ever tracing it back to the actual cause.
+
+**The fix isn't "everyone try to be neater."** It's that every morning, every sibling gets the bathroom reset to the exact same starting point — restocked, wiped down, nothing left over from yesterday. Once that's true, whether your morning goes smoothly stops depending on someone else's mess, and starts depending only on you.
+
 ---
 
 [Ch 36](ch36-when-to-mock-vs-use-real-dependencies.md) addressed whether dependencies should be real or replaced. This chapter addresses the state those dependencies actually hold: how to set it up, how to keep it from coupling tests to each other behind the scenes, and how to reset it cleanly between runs.

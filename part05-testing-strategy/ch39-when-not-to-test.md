@@ -20,6 +20,16 @@ This chapter argues that programmers do the exact same thing with tests, and it'
 
 **And the chapter's least comfortable, most useful point is that throwing out an old file isn't sloppiness — sometimes it's exactly right.** A drawer stuffed with decades of warranty cards for things nobody owns anymore isn't more careful than an empty one. It's just harder to search, and the one card that actually matters is buried somewhere in the middle of it.
 
+## For My Kids
+
+Say you're packing for an overnight school trip, and you could, if you wanted, double-check literally everything: is your pencil still a pencil, does your backpack's zipper still zip, is your water bottle still shaped like a bottle. None of that needs checking. A zipper either works or it very obviously doesn't, and you'll notice the second you touch it — no checklist required.
+
+**What actually deserves your attention is the stuff that's easy to get wrong and hard to notice until it's too late:** did you pack the permission slip, is your medication actually in the bag or still sitting on the counter, did you grab the charger and not just the cable. Those are worth a real, careful check, because getting them wrong isn't obvious until you're already on the bus.
+
+**Checking the zipper "just to be safe" isn't extra carefulness — it's wasted time that could've gone toward the stuff that actually matters.** Same goes for double-checking something someone else already verified: if the store already tested that your new backpack's straps hold weight before it reached the shelf, you don't need to personally stress-test the stitching. You need to check the one thing that's actually yours to get right: what you decided to put inside it.
+
+**The skill isn't checking more. It's checking the right things** — the ones actually easy to get wrong, not the ones that basically check themselves.
+
 ---
 
 Every other chapter in this Part argues for testing something. This one argues the opposite case: some code shouldn't be tested at all, some tests should never get written, and some tests already sitting in the suite deserve to be deleted. The failure mode here is a suite whose maintenance burden outweighs the confidence it actually delivers — a cost that piles up quietly, one low-value test at a time, until the entire system slows to a crawl.

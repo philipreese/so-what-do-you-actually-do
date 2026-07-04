@@ -137,3 +137,30 @@ Scaffolding for this pass only. Delete after all 90 chapters are done (user's ca
 ### Next session
 - Continue with Part V, Ch34–Ch41
 - Push after Part IV+V together (per this session's request to cover at least Parts III and IV, now both done — user said pause after this)
+
+---
+
+## Part V complete, Ch34–Ch41
+
+### Analogies used (for reference — avoid repeating verbatim)
+- **Ch34**: school play rehearsal stages — solo line-running, scene work with a partner, full cast dress rehearsal (cheap/precise vs. expensive/vague)
+- **Ch35**: testing bike brakes in isolation vs. a bike built so tangled that checking the brakes means dealing with the whole bike
+- **Ch36**: grading math homework by final answer vs. by exact taught steps — breaks the moment a kid finds a smarter method
+- **Ch37**: three siblings sharing one bathroom every school morning, reset or not reset between each one
+- **Ch38**: folding/unfolding paper airplanes across a huge pile of different paper types, then shrinking a failure down to the smallest ripped scrap
+- **Ch39**: packing for a school trip — not checking the zipper (already fine) vs. actually checking the permission slip and medication
+- **Ch40**: a chore chart labeled "Task 7" vs. "Trash bins are out by 7am Tuesday"
+- **Ch41**: a piano practice log (minutes logged) vs. being able to actually play measure 12 cold, unwarned
+
+### What worked
+- Deliberately avoided reusing the wife section's own strong images this Part more than usual, since Part V's wife pass leans on unusually good analogies (book editing, tasting the sauce, GPS route-checking, hotel room reset, attendance/pop-quiz) — every kids section found a genuinely different vehicle (school play, bike brakes, math grading, shared bathroom, paper airplanes, packing a bag, chore chart, piano practice) rather than translating the same picture into kid words
+- This Part's chapters are unusually abstract/meta (testing tests) — school-based analogies (rehearsal, homework grading, chore charts, practice logs) mapped naturally since "checking your own work" is something every kid already does constantly
+- Ch37's shared-bathroom analogy nails the specific "only fails depending on execution order" bug shape (order-dependent test failures) that's easy to gloss over — kept the sibling-rotation detail because that's the mechanism, not just flavor
+
+### Edge cases and decisions
+- Ch36 and Ch38 both involve "does it still work if you change the method" — kept them structurally distinct (grading process vs. answer; testing one input vs. a systematic sweep across many) since the underlying chapters are answering different questions (state vs. interaction verification; example-based vs. property-based coverage)
+- No jargon anywhere in this Part's kids sections — "mock," "fixture," "coverage," "assertion" never appear; even "property-based testing" became "state the rule out loud, then try it on everything"
+
+### Next session
+- Continue with Part VI, Ch42–Ch49
+- Push after Part V+VI+VII together (per this session's request to cover Parts V, VI, VII)

@@ -19,6 +19,16 @@
 
 The fix is the same one earlier chapters already argued for: keep the actual thinking — the calculations, the decisions, the rules — separate from the plumbing that carries data in and out. Once that separation exists, the easy tests fall out for free, and a change to how data gets stored stops being able to break a rule that never had anything to do with storage to begin with.
 
+## For My Kids
+
+Say you want to check whether your bike's brakes actually work. If they're built right, you just grab the brake lever and watch it grip the wheel — you don't need the tires pumped, the seat adjusted, or the chain oiled first. The brakes are their own thing, so testing them is its own separate, ten-second job.
+
+**Now say your bike got slapped together so that squeezing the brake lever also makes the seat wobble and tugs on the pedals.** You can't check just the brakes anymore — testing them means dealing with the whole bike at once, every time. That's not because brakes are secretly hard to test. It's because whoever built the bike tangled them into everything else instead of keeping them their own separate part.
+
+**The annoying part isn't a testing problem — it's a building problem wearing a testing costume.** When something's hard to check on its own, that's the bike telling you it was put together wrong, not a sign you need a fancier way to test it.
+
+**The fix is rebuilding it so the brakes connect cleanly to just the wheel, nothing else.** Once that's true, checking the brakes takes ten seconds, doesn't touch the seat or the pedals, and works the same way whether the rest of the bike is finished or still sitting in pieces on the garage floor.
+
 ---
 
 [Ch 34](ch34-the-testing-pyramid.md) established that different tests answer different questions at different costs. This chapter answers the practical question that follows from it: for any given piece of code, which layer should actually be testing it?

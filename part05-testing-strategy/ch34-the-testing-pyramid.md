@@ -21,6 +21,16 @@ This chapter argues software testing should be built the same way, in the same p
 
 That's the trap with leaning mainly on the expensive, whole-system check: it tells you there's a problem, not which chapter, not which sentence. Now imagine skipping the spellcheck and the chapter edit entirely and relying only on beta readers — which is exactly what happens to software projects that skip cheap, fast tests and lean entirely on running the whole finished product end to end. You get slow, expensive verification that can only ever say "something's wrong in here somewhere," while the actual hunting still has to happen by hand, one page at a time, after the fact.
 
+## For My Kids
+
+Say you're in the school play, and the way you prepare has three totally different stages. First, alone in your room, you run your own lines out loud — fast, free, and if you fumble a word, you know exactly which line and which word it was.
+
+**Next, you run a scene with just your scene partner.** Slower than practicing alone, but it catches things solo practice never could — the timing of a joke, whether you're actually looking at each other during the big moment.
+
+**Then, a small number of times before opening night, the whole cast runs the entire show together, costumes and lights and all.** This is the only rehearsal that shows you how the whole thing actually feels start to finish. It's also the slowest by far, and here's the part that surprises people: it's the *worst* one for figuring out what's actually wrong. If the director says "something felt off in Act 2," that tells you a problem exists. It tells you nothing about which line, which cue, which actor.
+
+**A show that skips straight to full run-throughs — no solo line-running, no scene work — is in real trouble**, because the only tool it has for catching a mistake is the slowest, vaguest one available. By the time "something's off" gets narrowed down to what, it's the night before opening, and there's no time left to actually fix it.
+
 ---
 
 Every chapter in Part V assumes this model going forward. Later chapters cover what belongs at each layer, when to reach for test doubles, how to structure fixtures, and how to actually read a coverage number. This chapter builds the frame all of those decisions have to fit inside.

@@ -230,6 +230,13 @@ html[data-theme="light"] .moon-icon {
     transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.sidebar-progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+
 .sidebar-progress-label {
     color: var(--text-muted);
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -239,7 +246,31 @@ html[data-theme="light"] .moon-icon {
     letter-spacing: 0.06em;
 }
 
-.docs-layout.sidebar-minimized .sidebar-progress-label {
+.sidebar-progress-reset {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-muted);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sidebar-progress-reset:hover {
+    opacity: 1;
+    color: var(--sidebar-link-hover-text);
+    background: var(--sidebar-link-hover-bg);
+}
+
+.docs-layout.sidebar-minimized .sidebar-progress-label,
+.docs-layout.sidebar-minimized .sidebar-progress-reset {
     display: none;
 }
 
@@ -371,7 +402,7 @@ html[data-theme="light"] .moon-icon {
 .sidebar-chapter-link {
     position: relative;
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     padding: 0.45rem 0.75rem;
     border-radius: 6px;
     color: var(--sidebar-link-text);
@@ -405,10 +436,12 @@ html[data-theme="light"] .moon-icon {
 
 .chapter-num-slot {
     position: relative;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 0.2rem;
     min-width: 1.25rem;
     margin-right: 0.6rem;
 }
@@ -426,15 +459,13 @@ html[data-theme="light"] .moon-icon {
     opacity: 1;
 }
 
-/* Read-state check indicator: replaces the chapter number once the chapter
-   has been read on the currently active track. */
+/* Read-state check indicator: sits below the chapter number once the chapter
+   has been read on the currently active track (the number itself stays put). */
 .chapter-check-icon {
     display: none;
-    color: var(--accent-color);
-}
-
-.sidebar-chapter-link.is-read .chapter-num {
-    display: none;
+    width: 11px;
+    height: 11px;
+    color: var(--pane-kids-border);
 }
 
 .sidebar-chapter-link.is-read .chapter-check-icon {
@@ -828,6 +859,44 @@ html[data-track="kids"] .chapter-thesis {
    6. Navigation Footer (Next/Prev Link Bar)
    ========================================================================== */
 
+.read-toggle-row {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 0.65rem 3.5rem;
+    border-top: 1px dashed var(--border-color);
+    background: var(--bg-color);
+}
+
+.read-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.95rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.read-toggle-btn:hover {
+    color: var(--sidebar-link-hover-text);
+    border-color: var(--accent-color);
+    background: var(--sidebar-link-hover-bg);
+}
+
+.read-toggle-btn.is-read {
+    color: var(--pane-kids-border);
+    border-color: var(--pane-kids-border);
+}
+
 .chapter-footer {
     display: flex;
     align-items: center;
@@ -915,6 +984,10 @@ html[data-track="kids"] .chapter-thesis {
 
     .chapter-footer {
         padding: 0 1.5rem;
+    }
+
+    .read-toggle-row {
+        padding: 0.65rem 1.5rem;
     }
 
     /* Clear fixed viewport height restrictions to enable natural page scrolling */

@@ -239,24 +239,6 @@
     color: var(--pane-kids-text);
 }
 
-/* The kid story's opening "### Title" heading acts as a display title card
-   for that chapter's story — bigger and more editorial than a normal h3. */
-.pane-secondary--kids .pane-content h3:first-child {
-    margin: 0 0 1rem;
-    color: var(--pane-kids-text);
-    font-family: "Newsreader", Georgia, serif;
-    font-size: 1.85rem;
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-}
-
-/* In kids-only reading mode the page h1 already carries the story title,
-   so the in-pane title card would just repeat it. */
-html[data-track="kids"] .pane-secondary--kids .pane-content h3:first-child {
-    display: none;
-}
-
 .pane-label {
     margin: 0;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -677,7 +659,7 @@ html[data-track="kids"] .t-kids {
 
 .celebration-toast {
     position: absolute;
-    bottom: 0.75rem;
+    bottom: 3.4rem; /* clears the mark-as-read toggle row below the anchor */
     left: 50%;
     transform: translate(-50%, 0);
     display: inline-flex;

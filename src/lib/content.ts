@@ -271,7 +271,11 @@ function extractWifeKidsSections(rawMarkdown: string): { wifeHtml: string; kidsH
   }
 
   if (kidsMatch) {
-    const resolvedKids = resolveRelativeLinks(kidsMatch[1].trim());
+    // The "### <Story Title>" heading (if present) is metadata — it's extracted
+    // separately as kidsTitle and swapped in as the chapter title site-wide in
+    // kids mode — so it must not also be rendered inside the kids pane body.
+    const kidsBody = kidsMatch[1].trim().replace(/^\s*###\s+.+?\s*(?:\n|$)/, '');
+    const resolvedKids = resolveRelativeLinks(kidsBody.trim());
     kidsHtml = marked.parse(preprocessAlerts(resolvedKids)) as string;
     cleanMarkdown = cleanMarkdown.replace(kidsRegex, '');
   }

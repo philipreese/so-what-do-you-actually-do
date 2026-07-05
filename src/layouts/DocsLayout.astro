@@ -144,7 +144,15 @@ const activePartSlug = parts.find(
               <div class="sidebar-progress-track">
                 <div class="sidebar-progress-fill" id="sidebarProgressFill"></div>
               </div>
-              <span class="sidebar-progress-label" id="sidebarProgressLabel">0 of {totalChapters} chapters</span>
+              <div class="sidebar-progress-row">
+                <span class="sidebar-progress-label" id="sidebarProgressLabel">0 of {totalChapters} chapters</span>
+                <button type="button" class="sidebar-progress-reset" id="sidebarProgressReset" title="Reset reading progress for this track" aria-label="Reset reading progress for this track">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <div class="sidebar-section">
@@ -185,7 +193,9 @@ const activePartSlug = parts.find(
                   <ul class="sidebar-list">
                     <li>
                       <a href={`${cleanBase}parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
-                        <span class="chapter-num">{part.romanNumber}</span>
+                        <span class="chapter-num-slot">
+                          <span class="chapter-num">{part.romanNumber}</span>
+                        </span>
                         <span class="sidebar-chapter-title-text">Part Overview</span>
                       </a>
                     </li>
@@ -198,7 +208,7 @@ const activePartSlug = parts.find(
                         >
                           <span class="chapter-num-slot">
                             <span class="chapter-num">{ch.number}</span>
-                            <svg class="chapter-check-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="chapter-check-icon" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                               <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                           </span>
@@ -287,6 +297,25 @@ const activePartSlug = parts.find(
       });
       // Same-tab updates: chapter pages dispatch this when a chapter is marked read.
       window.addEventListener('reading-progress-updated', updateProgressUI);
+
+      // Reset progress for the active track only.
+      const trackLabels: Record<string, string> = { engineer: 'Engineer', wife: 'Wife', kids: 'Kids' };
+      const resetBtn = document.getElementById('sidebarProgressReset');
+      resetBtn?.addEventListener('click', () => {
+        const track = document.documentElement.getAttribute('data-track') || 'engineer';
+        const read = getReadChapters(track);
+        const count = Object.values(read).filter(Boolean).length;
+        const trackName = trackLabels[track] || track;
+        const confirmed = window.confirm(
+          `Reset your ${trackName} reading progress? This clears ${count} read chapter${count === 1 ? '' : 's'}.`
+        );
+        if (!confirmed) return;
+
+        try {
+          localStorage.removeItem(`readChapters:${track}`);
+        } catch (e) {}
+        window.dispatchEvent(new CustomEvent('reading-progress-updated', { detail: { track } }));
+      });
 
       // Reading Track Switcher Logic
       document.querySelectorAll('.track-switcher-btn').forEach((btn) => {

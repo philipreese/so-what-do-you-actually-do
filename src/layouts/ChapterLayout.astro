@@ -65,6 +65,10 @@ const currentSlug = pathname.split('/').pop() || '';
     )}
   </div>
   
+  <div class="read-toggle-row">
+    <button type="button" class="read-toggle-btn" id="readToggleBtn" data-slug={currentSlug}>Mark as read</button>
+  </div>
+
   <div class="celebration-anchor" id="celebrationAnchor" aria-live="polite"></div>
   <ReadingFooter currentSlug={currentSlug} type="chapter" />
 </DocsLayout>
@@ -165,6 +169,10 @@ const currentSlug = pathname.split('/').pop() || '';
 
   const paneBottomReached: Record<string, boolean> = { engineer: false, wife: false, kids: false };
   const alreadyHandled: Record<string, boolean> = { engineer: false, wife: false, kids: false };
+  // Once a reader manually un-marks a chapter as read, don't let the
+  // scroll/dwell auto-marker immediately flip it back to read for the rest
+  // of this page view.
+  const manualUnmarkSuppressed: Record<string, boolean> = { engineer: false, wife: false, kids: false };
 
   function totalChapterCount(): number {
     return Number(document.getElementById('sidebarProgress')?.getAttribute('data-total') || 0);
@@ -204,6 +212,7 @@ const currentSlug = pathname.split('/').pop() || '';
 
   function maybeMarkRead(track: string) {
     if (!currentSlug || alreadyHandled[track] || !paneBottomReached[track]) return;
+    if (manualUnmarkSuppressed[track]) return;
     if (Date.now() - pageLoadTime < DWELL_MS) return;
 
     alreadyHandled[track] = true;
@@ -257,12 +266,49 @@ const currentSlug = pathname.split('/').pop() || '';
     Object.keys(paneBottomReached).forEach((track) => maybeMarkRead(track));
   }, DWELL_MS + 50);
 
+  // Manual "Mark as read / mark as unread" toggle, near the reading footer.
+  const readToggleBtn = document.getElementById('readToggleBtn') as HTMLButtonElement | null;
+
+  function updateReadToggleUI() {
+    if (!readToggleBtn || !currentSlug) return;
+    const track = currentTrack();
+    const isRead = !!getReadChapters(track)[currentSlug];
+    readToggleBtn.classList.toggle('is-read', isRead);
+    readToggleBtn.textContent = isRead ? '✓ Read · mark as unread' : 'Mark as read';
+  }
+
+  readToggleBtn?.addEventListener('click', () => {
+    if (!currentSlug) return;
+    const track = currentTrack();
+    const read = getReadChapters(track);
+    const willBeRead = !read[currentSlug];
+
+    if (willBeRead) {
+      read[currentSlug] = true;
+    } else {
+      delete read[currentSlug];
+      // Prevent the scroll/dwell observer from immediately re-marking this
+      // chapter as read for the rest of this page view.
+      manualUnmarkSuppressed[track] = true;
+    }
+
+    try {
+      localStorage.setItem(`readChapters:${track}`, JSON.stringify(read));
+    } catch (e) {}
+
+    window.dispatchEvent(new CustomEvent('reading-progress-updated', { detail: { track, slug: currentSlug } }));
+    updateReadToggleUI();
+  });
+
+  updateReadToggleUI();
+
   // Keep the "last visited" bookmark current, and re-check read eligibility,
   // whenever the reader switches tracks while on this chapter.
   const trackObserver = new MutationObserver(() => {
     const track = currentTrack();
     recordLastVisited(track);
     maybeMarkRead(track);
+    updateReadToggleUI();
   });
   trackObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-track'] });
 </script>

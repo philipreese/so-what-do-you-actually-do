@@ -12,12 +12,14 @@ interface Props {
   title: string;
   kidsTitle?: string;
   subtitle?: string;
+  kidsSubtitle?: string;
   thesis?: string;
+  kidsThesis?: string;
   headings?: HeadingItem[];
   imageSrc?: string;
 }
 
-const { chapterNumber, title, kidsTitle, subtitle = '', thesis = '', headings = [], imageSrc } = Astro.props;
+const { chapterNumber, title, kidsTitle, subtitle = '', kidsSubtitle = '', thesis = '', kidsThesis = '', headings = [], imageSrc } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
 const currentSlug = pathname.split('/').pop() || '';
 ---
@@ -33,8 +35,20 @@ const currentSlug = pathname.split('/').pop() || '';
               <span class="t-default">{title}</span>
               {kidsTitle && <span class="t-kids">{kidsTitle}</span>}
             </h1>
-            {subtitle && <p class="chapter-subtitle">{subtitle}</p>}
-            {thesis && <p class="chapter-thesis">{thesis}</p>}
+            {subtitle && (
+              <p class="chapter-subtitle">
+                <span class="t-default">{subtitle}</span>
+                {kidsSubtitle && <span class="t-kids">{kidsSubtitle}</span>}
+                {!kidsSubtitle && <span class="t-kids">{subtitle}</span>}
+              </p>
+            )}
+            {thesis && (
+              <p class="chapter-thesis">
+                <span class="t-default">{thesis}</span>
+                {kidsThesis && <span class="t-kids">{kidsThesis}</span>}
+                {!kidsThesis && <span class="t-kids">{thesis}</span>}
+              </p>
+            )}
           </div>
           {imageSrc && (
             <div class="chapter-header-image">

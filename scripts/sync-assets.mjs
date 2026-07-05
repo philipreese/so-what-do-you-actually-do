@@ -14,7 +14,8 @@ fs.mkdirSync(destDir, { recursive: true });
 
 let count = 0;
 for (const file of fs.readdirSync(srcDir)) {
-  if (!file.toLowerCase().endsWith('.jpg')) continue;
+  const ext = file.toLowerCase();
+  if (!ext.endsWith('.jpg') && !ext.endsWith('.png')) continue;
   fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
   count++;
 }

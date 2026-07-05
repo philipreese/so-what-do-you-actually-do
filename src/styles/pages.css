@@ -37,24 +37,43 @@
   pointer-events: none;
 }
 
-.hero-content {
-  text-align: left;
+.hero-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 3rem;
 }
 
-.hero-badge {
-  display: inline-flex;
+@media (min-width: 768px) {
+  .hero-top {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+  }
+}
+
+.hero-illustration {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  padding: 0.35rem 0.85rem;
-  border: 1.5px solid var(--border-color);
-  border-radius: 4px;
-  background: var(--vocab-chip-bg);
-  color: var(--text-color);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+}
+
+.hero-illustration img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-illustration img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.hero-content {
+  text-align: left;
 }
 
 .hero-content h1 {
@@ -143,14 +162,6 @@
 .card-kids h3 {
   color: var(--pane-kids-text);
 }
-
-/* Highlight whichever track box matches the currently selected reading track */
-html[data-track="engineer"] .card-engineer,
-html[data-track="wife"] .card-wife,
-html[data-track="kids"] .card-kids {
-  box-shadow: 0 0 0 2px var(--border-focus);
-}
-
 
 /* ==========================================================================
    2. Sitemap Page (Table of Contents)

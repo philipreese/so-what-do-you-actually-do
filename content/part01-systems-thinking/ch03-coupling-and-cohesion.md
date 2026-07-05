@@ -195,7 +195,7 @@ Neither number is a verdict on its own. The only real question is whether a comp
 
 **Common failure modes:**
 - Two modules that look perfectly decoupled in the import graph and yet somehow always change together in practice — because the real coupling was never in an import, it was in a shared mental model, a shared data format, or business logic two teams both quietly co-own.
-- Mistaking the absence of a code dependency for actual decoupling, when the real coupling is running through config, environment variables, or timing the whole time.
+- Mistaking the absence of a code dependency for actual decoupling, when the real coupling is running through config, environment variables, or timing the whole time. Scale that same mistake up to the service level and you get a **distributed monolith**: services that look independently deployable in the architecture diagram, but stay coupled through a shared database schema, undocumented contracts, or implicit timing dependencies — carrying the full operational cost of distribution while keeping every bit of the original monolith's coupling intact.
 
 **Example:** Large repositories like the Linux kernel and Chromium give up their real coupling through co-change frequency: files that show up in the same commit together, over and over, for months, are coupled — full stop — whether or not a single line of code formally depends on another. That's change-based coupling doing its job: it's the strongest signal you'll find that two things either belong together or urgently need a cleaner interface between them.
 

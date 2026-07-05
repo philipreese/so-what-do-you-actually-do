@@ -6,7 +6,7 @@ Every system optimizes multiple objectives at once — latency, reliability, cos
 
 **Prerequisites:** None. This is the entry point.
 
-**New vocabulary introduced:** optimization target, accidental complexity, essential complexity, MTBF, MTTR, cost of change, optimization target drift
+**New vocabulary introduced:** optimization target, MTBF, MTTR, cost of change, optimization target drift
 
 **Key takeaways:**
 - Every real system optimizes multiple objectives simultaneously, whether or not those objectives are named

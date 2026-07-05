@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { getAllPartsAndChapters, getAllAppendices } from '../lib/content';
 import SearchModal from '../components/SearchModal.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
 const { title, description = "A software engineer's handbook — with a chapter for everyone else." } = Astro.props;
 const { parts, chapters } = getAllPartsAndChapters();
 const appendices = getAllAppendices();
-const totalChapters = chapters.length;
+const totalChapters = chapters.length + parts.length;
 
 const base = import.meta.env.BASE_URL || '/';
 const cleanBase = base.endsWith('/') ? base : base + '/';
@@ -40,6 +41,7 @@ const activePartSlug = parts.find(
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <ViewTransitions />
     
     <!-- Theme initialisation (Runs immediately to prevent flashing) -->
     <script is:inline>
@@ -78,7 +80,7 @@ const activePartSlug = parts.find(
         }
       </script>
       <!-- Top Header -->
-      <header class="docs-header" data-pagefind-ignore>
+      <header class="docs-header" data-pagefind-ignore transition:persist>
         <div class="header-left">
           <button class="mobile-toggle" aria-label="Toggle Navigation" id="mobileToggle">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
@@ -137,7 +139,7 @@ const activePartSlug = parts.find(
 
       <div class="docs-body-container">
         <!-- Navigation Sidebar -->
-        <aside class="docs-sidebar" id="sidebar" data-pagefind-ignore>
+        <aside class="docs-sidebar" id="sidebar" data-pagefind-ignore transition:persist>
           <nav class="sidebar-nav">
             <!-- Reading Progress Module -->
             <div class="sidebar-progress" id="sidebarProgress" data-total={totalChapters}>
@@ -180,10 +182,24 @@ const activePartSlug = parts.find(
             {parts.map((part) => {
               const isCurrent = activePartSlug === part.slug;
               return (
-                <div class={`sidebar-group ${isCurrent ? '' : 'collapsed'}`}>
+                <div
+                  class={`sidebar-group ${isCurrent ? '' : 'collapsed'}`}
+                  data-part-slug={part.slug}
+                  data-part-chapters={JSON.stringify(part.chapters.map(c => c.slug))}
+                >
                   <button class="sidebar-group-header">
                     <div class="sidebar-group-header-left">
-                      <span class="sidebar-part-num">Part {part.romanNumber}</span>
+                      <span class="sidebar-part-num">
+                        Part {part.romanNumber}
+                        <span class="part-progress-indicator">
+                          <svg class="part-check-icon" viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <svg class="part-started-icon" viewBox="0 0 24 24" width="6" height="6" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                          </svg>
+                        </span>
+                      </span>
                       <span class="sidebar-part-title">{part.title}</span>
                     </div>
                     <svg class="sidebar-group-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -192,9 +208,19 @@ const activePartSlug = parts.find(
                   </button>
                   <ul class="sidebar-list">
                     <li>
-                      <a href={`${cleanBase}parts/${part.slug}`} class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}>
+                      <a
+                        href={`${cleanBase}parts/${part.slug}`}
+                        class={`sidebar-chapter-link ${currentPath === `/parts/${part.slug}` ? 'active' : ''}`}
+                        data-chapter-slug={part.slug}
+                      >
                         <span class="chapter-num-slot">
                           <span class="chapter-num">{part.romanNumber}</span>
+                          <svg class="chapter-check-icon" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <svg class="chapter-started-icon" viewBox="0 0 24 24" width="8" height="8" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                          </svg>
                         </span>
                         <span class="sidebar-chapter-title-text">Part Overview</span>
                       </a>
@@ -210,6 +236,9 @@ const activePartSlug = parts.find(
                             <span class="chapter-num">{ch.number}</span>
                             <svg class="chapter-check-icon" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                               <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <svg class="chapter-started-icon" viewBox="0 0 24 24" width="8" height="8" fill="currentColor" aria-hidden="true">
+                              <circle cx="12" cy="12" r="10"></circle>
                             </svg>
                           </span>
                           <span class="sidebar-chapter-title-text">
@@ -252,7 +281,7 @@ const activePartSlug = parts.find(
         </aside>
 
         <!-- Main Content Area -->
-        <main class="docs-main" data-pagefind-body>
+        <main class="docs-main" data-pagefind-body transition:animate="slide">
           <slot />
         </main>
       </div>
@@ -269,136 +298,240 @@ const activePartSlug = parts.find(
         }
       }
 
-      function updateProgressUI() {
-        const track = document.documentElement.getAttribute('data-track') || 'engineer';
-        const read = getReadChapters(track);
-        const readSlugs = Object.keys(read).filter((slug) => read[slug]);
+      function initDocsLayout() {
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        const track = localStorage.getItem('selectedTrack') || 'engineer';
+        document.documentElement.setAttribute('data-track', track);
+        
+        function updateProgressUI() {
+          const track = document.documentElement.getAttribute('data-track') || 'engineer';
+          const read = getReadChapters(track);
+          const readSlugs = Object.keys(read).filter((slug) => read[slug]);
 
-        const progressEl = document.getElementById('sidebarProgress');
-        const total = Number(progressEl?.getAttribute('data-total') || 0);
-        const count = readSlugs.length;
+          let started: Record<string, boolean> = {};
+          try {
+            started = JSON.parse(localStorage.getItem(`startedChapters:${track}`) || '{}');
+          } catch (e) {}
 
-        const fill = document.getElementById('sidebarProgressFill');
-        const label = document.getElementById('sidebarProgressLabel');
-        if (fill) fill.style.width = total > 0 ? `${Math.min(100, (count / total) * 100)}%` : '0%';
-        if (label) label.textContent = `${count} of ${total} chapters`;
+          const progressEl = document.getElementById('sidebarProgress');
+          const total = Number(progressEl?.getAttribute('data-total') || 0);
+          const count = readSlugs.length;
 
-        document.querySelectorAll('.sidebar-chapter-link[data-chapter-slug]').forEach((link) => {
-          const slug = link.getAttribute('data-chapter-slug');
-          link.classList.toggle('is-read', !!(slug && read[slug]));
+          const fill = document.getElementById('sidebarProgressFill');
+          const label = document.getElementById('sidebarProgressLabel');
+          if (fill) fill.style.width = total > 0 ? `${Math.min(100, (count / total) * 100)}%` : '0%';
+          if (label) label.textContent = `${count} of ${total} chapters`;
+
+          // Update chapters checkmark and started states
+          document.querySelectorAll('.sidebar-chapter-link[data-chapter-slug]').forEach((link) => {
+            const slug = link.getAttribute('data-chapter-slug');
+            if (slug) {
+              const isRead = !!read[slug];
+              const isStarted = !!started[slug] && !isRead;
+              link.classList.toggle('is-read', isRead);
+              link.classList.toggle('is-started', isStarted);
+            }
+          });
+
+          // Update parts checkmark and started states
+          document.querySelectorAll('.sidebar-group[data-part-chapters]').forEach((group) => {
+            const rawChapters = group.getAttribute('data-part-chapters') || '[]';
+            let chapterSlugs: string[] = [];
+            try {
+              chapterSlugs = JSON.parse(rawChapters);
+            } catch (e) {}
+
+            if (chapterSlugs.length === 0) return;
+
+            const readInPart = chapterSlugs.filter((slug) => read[slug]).length;
+            const startedInPart = chapterSlugs.filter((slug) => started[slug]).length;
+
+            const isCompleted = readInPart === chapterSlugs.length;
+            const isStarted = !isCompleted && (readInPart > 0 || startedInPart > 0);
+
+            group.classList.toggle('is-completed', isCompleted);
+            group.classList.toggle('is-started', isStarted);
+          });
+
+          // Update active link class dynamically in persisted sidebar
+          const currentPath = window.location.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+          document.querySelectorAll('.sidebar-chapter-link').forEach((link) => {
+            const href = link.getAttribute('href') || '';
+            const hrefPath = new URL(href, window.location.origin).pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+            link.classList.toggle('active', hrefPath === currentPath);
+          });
+
+          // Auto-expand the active part's group in the sidebar
+          const activeLink = document.querySelector('.sidebar-chapter-link.active');
+          if (activeLink) {
+            const group = activeLink.closest('.sidebar-group');
+            if (group) {
+              group.classList.remove('collapsed');
+            }
+          }
+        }
+
+        // Expose updateProgressUI globally so the global window listener can call it
+        (window as any).triggerProgressUIUpdate = updateProgressUI;
+
+        updateProgressUI();
+
+        // Reset progress for the active track only.
+        const trackLabels: Record<string, string> = { engineer: 'Engineer', wife: 'Wife', kids: 'Kids' };
+        const resetBtn = document.getElementById('sidebarProgressReset');
+        resetBtn?.addEventListener('click', () => {
+          const track = document.documentElement.getAttribute('data-track') || 'engineer';
+          const read = getReadChapters(track);
+          const count = Object.values(read).filter(Boolean).length;
+          const trackName = trackLabels[track] || track;
+          const confirmed = window.confirm(
+            `Reset your ${trackName} reading progress? This clears ${count} read chapter${count === 1 ? '' : 's'}.`
+          );
+          if (!confirmed) return;
+
+          try {
+            localStorage.removeItem(`readChapters:${track}`);
+            localStorage.removeItem(`startedChapters:${track}`);
+            localStorage.removeItem(`lastVisited:${track}`);
+          } catch (e) {}
+          window.dispatchEvent(new CustomEvent('reading-progress-updated', { detail: { track } }));
+        });
+
+        // Reading Track Switcher Logic
+        document.querySelectorAll('.track-switcher-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const track = btn.getAttribute('data-track');
+            if (!track) return;
+            document.documentElement.setAttribute('data-track', track);
+            try {
+              localStorage.setItem('selectedTrack', track);
+            } catch (e) {}
+            updateProgressUI();
+          });
+        });
+
+        // Switch track based on URL hash
+        function updateTrackFromHash() {
+          const hash = window.location.hash;
+          if (!hash) return;
+
+          let targetTrack = null;
+          if (hash.includes('wife')) {
+            targetTrack = 'wife';
+          } else if (hash.includes('kids')) {
+            targetTrack = 'kids';
+          } else if (hash.includes('technical') || hash.includes('engineer')) {
+            targetTrack = 'engineer';
+          }
+
+          if (targetTrack) {
+            document.documentElement.setAttribute('data-track', targetTrack);
+            try {
+              localStorage.setItem('selectedTrack', targetTrack);
+            } catch (e) {}
+            updateProgressUI();
+          }
+        }
+
+        (window as any).triggerTrackFromHash = updateTrackFromHash;
+        updateTrackFromHash();
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle?.addEventListener('click', () => {
+          const root = document.documentElement;
+          const currentTheme = root.getAttribute('data-theme') || 'light';
+          const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+          root.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('theme', nextTheme);
+        });
+
+        // Sidebar Minimization Toggle
+        const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
+        const docsLayout = document.getElementById('docsLayout');
+        sidebarCollapseToggle?.addEventListener('click', () => {
+          const isMinimized = docsLayout?.classList.toggle('sidebar-minimized');
+          localStorage.setItem('sidebar-minimized', String(isMinimized));
+        });
+
+        // Mobile Drawer Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileToggle?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sidebar?.classList.toggle('open');
+        });
+
+        // Sidebar Accordion Toggle
+        const groupHeaders = document.querySelectorAll('.sidebar-group-header');
+        groupHeaders.forEach((header) => {
+          header.addEventListener('click', () => {
+            const group = header.closest('.sidebar-group');
+            group?.classList.toggle('collapsed');
+          });
         });
       }
 
-      updateProgressUI();
+      // Key global window/document events should only be registered once
+      if (!(window as any).hasLayoutGlobalListeners) {
+        window.addEventListener('storage', (e) => {
+          if (e.key && (e.key.startsWith('readChapters:') || e.key.startsWith('startedChapters:') || e.key.startsWith('lastVisited:'))) {
+            if ((window as any).triggerProgressUIUpdate) {
+              (window as any).triggerProgressUIUpdate();
+            }
+          }
+        });
+        window.addEventListener('reading-progress-updated', () => {
+          if ((window as any).triggerProgressUIUpdate) {
+            (window as any).triggerProgressUIUpdate();
+          }
+        });
+        window.addEventListener('hashchange', () => {
+          if ((window as any).triggerTrackFromHash) {
+            (window as any).triggerTrackFromHash();
+          }
+        });
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          const sidebar = document.getElementById('sidebar');
+          const mobileToggle = document.getElementById('mobileToggle');
+          if (sidebar?.classList.contains('open') && !sidebar.contains(target) && target !== mobileToggle && !mobileToggle?.contains(target)) {
+            sidebar.classList.remove('open');
+          }
 
-      // Cross-tab updates (storage fires in OTHER tabs/windows only).
-      window.addEventListener('storage', (e) => {
-        if (e.key && e.key.startsWith('readChapters:')) updateProgressUI();
-      });
-      // Same-tab updates: chapter pages dispatch this when a chapter is marked read.
-      window.addEventListener('reading-progress-updated', updateProgressUI);
+          // Override animation direction on sequential previous link clicks
+          const link = target.closest('a');
+          if (link) {
+            if (link.classList.contains('footer-link--prev') || link.getAttribute('data-direction') === 'back') {
+              (window as any).nextTransitionDirection = 'back';
+            } else {
+              (window as any).nextTransitionDirection = 'forward';
+            }
+          }
+        });
 
-      // Reset progress for the active track only.
-      const trackLabels: Record<string, string> = { engineer: 'Engineer', wife: 'Wife', kids: 'Kids' };
-      const resetBtn = document.getElementById('sidebarProgressReset');
-      resetBtn?.addEventListener('click', () => {
-        const track = document.documentElement.getAttribute('data-track') || 'engineer';
-        const read = getReadChapters(track);
-        const count = Object.values(read).filter(Boolean).length;
-        const trackName = trackLabels[track] || track;
-        const confirmed = window.confirm(
-          `Reset your ${trackName} reading progress? This clears ${count} read chapter${count === 1 ? '' : 's'}.`
-        );
-        if (!confirmed) return;
+        document.addEventListener('astro:before-preparation', (event: any) => {
+          if ((window as any).nextTransitionDirection) {
+            event.direction = (window as any).nextTransitionDirection;
+          }
+        });
 
-        try {
-          localStorage.removeItem(`readChapters:${track}`);
-        } catch (e) {}
-        window.dispatchEvent(new CustomEvent('reading-progress-updated', { detail: { track } }));
-      });
-
-      // Reading Track Switcher Logic
-      document.querySelectorAll('.track-switcher-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const track = btn.getAttribute('data-track');
-          if (!track) return;
+        document.addEventListener('astro:after-swap', () => {
+          // Restore theme and track properties immediately on page swap to prevent flashing
+          const theme = localStorage.getItem('theme') || 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          
+          const track = localStorage.getItem('selectedTrack') || 'engineer';
           document.documentElement.setAttribute('data-track', track);
-          try {
-            localStorage.setItem('selectedTrack', track);
-          } catch (e) {}
-          updateProgressUI();
         });
-      });
 
-      // Switch track based on URL hash (handles same-page and back/forward hash changes)
-      function updateTrackFromHash() {
-        const hash = window.location.hash;
-        if (!hash) return;
-
-        let targetTrack = null;
-        if (hash.includes('wife')) {
-          targetTrack = 'wife';
-        } else if (hash.includes('kids')) {
-          targetTrack = 'kids';
-        } else if (hash.includes('technical') || hash.includes('engineer')) {
-          targetTrack = 'engineer';
-        }
-
-        if (targetTrack) {
-          document.documentElement.setAttribute('data-track', targetTrack);
-          try {
-            localStorage.setItem('selectedTrack', targetTrack);
-          } catch (e) {}
-          updateProgressUI();
-        }
+        (window as any).hasLayoutGlobalListeners = true;
       }
 
-      window.addEventListener('hashchange', updateTrackFromHash);
-      updateTrackFromHash();
-
-      // Theme Toggle Logic
-      const themeToggle = document.getElementById('themeToggle');
-      themeToggle?.addEventListener('click', () => {
-        const root = document.documentElement;
-        const currentTheme = root.getAttribute('data-theme') || 'light';
-        const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-        root.setAttribute('data-theme', nextTheme);
-        localStorage.setItem('theme', nextTheme);
-      });
-
-      // Sidebar Minimization Toggle
-      const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
-      const docsLayout = document.getElementById('docsLayout');
-      sidebarCollapseToggle?.addEventListener('click', () => {
-        const isMinimized = docsLayout?.classList.toggle('sidebar-minimized');
-        localStorage.setItem('sidebar-minimized', String(isMinimized));
-      });
-
-      // Mobile Drawer Toggle
-      const mobileToggle = document.getElementById('mobileToggle');
-      const sidebar = document.getElementById('sidebar');
-      
-      mobileToggle?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        sidebar?.classList.toggle('open');
-      });
-
-      // Close sidebar if user clicks outside of it on mobile
-      document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        if (sidebar?.classList.contains('open') && !sidebar.contains(target) && target !== mobileToggle && !mobileToggle?.contains(target)) {
-          sidebar.classList.remove('open');
-        }
-      });
-
-      // Sidebar Accordion Toggle
-      const groupHeaders = document.querySelectorAll('.sidebar-group-header');
-      groupHeaders.forEach((header) => {
-        header.addEventListener('click', () => {
-          const group = header.closest('.sidebar-group');
-          group?.classList.toggle('collapsed');
-        });
-      });
+      // Initialize on initial page load and on page transitions
+      document.addEventListener('astro:page-load', initDocsLayout);
     </script>
     <SearchModal />
   </body>

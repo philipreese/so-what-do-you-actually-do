@@ -109,6 +109,33 @@ html[data-theme="dark"] .hero-img-light {
   line-height: 1.6;
 }
 
+.hero-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-btn-chapter-info {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.hero-btn-chapter-info .info-prefix {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.hero-btn-chapter-info .info-title {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
 .hero-buttons {
   display: flex;
   gap: 1.25rem;

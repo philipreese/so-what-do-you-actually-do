@@ -26,6 +26,8 @@ This chapter argues that programmers do the exact same thing with tests, and it'
 
 ## For My Kids
 
+### The Zipper Problem
+
 Say you're packing for an overnight school trip, and you could, if you wanted, double-check literally everything: is your pencil still a pencil, does your backpack's zipper still zip, is your water bottle still shaped like a bottle. None of that needs checking. A zipper either works or it very obviously doesn't, and you'll notice the second you touch it — no checklist required.
 
 **What actually deserves your attention is the stuff that's easy to get wrong and hard to notice until it's too late:** did you pack the permission slip, is your medication actually in the bag or still sitting on the counter, did you grab the charger and not just the cable. Those are worth a real, careful check, because getting them wrong isn't obvious until you're already on the bus.
@@ -33,6 +35,9 @@ Say you're packing for an overnight school trip, and you could, if you wanted, d
 **Checking the zipper "just to be safe" isn't extra carefulness — it's wasted time that could've gone toward the stuff that actually matters.** Same goes for double-checking something someone else already verified: if the store already tested that your new backpack's straps hold weight before it reached the shelf, you don't need to personally stress-test the stitching. You need to check the one thing that's actually yours to get right: what you decided to put inside it.
 
 **The skill isn't checking more. It's checking the right things** — the ones actually easy to get wrong, not the ones that basically check themselves.
+
+> [!CAR]
+> Think about the last time you got ready for something important. What did you double-check that didn't really need it, and what almost slipped through because you didn't check it enough?
 
 ---
 

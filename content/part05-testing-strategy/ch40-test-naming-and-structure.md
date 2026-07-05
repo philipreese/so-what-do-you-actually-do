@@ -25,6 +25,8 @@ The chapter's structural advice follows the same logic: lay out each test in the
 
 ## For My Kids
 
+### Task 7 or Trash Day
+
 Say your family keeps a chore chart, and there are two ways to write down what needs checking. One way: "Task 7." The other way: "Trash bins are out by 7am Tuesday." Both are marking the same actual job. Only one of them tells you anything when it's not checked off.
 
 **"Task 7" is fine right up until it's the one thing that didn't get done.** Now somebody has to dig up the original master list just to remember what Task 7 even was, while the actual trash truck is already coming down the street. "Trash bins are out by 7am Tuesday," left unchecked, tells you immediately and completely what went wrong, when it needed to happen, and what to do about it right now — no extra list required.
@@ -32,6 +34,9 @@ Say your family keeps a chore chart, and there are two ways to write down what n
 **Here's why this matters more than it seems: nobody reads a chore chart in a calm moment.** They read it exactly when something's already gone wrong — the bins are still in the garage and the truck's already at the end of the block. That's the worst possible time to also need to go track down what "Task 7" was supposed to mean.
 
 **The rule is simple: name the thing by what's supposed to happen, not by a number that only makes sense if you already remember the list.** A chart that explains itself the moment something's wrong beats one that requires a second trip just to figure out what broke.
+
+> [!CAR]
+> Have you ever forgotten what a note or reminder you wrote earlier was even supposed to mean? What would you write differently next time so future-you doesn't get stuck?
 
 ---
 

@@ -29,6 +29,8 @@ Every system optimizes multiple objectives at once — latency, reliability, cos
 
 ## For My Kids
 
+### The Fort Nobody Agreed On
+
 > *You can't have the strongest, fastest, and best-looking fort all at once — every choice that helps one of those steals from the others.*
 
 Say four friends decide to build a fort in the woods over one weekend. Nobody's in charge, but everybody's got an idea. One wants it strong enough to survive the whole summer, storms included. Another wants it done by tonight so you can start hanging out in it. A third wants it to look genuinely impressive when people from school come see it.
@@ -40,6 +42,9 @@ Say four friends decide to build a fort in the woods over one weekend. Nobody's 
 Nobody voted, nobody argued, everyone worked hard. And the fort that shows up Monday is somehow slow AND weak AND kind of ugly, because it was never actually built for anything in particular.
 
 **The fix costs nothing:** before the first board goes up, someone has to ask, out loud, "what are we actually building this for?" Skip that, and you don't get to pick your trade-off — you get whichever one happens by accident, and it's never the good one.
+
+> [!CAR]
+> If you and your friends built a fort together, which would you care about most — strong, fast to finish, or good-looking — and do you think they'd pick the same one?
 
 ---
 

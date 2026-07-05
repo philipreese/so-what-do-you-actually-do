@@ -25,6 +25,8 @@ This chapter argues that waking someone up to deal with a computer problem works
 
 ## For My Kids
 
+### The Basement-Flooding Rule
+
 *You only call Dad at work if it's something that genuinely can't wait and nobody else can handle it — the basement's flooding, not "he took the last granola bar."*
 
 Most small stuff never even reaches that decision. Your older sibling already handles it — a fight over the remote, a scraped knee — without anyone picking up a phone at all. That's not the rule working by accident. That's the whole point of having an older sibling around.
@@ -32,6 +34,9 @@ Most small stuff never even reaches that decision. Your older sibling already ha
 Call about every little disagreement, though, and the rule stops meaning anything. Dad starts answering distracted, half-expecting nothing urgent, because the last dozen calls weren't. Some of those small things are still worth mentioning — just not with a phone call. A text he'll see at dinner works fine for "we're out of milk."
 
 The day the basement actually floods, you call exactly the way you always do. But by now the calls have trained him to expect a granola bar complaint, and he almost lets it go to voicemail — because nothing about this call sounded any different from the twenty before it that turned out to be nothing.
+
+> [!CAR]
+> Where's your own line between something worth interrupting someone for right now and something that can just wait until you see them later?
 
 ---
 

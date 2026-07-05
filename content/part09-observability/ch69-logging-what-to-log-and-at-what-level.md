@@ -25,6 +25,8 @@ The other half of this chapter is about how urgently something gets flagged. A b
 
 ## For My Kids
 
+### Don't Cry Code Red
+
 Say you're on lookout during capture the flag, radio in hand, watching the tree line at dusk. You could report literally everything you see — a squirrel, a shadow, your own team walking past — but nobody wants that channel. **The only thing worth radioing in is something your team would actually do something different because of:** "two of them just crossed by the shed" changes what your team does next. "I think I saw a bird" doesn't.
 
 **The second rule matters just as much: whatever word you use for "drop everything, this is serious" has to mean the exact same thing every single time.** Not how nervous you personally feel right now — an actual, agreed-on signal everyone on the team can trust without having to guess how big a deal it really is.
@@ -32,6 +34,9 @@ Say you're on lookout during capture the flag, radio in hand, watching the tree 
 Say it once for something small — "code red, I think that might've been a raccoon" — and it stops meaning anything. Your team hears "code red" a few times for nothing and starts tuning the radio out entirely, the same way anyone tunes out a friend who's always convinced something's a big deal.
 
 Then the actual two players really do come around the shed. You call it in exactly the way you always do. And this time nobody moves — because the radio already trained them not to.
+
+> [!CAR]
+> Has a friend ever said something was a huge deal so many times that you stopped believing them — and then missed the one time it actually was? What do you think you'd do differently next time?
 
 ---
 

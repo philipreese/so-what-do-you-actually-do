@@ -25,6 +25,8 @@ The bugs this produces are uniquely maddening, because they only show up dependi
 
 ## For My Kids
 
+### The Shared Bathroom Rule
+
 Say three siblings share one bathroom every school morning, one after another. If each person leaves it exactly as they found it — towel back on the hook, sink wiped, nothing borrowed and not returned — whoever goes next starts from the same clean bathroom every time, no matter who went before them.
 
 **Now say nobody bothers resetting anything.** One morning, sibling two can't find the toothpaste, because sibling one used the last of it and didn't say anything. Another morning, sibling two's routine goes perfectly fine, because sibling one happened to leave everything in order that day. Same kid, same routine — some mornings it works, some mornings it mysteriously doesn't, and the only thing that changed was who went through first.
@@ -32,6 +34,9 @@ Say three siblings share one bathroom every school morning, one after another. I
 **That's the maddening part: the problem never shows up when you check it alone.** Sibling two, getting ready by herself on a Saturday with nobody ahead of her, never has an issue. The trouble only appears depending on exactly who went before, leaving exactly what mess — and good luck ever tracing it back to the actual cause.
 
 **The fix isn't "everyone try to be neater."** It's that every morning, every sibling gets the bathroom reset to the exact same starting point — restocked, wiped down, nothing left over from yesterday. Once that's true, whether your morning goes smoothly stops depending on someone else's mess, and starts depending only on you.
+
+> [!CAR]
+> Think about something you share with a sibling or a friend — what's your unspoken rule for leaving it the way you found it, and what happens on the days that rule gets broken?
 
 ---
 

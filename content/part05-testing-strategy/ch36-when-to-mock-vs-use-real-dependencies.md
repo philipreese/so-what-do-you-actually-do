@@ -25,6 +25,8 @@ That's the whole distinction this chapter argues over. One style of test watches
 
 ## For My Kids
 
+### The Shortcut That Got Marked Wrong
+
 Say you turn in a math worksheet, and there are two ways a teacher could grade it. One way: check whether your final answer is correct. The other way: check whether you solved it using the exact steps taught in class, in the exact order, even if your answer came out right.
 
 **Most of the time, checking the final answer is obviously the right call.** If you found a shortcut to get to 42 and 42 is genuinely correct, marking you wrong for not doing it "the way it was taught" is punishing you for something that was never actually broken.
@@ -34,6 +36,9 @@ Say you turn in a math worksheet, and there are two ways a teacher could grade i
 **There's one place checking the process genuinely is the point:** when the assignment is specifically "practice long division," the steps *are* the actual assignment, not just a means to an answer. That's the rare exception, not the rule.
 
 **Grade the process as if it were the whole point too often, and something predictable happens:** kids stop trying better methods, because a better method just gets marked wrong for not looking like the old one.
+
+> [!CAR]
+> Have you ever found a faster way to solve something and gotten dinged for not doing it the "right" way? Should the answer be all that counts, or does the method matter too?
 
 ---
 

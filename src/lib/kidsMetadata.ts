@@ -172,7 +172,7 @@ export const KIDS_METADATA: Record<string, { subtitle: string; thesis: string }>
     thesis: "A teacher checking your poster weekly helps you fix mistakes. Checking only the night before presentations leaves you with no time to recover."
   },
   ch44: {
-    subtitle: "Build the haunted house skeleton.",
+    subtitle: "Build the haunted house bare first.",
     thesis: "Walk through the rough haunted house layout before painting the walls. The party date won't move, so adjust the decoration scope to fit."
   },
   ch45: {
@@ -284,8 +284,8 @@ export const KIDS_METADATA: Record<string, { subtitle: string; thesis: string }>
     thesis: "Only call Dad at work if nobody else can solve it. Have older siblings filter the small questions first."
   },
   ch72: {
-    subtitle: "Time each scavenger hunt handoff.",
-    thesis: "Time how long each clue handoff takes to find where the team got stuck. Review slow runs to make the next one faster."
+    subtitle: "Time each relay baton handoff.",
+    thesis: "Time how long each baton handoff takes to find where the team got stuck. Review slow runs to make the next one faster."
   },
   ch73: {
     subtitle: "Watch the screen-time creep.",
@@ -352,8 +352,8 @@ export const KIDS_METADATA: Record<string, { subtitle: string; thesis: string }>
     thesis: "Keeping a copy of the schedule is easy, but knowing the second it shifts is the hard part. Make pinned messages expire."
   },
   ch89: {
-    subtitle: "Carry stacked comic books.",
-    thesis: "Alphabetizing forty comics is overkill. When carrying them, stack a full armful instead of walking one cup or book at a time."
+    subtitle: "Carry a full armful, not one cup.",
+    thesis: "Alphabetizing forty comics is overkill for a small stack. And carrying cups to the kitchen one at a time is slower than stacking a full armful for a single trip."
   },
   ch90: {
     subtitle: "Check backpack pocket times.",

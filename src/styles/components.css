@@ -328,12 +328,12 @@ html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
   color: var(--callout-text, var(--text-color));
 }
 
-/* NOTE variant — uses the existing callout-info tokens */
+/* NOTE variant — yellow, matching the badge-tradeoff hue */
 .callout--note {
-  --callout-bg: var(--callout-info-bg);
-  --callout-border: var(--callout-info-border);
-  --callout-label-color: var(--callout-info-text);
-  --callout-text: var(--callout-info-text);
+  --callout-bg: var(--callout-note-bg);
+  --callout-border: var(--callout-note-border);
+  --callout-label-color: var(--callout-note-text);
+  --callout-text: var(--callout-note-text);
 }
 
 .meta-card {

@@ -633,6 +633,12 @@ html[data-theme="light"] .moon-icon {
     overflow-y: auto;
 }
 
+/* Part intros with reading tracks manage their own per-pane scrolling
+   (same as chapter pages) instead of scrolling the outer slot. */
+.part-content-slot:has(.chapter-tracks) {
+    overflow: hidden;
+}
+
 .part-banner {
     display: flex;
     align-items: center;

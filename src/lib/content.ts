@@ -223,7 +223,7 @@ export function getAllAppendices(): AppendixInfo[] {
   return appendices;
 }
 
-export function splitChapterTracks(rawMarkdown: string) {
+function extractWifeKidsSections(rawMarkdown: string): { wifeHtml: string; kidsHtml: string; cleanMarkdown: string } {
   let wifeHtml = '';
   let kidsHtml = '';
 
@@ -247,6 +247,21 @@ export function splitChapterTracks(rawMarkdown: string) {
     kidsHtml = marked.parse(preprocessAlerts(resolvedKids)) as string;
     cleanMarkdown = cleanMarkdown.replace(kidsRegex, '');
   }
+
+  return { wifeHtml, kidsHtml, cleanMarkdown };
+}
+
+/**
+ * Part introductions are plain prose (no Decision Template sections), so they
+ * skip parseChapter/renderChapterHtml entirely — the caller renders the
+ * remaining "engineer" markdown with a plain marked.parse().
+ */
+export function splitPartTracks(rawMarkdown: string): { wifeHtml: string; kidsHtml: string; cleanMarkdown: string } {
+  return extractWifeKidsSections(rawMarkdown);
+}
+
+export function splitChapterTracks(rawMarkdown: string) {
+  const { wifeHtml, kidsHtml, cleanMarkdown } = extractWifeKidsSections(rawMarkdown);
 
   const cleanMarkdownResolved = resolveRelativeLinks(cleanMarkdown);
   const parsed = parseChapter(cleanMarkdownResolved);

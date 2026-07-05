@@ -438,40 +438,9 @@ const activePartSlug = parts.find(
         (window as any).triggerTrackFromHash = updateTrackFromHash;
         updateTrackFromHash();
 
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle?.addEventListener('click', () => {
-          const root = document.documentElement;
-          const currentTheme = root.getAttribute('data-theme') || 'light';
-          const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-          root.setAttribute('data-theme', nextTheme);
-          localStorage.setItem('theme', nextTheme);
-        });
-
-        // Sidebar Minimization Toggle
-        const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
-        const docsLayout = document.getElementById('docsLayout');
-        sidebarCollapseToggle?.addEventListener('click', () => {
-          const isMinimized = docsLayout?.classList.toggle('sidebar-minimized');
-          localStorage.setItem('sidebar-minimized', String(isMinimized));
-        });
-
-        // Mobile Drawer Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
+        // Ensure sidebar is closed on page load/transition
         const sidebar = document.getElementById('sidebar');
-        mobileToggle?.addEventListener('click', (e) => {
-          e.stopPropagation();
-          sidebar?.classList.toggle('open');
-        });
-
-        // Sidebar Accordion Toggle
-        const groupHeaders = document.querySelectorAll('.sidebar-group-header');
-        groupHeaders.forEach((header) => {
-          header.addEventListener('click', () => {
-            const group = header.closest('.sidebar-group');
-            group?.classList.toggle('collapsed');
-          });
-        });
+        sidebar?.classList.remove('open');
       }
 
       // Key global window/document events should only be registered once
@@ -497,17 +466,81 @@ const activePartSlug = parts.find(
           const target = e.target as HTMLElement;
           const sidebar = document.getElementById('sidebar');
           const mobileToggle = document.getElementById('mobileToggle');
+
+          // Mobile Drawer Toggle click
+          const toggleBtn = target.closest('#mobileToggle');
+          if (toggleBtn) {
+            e.stopPropagation();
+            sidebar?.classList.toggle('open');
+            return;
+          }
+
+          // Close sidebar when clicking outside of it on mobile
           if (sidebar?.classList.contains('open') && !sidebar.contains(target) && target !== mobileToggle && !mobileToggle?.contains(target)) {
             sidebar.classList.remove('open');
+          }
+
+          // Theme Toggle click
+          const themeToggleBtn = target.closest('#themeToggle');
+          if (themeToggleBtn) {
+            const root = document.documentElement;
+            const currentTheme = root.getAttribute('data-theme') || 'light';
+            const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
+            return;
+          }
+
+          // Sidebar Minimization Toggle click
+          const sidebarCollapseToggle = target.closest('#sidebarCollapseToggle');
+          if (sidebarCollapseToggle) {
+            const docsLayout = document.getElementById('docsLayout');
+            const isMinimized = docsLayout?.classList.toggle('sidebar-minimized');
+            localStorage.setItem('sidebar-minimized', String(isMinimized));
+            return;
+          }
+
+          // Sidebar Accordion Group Header click
+          const groupHeader = target.closest('.sidebar-group-header');
+          if (groupHeader) {
+            const group = groupHeader.closest('.sidebar-group');
+            group?.classList.toggle('collapsed');
+            return;
           }
 
           // Override animation direction on sequential previous link clicks
           const link = target.closest('a');
           if (link) {
-            if (link.classList.contains('footer-link--prev') || link.getAttribute('data-direction') === 'back') {
-              (window as any).nextTransitionDirection = 'back';
-            } else {
-              (window as any).nextTransitionDirection = 'forward';
+            if (sidebar?.contains(link)) {
+              sidebar.classList.remove('open');
+            }
+
+            const targetUrl = new URL(link.href, window.location.origin);
+            if (targetUrl.origin === window.location.origin) {
+              const targetPath = targetUrl.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+              const currentPath = window.location.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
+              
+              if (targetPath !== currentPath) {
+                const sidebarLinks = Array.from(document.querySelectorAll('#sidebar a'));
+                const paths = sidebarLinks.map(a => new URL((a as HTMLAnchorElement).href, window.location.origin).pathname.replace(/\/$/, '').replace(/\/index\.html$/, ''));
+                
+                const currentIndex = paths.indexOf(currentPath);
+                const targetIndex = paths.indexOf(targetPath);
+                
+                if (currentIndex !== -1 && targetIndex !== -1) {
+                  if (targetIndex < currentIndex) {
+                    (window as any).nextTransitionDirection = 'back';
+                  } else {
+                    (window as any).nextTransitionDirection = 'forward';
+                  }
+                } else {
+                  if (link.classList.contains('footer-link--prev') || link.getAttribute('data-direction') === 'back') {
+                    (window as any).nextTransitionDirection = 'back';
+                  } else {
+                    (window as any).nextTransitionDirection = 'forward';
+                  }
+                }
+              }
             }
           }
         });
@@ -518,13 +551,13 @@ const activePartSlug = parts.find(
           }
         });
 
-        document.addEventListener('astro:after-swap', () => {
-          // Restore theme and track properties immediately on page swap to prevent flashing
+        document.addEventListener('astro:before-swap', (event: any) => {
+          // Restore theme and track properties immediately on the new incoming document to prevent flashing
           const theme = localStorage.getItem('theme') || 'light';
-          document.documentElement.setAttribute('data-theme', theme);
+          event.newDocument.documentElement.setAttribute('data-theme', theme);
           
           const track = localStorage.getItem('selectedTrack') || 'engineer';
-          document.documentElement.setAttribute('data-track', track);
+          event.newDocument.documentElement.setAttribute('data-track', track);
         });
 
         (window as any).hasLayoutGlobalListeners = true;

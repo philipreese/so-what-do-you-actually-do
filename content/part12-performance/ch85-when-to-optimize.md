@@ -24,6 +24,8 @@ This chapter argues companies make exactly this mistake with slow software: they
 
 ## For My Kids
 
+### The Wrong Instrument
+
 Say your school band is getting ready for the winter concert, and the trumpet section spends two weeks after school perfecting one tricky sixteenth-note run — real, measurable improvement, genuinely faster and cleaner fingers than before.
 
 And the full run-through still falls apart in the exact same spot it always has, because that was never actually the problem. The clarinets miss a tempo change cue in bar forty, every single time, and that's the moment the whole band actually loses its footing. Getting faster at the trumpet run doesn't fix a single second of that, no matter how clean it now sounds.
@@ -32,6 +34,9 @@ And the full run-through still falls apart in the exact same spot it always has,
 > Two separate mistakes stacked on top of each other here. The first was fixing a part that merely felt hard, instead of the part that was actually breaking the run-through. The second was starting to fix anything at all before confirming there was a real, repeated problem — not just a private feeling that the trumpet run could probably be crisper.
 
 The right move is listening back to an actual recording of the run-through first, finding the exact bar where it falls apart, and only then deciding what's worth two weeks of extra practice. Skip that step, and you can spend the whole month getting better at exactly the wrong instrument's part, walking into the concert with gorgeous trumpets and the same collapse in bar forty nobody ever actually fixed.
+
+> [!CAR]
+> Have you ever spent a lot of time getting better at one part of something, only to find out that was never actually what was going wrong? What was it?
 
 ---
 

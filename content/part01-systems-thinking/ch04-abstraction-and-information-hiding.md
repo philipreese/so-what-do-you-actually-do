@@ -27,6 +27,8 @@ The problem is that engineers confuse these constantly. A class with private fie
 
 ## For My Kids
 
+### The Snack Captain's Secret Route
+
 **Say you're snack captain for the team — your job is just: snacks show up before the game.** How you pull that off is entirely your business. Your mom might drive you. You might bike to the corner store. You might order online for delivery straight to the field. Nobody else needs to know which.
 
 The trap is when teammates stop trusting "snacks show up" and start building their own plans around *how* you do it instead. Someone starts telling people, "meet behind the CVS at 3 — that's where snack captain always swings by." That was never the deal. The deal was snacks by game time. The method was always yours to change.
@@ -34,6 +36,9 @@ The trap is when teammates stop trusting "snacks show up" and start building the
 **Then CVS closes early one week**, so you order online instead, and the snacks still show up right on schedule, exactly as promised. Except now three teammates are standing in an empty parking lot, confused, because they'd quietly wired their own plans into a detail that was only ever supposed to be your business.
 
 Just not telling people which register you paid at isn't the real skill. The real skill is figuring out, ahead of time, which detail people will glue their own plans to if you let them see it — and making sure that's the one detail you never hand over.
+
+> [!CAR]
+> If you were in charge of getting something done for a group, would you want them to know exactly how you did it, or just that it got done? Why?
 
 ---
 

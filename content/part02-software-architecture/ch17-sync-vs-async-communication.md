@@ -26,6 +26,8 @@ The saga pattern is the answer for when a multi-step transaction has to span ser
 
 ## For My Kids
 
+### Stuck on Hold for a Charger
+
 Say your phone's about to die and you need a charger, so you call a friend who's already at the hangout spot. **She doesn't have one either, so she puts you on hold and calls a second friend to check — and now you're just standing there, stuck on a call you can't hang up on, because hanging up means losing the whole chain.**
 
 The second friend takes a minute digging through her bag. You didn't do anything wrong. Everyone in that chain just has to stay on the line at the same exact moment for it to work at all.
@@ -39,6 +41,9 @@ Whoever sees it and has one replies whenever they check — five minutes from no
 The group text might sit there unanswered for an hour if nobody happens to look — and you won't find out you're stuck without a charger until you're already at the door at 2%.
 
 Waiting live and getting stuck waiting are two different problems. You don't get to dodge both at once.
+
+> [!CAR]
+> Would you rather call someone and wait on the line for an answer, or text and risk not hearing back in time? Does it depend on what you're asking for?
 
 ---
 

@@ -29,7 +29,10 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
                 <a href={`${cleanBase}chapters/${ch.slug}`} class="sitemap-chapter-link">
                   <span class="sitemap-ch-num">{ch.number}</span>
                   <span class="sitemap-ch-text">
-                    <span class="sitemap-ch-title">{ch.title}</span>
+                    <span class="sitemap-ch-title">
+                      <span class="t-default">{ch.title}</span>
+                      {ch.kidsTitle && <span class="t-kids">{ch.kidsTitle}</span>}
+                    </span>
                     {ch.subtitle && <span class="sitemap-ch-subtitle">{ch.subtitle}</span>}
                   </span>
                 </a>

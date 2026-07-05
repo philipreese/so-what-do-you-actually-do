@@ -29,6 +29,8 @@ Caching is a spectrum of layers — CPU cache, an in-process application cache, 
 
 ## For My Kids
 
+### The Pinned Message Trap
+
 > *Keeping a quick copy of the answer is the easy part. Knowing the second it stops being true is the hard part.*
 
 Say your team has a group chat, and after every practice somebody pins a message: "Next practice: Tuesday, gym B." From then on, nobody texts the coach to ask where to go — everybody just glances at the pinned message. That's faster for everyone: you're checking a copy sitting right there instead of going straight to the one person who actually knows.
@@ -44,6 +46,9 @@ Or you could make it whoever moves practice's job to update the message by hand.
 **What actually holds up is connecting the message straight to the schedule**, so it updates itself the instant practice moves. Nobody has to remember, because nobody has to.
 
 Skip that, and the day the schedule changes and nobody updates the chat, your whole team stands in the wrong gym at 4:00, gear on, while practice already started somewhere else.
+
+> [!CAR]
+> Have you ever trusted an old reminder or message that turned out to be outdated? What would have told you to double-check it instead?
 
 ---
 

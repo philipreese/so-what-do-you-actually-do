@@ -25,6 +25,8 @@ A file is a unit of comprehension, not a unit of syntax — the question was nev
 
 ## For My Kids
 
+### Sorting Legos by Build
+
 Say you're sorting a huge tub of Legos. You don't decide what goes in which bin by how many pieces fit — you decide by which build the pieces actually belong to.
 
 An 800-piece castle set can all live in one big bin together, no problem, because every piece is part of the same one thing.
@@ -40,6 +42,9 @@ A small bin holding five unrelated leftovers is the annoying one, because openin
 And the real signal to leave things together is the opposite: pieces that only make sense as part of the same build, no matter how many of them there are.
 
 Sort by size instead of by build, and you'll spend more time next spring untangling five unrelated projects than you ever would have spent just building the castle.
+
+> [!CAR]
+> When you sort your own stuff, like Legos or games, do you group things by what they're actually part of, or just by what fits in the same box? Which one usually backfires on you?
 
 ---
 

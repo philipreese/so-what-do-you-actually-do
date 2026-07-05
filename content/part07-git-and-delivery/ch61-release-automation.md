@@ -25,6 +25,8 @@ This chapter is about that same idea applied to how a piece of software gets rel
 
 ## For My Kids
 
+### The Reading Leaderboard
+
 Say your class has an app that automatically ranks everyone on a "Books Read This Month" leaderboard, based on what each kid logs after finishing a book. That only works if the logging is actually specific and honest: title, date finished, page count.
 
 Log "read some books" with nothing else, and the leaderboard can't do its job — it can only rank what actually got written down clearly.
@@ -36,6 +38,9 @@ It gets confidently wrong, instantly, with nobody double-checking it by hand any
 **The lesson isn't "don't trust the automatic leaderboard."** It's that the leaderboard was always only as honest as the logging feeding it.
 
 Fix the habit of logging clearly and specifically every time, and the automatic system ends up more accurate and way faster than a teacher trying to track forty kids' reading by hand ever could be.
+
+> [!CAR]
+> If a system only knows what you actually tell it, how honest and specific are you when you report what you did? Has being vague about something ever backfired on you?
 
 ---
 

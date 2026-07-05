@@ -56,360 +56,348 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
 </dialog>
 
 <script>
-  // Dynamic pagefind instance loader
+  // Dynamic pagefind instance loader: persisted globally across view transitions
   let pagefindInstance: any = null;
-  const dialog = document.getElementById('search-dialog') as HTMLDialogElement;
-  const input = document.getElementById('search-input') as HTMLInputElement;
-  const closeBtn = document.getElementById('search-close-btn');
-  const suggestions = document.getElementById('search-suggestions');
-  const resultsList = document.getElementById('search-results-list');
-  const cleanBase = dialog?.getAttribute('data-base') || '/';
 
-  let selectedIndex = -1;
-  let debounceTimeout: any = null;
-  let currentSearchData: any[] = [];
-  let currentFilter = 'all';
+  function initSearchModal() {
+    const dialog = document.getElementById('search-dialog') as HTMLDialogElement;
+    const input = document.getElementById('search-input') as HTMLInputElement;
+    const closeBtn = document.getElementById('search-close-btn');
+    const suggestions = document.getElementById('search-suggestions');
+    const resultsList = document.getElementById('search-results-list');
+    const cleanBase = dialog?.getAttribute('data-base') || '/';
 
-  // Initialize Pagefind dynamic library
-  async function loadPagefind() {
-    if (pagefindInstance) return pagefindInstance;
-    try {
-      // Import dynamic client-side module generated post-build by pagefind CLI
-      const pagefindPath = `${cleanBase}pagefind/pagefind.js`;
-      pagefindInstance = await new Function('path', 'return import(path)')(pagefindPath);
-      await pagefindInstance.options({
-        // Ensure Pagefind matches base prefix configuration if needed
-      });
-      return pagefindInstance;
-    } catch (err) {
-      console.warn("Pagefind index is not available. Have you run 'npm run build' yet?", err);
-      return null;
-    }
-  }
+    if (!dialog) return;
 
-  // Open Dialog Modal
-  function openSearch() {
-    dialog?.showModal();
-    // Pre-load Pagefind files
-    loadPagefind();
-    
-    // Set default active tab based on active reading track
-    const activeTrack = document.documentElement.getAttribute('data-track') || 'engineer';
-    currentFilter = activeTrack;
-    
-    document.querySelectorAll('.search-track-tab').forEach((t) => {
-      const filter = t.getAttribute('data-track-filter');
-      if (filter === activeTrack) {
-        t.classList.add('active');
-      } else {
-        t.classList.remove('active');
+    let selectedIndex = -1;
+    let debounceTimeout: any = null;
+    let currentSearchData: any[] = [];
+    let currentFilter = 'all';
+
+    // Initialize Pagefind dynamic library
+    async function loadPagefind() {
+      if (pagefindInstance) return pagefindInstance;
+      try {
+        const pagefindPath = `${cleanBase}pagefind/pagefind.js`;
+        pagefindInstance = await new Function('path', 'return import(path)')(pagefindPath);
+        await pagefindInstance.options({});
+        return pagefindInstance;
+      } catch (err) {
+        console.warn("Pagefind index is not available. Have you run 'npm run build' yet?", err);
+        return null;
       }
-    });
-
-    // Focus search input
-    setTimeout(() => input?.focus(), 50);
-  }
-
-  // Close Dialog Modal
-  function closeSearch() {
-    dialog?.close();
-    if (input) input.value = '';
-    showSuggestions();
-  }
-
-  function showSuggestions() {
-    if (suggestions) suggestions.style.display = 'flex';
-    if (resultsList) {
-      resultsList.style.display = 'none';
-      resultsList.innerHTML = '';
     }
-    selectedIndex = -1;
-  }
 
-  // Trigger search on typing
-  input?.addEventListener('input', (e) => {
-    const query = (e.target as HTMLInputElement).value.trim();
-    
-    if (debounceTimeout) clearTimeout(debounceTimeout);
-    
-    if (query.length < 2) {
+    // Open Dialog Modal
+    function openSearch() {
+      dialog?.showModal();
+      loadPagefind();
+      
+      const activeTrack = document.documentElement.getAttribute('data-track') || 'engineer';
+      currentFilter = activeTrack;
+      
+      document.querySelectorAll('.search-track-tab').forEach((t) => {
+        const filter = t.getAttribute('data-track-filter');
+        if (filter === activeTrack) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+
+      setTimeout(() => input?.focus(), 50);
       showSuggestions();
-      return;
     }
 
-    debounceTimeout = setTimeout(() => {
-      performSearch(query);
-    }, 150);
-  });
+    // Close Dialog Modal
+    function closeSearch() {
+      dialog?.close();
+      if (input) input.value = '';
+      showSuggestions();
+    }
 
-  // Query search API
-  async function performSearch(query: string) {
-    const pagefind = await loadPagefind();
-    if (!pagefind) {
+    function showSuggestions() {
+      if (suggestions) suggestions.style.display = 'flex';
       if (resultsList) {
-        resultsList.style.display = 'block';
-        resultsList.innerHTML = `
-          <div class="search-no-results">
-            <p class="search-empty-state-title">Search Index Not Ready</p>
-            <p class="search-empty-state-subtitle">Search files are compiled during site build. Run <code>npm run build</code> to generate the search index locally.</p>
-          </div>
-        `;
+        resultsList.style.display = 'none';
+        resultsList.innerHTML = '';
       }
-      if (suggestions) suggestions.style.display = 'none';
-      return;
+      selectedIndex = -1;
     }
 
-    const searchResult = await pagefind.search(query);
-    
-    if (searchResult.results.length === 0) {
-      if (resultsList) {
-        resultsList.style.display = 'block';
-        resultsList.innerHTML = `
-          <div class="search-no-results">
-            <p class="search-empty-state-title">No results found for "${query}"</p>
-            <p class="search-empty-state-subtitle">Try using different keywords or broader concepts.</p>
-          </div>
-        `;
+    // Trigger search on typing
+    input?.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.trim();
+      if (debounceTimeout) clearTimeout(debounceTimeout);
+      if (query.length < 2) {
+        showSuggestions();
+        return;
       }
-      if (suggestions) suggestions.style.display = 'none';
-      return;
-    }
+      debounceTimeout = setTimeout(() => {
+        performSearch(query);
+      }, 150);
+    });
 
-    if (suggestions) suggestions.style.display = 'none';
-    if (resultsList) {
-      resultsList.style.display = 'block';
-      resultsList.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted);">Searching...</div>';
-    }
-
-    // Load top 6 results for fast display
-    const topResults = searchResult.results.slice(0, 6);
-    currentSearchData = await Promise.all(topResults.map((r: any) => r.data()));
-    
-    displayResults();
-  }
-
-  // Render and filter search results HTML
-  function displayResults() {
-    if (!resultsList) return;
-    resultsList.innerHTML = '';
-    selectedIndex = -1;
-
-    let hasAnyMatches = false;
-
-    currentSearchData.forEach((item) => {
-      // Determine if there are matches in the Wife/Kids sections vs. the Engineer track
-      const subResults = item.sub_results || [];
-      const hasWifeMatches = subResults.some((sub: any) => sub.title.toLowerCase().includes('wife'));
-      const hasKidsMatches = subResults.some((sub: any) => sub.title.toLowerCase().includes('kids'));
-      const hasEngineerMatches = subResults.some((sub: any) => {
-        const titleLower = sub.title.toLowerCase();
-        return !titleLower.includes('wife') && !titleLower.includes('kids');
-      });
-
-      // If there are sub-results, but they are ONLY for wife/kids, then we did NOT match the technical reference.
-      // If subResults is empty, it means it matched the page title/metadata (which is technical/engineer).
-      // 1. Filter primary result (only shown if there are no sub-results, e.g. Overview or Appendix pages)
-      let showPrimary = false;
-      let rawTitle = item.meta.title || 'Handbook Page';
-      if (rawTitle.includes('—')) {
-        rawTitle = rawTitle.split('—').pop().trim();
-      }
-
-      let primaryTrackClass = 'engineer';
-      let primaryTrack = 'Engineer';
-      if (item.url.includes('/appendices/')) {
-        primaryTrack = 'Appendix';
-        primaryTrackClass = 'engineer';
-      } else if (item.url.includes('/parts/')) {
-        primaryTrack = 'Overview';
-        primaryTrackClass = 'engineer';
-      }
-
-      if (subResults.length === 0 && (currentFilter === 'all' || currentFilter === primaryTrackClass)) {
-        showPrimary = true;
-      }
-
-      // 2. Filter sub-results
-      const filteredSubs = subResults.filter((sub: any) => {
-        let subTrackClass = 'engineer';
-        if (sub.title.toLowerCase().includes('wife')) {
-          subTrackClass = 'wife';
-        } else if (sub.title.toLowerCase().includes('kids')) {
-          subTrackClass = 'kids';
+    // Query search API
+    async function performSearch(query: string) {
+      const pagefind = await loadPagefind();
+      if (!pagefind) {
+        if (resultsList) {
+          resultsList.style.display = 'block';
+          resultsList.innerHTML = `
+            <div class="search-no-results">
+              <p class="search-empty-state-title">Search Index Not Ready</p>
+              <p class="search-empty-state-subtitle">Search files are compiled during site build. Run <code>npm run build</code> to generate the search index locally.</p>
+            </div>
+          `;
         }
+        if (suggestions) suggestions.style.display = 'none';
+        return;
+      }
+
+      try {
+        const rawResults = await pagefind.search(query);
         
-        return currentFilter === 'all' || currentFilter === subTrackClass;
-      });
-
-      // If we are showing either the primary result or some sub-results, render this chapter group!
-      if (showPrimary || filteredSubs.length > 0) {
-        hasAnyMatches = true;
-        const groupEl = document.createElement('div');
-        groupEl.className = 'search-result-group';
-
-        const chapterTitleEl = document.createElement('div');
-        chapterTitleEl.className = 'search-result-chapter-title';
-        chapterTitleEl.textContent = rawTitle;
-        groupEl.appendChild(chapterTitleEl);
-
-        const linksList = document.createElement('ul');
-        linksList.className = 'search-result-links';
-
-        if (showPrimary) {
-          const primaryLi = document.createElement('li');
-          primaryLi.innerHTML = `
-            <a href="${item.url}" class="search-result-link">
-              <div class="search-result-link-title">
-                <span class="search-result-link-title-text">${rawTitle} (Introduction)</span>
-                <span class="search-result-track-badge search-result-track-badge--${primaryTrackClass}">${primaryTrack}</span>
+        if (rawResults.results.length === 0) {
+          if (resultsList) {
+            resultsList.style.display = 'block';
+            resultsList.innerHTML = `
+              <div class="search-no-results">
+                <p class="search-empty-state-title">No results found for "${query}"</p>
+                <p class="search-empty-state-subtitle">Try using different keywords or broader concepts.</p>
               </div>
-              <div class="search-result-excerpt">${item.excerpt}</div>
-            </a>
-          `;
-          linksList.appendChild(primaryLi);
+            `;
+          }
+          if (suggestions) suggestions.style.display = 'none';
+          return;
         }
 
-        filteredSubs.forEach((sub: any) => {
-          let trackLabel = 'Engineer';
-          let trackClass = 'engineer';
+        if (suggestions) suggestions.style.display = 'none';
+        if (resultsList) {
+          resultsList.style.display = 'block';
+          resultsList.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted);">Searching...</div>';
+        }
 
+        const topResults = rawResults.results.slice(0, 6);
+        currentSearchData = await Promise.all(topResults.map((r: any) => r.data()));
+        displayResults();
+      } catch (err) {
+        console.error("Search failed:", err);
+      }
+    }
+
+    // Format and display search results list
+    function displayResults() {
+      if (!resultsList) return;
+      resultsList.innerHTML = '';
+      selectedIndex = -1;
+
+      let hasAnyMatches = false;
+
+      currentSearchData.forEach((item) => {
+        const subResults = item.sub_results || [];
+        
+        let showPrimary = false;
+        let rawTitle = item.meta.title || 'Handbook Page';
+        if (rawTitle.includes('—')) {
+          rawTitle = rawTitle.split('—').pop().trim();
+        }
+
+        let primaryTrackClass = 'engineer';
+        let primaryTrack = 'Engineer';
+        if (item.url.includes('/appendices/')) {
+          primaryTrack = 'Appendix';
+          primaryTrackClass = 'engineer';
+        } else if (item.url.includes('/parts/')) {
+          primaryTrack = 'Overview';
+          primaryTrackClass = 'engineer';
+        }
+
+        if (subResults.length === 0 && (currentFilter === 'all' || currentFilter === primaryTrackClass)) {
+          showPrimary = true;
+        }
+
+        const filteredSubs = subResults.filter((sub: any) => {
+          let subTrackClass = 'engineer';
           if (sub.title.toLowerCase().includes('wife')) {
-            trackLabel = 'Wife';
-            trackClass = 'wife';
+            subTrackClass = 'wife';
           } else if (sub.title.toLowerCase().includes('kids')) {
-            trackLabel = 'Kids';
-            trackClass = 'kids';
+            subTrackClass = 'kids';
           }
-
-          // If the sub-result heading title matches the page title or is empty, label it as "Introduction"
-          let displayTitle = sub.title;
-          const cleanSubTitle = sub.title.toLowerCase().trim();
-          const cleanRawTitle = rawTitle.toLowerCase().trim();
-          const cleanMetaTitle = (item.meta.title || '').toLowerCase().trim();
-          if (cleanSubTitle === cleanRawTitle || cleanSubTitle === cleanMetaTitle || !cleanSubTitle) {
-            displayTitle = 'Introduction';
-          }
-
-          const subLi = document.createElement('li');
-          subLi.innerHTML = `
-            <a href="${sub.url}" class="search-result-link">
-              <div class="search-result-link-title">
-                <span class="search-result-link-title-text">${displayTitle}</span>
-                <span class="search-result-track-badge search-result-track-badge--${trackClass}">${trackLabel}</span>
-              </div>
-              <div class="search-result-excerpt">${sub.excerpt}</div>
-            </a>
-          `;
-          linksList.appendChild(subLi);
+          return currentFilter === 'all' || currentFilter === subTrackClass;
         });
 
-        groupEl.appendChild(linksList);
-        resultsList.appendChild(groupEl);
-      }
-    });
+        if (showPrimary || filteredSubs.length > 0) {
+          hasAnyMatches = true;
+          const groupEl = document.createElement('div');
+          groupEl.className = 'search-result-group';
 
-    if (!hasAnyMatches) {
-      resultsList.innerHTML = `
-        <div class="search-no-results">
-          <p class="search-empty-state-title">No matches in this track</p>
-          <p class="search-empty-state-subtitle">Try selecting the "All" tab or another reading track.</p>
-        </div>
-      `;
-    } else {
-      const searchLinks = resultsList.querySelectorAll('.search-result-link');
-      searchLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          setTimeout(closeSearch, 100);
-        });
+          const chapterTitleEl = document.createElement('div');
+          chapterTitleEl.className = 'search-result-chapter-title';
+          chapterTitleEl.textContent = rawTitle;
+          groupEl.appendChild(chapterTitleEl);
+
+          const linksList = document.createElement('ul');
+          linksList.className = 'search-result-links';
+
+          if (showPrimary) {
+            const primaryLi = document.createElement('li');
+            primaryLi.innerHTML = `
+              <a href="${item.url}" class="search-result-link">
+                <div class="search-result-link-title">
+                  <span class="search-result-link-title-text">${rawTitle} (Introduction)</span>
+                  <span class="search-result-track-badge search-result-track-badge--${primaryTrackClass}">${primaryTrack}</span>
+                </div>
+                <div class="search-result-excerpt">${item.excerpt}</div>
+              </a>
+            `;
+            linksList.appendChild(primaryLi);
+          }
+
+          filteredSubs.forEach((sub: any) => {
+            let trackLabel = 'Engineer';
+            let trackClass = 'engineer';
+
+            if (sub.title.toLowerCase().includes('wife')) {
+              trackLabel = 'Wife';
+              trackClass = 'wife';
+            } else if (sub.title.toLowerCase().includes('kids')) {
+              trackLabel = 'Kids';
+              trackClass = 'kids';
+            }
+
+            let displayTitle = sub.title;
+            const cleanSubTitle = sub.title.toLowerCase().trim();
+            const cleanRawTitle = rawTitle.toLowerCase().trim();
+            const cleanMetaTitle = (item.meta.title || '').toLowerCase().trim();
+            if (cleanSubTitle === cleanRawTitle || cleanSubTitle === cleanMetaTitle || !cleanSubTitle) {
+              displayTitle = 'Introduction';
+            }
+
+            const subLi = document.createElement('li');
+            subLi.innerHTML = `
+              <a href="${sub.url}" class="search-result-link">
+                <div class="search-result-link-title">
+                  <span class="search-result-link-title-text">${displayTitle}</span>
+                  <span class="search-result-track-badge search-result-track-badge--${trackClass}">${trackLabel}</span>
+                </div>
+                <div class="search-result-excerpt">${sub.excerpt}</div>
+              </a>
+            `;
+            linksList.appendChild(subLi);
+          });
+
+          groupEl.appendChild(linksList);
+          resultsList.appendChild(groupEl);
+        }
       });
-      // Select the first visible link
-      updateSelectedIndex(0);
-    }
-  }
 
-  // Keyboard Selected Index update
-  function updateSelectedIndex(index: number) {
-    if (!resultsList) return;
-    const links = resultsList.querySelectorAll('.search-result-link');
-    if (links.length === 0) return;
-
-    // Remove existing selection
-    if (selectedIndex >= 0 && selectedIndex < links.length) {
-      links[selectedIndex].classList.remove('selected');
-    }
-
-    // Clamp or wrap selectedIndex
-    if (index >= links.length) {
-      selectedIndex = 0;
-    } else if (index < 0) {
-      selectedIndex = links.length - 1;
-    } else {
-      selectedIndex = index;
-    }
-
-    // Add selected class and scroll into view
-    const activeLink = links[selectedIndex] as HTMLElement;
-    activeLink.classList.add('selected');
-    activeLink.scrollIntoView({ block: 'nearest' });
-  }
-
-  // Handle keys in input / dialog
-  dialog?.addEventListener('keydown', (e) => {
-    if (!resultsList || resultsList.style.display === 'none') return;
-    const links = resultsList.querySelectorAll('.search-result-link');
-    if (links.length === 0) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      updateSelectedIndex(selectedIndex + 1);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      updateSelectedIndex(selectedIndex - 1);
-    } else if (e.key === 'Enter') {
-      if (selectedIndex >= 0 && selectedIndex < links.length) {
-        e.preventDefault();
-        (links[selectedIndex] as HTMLAnchorElement).click();
+      if (!hasAnyMatches) {
+        resultsList.innerHTML = `
+          <div class="search-no-results">
+            <p class="search-empty-state-title">No matches in this track</p>
+            <p class="search-empty-state-subtitle">Try selecting the "All" tab or another reading track.</p>
+          </div>
+        `;
+      } else {
+        const searchLinks = resultsList.querySelectorAll('.search-result-link');
+        searchLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            setTimeout(closeSearch, 100);
+          });
+        });
+        updateSelectedIndex(0);
       }
     }
-  });
 
-  // Close when clicking outside dialog (on the backdrop)
-  dialog?.addEventListener('click', (e) => {
-    if (e.target === dialog) {
-      closeSearch();
+    function updateSelectedIndex(index: number) {
+      if (!resultsList) return;
+      const links = resultsList.querySelectorAll('.search-result-link');
+      if (links.length === 0) return;
+
+      if (selectedIndex >= 0 && selectedIndex < links.length) {
+        links[selectedIndex].classList.remove('selected');
+      }
+
+      if (index >= links.length) {
+        selectedIndex = 0;
+      } else if (index < 0) {
+        selectedIndex = links.length - 1;
+      } else {
+        selectedIndex = index;
+      }
+
+      const activeLink = links[selectedIndex] as HTMLElement;
+      activeLink.classList.add('selected');
+      activeLink.scrollIntoView({ block: 'nearest' });
     }
-  });
 
-  // Close on close button click
-  closeBtn?.addEventListener('click', closeSearch);
+    // Handle keys in input / dialog
+    dialog?.addEventListener('keydown', (e) => {
+      if (!resultsList || resultsList.style.display === 'none') return;
+      const links = resultsList.querySelectorAll('.search-result-link');
+      if (links.length === 0) return;
 
-  // Expose triggers globally or bind to page buttons
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      openSearch();
-    }
-  });
-
-  // Export open method to window for triggering from trigger buttons
-  (window as any).openHandbookSearch = openSearch;
-
-  // Bind tab click listeners
-  document.querySelectorAll('.search-track-tab').forEach((tab) => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.search-track-tab').forEach((t) => t.classList.remove('active'));
-      tab.classList.add('active');
-      currentFilter = tab.getAttribute('data-track-filter') || 'all';
-      displayResults();
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        updateSelectedIndex(selectedIndex + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        updateSelectedIndex(selectedIndex - 1);
+      } else if (e.key === 'Enter') {
+        if (selectedIndex >= 0 && selectedIndex < links.length) {
+          e.preventDefault();
+          (links[selectedIndex] as HTMLAnchorElement).click();
+        }
+      }
     });
-  });
 
-  // Detect OS for search hotkey helper
-  try {
-    const isMac = /Mac|iPod|iPhone|iPad/i.test(navigator.userAgent || navigator.platform || '');
-    const kbd = document.querySelector('.search-trigger-kbd');
-    if (kbd) {
-      kbd.textContent = isMac ? '⌘K' : 'Ctrl+K';
-    }
-  } catch (e) {}
+    // Close when clicking outside dialog (on the backdrop)
+    dialog?.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        closeSearch();
+      }
+    });
+
+    // Close on close button click
+    closeBtn?.addEventListener('click', closeSearch);
+
+    // Export open method to window for triggering from trigger buttons
+    (window as any).openHandbookSearch = openSearch;
+
+    // Bind tab click listeners
+    document.querySelectorAll('.search-track-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.search-track-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentFilter = tab.getAttribute('data-track-filter') || 'all';
+        displayResults();
+      });
+    });
+
+    // Detect OS for search hotkey helper
+    try {
+      const isMac = /Mac|iPod|iPhone|iPad/i.test(navigator.userAgent || navigator.platform || '');
+      const kbd = document.querySelector('.search-trigger-kbd');
+      if (kbd) {
+        kbd.textContent = isMac ? '⌘K' : 'Ctrl+K';
+      }
+    } catch (e) {}
+  }
+
+  // Global keydown listeners registered once
+  if (!(window as any).hasSearchGlobalListeners) {
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        if ((window as any).openHandbookSearch) {
+          (window as any).openHandbookSearch();
+        }
+      }
+    });
+    (window as any).hasSearchGlobalListeners = true;
+  }
+
+  // Re-run setup on page swap/transitions
+  document.addEventListener('astro:page-load', initSearchModal);
 </script>

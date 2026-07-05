@@ -25,6 +25,8 @@ This chapter argues that the emergency instructions companies write for their ow
 
 ## For My Kids
 
+### Lost in the Crowd
+
 Your family has a plan for exactly one situation: what happens if you get separated in a crowd. Not "what to do if anything ever goes wrong" — one specific thing, because that's the only kind of plan anyone can actually follow while scared and looking for their parents in a sea of strangers.
 
 **A real plan doesn't just live in a conversation from last year — it says the actual thing to do.** "Stay by the big fountain near the food court" beats "just find us," because "find us" isn't a step, it's the problem restated back to you.
@@ -32,6 +34,9 @@ Your family has a plan for exactly one situation: what happens if you get separa
 It also has to be a plan someone's actually walked through, not just agreed to in the car on the way there. The first time you and your parents point at the actual fountain, in the actual mall, is the moment you find out it's been replaced by a phone store since last year — a much better time to learn that than while standing alone trying to remember where it used to be.
 
 **And whatever can be handled ahead of time should be.** A card with your parents' numbers already written down in your pocket beats trying to recall a phone number with your heart pounding. Skip any of this, and "the plan" is just two people standing in different parts of the same mall, each one positive they're the one who remembered it right.
+
+> [!CAR]
+> Does your family have an actual plan for getting separated somewhere crowded, and have you ever practiced it? What do you think would happen if you never had?
 
 ---
 

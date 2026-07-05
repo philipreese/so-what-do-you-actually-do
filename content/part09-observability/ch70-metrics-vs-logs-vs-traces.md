@@ -25,6 +25,8 @@ This chapter argues computer systems need the equivalent of all three, and that 
 
 ## For My Kids
 
+### Three Ways to Watch the Game
+
 A league standings board — win, loss, win, loss for every team — answers one question fast: are we having a good season. That's all it's built to do, and it does it in about half a second.
 
 It can't answer "wait, did we actually beat the Hawks by twenty or by two?" For that you need one specific box score — the actual final numbers from that one game.
@@ -38,6 +40,9 @@ The standings board was never going to show you a single possession. The play-by
 Here's the part that ruins it: the standings board only stays fast because it only tracks wins and losses — one number per team.
 
 The moment someone decides it should also track every player's individual stats for every game all season, it stops being a board you can glance at. It quietly turns into the entire archive, just wearing the standings board's name.
+
+> [!CAR]
+> If you could only keep one of those three ways of tracking a season — the standings, the box scores, or the full play-by-play — which would you pick, and what would you lose?
 
 ---
 

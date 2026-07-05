@@ -26,6 +26,8 @@ This chapter argues that businesses accumulate rules exactly the same way, for t
 
 ## For My Kids
 
+### The Road Trip Rulebook
+
 Say your family has a road trip rulebook that grows a little every single trip. Someone spills grape juice once, so "no purple drinks in the car" gets added forever. Someone gets carsick reading, so "no books past exit 40" joins the list. Every rule made total sense the day it got added — each one was a real problem, once.
 
 **Here's what never happens: nobody ever goes back and asks whether last year's rules still matter.** Maybe you got a car with actual stain-proof seats two years ago, which would make the purple-drinks rule pointless now — but nobody checks, because a rule that came from a real mess feels risky to question, even after the actual risk is gone.
@@ -33,6 +35,9 @@ Say your family has a road trip rulebook that grows a little every single trip. 
 **By the tenth road trip, the rulebook has thirty items on it, and reading the whole list out loud in the driveway takes longer than most of these rules have ever actually saved anyone.** Adding a rule after something goes wrong is easy and feels responsible. Nobody ever gets around to the harder job: going back and asking which of these are still doing anything.
 
 **The fix isn't refusing to make new rules, and it isn't tearing up the whole list out of frustration either.** It's actually checking, one at a time: does this specific problem still happen without the rule? If the stain-proof seats really do make purple drinks a non-issue, that rule should go — not stay forever just because it once had a good reason.
+
+> [!CAR]
+> Does your family have a rule that's stuck around so long nobody remembers exactly why? What do you think would happen if you asked to get rid of it?
 
 ---
 

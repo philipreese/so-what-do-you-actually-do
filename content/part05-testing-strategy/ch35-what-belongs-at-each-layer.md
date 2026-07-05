@@ -25,6 +25,8 @@ The fix is the same one earlier chapters already argued for: keep the actual thi
 
 ## For My Kids
 
+### The Tangled Bike Brakes
+
 Say you want to check whether your bike's brakes actually work. If they're built right, you just grab the brake lever and watch it grip the wheel — you don't need the tires pumped, the seat adjusted, or the chain oiled first. The brakes are their own thing, so testing them is its own separate, ten-second job.
 
 **Now say your bike got slapped together so that squeezing the brake lever also makes the seat wobble and tugs on the pedals.** You can't check just the brakes anymore — testing them means dealing with the whole bike at once, every time. That's not because brakes are secretly hard to test. It's because whoever built the bike tangled them into everything else instead of keeping them their own separate part.
@@ -32,6 +34,9 @@ Say you want to check whether your bike's brakes actually work. If they're built
 **The annoying part isn't a testing problem — it's a building problem wearing a testing costume.** When something's hard to check on its own, that's the bike telling you it was put together wrong, not a sign you need a fancier way to test it.
 
 **The fix is rebuilding it so the brakes connect cleanly to just the wheel, nothing else.** Once that's true, checking the brakes takes ten seconds, doesn't touch the seat or the pedals, and works the same way whether the rest of the bike is finished or still sitting in pieces on the garage floor.
+
+> [!CAR]
+> Have you ever had something that was supposed to be simple turn complicated because it got hooked up to something else it didn't need to be? What was it, and how would you have fixed it?
 
 ---
 

@@ -21,6 +21,7 @@ const ALERT_LABELS: Record<string, string> = {
   IMPORTANT: 'Important',
   WARNING: 'Warning',
   CAUTION: 'Caution',
+  CAR: 'Question for the car',
 };
 
 export function preprocessAlerts(markdown: string): string {
@@ -29,7 +30,7 @@ export function preprocessAlerts(markdown: string): string {
   // Match a blockquote that starts with [!TYPE] on the first line.
   // The blockquote may span multiple consecutive "> " lines.
   return md.replace(
-    /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\n((?:> ?[^\n]*\n?)*)/gim,
+    /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CAR)\]\n((?:> ?[^\n]*\n?)*)/gim,
     (_match, type: string, body: string) => {
       const label = ALERT_LABELS[type.toUpperCase()] ?? type;
       // Strip leading "> " from each continuation line and trim.

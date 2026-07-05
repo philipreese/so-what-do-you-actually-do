@@ -27,6 +27,8 @@ Reliability isn't an operational layer added after the fact — it's an emergent
 
 ## For My Kids
 
+### The Salt in the Cookie Dough
+
 Say your friend group is baking a huge batch of cookies for a bake sale. Someone grabs the wrong container and dumps salt into the bowl instead of sugar.
 
 **The best thing that can happen is somebody notices right away and yells "stop, this bowl's ruined."** Everyone groans, you scrape that batch into the trash, and you start over with a bowl you know is fine. Loud and annoying, but nobody's confused about what happened or what to do about it.
@@ -36,6 +38,9 @@ Say your friend group is baking a huge batch of cookies for a bake sale. Someone
 **The actual disaster is when nobody catches it at all.** The cookies come out of the oven golden and perfect-looking. They get boxed, priced, and sold at the table out front. Nothing about them looks wrong. The first person to find out anything was ever off is a stranger, mid-bite, at the bake sale.
 
 That's why the loud, embarrassing stop — the one that ruins one bowl and one afternoon — beats the quiet version every time. A mess you can see and point at gets fixed in five minutes. A mess that looks completely fine gets discovered by someone else, later, with a mouthful of salt.
+
+> [!CAR]
+> Would you rather be the one who yells "stop, this is ruined" and feels embarrassed for a minute, or risk staying quiet and hoping nobody notices? Why?
 
 ---
 

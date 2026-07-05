@@ -27,6 +27,7 @@ export interface ChapterInfo {
   partSlug: string; // e.g. "part01"
   partNumber: string; // e.g. "I"
   filePath: string;
+  kidsTitle?: string; // e.g. "The Fort Nobody Agreed On" — first ### heading in "## For My Kids"
 }
 
 export interface PartInfo {
@@ -158,6 +159,7 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
         chTitle = parsedTitle;
       }
       const chSubtitle = parseChapter(chContent).subtitle;
+      const chKidsTitle = extractKidsTitle(chContent);
 
       const chapterInfo: ChapterInfo = {
         slug: chSlug,
@@ -167,6 +169,7 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
         partSlug,
         partNumber: roman,
         filePath: chPath,
+        kidsTitle: chKidsTitle,
       };
 
       partChapters.push(chapterInfo);
@@ -223,13 +226,38 @@ export function getAllAppendices(): AppendixInfo[] {
   return appendices;
 }
 
+// A level-2 "## Heading" at the start of a line — NOT a level-3 "### Heading"
+// (kid stories open their section with "### <Kid Story Title>", which must
+// not be mistaken for the next top-level section boundary: "###" contains
+// "## " as a substring one character in, so a naive "## " lookahead would
+// truncate the section right after the story's own title heading).
+const NEXT_SECTION_BOUNDARY = '(?:(?<=\\n)##(?!#)[ \\t]|---|$)';
+
+// Matches the "## For My Kids" section body (used both to render the pane and,
+// separately, to pull out the kid-facing chapter title — see extractKidsTitle).
+const KIDS_SECTION_REGEX = new RegExp(`## For My Kids\\b([\\s\\S]*?)(?=${NEXT_SECTION_BOUNDARY})`, 'i');
+
+/**
+ * Chapters being migrated to the kid-story format open their "For My Kids"
+ * section with a "### <Kid Story Title>" heading. Returns undefined when the
+ * chapter has no kids section yet, or the section hasn't been migrated to
+ * include that heading — callers must degrade gracefully in either case.
+ */
+export function extractKidsTitle(rawMarkdown: string): string | undefined {
+  const md = rawMarkdown.replace(/\r\n/g, '\n');
+  const match = KIDS_SECTION_REGEX.exec(md);
+  if (!match) return undefined;
+  const titleMatch = /^\s*###\s+(.+?)\s*$/m.exec(match[1]);
+  return titleMatch ? titleMatch[1].trim() : undefined;
+}
+
 function extractWifeKidsSections(rawMarkdown: string): { wifeHtml: string; kidsHtml: string; cleanMarkdown: string } {
   let wifeHtml = '';
   let kidsHtml = '';
 
   // Regex to match "## For My Wife" section
-  const wifeRegex = /## For My Wife\b([\s\S]*?)(?=(?:## For My Kids|## |---|$))/i;
-  const kidsRegex = /## For My Kids\b([\s\S]*?)(?=(?:## For My Wife|## |---|$))/i;
+  const wifeRegex = new RegExp(`## For My Wife\\b([\\s\\S]*?)(?=${NEXT_SECTION_BOUNDARY})`, 'i');
+  const kidsRegex = KIDS_SECTION_REGEX;
 
   const wifeMatch = wifeRegex.exec(rawMarkdown);
   const kidsMatch = kidsRegex.exec(rawMarkdown);
@@ -243,7 +271,11 @@ function extractWifeKidsSections(rawMarkdown: string): { wifeHtml: string; kidsH
   }
 
   if (kidsMatch) {
-    const resolvedKids = resolveRelativeLinks(kidsMatch[1].trim());
+    // The "### <Story Title>" heading (if present) is metadata — it's extracted
+    // separately as kidsTitle and swapped in as the chapter title site-wide in
+    // kids mode — so it must not also be rendered inside the kids pane body.
+    const kidsBody = kidsMatch[1].trim().replace(/^\s*###\s+.+?\s*(?:\n|$)/, '');
+    const resolvedKids = resolveRelativeLinks(kidsBody.trim());
     kidsHtml = marked.parse(preprocessAlerts(resolvedKids)) as string;
     cleanMarkdown = cleanMarkdown.replace(kidsRegex, '');
   }
@@ -293,12 +325,13 @@ export interface ReadingNode {
   slug: string;
   number: string;
   title: string;
+  kidsTitle?: string;
 }
 
 export function getReadingSequence(): ReadingNode[] {
   const { parts } = getAllPartsAndChapters();
   const sequence: ReadingNode[] = [];
-  
+
   for (const part of parts) {
     sequence.push({
       type: 'part',
@@ -312,6 +345,7 @@ export function getReadingSequence(): ReadingNode[] {
         slug: ch.slug,
         number: ch.number,
         title: ch.title,
+        kidsTitle: ch.kidsTitle,
       });
     }
   }

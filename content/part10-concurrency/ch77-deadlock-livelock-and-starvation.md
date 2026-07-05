@@ -27,6 +27,8 @@ And picture a four-way stop where one especially polite driver keeps waving ever
 
 ## For My Kids
 
+### Lunch Line Logjam
+
 > [!NOTE]
 > The cafeteria line produces all three of this chapter's actual problems, back to back, most days.
 
@@ -37,6 +39,9 @@ Down at the tray return, two kids do the classic "you go" shuffle: both lean lef
 And at the ketchup pump, one kid keeps waving everyone else ahead, being nice about it every single time. Three other kids never once return the favor. They're not frozen and they're not stuck dancing — they're just never getting a turn, while lunch period quietly runs out.
 
 Three totally different problems, three totally different fixes. The doorway gets solved with an actual rule: whoever's closer to the register keeps going, full stop. The shuffle gets solved by making the next move random instead of automatic, so the timing stops matching up. And the ketchup pump gets solved by a rule that stops letting the same three kids cut every time — so the one being nice about it, eventually, guaranteed, gets a turn before the bell rings.
+
+> [!CAR]
+> Have you ever been the one always waving everyone else ahead of you, and then never getting your own turn? What would it take for you to stop?
 
 ---
 

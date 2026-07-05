@@ -25,6 +25,8 @@ This chapter argues that figuring out why software is slow needs the traffic cam
 
 ## For My Kids
 
+### Watching From the Hallway
+
 Say you want to find out why your morning routine runs so long. One way is your mom standing right over your shoulder with a stopwatch and a clipboard, calling out "socks — twenty-two seconds!" after every single step.
 
 That gets you exact numbers, but it also completely wrecks the thing being measured — nobody moves at their normal pace with someone hovering and narrating their every move, so the numbers you get back are really just how fast you can go while being stared at, not your actual Tuesday morning.
@@ -36,6 +38,9 @@ Hundreds of them, over enough mornings, add up to an honest picture of where the
 **And that picture only works if she's watching the whole routine, not just the one step that looks obviously slow.** Tying your shoes might look like the dramatic bottleneck.
 
 But if hunting for socks costs twenty seconds, picking cereal costs another twenty, and re-tying one shoe that came undone costs twenty more, those three boring little delays can add up to more lost time than the one step everyone assumed was the problem — invisible if you only ever checked shoe-tying by itself.
+
+> [!CAR]
+> Have you ever moved differently just because you knew someone was watching or timing you? What do you think your actual normal morning looks like when nobody's checking?
 
 ---
 

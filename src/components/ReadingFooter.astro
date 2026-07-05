@@ -22,16 +22,20 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
     <a href={prevNode.type === 'chapter' ? `${cleanBase}chapters/${prevNode.slug}` : `${cleanBase}parts/${prevNode.slug}`} class="footer-link footer-link--prev">
       <span class="footer-link-label">← Previous {prevNode.type === 'chapter' ? 'Chapter' : 'Part'}</span>
       <span class="footer-link-title">
-        {prevNode.type === 'chapter' ? `Ch ${prevNode.number}` : `Part ${prevNode.number}`} — {prevNode.title}
+        {prevNode.type === 'chapter' ? `Ch ${prevNode.number}` : `Part ${prevNode.number}`} —{' '}
+        <span class="t-default">{prevNode.title}</span>
+        {prevNode.kidsTitle && <span class="t-kids">{prevNode.kidsTitle}</span>}
       </span>
     </a>
   ) : <div />}
-  
+
   {nextNode ? (
     <a href={nextNode.type === 'chapter' ? `${cleanBase}chapters/${nextNode.slug}` : `${cleanBase}parts/${nextNode.slug}`} class="footer-link footer-link--next">
       <span class="footer-link-label">Next {nextNode.type === 'chapter' ? 'Chapter' : 'Part'} →</span>
       <span class="footer-link-title">
-        {nextNode.type === 'chapter' ? `Ch ${nextNode.number}` : `Part ${nextNode.number}`} — {nextNode.title}
+        {nextNode.type === 'chapter' ? `Ch ${nextNode.number}` : `Part ${nextNode.number}`} —{' '}
+        <span class="t-default">{nextNode.title}</span>
+        {nextNode.kidsTitle && <span class="t-kids">{nextNode.kidsTitle}</span>}
       </span>
     </a>
   ) : <div />}

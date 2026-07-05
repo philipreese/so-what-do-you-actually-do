@@ -27,6 +27,8 @@ Miss this on a batch operation that sends a hundred records at once — where fo
 
 ## For My Kids
 
+### The Drop Box That Lied
+
 Say your school has a locker-style drop box for turning in late homework, and it can reject your paper for two very different reasons.
 
 Maybe you tried the wrong period's slot — that's on you, and shoving the exact same paper in again won't fix it, you need the right slot. Or maybe the box itself is jammed today — not your fault at all, and trying again in an hour will probably just work.
@@ -40,6 +42,9 @@ You genuinely can't tell whether to fix something or just try again later, so yo
 You walk away confident. Nobody checks again.
 
 Days later, grades post, yours is marked missing, and you're arguing that you definitely turned it in — because as far as you knew, you had.
+
+> [!CAR]
+> Would you rather get a confusing "no" right away, or a confident "yes" that might turn out to be wrong later? Which one's actually worse?
 
 ---
 

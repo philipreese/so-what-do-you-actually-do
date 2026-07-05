@@ -25,6 +25,8 @@ This chapter argues software teams make exactly that mistake with the automated 
 
 ## For My Kids
 
+### Shoes, Lunch, Homework
+
 Say you check three quick things every single morning before running out the door: shoes tied, lunch packed, homework folder in your bag.
 
 Ten seconds, every day, and if something's missing you catch it right there on the porch, with time to fix it.
@@ -40,6 +42,9 @@ Do that every morning and one of two things happens: you're late for school cons
 The three-second shoes-lunch-homework check belongs every single morning, because it's fast and it catches the thing that would actually ruin your day.
 
 The full organization review still matters — it just belongs once a month on a Sunday, not jammed into the two minutes before the bus shows up.
+
+> [!CAR]
+> What's your quick daily check before running out the door, and is there a bigger, slower check you only do sometimes? How do you decide which is which?
 
 ---
 

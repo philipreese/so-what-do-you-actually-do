@@ -25,6 +25,8 @@ This chapter is about software teams facing the identical multiplication problem
 
 ## For My Kids
 
+### Twenty-Four Lunches Nobody Wanted
+
 Say you're helping pack school lunches for the week, and there are 3 sandwich choices, 4 side choices, and 2 drink choices. Try to prep every single mathematically possible combination in advance, just to "be ready for anything," and that's not 3 plus 4 plus 2. It's 3 times 4 times 2 — twenty-four completely different lunches, made and wrapped, sitting in the fridge.
 
 **Add one more choice — say, two possible dessert options — and the number doesn't creep up to twenty-five.** It jumps to forty-eight. That's the part that sneaks up on people: every new thing you decide to cover multiplies the whole pile, it doesn't just add to it.
@@ -32,6 +34,9 @@ Say you're helping pack school lunches for the week, and there are 3 sandwich ch
 **Here's the actual fix: you don't need every combination that's mathematically possible — you need the combinations someone's actually going to eat.** If nobody in your family likes turkey with the spicy chips, that combination was never worth making in the first place, no matter how thorough making it would look. Prep the handful of combos people genuinely choose, not all twenty-four just because they technically exist.
 
 **More combinations prepped was never the same thing as more kids actually fed.** Forty-eight lunches nobody asked for just means a fridge stuffed with food going bad, and someone exhausted from making sandwiches nobody wanted in the first place.
+
+> [!CAR]
+> If you tried to prepare for every possible version of something, how big would that pile get? What's a smarter way to figure out which ones are actually worth preparing for?
 
 ---
 

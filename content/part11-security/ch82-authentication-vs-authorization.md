@@ -25,6 +25,8 @@ This chapter argues companies make exactly this mistake with their computer syst
 
 ## For My Kids
 
+### Logged In, Not Allowed In
+
 Your school's computer lab checks two completely different things, and mixing them up is how a mess happens. The first check: is this login actually you, not someone who guessed your password. The second, totally separate check: now that we know it's really you, what are you actually allowed to open?
 
 A lab that's excellent at the first check and sloppy at the second is exactly the setup for trouble. The system can perfectly confirm every login is genuine — no impersonation, no stolen passwords, nothing fake about who's sitting at that keyboard — while nobody's ever separately locked down which folders a student account can actually reach.
@@ -34,6 +36,9 @@ Knowing for certain it's really you tells the system nothing about whether "you"
 That's exactly what happened to one curious kid last year. Genuinely logged in as themselves, no trickery at all, they clicked around and found the shared drive had never actually blocked student accounts from the teacher folder — just never got around to it.
 
 They weren't hacking anything. The system was completely sure who they were the entire time. It had just never separately asked whether that specific, real, verified student should be allowed to see everyone's grades in the first place.
+
+> [!CAR]
+> Have you ever been somewhere you were technically allowed to be and stumbled onto something you probably weren't supposed to see? What did you do about it?
 
 ---
 

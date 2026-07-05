@@ -27,6 +27,8 @@ Unchecked exceptions introduce invisible control flow, letting any function call
 
 ## For My Kids
 
+### The Friend Who Never Texted Back
+
 Say you ask a friend to grab something for you from the store while she's out. Good version: she texts back either "got it" or "nope, they were sold out" — either way, you know immediately, and you can plan your next move right then.
 
 Bad version: she just doesn't respond. Maybe she's still shopping. Maybe she forgot. Maybe something went wrong.
@@ -38,6 +40,9 @@ You don't know, and you won't find out until she happens to show back up, whenev
 Every minute spent guessing "did it work or not" is a minute you can't spend actually reacting to whichever answer turns out to be true. A clear "no" the second she knows it beats a "maybe" that eventually resolves itself an hour later.
 
 **This is why the boring, explicit answer beats the silent one — even though typing "nope, sold out" takes an extra second she'd rather skip.** Whoever's waiting on the answer needs to know the second something didn't work, not eventually, and not by having to guess from the silence.
+
+> [!CAR]
+> Has someone ever left you hanging without an answer when a quick "no" would've saved you from worrying? How did you handle the waiting?
 
 ---
 

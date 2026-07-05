@@ -25,6 +25,8 @@ This chapter argues software has the exact same relationship with the small piec
 
 ## For My Kids
 
+### The Five-Minute Weeding Habit
+
 Say your family has a garden, and pulling the few weeds that pop up takes about five minutes, once a week. Boring, routine, barely worth mentioning.
 
 The garden stays exactly as manageable as it was last week.
@@ -38,6 +40,9 @@ It's an entire weekend of brutal digging, and the plants that quietly died along
 **The fix was never "never let a single weed grow" or "let the whole garden do whatever it wants."** It's the boring five minutes, every week, whether or not anything looks urgent yet.
 
 Small and routine costs almost nothing and keeps the garden exactly as manageable as it's always been. Skipped long enough, the exact same job turns into the kind of weekend that ruins actual plants you can't get back.
+
+> [!CAR]
+> Is there a small chore you keep putting off because it doesn't look urgent yet? What do you think it'll turn into if you keep skipping it?
 
 ---
 

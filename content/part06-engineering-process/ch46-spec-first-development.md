@@ -26,6 +26,8 @@ This chapter argues software teams should have the same conversation before buil
 
 ## For My Kids
 
+### No Furniture This Time
+
 Say you and a neighbor decide to run a joint yard sale, and before either of you drags a single table outside, you have a two-minute conversation: what are we actually selling, what date, and — just as important — what are we NOT doing this time (no furniture, one Saturday only, not inviting the whole street). That conversation is cheap. Any mismatch gets caught right there, before anyone's spent an afternoon pricing stuff or printing signs.
 
 **Skip that conversation, and you find out the hard way — the morning of.** Your neighbor invited three more families and is planning to run it both Saturday and Sunday, and you've already printed signs for one date. Untangling that now costs a lot more than the two-minute talk would have, and someone ends up annoyed no matter how it gets sorted out.
@@ -33,6 +35,9 @@ Say you and a neighbor decide to run a joint yard sale, and before either of you
 **Saying "no furniture this time" out loud matters as much as saying what you ARE selling.** Without it, your neighbor reasonably assumes the old couch is fair game, because nobody ever said it wasn't — and now you're arguing about a couch in the driveway instead of running a sale.
 
 **And the size of that conversation should match the size of the sale.** A quick two-person sale needs exactly the two-minute chat you already had. A whole-block sale with fifteen families needs an actual plan somebody writes down and everyone reads first — because unwinding a fifteen-family misunderstanding on sale morning is a real disaster, not just an awkward five minutes.
+
+> [!CAR]
+> Before you start something with a friend, do you usually talk about what you're NOT going to do, or just what you are? Has skipping that part ever caused a mixup?
 
 ---
 

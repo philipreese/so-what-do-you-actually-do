@@ -26,6 +26,8 @@ The failure mode the chapter spends most time on is what happens when you split 
 
 ## For My Kids
 
+### Still Texting Every Ten Minutes
+
 Say your group project is due Friday. The simplest way to do it is everyone working together at one kitchen table, same afternoon. Someone's slide doesn't match someone else's? You catch it in five seconds, because you're all sitting right there.
 
 **Splitting up only makes sense for a real reason.** Maybe one person has to be at the library because the sources you need are only in the reference section there. That's a genuine reason to work apart — not "professional teams work separately, so we should too."
@@ -33,6 +35,9 @@ Say your group project is due Friday. The simplest way to do it is everyone work
 **Here's where it actually goes wrong.** Your group decides to split up because it feels more grown-up, everyone heads home to work solo — but you're still texting every ten minutes trying to make sure your parts line up, and waiting on replies before you can move forward, and one person being slow still holds up everyone else exactly like before.
 
 You didn't get any of the freedom splitting up was supposed to buy. You just traded "figure it out instantly, face to face" for "wait around for a text back" — while still being just as stuck on each other as you always were. That's worse than never splitting up at all, and it's the version most groups accidentally land in.
+
+> [!CAR]
+> Has your group ever split up to work "independently" on something but ended up just as stuck on each other as if you'd stayed together? What would have actually made splitting up worth it?
 
 ---
 

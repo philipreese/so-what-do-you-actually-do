@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 /* ==========================================================================
    1. Document Shell / Page Layout Wrapper
    ========================================================================== */
@@ -206,6 +210,78 @@ html[data-theme="light"] .moon-icon {
     gap: 1.75rem;
 }
 
+/* Reading Progress Module */
+.sidebar-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.6rem;
+}
+
+.sidebar-progress-track {
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--border-color);
+    overflow: hidden;
+}
+
+.sidebar-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent-color);
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+
+.sidebar-progress-label {
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.sidebar-progress-reset {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-muted);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sidebar-progress-reset:hover {
+    opacity: 1;
+    color: var(--sidebar-link-hover-text);
+    background: var(--sidebar-link-hover-bg);
+}
+
+.docs-layout.sidebar-minimized .sidebar-progress-label,
+.docs-layout.sidebar-minimized .sidebar-progress-reset {
+    display: none;
+}
+
+.docs-layout.sidebar-minimized .sidebar-progress {
+    padding: 0 0.35rem;
+}
+
 .sidebar-section {
     display: flex;
     flex-direction: column;
@@ -330,7 +406,7 @@ html[data-theme="light"] .moon-icon {
 .sidebar-chapter-link {
     position: relative;
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     padding: 0.45rem 0.75rem;
     border-radius: 6px;
     color: var(--sidebar-link-text);
@@ -362,9 +438,19 @@ html[data-theme="light"] .moon-icon {
     transition: all 0.2s ease;
 }
 
-.chapter-num {
+.chapter-num-slot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.2rem;
     min-width: 1.25rem;
     margin-right: 0.6rem;
+}
+
+.chapter-num {
     color: var(--text-muted);
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
@@ -375,6 +461,92 @@ html[data-theme="light"] .moon-icon {
 .sidebar-chapter-link.active .chapter-num {
     color: var(--accent-color);
     opacity: 1;
+}
+
+/* Read-state check indicator: sits below the chapter number once the chapter
+   has been read on the currently active track (the number itself stays put). */
+.chapter-check-icon {
+    display: none;
+    width: 11px;
+    height: 11px;
+}
+
+.sidebar-chapter-link.is-read .chapter-check-icon {
+    display: inline-flex;
+}
+
+/* Started-state check indicator: sits below the chapter number if started but not read */
+.chapter-started-icon {
+    display: none;
+    width: 6px;
+    height: 6px;
+}
+
+.sidebar-chapter-link.is-started .chapter-started-icon {
+    display: inline-flex;
+}
+
+/* Sidebar checkmark and started icons track color styling */
+.chapter-check-icon,
+.chapter-started-icon {
+    color: var(--pane-engineer-border); /* default / engineer */
+}
+
+html[data-track="wife"] .chapter-check-icon,
+html[data-track="wife"] .chapter-started-icon {
+    color: var(--pane-wife-border);
+}
+
+html[data-track="kids"] .chapter-check-icon,
+html[data-track="kids"] .chapter-started-icon {
+    color: var(--pane-kids-border);
+}
+
+/* Part Progress Indicators */
+.sidebar-part-num {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.part-progress-indicator {
+    display: inline-flex;
+    align-items: center;
+}
+
+.part-check-icon,
+.part-started-icon {
+    display: none;
+}
+
+.part-check-icon {
+    width: 10px;
+    height: 10px;
+    color: var(--pane-engineer-border);
+}
+
+.part-started-icon {
+    width: 6px;
+    height: 6px;
+    color: var(--pane-engineer-border);
+}
+
+html[data-track="wife"] .part-check-icon,
+html[data-track="wife"] .part-started-icon {
+    color: var(--pane-wife-border);
+}
+
+html[data-track="kids"] .part-check-icon,
+html[data-track="kids"] .part-started-icon {
+    color: var(--pane-kids-border);
+}
+
+.sidebar-group.is-completed .part-check-icon {
+    display: inline-flex;
+}
+
+.sidebar-group.is-started:not(.is-completed) .part-started-icon {
+    display: inline-flex;
 }
 
 /* Collapse Mechanics */
@@ -487,9 +659,12 @@ html[data-theme="light"] .moon-icon {
     left: 2px;
 }
 
-.docs-layout.sidebar-minimized .chapter-num {
+.docs-layout.sidebar-minimized .chapter-num-slot {
     min-width: unset;
     margin-right: 0;
+}
+
+.docs-layout.sidebar-minimized .chapter-num {
     font-size: 0.85rem;
     font-weight: 700;
     text-align: center;
@@ -711,6 +886,13 @@ html[data-track="kids"] .toc-sidebar {
     display: none;
 }
 
+/* The subtitle and thesis speak the engineer track's language; hide them
+   when the kids track owns the page. */
+html[data-track="kids"] .chapter-subtitle,
+html[data-track="kids"] .chapter-thesis {
+    display: none;
+}
+
 .toc-title {
     margin-bottom: 0.85rem;
     color: var(--text-color);
@@ -753,6 +935,72 @@ html[data-track="kids"] .toc-sidebar {
 /* ==========================================================================
    6. Navigation Footer (Next/Prev Link Bar)
    ========================================================================== */
+
+.read-toggle-row {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 0.65rem 3.5rem;
+    border-top: 1px dashed var(--border-color);
+    background: var(--bg-color);
+}
+
+.read-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.95rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Default / Engineer reading track colors */
+.read-toggle-btn:hover {
+    color: var(--pane-engineer-border);
+    border-color: var(--pane-engineer-border);
+    background: rgba(240, 168, 117, 0.05);
+}
+
+.read-toggle-btn.is-read {
+    color: var(--pane-engineer-border);
+    border-color: var(--pane-engineer-border);
+    background: rgba(240, 168, 117, 0.05);
+}
+
+/* Wife reading track colors */
+html[data-track="wife"] .read-toggle-btn:hover {
+    color: var(--pane-wife-border);
+    border-color: var(--pane-wife-border);
+    background: rgba(236, 72, 153, 0.05);
+}
+
+html[data-track="wife"] .read-toggle-btn.is-read {
+    color: var(--pane-wife-border);
+    border-color: var(--pane-wife-border);
+    background: rgba(236, 72, 153, 0.05);
+}
+
+/* Kids reading track colors */
+html[data-track="kids"] .read-toggle-btn:hover {
+    color: var(--pane-kids-border);
+    border-color: var(--pane-kids-border);
+    background: rgba(32, 159, 181, 0.05);
+}
+
+html[data-track="kids"] .read-toggle-btn.is-read {
+    color: var(--pane-kids-border);
+    border-color: var(--pane-kids-border);
+    background: rgba(32, 159, 181, 0.05);
+}
 
 .chapter-footer {
     display: flex;
@@ -843,11 +1091,16 @@ html[data-track="kids"] .toc-sidebar {
         padding: 0 1.5rem;
     }
 
+    .read-toggle-row {
+        padding: 0.65rem 1.5rem;
+    }
+
     /* Clear fixed viewport height restrictions to enable natural page scrolling */
     .docs-layout {
         height: auto !important;
         min-height: 100vh !important;
-        overflow: visible !important;
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
     }
 
     .docs-body-container {
@@ -858,14 +1111,16 @@ html[data-track="kids"] .toc-sidebar {
 
     .docs-main {
         height: auto !important;
-        overflow: visible !important;
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
         padding: 0.5rem !important;
     }
 
     .docs-main:has(.docs-content-container),
     .docs-main:has(.part-container) {
         height: auto !important;
-        overflow: visible !important;
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
     }
 
     .docs-content-container,

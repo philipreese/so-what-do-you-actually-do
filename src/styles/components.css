@@ -174,6 +174,14 @@
     -webkit-text-fill-color: transparent;
 }
 
+.vertical-tab-caret {
+    font-size: 0.6rem;
+    margin: 0.25rem 0;
+    color: var(--pane-kids-text);
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+}
+
 /* Pane UI Containers */
 .pane {
     display: flex;
@@ -208,6 +216,12 @@
 
 .pane-secondary .pane-content > *:last-child {
     margin-bottom: 0;
+}
+
+/* Invisible marker observed by the reading-progress IntersectionObserver to
+   detect when the reader has scrolled through a pane's content. */
+.pane-end-sentinel {
+    height: 1px;
 }
 
 .pane-engineer {
@@ -275,6 +289,26 @@ html[data-track="kids"] .pane-secondary--kids {
         pointer-events: auto !important;
         margin-left: 0 !important;
     }
+}
+
+/* ==========================================================================
+   2b. Kid-facing Title Toggles
+   Every chapter-title render site emits both the default title and (when
+   available) the kid-story title as sibling spans; CSS picks the one that
+   matches the active reading track. Falls back to the default title alone
+   when a chapter has no migrated kids title yet.
+   ========================================================================== */
+
+.t-kids {
+    display: none;
+}
+
+html[data-track="kids"] .t-default {
+    display: none;
+}
+
+html[data-track="kids"] .t-kids {
+    display: inline;
 }
 
 /* ==========================================================================
@@ -366,6 +400,48 @@ html[data-track="kids"] .pane-secondary--kids {
     --callout-border: var(--callout-note-border);
     --callout-label-color: var(--callout-note-text);
     --callout-text: var(--callout-note-text);
+}
+
+/* CAR variant — "Question for the car": a warm closing card for the Kids
+   pane, not a warning box. Uses the Kids track teal accent throughout. */
+.callout--car {
+    position: relative;
+    display: flex;
+    gap: 0.6rem;
+    margin: 2rem 0 0.5rem;
+    padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    border: 1.5px solid var(--callout-car-border);
+    border-left: 1.5px solid var(--callout-car-border);
+    border-radius: 12px;
+    background: var(--callout-car-bg);
+}
+
+.callout--car::before {
+    content: "🚗";
+    position: absolute;
+    top: 1.15rem;
+    left: 1.15rem;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.callout--car .callout__label {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--callout-car-text);
+}
+
+.callout--car p {
+    margin: 0;
+    color: var(--callout-car-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
 }
 
 .meta-card {
@@ -579,7 +655,91 @@ html[data-track="kids"] .pane-secondary--kids {
 }
 
 /* ==========================================================================
-   8. Component Specific Breakpoints
+   8. Reading Progress Celebration (Kids track only)
+   ========================================================================== */
+
+.celebration-anchor {
+    position: relative;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.celebration-toast {
+    position: absolute;
+    bottom: 3.4rem; /* clears the mark-as-read toggle row below the anchor */
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.15rem;
+    border: 1.5px solid var(--pane-kids-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--pane-kids-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-style: italic;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 5;
+}
+
+.celebration-toast--fade {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+}
+
+.celebration-confetti {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 10px;
+    border-radius: 2px;
+    opacity: 0.95;
+    animation: confetti-burst 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes confetti-burst {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x, 0), -75px) rotate(var(--rot, 180deg));
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .confetti-piece {
+        animation: none;
+        display: none;
+    }
+
+    .celebration-toast {
+        transition: none;
+    }
+}
+
+/* ==========================================================================
+   9. Component Specific Breakpoints
    ========================================================================== */
 
 @media (max-width: 900px) {
@@ -601,6 +761,11 @@ html[data-track="kids"] .pane-secondary--kids {
 
     .tracks-vertical-tab {
         order: 0 !important;
+        display: flex;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
         width: 100% !important;
         padding: 0.75rem 0 !important;
         writing-mode: horizontal-tb !important;
@@ -611,6 +776,11 @@ html[data-track="kids"] .pane-secondary--kids {
         background-clip: padding-box, border-box !important;
         -webkit-background-clip: padding-box, border-box !important;
         margin-bottom: 1rem !important;
+    }
+
+    .vertical-tab-caret {
+        margin: 0 !important;
+        transform: none !important;
     }
 
     .tracks-vertical-tab-label {

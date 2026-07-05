@@ -27,6 +27,8 @@ That's the whole argument in this chapter, applied to code instead of remotes. P
 
 ## For My Kids
 
+### The Six-Kid Chore Wheel
+
 Say it's your turn to do the dishes tonight, then your sibling's turn tomorrow, forever — that's the whole system, always has been. A magnet on the fridge that just says "Dish Duty: You" or "Dish Duty: Sam," flipped each night, does the entire job.
 
 Nobody has to remember the rule; they just glance at the fridge.
@@ -38,6 +40,9 @@ It's also complete overkill for two people alternating one job, and now everyone
 **Here's the part that's easy to miss: the flipped magnet still counts as "building something."** You didn't just wing it every night — you made a small, clear, permanent system, and it's exactly the right amount of system for two people and one chore that's never getting more complicated.
 
 The wheel wasn't wrong because systems are bad. It was wrong because it was built for six kids and three chores that were never actually going to show up, while the real job — telling two people whose turn it is — got buried under parts nobody needed.
+
+> [!CAR]
+> Have you ever built or set up something way fancier than the job actually needed, like the chore wheel? What would the simple version have looked like?
 
 ---
 

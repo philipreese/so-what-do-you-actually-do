@@ -25,6 +25,8 @@ This chapter argues that documentation for other programs to talk to should be b
 
 ## For My Kids
 
+### The Babysitter's Card
+
 Say you're the one who knows the house — where the dog's leash is, what your little brother's actually allowed to eat, when bedtime really is — and tonight a babysitter's covering while your parents are somewhere with no signal for four hours. You write it all down before you leave.
 
 The instructions describing your actual house, right now, beat instructions describing whatever you remember from months ago. If your brother's allergic to peanuts as of this year, that goes on the card exactly as it stands today, not as loosely recalled as "I think he can have those now?"
@@ -34,6 +36,9 @@ The card also has to say what genuinely doesn't matter, not just what does. "Bed
 What it shouldn't include is why your family does things a certain way. The sitter doesn't need your whole history with the dog, just where the leash actually is tonight.
 
 Get any of this wrong, and there's no fixing it live. Nobody's answering a text for four hours. A missing detail doesn't get politely worked around — it turns into a decision the sitter has to guess at alone, with your little brother standing right there watching to see what happens.
+
+> [!CAR]
+> If you had to leave instructions for someone with no way to reach you for a few hours, what's the one detail you'd make sure was exactly right?
 
 ---
 

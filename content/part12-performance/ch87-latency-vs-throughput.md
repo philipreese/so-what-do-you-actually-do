@@ -24,6 +24,8 @@ This chapter argues software has the identical ambiguity, and most confused argu
 
 ## For My Kids
 
+### Two Kinds of Fast
+
 *Your average reply time can look great while one specific person is having a genuinely bad night — averages don't feel anything. Only that one person does.*
 
 Say a group project has an ongoing text thread, and "getting back to people fast" turns out to mean two different things depending on what you actually care about.
@@ -35,6 +37,9 @@ The other version: check the thread every fifteen minutes and answer everything 
 Neither one is just "better at replying." They're answering two different questions, and mixing them up is how someone ends up annoyed that you're "slow" when you're actually replying to more people per hour than anyone else in the group.
 
 If you're mostly fast but you missed one question during dinner, the group's average response time barely moves — but that one person spent forty-five minutes thinking they got ignored, and the average never shows you that.
+
+> [!CAR]
+> Would you rather answer every text the second it arrives, or check in occasionally and reply to a bunch at once? Which one actually feels like being a better friend to you?
 
 ---
 

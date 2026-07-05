@@ -24,6 +24,8 @@ The retention window is the honest limitation: servers don't keep those keys for
 
 ## For My Kids
 
+### Soda Request Number One
+
 Say you're not going to the game, so you text your friend "grab me a soda" while he's already at the concession stand. You don't see a reply for a minute, so — worried the text didn't send — you text the exact same thing again.
 
 If your friend just buys a soda every single time that text lands, you now owe him for two sodas, and neither of you can tell afterward whether you actually wanted two or the message just landed twice.
@@ -35,6 +37,9 @@ If your friend sees "soda request #1" arrive a second time, he checks it against
 **That only actually works if he's keeping one real list he checks every time, not just going off memory.**
 
 A friend juggling six people's orders from a messy pile of texts will still buy two sodas under the same request number, because "I probably remember" isn't the same thing as an actual list with a name crossed off on it.
+
+> [!CAR]
+> Have you ever sent the same text or request twice because you weren't sure the first one went through? What happened?
 
 ---
 

@@ -28,6 +28,8 @@ The honest cost is boilerplate. You need explicit translation layers between the
 
 ## For My Kids
 
+### The Rule That Only Worked With One Deck
+
 Say you and your friends invent your own card game on a long car ride. **The rules are the actual game — everything else is just whatever cards happen to be in your hands.** A good rule sounds like "compare the two highest numbers, higher one wins." It doesn't care what deck you're holding.
 
 Play it with Uno cards, a regular deck, cards you found in a drawer at grandma's — the rule still works, because it was never written about the deck in the first place.
@@ -39,6 +41,9 @@ Now half your rulebook doesn't mean anything, because the rule and the one deck 
 Writing the clean version takes more thought up front — you have to actually separate "what decides who wins" from "which cards are sitting in front of you." For a game you're only playing once, in one car, on one trip, that extra care is wasted effort.
 
 For a game your whole friend group keeps playing for years, with whatever cards anyone happens to have around, it's the only version that doesn't fall apart the first time the deck changes.
+
+> [!CAR]
+> If you made up a game right now, would you write the rules around whatever's in your hands, or in a way that would still work with a totally different deck? Which one is more you?
 
 ---
 

@@ -26,6 +26,8 @@ Services that genuinely need to communicate without being tightly coupled to eac
 
 ## For My Kids
 
+### The Spreadsheet Both Clubs Secretly Shared
+
 Say Chess Club and Robotics Club are two totally separate clubs — different presidents, different meeting days, different everything. But whoever set up sign-ups years ago put both clubs on the exact same shared spreadsheet, different tabs, because it was sitting right there and seemed efficient.
 
 **That looks like two independent clubs. It isn't.** Robotics decides to reorganize its tab — adds a column for "which robot kit," reorders a few others — and somehow Chess Club's sign-up sheet breaks too, the day before tryouts. Nobody on Chess Club touched a single cell. They didn't need to. Both clubs were quietly leaning on the same underlying sheet the whole time, and Robotics just proved it by moving something.
@@ -33,6 +35,9 @@ Say Chess Club and Robotics Club are two totally separate clubs — different pr
 **The two clubs were never actually separate — they just looked that way from the outside**, right up until one of them changed something and the "unrelated" club took the hit anyway.
 
 The fix isn't complicated: each club gets its own sheet, full stop. If Robotics genuinely needs to know how many Chess members also do Robotics, someone asks the Chess president for that one number directly — instead of reaching into Chess's actual sheet and hoping nothing they touch matters to anyone else.
+
+> [!CAR]
+> Can you think of two things you thought were totally separate that turned out to be secretly sharing something, so one broke when the other changed?
 
 ---
 

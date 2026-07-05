@@ -25,6 +25,8 @@ This chapter argues the extra layers and conveniences built into software work e
 
 ## For My Kids
 
+### The Backpack Pocket Tax
+
 Every zippered pocket in your backpack costs you something real: an extra second or two to unzip it and dig around, every single time you need what's inside. Nobody seriously argues pockets are free.
 
 And almost nobody dumps their whole backpack out on the floor to save that second, because what the pockets buy back is worth far more than they cost — your pencils aren't buried under your textbooks, your phone isn't sitting loose next to a half-eaten granola bar, and losing one pocket's contents to a rip doesn't mean losing everything else too.
@@ -36,6 +38,9 @@ That's worth reorganizing. The zipper you barely notice using isn't.
 Ripping out every pocket because you have a hunch backpacks would be faster without them gets you a backpack that's quicker to grab one specific thing from, and a nightmare the instant you're carrying more than one item at once.
 
 Notice the actual problem first. Then decide what, if anything, is actually worth changing.
+
+> [!CAR]
+> Is there something in your backpack or room that costs you a little extra time to use, but you'd never actually want to get rid of? What makes it worth keeping?
 
 ---
 

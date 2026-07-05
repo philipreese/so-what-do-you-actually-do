@@ -25,6 +25,8 @@ A comment is a maintenance liability — it has to stay synchronized with code t
 
 ## For My Kids
 
+### The Note on the Hamster Cage
+
 Say the class hamster cage has a note taped to the front. "This is the hamster's cage" tells a substitute nothing they couldn't already see — that's a note restating the obvious, and it's not helping anyone.
 
 **"No sunflower seeds — allergic" is a completely different kind of note.** Nobody could guess that just by looking. It's the one fact that actually changes what a substitute does, and it needed writing down because the hamster obviously can't say it out loud.
@@ -32,6 +34,9 @@ Say the class hamster cage has a note taped to the front. "This is the hamster's
 **Here's the part that actually causes trouble.** That hamster died last spring. The school got a new one that isn't allergic to anything. Nobody peeled the old note off the cage. The new sub, following the only instructions taped up, skips seeds that would've been perfectly fine — a small thing here, but now imagine that note was a real medication schedule instead, left over from a hamster two hamsters ago and never updated.
 
 **An old note left up out of habit isn't harmless.** It's a wrong instruction wearing the costume of a correct one, and nothing about it looks any different from a note that's actually still true. Whoever trusts it has no way of knowing, from the note alone, that it stopped being real months ago.
+
+> [!CAR]
+> Have you ever followed an old instruction or rule that nobody had updated in a while? How did you find out it was wrong?
 
 ---
 

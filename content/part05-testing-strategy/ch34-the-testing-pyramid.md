@@ -27,6 +27,8 @@ That's the trap with leaning mainly on the expensive, whole-system check: it tel
 
 ## For My Kids
 
+### The Three Rehearsals
+
 Say you're in the school play, and the way you prepare has three totally different stages. First, alone in your room, you run your own lines out loud — fast, free, and if you fumble a word, you know exactly which line and which word it was.
 
 **Next, you run a scene with just your scene partner.** Slower than practicing alone, but it catches things solo practice never could — the timing of a joke, whether you're actually looking at each other during the big moment.
@@ -34,6 +36,9 @@ Say you're in the school play, and the way you prepare has three totally differe
 **Then, a small number of times before opening night, the whole cast runs the entire show together, costumes and lights and all.** This is the only rehearsal that shows you how the whole thing actually feels start to finish. It's also the slowest by far, and here's the part that surprises people: it's the *worst* one for figuring out what's actually wrong. If the director says "something felt off in Act 2," that tells you a problem exists. It tells you nothing about which line, which cue, which actor.
 
 **A show that skips straight to full run-throughs — no solo line-running, no scene work — is in real trouble**, because the only tool it has for catching a mistake is the slowest, vaguest one available. By the time "something's off" gets narrowed down to what, it's the night before opening, and there's no time left to actually fix it.
+
+> [!CAR]
+> What's something you're getting ready for these days, and how would you break it into practicing alone, practicing with a partner, and doing the whole thing for real?
 
 ---
 

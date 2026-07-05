@@ -24,6 +24,8 @@ The structural principle the chapter argues for: freeze the contract, let everyt
 
 ## For My Kids
 
+### The Locker With Fourteen Empty Shelves
+
 **At the start of the year, you know one thing for sure about your locker: gym clothes are going to pile up.** Gym meets three times a week, and that stuff has to go somewhere.
 
 So you clear one whole shelf just for it, with an extra hook for a bag if it overflows some week. That's the one part of your locker you actually built to flex.
@@ -35,6 +37,9 @@ Most of that space sits empty all year. Every morning you're digging past shelve
 The kid who guessed right about gym clothes has a locker that keeps working all year, no matter how packed it gets.
 
 The kid who tried to prepare for every hypothetical has a locker jammed with dead space — and still doesn't have room for the binder that actually showed up in November. It rides around loose in the bottom of a backpack all year instead, getting more crumpled every week.
+
+> [!CAR]
+> If you could only plan ahead for one thing you're pretty sure will happen this year, what would you bet on, and what would you refuse to waste space preparing for?
 
 ---
 

@@ -25,6 +25,8 @@ This chapter argues computer programs can be built the same way: instead of care
 
 ## For My Kids
 
+### Nobody Touches My Glue
+
 In art class, everyone gets their own fully stocked supply box — scissors, glue, markers, all of it — instead of one shared bin in the middle of the table. Need a color your neighbor has? They don't hand you their marker.
 
 They hand you a fresh piece of paper they colored on, and you tape that into your own project. **Nobody's ever reaching into someone else's box, so nobody can ever mess up a project that wasn't theirs to touch.**
@@ -38,6 +40,9 @@ But there's a whole category of disaster this makes impossible: two kids fightin
 It's clearing the station completely and starting over with a brand-new one.
 
 Limping along with contaminated supplies, hoping it still mostly works, just guarantees the next thing made in that box turns out wrong too — better to start clean than build on top of a mess you can't fully see the extent of.
+
+> [!CAR]
+> Have you ever had something so messed up that trying to patch it just made it worse — where starting over completely would have actually been faster?
 
 ---
 

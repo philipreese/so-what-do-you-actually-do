@@ -1,7 +1,17 @@
 ---
 import DocsLayout from '../layouts/DocsLayout.astro';
+import { getAllPartsAndChapters } from '../lib/content';
+
 const base = import.meta.env.BASE_URL;
 const cleanBase = base.endsWith('/') ? base : base + '/';
+
+const { parts, chapters } = getAllPartsAndChapters();
+const chapterIndex = Object.fromEntries([
+  ...parts.map((p) => [p.slug, { number: p.romanNumber, title: p.title, isPart: true }]),
+  ...chapters.map((ch) => [ch.slug, { number: ch.number, title: ch.title, kidsTitle: ch.kidsTitle }])
+]);
+// Escape "</" so the JSON payload can't prematurely close the <script> tag.
+const chapterIndexJson = JSON.stringify(chapterIndex).replace(/</g, '\\u003c');
 ---
 
 <DocsLayout title="A Software Engineer's Handbook">
@@ -13,13 +23,22 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
           Every engineer has given some version of an unsatisfying answer to that question. This is the long one — written three times, once for each person actually asking.
         </p>
         
-        <div class="hero-buttons">
-          <a href={`${cleanBase}parts/part01`} class="btn btn--primary">
-            Start Reading <span class="btn-arrow">→</span>
-          </a>
-          <a href={`${cleanBase}sitemap`} class="btn btn--secondary">
-            Table of Contents
-          </a>
+        <div class="hero-buttons-wrapper">
+          <div id="heroBtnChapterInfo" class="hero-btn-chapter-info" style="display: none;"></div>
+          <div class="hero-buttons">
+            <a
+              href={`${cleanBase}parts/part01`}
+              class="btn btn--primary"
+              id="primaryHeroBtn"
+              data-default-href={`${cleanBase}parts/part01`}
+              data-chapters-base={`${cleanBase}chapters/`}
+            >
+              <span class="btn-label">Start Reading</span> <span class="btn-arrow">→</span>
+            </a>
+            <a href={`${cleanBase}sitemap`} class="btn btn--secondary">
+              Table of Contents
+            </a>
+          </div>
         </div>
       </div>
 
@@ -46,6 +65,8 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
       </a>
     </div>
   </div>
+
+  <script type="application/json" id="chapter-index-data" set:html={chapterIndexJson}></script>
 </DocsLayout>
 
 <script>
@@ -67,4 +88,94 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
       } catch (e) {}
     });
   });
+
+  // Progressive enhancement: if the reader has a bookmarked chapter for the
+  // current track, turn the primary hero button into a "Continue reading"
+  // link instead of always pointing at Part I.
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('primaryHeroBtn') as HTMLAnchorElement | null;
+    if (!btn) return;
+
+    interface ChapterIndexEntry {
+      number: string;
+      title: string;
+      kidsTitle?: string;
+      isPart?: boolean;
+    }
+
+    function getChapterIndex(): Record<string, ChapterIndexEntry> {
+      const el = document.getElementById('chapter-index-data');
+      try {
+        return JSON.parse(el?.textContent || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function updateHeroButton() {
+      const btn = document.getElementById('primaryHeroBtn') as HTMLAnchorElement | null;
+      const label = btn?.querySelector('.btn-label');
+      const infoEl = document.getElementById('heroBtnChapterInfo');
+      if (!btn || !label) return;
+
+      const track = document.documentElement.getAttribute('data-track') || 'engineer';
+      let lastSlug: string | null = null;
+      try {
+        lastSlug = localStorage.getItem(`lastVisited:${track}`);
+      } catch (e) {}
+
+      const chapterIndex = getChapterIndex();
+      const entry = lastSlug ? chapterIndex[lastSlug] : undefined;
+
+      if (!lastSlug || !entry) {
+        btn.href = btn.getAttribute('data-default-href') || btn.href;
+        label.textContent = 'Start Reading';
+        if (infoEl) infoEl.style.display = 'none';
+        return;
+      }
+
+      const displayTitle = track === 'kids' && entry.kidsTitle ? entry.kidsTitle : entry.title;
+      
+      if (entry.isPart) {
+        const defaultHref = btn.getAttribute('data-default-href') || '';
+        const partsBase = defaultHref.substring(0, defaultHref.lastIndexOf('/') + 1);
+        btn.href = `${partsBase}${lastSlug}`;
+        label.textContent = 'Continue Reading';
+        if (infoEl) {
+          infoEl.innerHTML = `<span class="info-prefix">Next up:</span><span class="info-title">Part ${entry.number} — ${displayTitle}</span>`;
+          infoEl.style.display = 'block';
+        }
+      } else {
+        btn.href = `${btn.getAttribute('data-chapters-base') || ''}${lastSlug}`;
+        label.textContent = 'Continue Reading';
+        if (infoEl) {
+          infoEl.innerHTML = `<span class="info-prefix">Next up:</span><span class="info-title">Ch ${entry.number} — ${displayTitle}</span>`;
+          infoEl.style.display = 'block';
+        }
+      }
+    }
+
+    (window as any).triggerIndexHeroButtonUpdate = updateHeroButton;
+    updateHeroButton();
+
+    const heroTrackObserver = new MutationObserver(updateHeroButton);
+    heroTrackObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-track'] });
+  });
+
+  // Reset the button if reading progress updates (e.g. progress reset or cross-tab bookmark updates)
+  if (!(window as any).hasIndexGlobalListeners) {
+    window.addEventListener('reading-progress-updated', () => {
+      if ((window as any).triggerIndexHeroButtonUpdate) {
+        (window as any).triggerIndexHeroButtonUpdate();
+      }
+    });
+    window.addEventListener('storage', (e) => {
+      if (e.key && e.key.startsWith('lastVisited:')) {
+        if ((window as any).triggerIndexHeroButtonUpdate) {
+          (window as any).triggerIndexHeroButtonUpdate();
+        }
+      }
+    });
+    (window as any).hasIndexGlobalListeners = true;
+  }
 </script>

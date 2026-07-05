@@ -16,10 +16,6 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
 
       let collapsed = false;
       try {
-        if (window.matchMedia('(max-width: 900px)').matches) {
-          collapsed = true;
-        }
-        
         const urlParams = new URLSearchParams(window.location.search);
         const viewParam = urlParams.get('view');
         if (viewParam !== null) {
@@ -28,6 +24,8 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
           const stored = window.localStorage.getItem(STORAGE_KEY);
           if (stored !== null) {
             collapsed = stored === 'true';
+          } else {
+            collapsed = false; // Expanded first time
           }
         }
       } catch (e) {}
@@ -35,6 +33,15 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
       const wrapper = document.getElementById('tracks-wrapper');
       if (wrapper && collapsed) {
         wrapper.classList.add('secondary-collapsed');
+      }
+
+      const toggleBtn = document.getElementById('toggle-secondary-btn');
+      if (toggleBtn) {
+        toggleBtn.setAttribute('aria-pressed', String(!collapsed));
+        const carets = toggleBtn.querySelectorAll('.vertical-tab-caret');
+        carets.forEach(function(c) {
+          c.textContent = collapsed ? '◀' : '▶';
+        });
       }
     })();
   </script>
@@ -47,6 +54,7 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
       </div>
       <div class="pane-content">
         <div set:html={engineerHtml} />
+        <div class="pane-end-sentinel" aria-hidden="true"></div>
       </div>
     </div>
 
@@ -61,6 +69,7 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
           </div>
           <div class="pane-content">
             <div set:html={wifeHtml} />
+            <div class="pane-end-sentinel" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -71,6 +80,7 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
           </div>
           <div class="pane-content">
             <div set:html={kidsHtml} />
+            <div class="pane-end-sentinel" aria-hidden="true"></div>
           </div>
         </div>
       </div>
@@ -84,38 +94,73 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
       aria-label="Toggle For My Wife and For My Kids panes"
       aria-pressed="true"
     >
+      <span class="vertical-tab-caret">▶</span>
       <span class="tracks-vertical-tab-label">For My Wife &amp; Kids</span>
+      <span class="vertical-tab-caret">▶</span>
     </button>
   </div>
 </div>
 
 <script>
-  const STORAGE_KEY = 'secondaryCollapsed';
+  document.addEventListener('astro:page-load', () => {
+    const STORAGE_KEY = 'secondaryCollapsed';
 
-  const wrapper = document.getElementById('tracks-wrapper');
-  const toggleBtn = document.getElementById('toggle-secondary-btn');
+    const wrapper = document.getElementById('tracks-wrapper');
+    const toggleBtn = document.getElementById('toggle-secondary-btn');
+    if (!toggleBtn) return;
 
-  function isCollapsed(): boolean {
-    return wrapper?.classList.contains('secondary-collapsed') ?? false;
-  }
-
-  function setCollapsed(collapsed: boolean) {
-    wrapper?.classList.toggle('secondary-collapsed', collapsed);
-    toggleBtn?.setAttribute('aria-pressed', String(!collapsed));
-    window.localStorage.setItem(STORAGE_KEY, String(collapsed));
-
-    // Update URL query param to reflect view state; clean it up for the default (expanded) view
-    const url = new URL(window.location.href);
-    if (collapsed) {
-      url.searchParams.set('view', 'collapsed');
-    } else {
-      url.searchParams.delete('view');
+    function isCollapsed(): boolean {
+      return wrapper?.classList.contains('secondary-collapsed') ?? false;
     }
-    window.history.replaceState({}, '', url);
-  }
 
-  toggleBtn?.addEventListener('click', () => setCollapsed(!isCollapsed()));
+    function setCollapsed(collapsed: boolean) {
+      wrapper?.classList.toggle('secondary-collapsed', collapsed);
+      toggleBtn?.setAttribute('aria-pressed', String(!collapsed));
+      window.localStorage.setItem(STORAGE_KEY, String(collapsed));
 
-  // Reflect the initial state (set synchronously by the inline script above) in the button
-  toggleBtn?.setAttribute('aria-pressed', String(!isCollapsed()));
+      const isMobile = window.matchMedia('(max-width: 900px)').matches;
+      const carets = toggleBtn?.querySelectorAll('.vertical-tab-caret');
+      carets?.forEach((c) => {
+        if (isMobile) {
+          c.textContent = collapsed ? '▼' : '▲';
+        } else {
+          c.textContent = collapsed ? '◀' : '▶';
+        }
+      });
+
+      // Update URL query param to reflect view state; clean it up for the default (expanded) view
+      const url = new URL(window.location.href);
+      if (collapsed) {
+        url.searchParams.set('view', 'collapsed');
+      } else {
+        url.searchParams.delete('view');
+      }
+      window.history.replaceState({}, '', url);
+    }
+
+    toggleBtn?.addEventListener('click', () => setCollapsed(!isCollapsed()));
+
+    // Restore state from localStorage or query parameter (defaults to expanded)
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewParam = urlParams.get('view');
+    let initialCollapsed = false;
+    if (viewParam !== null) {
+      initialCollapsed = viewParam === 'collapsed';
+    } else {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored !== null) {
+        initialCollapsed = stored === 'true';
+      } else {
+        initialCollapsed = false; // Expanded first time
+      }
+    }
+
+    setCollapsed(initialCollapsed);
+
+    // Listen to media query changes (resize crossing 900px) and update carets immediately
+    const mediaQuery = window.matchMedia('(max-width: 900px)');
+    mediaQuery.addEventListener('change', () => {
+      setCollapsed(isCollapsed());
+    });
+  });
 </script>

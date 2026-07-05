@@ -16,6 +16,10 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
 
       let collapsed = false;
       try {
+        if (window.matchMedia('(max-width: 900px)').matches) {
+          collapsed = true;
+        }
+        
         const urlParams = new URLSearchParams(window.location.search);
         const viewParam = urlParams.get('view');
         if (viewParam !== null) {
@@ -39,32 +43,35 @@ const { engineerHtml, wifeHtml, kidsHtml } = Astro.props;
     <!-- Engineer Pane -->
     <div class="pane pane-engineer">
       <div class="pane-header">
-        <h2 class="pane-label">Technical Reference</h2>
+        <h2 class="pane-label" id="technical-reference">Technical Reference</h2>
       </div>
       <div class="pane-content">
         <div set:html={engineerHtml} />
       </div>
     </div>
 
-    <!-- Secondary Stack (Wife & Kids, shown together by default) -->
-    <div class="secondary-stack" id="secondaryStack">
-      <!-- Wife Pane -->
-      <div class="pane pane-secondary pane-secondary--wife">
-        <div class="pane-header">
-          <h2 class="pane-label">For My Wife</h2>
+    <!-- Wrapper for collapsible height transition on mobile -->
+    <div class="mobile-collapse-wrapper">
+      <!-- Secondary Stack (Wife & Kids, shown together by default) -->
+      <div class="secondary-stack" id="secondaryStack">
+        <!-- Wife Pane -->
+        <div class="pane pane-secondary pane-secondary--wife">
+          <div class="pane-header">
+            <h2 class="pane-label" id="for-my-wife">For My Wife</h2>
+          </div>
+          <div class="pane-content">
+            <div set:html={wifeHtml} />
+          </div>
         </div>
-        <div class="pane-content">
-          <div set:html={wifeHtml} />
-        </div>
-      </div>
 
-      <!-- Kids Pane -->
-      <div class="pane pane-secondary pane-secondary--kids">
-        <div class="pane-header">
-          <h2 class="pane-label">For My Kids</h2>
-        </div>
-        <div class="pane-content">
-          <div set:html={kidsHtml} />
+        <!-- Kids Pane -->
+        <div class="pane pane-secondary pane-secondary--kids">
+          <div class="pane-header">
+            <h2 class="pane-label" id="for-my-kids">For My Kids</h2>
+          </div>
+          <div class="pane-content">
+            <div set:html={kidsHtml} />
+          </div>
         </div>
       </div>
     </div>

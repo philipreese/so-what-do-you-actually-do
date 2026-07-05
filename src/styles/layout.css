@@ -823,7 +823,7 @@ html[data-track="kids"] .toc-sidebar {
 
     .docs-sidebar {
         position: fixed;
-        top: 4rem;
+        top: 4.75rem;
         bottom: 0;
         left: -300px;
         z-index: 99;
@@ -839,13 +839,72 @@ html[data-track="kids"] .toc-sidebar {
         padding: 1.5rem;
     }
 
-    .chapter-content-slot {
-        padding: 1rem;
-        overflow-y: auto;
-    }
-
     .chapter-footer {
         padding: 0 1.5rem;
+    }
+
+    /* Clear fixed viewport height restrictions to enable natural page scrolling */
+    .docs-layout {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+    }
+
+    .docs-body-container {
+        height: auto !important;
+        overflow: visible !important;
+        flex-direction: column !important;
+    }
+
+    .docs-main {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 0.5rem !important;
+    }
+
+    .docs-main:has(.docs-content-container),
+    .docs-main:has(.part-container) {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .docs-content-container,
+    .chapter-container,
+    .part-content-slot,
+    .part-content-slot:has(.chapter-tracks) {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .part-container {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 0.5rem !important;
+    }
+
+    .chapter-content-slot {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 0.5rem !important;
+    }
+
+    /* Clean branding header representation */
+    .brand-subtitle {
+        display: none !important;
+    }
+
+    .brand-title {
+        font-size: 1.15rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 260px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-title {
+        display: none !important;
     }
 }
 

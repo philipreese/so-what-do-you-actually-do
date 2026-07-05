@@ -83,8 +83,12 @@
 }
 
 .pane-engineer {
-    flex: 3 1 0;
-    transition: flex 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1; /* fills remaining space automatically */
+    min-width: 0; /* allows panel to shrink without causing horizontal overflow */
+}
+
+.mobile-collapse-wrapper {
+    display: contents;
 }
 
 .secondary-stack {
@@ -92,7 +96,6 @@
     flex-direction: column;
     gap: 1rem;
     min-height: 0;
-    flex: 2 1 0;
 }
 
 .pane-secondary--wife,
@@ -103,13 +106,27 @@
     flex: 1 1 0;
 }
 
-/* Collapsed state: hide the Wife/Kids stack, engineer pane fills the space */
-.chapter-tracks.secondary-collapsed .pane-engineer {
-    flex: 1 1 100%;
-}
+@media (min-width: 901px) {
+    .secondary-stack {
+        width: 420px;
+        flex-shrink: 0;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
 
-.chapter-tracks.secondary-collapsed .secondary-stack {
-    display: none;
+    .pane-secondary--wife,
+    .pane-secondary--kids {
+        min-width: 400px; /* prevents layout text reflow wrapping during collapse transition */
+    }
+
+    /* Collapsed state: slide secondary-stack out using width and negative margin */
+    .chapter-tracks.secondary-collapsed .secondary-stack {
+        width: 0 !important;
+        flex: none !important;
+        opacity: 0;
+        pointer-events: none;
+        margin-left: -1rem !important; /* offsets the gap spacing to prevent layout jump */
+    }
 }
 
 /* Vertical tab: collapses/expands the Wife + Kids panes together */
@@ -120,20 +137,29 @@
     justify-content: center;
     width: 2rem;
     padding: 1rem 0;
-    border: 1px solid var(--pane-engineer-border);
+    border: 1px solid transparent;
     border-radius: 8px;
-    background: var(--pane-engineer-bg);
-    color: var(--text-muted);
+    background-image: linear-gradient(var(--bg-color), var(--bg-color)), 
+                      linear-gradient(to bottom, var(--pane-wife-border), var(--pane-kids-border));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    -webkit-background-clip: padding-box, border-box;
+    color: var(--pane-kids-text);
     cursor: pointer;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tracks-vertical-tab:hover {
-    border-color: var(--pane-engineer-border);
-    background: var(--sidebar-link-hover-bg);
-    color: var(--text-color);
+@media (hover: hover) {
+    .tracks-vertical-tab:hover {
+        background-image: linear-gradient(var(--sidebar-link-hover-bg), var(--sidebar-link-hover-bg)), 
+                          linear-gradient(to bottom, var(--pane-wife-border), var(--pane-kids-border));
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        -webkit-background-clip: padding-box, border-box;
+        color: var(--pane-kids-text);
+    }
 }
 
 .tracks-vertical-tab-label {
@@ -142,6 +168,10 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    background-image: linear-gradient(to bottom, var(--pane-wife-text), var(--pane-kids-text));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Pane UI Containers */
@@ -225,6 +255,7 @@ html[data-track="kids"] .tracks-vertical-tab {
 html[data-track="wife"] .secondary-stack,
 html[data-track="kids"] .secondary-stack {
     flex: 1 1 100%;
+    width: 100% !important;
 }
 
 html[data-track="wife"] .pane-secondary--wife,
@@ -234,12 +265,16 @@ html[data-track="kids"] .pane-secondary--kids {
 
 /* A single track's stack must stay visible even if the reader had previously
    collapsed the Wife/Kids stack while on the Engineer track — otherwise the
-   collapsed state's "display: none" (meant to hide it alongside the visible
-   engineer pane) leaves nothing on screen once the engineer pane is also
+   collapsed state leaves nothing on screen once the engineer pane is also
    hidden by the rules above. */
-html[data-track="wife"] .chapter-tracks.secondary-collapsed .secondary-stack,
-html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
-    display: flex;
+@media (min-width: 901px) {
+    html[data-track="wife"] .chapter-tracks.secondary-collapsed .secondary-stack,
+    html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
+        width: 100% !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin-left: 0 !important;
+    }
 }
 
 /* ==========================================================================
@@ -548,33 +583,106 @@ html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
    ========================================================================== */
 
 @media (max-width: 900px) {
+    .chapter-tracks {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
     .track-panes {
-        flex-direction: column;
-        overflow-y: auto;
-    }
-
-    .chapter-tracks:not(.secondary-collapsed) .pane,
-    .chapter-tracks:not(.secondary-collapsed) .secondary-stack {
-        width: 100%;
-        height: auto;
-        flex: none;
-    }
-
-    .pane {
-        overflow-y: visible;
-    }
-
-    .pane-content {
-        overflow-y: visible;
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+        order: 2 !important;
+        gap: 0 !important;
     }
 
     .tracks-vertical-tab {
-        width: 100%;
-        padding: 0.5rem 0;
-        writing-mode: horizontal-tb;
+        order: 0 !important;
+        width: 100% !important;
+        padding: 0.75rem 0 !important;
+        writing-mode: horizontal-tb !important;
+        border: 1px solid transparent !important;
+        background-image: linear-gradient(var(--bg-color), var(--bg-color)), 
+                          linear-gradient(to right, var(--pane-wife-border), var(--pane-kids-border)) !important;
+        background-origin: border-box !important;
+        background-clip: padding-box, border-box !important;
+        -webkit-background-clip: padding-box, border-box !important;
+        margin-bottom: 1rem !important;
     }
 
     .tracks-vertical-tab-label {
-        transform: none;
+        transform: none !important;
+        background-image: linear-gradient(to right, var(--pane-wife-text), var(--pane-kids-text)) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    .mobile-collapse-wrapper {
+        display: grid !important;
+        grid-template-rows: 1fr !important;
+        transition: grid-template-rows 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        margin-bottom: 1rem !important;
+        width: 100% !important;
+        order: 1 !important;
+    }
+
+    .secondary-stack {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        flex: none !important;
+        overflow: hidden !important;
+    }
+
+    .pane {
+        width: 100% !important;
+        height: auto !important;
+        flex: none !important;
+        overflow: visible !important;
+    }
+
+    .pane-engineer {
+        order: 2 !important;
+    }
+
+    .pane-content {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 1rem !important;
+    }
+
+    .pane-secondary .pane-content {
+        padding: 0 1rem !important;
+    }
+
+    .pane-header {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .pane-secondary--wife,
+    .pane-secondary--kids {
+        height: auto !important;
+        flex: none !important;
+        min-width: 0 !important; /* override desktop static min-width to fit phone screens */
+    }
+
+    .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper {
+        grid-template-rows: 0fr !important;
+        margin-bottom: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Mobile: ensure the collapsed state grid rows/margins are restored when in wife/kids reading tracks */
+    html[data-track="wife"] .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper,
+    html[data-track="kids"] .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper {
+        grid-template-rows: 1fr !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin-bottom: 1rem !important;
     }
 }

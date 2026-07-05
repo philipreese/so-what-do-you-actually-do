@@ -127,7 +127,7 @@ Consider this chapter naming the enemy. The rest of Part I is the fight: couplin
 
 ## Control Flow as a Source of Complexity
 
-**What it is:** Control flow complexity is just a count of how many different paths execution can take through a system. Every branch, every retry, every timeout, every async callback adds one more. String enough of them together and predicting what the system will actually do in a given moment stops being something a person can do in their head.
+**What it is:** Control flow complexity is just a count of how many different paths execution can take through a system — the same idea formalized in static analysis tools as cyclomatic complexity. Every branch, every retry, every timeout, every async callback adds one more. String enough of them together and predicting what the system will actually do in a given moment stops being something a person can do in their head.
 
 **Why it exists:** Systems branch because the world branches: errors need handling, failures need retrying, async work needs coordinating, events need responding to. Some of that is unavoidable — the domain genuinely demands it. A lot of it, though, got added by an implementation that didn't have to branch there and did anyway.
 

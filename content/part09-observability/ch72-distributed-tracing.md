@@ -27,16 +27,16 @@ This chapter is about giving computer systems that same specific, handoff-by-han
 
 ### The Weak Link in the Chain
 
-Picture a scavenger hunt where one clue gets physically handed off from teammate to teammate across five stops. Knowing your team finished in forty minutes tells you almost nothing about where those forty minutes actually went.
+Picture a relay race with five runners, where the baton gets physically handed off from runner to runner across five legs of the track. Knowing your team finished in forty minutes tells you almost nothing about where those forty minutes actually went.
 
-**To find the actual slow spot, each teammate needs to write down exactly when they got the clue and exactly when they handed it off** — so any gap shows up as the space between two specific people, not a mystery hiding somewhere in five vague stops.
+**To find the actual slow spot, each runner needs to write down exactly when they got the baton and exactly when they handed it off** — so any gap shows up as the space between two specific runners, not a mystery hiding somewhere in five vague legs.
 
-If even one teammate forgets to log their handoff time, it's not just their own leg that goes dark. Everyone after them loses the timestamp trail too, since each person's log only makes sense chained to the one before it.
+If even one runner forgets to log their handoff time, it's not just their own leg that goes dark. Everyone after them loses the timestamp trail too, since each person's log only makes sense chained to the one before it.
 
-**And you can't decide ahead of time which handoffs are worth timing closely.** Picking a random one-in-twenty hunt to review in detail almost always lands on a normal one — the slow, broken handoff was never going to show up in a random slice like that. The smarter move is to let every hunt finish first, then go back and look closely at the ones that actually ran long or went sideways. There's nothing to learn from timing the ones that went fine.
+**And you can't decide ahead of time which handoffs are worth timing closely.** Picking a random one-in-twenty race to review in detail almost always lands on a normal one — the slow, broken handoff was never going to show up in a random slice like that. The smarter move is to let every race finish first, then go back and look closely at the ones that actually ran long or went sideways. There's nothing to learn from timing the ones that went fine.
 
 > [!CAR]
-> If one person in a relay forgets to pass along their part, is it fair that everyone after them looks slow too? What would you want the team to do about it?
+> If one runner in a relay forgets to pass along the baton on time, is it fair that everyone after them looks slow too? What would you want the team to do about it?
 
 ---
 
@@ -86,7 +86,7 @@ Trace context (explicit causality):
 
 **Common failure modes:** *The collector memory avalanche.* A platform runs tail-based sampling to guarantee it never misses a failure. A downstream payment gateway degrades, and response times climb from 50ms to 30 seconds across the fleet. Because tail-based sampling has to hold every span until its request resolves, and requests are now taking 30 seconds instead of 50 milliseconds to do that, the collector's in-memory buffer balloons past its capacity and crashes in an out-of-memory loop — blinding the team to all tracing data at the exact moment the incident it was built to catch is actually happening.
 
-**Example:** Google's original Dapper paper, the foundational design nearly every modern tracing system descends from, documented that a stable, low, head-based sampling rate (on the order of 0.01%) was sufficient to observe a web-scale system's behavior without meaningfully taxing host compute budgets. Systems that need per-failure fidelity instead route every span to a local collector whose tail-sampling policy explicitly retains any trace carrying an error status or exceeding a duration threshold, flushing ordinary successful traffic without persisting it.
+**Example:** Google's original Dapper paper, the foundational design nearly every modern tracing system descends from, documented that a stable, low, head-based sampling rate (1 in 1,024 traces, roughly 0.1%) was sufficient to observe a web-scale system's behavior without meaningfully taxing host compute budgets. Systems that need per-failure fidelity instead route every span to a local collector whose tail-sampling policy explicitly retains any trace carrying an error status or exceeding a duration threshold, flushing ordinary successful traffic without persisting it.
 
 ---
 

@@ -122,7 +122,7 @@ Neither side is wrong about the cost it's naming — this is an explicit trade b
 
 ```
 [Attacker]
-   │  harvests a leaked GCP credential from Git history
+   │  extracts a leaked GCP credential from an intermediate Docker image layer
    ▼
 [Codecov's internal infrastructure]
    │  modifies the public Bash Uploader script
@@ -133,8 +133,8 @@ Neither side is wrong about the cost it's naming — this is an explicit trade b
 [Attacker's collection server] → mass harvest of customer secrets
 ```
 
-Codecov's Bash Uploader script was embedded directly into thousands of customer CI pipelines. The breach's origin was an ordinary instance of the version-control exposure this chapter opened with: a static, high-privilege Google Cloud service-account credential had been committed to a Codecov repository, then later removed from the active file — which, as already established, does nothing about what the commit history still retains. An attacker pulled the credential out of that history and used it to gain write access to the storage bucket serving the Bash Uploader script.
+Codecov's Bash Uploader script was embedded directly into thousands of customer CI pipelines. The breach's origin was the same underlying failure this chapter opened with, just at a different layer of infrastructure: a static, high-privilege Google Cloud service-account credential was recoverable from an intermediate layer of a public Docker image, a layer that was never meant to persist once the image finished building. An attacker extracted the credential from that layer and used it to gain write access to the storage bucket serving the Bash Uploader script.
 
 From there, the attacker modified the script itself to silently harvest and exfiltrate the CI environment of every customer pipeline that ran it — and because those pipelines followed the static-injection pattern this chapter's second decision covers, every credential a customer had placed into its build environment (database passwords, API keys, repository tokens, all sitting there as plaintext environment variables) was exactly where the malicious script was positioned to read it. The exploit ran undetected for over two months, harvesting credentials from thousands of enterprises.
 
-Two independent controls from this chapter, either one alone, would have contained it well short of that scale. Pre-commit scanning that caught the credential before it entered Git history would have prevented the initial compromise entirely. And for every downstream customer, credentials obtained through OIDC-based trusted publishing or a dedicated secret manager rather than injected as static environment variables would have handed the malicious script nothing but expired session identifiers. Same structural argument this chapter has been making all along: eliminating a static secret beats managing one better, because there's nothing left in the process environment for even a fully successful exfiltration to steal.
+Two independent controls from this chapter, either one alone, would have contained it well short of that scale. A multi-stage Docker build that discards intermediate layers — or better, eliminating the static service-account key entirely via workload-identity federation — would have prevented the initial compromise entirely. And for every downstream customer, credentials obtained through OIDC-based trusted publishing or a dedicated secret manager rather than injected as static environment variables would have handed the malicious script nothing but expired session identifiers. Same structural argument this chapter has been making all along: eliminating a static secret beats managing one better, because there's nothing left in the process environment for even a fully successful exfiltration to steal.

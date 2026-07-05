@@ -55,6 +55,12 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
       if (!track) return;
       try {
         localStorage.setItem('selectedTrack', track);
+        // Picking the Engineer track from the landing page starts you in the
+        // full technical view with the Wife/Kids stack minimized, since that's
+        // the reading mode this entry point is for.
+        if (track === 'engineer') {
+          localStorage.setItem('secondaryCollapsed', 'true');
+        }
       } catch (e) {}
     });
   });

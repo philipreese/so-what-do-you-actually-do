@@ -1173,3 +1173,12 @@ html[data-track="kids"] .read-toggle-btn.is-read {
         aspect-ratio: 1 / 1;
     }
 }
+
+/* Disable view transition slide/animations on mobile */
+@media (max-width: 900px) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}

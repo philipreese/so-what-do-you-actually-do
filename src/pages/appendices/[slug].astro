@@ -24,5 +24,7 @@ const bannerSrc = getAppendixImage(appendix.letter);
 ---
 
 <PartLayout partNumber={appendix.letter} title={appendix.title} bannerEmoji="📚" eyebrow={`Appendix ${appendix.letter}`} bannerSrc={bannerSrc}>
-  <Fragment set:html={bodyHtml} />
+  <div class="part-body">
+    <Fragment set:html={bodyHtml} />
+  </div>
 </PartLayout>

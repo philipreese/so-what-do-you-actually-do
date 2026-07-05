@@ -27,20 +27,41 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
     </div>
 
     <div class="hero-grid">
-      <div class="grid-card card-engineer">
+      <a href={`${cleanBase}parts/part01`} class="grid-card card-engineer track-card" data-track="engineer">
         <h3>For Engineers</h3>
         <p>The full, deep-dive technical handbook detailing distributed systems, code organization, concurrency, performance, and low-level architecture trade-offs.</p>
-      </div>
+      </a>
 
-      <div class="grid-card card-wife">
+      <a href={`${cleanBase}parts/part01`} class="grid-card card-wife track-card" data-track="wife">
         <h3>For My Wife</h3>
         <p>A warm, jargon-free translation of every chapter's core argument and real-world stakes, written for smart, curious non-engineers.</p>
-      </div>
+      </a>
 
-      <div class="grid-card card-kids">
+      <a href={`${cleanBase}parts/part01`} class="grid-card card-kids track-card" data-track="kids">
         <h3>For My Kids</h3>
         <p>Approachable, simplified explanations of core computing concepts using fun, everyday analogies and friendly mascot illustrations.</p>
-      </div>
+      </a>
     </div>
   </div>
 </DocsLayout>
+
+<script>
+  // Selecting a track box sets it as the site-wide reading track before
+  // navigating to the first chapter, so the chapter pages already render
+  // in that track when the user lands on them.
+  document.querySelectorAll('.track-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const track = card.getAttribute('data-track');
+      if (!track) return;
+      try {
+        localStorage.setItem('selectedTrack', track);
+        // Picking the Engineer track from the landing page starts you in the
+        // full technical view with the Wife/Kids stack minimized, since that's
+        // the reading mode this entry point is for.
+        if (track === 'engineer') {
+          localStorage.setItem('secondaryCollapsed', 'true');
+        }
+      } catch (e) {}
+    });
+  });
+</script>

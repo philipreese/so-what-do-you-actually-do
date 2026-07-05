@@ -26,9 +26,9 @@
   --vocab-chip-bg: #ccd0da;
   --vocab-chip-text: #4c4f69;
 
-  --disagree-bg: #fff8f2; /* Creamy peach/lavender disagree card */
-  --disagree-border: #fcdbb2;
-  --disagree-text: #fe640b;
+  --disagree-bg: #fdf3f4; /* Soft rose disagree card */
+  --disagree-border: #f2c4c9;
+  --disagree-text: #e64553; /* Latte Maroon */
 
   --badge-consensus-bg: #d2f4e1;
   --badge-consensus-text: #40a02b; /* Latte Green */
@@ -37,21 +37,21 @@
   --badge-tradeoff-bg: #fde8b5;
   --badge-tradeoff-text: #df8e1d; /* Latte Yellow */
 
-  --callout-info-bg: #e3effc;
-  --callout-info-border: #adcdf5;
-  --callout-info-text: #1e4a7a;
+  --callout-note-bg: #fdf1d9;
+  --callout-note-border: #f0c975;
+  --callout-note-text: #8a5a0f;
 
   /* Supplementary Tracks variables */
   --pane-engineer-bg: var(--bg-color);
-  --pane-engineer-border: #1e66f5; /* Latte Blue */
+  --pane-engineer-border: #fe640b; /* Latte Peach */
 
   --pane-wife-bg: rgba(236, 72, 153, 0.02);
   --pane-wife-border: #ec4899; /* Pink, not red */
   --pane-wife-text: #ec4899;
 
-  --pane-kids-bg: rgba(217, 119, 6, 0.02);
-  --pane-kids-border: #df8e1d;
-  --pane-kids-text: #d97706;
+  --pane-kids-bg: rgba(32, 159, 181, 0.03);
+  --pane-kids-border: #209fb5; /* Latte Sapphire */
+  --pane-kids-text: #146c7d;
   
   --meta-card-bg: rgba(0, 0, 0, 0.015);
   --meta-card-border: var(--border-color);
@@ -99,9 +99,9 @@
   --vocab-chip-bg: #36394f;
   --vocab-chip-text: #cad3f5;
 
-  --disagree-bg: #2e2524;
-  --disagree-border: #5b3e34;
-  --disagree-text: #f5a97f;
+  --disagree-bg: #2b2024;
+  --disagree-border: #5c333a;
+  --disagree-text: #ee99a0; /* Macchiato Maroon */
 
   --badge-consensus-bg: #1c3224;
   --badge-consensus-text: #a6da95; /* Macchiato Green */
@@ -110,21 +110,21 @@
   --badge-tradeoff-bg: #3c3224;
   --badge-tradeoff-text: #eed49f; /* Macchiato Yellow */
 
-  --callout-info-bg: #1b2f47;
-  --callout-info-border: #2f527c;
-  --callout-info-text: #b6d5f7;
+  --callout-note-bg: #3a2f14;
+  --callout-note-border: #6b5220;
+  --callout-note-text: #eed49f;
 
   /* Supplementary Tracks variables - Dark Mode */
   --pane-engineer-bg: var(--bg-color);
-  --pane-engineer-border: #8cadfa; /* Macchiato Blue */
+  --pane-engineer-border: #f5a97f; /* Macchiato Peach */
 
   --pane-wife-bg: rgba(244, 63, 94, 0.03);
   --pane-wife-border: #fda4af;
   --pane-wife-text: #fda4af;
 
-  --pane-kids-bg: rgba(245, 158, 11, 0.03);
-  --pane-kids-border: #eed49f;
-  --pane-kids-text: #fde047;
+  --pane-kids-bg: rgba(125, 196, 228, 0.04);
+  --pane-kids-border: #7dc4e4; /* Macchiato Sapphire */
+  --pane-kids-text: #8ad4f0;
   
   --meta-card-bg: rgba(255, 255, 255, 0.015);
   --meta-card-border: var(--border-color);

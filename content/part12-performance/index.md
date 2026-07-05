@@ -1,5 +1,25 @@
 # Part XII — Performance
 
+## For My Wife
+
+Before insulating an entire house, an energy auditor doesn't just guess. They walk from room to room with a thermal camera, looking for exactly where the warm air is actually escaping. It's usually not "the whole west wall," the way everyone in the house has been assuming for years. It's one guest-room window with a bad seal, quietly costing more than the rest of the house combined.
+
+**This is the book's last part, and it exists to answer a question every earlier part deliberately set aside:** given that the cost of changing a system matters more than the cost of running it, in almost every case — what do you actually do in the rare case where running speed is the thing that genuinely matters? The answer this part insists on is the same one the auditor uses: measure first, and fix only the specific thing measurement points to, not the thing that merely feels slow.
+
+**The expensive mistake was never "not fixing performance."** It's re-insulating the whole house because one window felt drafty — spending real money and real disruption solving a problem you never actually located, while the one window that was costing you stays exactly as drafty as it started.
+
+## For My Kids
+
+The house feels cold, so you could just assume the whole house needs new windows.
+
+**Instead, you go room to room** with your hand held out near each window, feeling for the one spot where cold air is actually sneaking in.
+
+Most of the windows are fine. It turns out to be one window in the hallway with a gap you can't even see, just barely feel — and that one gap has been costing more warm air than every other window in the house combined.
+
+**This last part of the book is that hand-out-near-the-window check**, applied to anything that "feels slow." Feeling slow and actually knowing where the slowness lives are two different things, and only one of them tells you which window to actually fix.
+
+---
+
 This is the book's last Part, and it exists to answer a question every earlier Part deliberately deferred: given that cost of change dominates cost of execution for most systems (Ch 01), what do you actually do in the minority of cases where execution cost is the thing that matters? It draws directly on Part I's cost-model vocabulary (Ch 06's latency hierarchy, Ch 08's Little's Law and Theory of Constraints), on Part II's abstraction-layer arguments (Ch 14's indirection tax, Ch 10's monolith-versus-service trade-off), and on Part X's concurrency machinery, since a measured bottleneck is just as often a lock or a scheduling decision as a slow function. Where Part IX built the instruments to observe a system and Part X built the vocabulary for coordinating concurrent work, Part XII is where those tools get pointed at a specific, numeric question and used to justify a specific, measured change.
 
 The Part's structure is a strict discipline, not a grab-bag of techniques, and the chapter order enforces it. Ch 85 is the gate everything else in the Part passes through: performance work is only justified once a documented requirement is actually being violated and a measured bottleneck, not a merely slow-looking component, has been identified. Ch 86 supplies the method the gate presupposes — profiling before optimizing, and profiling correctly, since an instrumenting profiler's overhead can distort the very bottleneck it's measuring. Ch 87, Ch 88, and Ch 89 are three domains where that gate-then-measure discipline gets applied concretely: the latency-versus-throughput trade-off that makes "make it faster" an ambiguous request, the caching layer where Ch 02's own cache-invalidation example finally gets resolved rather than just cited, and data structure selection, where Ch 06's cache-locality example is generalized into a full methodology and the handbook's recurring N+1 problem — first seen in Ch 04's leaky ORM, then Ch 15's API surface, then Ch 18's cross-service fan-out — gets named as one underlying mistake at last.

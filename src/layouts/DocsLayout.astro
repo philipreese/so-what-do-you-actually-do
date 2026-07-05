@@ -49,6 +49,18 @@ const activePartSlug = parts.find(
       };
       document.documentElement.setAttribute('data-theme', getTheme());
     </script>
+
+    <!-- Reading track initialisation (Runs immediately to prevent layout flashes) -->
+    <script is:inline>
+      const getTrack = () => {
+        try {
+          const stored = localStorage.getItem('selectedTrack');
+          if (stored === 'engineer' || stored === 'wife' || stored === 'kids') return stored;
+        } catch (e) {}
+        return 'engineer';
+      };
+      document.documentElement.setAttribute('data-track', getTrack());
+    </script>
   </head>
   <body>
     <div class="docs-layout" id="docsLayout">
@@ -76,6 +88,13 @@ const activePartSlug = parts.find(
         </div>
         
         <div class="header-right">
+          <!-- Reading Track Switcher -->
+          <div class="track-switcher" id="trackSwitcher" role="group" aria-label="Reading track">
+            <button type="button" class="track-switcher-btn" data-track="engineer" title="For Engineers">Engineer</button>
+            <button type="button" class="track-switcher-btn" data-track="wife" title="For My Wife">Wife</button>
+            <button type="button" class="track-switcher-btn" data-track="kids" title="For My Kids">Kids</button>
+          </div>
+
           <!-- Theme Toggle -->
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light Mode">
             <!-- Sun Icon (shown in dark mode) -->
@@ -193,6 +212,18 @@ const activePartSlug = parts.find(
 
     <!-- Client-side Interactive Scripts -->
     <script>
+      // Reading Track Switcher Logic
+      document.querySelectorAll('.track-switcher-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const track = btn.getAttribute('data-track');
+          if (!track) return;
+          document.documentElement.setAttribute('data-track', track);
+          try {
+            localStorage.setItem('selectedTrack', track);
+          } catch (e) {}
+        });
+      });
+
       // Theme Toggle Logic
       const themeToggle = document.getElementById('themeToggle');
       themeToggle?.addEventListener('click', () => {

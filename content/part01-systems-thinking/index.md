@@ -1,5 +1,33 @@
 # Part I — Systems Thinking
 
+## For My Wife
+
+> *Before you're allowed to actually drive anywhere, you spend a few weeks learning things that have nothing to do with any specific trip — right-of-way, stopping distance, what a yellow light really means.*
+
+**Nobody starts driver's ed by practicing the drive to the grocery store.** You learn a set of rules that don't belong to any particular destination — who yields, how much distance a car actually needs to stop, what the paint on the road is trying to tell you. None of it feels like progress at the time. You're not going anywhere yet. But every real drive you take afterward, to anywhere, quietly assumes you already know all of it.
+
+This part is that stretch of driver's ed. It doesn't build anything you could point to — no service, no feature, no shipped decision. It hands over vocabulary instead: what a system is actually trying to balance at once, why complexity is the real enemy rather than size, what happens when a decision reaches further than anyone meant it to. Later parts are the actual driving — where to build, how to structure an API, what to test. Every one of those chapters uses a word this part defined first.
+
+**Skip this part and the words don't disappear.** You just end up guessing at rules everyone around you already agreed on, the way a driver who skipped the classroom part eventually finds out what a yield sign means — usually at an intersection, usually from someone else's horn.
+
+## For My Kids
+
+> *You don't get handed the ball on day one of a new sport — you learn the rules everybody else already knows first.*
+
+Say you join a soccer team partway through the season. Everyone else has been playing for months.
+
+You don't know what offside means. You don't know why the ref blew the whistle for a throw-in. You don't know why nobody's allowed to touch the ball with their hands except one person.
+
+**You could just run out and start playing.** But you'd be confused constantly, and you'd probably break a rule nobody thought to explain, because they forgot anyone would ever not know it.
+
+So before your first real game, someone walks you through the rules — not because rules are the fun part, but because every play the team runs later assumes you already know them.
+
+This part of the book is that walk-through. It's not a game yet. It's the rules the games use.
+
+**Skip it, and every chapter after this one will use a word you've never heard** — the way a kid who skipped the rules talk spends their first real game a step behind, not because they're bad at soccer, but because nobody told them what offside meant before the whistle blew.
+
+---
+
 You're starting at the beginning because there isn't a version of this book that works out of order. Every later part — architecture, APIs, testing, concurrency, performance — is really the same handful of ideas applied to a new surface: what is this trading off, what did that trade-off cost somewhere else, and who has to live with it. Those ideas don't have a natural home in any single downstream topic, so they get established once, here, before any of the "real" decisions start.
 
 That's a different goal from most of what follows. Later parts are organized around decisions: monolith or services, REST or RPC, mock or real dependency. This part is organized around the vocabulary those decisions get made in. Reading it doesn't teach you a technology. It teaches you what question you're actually answering when you reach for one.

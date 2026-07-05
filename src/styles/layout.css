@@ -103,6 +103,51 @@
     gap: 1.25rem;
 }
 
+/* Reading Track Switcher */
+.track-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.track-switcher-btn {
+    padding: 0.4rem 0.7rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.track-switcher-btn:hover {
+    color: var(--text-color);
+    background: var(--sidebar-link-hover-bg);
+}
+
+html[data-track="engineer"] .track-switcher-btn[data-track="engineer"] {
+    background: var(--pane-engineer-border);
+    color: var(--bg-color);
+}
+
+html[data-track="wife"] .track-switcher-btn[data-track="wife"] {
+    background: var(--pane-wife-border);
+    color: var(--bg-color);
+}
+
+html[data-track="kids"] .track-switcher-btn[data-track="kids"] {
+    background: var(--pane-kids-border);
+    color: var(--bg-color);
+}
+
 /* Theme Toggle Trigger */
 .theme-toggle {
     display: flex;
@@ -648,6 +693,12 @@ html[data-theme="light"] .moon-icon {
     overflow-y: auto;
 }
 
+/* The "On this page" TOC tracks headings in the Engineer content only */
+html[data-track="wife"] .toc-sidebar,
+html[data-track="kids"] .toc-sidebar {
+    display: none;
+}
+
 .toc-title {
     margin-bottom: 0.85rem;
     color: var(--text-color);
@@ -751,6 +802,11 @@ html[data-theme="light"] .moon-icon {
 @media (max-width: 1024px) {
     .mobile-toggle {
         display: flex;
+    }
+
+    .track-switcher-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.62rem;
     }
 
     .docs-sidebar {

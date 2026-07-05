@@ -213,6 +213,26 @@
   letter-spacing: 0.08em;
 }
 
+/* Single-track reading mode: show only the selected track, full width */
+html[data-track="wife"] .chapter-tracks .pane-engineer,
+html[data-track="wife"] .pane-secondary--kids,
+html[data-track="wife"] .tracks-vertical-tab,
+html[data-track="kids"] .chapter-tracks .pane-engineer,
+html[data-track="kids"] .pane-secondary--wife,
+html[data-track="kids"] .tracks-vertical-tab {
+  display: none;
+}
+
+html[data-track="wife"] .secondary-stack,
+html[data-track="kids"] .secondary-stack {
+  flex: 1 1 100%;
+}
+
+html[data-track="wife"] .pane-secondary--wife,
+html[data-track="kids"] .pane-secondary--kids {
+  flex: 1 1 100%;
+}
+
 
 /* ==========================================================================
    3. Mascot Placeholder Elements

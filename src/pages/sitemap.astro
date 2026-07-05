@@ -33,7 +33,13 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
                       <span class="t-default">{ch.title}</span>
                       {ch.kidsTitle && <span class="t-kids">{ch.kidsTitle}</span>}
                     </span>
-                    {ch.subtitle && <span class="sitemap-ch-subtitle">{ch.subtitle}</span>}
+                    {ch.subtitle && (
+                      <span class="sitemap-ch-subtitle">
+                        <span class="t-default">{ch.subtitle}</span>
+                        {ch.kidsSubtitle && <span class="t-kids">{ch.kidsSubtitle}</span>}
+                        {!ch.kidsSubtitle && <span class="t-kids">{ch.subtitle}</span>}
+                      </span>
+                    )}
                   </span>
                 </a>
               </li>

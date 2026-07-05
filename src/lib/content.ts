@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
 import { parseChapter, renderChapterHtml, preprocessAlerts } from './parseChapter';
+import { KIDS_METADATA } from './kidsMetadata';
 
 const ROMAN_NUMERALS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 const PART_EMOJIS: Record<string, string> = {
@@ -28,6 +29,8 @@ export interface ChapterInfo {
   partNumber: string; // e.g. "I"
   filePath: string;
   kidsTitle?: string; // e.g. "The Fort Nobody Agreed On" — first ### heading in "## For My Kids"
+  kidsSubtitle?: string;
+  kidsThesis?: string;
 }
 
 export interface PartInfo {
@@ -161,6 +164,8 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
       const chSubtitle = parseChapter(chContent).subtitle;
       const chKidsTitle = extractKidsTitle(chContent);
 
+      const kidsMeta = KIDS_METADATA[chSlug];
+
       const chapterInfo: ChapterInfo = {
         slug: chSlug,
         number: chNumStr,
@@ -170,6 +175,8 @@ export function getAllPartsAndChapters(): { parts: PartInfo[]; chapters: Chapter
         partNumber: roman,
         filePath: chPath,
         kidsTitle: chKidsTitle,
+        kidsSubtitle: kidsMeta?.subtitle,
+        kidsThesis: kidsMeta?.thesis,
       };
 
       partChapters.push(chapterInfo);

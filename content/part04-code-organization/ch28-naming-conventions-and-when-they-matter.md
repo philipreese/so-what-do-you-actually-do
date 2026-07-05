@@ -25,6 +25,8 @@ Naming is the cheapest form of information hiding there is: a good name communic
 
 ## For My Kids
 
+### The Blue Car That Turned Red
+
 Say your family has one car, and everyone just calls it "the blue car." Works great — until it gets a new paint job after some body work, and now "the blue car" is red.
 
 Anyone who still says "grab the blue car keys" is describing something that plain doesn't exist anymore, and a new babysitter hearing that for the first time would go looking for a car that isn't in the driveway.
@@ -36,6 +38,9 @@ The name was never about the paint — it was about whose car it is, and that pa
 **Nobody gets a warning when a name like "the blue car" goes stale.**
 
 It just quietly keeps getting said long after it stopped being true, and the first person who actually gets tripped up is whoever trusted it literally — standing in the driveway looking for a car that isn't there, while everyone else already knows what "blue car" really means and forgot that a stranger wouldn't.
+
+> [!CAR]
+> Does your family have a nickname for something that stopped matching reality a while ago, like "the blue car"? How would a stranger ever figure that out?
 
 ---
 

@@ -25,6 +25,8 @@ A file tree isn't storage, it's the physical enforcement mechanism for architect
 
 ## For My Kids
 
+### The Binder Labeled "Stuff"
+
 Say you organize your school binders one of two ways. Either by subject — one binder holds everything for Math: notes, homework, old tests, all together — or by type — one binder holds every subject's notes, a separate one holds every subject's homework, a third holds every test from every class.
 
 Most people go with subject, for a good reason: when Math switches to a new unit, you open exactly one binder. Organize by type instead, and that same switch means checking three different binders to update one class.
@@ -36,6 +38,9 @@ For an actual student juggling six classes, that's the rare exception, not how y
 **Then there's the folder every backpack somehow grows: the one labeled "stuff," or nothing at all.** Random worksheets, an old permission slip, a flyer you meant to read — nobody decided any of it belongs together, it just all needed somewhere to go that wasn't a real decision.
 
 Six weeks in, that folder is the thickest one in your bag, and finding anything specific inside means dumping the whole thing on your desk and starting over.
+
+> [!CAR]
+> Do you have a "stuff" pile somewhere, in your backpack or room, where things end up because nobody decided where they actually belong? What would it take to actually sort it?
 
 ---
 

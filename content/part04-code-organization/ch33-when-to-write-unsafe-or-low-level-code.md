@@ -25,6 +25,8 @@ And the rule for removing the cap is non-negotiable: put it back on immediately,
 
 ## For My Kids
 
+### The Sharp Knife That Went Back in the Drawer
+
 Say your family keeps the good sharp chef's knife locked away, and you're allowed the safe, dull one for basically everything — it cuts fine, and nobody's getting hurt reaching for it.
 
 **Once in a while, a real recipe actually needs the sharp knife** — paper-thin garlic that the dull one just mushes instead of slicing. That's a real, specific reason, not "the dull one's kind of annoying today." You get the sharp knife out, for that one task, for as long as that task takes.
@@ -32,6 +34,9 @@ Say your family keeps the good sharp chef's knife locked away, and you're allowe
 **The part that actually matters is what happens right after.** You don't leave the sharp knife sitting on the counter because you might need it again in twenty minutes. You wash it, put it straight back where it locks up, and if your little brother's going to be in the kitchen later, you say something: "I used the sharp knife for the garlic, it's put away now." Skip that last part, and the real danger isn't the slicing — it's a six-year-old finding a knife on the counter that isn't supposed to be there, with nobody around who remembers leaving it out.
 
 **The dull knife stays the right choice almost every single time.** The sharp one earns its one use only because the job genuinely needed it, and it earns being trusted again only because it went straight back to being locked up the second the job was done.
+
+> [!CAR]
+> Is there a tool or privilege at home you're only allowed to use for a specific reason, like the sharp knife? What's the rule about putting it away afterward, and why do you think that rule exists?
 
 ---
 

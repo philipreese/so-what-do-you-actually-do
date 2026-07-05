@@ -24,6 +24,8 @@ The stakes are concrete: an API that exposes raw offset pagination to the public
 
 ## For My Kids
 
+### The List That Kept Moving
+
 Say the team roster gets posted on the locker room door, and the office keeps stapling new permission slips to the very front of the stack as they come in. You ask the coach, "skip the first 200 names, read me the next 10." Fine the first time — but every time you ask again, whoever's reading has to recount from name one, and it gets slower the deeper into the list you go.
 
 **Here's the part that actually breaks: while you're reading, the office staples five more names to the front.** Everyone's position just shifted. The name you thought was 201st might now be 206th. Ask for "the next 10 after position 200" again and you could see the same name twice, or skip someone entirely — not because anyone made a mistake, just because the list moved while you weren't looking.
@@ -31,6 +33,9 @@ Say the team roster gets posted on the locker room door, and the office keeps st
 **The fix is asking a different kind of question.** Instead of "skip 200," you say "give me the next 10 names after Jordan Smith." Whoever's reading jumps straight to Jordan's name and keeps going — no recounting from the top, and it doesn't matter how many names got added to the front, because you were never depending on a position number in the first place.
 
 **The one thing you give up is jumping straight to "position 500."** You can only move forward from wherever you actually last stopped — a fair trade for never again seeing your own name twice, or worse, not seeing it at all.
+
+> [!CAR]
+> Would you rather track your place in a moving list by a number, or by "the name right before mine"? Which one would actually work if the list kept changing?
 
 ---
 

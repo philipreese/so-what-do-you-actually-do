@@ -24,6 +24,8 @@ The cost of skipping all this isn't theoretical. An API with no changelogs, no d
 
 ## For My Kids
 
+### The Shortcut a Dozen Kids Started Using
+
 Say you find a shortcut through the woods behind your house that shaves five minutes off the walk to school. At first it's just yours — you never told anyone it existed, you just use it.
 
 **Then your friend notices you always show up early, asks how, and you show her.** She tells someone else. By spring, a dozen kids are cutting through those same woods every morning, and nobody ever asked your permission or checked with you first — they just started relying on a path you never actually promised anyone.
@@ -31,6 +33,9 @@ Say you find a shortcut through the woods behind your house that shaves five min
 **Here's the part that matters: you never agreed to maintain this shortcut for anyone.** It just quietly became something a dozen people depend on anyway, the same way any path enough people know about does. If your family fences off that part of the yard now, you're not breaking a promise you remember making — but you're still breaking a dozen mornings for kids who were never told it might not always be there.
 
 **The lesson isn't "never let anyone find your shortcut."** It's that once enough people are quietly relying on something, it stops mattering whether you ever meant it to be permanent. Enough feet on the same path make it a real path, whether or not anyone official ever agreed to keep it open.
+
+> [!CAR]
+> If a bunch of people started relying on something you only meant for yourself, like your shortcut, would you feel like you owed them a heads-up before changing it?
 
 ---
 

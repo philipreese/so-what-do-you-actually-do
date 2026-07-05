@@ -24,6 +24,8 @@ This chapter argues choosing how to store and organize data inside a computer pr
 
 ## For My Kids
 
+### One Cup at a Time
+
 A friend swears that alphabetizing your whole comic book collection into labeled bins is objectively the better system — and for a collection of five hundred, it absolutely is. For the forty comics actually sitting in your closet right now, just flipping through the stack by hand might genuinely find what you want faster, because the fancy system's advantage only shows up once there's enough stuff to actually need it.
 
 Knowing which system wins in theory, at some huge imagined size, doesn't tell you which one wins for the forty comics you actually have. For that, you just try both and see which one's actually quicker with what's really there.
@@ -35,6 +37,9 @@ Spotting a cup on the couch, walking it to the kitchen, coming back, spotting a 
 Stacking everything you can carry and making a single trip will always beat ten individual sprints back and forth, no matter how fast any one sprint gets.
 
 And that mistake shows up disguised in a dozen different chores if you're not looking for it. The fix was never moving faster room to room. It was noticing there was never a reason to make ten trips when one would do.
+
+> [!CAR]
+> Have you ever caught yourself doing a chore the slow way, one trip at a time, before realizing you could've just carried everything at once? What was it?
 
 ---
 

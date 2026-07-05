@@ -10,13 +10,14 @@ interface HeadingItem {
 interface Props {
   chapterNumber: string;
   title: string;
+  kidsTitle?: string;
   subtitle?: string;
   thesis?: string;
   headings?: HeadingItem[];
   imageSrc?: string;
 }
 
-const { chapterNumber, title, subtitle = '', thesis = '', headings = [], imageSrc } = Astro.props;
+const { chapterNumber, title, kidsTitle, subtitle = '', thesis = '', headings = [], imageSrc } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/\/index\.html$/, '');
 const currentSlug = pathname.split('/').pop() || '';
 ---
@@ -28,7 +29,10 @@ const currentSlug = pathname.split('/').pop() || '';
         <div class="chapter-header-row">
           <div class="chapter-header-left">
             <p class="chapter-eyebrow">Chapter {chapterNumber}</p>
-            <h1>{title}</h1>
+            <h1>
+              <span class="t-default">{title}</span>
+              {kidsTitle && <span class="t-kids">{kidsTitle}</span>}
+            </h1>
             {subtitle && <p class="chapter-subtitle">{subtitle}</p>}
             {thesis && <p class="chapter-thesis">{thesis}</p>}
           </div>
@@ -61,6 +65,7 @@ const currentSlug = pathname.split('/').pop() || '';
     )}
   </div>
   
+  <div class="celebration-anchor" id="celebrationAnchor" aria-live="polite"></div>
   <ReadingFooter currentSlug={currentSlug} type="chapter" />
 </DocsLayout>
 

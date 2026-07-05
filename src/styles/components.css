@@ -210,6 +210,12 @@
     margin-bottom: 0;
 }
 
+/* Invisible marker observed by the reading-progress IntersectionObserver to
+   detect when the reader has scrolled through a pane's content. */
+.pane-end-sentinel {
+    height: 1px;
+}
+
 .pane-engineer {
     border-color: var(--pane-engineer-border);
     background: var(--pane-engineer-bg);

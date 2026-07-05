@@ -31,7 +31,7 @@ Every system optimizes multiple objectives at once — latency, reliability, cos
 
 ### The Fort Nobody Agreed On
 
-> *You can't have the strongest, fastest, and best-looking fort all at once — every choice that helps one of those steals from the others.*
+> *You can't have the strongest fort, the fastest fort to build, and the best-looking fort all at once — every choice that helps one of those steals from the others.*
 
 Say four friends decide to build a fort in the woods over one weekend. Nobody's in charge, but everybody's got an idea. One wants it strong enough to survive the whole summer, storms included. Another wants it done by tonight so you can start hanging out in it. A third wants it to look genuinely impressive when people from school come see it.
 

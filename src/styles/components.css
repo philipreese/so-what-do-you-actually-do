@@ -251,6 +251,12 @@
     letter-spacing: -0.01em;
 }
 
+/* In kids-only reading mode the page h1 already carries the story title,
+   so the in-pane title card would just repeat it. */
+html[data-track="kids"] .pane-secondary--kids .pane-content h3:first-child {
+    display: none;
+}
+
 .pane-label {
     margin: 0;
     font-family: "Plus Jakarta Sans", sans-serif;

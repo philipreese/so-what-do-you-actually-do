@@ -26,7 +26,7 @@ The failure mode the chapter spends most time on is what happens when you split 
 
 ## For My Kids
 
-### Splitting Up but Still Texting Every Ten Minutes
+### Still Texting Every Ten Minutes
 
 Say your group project is due Friday. The simplest way to do it is everyone working together at one kitchen table, same afternoon. Someone's slide doesn't match someone else's? You catch it in five seconds, because you're all sitting right there.
 

@@ -778,6 +778,13 @@ html[data-track="kids"] .toc-sidebar {
     display: none;
 }
 
+/* The subtitle and thesis speak the engineer track's language; hide them
+   when the kids track owns the page. */
+html[data-track="kids"] .chapter-subtitle,
+html[data-track="kids"] .chapter-thesis {
+    display: none;
+}
+
 .toc-title {
     margin-bottom: 0.85rem;
     color: var(--text-color);

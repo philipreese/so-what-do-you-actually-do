@@ -25,7 +25,7 @@ A file is a unit of comprehension, not a unit of syntax — the question was nev
 
 ## For My Kids
 
-### Sorting Legos by Build, Not by Bin Size
+### Sorting Legos by Build
 
 Say you're sorting a huge tub of Legos. You don't decide what goes in which bin by how many pieces fit — you decide by which build the pieces actually belong to.
 

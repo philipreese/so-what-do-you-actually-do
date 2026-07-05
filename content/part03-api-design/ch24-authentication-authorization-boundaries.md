@@ -24,7 +24,7 @@ The practical upshot is that signed credentials (the thing that says "this speci
 
 ## For My Kids
 
-### The Badge That Didn't Know Whose Errand It Was
+### The Badge and the Errand
 
 Say only 8th graders are allowed in the library's back study room, checked by scanning a badge at the door. You're in 6th grade, so you ask an 8th-grade friend to grab your bag from that room since you left it there.
 

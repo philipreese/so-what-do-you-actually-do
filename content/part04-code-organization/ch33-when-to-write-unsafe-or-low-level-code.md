@@ -25,7 +25,7 @@ And the rule for removing the cap is non-negotiable: put it back on immediately,
 
 ## For My Kids
 
-### The Sharp Knife That Went Back in the Drawer
+### The Sharp Knife Rule
 
 Say your family keeps the good sharp chef's knife locked away, and you're allowed the safe, dull one for basically everything — it cuts fine, and nobody's getting hurt reaching for it.
 

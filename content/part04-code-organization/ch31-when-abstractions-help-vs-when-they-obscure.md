@@ -27,7 +27,7 @@ That's the whole argument in this chapter, applied to code instead of remotes. P
 
 ## For My Kids
 
-### The Chore Wheel Built for Six Kids You Don't Have
+### The Six-Kid Chore Wheel
 
 Say it's your turn to do the dishes tonight, then your sibling's turn tomorrow, forever — that's the whole system, always has been. A magnet on the fridge that just says "Dish Duty: You" or "Dish Duty: Sam," flipped each night, does the entire job.
 

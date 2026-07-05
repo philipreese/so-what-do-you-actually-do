@@ -27,7 +27,7 @@ The practical benefit the chapter emphasizes is *not* "you can swap payment proc
 
 ## For My Kids
 
-### The Shopping List Only One Driver Could Read
+### The One-Driver Shopping List
 
 Say you're captain of your team's science fair project, and a different parent volunteer drives you to the store for supplies each week. You write the list yourself, in your own plain words: "poster board, three highlighter colors, a glue stick."
 

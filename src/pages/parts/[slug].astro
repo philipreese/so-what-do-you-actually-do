@@ -18,7 +18,10 @@ const rawIntro = fs.readFileSync(part.filePath, 'utf-8');
 const { wifeHtml, kidsHtml, cleanMarkdown } = splitPartTracks(rawIntro);
 
 // Drop the leading "# Part I — ..." heading; the layout already renders the title.
-let bodyMarkdown = cleanMarkdown.replace(/^#[^\n]*\n/, '');
+let bodyMarkdown = cleanMarkdown.replace(/^#[^\n]*\n/, '').trim();
+if (bodyMarkdown.startsWith('---')) {
+  bodyMarkdown = bodyMarkdown.replace(/^---\s*/, '');
+}
 
 const base = import.meta.env.BASE_URL || '/';
 const cleanBase = base.endsWith('/') ? base : base + '/';

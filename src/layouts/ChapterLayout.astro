@@ -125,3 +125,144 @@ const currentSlug = pathname.split('/').pop() || '';
   // Watch for click events on the toggle to re-initialize scroll spy
   document.getElementById('toggle-secondary-btn')?.addEventListener('click', () => setTimeout(setupScrollSpy, 150));
 </script>
+
+<script>
+  // Reading Progress: per-track "read chapter" + "last visited" tracking.
+  //
+  // A chapter counts as read for a track once the reader has (a) reached the
+  // bottom of that track's visible pane — via a sentinel element observed with
+  // an IntersectionObserver rooted on the pane's own scroll container — AND
+  // (b) spent at least a minimum dwell time on the page. Short sections that
+  // fit on screen without scrolling satisfy (a) immediately and simply wait
+  // out the dwell timer.
+  const DWELL_MS = 3000;
+  const pageLoadTime = Date.now();
+
+  const currentSlug = document.querySelector('.chapter-container')?.getAttribute('data-chapter-slug') || '';
+
+  function currentTrack(): string {
+    return document.documentElement.getAttribute('data-track') || 'engineer';
+  }
+
+  function getReadChapters(track: string): Record<string, boolean> {
+    try {
+      return JSON.parse(localStorage.getItem(`readChapters:${track}`) || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function recordLastVisited(track: string) {
+    if (!currentSlug) return;
+    try {
+      localStorage.setItem(`lastVisited:${track}`, currentSlug);
+    } catch (e) {}
+  }
+
+  // Record immediately, then keep it in sync if the reader switches tracks
+  // while still on this chapter.
+  recordLastVisited(currentTrack());
+
+  const paneBottomReached: Record<string, boolean> = { engineer: false, wife: false, kids: false };
+  const alreadyHandled: Record<string, boolean> = { engineer: false, wife: false, kids: false };
+
+  function totalChapterCount(): number {
+    return Number(document.getElementById('sidebarProgress')?.getAttribute('data-total') || 0);
+  }
+
+  function celebrate(readCount: number) {
+    const anchor = document.getElementById('celebrationAnchor');
+    if (!anchor) return;
+    anchor.innerHTML = '';
+
+    const toast = document.createElement('div');
+    toast.className = 'celebration-toast';
+    toast.textContent = `${readCount} of ${totalChapterCount()}!`;
+    anchor.appendChild(toast);
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const burst = document.createElement('div');
+      burst.className = 'celebration-confetti';
+      const colors = ['#209fb5', '#ec4899', '#f0c975', '#7287fd', '#40a02b'];
+      for (let i = 0; i < 18; i++) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.setProperty('--x', `${Math.round((Math.random() - 0.5) * 220)}px`);
+        piece.style.setProperty('--rot', `${Math.round((Math.random() - 0.5) * 360)}deg`);
+        piece.style.setProperty('--delay', `${(Math.random() * 0.15).toFixed(2)}s`);
+        piece.style.background = colors[i % colors.length];
+        burst.appendChild(piece);
+      }
+      anchor.appendChild(burst);
+      setTimeout(() => burst.remove(), 1200);
+    }
+
+    setTimeout(() => toast.classList.add('celebration-toast--fade'), 2200);
+    setTimeout(() => toast.remove(), 2700);
+  }
+
+  function maybeMarkRead(track: string) {
+    if (!currentSlug || alreadyHandled[track] || !paneBottomReached[track]) return;
+    if (Date.now() - pageLoadTime < DWELL_MS) return;
+
+    alreadyHandled[track] = true;
+
+    const read = getReadChapters(track);
+    if (read[currentSlug]) return; // already marked in a previous visit
+
+    read[currentSlug] = true;
+    try {
+      localStorage.setItem(`readChapters:${track}`, JSON.stringify(read));
+    } catch (e) {}
+
+    window.dispatchEvent(new CustomEvent('reading-progress-updated', { detail: { track, slug: currentSlug } }));
+
+    if (track === 'kids') {
+      const count = Object.values(read).filter(Boolean).length;
+      celebrate(count);
+    }
+  }
+
+  // One IntersectionObserver per track, rooted on that track's own scrollable
+  // pane, watching the sentinel at the bottom of its content.
+  const paneSelectors: Record<string, string> = {
+    engineer: '.pane-engineer',
+    wife: '.pane-secondary--wife',
+    kids: '.pane-secondary--kids',
+  };
+
+  Object.entries(paneSelectors).forEach(([track, selector]) => {
+    const scroller = document.querySelector(`${selector} .pane-content`);
+    const sentinel = scroller?.querySelector('.pane-end-sentinel');
+    if (!scroller || !sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            paneBottomReached[track] = true;
+            maybeMarkRead(track);
+          }
+        });
+      },
+      { root: scroller, threshold: 0 }
+    );
+    observer.observe(sentinel);
+  });
+
+  // Dwell-time fallback: catches panes whose sentinel was already
+  // intersecting (content shorter than the pane) before the dwell elapsed.
+  setTimeout(() => {
+    Object.keys(paneBottomReached).forEach((track) => maybeMarkRead(track));
+  }, DWELL_MS + 50);
+
+  // Keep the "last visited" bookmark current, and re-check read eligibility,
+  // whenever the reader switches tracks while on this chapter.
+  const trackObserver = new MutationObserver(() => {
+    const track = currentTrack();
+    recordLastVisited(track);
+    maybeMarkRead(track);
+  });
+  trackObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-track'] });
+</script>

@@ -160,7 +160,6 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
     }
 
     const searchResult = await pagefind.search(query);
-    console.log("Pagefind search results for:", query, searchResult);
     
     if (searchResult.results.length === 0) {
       if (resultsList) {
@@ -185,7 +184,6 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
     // Load top 6 results for fast display
     const topResults = searchResult.results.slice(0, 6);
     currentSearchData = await Promise.all(topResults.map((r: any) => r.data()));
-    console.log("Pagefind resolved data:", currentSearchData);
     
     displayResults();
   }

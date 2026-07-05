@@ -72,6 +72,21 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* Day/Night hero mascot theme toggle */
+.hero-img-dark {
+  display: none !important;
+}
+.hero-img-light {
+  display: block !important;
+}
+
+html[data-theme="dark"] .hero-img-dark {
+  display: block !important;
+}
+html[data-theme="dark"] .hero-img-light {
+  display: none !important;
+}
+
 .hero-content {
   text-align: left;
 }

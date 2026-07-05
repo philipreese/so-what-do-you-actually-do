@@ -25,6 +25,8 @@ This chapter argues computer programs face the exact same choice, and the questi
 
 ## For My Kids
 
+### The Group Project Trap
+
 Two totally different jobs get lumped into one group project. Someone has to actually sit down and write the five-page report from scratch, start to finish — that's real, continuous work; there's no shortcut, they just have to keep at it.
 
 Someone else has to round up supplies: text five different classmates, wait for each one to write back, then move on while waiting. That job isn't busy the whole time. It's mostly waiting on other people's replies, one after another, and a single person can juggle all five texts loosely without needing five separate messengers.
@@ -32,6 +34,9 @@ Someone else has to round up supplies: text five different classmates, wait for 
 Confuse the two jobs and you get trouble. Put your best writer on chasing texts, and now they're checking their phone every ninety seconds instead of writing — five separate replies fracturing the one long, focused task the report actually needed.
 
 **Worse: hand the report-writer job to someone who's also supposed to be juggling those five texts, and the report gets zero attention until every single reply is in.** One slow classmate now holds up the entire project — not because writing five pages is hard, but because texting was never something that needed anyone's full, undivided attention in the first place.
+
+> [!CAR]
+> Has a group project ever put you on the wrong kind of job — one that needed your full focus while you were also supposed to be juggling something else? What would you set up differently next time?
 
 ---
 

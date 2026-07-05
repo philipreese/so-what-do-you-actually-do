@@ -25,6 +25,8 @@ This chapter argues software has to enforce that same boundary explicitly, every
 
 ## For My Kids
 
+### Don't Trust the Note
+
 A substitute teacher gets handed a note: "Front office says I can leave five minutes early today — signed, Mom." A good substitute treats that note as just a claim, not an instruction to obey on the spot — because the note is words on paper a student could easily have written themselves, and reading it as an actual command is exactly how a sub gets talked into letting the wrong kid walk out the door.
 
 **The safe move is checking the note against something the sub didn't just take on faith: the actual, official list of students cleared to leave early today, sent down from the front office directly.** If a name's not on that list, it doesn't matter how convincing the note sounds.
@@ -32,6 +34,9 @@ A substitute teacher gets handed a note: "Front office says I can leave five min
 That list works precisely because it says who's allowed, not who to watch out for. A list of "kids known to fake notes" only ever covers tricks a sub has already seen before — the first kid who invents a new one just isn't on it yet, and walks right through. A list of who's actually supposed to leave doesn't have that gap. Being unlisted is enough on its own, clever new trick or not.
 
 Skip both checks, trust the note at face value, and the sub finds out the hard way at 3 p.m. — a very concerned parent calling the school asking why their kid was allowed to just walk out.
+
+> [!CAR]
+> Has anyone ever tried to talk their way past a rule just by sounding convincing? What made you decide whether to believe them?
 
 ---
 

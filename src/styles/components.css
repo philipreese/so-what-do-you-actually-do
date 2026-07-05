@@ -233,6 +233,18 @@
     color: var(--pane-kids-text);
 }
 
+/* The kid story's opening "### Title" heading acts as a display title card
+   for that chapter's story — bigger and more editorial than a normal h3. */
+.pane-secondary--kids .pane-content h3:first-child {
+    margin: 0 0 1rem;
+    color: var(--pane-kids-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.85rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
 .pane-label {
     margin: 0;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -275,6 +287,26 @@ html[data-track="kids"] .pane-secondary--kids {
         pointer-events: auto !important;
         margin-left: 0 !important;
     }
+}
+
+/* ==========================================================================
+   2b. Kid-facing Title Toggles
+   Every chapter-title render site emits both the default title and (when
+   available) the kid-story title as sibling spans; CSS picks the one that
+   matches the active reading track. Falls back to the default title alone
+   when a chapter has no migrated kids title yet.
+   ========================================================================== */
+
+.t-kids {
+    display: none;
+}
+
+html[data-track="kids"] .t-default {
+    display: none;
+}
+
+html[data-track="kids"] .t-kids {
+    display: inline;
 }
 
 /* ==========================================================================
@@ -366,6 +398,48 @@ html[data-track="kids"] .pane-secondary--kids {
     --callout-border: var(--callout-note-border);
     --callout-label-color: var(--callout-note-text);
     --callout-text: var(--callout-note-text);
+}
+
+/* CAR variant — "Question for the car": a warm closing card for the Kids
+   pane, not a warning box. Uses the Kids track teal accent throughout. */
+.callout--car {
+    position: relative;
+    display: flex;
+    gap: 0.6rem;
+    margin: 2rem 0 0.5rem;
+    padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    border: 1.5px solid var(--callout-car-border);
+    border-left: 1.5px solid var(--callout-car-border);
+    border-radius: 12px;
+    background: var(--callout-car-bg);
+}
+
+.callout--car::before {
+    content: "🚗";
+    position: absolute;
+    top: 1.15rem;
+    left: 1.15rem;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.callout--car .callout__label {
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--callout-car-text);
+}
+
+.callout--car p {
+    margin: 0;
+    color: var(--callout-car-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
 }
 
 .meta-card {

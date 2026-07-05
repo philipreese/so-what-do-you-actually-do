@@ -25,6 +25,8 @@ This chapter is about the same trade-off inside a computer program that's doing 
 
 ## For My Kids
 
+### One Bowl, Five Hands
+
 **Movie night with five people and one big bowl of popcorn in the middle is efficient — one bowl, no extra dishes — and it works exactly as long as everyone glances first before reaching in.** The instant two hands dive in at the same second without looking, you get a collision: buttery fingers colliding, popcorn on the floor, an argument about whose handful that actually was.
 
 Give everyone their own bowl instead and that collision becomes impossible — nobody's hand is ever in someone else's bowl to begin with. But now there are five bowls to wash, and if you actually want to share your good kettle corn with your sister, you can't just reach across — you have to physically pass the bowl over.
@@ -32,6 +34,9 @@ Give everyone their own bowl instead and that collision becomes impossible — n
 Most families land somewhere in between without even thinking about it: everyone gets their own bowl, but the remote stays one shared object in the middle, handed back and forth on purpose because there's only one TV.
 
 **The one thing worth remembering: the shared bowl only stays safe as long as everyone reliably looks before reaching in.** With five overtired kids all reaching at once during the best part of the movie, "reliably" is exactly the part that stops holding — and that's the night popcorn ends up all over the couch.
+
+> [!CAR]
+> Would you rather share one bowl of your favorite snack and risk a messy grab, or have your own bowl and have to pass things across every time you want to share?
 
 ---
 

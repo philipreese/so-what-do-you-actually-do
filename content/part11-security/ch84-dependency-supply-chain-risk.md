@@ -25,6 +25,8 @@ This chapter argues that most of the small pieces of borrowed code a program dep
 
 ## For My Kids
 
+### Same Name, New Person
+
 *A fresh update this morning doesn't tell you whether whoever's actually behind it deserves the same trust as whoever was behind it last time.*
 
 Your grade's shared notes document for a class has been going strong for two years. Same title at the top, same familiar name everyone trusts, updated faithfully before every single test. You've never met most of the people who've actually typed into it — it's been passed from class rep to class rep as each one graduates or drops the class, and whoever's turn it is just keeps adding to the same doc under the same name.
@@ -32,6 +34,9 @@ Your grade's shared notes document for a class has been going strong for two yea
 That's exactly how a lot of the tools your favorite apps quietly depend on work too: the name and the "last updated" date look exactly the same, semester after semester, even as the actual person behind it changes hands completely, sometimes more than once, with nobody re-checking whether the new person is even trustworthy.
 
 Copy blindly from that doc without ever checking who's actually maintaining it lately, and you might study confidently for a test using notes that are current, freshly updated, and quietly, completely wrong — because nobody ever asked whether the new person behind the same familiar title deserved the same trust as the last one.
+
+> [!CAR]
+> Would you trust a shared notes document just because the name and format never changed, or would you want to know who's actually been writing in it lately?
 
 ---
 

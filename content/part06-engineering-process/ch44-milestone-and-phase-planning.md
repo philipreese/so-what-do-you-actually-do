@@ -26,6 +26,8 @@ This chapter argues software projects should be planned the second way: build a 
 
 ## For My Kids
 
+### The Haunted House Walkthrough
+
 Say five friends are building a haunted house in one garage for a Halloween party, each person in charge of a different room.
 
 **One way to do it: each person perfects their own room completely — full decorations, sound effects, everything — before anyone checks how the rooms connect.** Nobody finds out until the night before the party that room three's doorway doesn't line up with room four's, or that two rooms both planned on using the one working fog machine at the same time.
@@ -33,6 +35,9 @@ Say five friends are building a haunted house in one garage for a Halloween part
 **The smarter way: build a rough, empty version of the whole path first** — just walls and doorways, no decorations yet — and walk the whole thing together, room to room, checking it actually connects and nothing's fighting over the same fog machine. It looks embarrassingly bare that first walkthrough. That's fine — the point isn't to be scary yet. **It's finding out, with weeks still on the calendar, whether the whole thing works together — not finding out with one night left and nothing left to do about it.**
 
 **And the party date itself doesn't move, no matter what.** Run out of time before Halloween, and you cut a room — you don't delay trick-or-treating for the whole neighborhood. What flexes is how much gets finished. What never flexes is the date everyone already has plans around.
+
+> [!CAR]
+> Have you ever worked with friends where everyone built their own part of something separately? Did it actually fit together the first time you tried it, or was there a surprise?
 
 ---
 

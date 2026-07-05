@@ -26,6 +26,8 @@ The cost of strict data ownership is that the cheap SQL join across tables is go
 
 ## For My Kids
 
+### The Hamster Fed Three Times
+
 Say your family has a hamster, and three people love that hamster: you, your little brother, and your mom. All three of you genuinely care whether it's been fed today.
 
 **The disaster version: each of you feeds it "to be safe," because you're not sure if anyone else already did.** Nobody checks with anybody else — you all just act on your own best guess. By dinner, the hamster's been fed three separate times by three people who were each trying to help, and now it's sick, and the honest answer is nobody actually knows what happened, because nobody was ever the one keeping track.
@@ -33,6 +35,9 @@ Say your family has a hamster, and three people love that hamster: you, your lit
 **The fix isn't "everyone try harder to remember."** It's picking exactly one person as the one who actually feeds the hamster and marks it on the calendar by the cage. Everyone else checks that calendar before doing anything. Nobody reaches into the cage on a hunch, no matter how much they care or how sure they feel.
 
 **Caring about something and being in charge of it aren't the same job.** Three people caring is what got the hamster overfed in the first place. One clear person holding the real answer — and everyone else asking instead of guessing — is what would have kept it from happening at all.
+
+> [!CAR]
+> Is there something at home that multiple people "help" with but nobody's really in charge of? What usually goes wrong with it?
 
 ---
 

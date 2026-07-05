@@ -24,6 +24,8 @@ The practical upshot is that architectural choices — "add a cache," "make this
 
 ## For My Kids
 
+### The Glue Three Houses Over
+
 Say you're doing homework and you need a pencil. It's in your bag by your feet — you grab it without even standing up. That's about as fast as getting something ever gets.
 
 Now say what you actually need is scissors, sitting in a kitchen drawer downstairs. **That's not "a little slower" than reaching into your bag — it's a completely different category of errand.** Stairs, a drawer, the walk back. Do that fifty times in one afternoon and you'll feel every single trip.
@@ -31,6 +33,9 @@ Now say what you actually need is scissors, sitting in a kitchen drawer downstai
 And say what you actually need is glue, and your friend three houses over has it. That's not a longer version of the pencil grab either. **That's shoes, a phone call, maybe asking a parent for a ride.** Treating it like "basically the same thing, just a bit further" is how a ten-minute homework session eats your whole evening.
 
 The mistake isn't picking the wrong option. It's not noticing which category you're even in before you commit to the trip. And if you already know you'll need five things from downstairs, you go get all five at once — because the cost was never really the object. It was always the walk.
+
+> [!CAR]
+> Think of something you had to fetch or ask for recently — was it a "pencil in your bag" errand or a "friend three houses over" errand, and did you realize that before you started?
 
 ---
 

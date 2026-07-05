@@ -24,6 +24,8 @@ There's a version of this that plays out at the organizational level too. Teams 
 
 ## For My Kids
 
+### The Runner Nobody Trained
+
 Say your relay team has four runners. Three of them are lightning fast. The fourth is solid, but nowhere near as quick, and everyone on the team knows it.
 
 Your team spends a whole month drilling the fastest runner until she shaves two-tenths of a second off her leg. She does it. Genuinely impressive. **Your team's overall race time doesn't move at all.** She was never the problem — the baton was always going to sit with the slow runner for the same stretch of track, and that stretch decides the whole race, no matter how much faster everyone else gets.
@@ -31,6 +33,9 @@ Your team spends a whole month drilling the fastest runner until she shaves two-
 **Here's the part that trips people up:** speeding up your fastest runner feels like obvious progress. The stopwatch even proves it. But the team's actual result was never about any one runner alone — it's the whole chain of handoffs, and only one link in that chain decides how long the chain takes.
 
 The team that beats you next meet is the one that spent that same month working with its fourth runner instead. A small gain there moves the real result. A big gain anywhere else moves nothing, and you still lose by the same two seconds you lost by last time.
+
+> [!CAR]
+> In something your team or family does together, who's the "fourth runner" that actually decides how well the whole thing goes — and does everyone realize it?
 
 ---
 

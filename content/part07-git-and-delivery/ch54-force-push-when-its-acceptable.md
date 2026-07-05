@@ -25,6 +25,8 @@ This chapter is about that exact distinction, applied to a tool programmers use 
 
 ## For My Kids
 
+### The Shared LEGO Road
+
 Say you're building your own section of a LEGO city, alone, and decide halfway through that you don't like how you built the road — so you tear it apart and rebuild it differently. Totally fine. Nobody else was using it. You're the only one affected, and if you mess it up, it's your own two minutes to redo.
 
 **Now say you and your sibling are building the same shared city, and your sibling already connected their whole neighborhood onto the road you're about to rip apart.** If you tear it out and rebuild it without checking first, their entire neighborhood loses its connection with zero warning — they didn't do anything wrong, they just built on top of something that vanished out from under them while they weren't looking.
@@ -32,6 +34,9 @@ Say you're building your own section of a LEGO city, alone, and decide halfway t
 **The fix isn't "never rebuild anything."** It's checking first: has anyone actually built onto this since I last looked? If your sibling hasn't touched it, tear away — it's still effectively just yours. If they have, you either warn them before you touch it, or you don't touch it at all, because the second someone else's work depends on what's there, ripping it out isn't a private decision anymore.
 
 **The rule that actually matters isn't about the road being "shared" by definition** — a lot of the city started out as just yours. It's about who's actually building on it right now. The moment a second person's work depends on something, tearing it out without asking has stopped being your call to make alone.
+
+> [!CAR]
+> Have you ever changed something you thought was just yours, only to find out someone else was already building on it? What happened?
 
 ---
 

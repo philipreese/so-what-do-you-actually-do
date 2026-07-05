@@ -26,6 +26,8 @@ That second part matters more than it sounds like it should. The moment a second
 
 ## For My Kids
 
+### The Ten-Second Skim
+
 Say a friend asks you to check her science fair poster before the judges see it. Spelling's already fine — she ran spellcheck.
 
 What she actually needs from you is different: does the explanation make sense to someone who wasn't standing there watching her do the experiment, and does her conclusion actually match the data on the chart, or does it quietly jump somewhere the numbers don't support.
@@ -37,6 +39,9 @@ Glance at the poster for ten seconds, say "looks great," and hand it back, and y
 If a judge asks a hard question and the argument falls apart, she's caught off guard by a problem a real read-through would have caught the night before, with time left to fix it.
 
 **A real check doesn't need to find something wrong to be worth doing.** Reading it carefully and saying "yeah, this actually holds up" is a completely legitimate outcome — as long as you actually read it to find that out, instead of skimming and hoping.
+
+> [!CAR]
+> Have you ever had someone check your work but you could tell they didn't really look? How did you find out, and what happened next?
 
 ---
 

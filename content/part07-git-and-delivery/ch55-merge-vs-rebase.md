@@ -25,6 +25,8 @@ This chapter is about that same choice, applied to how programmers record the hi
 
 ## For My Kids
 
+### Two Streets, One Dog
+
 Say you and a friend split up to search for a lost dog in the neighborhood — you take Oak Street, she takes Elm Street — and you meet back at the park twenty minutes later, dog found.
 
 **One way to tell the story afterward: "I searched Oak Street while she searched Elm Street, and we both showed up at the park around the same time."** That's the honest shape — two searches happening at once, converging at the end. **The other way: "First I searched Oak Street, then I searched Elm Street, then we found the dog at the park."** Reads cleaner, one tidy sequence — and it quietly erases that two searches were ever happening at the same time. It makes it sound like one person searched alone, street after street.
@@ -32,6 +34,9 @@ Say you and a friend split up to search for a lost dog in the neighborhood — y
 **Neither version is wrong, and the choice matters less than people think.** For the two of you and one dog, twenty minutes, a tidy story is plenty — nobody's asking exactly which minute you hit Oak Street. For a real search-and-rescue operation with six teams covering a town over three days, flattening it into one fake sequence becomes a real problem — knowing which teams covered what, and when, at the same time as each other, genuinely matters for figuring out what got missed.
 
 **The real skill is picking based on whether the parallel part of the story actually matters, and staying consistent about it** — not agonizing over which version sounds more impressive.
+
+> [!CAR]
+> When you tell a story about something you and a friend did together, do you like keeping the two halves separate or squishing it into one simple story? Does it depend on who's listening?
 
 ---
 

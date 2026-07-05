@@ -25,6 +25,8 @@ This chapter argues that a commit message — the short explanation a programmer
 
 ## For My Kids
 
+### The Lab Notebook Habit
+
 Say you're doing a science experiment over several weeks, tweaking your setup a little each time, and you keep a lab notebook. After one round, you write "changed to 2 tablespoons of baking soda."
 
 That tells you what changed. It tells you nothing about why, and in three weeks, you won't remember either.
@@ -36,6 +38,9 @@ It survives long after that exact setup is gone — you'll run a dozen more vers
 **The habit only works if you write it down in the moment, not later.** You will not remember, three weeks and six versions from now, why you made a change that felt obvious at the time.
 
 The reason is only easy to write down for about the next ten minutes. After that, it's already starting to blur, and by the science fair it's gone completely — replaced by a guess dressed up as a memory.
+
+> [!CAR]
+> Have you ever done something and been totally sure you'd remember why later, only to completely forget? What would have helped future-you remember?
 
 ---
 

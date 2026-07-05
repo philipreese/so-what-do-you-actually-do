@@ -27,6 +27,8 @@ This chapter argues companies should treat their passwords and access codes the 
 
 ## For My Kids
 
+### 1-2-3-4 Forever
+
 Say your garage has a keypad, and the code has been 1-2-3-4 for six years. Every kid who's ever needed to grab a bike from in there knows it by now — you gave it out once, years ago, and it's been the same ever since. Nobody remembers anymore exactly who all actually has it memorized.
 
 A smarter garage generates a fresh, temporary code you text to one specific friend for one specific afternoon — it stops working again that same night on its own. If that code ever got passed around, it's already useless by dinner. There was never a permanent secret sitting there for anyone to collect.
@@ -34,6 +36,9 @@ A smarter garage generates a fresh, temporary code you text to one specific frie
 **The hardest part to accept: finding out the old 1-2-3-4 code leaked doesn't mean quietly hoping nobody uses it. It means actually changing the code.** You can't un-tell someone a number they've already heard. The only real fix once a code's been seen by the wrong person is making that exact code stop working entirely — not just feeling better because you decided to be more careful going forward.
 
 Skip that, and the kid who overheard your code freshman year is still walking into your garage senior year, and you'll never even know it was them, because as far as the keypad's concerned, 1-2-3-4 has always been a perfectly valid code.
+
+> [!CAR]
+> If you found out a code or password you'd been using for years had gotten shared with the wrong person, would you actually go change it right away, or would part of you just hope it was fine?
 
 ---
 

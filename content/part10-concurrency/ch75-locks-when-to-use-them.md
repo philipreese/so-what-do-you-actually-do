@@ -25,6 +25,8 @@ This chapter argues that computer programs juggling several things at once shoul
 
 ## For My Kids
 
+### One Hoop, One Rule
+
 *Don't build the second hoop until you've actually watched people standing around waiting for the first one.*
 
 Say your driveway hoop is the only one on the block, and the rule is simple: winner stays, next person waits their turn. Easy rule, one thing to remember, and it works fine as long as people aren't standing around forever waiting to play.
@@ -34,6 +36,9 @@ The tempting fix, the second you see one kid waiting, is a second hoop down the 
 Put the second hoop up before you've actually watched people standing around waiting, and you've just doubled your problems to solve one that might not have been real. Maybe on a normal Tuesday nobody's ever actually waiting more than a minute.
 
 The right move is watching first — actually counting how often someone's standing there with a ball, arms crossed, waiting their turn — before building anything new. One hoop, one simple rule, is the right answer until you've got real proof kids are standing around long enough that it's actually costing you games.
+
+> [!CAR]
+> Have you ever wanted to fix something before you were even sure it was really a problem? What made you decide to wait, or not wait?
 
 ---
 

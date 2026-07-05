@@ -26,6 +26,8 @@ This chapter argues software teams keep several different kinds of written recor
 
 ## For My Kids
 
+### Two Notes on the Fridge
+
 *A grocery list and a note explaining why you switched grocery stores are both stuck to the same fridge — mixing up which one's allowed to go out of date is the actual mistake.*
 
 The grocery list has to be right today. If it still says "milk" after someone already bought milk, you end up with three cartons and no eggs.
@@ -37,6 +39,9 @@ The mistake shows up when people mix the two up. Someone "helpfully" edits the s
 Or the opposite goes wrong: nobody touches the grocery list for a week because it feels like it should stay accurate on its own, and by Thursday it's confidently wrong about what's in the fridge.
 
 A current list only works if someone keeps it current. A decision note only works if nobody "fixes" it to match today. Mix the two up, and next spring, when someone asks why you don't just go back to the corner store, there's no real answer left — just a fridge covered in notes nobody trusts.
+
+> [!CAR]
+> Think of two notes or lists you keep — one that needs to stay updated and one that's supposed to record something that already happened. Have you ever mixed up which was which?
 
 ---
 

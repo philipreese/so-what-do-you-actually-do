@@ -25,6 +25,8 @@ This chapter argues that figuring out why software is slow needs the traffic cam
 
 ## For My Kids
 
+### Watching From the Hallway
+
 Say you want to find out why your morning routine runs so long. One way is your mom standing right over your shoulder with a stopwatch and a clipboard, calling out "socks — twenty-two seconds!" after every single step.
 
 That gets you exact numbers, but it also completely wrecks the thing being measured — nobody moves at their normal pace with someone hovering and narrating their every move, so the numbers you get back are really just how fast you can go while being stared at, not your actual Tuesday morning.

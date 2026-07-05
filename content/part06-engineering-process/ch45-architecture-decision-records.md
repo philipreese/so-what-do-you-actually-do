@@ -26,6 +26,8 @@ This chapter is about writing that same kind of permanent chart entry for big, h
 
 ## For My Kids
 
+### The Lineup Notebook
+
 Say your coach decides, in week one, to start Jamie at first base instead of Alex, and writes down why: "Alex's shoulder is still recovering from spring; Jamie's been the more consistent fielder in practice this month." Not just the decision — the actual reasons, and specifically why Alex didn't get picked.
 
 **Three weeks later, Alex is fully healed and takes over first base instead.** The coach doesn't go back and erase the first note like it never happened. She writes a new one: "Switching to Alex — shoulder's fully cleared, and his bat's been hotter the last two weeks." The old note about Jamie stays exactly as it was, because it was true and correct at the time, for real reasons that genuinely applied then.
@@ -33,6 +35,9 @@ Say your coach decides, in week one, to start Jamie at first base instead of Ale
 **Here's why that matters months later, when someone asks "wait, why was Jamie even starting over Alex back in April?"** The answer's sitting right there, unedited, instead of vanishing the moment the lineup changed — and nobody has to re-argue a decision that already had a good reason, made with information that was genuinely true back then.
 
 **Not every decision needs this treatment, obviously.** Nobody's writing a permanent note about which color batting gloves someone picked. It's for the calls that are hard to undo and that people will still be asking about months later — a real lineup change, not a shoelace choice.
+
+> [!CAR]
+> Has someone ever changed a decision that affected you, and you later wondered why they'd made the original call in the first place? Would knowing their reasons at the time have changed how you felt about it?
 
 ---
 

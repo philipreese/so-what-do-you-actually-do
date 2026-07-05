@@ -25,6 +25,8 @@ This chapter is about that exact choice, applied to how programmers save their w
 
 ## For My Kids
 
+### Scratch Paper or Proof
+
 Say you're solving a math problem, and your scratch paper has fifteen different attempts scribbled on it — false starts, crossed-out mistakes, a "wait, that's wrong" you circled and abandoned twice. Nobody wants that handed in as your actual answer. What you turn in is one clean final version: here's the problem, here's the answer, done.
 
 **Collapsing fifteen messy scratch attempts into one clean answer is exactly right — most of that mess was never worth keeping.** The three minutes you spent chasing a wrong approach before erasing it isn't useful history. It's just what solving something actually looks like while it's still happening.
@@ -32,6 +34,9 @@ Say you're solving a math problem, and your scratch paper has fifteen different 
 **But sometimes the steps themselves genuinely matter, and erasing them loses something real.** A geometry proof with five real, deliberate steps — each one an actual piece of reasoning, not a false start — is worth keeping exactly as written, because a teacher checking your work needs to see which specific step the logic breaks down on, not just a final answer with no path to it.
 
 **The real question was never "clean vs. messy" as a matter of taste.** It's whether what you're keeping was actually a sequence of meaningful steps, or just the ordinary mess of getting to an answer. Keep real steps. Erase actual scratch work. Confusing the two either buries a real proof under a clean-looking final answer, or hands in fifteen crossed-out false starts as if they were the actual point.
+
+> [!CAR]
+> When you're working through something messy, how do you decide what's worth keeping and what's just scratch work you can toss?
 
 ---
 

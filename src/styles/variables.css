@@ -41,6 +41,10 @@
   --callout-note-border: #f0c975;
   --callout-note-text: #8a5a0f;
 
+  --callout-car-bg: rgba(32, 159, 181, 0.06);
+  --callout-car-border: #209fb5; /* Latte Sapphire — matches the Kids track teal */
+  --callout-car-text: #146c7d;
+
   /* Supplementary Tracks variables */
   --pane-engineer-bg: var(--bg-color);
   --pane-engineer-border: #f0a875; /* Soft peach */
@@ -113,6 +117,10 @@
   --callout-note-bg: #3a2f14;
   --callout-note-border: #6b5220;
   --callout-note-text: #eed49f;
+
+  --callout-car-bg: rgba(125, 196, 228, 0.08);
+  --callout-car-border: #7dc4e4; /* Macchiato Sapphire — matches the Kids track teal */
+  --callout-car-text: #8ad4f0;
 
   /* Supplementary Tracks variables - Dark Mode */
   --pane-engineer-bg: var(--bg-color);

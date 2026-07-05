@@ -25,6 +25,8 @@ The second recommendation is about pruning. Some facts on that fridge list can b
 
 ## For My Kids
 
+### Crossing It Off
+
 Your family's chore chart works because it hangs on the actual fridge, in the actual kitchen, where the actual chores happen. The second someone finishes trash duty, they're standing right next to the chart that says trash duty — so crossing it off is one step, not a special trip.
 
 Now imagine the "real" version lived somewhere else instead — a notebook in a drawer upstairs, so it doesn't get messy. Nobody updates that copy in the moment, because updating it means walking away from the dishes to go find it. A week later it still says your little sister owes two loads of laundry she finished on Tuesday.
@@ -33,6 +35,9 @@ Now imagine the "real" version lived somewhere else instead — a notebook in a 
 > Crossing something off the chart isn't losing information — it's the chart doing its job. A chore chart nobody's allowed to erase just turns into a wall of tasks nobody trusts, half of them already done, half of them made up by someone who quit checking months ago.
 
 That's the real risk: not that the chart gets something wrong once, but that it stays wrong long enough that people stop looking at it and start just yelling "did you take out the trash?" across the house instead — which means the chart, accurate or not, has already stopped mattering.
+
+> [!CAR]
+> Do you actually trust your family's chore chart or to-do list, or has it gotten so out of date that everyone just ignores it? What would it take to fix that?
 
 ---
 

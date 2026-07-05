@@ -25,6 +25,8 @@ This chapter argues that teams building software face the identical choice about
 
 ## For My Kids
 
+### The Ten-Minute Band Practice
+
 Say you're in a band with three friends, and everyone's working on their own part — drums, guitar, vocals — separately at home.
 
 **One way: you all get together and play through the song together every single day, even just for ten minutes.** Any mismatch — wrong key, a tempo nobody agreed on — shows up small and immediately, while it's still a two-minute fix.
@@ -32,6 +34,9 @@ Say you're in a band with three friends, and everyone's working on their own par
 **The other way: everyone practices alone for two months and only plays together once, the day before the show.** All those mismatches still exist. They just all show up at the exact same time, stacked on top of each other, the night before you're supposed to perform — and now you're trying to fix four problems at once with no time left.
 
 **Here's the part that actually matters: playing together constantly isn't automatically the right call for every band.** A band that's just messing around for fun, with no show booked for months, doesn't need daily practice together — there's nothing urgent enough yet to make catching mismatches early worth the hassle. It's the band with a show coming up soon, that actually needs to sound right together on a specific night, that can't afford to save all its reconciling for the last possible day.
+
+> [!CAR]
+> If you were working on a group project or in a band, would you rather check in with everyone constantly or wait until the very end to see how it all fits together? Why?
 
 ---
 

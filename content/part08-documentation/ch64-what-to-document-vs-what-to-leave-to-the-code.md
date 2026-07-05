@@ -27,6 +27,8 @@ Some information genuinely doesn't belong taped to any single appliance, though.
 
 ## For My Kids
 
+### Flick It Twice
+
 Say your bike has a gear that skips unless you flick the shifter twice, fast, right before it happens. You've ridden it so long you don't even think about it anymore. Instead of getting it fixed, you started telling anyone who borrows the bike: "flick it twice, trust me."
 
 **That's cheaper than fixing the gear. For today.**
@@ -38,6 +40,9 @@ But bikes don't stay at one weird quirk forever. The brakes need a hard squeeze 
 So if you're not standing there when your little cousin borrows it, none of that gets passed along. They just get a bike with three quirks and zero warnings.
 
 The gear was fixable from day one. Warnings feel free because you're not the one who pays for them later — the kid riding downhill on brakes nobody warned them about is.
+
+> [!CAR]
+> Is there something in your life you've been explaining around instead of actually fixing? What would it take to just fix it instead?
 
 ---
 

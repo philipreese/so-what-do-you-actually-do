@@ -27,6 +27,8 @@ This chapter argues software testing pipelines should follow the same two rules.
 
 ## For My Kids
 
+### The Ripped Soccer Bag
+
 Say you're getting ready for a busy Saturday: a soccer game in the morning, a friend's birthday party in the afternoon, and a piano audition video due tonight.
 
 **If you find, halfway through packing your soccer bag, that the bag itself has a huge rip and everything keeps falling through it, there's no point carefully arranging your shin guards inside it.** Stop right there, grab a bag that actually holds things, then go back to packing. Continuing to arrange gear inside a broken bag isn't extra effort — it's wasted effort.
@@ -34,6 +36,9 @@ Say you're getting ready for a busy Saturday: a soccer game in the morning, a fr
 **But finding that ripped bag is not a reason to stop checking on the birthday present and the piano piece too.** Those are three completely separate things. Check on only one at a time — fix the bag, then check the present, then check the piano — and each turns out to have its own separate problem, and you're discovering bad news three separate times throughout the day instead of once, this morning, with the whole day still ahead to fix all of it.
 
 **The smarter move: check all three at once, first thing, and find out about every problem you're going to hit today in one pass** — not stretched out, one discovery at a time, each arriving right when you thought you were finally done.
+
+> [!CAR]
+> When you've got several things to get ready for at once, do you check on all of them first thing, or one at a time as you go? Which way has burned you before?
 
 ---
 

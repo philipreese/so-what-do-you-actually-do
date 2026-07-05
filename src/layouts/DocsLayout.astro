@@ -9,8 +9,9 @@ interface Props {
 }
 
 const { title, description = "A software engineer's handbook — with a chapter for everyone else." } = Astro.props;
-const { parts } = getAllPartsAndChapters();
+const { parts, chapters } = getAllPartsAndChapters();
 const appendices = getAllAppendices();
+const totalChapters = chapters.length;
 
 const base = import.meta.env.BASE_URL || '/';
 const cleanBase = base.endsWith('/') ? base : base + '/';
@@ -138,6 +139,14 @@ const activePartSlug = parts.find(
         <!-- Navigation Sidebar -->
         <aside class="docs-sidebar" id="sidebar" data-pagefind-ignore>
           <nav class="sidebar-nav">
+            <!-- Reading Progress Module -->
+            <div class="sidebar-progress" id="sidebarProgress" data-total={totalChapters}>
+              <div class="sidebar-progress-track">
+                <div class="sidebar-progress-fill" id="sidebarProgressFill"></div>
+              </div>
+              <span class="sidebar-progress-label" id="sidebarProgressLabel">0 of {totalChapters} chapters</span>
+            </div>
+
             <div class="sidebar-section">
               <a href={cleanBase} class={`sidebar-link ${currentPath === '' ? 'active' : ''}`}>
                 <svg class="sidebar-link-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -182,9 +191,21 @@ const activePartSlug = parts.find(
                     </li>
                     {part.chapters.map((ch) => (
                       <li>
-                        <a href={`${cleanBase}chapters/${ch.slug}`} class={`sidebar-chapter-link ${currentPath === `/chapters/${ch.slug}` ? 'active' : ''}`}>
-                          <span class="chapter-num">{ch.number}</span>
-                          <span class="sidebar-chapter-title-text">{ch.title}</span>
+                        <a
+                          href={`${cleanBase}chapters/${ch.slug}`}
+                          class={`sidebar-chapter-link ${currentPath === `/chapters/${ch.slug}` ? 'active' : ''}`}
+                          data-chapter-slug={ch.slug}
+                        >
+                          <span class="chapter-num-slot">
+                            <span class="chapter-num">{ch.number}</span>
+                            <svg class="chapter-check-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </span>
+                          <span class="sidebar-chapter-title-text">
+                            <span class="t-default">{ch.title}</span>
+                            {ch.kidsTitle && <span class="t-kids">{ch.kidsTitle}</span>}
+                          </span>
                         </a>
                       </li>
                     ))}
@@ -229,6 +250,44 @@ const activePartSlug = parts.find(
 
     <!-- Client-side Interactive Scripts -->
     <script>
+      // Reading Progress: per-track "read chapters" state + sidebar indicators
+      function getReadChapters(track: string): Record<string, boolean> {
+        try {
+          return JSON.parse(localStorage.getItem(`readChapters:${track}`) || '{}');
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function updateProgressUI() {
+        const track = document.documentElement.getAttribute('data-track') || 'engineer';
+        const read = getReadChapters(track);
+        const readSlugs = Object.keys(read).filter((slug) => read[slug]);
+
+        const progressEl = document.getElementById('sidebarProgress');
+        const total = Number(progressEl?.getAttribute('data-total') || 0);
+        const count = readSlugs.length;
+
+        const fill = document.getElementById('sidebarProgressFill');
+        const label = document.getElementById('sidebarProgressLabel');
+        if (fill) fill.style.width = total > 0 ? `${Math.min(100, (count / total) * 100)}%` : '0%';
+        if (label) label.textContent = `${count} of ${total} chapters`;
+
+        document.querySelectorAll('.sidebar-chapter-link[data-chapter-slug]').forEach((link) => {
+          const slug = link.getAttribute('data-chapter-slug');
+          link.classList.toggle('is-read', !!(slug && read[slug]));
+        });
+      }
+
+      updateProgressUI();
+
+      // Cross-tab updates (storage fires in OTHER tabs/windows only).
+      window.addEventListener('storage', (e) => {
+        if (e.key && e.key.startsWith('readChapters:')) updateProgressUI();
+      });
+      // Same-tab updates: chapter pages dispatch this when a chapter is marked read.
+      window.addEventListener('reading-progress-updated', updateProgressUI);
+
       // Reading Track Switcher Logic
       document.querySelectorAll('.track-switcher-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -238,6 +297,7 @@ const activePartSlug = parts.find(
           try {
             localStorage.setItem('selectedTrack', track);
           } catch (e) {}
+          updateProgressUI();
         });
       });
 
@@ -260,6 +320,7 @@ const activePartSlug = parts.find(
           try {
             localStorage.setItem('selectedTrack', targetTrack);
           } catch (e) {}
+          updateProgressUI();
         }
       }
 

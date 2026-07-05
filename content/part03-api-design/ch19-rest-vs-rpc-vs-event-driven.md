@@ -26,6 +26,8 @@ Getting the shape wrong doesn't usually produce a clean error — it produces a 
 
 ## For My Kids
 
+### The Dog That Didn't Get Walked
+
 Your family group chat runs into the same message meaning two totally different things, depending on which kind it secretly is. "Walked the dog" can be an announcement — it already happened, nobody needs to do anything else — or it can be a request written badly, meaning "someone please go walk the dog," typo and all.
 
 **Say your little brother texts "walking the dog" as a joke, before he's actually done it.** Two different people read that as a done deal and cross it off their mental list. Twenty minutes later the dog is still sitting by the door, and everyone's genuinely confused, because as far as three people were concerned, that job was finished.

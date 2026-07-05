@@ -27,6 +27,8 @@ If the whole kitchen only ever gets checked once, at the very end, the inspector
 
 ## For My Kids
 
+### The Six-Week Checkpoint
+
 Say you're doing a science fair project that takes six weeks — one project, one question you're trying to answer, from day one to presentation day.
 
 **Your teacher doesn't wait until presentation day to look at any of it.** She checks in at specific small points: is your question actually testable, does your experiment design make sense, are you recording data correctly. Each check is small enough that she can actually look closely and catch a real problem — a flawed test, a missing control group — while there's still time to fix it.
@@ -34,6 +36,9 @@ Say you're doing a science fair project that takes six weeks — one project, on
 **Now imagine she only checked the whole thing once, the day before presentations.** Six weeks of work, all at once — she can maybe skim it, nod, and hope it's fine, because there's no realistic way to catch a real flaw buried somewhere in six weeks of work in the ten minutes she has to look. That's not extra thoroughness. It just looks like a check without actually being one.
 
 **The project itself never got smaller — it's still the same one big question the whole time.** What changed is that the checks got small enough to actually mean something. Splitting it into six real checkpoints isn't turning one project into six unrelated ones; it's making sure somebody could genuinely catch a problem before it's too late to fix.
+
+> [!CAR]
+> If you were working on something that took weeks to finish, would you rather have someone check on it along the way or only see it at the very end? Why?
 
 ---
 

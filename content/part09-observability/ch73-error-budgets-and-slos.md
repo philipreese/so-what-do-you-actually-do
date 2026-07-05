@@ -25,6 +25,8 @@ This chapter argues companies should treat their own tolerance for things going 
 
 ## For My Kids
 
+### Banking Your Screen Time
+
 Say your parents set your screen time at one hour a day, no big deal if some days run to seventy minutes. That's already built into the number, not a rule you're secretly failing every time you use it.
 
 Someone who plays zero minutes for a whole month, terrified of "wasting" any of it, isn't doing better than the plan asked for. They're just leaving something already agreed to be fine sitting unused.
@@ -38,6 +40,9 @@ What actually deserves watching isn't the one obvious big day. It's the quiet ki
 A single ninety-minute Saturday is easy to spot and easy to explain. Ten extra minutes every single day for three weeks straight is much easier to miss, since no individual day looks alarming on its own.
 
 By the end of the month, though, that quiet daily creep adds up to way more borrowed time than the one big Saturday ever would have. And now there's none left banked for the night before a test, when twenty minutes to unwind was the thing you actually needed.
+
+> [!CAR]
+> If you had an allowance of extra time each day, would you rather spend a little of it whenever you feel like it, or save it all up for one big day you're planning for?
 
 ---
 

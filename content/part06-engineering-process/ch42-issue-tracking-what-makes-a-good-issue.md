@@ -26,6 +26,8 @@ An issue is a shared engineering artifact, not a personal reminder, and it shoul
 
 ## For My Kids
 
+### The Door That Didn't Need Replacing
+
 Say your bedroom door won't shut all the way, and you tell your dad "we need to buy a new door." He spends an afternoon and real money on a new door — and it turns out the actual problem was one bent hinge a wrench could've fixed in five minutes. You didn't tell him the problem. You told him your guess at the fix, and that guess is the only thing that ever got considered.
 
 **"My door won't shut all the way" is a completely different request.** It tells him what's actually wrong and lets him find the real fix — hinge, warped wood, whatever it turns out to be — instead of locking in your first guess before anyone's even looked.
@@ -33,6 +35,9 @@ Say your bedroom door won't shut all the way, and you tell your dad "we need to 
 **Then there's the other trap: asking for something with no actual finish line.** "Clean your room" can go on forever — there's always one more thing to straighten, so it never feels done, and you can argue about it for years. "Put the clean laundry from the chair into your dresser" has a real ending: you can both look at the chair, see it's empty, and agree it's actually finished.
 
 **Good requests do both things at once:** they describe the real problem instead of a guessed-at fix, and they have a moment where anyone can look and say "yep, that's done" — not a vague hope that just sits there, half-finished, forever.
+
+> [!CAR]
+> Think of a time you asked for help fixing something and described the fix you thought was needed instead of what was actually wrong. How did that turn out?
 
 ---
 

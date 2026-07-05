@@ -25,6 +25,8 @@ This chapter argues that software pipelines make exactly the same mistake when d
 
 ## For My Kids
 
+### The Mislabeled Camping List
+
 Say every summer you reuse last year's camping packing list instead of making a new one, because it saved time and nothing's gone wrong yet.
 
 **The list works great as long as the label actually matches what's true.** A list titled "Camping List," used every year regardless of which campground or which month, is a broad, lazy label — it doesn't actually track whether anything real has changed. A list titled "same campground, same June dates, same gear" is a far more honest label, because it only applies when those specific things are still true.
@@ -32,6 +34,9 @@ Say every summer you reuse last year's camping packing list instead of making a 
 **Here's where it quietly goes wrong: this year you're going to a different campground, in the mountains, in September instead of June.** You grab last year's list anyway, because it's labeled "Camping List" and that's technically what this is. It doesn't mention a warm jacket, because last year was June and hot. You don't find out the list was wrong until you're already there, freezing the first night.
 
 **Even a perfectly labeled list can't catch everything, though.** Maybe your tent developed a small hole since last time, and no list would know to mention that. That's why, every so often, it's worth ignoring the list completely and packing from scratch, checking every item fresh — not because the list is bad, but because the only way to know your shortcut is still telling the truth is to occasionally skip it and see if you get the same answer.
+
+> [!CAR]
+> Have you ever reused an old plan or list for something new, assuming it would still work? What was different this time that the old plan didn't account for?
 
 ---
 

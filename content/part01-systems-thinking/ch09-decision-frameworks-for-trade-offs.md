@@ -26,6 +26,8 @@ The closing argument is worth sitting with: the goal of a decision framework isn
 
 ## For My Kids
 
+### Gum Money vs. Console Money
+
 Say you've got five bucks of allowance burning a hole in your pocket, and also three hundred dollars saved up from birthdays that you've been going back and forth on spending on a gaming console.
 
 Don't spend three days agonizing over the five bucks. Buy the gum, whatever — if it's the wrong flavor, you're out fifty cents and you know better next time. **That decision barely deserves thirty seconds of thought.**
@@ -35,6 +37,9 @@ The console is a different kind of decision, and treating it the same way is the
 Almost everyone runs this backwards: agonizing over the snack, then blowing the real money on the console because a friend wanted you to decide right that second.
 
 And not deciding isn't neutral either — the console you're "still thinking about" six months later is money doing nothing, while the exact deal you wanted comes and goes twice. Waiting felt careful. It was still a decision. Nobody just admitted to making it.
+
+> [!CAR]
+> Tell me about a decision you're currently putting off — is it actually a big one worth the wait, or a small one you're overthinking like it's a big one?
 
 ---
 

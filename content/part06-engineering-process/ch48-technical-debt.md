@@ -26,6 +26,8 @@ This chapter argues that's exactly what's happened to the phrase "technical debt
 
 ## For My Kids
 
+### The Saturday Closet Plan
+
 Say your friends are coming over in ten minutes, and your room's a disaster. You grab an armful of stuff and shove it in the closet — on purpose, knowing exactly what you're doing, with a real plan to actually sort it Saturday morning. That's a legitimate shortcut. You know what you owe, and you know when you're paying it back.
 
 **Calling it "cleaning" instead, with zero plan to ever open that closet again, is a different thing wearing a nicer name.** It looks the same from the doorway. The difference only shows up later, when you need something from that closet and can't find it under the pile, or when Saturday never actually comes and the pile just grows every week you avoid the door.
@@ -33,6 +35,9 @@ Say your friends are coming over in ten minutes, and your room's a disaster. You
 **Here's the part that's easy to miss: the mess doesn't wait quietly while you ignore it.** Every week you don't deal with it, finding anything in there gets a little harder, and the eventual cleanup gets a little bigger. A shortcut with a real plan to circle back stays small and manageable. A shortcut with no plan at all just keeps quietly getting worse, whether you're thinking about it or not.
 
 **The whole difference comes down to one question: is there an actual plan to go back, or are you just hoping "later" handles itself?** A shoved-in closet with a Saturday plan is a real shortcut. A shoved-in closet with no plan is just a mess wearing a shortcut's name.
+
+> [!CAR]
+> When you shove something into a closet "for now," do you actually have a plan to deal with it later, or are you just hoping future-you handles it? What usually happens?
 
 ---
 

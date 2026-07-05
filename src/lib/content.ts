@@ -226,9 +226,16 @@ export function getAllAppendices(): AppendixInfo[] {
   return appendices;
 }
 
+// A level-2 "## Heading" at the start of a line — NOT a level-3 "### Heading"
+// (kid stories open their section with "### <Kid Story Title>", which must
+// not be mistaken for the next top-level section boundary: "###" contains
+// "## " as a substring one character in, so a naive "## " lookahead would
+// truncate the section right after the story's own title heading).
+const NEXT_SECTION_BOUNDARY = '(?:(?<=\\n)##(?!#)[ \\t]|---|$)';
+
 // Matches the "## For My Kids" section body (used both to render the pane and,
 // separately, to pull out the kid-facing chapter title — see extractKidsTitle).
-const KIDS_SECTION_REGEX = /## For My Kids\b([\s\S]*?)(?=(?:## For My Wife|## |---|$))/i;
+const KIDS_SECTION_REGEX = new RegExp(`## For My Kids\\b([\\s\\S]*?)(?=${NEXT_SECTION_BOUNDARY})`, 'i');
 
 /**
  * Chapters being migrated to the kid-story format open their "For My Kids"
@@ -249,7 +256,7 @@ function extractWifeKidsSections(rawMarkdown: string): { wifeHtml: string; kidsH
   let kidsHtml = '';
 
   // Regex to match "## For My Wife" section
-  const wifeRegex = /## For My Wife\b([\s\S]*?)(?=(?:## For My Kids|## |---|$))/i;
+  const wifeRegex = new RegExp(`## For My Wife\\b([\\s\\S]*?)(?=${NEXT_SECTION_BOUNDARY})`, 'i');
   const kidsRegex = KIDS_SECTION_REGEX;
 
   const wifeMatch = wifeRegex.exec(rawMarkdown);

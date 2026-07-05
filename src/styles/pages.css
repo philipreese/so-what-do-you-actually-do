@@ -359,3 +359,13 @@ html[data-theme="dark"] .hero-img-light {
   background: var(--sidebar-link-hover-bg);
   color: var(--accent-color);
 }
+
+@media (max-width: 900px) {
+  .hero-container {
+    padding: 2.5rem 1.5rem !important;
+    gap: 2.5rem;
+  }
+  .sitemap-container {
+    padding: 2.5rem 1.5rem !important;
+  }
+}

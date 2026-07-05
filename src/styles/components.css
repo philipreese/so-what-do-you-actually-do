@@ -233,6 +233,16 @@ html[data-track="kids"] .pane-secondary--kids {
   flex: 1 1 100%;
 }
 
+/* A single track's stack must stay visible even if the reader had previously
+   collapsed the Wife/Kids stack while on the Engineer track — otherwise the
+   collapsed state's "display: none" (meant to hide it alongside the visible
+   engineer pane) leaves nothing on screen once the engineer pane is also
+   hidden by the rules above. */
+html[data-track="wife"] .chapter-tracks.secondary-collapsed .secondary-stack,
+html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
+  display: flex;
+}
+
 
 /* ==========================================================================
    3. Mascot Placeholder Elements

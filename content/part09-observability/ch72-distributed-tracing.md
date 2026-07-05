@@ -31,12 +31,12 @@ Picture a scavenger hunt where one clue gets physically handed off from teammate
 
 **To find the actual slow spot, each teammate needs to write down exactly when they got the clue and exactly when they handed it off** — so any gap shows up as the space between two specific people, not a mystery hiding somewhere in five vague stops.
 
-If even one teammate forgets to log their handoff time, it's not just their own leg that goes dark. Everyone after them loses the timestamp trail too, since each person's log only makes sense chained to the one before it.
+If even one teammate forgets to log their handoff time, it's not just their own stop that goes dark. Everyone after them loses the timestamp trail too, since each person's log only makes sense chained to the one before it.
 
 **And you can't decide ahead of time which handoffs are worth timing closely.** Picking a random one-in-twenty hunt to review in detail almost always lands on a normal one — the slow, broken handoff was never going to show up in a random slice like that. The smarter move is to let every hunt finish first, then go back and look closely at the ones that actually ran long or went sideways. There's nothing to learn from timing the ones that went fine.
 
 > [!CAR]
-> If one person in a relay forgets to pass along their part, is it fair that everyone after them looks slow too? What would you want the team to do about it?
+> If one person in a scavenger hunt forgets to pass along the clue, is it fair that everyone after them looks slow too? What would you want the team to do about it?
 
 ---
 

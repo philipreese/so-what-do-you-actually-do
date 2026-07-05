@@ -43,7 +43,7 @@
 
   /* Supplementary Tracks variables */
   --pane-engineer-bg: var(--bg-color);
-  --pane-engineer-border: #fe640b; /* Latte Peach */
+  --pane-engineer-border: #f0a875; /* Soft peach */
 
   --pane-wife-bg: rgba(236, 72, 153, 0.02);
   --pane-wife-border: #ec4899; /* Pink, not red */
@@ -116,11 +116,11 @@
 
   /* Supplementary Tracks variables - Dark Mode */
   --pane-engineer-bg: var(--bg-color);
-  --pane-engineer-border: #f5a97f; /* Macchiato Peach */
+  --pane-engineer-border: #f2c4a0; /* Soft peach */
 
   --pane-wife-bg: rgba(244, 63, 94, 0.03);
-  --pane-wife-border: #fda4af;
-  --pane-wife-text: #fda4af;
+  --pane-wife-border: #f5a9d0;
+  --pane-wife-text: #f5a9d0;
 
   --pane-kids-bg: rgba(125, 196, 228, 0.04);
   --pane-kids-border: #7dc4e4; /* Macchiato Sapphire */

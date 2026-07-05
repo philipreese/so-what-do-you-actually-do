@@ -45,7 +45,7 @@ const currentSlug = pathname.split('/').pop() || '';
     </div>
     
     {headings && headings.length > 0 && (
-      <aside class="toc-sidebar">
+      <aside class="toc-sidebar" data-pagefind-ignore>
         <div class="toc-title">On this page</div>
         <ul class="toc-list">
           <li>

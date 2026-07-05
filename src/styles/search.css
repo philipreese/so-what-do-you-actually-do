@@ -1,0 +1,427 @@
+/* ==========================================================================
+   Search Component & Modal Styles (Catppuccin Light/Dark Theme Integration)
+   ========================================================================== */
+
+/* 1. Header Trigger Button */
+.header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-width: 440px;
+    margin: 0 1.5rem;
+}
+
+.search-trigger-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--sidebar-bg);
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-trigger-btn:hover {
+    color: var(--text-color);
+    background: var(--sidebar-link-hover-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.search-trigger-icon {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.search-trigger-btn:hover .search-trigger-icon {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.search-trigger-kbd {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+    margin-left: auto;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--text-muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* 2. Dialog Modal & Backdrop */
+dialog#search-dialog {
+    display: none; /* Managed by browser API showModal() */
+    flex-direction: column;
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    max-height: 520px;
+    margin: 10vh auto auto;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    outline: none;
+}
+
+dialog#search-dialog[open] {
+    display: flex;
+    animation: search-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+dialog#search-dialog::backdrop {
+    background: rgba(24, 25, 38, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+dialog#search-dialog[open]::backdrop {
+    opacity: 1;
+}
+
+/* 3. Modal Inner Components */
+.search-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.15rem 1.35rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--sidebar-bg);
+}
+
+.search-modal-icon {
+    flex-shrink: 0;
+    color: var(--accent-color);
+}
+
+.search-modal-input {
+    flex: 1;
+    height: 2.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    outline: none;
+}
+
+.search-modal-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.search-modal-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.search-modal-close-btn:hover {
+    border-color: var(--border-color);
+    background: var(--sidebar-link-hover-bg);
+    color: var(--text-color);
+}
+
+/* 4. Results List */
+.search-results-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+    min-height: 180px;
+    background: var(--card-bg);
+}
+
+.search-no-results,
+.search-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 3rem 1.5rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.search-empty-state-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.search-empty-state-subtitle {
+    font-size: 0.8rem;
+    max-width: 280px;
+}
+
+/* Results Structure */
+.search-result-group {
+    margin-bottom: 0.75rem;
+}
+
+.search-result-group:last-child {
+    margin-bottom: 0;
+}
+
+.search-result-chapter-title {
+    padding: 0.4rem 0.75rem;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.search-result-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-result-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-result-link:hover,
+.search-result-link.selected {
+    background: var(--sidebar-link-active-bg);
+    border-color: var(--border-color);
+}
+
+.search-result-link.selected {
+    box-shadow: inset 3px 0 0 var(--accent-color);
+}
+
+.search-result-link-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.search-result-link-title-text {
+    flex: 1;
+}
+
+.search-result-track-badge {
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Track Badge Colors */
+.search-result-track-badge--engineer {
+    background: rgba(240, 168, 117, 0.15);
+    color: var(--pane-engineer-border);
+}
+
+.search-result-track-badge--wife {
+    background: rgba(236, 72, 153, 0.1);
+    color: var(--pane-wife-border);
+}
+
+.search-result-track-badge--kids {
+    background: rgba(32, 159, 181, 0.1);
+    color: var(--pane-kids-border);
+}
+
+.search-result-excerpt {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+}
+
+/* Pagefind Match Highlight */
+.search-result-excerpt mark {
+    background: rgba(114, 135, 253, 0.18);
+    color: var(--accent-color);
+    font-weight: 600;
+    border-radius: 2px;
+    padding: 0 0.1rem;
+}
+
+.search-result-link.selected .search-result-excerpt mark {
+    background: rgba(114, 135, 253, 0.28);
+}
+
+/* 5. Footer Shortcuts */
+.search-modal-footer {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--sidebar-bg);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.search-shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+}
+
+.search-shortcut-kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* 4.5 Track Filter Tabs */
+.search-track-tabs {
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.5rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--sidebar-bg);
+}
+
+.search-track-tab {
+    padding: 0.35rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-track-tab:hover {
+    background: var(--sidebar-link-hover-bg);
+    color: var(--text-color);
+}
+
+/* Active status styling matching design tokens for reading tracks */
+.search-track-tab[data-track-filter="all"].active {
+    background: var(--sidebar-link-active-bg);
+    color: var(--accent-color);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.search-track-tab[data-track-filter="engineer"].active {
+    background: rgba(240, 168, 117, 0.1);
+    color: var(--pane-engineer-border);
+    border-color: var(--pane-engineer-border);
+}
+
+.search-track-tab[data-track-filter="wife"].active {
+    background: rgba(236, 72, 153, 0.08);
+    color: var(--pane-wife-border);
+    border-color: var(--pane-wife-border);
+}
+
+.search-track-tab[data-track-filter="kids"].active {
+    background: rgba(32, 159, 181, 0.08);
+    color: var(--pane-kids-border);
+    border-color: var(--pane-kids-border);
+}
+
+/* Animation keyframes */
+@keyframes search-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-center {
+        max-width: none;
+        margin: 0 0.5rem;
+    }
+    
+    .search-trigger-btn {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+    }
+    
+    .search-trigger-text,
+    .search-trigger-kbd {
+        display: none;
+    }
+
+    dialog#search-dialog {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+    }
+}

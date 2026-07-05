@@ -3,214 +3,243 @@
    ========================================================================== */
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.75rem;
-  border-radius: 4px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn--primary {
-  background: var(--accent-color);
-  color: white;
-  box-shadow: 0 4px 14px rgba(114, 135, 253, 0.2);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 14px rgba(114, 135, 253, 0.2);
 }
 
 [data-theme="dark"] .btn--primary {
-  color: #181926; /* High contrast dark text on lavender button in dark mode */
+    color: #181926; /* High contrast dark text on lavender button in dark mode */
 }
 
 .btn--primary:hover {
-  transform: translateY(-2px);
-  background: var(--accent-hover);
-  color: white;
-  box-shadow: 0 6px 20px rgba(114, 135, 253, 0.3);
+    transform: translateY(-2px);
+    background: var(--accent-hover);
+    color: white;
+    box-shadow: 0 6px 20px rgba(114, 135, 253, 0.3);
 }
 
 [data-theme="dark"] .btn--primary:hover {
-  color: #181926;
+    color: #181926;
 }
 
 .btn-arrow {
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease;
+    margin-left: 0.5rem;
+    transition: transform 0.2s ease;
 }
 
 .btn--primary:hover .btn-arrow {
-  transform: translateX(4px);
+    transform: translateX(4px);
 }
 
 .btn--secondary {
-  border: 1.5px solid var(--border-color);
-  background: var(--card-bg);
-  color: var(--text-color);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .btn--secondary:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-focus);
-  background: var(--sidebar-link-hover-bg);
+    transform: translateY(-2px);
+    border-color: var(--border-focus);
+    background: var(--sidebar-link-hover-bg);
 }
-
 
 /* ==========================================================================
    2. Chapter Supplementary Tracks Toggle & Panes
    ========================================================================== */
 
 .chapter-tracks {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 100%;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    overflow: hidden;
 }
 
 .track-panes {
-  display: flex;
-  align-items: stretch;
-  gap: 1rem;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-  flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    flex: 1;
 }
 
 .pane-engineer {
-  flex: 3 1 0;
-  transition: flex 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1; /* fills remaining space automatically */
+    min-width: 0; /* allows panel to shrink without causing horizontal overflow */
+}
+
+.mobile-collapse-wrapper {
+    display: contents;
 }
 
 .secondary-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-height: 0;
-  flex: 2 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 0;
 }
 
 .pane-secondary--wife,
 .pane-secondary--kids {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1 1 0;
 }
 
-/* Collapsed state: hide the Wife/Kids stack, engineer pane fills the space */
-.chapter-tracks.secondary-collapsed .pane-engineer {
-  flex: 1 1 100%;
-}
+@media (min-width: 901px) {
+    .secondary-stack {
+        width: 420px;
+        flex-shrink: 0;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
 
-.chapter-tracks.secondary-collapsed .secondary-stack {
-  display: none;
+    .pane-secondary--wife,
+    .pane-secondary--kids {
+        min-width: 400px; /* prevents layout text reflow wrapping during collapse transition */
+    }
+
+    /* Collapsed state: slide secondary-stack out using width and negative margin */
+    .chapter-tracks.secondary-collapsed .secondary-stack {
+        width: 0 !important;
+        flex: none !important;
+        opacity: 0;
+        pointer-events: none;
+        margin-left: -1rem !important; /* offsets the gap spacing to prevent layout jump */
+    }
 }
 
 /* Vertical tab: collapses/expands the Wife + Kids panes together */
 .tracks-vertical-tab {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  padding: 1rem 0;
-  border: 2px solid var(--pane-engineer-border);
-  border-radius: 8px;
-  background: var(--pane-engineer-bg);
-  color: var(--text-muted);
-  cursor: pointer;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    padding: 1rem 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--bg-color), var(--bg-color)), 
+                      linear-gradient(to bottom, var(--pane-wife-border), var(--pane-kids-border));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    -webkit-background-clip: padding-box, border-box;
+    color: var(--pane-kids-text);
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tracks-vertical-tab:hover {
-  border-color: var(--pane-engineer-border);
-  background: var(--sidebar-link-hover-bg);
-  color: var(--text-color);
+@media (hover: hover) {
+    .tracks-vertical-tab:hover {
+        background-image: linear-gradient(var(--sidebar-link-hover-bg), var(--sidebar-link-hover-bg)), 
+                          linear-gradient(to bottom, var(--pane-wife-border), var(--pane-kids-border));
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        -webkit-background-clip: padding-box, border-box;
+        color: var(--pane-kids-text);
+    }
 }
 
 .tracks-vertical-tab-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background-image: linear-gradient(to bottom, var(--pane-wife-text), var(--pane-kids-text));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Pane UI Containers */
 .pane {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
 }
 
 .pane-header {
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid var(--border-color);
-  background: rgba(0, 0, 0, 0.01);
-  flex-shrink: 0;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.01);
+    flex-shrink: 0;
 }
 
 .pane-content {
-  overflow-y: auto;
-  padding: 1.5rem;
-  flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    flex: 1;
 }
 
 .pane-secondary .pane-content {
-  padding: 0 1.5rem;
+    padding: 0 1.5rem;
 }
 
 .pane-secondary .pane-content > *:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .pane-secondary .pane-content > *:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .pane-engineer {
-  border-color: var(--pane-engineer-border);
-  background: var(--pane-engineer-bg);
+    border-color: var(--pane-engineer-border);
+    background: var(--pane-engineer-bg);
 }
 
 .pane-secondary--wife {
-  border-color: var(--pane-wife-border);
-  background: var(--pane-wife-bg);
+    border-color: var(--pane-wife-border);
+    background: var(--pane-wife-bg);
 }
 
 .pane-secondary--wife .pane-label {
-  color: var(--pane-wife-text);
+    color: var(--pane-wife-text);
 }
 
 .pane-secondary--kids {
-  border-color: var(--pane-kids-border);
-  background: var(--pane-kids-bg);
+    border-color: var(--pane-kids-border);
+    background: var(--pane-kids-bg);
 }
 
 .pane-secondary--kids .pane-label {
-  color: var(--pane-kids-text);
+    color: var(--pane-kids-text);
 }
 
 .pane-label {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 /* Single-track reading mode: show only the selected track, full width */
@@ -220,59 +249,62 @@ html[data-track="wife"] .tracks-vertical-tab,
 html[data-track="kids"] .chapter-tracks .pane-engineer,
 html[data-track="kids"] .pane-secondary--wife,
 html[data-track="kids"] .tracks-vertical-tab {
-  display: none;
+    display: none;
 }
 
 html[data-track="wife"] .secondary-stack,
 html[data-track="kids"] .secondary-stack {
-  flex: 1 1 100%;
+    flex: 1 1 100%;
+    width: 100% !important;
 }
 
 html[data-track="wife"] .pane-secondary--wife,
 html[data-track="kids"] .pane-secondary--kids {
-  flex: 1 1 100%;
+    flex: 1 1 100%;
 }
 
 /* A single track's stack must stay visible even if the reader had previously
    collapsed the Wife/Kids stack while on the Engineer track — otherwise the
-   collapsed state's "display: none" (meant to hide it alongside the visible
-   engineer pane) leaves nothing on screen once the engineer pane is also
+   collapsed state leaves nothing on screen once the engineer pane is also
    hidden by the rules above. */
-html[data-track="wife"] .chapter-tracks.secondary-collapsed .secondary-stack,
-html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
-  display: flex;
+@media (min-width: 901px) {
+    html[data-track="wife"] .chapter-tracks.secondary-collapsed .secondary-stack,
+    html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
+        width: 100% !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin-left: 0 !important;
+    }
 }
-
 
 /* ==========================================================================
    3. Mascot Placeholder Elements
    ========================================================================== */
 
 .mascot-slot {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .mascot-placeholder {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 4.5rem;
-  height: 4.5rem;
-  border: 2px dashed var(--border-color);
-  border-radius: 50%;
-  background: var(--vocab-chip-bg);
-  font-size: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 50%;
+    background: var(--vocab-chip-bg);
+    font-size: 2.25rem;
 }
 
 .mascot-image {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
 }
-
 
 /* ==========================================================================
    4. Markdown Custom Cards & Blocks
@@ -281,112 +313,111 @@ html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
 .chapter-section,
 .decision-block,
 .disagree-block {
-  margin-bottom: 3.5rem;
+    margin-bottom: 3.5rem;
 }
 
 /* Chapter Meta and Vocab */
 .chapter-meta {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 @container (min-width: 620px) {
-  .chapter-meta {
-    grid-template-columns: repeat(3, 1fr);
-  }
+    .chapter-meta {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* === GFM-style Alert Callouts (> [!NOTE], etc.) ========================= */
 .callout {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin: 1.5rem 0;
-  padding: 0.85rem 1.1rem;
-  border-radius: 6px;
-  border-left: 3px solid var(--callout-border, var(--accent-color));
-  background: var(--callout-bg, var(--accent-low));
-  font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+    padding: 0.85rem 1.1rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--callout-border, var(--accent-color));
+    background: var(--callout-bg, var(--accent-low));
+    font-style: normal;
 }
 
 .callout__label {
-  display: block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--callout-label-color, var(--accent-color));
+    display: block;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--callout-label-color, var(--accent-color));
 }
 
 .callout p {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--callout-text, var(--text-color));
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--callout-text, var(--text-color));
 }
 
 /* NOTE variant — yellow, matching the badge-tradeoff hue */
 .callout--note {
-  --callout-bg: var(--callout-note-bg);
-  --callout-border: var(--callout-note-border);
-  --callout-label-color: var(--callout-note-text);
-  --callout-text: var(--callout-note-text);
+    --callout-bg: var(--callout-note-bg);
+    --callout-border: var(--callout-note-border);
+    --callout-label-color: var(--callout-note-text);
+    --callout-text: var(--callout-note-text);
 }
 
 .meta-card {
-  padding: 1.25rem;
-  border: 2.5px solid var(--border-color);
-  border-radius: 8px;
-  background: var(--meta-card-bg);
+    padding: 1.25rem;
+    border: 2.5px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--meta-card-bg);
 }
 
 .meta-card h3 {
-  margin: 0 0 0.5rem;
-  color: var(--text-muted);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+    margin: 0 0 0.5rem;
+    color: var(--text-muted);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .meta-card--takeaways {
-  border-width: 2.5px;
-  border-color: var(--meta-takeaways-border);
-  background: var(--meta-takeaways-bg);
+    border-width: 2.5px;
+    border-color: var(--meta-takeaways-border);
+    background: var(--meta-takeaways-bg);
 }
 
 .meta-card--takeaways h3 {
-  color: var(--meta-takeaways-text);
+    color: var(--meta-takeaways-text);
 }
 
 .meta-card ul {
-  margin: 0;
-  padding-left: 1.2rem;
+    margin: 0;
+    padding-left: 1.2rem;
 }
 
 .meta-card li + li {
-  margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .vocab-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
 }
 
 .vocab-chip {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: var(--vocab-chip-bg);
-  color: var(--vocab-chip-text);
-  font-size: 0.72rem;
-  font-weight: 600;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--vocab-chip-bg);
+    color: var(--vocab-chip-text);
+    font-size: 0.72rem;
+    font-weight: 600;
 }
-
 
 /* ==========================================================================
    5. Unified Callout Blocks (Decision & Disagree Callouts)
@@ -395,193 +426,263 @@ html[data-track="kids"] .chapter-tracks.secondary-collapsed .secondary-stack {
 .decision-block,
 .disagree-callout,
 .disagree-block {
-  padding: 1.75rem;
-  border: 2.5px solid transparent;
-  border-radius: 8px;
-  margin-bottom: 3.5rem;
+    padding: 1.75rem;
+    border: 2.5px solid transparent;
+    border-radius: 8px;
+    margin-bottom: 3.5rem;
 }
 
 .decision-block {
-  border-color: var(--decision-border);
-  border-left: 6px solid var(--decision-accent);
-  background: var(--decision-bg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    border-color: var(--decision-border);
+    border-left: 6px solid var(--decision-accent);
+    background: var(--decision-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .decision-heading {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 .decision-lede {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 @container (min-width: 520px) {
-  .decision-lede {
-    grid-template-columns: 1fr 1fr;
-  }
+    .decision-lede {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .decision-field h4 {
-  margin: 1.75rem 0 0.75rem;
-  color: var(--decision-accent);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+    margin: 1.75rem 0 0.75rem;
+    color: var(--decision-accent);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .decision-lede .decision-field h4 {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .decision-field p {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Callout Sub-Fields (Failure modes and Examples) */
 .decision-field--common-failure-modes,
 .decision-field--example {
-  margin-top: 1.75rem;
-  padding: 1.15rem 1.25rem;
-  border: 2.5px solid transparent;
-  border-radius: 6px;
+    margin-top: 1.75rem;
+    padding: 1.15rem 1.25rem;
+    border: 2.5px solid transparent;
+    border-radius: 6px;
 }
 
 .decision-field--common-failure-modes {
-  border-color: var(--failure-border);
-  background: var(--failure-bg);
+    border-color: var(--failure-border);
+    background: var(--failure-bg);
 }
 
 .decision-field--common-failure-modes h4 {
-  margin-top: 0;
-  color: var(--failure-text);
+    margin-top: 0;
+    color: var(--failure-text);
 }
 
 .decision-field--example {
-  border-color: var(--example-border);
-  background: var(--example-bg);
+    border-color: var(--example-border);
+    background: var(--example-bg);
 }
 
 .decision-field--example h4 {
-  margin-top: 0;
-  color: var(--example-text);
+    margin-top: 0;
+    color: var(--example-text);
 }
 
 /* Disagree Block Callout Styles */
 .disagree-callout,
 .disagree-block {
-  border-color: var(--disagree-border);
-  border-left: 6px solid var(--disagree-text);
-  background: var(--disagree-bg);
+    border-color: var(--disagree-border);
+    border-left: 6px solid var(--disagree-text);
+    background: var(--disagree-bg);
 }
 
 .disagree-callout {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .disagree-callout h4,
 .disagree-block h2 {
-  margin-top: 0;
-  color: var(--disagree-text);
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 500;
+    margin-top: 0;
+    color: var(--disagree-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 500;
 }
-
 
 /* ==========================================================================
    6. Recommendation Badges
    ========================================================================== */
 
 .rec-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
 }
 
 .rec-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .rec-badge--consensus {
-  border: 1.5px solid var(--badge-consensus-text);
-  background: var(--badge-consensus-bg);
-  color: var(--badge-consensus-text);
+    border: 1.5px solid var(--badge-consensus-text);
+    background: var(--badge-consensus-bg);
+    color: var(--badge-consensus-text);
 }
 
 .rec-badge--strong {
-  border: 1.5px solid var(--badge-strong-text);
-  background: var(--badge-strong-bg);
-  color: var(--badge-strong-text);
+    border: 1.5px solid var(--badge-strong-text);
+    background: var(--badge-strong-bg);
+    color: var(--badge-strong-text);
 }
 
 .rec-badge--tradeoff {
-  border: 1.5px solid var(--badge-tradeoff-text);
-  background: var(--badge-tradeoff-bg);
-  color: var(--badge-tradeoff-text);
+    border: 1.5px solid var(--badge-tradeoff-text);
+    background: var(--badge-tradeoff-bg);
+    color: var(--badge-tradeoff-text);
 }
-
 
 /* ==========================================================================
    7. Table Scroll wrappers
    ========================================================================== */
 
 .table-scroll {
-  margin: 1.5rem 0;
-  border: 1.5px solid var(--border-color);
-  border-radius: 6px;
-  overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    overflow-x: auto;
 }
-
 
 /* ==========================================================================
    8. Component Specific Breakpoints
    ========================================================================== */
 
 @media (max-width: 900px) {
-  .track-panes {
-    flex-direction: column;
-    overflow-y: auto;
-  }
+    .chapter-tracks {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
 
-  .chapter-tracks:not(.secondary-collapsed) .pane,
-  .chapter-tracks:not(.secondary-collapsed) .secondary-stack {
-    width: 100%;
-    height: auto;
-    flex: none;
-  }
+    .track-panes {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+        order: 2 !important;
+        gap: 0 !important;
+    }
 
-  .pane {
-    overflow-y: visible;
-  }
+    .tracks-vertical-tab {
+        order: 0 !important;
+        width: 100% !important;
+        padding: 0.75rem 0 !important;
+        writing-mode: horizontal-tb !important;
+        border: 1px solid transparent !important;
+        background-image: linear-gradient(var(--bg-color), var(--bg-color)), 
+                          linear-gradient(to right, var(--pane-wife-border), var(--pane-kids-border)) !important;
+        background-origin: border-box !important;
+        background-clip: padding-box, border-box !important;
+        -webkit-background-clip: padding-box, border-box !important;
+        margin-bottom: 1rem !important;
+    }
 
-  .pane-content {
-    overflow-y: visible;
-  }
+    .tracks-vertical-tab-label {
+        transform: none !important;
+        background-image: linear-gradient(to right, var(--pane-wife-text), var(--pane-kids-text)) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
 
-  .tracks-vertical-tab {
-    width: 100%;
-    padding: 0.5rem 0;
-    writing-mode: horizontal-tb;
-  }
+    .mobile-collapse-wrapper {
+        display: grid !important;
+        grid-template-rows: 1fr !important;
+        transition: grid-template-rows 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin-bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        margin-bottom: 1rem !important;
+        width: 100% !important;
+        order: 1 !important;
+    }
 
-  .tracks-vertical-tab-label {
-    transform: none;
-  }
+    .secondary-stack {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        flex: none !important;
+        overflow: hidden !important;
+    }
+
+    .pane {
+        width: 100% !important;
+        height: auto !important;
+        flex: none !important;
+        overflow: visible !important;
+    }
+
+    .pane-engineer {
+        order: 2 !important;
+    }
+
+    .pane-content {
+        height: auto !important;
+        overflow: visible !important;
+        padding: 1rem !important;
+    }
+
+    .pane-secondary .pane-content {
+        padding: 0 1rem !important;
+    }
+
+    .pane-header {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .pane-secondary--wife,
+    .pane-secondary--kids {
+        height: auto !important;
+        flex: none !important;
+        min-width: 0 !important; /* override desktop static min-width to fit phone screens */
+    }
+
+    .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper {
+        grid-template-rows: 0fr !important;
+        margin-bottom: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Mobile: ensure the collapsed state grid rows/margins are restored when in wife/kids reading tracks */
+    html[data-track="wife"] .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper,
+    html[data-track="kids"] .chapter-tracks.secondary-collapsed .mobile-collapse-wrapper {
+        grid-template-rows: 1fr !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin-bottom: 1rem !important;
+    }
 }

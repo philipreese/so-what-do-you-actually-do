@@ -6,23 +6,25 @@ const cleanBase = base.endsWith('/') ? base : base + '/';
 
 <DocsLayout title="A Software Engineer's Handbook">
   <div class="hero-container">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-icon">⚡</span>
-        <span class="badge-text">Interactive Edition</span>
+    <div class="hero-top">
+      <div class="hero-content">
+        <h1>So, What Do You Actually Do?</h1>
+        <p class="hero-lead">
+          Every engineer has given some version of an unsatisfying answer to that question. This is the long one — written three times, once for each person actually asking.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href={`${cleanBase}parts/part01`} class="btn btn--primary">
+            Start Reading <span class="btn-arrow">→</span>
+          </a>
+          <a href={`${cleanBase}sitemap`} class="btn btn--secondary">
+            Table of Contents
+          </a>
+        </div>
       </div>
-      <h1>So, What Do You Actually Do?</h1>
-      <p class="hero-lead">
-        Every engineer has given some version of an unsatisfying answer to that question. This is the long one — written three times, once for each person actually asking.
-      </p>
-      
-      <div class="hero-buttons">
-        <a href={`${cleanBase}parts/part01`} class="btn btn--primary">
-          Start Reading <span class="btn-arrow">→</span>
-        </a>
-        <a href={`${cleanBase}sitemap`} class="btn btn--secondary">
-          Table of Contents
-        </a>
+
+      <div class="hero-illustration">
+        <img src={`${cleanBase}assets/capybara-hero.png`} alt="Capybara software engineer mascot" />
       </div>
     </div>
 

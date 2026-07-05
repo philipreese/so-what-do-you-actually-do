@@ -659,7 +659,91 @@ html[data-track="kids"] .t-kids {
 }
 
 /* ==========================================================================
-   8. Component Specific Breakpoints
+   8. Reading Progress Celebration (Kids track only)
+   ========================================================================== */
+
+.celebration-anchor {
+    position: relative;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.celebration-toast {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.15rem;
+    border: 1.5px solid var(--pane-kids-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--pane-kids-text);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-style: italic;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 5;
+}
+
+.celebration-toast--fade {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+}
+
+.celebration-confetti {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 10px;
+    border-radius: 2px;
+    opacity: 0.95;
+    animation: confetti-burst 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes confetti-burst {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x, 0), -75px) rotate(var(--rot, 180deg));
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .confetti-piece {
+        animation: none;
+        display: none;
+    }
+
+    .celebration-toast {
+        transition: none;
+    }
+}
+
+/* ==========================================================================
+   9. Component Specific Breakpoints
    ========================================================================== */
 
 @media (max-width: 900px) {

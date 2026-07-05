@@ -24,7 +24,7 @@ const currentSlug = pathname.split('/').pop() || '';
 
 <DocsLayout title={title} description={subtitle || undefined}>
   <div class="docs-content-container">
-    <div class="chapter-container">
+    <div class="chapter-container" data-chapter-slug={currentSlug}>
       <header class="chapter-header">
         <div class="chapter-header-row">
           <div class="chapter-header-left">

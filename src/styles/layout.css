@@ -403,9 +403,17 @@ html[data-theme="light"] .moon-icon {
     transition: all 0.2s ease;
 }
 
-.chapter-num {
+.chapter-num-slot {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
     min-width: 1.25rem;
     margin-right: 0.6rem;
+}
+
+.chapter-num {
     color: var(--text-muted);
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
@@ -416,6 +424,21 @@ html[data-theme="light"] .moon-icon {
 .sidebar-chapter-link.active .chapter-num {
     color: var(--accent-color);
     opacity: 1;
+}
+
+/* Read-state check indicator: replaces the chapter number once the chapter
+   has been read on the currently active track. */
+.chapter-check-icon {
+    display: none;
+    color: var(--accent-color);
+}
+
+.sidebar-chapter-link.is-read .chapter-num {
+    display: none;
+}
+
+.sidebar-chapter-link.is-read .chapter-check-icon {
+    display: inline-flex;
 }
 
 /* Collapse Mechanics */
@@ -528,9 +551,12 @@ html[data-theme="light"] .moon-icon {
     left: 2px;
 }
 
-.docs-layout.sidebar-minimized .chapter-num {
+.docs-layout.sidebar-minimized .chapter-num-slot {
     min-width: unset;
     margin-right: 0;
+}
+
+.docs-layout.sidebar-minimized .chapter-num {
     font-size: 0.85rem;
     font-weight: 700;
     text-align: center;

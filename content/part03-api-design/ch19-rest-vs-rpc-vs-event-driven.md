@@ -36,6 +36,9 @@ Your family group chat runs into the same message meaning two totally different 
 
 **The fix is boring and it works: make the two kinds unmistakable.** "Dog: walked" reads as a fact nobody has to act on. "Can someone walk the dog?" reads as a request that needs an actual person to say yes. Blur that line even once, and you get exactly what happened here — a dog that didn't get walked, and three people who all thought somebody else already handled it.
 
+> [!CAR]
+> Has a mixed-up text ever made your family think a chore was done when it wasn't? How would you word it so nobody could get it wrong?
+
 ---
 
 ## REST: Resource-Oriented Architecture

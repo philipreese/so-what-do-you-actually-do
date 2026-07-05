@@ -39,6 +39,9 @@ Hundreds of them, over enough mornings, add up to an honest picture of where the
 
 But if hunting for socks costs twenty seconds, picking cereal costs another twenty, and re-tying one shoe that came undone costs twenty more, those three boring little delays can add up to more lost time than the one step everyone assumed was the problem — invisible if you only ever checked shoe-tying by itself.
 
+> [!CAR]
+> Have you ever moved differently just because you knew someone was watching or timing you? What do you think your actual normal morning looks like when nobody's checking?
+
 ---
 
 Ch 72 already drew the line this chapter starts from: reach for a distributed trace first, and reach for a local profiler only once a trace has pinned a delay down to time genuinely spent executing inside one uninterrupted process. That boundary is settled and doesn't get reopened here. What Ch 85 adds is the reason to reach for a profiler at all — the Optimization Gate is open, a measured bottleneck has to be found — and this chapter is the methodology for finding it: how to actually see where time and resources inside that one process are going, instead of guessing and calling it engineering.

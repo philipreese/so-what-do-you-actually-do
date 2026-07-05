@@ -26,6 +26,8 @@ The chapter takes a firm position: build a translation layer between your databa
 
 ## For My Kids
 
+### The Menu That Wasn't the Cooler
+
 Say you run a lemonade stand, and instead of a menu, you just hand customers a list of exactly how your ingredients are organized in the cooler — "shelf 2, jug 3, mixed 40% lemon, 60% water."
 
 That's genuinely how your operation works back there. It's also a terrible way to take an order, because a customer doesn't care about shelf 2 — they care about "regular lemonade" or "extra sour."
@@ -39,6 +41,9 @@ What happens behind the counter to make that cup — which jug, which shelf, how
 If your "menu" was just a mirror of the cooler, every regular customer's usual order stops making sense the moment you rearrange a single shelf.
 
 If your menu was its own separate thing all along, you can reorganize the entire cooler overnight and not one customer notices, because the only promise you ever made them was "Regular Lemonade — $2," never "shelf 2, jug 3."
+
+> [!CAR]
+> If you ran a lemonade stand, what would you put on the menu versus keep hidden as "how I actually make it"? Why draw the line there?
 
 ---
 
